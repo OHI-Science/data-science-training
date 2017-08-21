@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Ocean Health Index Toolbox Training</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="This is the official Ocean Health Index Toolbox training.">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Ocean Health Index Toolbox Training" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is the official Ocean Health Index Toolbox training." />
+  <meta name="github-repo" content="ohi-science/ohi-trainings" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Ocean Health Index Toolbox Training" />
+  
+  <meta name="twitter:description" content="This is the official Ocean Health Index Toolbox training." />
+  
+
+<meta name="author" content="Ocean Health Index Team">
+
+
+<meta name="date" content="2017-04-27">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="intro.html">
+<link rel="next" href="toolbox.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Home</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#overview"><i class="fa fa-check"></i><b>2.1</b> Overview</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#ohi-conceptually"><i class="fa fa-check"></i><b>2.2</b> OHI conceptually</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#best-practices"><i class="fa fa-check"></i><b>2.3</b> Best practices</a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#tools-and-resources"><i class="fa fa-check"></i><b>2.4</b> Tools and Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="datascience.html"><a href="datascience.html"><i class="fa fa-check"></i><b>3</b> Data science workflow</a><ul>
+<li class="chapter" data-level="3.1" data-path="datascience.html"><a href="datascience.html#ohi-repo"><i class="fa fa-check"></i><b>3.1</b> OHI+ Repo</a></li>
+<li class="chapter" data-level="3.2" data-path="datascience.html"><a href="datascience.html#rstudio-github-workflow"><i class="fa fa-check"></i><b>3.2</b> RStudio-GitHub workflow</a></li>
+<li class="chapter" data-level="3.3" data-path="datascience.html"><a href="datascience.html#how-you-work"><i class="fa fa-check"></i><b>3.3</b> How you work</a></li>
+<li class="chapter" data-level="3.4" data-path="datascience.html"><a href="datascience.html#develop-skills"><i class="fa fa-check"></i><b>3.4</b> Developing these skills</a></li>
+<li class="chapter" data-level="3.5" data-path="datascience.html"><a href="datascience.html#practice-by-updating-your-website"><i class="fa fa-check"></i><b>3.5</b> Practice by updating your website</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="toolbox.html"><a href="toolbox.html"><i class="fa fa-check"></i><b>4</b> Toolbox Ecosystem</a><ul>
+<li class="chapter" data-level="4.1" data-path="toolbox.html"><a href="toolbox.html#overview-1"><i class="fa fa-check"></i><b>4.1</b> Overview</a></li>
+<li class="chapter" data-level="4.2" data-path="toolbox.html"><a href="toolbox.html#prep-repo-files-and-organization"><i class="fa fa-check"></i><b>4.2</b> Prep repo files and organization</a></li>
+<li class="chapter" data-level="4.3" data-path="toolbox.html"><a href="toolbox.html#full-repo-files-and-organization"><i class="fa fa-check"></i><b>4.3</b> Full repo files and organization</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="toolbox.html"><a href="toolbox.html#functions.r"><i class="fa fa-check"></i><b>4.3.1</b> functions.r</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="toolbox.html"><a href="toolbox.html#ohicore"><i class="fa fa-check"></i><b>4.4</b> <code id="ohicore">ohicore</code></a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="prep-data.html"><a href="prep-data.html"><i class="fa fa-check"></i><b>5</b> Preparing data: Basic</a><ul>
+<li class="chapter" data-level="5.1" data-path="prep-data.html"><a href="prep-data.html#overview-2"><i class="fa fa-check"></i><b>5.1</b> Overview</a></li>
+<li class="chapter" data-level="5.2" data-path="prep-data.html"><a href="prep-data.html#data-formatting-requirements"><i class="fa fa-check"></i><b>5.2</b> Data Formatting requirements</a></li>
+<li class="chapter" data-level="5.3" data-path="prep-data.html"><a href="prep-data.html#data-wrangling"><i class="fa fa-check"></i><b>5.3</b> Data Wrangling</a></li>
+<li class="chapter" data-level="5.4" data-path="prep-data.html"><a href="prep-data.html#save-and-register-data-layers"><i class="fa fa-check"></i><b>5.4</b> Save and Register data layers</a></li>
+<li class="chapter" data-level="5.5" data-path="prep-data.html"><a href="prep-data.html#register-data-layers-in-layers.csv"><i class="fa fa-check"></i><b>5.5</b> Register data layers in <code>layers.csv</code></a></li>
+<li class="chapter" data-level="5.6" data-path="prep-data.html"><a href="prep-data.html#chapter-recap"><i class="fa fa-check"></i><b>5.6</b> Chapter Recap:</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="calcs-basic.html"><a href="calcs-basic.html"><i class="fa fa-check"></i><b>6</b> Calculations: basic workflow</a><ul>
+<li class="chapter" data-level="6.1" data-path="calcs-basic.html"><a href="calcs-basic.html#overview-3"><i class="fa fa-check"></i><b>6.1</b> Overview</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="calcs-basic.html"><a href="calcs-basic.html#prerequisites"><i class="fa fa-check"></i><b>6.1.1</b> Prerequisites</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="calcs-basic.html"><a href="calcs-basic.html#review-the-toolbox-file-ecosystem"><i class="fa fa-check"></i><b>6.2</b> Review the Toolbox file ecosystem</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="calcs-basic.html"><a href="calcs-basic.html#run-install_ohicore.r"><i class="fa fa-check"></i><b>6.2.1</b> Run <code>install_ohicore.r</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="calcs-basic.html"><a href="calcs-basic.html#calculate-with-out-of-the-box-data-and-models"><i class="fa fa-check"></i><b>6.3</b> Calculate with ‘out-of-the-box’ data and models</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="calcs-basic.html"><a href="calcs-basic.html#source-configure_toolbox.r"><i class="fa fa-check"></i><b>6.3.1</b> Source <code>configure_toolbox.R</code></a></li>
+<li class="chapter" data-level="6.3.2" data-path="calcs-basic.html"><a href="calcs-basic.html#run-calculateall"><i class="fa fa-check"></i><b>6.3.2</b> Run <code>CalculateAll()</code></a></li>
+<li class="chapter" data-level="6.3.3" data-path="calcs-basic.html"><a href="calcs-basic.html#save-scores-variable-as-scores.csv"><i class="fa fa-check"></i><b>6.3.3</b> Save scores variable as <code>scores.csv</code></a></li>
+<li class="chapter" data-level="6.3.4" data-path="calcs-basic.html"><a href="calcs-basic.html#a-note-about-error-messages"><i class="fa fa-check"></i><b>6.3.4</b> A note about error messages</a></li>
+<li class="chapter" data-level="6.3.5" data-path="calcs-basic.html"><a href="calcs-basic.html#recap-of-first-calculate_scores.r-run"><i class="fa fa-check"></i><b>6.3.5</b> Recap of first <code>calculate_scores.r</code> run</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="calcs-basic.html"><a href="calcs-basic.html#calculate-with-tailored-data"><i class="fa fa-check"></i><b>6.4</b> Calculate with tailored data</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="calcs-basic.html"><a href="calcs-basic.html#prepare-and-save-our-data-layer"><i class="fa fa-check"></i><b>6.4.1</b> Prepare and save our data layer</a></li>
+<li class="chapter" data-level="6.4.2" data-path="calcs-basic.html"><a href="calcs-basic.html#register-our-data-layer"><i class="fa fa-check"></i><b>6.4.2</b> Register our data layer</a></li>
+<li class="chapter" data-level="6.4.3" data-path="calcs-basic.html"><a href="calcs-basic.html#rerun-calculate_scores.r"><i class="fa fa-check"></i><b>6.4.3</b> Rerun <code>calculate_scores.r</code></a></li>
+<li class="chapter" data-level="6.4.4" data-path="calcs-basic.html"><a href="calcs-basic.html#checking-our-work-and-syncing"><i class="fa fa-check"></i><b>6.4.4</b> Checking our work and syncing</a></li>
+<li class="chapter" data-level="6.4.5" data-path="calcs-basic.html"><a href="calcs-basic.html#recap-of-second-calculate_scores.r-run"><i class="fa fa-check"></i><b>6.4.5</b> Recap of second <code>calculate_scores.r</code> run</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="calcs-basic.html"><a href="calcs-basic.html#explore-configure_toolbox.r"><i class="fa fa-check"></i><b>6.5</b> Explore <code>configure_toolbox.r</code></a><ul>
+<li class="chapter" data-level="6.5.1" data-path="calcs-basic.html"><a href="calcs-basic.html#load-libraries-and-set-working-directory"><i class="fa fa-check"></i><b>6.5.1</b> Load libraries and set working directory</a></li>
+<li class="chapter" data-level="6.5.2" data-path="calcs-basic.html"><a href="calcs-basic.html#ohicoreconf"><i class="fa fa-check"></i><b>6.5.2</b> <code>ohicore::Conf()</code></a></li>
+<li class="chapter" data-level="6.5.3" data-path="calcs-basic.html"><a href="calcs-basic.html#ohicorechecklayers"><i class="fa fa-check"></i><b>6.5.3</b> <code>ohicore::CheckLayers()</code></a></li>
+<li class="chapter" data-level="6.5.4" data-path="calcs-basic.html"><a href="calcs-basic.html#ohicorelayers"><i class="fa fa-check"></i><b>6.5.4</b> <code>ohicore::Layers()</code></a></li>
+<li class="chapter" data-level="6.5.5" data-path="calcs-basic.html"><a href="calcs-basic.html#recap-of-exploring-configure_toolbox.r"><i class="fa fa-check"></i><b>6.5.5</b> Recap of exploring <code>configure_toolbox.r</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="calcs-basic.html"><a href="calcs-basic.html#explore-a-goal-model-in-functions.r"><i class="fa fa-check"></i><b>6.6</b> Explore a goal model in <code>functions.r</code></a><ul>
+<li class="chapter" data-level="6.6.1" data-path="calcs-basic.html"><a href="calcs-basic.html#load-specific-data-layers-with-selectlayersdata"><i class="fa fa-check"></i><b>6.6.1</b> Load specific data layers with <code>SelectLayersData()</code></a></li>
+<li class="chapter" data-level="6.6.2" data-path="calcs-basic.html"><a href="calcs-basic.html#goal-model"><i class="fa fa-check"></i><b>6.6.2</b> Goal model</a></li>
+<li class="chapter" data-level="6.6.3" data-path="calcs-basic.html"><a href="calcs-basic.html#calculate-status"><i class="fa fa-check"></i><b>6.6.3</b> Calculate Status</a></li>
+<li class="chapter" data-level="6.6.4" data-path="calcs-basic.html"><a href="calcs-basic.html#calculate-trend"><i class="fa fa-check"></i><b>6.6.4</b> Calculate Trend</a></li>
+<li class="chapter" data-level="6.6.5" data-path="calcs-basic.html"><a href="calcs-basic.html#scores-variable-combining-status-and-trend"><i class="fa fa-check"></i><b>6.6.5</b> Scores variable: combining Status and Trend</a></li>
+<li class="chapter" data-level="6.6.6" data-path="calcs-basic.html"><a href="calcs-basic.html#recap-of-exploring-functions.r"><i class="fa fa-check"></i><b>6.6.6</b> Recap of exploring <code>functions.r</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="calcs-basic.html"><a href="calcs-basic.html#calculate-with-tailored-models"><i class="fa fa-check"></i><b>6.7</b> Calculate with tailored models</a><ul>
+<li class="chapter" data-level="6.7.1" data-path="calcs-basic.html"><a href="calcs-basic.html#source-configure_toolbox.r-1"><i class="fa fa-check"></i><b>6.7.1</b> Source <code>configure_toolbox.r</code></a></li>
+<li class="chapter" data-level="6.7.2" data-path="calcs-basic.html"><a href="calcs-basic.html#tailor-ao-goal-model"><i class="fa fa-check"></i><b>6.7.2</b> Tailor AO goal model</a></li>
+<li class="chapter" data-level="6.7.3" data-path="calcs-basic.html"><a href="calcs-basic.html#calculate-scores-check-and-sync"><i class="fa fa-check"></i><b>6.7.3</b> Calculate scores, check, and sync</a></li>
+<li class="chapter" data-level="6.7.4" data-path="calcs-basic.html"><a href="calcs-basic.html#recap-of-third-calculate_scores.r-run"><i class="fa fa-check"></i><b>6.7.4</b> Recap of third <code>calculate_scores.r</code> run</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="calcs-basic.html"><a href="calcs-basic.html#calculate-with-tailored-data-and-models"><i class="fa fa-check"></i><b>6.8</b> Calculate with tailored data and models</a><ul>
+<li class="chapter" data-level="6.8.1" data-path="calcs-basic.html"><a href="calcs-basic.html#prepare-and-save-our-new-data-layer"><i class="fa fa-check"></i><b>6.8.1</b> Prepare and save our new data layer</a></li>
+<li class="chapter" data-level="6.8.2" data-path="calcs-basic.html"><a href="calcs-basic.html#register-our-new-data-layer"><i class="fa fa-check"></i><b>6.8.2</b> Register our new data layer</a></li>
+<li class="chapter" data-level="6.8.3" data-path="calcs-basic.html"><a href="calcs-basic.html#source-configure_toolbox.r-2"><i class="fa fa-check"></i><b>6.8.3</b> Source <code>configure_toolbox.r</code></a></li>
+<li class="chapter" data-level="6.8.4" data-path="calcs-basic.html"><a href="calcs-basic.html#update-the-ao-goal-model"><i class="fa fa-check"></i><b>6.8.4</b> Update the AO goal model</a></li>
+<li class="chapter" data-level="6.8.5" data-path="calcs-basic.html"><a href="calcs-basic.html#calculate-scores-check-and-sync-1"><i class="fa fa-check"></i><b>6.8.5</b> Calculate scores, check, and sync</a></li>
+<li class="chapter" data-level="6.8.6" data-path="calcs-basic.html"><a href="calcs-basic.html#recap-of-fourth-calculate_scores.r-run"><i class="fa fa-check"></i><b>6.8.6</b> Recap of fourth <code>calculate_scores.r</code> run</a></li>
+</ul></li>
+<li class="chapter" data-level="6.9" data-path="calcs-basic.html"><a href="calcs-basic.html#chapter-recap-1"><i class="fa fa-check"></i><b>6.9</b> Chapter Recap</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="calcs-advanced.html"><a href="calcs-advanced.html"><i class="fa fa-check"></i><b>7</b> Calculations: advanced workflow</a><ul>
+<li class="chapter" data-level="7.1" data-path="calcs-advanced.html"><a href="calcs-advanced.html#overview-4"><i class="fa fa-check"></i><b>7.1</b> Overview</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="calcs-advanced.html"><a href="calcs-advanced.html#prerequisites-1"><i class="fa fa-check"></i><b>7.1.1</b> Prerequisites</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="calcs-advanced.html"><a href="calcs-advanced.html#explore-goals.csv"><i class="fa fa-check"></i><b>7.2</b> Explore goals.csv</a></li>
+<li class="chapter" data-level="7.3" data-path="calcs-advanced.html"><a href="calcs-advanced.html#round-1-poke-at-it-to-see-how-it-works"><i class="fa fa-check"></i><b>7.3</b> Round 1: Poke at it to see how it works</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="calcs-advanced.html"><a href="calcs-advanced.html#delete-a-goal-cell-in-goals.csv"><i class="fa fa-check"></i><b>7.3.1</b> Delete a goal cell in goals.csv</a></li>
+<li class="chapter" data-level="7.3.2" data-path="calcs-advanced.html"><a href="calcs-advanced.html#remove-a-goal-whole-row-in-goals.csv"><i class="fa fa-check"></i><b>7.3.2</b> Remove a goal (whole row) in goals.csv</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="calcs-advanced.html"><a href="calcs-advanced.html#round-2-break-it-to-see-how-it-works"><i class="fa fa-check"></i><b>7.4</b> Round 2: Break it to see how it works</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="calcs-advanced.html"><a href="calcs-advanced.html#change-preindex_function-goals.csv"><i class="fa fa-check"></i><b>7.4.1</b> Change <code>preindex_function</code> goals.csv</a></li>
+<li class="chapter" data-level="7.4.2" data-path="calcs-advanced.html"><a href="calcs-advanced.html#add-a-new-goal-in-goals.csv"><i class="fa fa-check"></i><b>7.4.2</b> Add a new goal in goals.csv</a></li>
+<li class="chapter" data-level="7.4.3" data-path="calcs-advanced.html"><a href="calcs-advanced.html#delete-a-goal-model-from-functions.r"><i class="fa fa-check"></i><b>7.4.3</b> Delete a goal model from <code>functions.r</code></a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="calcs-advanced.html"><a href="calcs-advanced.html#adding-a-new-goal"><i class="fa fa-check"></i><b>7.5</b> Adding a new goal</a></li>
+<li class="chapter" data-level="7.6" data-path="calcs-advanced.html"><a href="calcs-advanced.html#adding-subgoals"><i class="fa fa-check"></i><b>7.6</b> Adding subgoals</a></li>
+<li class="chapter" data-level="7.7" data-path="calcs-advanced.html"><a href="calcs-advanced.html#modifying-subgoals"><i class="fa fa-check"></i><b>7.7</b> Modifying subgoals</a></li>
+<li class="chapter" data-level="7.8" data-path="calcs-advanced.html"><a href="calcs-advanced.html#chapter-recap-2"><i class="fa fa-check"></i><b>7.8</b> Chapter recap</a></li>
+<li class="chapter" data-level="7.9" data-path="calcs-advanced.html"><a href="calcs-advanced.html#changing-subgoals"><i class="fa fa-check"></i><b>7.9</b> Changing subgoals</a><ul>
+<li class="chapter" data-level="7.9.1" data-path="calcs-advanced.html"><a href="calcs-advanced.html#update-goal-call-in-goals.csv"><i class="fa fa-check"></i><b>7.9.1</b> Update goal call in <code>goals.csv</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="updating-your-website.html"><a href="updating-your-website.html"><i class="fa fa-check"></i><b>8</b> Updating your website</a><ul>
+<li class="chapter" data-level="8.1" data-path="updating-your-website.html"><a href="updating-your-website.html#overview-5"><i class="fa fa-check"></i><b>8.1</b> Overview</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Ocean Health Index Toolbox Training</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="datascience" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Data science workflow</h1>
+<ul>
+<li>what you get in the OHI+ repo (very high-level: you get data and code, you’ll operate with an R package ohicore)</li>
+<li>use RStudio, GitHub to work reproducibly and collaboratively</li>
+<li>how you work</li>
+</ul>
+<div id="ohi-repo" class="section level2">
+<h2><span class="header-section-number">3.1</span> OHI+ Repo</h2>
+<ul>
+<li>what is in the OHI+ repo, not file-by-file, but high-level</li>
+<li>prep and full repos</li>
+</ul>
+</div>
+<div id="rstudio-github-workflow" class="section level2">
+<h2><span class="header-section-number">3.2</span> RStudio-GitHub workflow</h2>
+<div class="figure">
+<img src="https://docs.google.com/drawings/d/1eEb8qlCWY5g0v19xMoW-Jc71cNr4GOacsxUK9FR8si4/pub?w=960&amp;h=480" />
+
+</div>
+</div>
+<div id="how-you-work" class="section level2">
+<h2><span class="header-section-number">3.3</span> How you work</h2>
+<ul>
+<li>commit often (i.e. bundled as tasks you complete)</li>
+<li>use the Git tab to help you check your work – what files updated, does that make sense?</li>
+</ul>
+</div>
+<div id="develop-skills" class="section level2">
+<h2><span class="header-section-number">3.4</span> Developing these skills</h2>
+<p>2-day self-paced workshop: <a href="http://jules32.github.io/2016-07-12-Oxford/overview/">Reproducible Science with RStudio and GitHub</a>. This is a <a href="https://software-carpentry.org/">Software Carpentry</a> workshop by our team to help you develop skills with the RStudio/GitHub workflow.</p>
+</div>
+<div id="practice-by-updating-your-website" class="section level2">
+<h2><span class="header-section-number">3.5</span> Practice by updating your website</h2>
+<ul>
+<li><p>give a face to your project</p></li>
+<li><p>learn more with this 2-hour tutorial <a href="https://jules32.github.io/rmarkdown-website-tutorial">Making free websites with RStudio’s R Markdown</a> made by our team.</p></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="toolbox.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

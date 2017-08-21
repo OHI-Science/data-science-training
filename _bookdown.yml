@@ -1,0 +1,13 @@
+book_filename: "toolbox-training"
+language:
+  ui:
+    chapter_name: "Chapter "
+rmd_files: [
+  "index.Rmd", 
+  "introduction.Rmd", 
+  "data_science_workflow.Rmd", 
+  "toolbox_ecosystem.Rmd", 
+  "preparing_data.Rmd", 
+  "calculations_basic_workflow.Rmd",
+  "calculations_advanced_workflow.Rmd",
+  "updating_your_website.Rmd"]

@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Ocean Health Index Toolbox Training</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="This is the official Ocean Health Index Toolbox training.">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Ocean Health Index Toolbox Training" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is the official Ocean Health Index Toolbox training." />
+  <meta name="github-repo" content="ohi-science/ohi-trainings" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Ocean Health Index Toolbox Training" />
+  
+  <meta name="twitter:description" content="This is the official Ocean Health Index Toolbox training." />
+  
+
+<meta name="author" content="Ocean Health Index Team">
+
+
+<meta name="date" content="2017-05-30">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="prep-data.html">
+<link rel="next" href="calcs-advanced.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Home</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#overview"><i class="fa fa-check"></i><b>2.1</b> Overview</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#ohi-conceptually"><i class="fa fa-check"></i><b>2.2</b> OHI conceptually</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#best-practices"><i class="fa fa-check"></i><b>2.3</b> Best practices</a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#tools-and-resources"><i class="fa fa-check"></i><b>2.4</b> Tools and Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-science.html"><a href="data-science.html"><i class="fa fa-check"></i><b>3</b> Data science workflow</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-science.html"><a href="data-science.html#rstudio-github-workflow"><i class="fa fa-check"></i><b>3.1</b> RStudio-GitHub workflow</a></li>
+<li class="chapter" data-level="3.2" data-path="data-science.html"><a href="data-science.html#how-you-work"><i class="fa fa-check"></i><b>3.2</b> How you work</a></li>
+<li class="chapter" data-level="3.3" data-path="data-science.html"><a href="data-science.html#how-this-fits-with-the-ohi-workflow"><i class="fa fa-check"></i><b>3.3</b> How this fits with the OHI workflow</a></li>
+<li class="chapter" data-level="3.4" data-path="data-science.html"><a href="data-science.html#develop-skills"><i class="fa fa-check"></i><b>3.4</b> Developing these skills</a></li>
+<li class="chapter" data-level="3.5" data-path="data-science.html"><a href="data-science.html#practice-by-updating-your-website"><i class="fa fa-check"></i><b>3.5</b> Practice by updating your website</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="data-science.html"><a href="data-science.html#background-on-branches-master-and-gh-pages"><i class="fa fa-check"></i><b>3.5.1</b> Background on branches: master and gh-pages</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="toolbox-ecosystem.html"><a href="toolbox-ecosystem.html"><i class="fa fa-check"></i><b>4</b> Toolbox Ecosystem</a><ul>
+<li class="chapter" data-level="4.1" data-path="toolbox-ecosystem.html"><a href="toolbox-ecosystem.html#overview-1"><i class="fa fa-check"></i><b>4.1</b> Overview</a></li>
+<li class="chapter" data-level="4.2" data-path="toolbox-ecosystem.html"><a href="toolbox-ecosystem.html#prep-repo-files-and-organization"><i class="fa fa-check"></i><b>4.2</b> Prep repo files and organization</a></li>
+<li class="chapter" data-level="4.3" data-path="toolbox-ecosystem.html"><a href="toolbox-ecosystem.html#full-repo-files-and-organization"><i class="fa fa-check"></i><b>4.3</b> Full repo files and organization</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="toolbox-ecosystem.html"><a href="toolbox-ecosystem.html#functions.r"><i class="fa fa-check"></i><b>4.3.1</b> functions.r</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="toolbox-ecosystem.html"><a href="toolbox-ecosystem.html#ohicore"><i class="fa fa-check"></i><b>4.4</b> <code id="ohicore">ohicore</code></a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="prep-data.html"><a href="prep-data.html"><i class="fa fa-check"></i><b>5</b> Preparing data: Basic</a><ul>
+<li class="chapter" data-level="5.1" data-path="prep-data.html"><a href="prep-data.html#overview-2"><i class="fa fa-check"></i><b>5.1</b> Overview</a></li>
+<li class="chapter" data-level="5.2" data-path="prep-data.html"><a href="prep-data.html#data-formatting-requirements"><i class="fa fa-check"></i><b>5.2</b> Data Formatting requirements</a></li>
+<li class="chapter" data-level="5.3" data-path="prep-data.html"><a href="prep-data.html#data-wrangling"><i class="fa fa-check"></i><b>5.3</b> Data Wrangling</a></li>
+<li class="chapter" data-level="5.4" data-path="prep-data.html"><a href="prep-data.html#save-and-register-data-layers"><i class="fa fa-check"></i><b>5.4</b> Save and Register data layers</a></li>
+<li class="chapter" data-level="5.5" data-path="prep-data.html"><a href="prep-data.html#register-data-layers-in-layers.csv"><i class="fa fa-check"></i><b>5.5</b> Register data layers in <code>layers.csv</code></a></li>
+<li class="chapter" data-level="5.6" data-path="prep-data.html"><a href="prep-data.html#chapter-recap"><i class="fa fa-check"></i><b>5.6</b> Chapter Recap:</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="calcs-basic.html"><a href="calcs-basic.html"><i class="fa fa-check"></i><b>6</b> Calculations: basic workflow</a><ul>
+<li class="chapter" data-level="6.1" data-path="calcs-basic.html"><a href="calcs-basic.html#overview-3"><i class="fa fa-check"></i><b>6.1</b> Overview</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="calcs-basic.html"><a href="calcs-basic.html#prerequisites"><i class="fa fa-check"></i><b>6.1.1</b> Prerequisites</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="calcs-basic.html"><a href="calcs-basic.html#review-the-toolbox-file-ecosystem"><i class="fa fa-check"></i><b>6.2</b> Review the Toolbox file ecosystem</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="calcs-basic.html"><a href="calcs-basic.html#run-install_ohicore.r"><i class="fa fa-check"></i><b>6.2.1</b> Run <code>install_ohicore.r</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="calcs-basic.html"><a href="calcs-basic.html#calculate-with-out-of-the-box-data-and-models"><i class="fa fa-check"></i><b>6.3</b> Calculate with ‘out-of-the-box’ data and models</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="calcs-basic.html"><a href="calcs-basic.html#source-configure_toolbox.r"><i class="fa fa-check"></i><b>6.3.1</b> Source <code>configure_toolbox.R</code></a></li>
+<li class="chapter" data-level="6.3.2" data-path="calcs-basic.html"><a href="calcs-basic.html#run-calculateall"><i class="fa fa-check"></i><b>6.3.2</b> Run <code>CalculateAll()</code></a></li>
+<li class="chapter" data-level="6.3.3" data-path="calcs-basic.html"><a href="calcs-basic.html#save-scores-variable-as-scores.csv"><i class="fa fa-check"></i><b>6.3.3</b> Save scores variable as <code>scores.csv</code></a></li>
+<li class="chapter" data-level="6.3.4" data-path="calcs-basic.html"><a href="calcs-basic.html#a-note-about-error-messages"><i class="fa fa-check"></i><b>6.3.4</b> A note about error messages</a></li>
+<li class="chapter" data-level="6.3.5" data-path="calcs-basic.html"><a href="calcs-basic.html#recap-of-first-calculate_scores.r-run"><i class="fa fa-check"></i><b>6.3.5</b> Recap of first <code>calculate_scores.r</code> run</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="calcs-basic.html"><a href="calcs-basic.html#calculate-with-tailored-data"><i class="fa fa-check"></i><b>6.4</b> Calculate with tailored data</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="calcs-basic.html"><a href="calcs-basic.html#prepare-and-save-our-data-layer"><i class="fa fa-check"></i><b>6.4.1</b> Prepare and save our data layer</a></li>
+<li class="chapter" data-level="6.4.2" data-path="calcs-basic.html"><a href="calcs-basic.html#register-our-data-layer"><i class="fa fa-check"></i><b>6.4.2</b> Register our data layer</a></li>
+<li class="chapter" data-level="6.4.3" data-path="calcs-basic.html"><a href="calcs-basic.html#rerun-calculate_scores.r"><i class="fa fa-check"></i><b>6.4.3</b> Rerun <code>calculate_scores.r</code></a></li>
+<li class="chapter" data-level="6.4.4" data-path="calcs-basic.html"><a href="calcs-basic.html#checking-our-work-and-syncing"><i class="fa fa-check"></i><b>6.4.4</b> Checking our work and syncing</a></li>
+<li class="chapter" data-level="6.4.5" data-path="calcs-basic.html"><a href="calcs-basic.html#recap-of-second-calculate_scores.r-run"><i class="fa fa-check"></i><b>6.4.5</b> Recap of second <code>calculate_scores.r</code> run</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="calcs-basic.html"><a href="calcs-basic.html#explore-configure_toolbox.r"><i class="fa fa-check"></i><b>6.5</b> Explore <code>configure_toolbox.r</code></a><ul>
+<li class="chapter" data-level="6.5.1" data-path="calcs-basic.html"><a href="calcs-basic.html#load-libraries-and-set-working-directory"><i class="fa fa-check"></i><b>6.5.1</b> Load libraries and set working directory</a></li>
+<li class="chapter" data-level="6.5.2" data-path="calcs-basic.html"><a href="calcs-basic.html#ohicoreconf"><i class="fa fa-check"></i><b>6.5.2</b> <code>ohicore::Conf()</code></a></li>
+<li class="chapter" data-level="6.5.3" data-path="calcs-basic.html"><a href="calcs-basic.html#ohicorechecklayers"><i class="fa fa-check"></i><b>6.5.3</b> <code>ohicore::CheckLayers()</code></a></li>
+<li class="chapter" data-level="6.5.4" data-path="calcs-basic.html"><a href="calcs-basic.html#ohicorelayers"><i class="fa fa-check"></i><b>6.5.4</b> <code>ohicore::Layers()</code></a></li>
+<li class="chapter" data-level="6.5.5" data-path="calcs-basic.html"><a href="calcs-basic.html#recap-of-exploring-configure_toolbox.r"><i class="fa fa-check"></i><b>6.5.5</b> Recap of exploring <code>configure_toolbox.r</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="calcs-basic.html"><a href="calcs-basic.html#explore-a-goal-model-in-functions.r"><i class="fa fa-check"></i><b>6.6</b> Explore a goal model in <code>functions.r</code></a><ul>
+<li class="chapter" data-level="6.6.1" data-path="calcs-basic.html"><a href="calcs-basic.html#load-specific-data-layers-with-selectlayersdata"><i class="fa fa-check"></i><b>6.6.1</b> Load specific data layers with <code>SelectLayersData()</code></a></li>
+<li class="chapter" data-level="6.6.2" data-path="calcs-basic.html"><a href="calcs-basic.html#goal-model"><i class="fa fa-check"></i><b>6.6.2</b> Goal model</a></li>
+<li class="chapter" data-level="6.6.3" data-path="calcs-basic.html"><a href="calcs-basic.html#calculate-status"><i class="fa fa-check"></i><b>6.6.3</b> Calculate Status</a></li>
+<li class="chapter" data-level="6.6.4" data-path="calcs-basic.html"><a href="calcs-basic.html#calculate-trend"><i class="fa fa-check"></i><b>6.6.4</b> Calculate Trend</a></li>
+<li class="chapter" data-level="6.6.5" data-path="calcs-basic.html"><a href="calcs-basic.html#scores-variable-combining-status-and-trend"><i class="fa fa-check"></i><b>6.6.5</b> Scores variable: combining Status and Trend</a></li>
+<li class="chapter" data-level="6.6.6" data-path="calcs-basic.html"><a href="calcs-basic.html#recap-of-exploring-functions.r"><i class="fa fa-check"></i><b>6.6.6</b> Recap of exploring <code>functions.r</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="calcs-basic.html"><a href="calcs-basic.html#calculate-with-tailored-models"><i class="fa fa-check"></i><b>6.7</b> Calculate with tailored models</a><ul>
+<li class="chapter" data-level="6.7.1" data-path="calcs-basic.html"><a href="calcs-basic.html#source-configure_toolbox.r-1"><i class="fa fa-check"></i><b>6.7.1</b> Source <code>configure_toolbox.r</code></a></li>
+<li class="chapter" data-level="6.7.2" data-path="calcs-basic.html"><a href="calcs-basic.html#tailor-ao-goal-model"><i class="fa fa-check"></i><b>6.7.2</b> Tailor AO goal model</a></li>
+<li class="chapter" data-level="6.7.3" data-path="calcs-basic.html"><a href="calcs-basic.html#calculate-scores-check-and-sync"><i class="fa fa-check"></i><b>6.7.3</b> Calculate scores, check, and sync</a></li>
+<li class="chapter" data-level="6.7.4" data-path="calcs-basic.html"><a href="calcs-basic.html#recap-of-third-calculate_scores.r-run"><i class="fa fa-check"></i><b>6.7.4</b> Recap of third <code>calculate_scores.r</code> run</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="calcs-basic.html"><a href="calcs-basic.html#calculate-with-tailored-data-and-models"><i class="fa fa-check"></i><b>6.8</b> Calculate with tailored data and models</a><ul>
+<li class="chapter" data-level="6.8.1" data-path="calcs-basic.html"><a href="calcs-basic.html#prepare-and-save-our-new-data-layer"><i class="fa fa-check"></i><b>6.8.1</b> Prepare and save our new data layer</a></li>
+<li class="chapter" data-level="6.8.2" data-path="calcs-basic.html"><a href="calcs-basic.html#register-our-new-data-layer"><i class="fa fa-check"></i><b>6.8.2</b> Register our new data layer</a></li>
+<li class="chapter" data-level="6.8.3" data-path="calcs-basic.html"><a href="calcs-basic.html#source-configure_toolbox.r-2"><i class="fa fa-check"></i><b>6.8.3</b> Source <code>configure_toolbox.r</code></a></li>
+<li class="chapter" data-level="6.8.4" data-path="calcs-basic.html"><a href="calcs-basic.html#update-the-ao-goal-model"><i class="fa fa-check"></i><b>6.8.4</b> Update the AO goal model</a></li>
+<li class="chapter" data-level="6.8.5" data-path="calcs-basic.html"><a href="calcs-basic.html#calculate-scores-check-and-sync-1"><i class="fa fa-check"></i><b>6.8.5</b> Calculate scores, check, and sync</a></li>
+<li class="chapter" data-level="6.8.6" data-path="calcs-basic.html"><a href="calcs-basic.html#recap-of-fourth-calculate_scores.r-run"><i class="fa fa-check"></i><b>6.8.6</b> Recap of fourth <code>calculate_scores.r</code> run</a></li>
+</ul></li>
+<li class="chapter" data-level="6.9" data-path="calcs-basic.html"><a href="calcs-basic.html#chapter-recap-1"><i class="fa fa-check"></i><b>6.9</b> Chapter Recap</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="calcs-advanced.html"><a href="calcs-advanced.html"><i class="fa fa-check"></i><b>7</b> Calculations: advanced workflow</a><ul>
+<li class="chapter" data-level="7.1" data-path="calcs-advanced.html"><a href="calcs-advanced.html#overview-4"><i class="fa fa-check"></i><b>7.1</b> Overview</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="calcs-advanced.html"><a href="calcs-advanced.html#prerequisites-1"><i class="fa fa-check"></i><b>7.1.1</b> Prerequisites</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="calcs-advanced.html"><a href="calcs-advanced.html#explore-goals.csv"><i class="fa fa-check"></i><b>7.2</b> Explore goals.csv</a></li>
+<li class="chapter" data-level="7.3" data-path="calcs-advanced.html"><a href="calcs-advanced.html#round-1-poke-at-it-to-see-how-it-works"><i class="fa fa-check"></i><b>7.3</b> Round 1: Poke at it to see how it works</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="calcs-advanced.html"><a href="calcs-advanced.html#delete-a-goal-cell-in-goals.csv"><i class="fa fa-check"></i><b>7.3.1</b> Delete a goal cell in goals.csv</a></li>
+<li class="chapter" data-level="7.3.2" data-path="calcs-advanced.html"><a href="calcs-advanced.html#remove-a-goal-whole-row-in-goals.csv"><i class="fa fa-check"></i><b>7.3.2</b> Remove a goal (whole row) in goals.csv</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="calcs-advanced.html"><a href="calcs-advanced.html#round-2-break-it-to-see-how-it-works"><i class="fa fa-check"></i><b>7.4</b> Round 2: Break it to see how it works</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="calcs-advanced.html"><a href="calcs-advanced.html#change-preindex_function-goals.csv"><i class="fa fa-check"></i><b>7.4.1</b> Change <code>preindex_function</code> goals.csv</a></li>
+<li class="chapter" data-level="7.4.2" data-path="calcs-advanced.html"><a href="calcs-advanced.html#add-a-new-goal-in-goals.csv"><i class="fa fa-check"></i><b>7.4.2</b> Add a new goal in goals.csv</a></li>
+<li class="chapter" data-level="7.4.3" data-path="calcs-advanced.html"><a href="calcs-advanced.html#delete-a-goal-model-from-functions.r"><i class="fa fa-check"></i><b>7.4.3</b> Delete a goal model from <code>functions.r</code></a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="calcs-advanced.html"><a href="calcs-advanced.html#adding-a-new-goal"><i class="fa fa-check"></i><b>7.5</b> Adding a new goal</a></li>
+<li class="chapter" data-level="7.6" data-path="calcs-advanced.html"><a href="calcs-advanced.html#adding-subgoals"><i class="fa fa-check"></i><b>7.6</b> Adding subgoals</a></li>
+<li class="chapter" data-level="7.7" data-path="calcs-advanced.html"><a href="calcs-advanced.html#modifying-subgoals"><i class="fa fa-check"></i><b>7.7</b> Modifying subgoals</a></li>
+<li class="chapter" data-level="7.8" data-path="calcs-advanced.html"><a href="calcs-advanced.html#chapter-recap-2"><i class="fa fa-check"></i><b>7.8</b> Chapter recap</a></li>
+<li class="chapter" data-level="7.9" data-path="calcs-advanced.html"><a href="calcs-advanced.html#changing-subgoals"><i class="fa fa-check"></i><b>7.9</b> Changing subgoals</a><ul>
+<li class="chapter" data-level="7.9.1" data-path="calcs-advanced.html"><a href="calcs-advanced.html#update-goal-call-in-goals.csv"><i class="fa fa-check"></i><b>7.9.1</b> Update goal call in <code>goals.csv</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="updating-your-website.html"><a href="updating-your-website.html"><i class="fa fa-check"></i><b>8</b> Updating your website</a><ul>
+<li class="chapter" data-level="8.1" data-path="updating-your-website.html"><a href="updating-your-website.html#overview-5"><i class="fa fa-check"></i><b>8.1</b> Overview</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Ocean Health Index Toolbox Training</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="calcs-basic" class="section level1">
+<h1><span class="header-section-number">Chapter 6</span> Calculations: basic workflow</h1>
+<p>The purpose of Chapter <a href="calcs-basic.html#calcs-basic">6</a> is to introduce you to the basic workflow for calculating OHI scores. This is a a 2-hour hands-on training: you will be following along on your own computer and working with a copy of the demonstration repository that is used throughout the this chapter.</p>
+<div id="overview-3" class="section level2">
+<h2><span class="header-section-number">6.1</span> Overview</h2>
+<p>Calculating scores with the OHI Toolbox requires a tailored repository operating with the OHI <code>R</code> package <code>ohicore</code>. The tailored repo has information specific to your assessment — most importantly the data and goal models — and <code>ohicore</code> will combine these with core operations to calculate OHI scores. You will always start with a tailored repository that has data and models extracted from the most recent Global OHI assessment.</p>
+<div class="figure">
+<img src="https://docs.google.com/drawings/d/118-eWWsxxgz8kC0ub7racMuzjFABwjVkO2bKjQ-2qrU/pub?w=624&amp;h=480" />
+
+</div>
+<p><br></p>
+<p>This training will introduce the basic workflow for calculating scores. There are many ways to build from the ‘out-of-the-box’ tailored repo you have instead of starting an assessment from scratch. For example, you may want to just change underlying data sources within the models, or competely change the models which also requires new data layers and data sources.</p>
+<p><strong>We will repeat the basic workflow four times, each time adding complexity. We will calculate scores with:</strong></p>
+<ol style="list-style-type: decimal">
+<li>‘out of the box’ data and models extracted from the Global 2016 assessment</li>
+<li>tailored data (with ‘out of the box’ models)</li>
+<li>tailored models (with ‘out of the box’ data layers)</li>
+<li>tailored data and models (adding a new data layer / model variable)</li>
+</ol>
+<p><br></p>
+<p>The workflow depends on the <code>calculate_scores.r</code> script found the scenario folder of any tailored repo. We’ll also dive deeper into the code itself, focusing particularly on required configuration in <code>configure_toolbox.r</code> and developing goal models in <code>functions.r</code>.</p>
+<p>This is a lot to cover in a 2-hour training, and the purpose is to give you big take home messages and experience for what you need to begin calculating scores. But the Toolbox has a lot of moving parts, and we cannot cover all of it here. There are a lot of details and other operations that we won’t get into here and that will be coming in future tutorials (including tailoring pressures &amp; resilience, and how to change subgoals).</p>
+<div id="prerequisites" class="section level3">
+<h3><span class="header-section-number">6.1.1</span> Prerequisites</h3>
+<p>Before the training, please make sure you have done the following:</p>
+<ol style="list-style-type: decimal">
+<li>Have up-to-date versions of <code>R</code> and RStudio and have RStudio configured with Git/GitHub <!--- TODO (Chapter \@ref(datascience))--->
+<ul>
+<li><a href="https://cloud.r-project.org" class="uri">https://cloud.r-project.org</a></li>
+<li><a href="http://www.rstudio.com/download" class="uri">http://www.rstudio.com/download</a></li>
+<li><a href="http://happygitwithr.com/rstudio-git-github.html" class="uri">http://happygitwithr.com/rstudio-git-github.html</a></li>
+</ul></li>
+<li>Fork the <strong>toolbox-demo</strong> repository into your own GitHub account by going to <a href="https://github.com/OHI-Science/toolbox-demo" class="uri">https://github.com/OHI-Science/toolbox-demo</a>, clicking “Fork” in the upper right corner, and selecting your account</li>
+<li>Clone the <strong>toolbox-demo</strong> repo from your GitHub account into RStudio into a folder called “github” in your home directory (filepath “~/github”)</li>
+<li>Get comfortable: be set up with two screens if possible. You will be following along in RStudio on your own computer while also watching an instructor’s screen or following this tutorial.</li>
+</ol>
+<hr />
+</div>
+</div>
+<div id="review-the-toolbox-file-ecosystem" class="section level2">
+<h2><span class="header-section-number">6.2</span> Review the Toolbox file ecosystem</h2>
+<!--- TODO `@ningningj`: toolbox_ecosystem.rmd
+TODO @jules32: once toolbox_ecosystem.rmd is done, move this Review section into the Prerequesites section--->
+<p>Let’s quickly review some of the files you have in the <strong>toolbox-demo</strong> repo. Remember that the ecosystem structure of any tailored repo is the same, so as you learn to navigate through and calculate scores in this repo you are also learning how to navigate through and calculate scores in any other OHI assessment repository — yours or anyone else’s.</p>
+<p>This figure highlights the files we will focus on in this tutorial (others are grayed out). <!--- TODO (for full details see Chapter \@ref(toolbox))---></p>
+<div class="figure">
+<img src="https://docs.google.com/drawings/d/11QcBxrUNQnzuvJBLcJLMp0C7jFvZ-mz4vIj3OkvlxZ8/pub?h=500" />
+
+</div>
+<p>In our <strong>toolbox-demo</strong> repo, here are a few additional things to mention:</p>
+<ul>
+<li>our scenario folder is called <code>region2016</code></li>
+<li>goal models are <code>R</code> functions in <code>conf/functions.r</code></li>
+<li>regions are listed in <code>spatial/regions_list.csv</code>. We have 17 here.</li>
+</ul>
+<div id="run-install_ohicore.r" class="section level3">
+<h3><span class="header-section-number">6.2.1</span> Run <code>install_ohicore.r</code></h3>
+<p>If you don’t already have <code>ohicore</code> installed, let’s do that now. <code>ohicore</code> is an R package developed by the OHI team that has all the essential core functions and supporting packages you will use to develop your assessment and calculate scores. You will install <code>ohicore</code> one time and then load its library from the <code>toolbox-training</code> repository whenever you work on your assessment to gain access to all those functions and packages.</p>
+<p>Let’s open and source <code>install_ohicore.r</code>.</p>
+<!---TODO:: Learn more about `ohicore` in Chapter X.
+
+where would a section on ohicore go? Maybe need to make a vingette for it and link to it but not have a section here.--->
+</div>
+</div>
+<div id="calculate-with-out-of-the-box-data-and-models" class="section level2">
+<h2><span class="header-section-number">6.3</span> Calculate with ‘out-of-the-box’ data and models</h2>
+<p>The first time we go through the basic workflow will be with ‘out-of-the-box’ data and models from the 2016 Global assessment.</p>
+<p><code>calculate_scores.r</code> is a script that you’ll run a lot — both as a whole and piece-by-piece. It takes inputs (data and models) from the Toolbox and computes OHI scores, as the file name suggests. It has several components which we will explore in turn in the rest of the tutorial.</p>
+<div class="figure">
+<img src="https://docs.google.com/drawings/d/1OhA7p5-dmrk6dGeP_gWEXFD2pI1ik8KhUYNUSLUVgd4/pub?w=960&amp;h=720" />
+
+</div>
+<p><code>calculate_scores.r</code> will load the libraries you need and <code>ohicore</code> will check your book-keeping and configuration, and calculate OHI scores. <strong>Ultimately, it will save the scores for each goal and dimension in <code>scores.csv</code>.</strong> The ‘dimensions’ of OHI goal scores are Status, Trend, Pressures, Resilience, Likely Future State, and overall goal Score. Dimensions are calculated for each goal in a specific order, as we will see below. <code>calculate_scores.r</code> will combine information from your tailored repository and calculate scores with OHI core functions from <code>ohicore</code>.</p>
+<p>Open <code>region2016/calculate_scores.r</code> and let’s have a look at its operations. We will run it line-by-line.</p>
+<div id="source-configure_toolbox.r" class="section level3">
+<h3><span class="header-section-number">6.3.1</span> Source <code>configure_toolbox.R</code></h3>
+<p>We will start by <strong>sourcing <code>configure_toolbox.r</code></strong> from within <code>calculate_scores.r</code>.</p>
+<div class="figure">
+<img src="https://docs.google.com/drawings/d/1VRIZQFkbsDXNRtDQYBVyQIJvVkzP1POjKp8g8G3Ogg8/pub?h=450" />
+
+</div>
+<p>There is output printed to the console that lists all of the layers registered, and ends with any warning messages about the layers themselves. We will explore what is happening in <code>configure_toolbox.r</code> and how to interpret these warning messages further on; for now, let’s move on since we have not encountered an error.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## run the configure_toolbox.r script to check configuration
+<span class="kw">source</span>(<span class="st">&#39;~/github/toolbox-demo/region2016/configure_toolbox.r&#39;</span>)
+
+<span class="co">#   cc_acid</span>
+<span class="co">#   cc_slr</span>
+<span class="co"># ...</span>
+<span class="co">#   tr_travelwarnings</span>
+<span class="co"># Warning messages:</span>
+<span class="co"># 1: In ohicore::CheckLayers(&quot;layers.csv&quot;, &quot;layers&quot;, flds_id = conf$config$layers_id_fields) :</span>
+<span class="co">#   Unused fields...</span>
+<span class="co">#     ico_spp_iucn_status: iucn_sid</span>
+<span class="co"># 2: In ohicore::CheckLayers(&quot;layers.csv&quot;, &quot;layers&quot;, flds_id = conf$config$layers_id_fields) :</span>
+<span class="co">#   Rows duplicated...</span>
+<span class="co">#     ico_spp_iucn_status: 816</span></code></pre></div>
+</div>
+<div id="run-calculateall" class="section level3">
+<h3><span class="header-section-number">6.3.2</span> Run <code>CalculateAll()</code></h3>
+<p>Now let’s continue with the next operation in <code>calculate_scores.r</code>, which is to <strong>run <code>CalculateAll()</code></strong>. Notice too that we are saving the output to a variable called <code>scores</code>.</p>
+<div class="figure">
+<img src="https://docs.google.com/drawings/d/1mgmRwngXwVpoqBIlrQcRqKmKgSbGwAN79BD6p1zBwS4/pub?h=450" />
+
+</div>
+<blockquote>
+<p>Note: the prefix <code>ohicore::</code> is a way to be explicit that the <code>CalculateAll()</code> is part of the <code>ohicore</code> package.</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## calculate scenario scores
+scores =<span class="st"> </span>ohicore::<span class="kw">CalculateAll</span>(conf, layers)</code></pre></div>
+<p><code>CalculateAll()</code> first calculates the Status and Trend for every goal and subgoal. These models are in your tailored repository’s <code>functions.r</code> (we will explore <code>functions.r</code> below). You can choose to add messages to print during calculation like is shown below for Mariculture (MAR).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Running Setup()...</span>
+<span class="co"># Calculating Status and Trend for each region for FIS...</span>
+<span class="co"># Calculating Status and Trend for each region for MAR...</span>
+<span class="co"># 95th percentile for MAR ref pt is: 0.0758396517531756</span>
+<span class="co"># ... </span></code></pre></div>
+<p>Next, we see output as <code>CalculateAll()</code> calculates Pressures and Resilience based on the pressures and resilience matrix tables in your tailored repository. For each, <code>ohicore</code> lists the subcategories that will be calculated, and identifies any mis-matches between data layers identified but not used or missing. We will learn more about the pressures and resilience matrices in a different Chapter. <!---TODO: need to develop the pressures/resilience chapter and link---></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Calculating Pressures for each region...</span>
+
+<span class="co"># There are 6 pressures subcategories: pollution, alien_species, habitat_destruction, fishing_pressure, climate_change, social</span>
+<span class="co"># These goal-elements are in the weighting data layers, but not included in the pressure_matrix.csv:</span>
+<span class="co"># LIV-aqf</span>
+<span class="co"># These goal-elements are in the pressure_matrix.csv, but not included in the weighting data layers:</span>
+<span class="co"># CP-coral, CP-mangrove, CP-saltmarsh, CS-mangrove, CS-saltmarsh, HAB-coral, HAB-mangrove, HAB-saltmarsh, HAB-seagrass, LIV-ph, LIV-tran, CP-seaice_shoreline, HAB-seaice_edge, ECO-wte, LIV-wte, LIV-sb</span>
+
+
+<span class="co"># Calculating Resilience for each region...</span>
+
+<span class="co"># There are 7 Resilience subcategories: ecological, alien_species, goal, fishing_pressure, habitat_destruction, pollution, social</span>
+<span class="co"># These goal-elements are in the resilience_matrix.csv, but not included in the weighting data layers:</span>
+<span class="co"># CP-coral, CP-saltmarsh, CS-saltmarsh, HAB-coral, HAB-saltmarsh, HAB-seagrass, CP-mangrove, CS-mangrove, HAB-mangrove, HAB-seaice_edge, CP-seaice_shoreline</span></code></pre></div>
+<p>Finally, we see output as <code>CalculateAll()</code> combines the dimensions above in several ways. It calculates the Goal Scores and Likely Future State for each goal and subgoal. Then, it calculates ‘supragoals’, which are goals that have subgoals, for example Food Provision (FP), which has the subgoals FIS (Wild-caught Fisheries) and Mariculture (MAR). Finally, it calculates the overall Index score for the entire Assessment Area using an area-weighted average.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># ...</span>
+<span class="co"># Calculating Goal Score and Likely Future for each region for FIS...</span>
+<span class="co"># Calculating Goal Score and Likely Future for each region for MAR...</span>
+<span class="co"># ...</span>
+<span class="co"># Calculating post-Index function for each region for FP...</span>
+<span class="co"># Calculating post-Index function for each region for LE...</span>
+<span class="co"># Calculating Index score for each region for supragoals using goal weights...</span>
+<span class="co"># Calculating Likely Future State for each region for supragoals using goal weights...</span>
+<span class="co"># Calculating scores for ASSESSMENT AREA (region_id=0) by area weighting...</span>
+<span class="co"># Calculating FinalizeScores function...</span></code></pre></div>
+<p>Following all the calculations are the warning messages, which are due to operations within <code>functions.r</code>, which you will be able to fix as you tailor your goal models. These warning messages are due to using goal models from the global assessment with just a subset of data from the global assessment we have extracted here for the <strong>toolbox-demo</strong> repository.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Warning messages:</span>
+<span class="co"># 1: In left_join_impl(x, y, by$x, by$y, suffix$x, suffix$y) :</span>
+<span class="co">#   joining factors with different levels, coercing to character vector</span>
+<span class="co"># ...</span>
+<span class="co"># 8: In max(d$x, na.rm = T) :</span>
+<span class="co">#   no non-missing arguments to max; returning -Inf</span></code></pre></div>
+</div>
+<div id="save-scores-variable-as-scores.csv" class="section level3">
+<h3><span class="header-section-number">6.3.3</span> Save scores variable as <code>scores.csv</code></h3>
+<p>Finally, we will save the output from <code>CalculateAll()</code>, a variable called <code>scores</code>, as a comma-separated-value file called <code>scores.csv</code>.</p>
+<div class="figure">
+<img src="https://docs.google.com/drawings/d/1A0FP2KnlHEJ5jCT5RwFJ9YtF5DhjTArHTGzn_JoJjXs/pub?h=450" />
+
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## save scores as scores.csv
+<span class="kw">write.csv</span>(scores, <span class="st">&#39;scores.csv&#39;</span>, <span class="dt">na=</span><span class="st">&#39;&#39;</span>, <span class="dt">row.names=</span>F)</code></pre></div>
+<p>We can inspect it and see that it is a long-formatted file with four columns for the goal, dimension, numeric region identifier, and score.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">goal</th>
+<th align="left">dimension</th>
+<th align="right">region_id</th>
+<th align="right">score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">AO</td>
+<td align="left">future</td>
+<td align="right">0</td>
+<td align="right">92.85</td>
+</tr>
+<tr class="even">
+<td align="left">AO</td>
+<td align="left">future</td>
+<td align="right">1</td>
+<td align="right">92.85</td>
+</tr>
+<tr class="odd">
+<td align="left">AO</td>
+<td align="left">future</td>
+<td align="right">2</td>
+<td align="right">92.85</td>
+</tr>
+<tr class="even">
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="right">…</td>
+<td align="right">…</td>
+</tr>
+<tr class="odd">
+<td align="left">AO</td>
+<td align="left">future</td>
+<td align="right">17</td>
+<td align="right">92.85</td>
+</tr>
+<tr class="even">
+<td align="left">AO</td>
+<td align="left">pressures</td>
+<td align="right">1</td>
+<td align="right">37.75</td>
+</tr>
+<tr class="odd">
+<td align="left">AO</td>
+<td align="left">pressures</td>
+<td align="right">2</td>
+<td align="right">37.75</td>
+</tr>
+<tr class="even">
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="right">…</td>
+<td align="right">…</td>
+</tr>
+</tbody>
+</table>
+<p>We have 17 regions in the <strong>toolbox-demo</strong> repo. An additional region 0 is the area-weighted combination of all regions.</p>
+<blockquote>
+<p>Note: each region in your assessment will have a numeric region identifer, called a <code>region_id</code> or <code>rgn_id</code> for short. You can see a list of all regions and corresponding identifiers in <a href="https://github.com/OHI-Science/toolbox-demo/blob/master/region2016/spatial/regions_list.csv">toolbox-demo/region2016/spatial/regions_list.csv</a></p>
+</blockquote>
+</div>
+<div id="a-note-about-error-messages" class="section level3">
+<h3><span class="header-section-number">6.3.4</span> A note about error messages</h3>
+<p>Hopefully this first time through <code>calculate_scores.r</code> you did not encounter error messages, but you definitely will as you move ahead. Error messages are often due to typos or miscommunications between what you tell <code>R</code> versus what it expects. You will encounter error messages due to <code>R</code> itself, and due to <code>ohicore</code>. Error messages often have human-friendly messages to alert you to what went wrong, and we are continually improving error messages you’ll encounter when you use <code>ohicore</code> so you can try to solve them more easily. Some commonly occurring errors and how to fix them can be found in the Troubleshooting section of the manual. Copy-pasting error messages into Google is also one of the best places to start.</p>
+</div>
+<div id="recap-of-first-calculate_scores.r-run" class="section level3">
+<h3><span class="header-section-number">6.3.5</span> Recap of first <code>calculate_scores.r</code> run</h3>
+<p>We have just successfully run through the basic workflow to calculate OHI scores. It first runs <code>configure_toolbox.r</code> to load necessary data, functions, and packages, then it calculates all the components of OHI scores (status, trend, pressures, resilience, overall scores), and finally it saves the new OHI <code>scores</code> in a .csv file.</p>
+<p>We will build on this basic workflow, by exploring the operations above in more detail, and by updating the data, models, and configurations within the <strong>toolbox-demo</strong> repository.</p>
+<div class="figure">
+<img src="https://docs.google.com/drawings/d/1CnZ2qwQQzTjJuZ3P53FuQ4qhkBdq1xl6UuZnQmt2v80/pub?h=450" />
+
+</div>
+</div>
+</div>
+<div id="calculate-with-tailored-data" class="section level2">
+<h2><span class="header-section-number">6.4</span> Calculate with tailored data</h2>
+<p>Now let’s run through this basic workflow a second time, building on what we’ve learned.</p>
+<p>Here, we will focus on one of the layers for the Artisanal Fishing Opportunity (AO) goal. We will prepare local data that will substitute Global OHI data for the data layer <code>ao_access</code> and recalculate scores without modifying the goal model itself.</p>
+<div class="figure">
+<img src="https://docs.google.com/drawings/d/1kRwkY_vqAXh-nACsS39ZHEVYW_zsGSFiKs_-5W6swBs/pub?h=450" />
+
+</div>
+<p>It’s a good idea to go to RStudio’s Session menu and select Restart <code>R</code> to make sure you have a clean working directory.</p>
+<div class="figure">
+<img src="https://docs.google.com/drawings/d/1FmN6httmUUOcz1a1-2XjXxOnVWsZ8t68mVVGFSg7F1E/pub?w=960&amp;h=432" />
+
+</div>
+<div id="prepare-and-save-our-data-layer" class="section level3">
+<h3><span class="header-section-number">6.4.1</span> Prepare and save our data layer</h3>
+<p>While Chapter <a href="prep-data.html#prep-data">5</a> shows in detail how to prepare data layers, save them in the “layers” folder, and register them so the Toolbox knows where to find them, we have prepared a shorter example with AO for our purposes here.</p>
+<p>Open <code>toolbox-demo/prep/AO/access_prep.R</code> and source it after reading it through. The result will be a new data layer called “ao_access_demo2017.csv” saved to the “layers” folder, and you should see that there is a new file saved in your Git window.</p>
+<div class="figure">
+<img src="https://docs.google.com/drawings/d/1ED1Xk2WELXm5y8edbWr_s9kjvm3TpSK80Via05e9Cog/pub?w=960&amp;h=384" />
+
+</div>
+</div>
+<div id="register-our-data-layer" class="section level3">
+<h3><span class="header-section-number">6.4.2</span> Register our data layer</h3>
+<p>Now that we have prepared and saved our data layer, we’ll register it in <code>layers.csv</code>. <code>layers.csv</code>is a registry that will direct <code>ohicore</code> to appropriate data layers, and has information about each data layer — which goal it is used for, filename, column names, etc. For further detail see Chapter <a href="prep-data.html#prep-data">5</a>.</p>
+<p>Since we have tailored an existing data layer that is already registered, we just need to have it point to our new data layer under the “filename” column.</p>
+<p>Open <code>region2016/layers.csv</code> in a spreadsheet software (i.e. Microsoft Excel or Open Office). Next, find <code>ao_access</code> in the “layer” column. The current filename it is associated with is “ao_access_gl2016.csv”. Update that to say “ao_access_demo2017.csv” — the new data layer you just saved. Close Excel.</p>
+<blockquote>
+<p>IMPORTANT! Be sure to close Excel after you have made these edits. On a PC, having <code>layers.csv</code> open in Excel will prohibit it from being accessed from R, and the Toolbox needs access to calculate scores!</p>
+</blockquote>
+</div>
+<div id="rerun-calculate_scores.r" class="section level3">
+<h3><span class="header-section-number">6.4.3</span> Rerun <code>calculate_scores.r</code></h3>
+<p>Now, let’s rerun <code>calculate_scores.r</code>. <code>ohicore</code> will now use your tailored data when it creates the “ao_access” layer because you’ve registered it in <code>layers.csv</code> and the file is available in the layers folder.</p>
+</div>
+<div id="checking-our-work-and-syncing" class="section level3">
+<h3><span class="header-section-number">6.4.4</span> Checking our work and syncing</h3>
+<p>Whenever there are changes made to your files (additions, deletions, and modifications), you will be notified in the Git window, since Git is tracking the files in this repo. This is a good place to confirm you have did the things you set out to do, and you can also see if you errantly did anything you didn’t mean to.</p>
+<p>So here, you added a new data layer and after calculating scores you expect to see changes to AO scores in <code>score.csv</code>. <code>layers.csv</code> will also change because <code>ohicore</code> will update fields in this file as it runs through its checks. But we don’t expect any other files to change at this point, so let’s make sure that’s true.</p>
+<p>Now is a good time to commit this work and sync to GitHub. That way, the work we’ve done is committed together and we will have a clean slate (from a Git sense) moving forward. I’ll use the commit message “toolbox-training: tailor data layer and rerun calculate_scores.r”</p>
+<div class="figure">
+<img src="https://docs.google.com/drawings/d/1jwYB9w-O0Doae0KnoQjca_n4eY7D0E1NcW-VilIN_24/pub?w=960&amp;h=384" />
+
+</div>
+</div>
+<div id="recap-of-second-calculate_scores.r-run" class="section level3">
+<h3><span class="header-section-number">6.4.5</span> Recap of second <code>calculate_scores.r</code> run</h3>
+<p>One way to tailor your toolbox is to modify an existing data layer. We have just run through the basic workflow a second time. This time we successfully</p>
+<ul>
+<li>substituted the Global OHI data layer <code>ao_access</code> with new data, which includes saving it in <code>layers</code> folder registering it in layers.csv, and</li>
+<li>reran <code>calculate_scores.r</code> without modifying the goal model itself</li>
+</ul>
+</div>
+</div>
+<div id="explore-configure_toolbox.r" class="section level2">
+<h2><span class="header-section-number">6.5</span> Explore <code>configure_toolbox.r</code></h2>
+<p>So now let’s take a closer look at <code>configure_toolbox.r</code>, the first script called from <code>calculate_scores.r</code>.</p>
+<div class="figure">
+<img src="https://docs.google.com/drawings/d/1oHMdrXNSeJ6l17aMUXihThYfb-HqvGviFrBYwJ2xldY/pub?h=450" />
+
+</div>
+<p><code>configure_toolbox.r</code> combines everything required to calculate OHI scores and checks that they are properly formatted, and will minimize potential errors later on. It makes sure that your data and goal models are ready to be used to calculate scores.</p>
+<p><strong>Any time you make a change to a data layer or a goal model and want to recalculate scores, you will need to re-run <code>configure_toolbox.r</code> to have <code>ohicore</code> operate on the most up-to-date information</strong>. You can click “Source” to run all the lines. We’ll walk through line-by-line now.</p>
+<div class="figure">
+<img src="https://docs.google.com/drawings/d/1JvSJKyiwvp92--obTwHT3IYht1XE0823sORJ4FdnX74/pub?h=450" />
+
+</div>
+<div id="load-libraries-and-set-working-directory" class="section level3">
+<h3><span class="header-section-number">6.5.1</span> Load libraries and set working directory</h3>
+<p>The first two things that <code>configure_toolbox.r</code> does is to set up your working environment. First, it loads <code>ohicore</code> and any <code>R</code> packages that will be needed as you work with <code>functions.r</code>: <code>tidyverse</code> (which includes <code>dplyr</code> and <code>tidyr</code>) and <code>stringr</code>. As you need other packages you can add them here to load. Second, it sets your working directory to your assessment’s scenario: “region2016”.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## load ohicore and tidyverse
+if (!<span class="st">&quot;ohicore&quot;</span> %in%<span class="st"> </span>(<span class="kw">.packages</span>())) {
+  <span class="kw">suppressWarnings</span>(<span class="kw">require</span>(ohicore))
+  <span class="kw">library</span>(tidyverse)    <span class="co"># install.packages(&#39;tidyverse&#39;)</span>
+  <span class="kw">library</span>(stringr)
+}
+
+## set working directory to the scenario that contains conf and layers directories
+<span class="kw">setwd</span>(<span class="st">&#39;~/github/toolbox-demo/region2016&#39;</span>)</code></pre></div>
+</div>
+<div id="ohicoreconf" class="section level3">
+<h3><span class="header-section-number">6.5.2</span> <code>ohicore::Conf()</code></h3>
+<p>Next, the <code>Conf()</code> function from <code>ohicore</code> prepares for the next steps of running the Toolbox, and calls forth everything you need to calculate scores:</p>
+<ul>
+<li>all data layers (for goals, pressures, resilience)</li>
+<li>goal functions, and</li>
+<li>other OHI parameters that determines how OHI scores are calculated</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## load scenario configuration
+conf =<span class="st"> </span>ohicore::<span class="kw">Conf</span>(<span class="st">&#39;conf&#39;</span>)</code></pre></div>
+</div>
+<div id="ohicorechecklayers" class="section level3">
+<h3><span class="header-section-number">6.5.3</span> <code>ohicore::CheckLayers()</code></h3>
+<p>The <code>CheckLayers()</code> function from <code>ohicore</code> checks that data layers are properly formatted and registered (e.g., that each data layer in <code>layers.csv</code> is present in the layers folder), and returns a list of all of the layers that are registered. Check to make sure ours is there. This is a gate-keeping step by to make sure the data layers you’ve entered are in the right format and can be read by <code>ohicore</code> properly.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## check that layers in the layers folder match layers.csv registration. 
+ohicore::<span class="kw">CheckLayers</span>(<span class="st">&#39;layers.csv&#39;</span>, <span class="st">&#39;layers&#39;</span>, <span class="dt">flds_id=</span>conf$config$layers_id_fields)</code></pre></div>
+<div id="warning-messages" class="section level4">
+<h4><span class="header-section-number">6.5.3.1</span> Warning messages</h4>
+<p>Warning messages alert you to problems with specific layers: this is showing that there are unused fields and duplicate rows. These warning messages are not a problem now (they are a byproduct of extracting this repo based on Global OHI assessments; you’ll be changing this layer anyways).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Warning messages:
+<span class="dv">1</span>:<span class="st"> </span>In ohicore::<span class="kw">CheckLayers</span>(<span class="st">&quot;layers.csv&quot;</span>, <span class="st">&quot;layers&quot;</span>, <span class="dt">flds_id =</span> conf$config$layers_id_fields) :
+<span class="st">  </span>Unused fields...
+    ico_spp_iucn_status:<span class="st"> </span>iucn_sid
+<span class="dv">2</span>:<span class="st"> </span>In ohicore::<span class="kw">CheckLayers</span>(<span class="st">&quot;layers.csv&quot;</span>, <span class="st">&quot;layers&quot;</span>, <span class="dt">flds_id =</span> conf$config$layers_id_fields) :
+<span class="st">  </span>Rows duplicated...
+    ico_spp_iucn_status:<span class="st"> </span><span class="dv">816</span></code></pre></div>
+<p>You will encounter error messages as you develop your own assessment. These messages intend to alert you that there are errors in data entry. Some common errors are:</p>
+<ul>
+<li>improper formatting or missing columns in your data layer</li>
+<li>typos or misnamed columns</li>
+</ul>
+<!---TODO this section could be more fleshed out--->
+</div>
+</div>
+<div id="ohicorelayers" class="section level3">
+<h3><span class="header-section-number">6.5.4</span> <code>ohicore::Layers()</code></h3>
+<p>The final operation in <code>configure_toolbox.r</code> is the <code>Layers()</code> function from <code>ohicore</code>, which combines all the information from the layers files and <code>layers.csv</code> into a single <code>R</code> object. This object will be used in <code>functions.r</code>.</p>
+<!---TODO Individual layers can be accessed as: layers$data$layer_name??? 
+Note: `@jules32`: describe this vs. SelectLayersData() --->
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## load scenario layers for ohicore to access.
+layers =<span class="st"> </span>ohicore::<span class="kw">Layers</span>(<span class="st">&#39;layers.csv&#39;</span>, <span class="st">&#39;layers&#39;</span>)</code></pre></div>
+</div>
+<div id="recap-of-exploring-configure_toolbox.r" class="section level3">
+<h3><span class="header-section-number">6.5.5</span> Recap of exploring <code>configure_toolbox.r</code></h3>
+<p>We have explored each component of <code>configure_toolbox.r</code>, which sets up for calculations by loading ohicore and other necessary R packages, and double check that your data layers are formatted and registered properly.</p>
+<div class="figure">
+<img src="https://docs.google.com/drawings/d/1oHMdrXNSeJ6l17aMUXihThYfb-HqvGviFrBYwJ2xldY/pub?h=450" />
+
+</div>
+</div>
+</div>
+<div id="explore-a-goal-model-in-functions.r" class="section level2">
+<h2><span class="header-section-number">6.6</span> Explore a goal model in <code>functions.r</code></h2>
+<p>Remember from <code>calculate_scores.r</code> that after <code>configure_toolbox.r</code> runs, the next thing that happens is that <code>CalculateAll()</code> runs through the goal models and calculates Status and Trend. Status and Trend calculations are within <code>R</code> functions for each goal model in <code>functions.r</code>. <code>functions.r</code> is in the <code>conf</code> folder of your tailored repo. We can find it in our <strong>toolbox-demo</strong> repo.</p>
+<div class="figure">
+<img src="https://docs.google.com/drawings/d/1VRckHItA151selmkBVtROk6OnLnI_ODIu2gIjSnFgmo/pub?h=450" />
+
+</div>
+<p><code>functions.r</code> is a big list of all goal models in the assessment. Each goal model is an individual <code>R</code> function that calculates Status and Trend, and you will modify the goal model within the confines of each function. You can run all of them at the once or each individually.</p>
+<p>Let’s look at the goal models for Artisanal Fishing Opportunity (AO) to continue our example. It has models developed from the most recent global assessment as a place for you to start ‘out-of-the-box’.</p>
+<blockquote>
+<p><strong>Tip</strong>: Clicking the bottom left corner of Console will show you a drop-down menu of all functions. It’s a shortcut to jump to the appropriate section or goal model</p>
+</blockquote>
+<blockquote>
+<div class="figure">
+<img src="https://docs.google.com/drawings/d/1Z2AVtVfIZEd_5GDcmaLb8mRpErKTDzmcbg0SBMxKsxs/pub?h=450" />
+
+</div>
+</blockquote>
+<p>When you modify an individual goal model, you will only work within the function’s curly braces <code>{ }</code>.</p>
+<p>The following things happen in each goal model:</p>
+<ul>
+<li>load specific data layers (using <code>ohicore::SelectLayersData()</code>)</li>
+<li>calculate Status scores</li>
+<li>calculate Trend scores</li>
+<li>combine Status and Trend scores</li>
+<li>format and return the <code>scores</code> object</li>
+</ul>
+<p>Throughout <code>functions.r</code>, you will see syntax from the <code>tidyverse</code> package that you loaded in <code>configure_toolbox.r</code>. It contains the commonly used data-wrangling functions you’ll need in almost every analysis, and enables chaining: <code>%&gt;%</code>. To learn more, take a look at <a href="http://tidyverse.org/">tidyverse.org</a>. This <a href="https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">cheatsheet</a> is also a helpful guide with quick references to each function.</p>
+<blockquote>
+<p><strong>Tip</strong>: changes need to be saved before it is recorded by Git and reflected in the Git window. When new changes are made, the title of your R script will be shown in red color. It will change back to black once the changes are saved.</p>
+</blockquote>
+<div id="load-specific-data-layers-with-selectlayersdata" class="section level3">
+<h3><span class="header-section-number">6.6.1</span> Load specific data layers with <code>SelectLayersData()</code></h3>
+<p><code>SelectLayersData()</code> is an <code>ohicore</code> function to call the appropriate data layers by its layer name registered in <code>layers.csv</code> (e.g. <code>ao_access</code>). Run this chunk of code and the data layers will be loaded, joined, and ready to be manipulated further:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> ## read in individual data layers
+  d1 &lt;-<span class="st"> </span><span class="kw">SelectLayersData</span>(layers, <span class="dt">layers =</span> <span class="st">&#39;ao_access&#39;</span>, <span class="dt">narrow=</span><span class="ot">TRUE</span>) %&gt;%
+<span class="st">    </span><span class="kw">select</span>(<span class="dt">region_id =</span> id_num, <span class="dt">access =</span> val_num)
+
+  d2 &lt;-<span class="st"> </span><span class="kw">SelectLayersData</span>(layers, <span class="dt">layers =</span> <span class="st">&#39;ao_need&#39;</span>, <span class="dt">narrow=</span><span class="ot">TRUE</span>) %&gt;%
+<span class="st">    </span><span class="kw">select</span>(<span class="dt">region_id =</span> id_num, year, <span class="dt">need =</span> val_num)
+
+  ## join data layers into single data frame (see RStudio cheatsheets)
+  ao_data &lt;-<span class="st"> </span><span class="kw">left_join</span>(d1, d2, <span class="dt">by=</span><span class="st">&quot;region_id&quot;</span>) </code></pre></div>
+<blockquote>
+<p>Tip: it’s always a good idea to check what your data looks like and make sure there are no glaring errors. A couple of commonly used functions are <code>head()</code>, <code>summary()</code>, and <code>str()</code></p>
+</blockquote>
+</div>
+<div id="goal-model" class="section level3">
+<h3><span class="header-section-number">6.6.2</span> Goal model</h3>
+<p>The goal model that was developed for global assessments and described in Halpern et al. 2012 Supplemental Information (p. 19) states that the status for this goal is therefore measured by unmet demand (Du), which includes measures of opportunity for artisanal fishing, and the sustainability of the methods used.</p>
+<p><span class="math display">\[
+D_{U} = (1 - need) * (1 - access)
+\]</span> <span class="math display">\[
+status = (1 - D_{U}) * sustainability
+\]</span></p>
+<p>And this is how it looks in <code>R</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> ao_model &lt;-<span class="st"> </span>ao_data %&gt;%
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Du =</span> (<span class="dv">1</span> -<span class="st"> </span>need) *<span class="st"> </span>(<span class="dv">1</span> -<span class="st"> </span>access)) %&gt;%
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">status =</span> (<span class="dv">1</span> -<span class="st"> </span>Du) *<span class="st"> </span>sustainability)
+  <span class="co"># head(ao_model); summary(ao_model)</span></code></pre></div>
+</div>
+<div id="calculate-status" class="section level3">
+<h3><span class="header-section-number">6.6.3</span> Calculate Status</h3>
+<p>The next operation in the AO function is to calculate status. Here, it essentially filters out the most recent year. Let’s run this together; you’ll have to also run the <code>sustainability</code> and <code>status_year</code> variables that are read in as part of the function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## &quot;mutate&quot; is another commonly used function from dplyr that allows you to add a new column to the data frame
+## Note that &quot;sustainability&quot; and &quot;status_year&quot; have been defined at the start of the AO function 
+  sustainability=<span class="fl">1.0</span>
+  status_year =<span class="st"> </span><span class="dv">2015</span>
+
+<span class="co"># status: status scores are typically the most recent year of all the years you have calculated. </span>
+  ao_status &lt;-<span class="st"> </span>ao_model %&gt;%
+<span class="st">    </span><span class="kw">filter</span>(year==status_year) %&gt;%
+<span class="st">    </span><span class="kw">select</span>(region_id, status) %&gt;%
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">status=</span>status*<span class="dv">100</span>)</code></pre></div>
+</div>
+<div id="calculate-trend" class="section level3">
+<h3><span class="header-section-number">6.6.4</span> Calculate Trend</h3>
+<p>Next is the Trend scores. They are typically based on linear regression of status scores from the most recent five years.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="co"># choose trend years (eg. most recent five years)</span>
+
+  trend_years &lt;-<span class="st"> </span>(status_year<span class="dv">-4</span>):(status_year)
+  adj_trend_year &lt;-<span class="st"> </span><span class="kw">min</span>(trend_years)
+
+  ao_trend =<span class="st"> </span>ao_model %&gt;%
+<span class="st">    </span><span class="kw">group_by</span>(region_id) %&gt;%<span class="st"> </span>
+<span class="st">    </span><span class="co"># linear model: </span>
+<span class="st">    </span><span class="kw">do</span>(<span class="dt">mdl =</span> <span class="kw">lm</span>(status ~<span class="st"> </span>year, <span class="dt">data=</span>., <span class="dt">subset=</span>year %in%<span class="st"> </span>trend_years),
+       <span class="dt">adjust_trend =</span> .$status[.$year ==<span class="st"> </span>adj_trend_year]) %&gt;%
+<span class="st">    </span><span class="co"># extract the coefficient of year and produce a trend score</span>
+<span class="st">    </span><span class="kw">summarize</span>(region_id, <span class="dt">trend =</span> <span class="kw">ifelse</span>(<span class="kw">coef</span>(mdl)[<span class="st">&#39;year&#39;</span>]==<span class="dv">0</span>, <span class="dv">0</span>, <span class="kw">coef</span>(mdl)[<span class="st">&#39;year&#39;</span>]/adjust_trend *<span class="st"> </span><span class="dv">5</span>)) %&gt;%
+<span class="st">    </span><span class="co"># make sure that the scores are between -1 and 1</span>
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">trend =</span> <span class="kw">ifelse</span>(trend&gt;<span class="dv">1</span>, <span class="dv">1</span>, trend)) %&gt;%
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">trend =</span> <span class="kw">ifelse</span>(trend&lt;(-<span class="dv">1</span>), (-<span class="dv">1</span>), trend)) %&gt;%
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">trend =</span> <span class="kw">round</span>(trend, <span class="dv">4</span>))</code></pre></div>
+</div>
+<div id="scores-variable-combining-status-and-trend" class="section level3">
+<h3><span class="header-section-number">6.6.5</span> Scores variable: combining Status and Trend</h3>
+<p>Combining the Status and Trend into the scores variable involves selecting only the <code>region_id</code> and <code>score</code> columns, and adding two more columns identifying score dimension (Status or Trend) and goal name.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> scores =<span class="st"> </span>ao_status %&gt;%
+<span class="st">    </span><span class="kw">select</span>(region_id, <span class="dt">score=</span>status) %&gt;%
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">dimension=</span><span class="st">&#39;status&#39;</span>) %&gt;%
+<span class="st">    </span><span class="kw">rbind</span>(
+      ao_trend %&gt;%
+<span class="st">        </span><span class="kw">select</span>(region_id, <span class="dt">score=</span>trend) %&gt;%
+<span class="st">        </span><span class="kw">mutate</span>(<span class="dt">dimension=</span><span class="st">&#39;trend&#39;</span>)) %&gt;%
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">goal=</span><span class="st">&#39;AO&#39;</span>)</code></pre></div>
+<p>The scores variable is something that you’ll see at the end of every goal model; <code>ohicore</code> will combine these all together when <code>CalculateAll()</code> runs.</p>
+</div>
+<div id="recap-of-exploring-functions.r" class="section level3">
+<h3><span class="header-section-number">6.6.6</span> Recap of exploring <code>functions.r</code></h3>
+<p><code>functions.r</code> is a collection of goal models to calculate Status and Trend. Each goal is written inside an <code>R</code> function and can have the following steps:</p>
+<ul>
+<li>load specific data layers (using <code>ohicore::SelectLayersData()</code>)</li>
+<li>calculate Status scores</li>
+<li>calculate Trend scores</li>
+<li>combine Status and Trend scores</li>
+<li>format and return the <code>scores</code> object</li>
+</ul>
+</div>
+</div>
+<div id="calculate-with-tailored-models" class="section level2">
+<h2><span class="header-section-number">6.7</span> Calculate with tailored models</h2>
+<p>Now let’s run through the basic workflow a third time, this time modifying a goal model but keeping all data layers the same. We will do this without making any changes to the data layers at the moment. Modifying a goal model involves editing the operations within that goal’s model in <code>functions.r</code>.</p>
+<div class="figure">
+<img src="https://docs.google.com/drawings/d/1VRckHItA151selmkBVtROk6OnLnI_ODIu2gIjSnFgmo/pub?h=450" />
+
+</div>
+<div id="source-configure_toolbox.r-1" class="section level3">
+<h3><span class="header-section-number">6.7.1</span> Source <code>configure_toolbox.r</code></h3>
+<p>First let’s restart <code>R</code> and source <code>configure_toolbox.r</code>. We can do this from either <code>calculate_scores.r</code> or from <code>configure_toolbox.r</code> itself.</p>
+</div>
+<div id="tailor-ao-goal-model" class="section level3">
+<h3><span class="header-section-number">6.7.2</span> Tailor AO goal model</h3>
+<p>Now, let’s go to <code>functions.r</code> and go back to the AO model. Let’s do something pretty simple to tailor the goal model. Let’s say we just wanted to divide the variable <code>Du</code> by 2 in the equation.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> ao_model &lt;-<span class="st"> </span>ao_data %&gt;%
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Du =</span> (<span class="dv">1</span> -<span class="st"> </span>need) *<span class="st"> </span>(<span class="dv">1</span> -<span class="st"> </span>access)) %&gt;%
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">status =</span> (<span class="dv">1</span> -<span class="st"> </span>Du/<span class="dv">2</span>) *<span class="st"> </span>sustainability)</code></pre></div>
+<p>We can run the rest of the AO function line-by-line and inspect the scores variable at the end to see if everything looks OK.</p>
+</div>
+<div id="calculate-scores-check-and-sync" class="section level3">
+<h3><span class="header-section-number">6.7.3</span> Calculate scores, check, and sync</h3>
+<p>Now let’s run the rest of <code>calculate_scores.r</code> and save <code>scores.csv</code>.</p>
+<p>We can use Git’s differencing feature to see how our scores have changed. This is a great way to double-check and error-check that things are working the way you expected.</p>
+<p>Let’s commit and sync. My commit message here will be “toolbox-training: tailor AO goal model with original data layer”.</p>
+<p>Let’s restart <code>R</code> before proceeding.</p>
+</div>
+<div id="recap-of-third-calculate_scores.r-run" class="section level3">
+<h3><span class="header-section-number">6.7.4</span> Recap of third <code>calculate_scores.r</code> run</h3>
+<p>In this third time through the basic workflow, we updated the goal model without changing any of the data layers that it depends upon. Next up, we will add a new data layer for it to work with.</p>
+</div>
+</div>
+<div id="calculate-with-tailored-data-and-models" class="section level2">
+<h2><span class="header-section-number">6.8</span> Calculate with tailored data and models</h2>
+<p>The fourth and final example we will do in this chapter is to tailor a goal model by adding a new variable. This will mean that we will prepare, save, and register a <em>new</em> data layer and update the goal model in <code>functions.r</code>. It will be a combination of what we’ve done previously in this chapter.</p>
+<div class="figure">
+<img src="https://docs.google.com/drawings/d/1h3QLjIJCtVgNYtzYY5lQkFWxDhYC8MrNDjzdTMY_qVY/pub?h=450" />
+
+</div>
+<p>Let’s say we want to tailor the AO goal model by adding a new variable for <em>poverty</em> into the equation.</p>
+<p><span class="math display">\[
+D_{U} = (1 - (need + poverty) / 2) * (1 - access)
+\]</span> <span class="math display">\[
+status = (1 - D_{U}) * sustainability
+\]</span></p>
+<div id="prepare-and-save-our-new-data-layer" class="section level3">
+<h3><span class="header-section-number">6.8.1</span> Prepare and save our new data layer</h3>
+<p>We will create the new data layer for poverty by running a script in the prep folder.</p>
+<p>Open <code>toolbox-demo/prep/AO/poverty_prep.R</code> and source the file after reading it through. The result will be a new data layer saved to the “layers” folder, and you should see that there is a new file saved in your Git window.</p>
+</div>
+<div id="register-our-new-data-layer" class="section level3">
+<h3><span class="header-section-number">6.8.2</span> Register our new data layer</h3>
+<p>Now that we have prepared and saved our data layer, we’ll register it in <code>layers.csv</code>. This time, since we have added an additional data layer that has not been previously registered, we need to add a new row.</p>
+<p>Open <code>region2016/layers.csv</code> in a spreadsheet software (i.e. Microsoft Excel or Open Office). Add a new row for “ao_poverty”, and fill in the following information. We’ve added the row near the other AO data layers.</p>
+<div class="figure">
+<img src="https://docs.google.com/drawings/d/1n9qMQuyOxfkZzTGgj2vGaGY7YwS_A3PMtDAjaKfc3Co/pub?w=960&amp;h=192" />
+
+</div>
+<blockquote>
+<p>Note: you could also script updating layers.csv from your prep file (not illustrated).</p>
+</blockquote>
+<!---TODO: script this from the prep file --->
+</div>
+<div id="source-configure_toolbox.r-2" class="section level3">
+<h3><span class="header-section-number">6.8.3</span> Source <code>configure_toolbox.r</code></h3>
+<p>To use this layer as we develop our goal model, we need to source <code>configure_toolbox.r</code>.</p>
+</div>
+<div id="update-the-ao-goal-model" class="section level3">
+<h3><span class="header-section-number">6.8.4</span> Update the AO goal model</h3>
+<p>We will need to do two things to update the goal model in <code>functions.r</code>.</p>
+<p>First, we’ll have to load our data layer with <code>SelectLayersData()</code>. You can copy-paste the following into your <code>functions.r</code> AO goal model and then run it after running <code>status_year=2015; sustainability=1.0</code> to make sure everything is working properly:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> ## read in individual data layers
+  d1 &lt;-<span class="st"> </span><span class="kw">SelectLayersData</span>(layers, <span class="dt">layers =</span> <span class="st">&#39;ao_access&#39;</span>, <span class="dt">narrow=</span><span class="ot">TRUE</span>) %&gt;%
+<span class="st">    </span><span class="kw">select</span>(<span class="dt">region_id =</span> id_num, <span class="dt">access =</span> val_num)
+
+  d2 &lt;-<span class="st"> </span><span class="kw">SelectLayersData</span>(layers, <span class="dt">layers =</span> <span class="st">&#39;ao_need&#39;</span>, <span class="dt">narrow=</span><span class="ot">TRUE</span>) %&gt;%
+<span class="st">    </span><span class="kw">select</span>(<span class="dt">region_id =</span> id_num, year, <span class="dt">need =</span> val_num)
+
+  ## add new poverty data layer
+  d3 &lt;-<span class="st"> </span><span class="kw">SelectLayersData</span>(layers, <span class="dt">layers =</span> <span class="st">&#39;ao_poverty&#39;</span>, <span class="dt">narrow=</span><span class="ot">TRUE</span>) %&gt;%
+<span class="st">    </span><span class="kw">select</span>(<span class="dt">region_id =</span> id_num, year, <span class="dt">poverty =</span> val_num)
+
+  ## join data layers into single data frame, including the new poverty data layer
+  ao_data &lt;-<span class="st"> </span><span class="kw">left_join</span>(d1, d2, <span class="dt">by=</span><span class="st">&quot;region_id&quot;</span>) %&gt;%
+<span class="st">    </span><span class="kw">left_join</span>(d3, <span class="dt">by=</span><span class="kw">c</span>(<span class="st">&quot;region_id&quot;</span>, <span class="st">&quot;year&quot;</span>))</code></pre></div>
+<p>Next, we’ll tailor the goal model itself. Here is how the goal model looks as an equation and in <code>R</code>: you can copy-paste this model into <code>functions.r</code>, replacing the existing model.</p>
+<p><span class="math display">\[
+D_{U} = (1 - (need + poverty) / 2) * (1 - access)
+\]</span></p>
+<p><span class="math display">\[
+status = (1 - D_{U}) * sustainability
+\]</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## tailored goal model with poverty
+ao_model &lt;-<span class="st"> </span>ao_data %&gt;%
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Du =</span> (<span class="dv">1</span> -<span class="st"> </span>(need +<span class="st"> </span>poverty) /<span class="st"> </span><span class="dv">2</span> ) *<span class="st"> </span>(<span class="dv">1</span> -<span class="st"> </span>access)) %&gt;%
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">status =</span> (<span class="dv">1</span> -<span class="st"> </span>Du) *<span class="st"> </span>sustainability)</code></pre></div>
+</div>
+<div id="calculate-scores-check-and-sync-1" class="section level3">
+<h3><span class="header-section-number">6.8.5</span> Calculate scores, check, and sync</h3>
+<p>Everything is looking good in <code>functions.r</code> and in the Git tab that we’re looking at as we go along.</p>
+<p>Now let’s restart <code>R</code> and rerun <code>calculate_scores.r</code>. We’ll see that <code>scores.csv</code> will also update, and we can check that only AO dimensions (except pressures and resilience since we haven’t changed them) and Index scores are affected.</p>
+<p>Let’s commit and sync. My commit message will be “toolbox-training: tailor AO goal model with a new data layer”.</p>
+</div>
+<div id="recap-of-fourth-calculate_scores.r-run" class="section level3">
+<h3><span class="header-section-number">6.8.6</span> Recap of fourth <code>calculate_scores.r</code> run</h3>
+<p>In this run we combined what we have practiced in the previous two runs, and we successfully:</p>
+<ul>
+<li>created a new data layer, which includes preparing layer in the prep file, saving it in <code>layers</code>, and registering it in <code>layers.csv</code></li>
+<li>added this new model parameter (ie. new layer) in AO model in <code>functions.r</code></li>
+<li>reran <code>calculate_scores.r</code> and saw the changes reflected in Git</li>
+</ul>
+</div>
+</div>
+<div id="chapter-recap-1" class="section level2">
+<h2><span class="header-section-number">6.9</span> Chapter Recap</h2>
+<p>We have completed Chapter <a href="calcs-basic.html#calcs-basic">6</a> and successfully run through the basic workflow to calculate OHI scores with several variations using our <strong>toolbox-demo</strong> repository.</p>
+<p>Each variation involves the same basic workflow of bookkeeping and running <code>calculate_scores.r</code>, and will enable you to begin tailoring the Toolbox for your assessment.</p>
+<ol style="list-style-type: decimal">
+<li>‘out of the box’ data and models extracted from the Global 2016 assessment</li>
+<li>tailored data and ‘out of the box’ models</li>
+<li>tailored data and models</li>
+<li>tailored (new) data and models</li>
+</ol>
+<div class="figure">
+<img src="https://docs.google.com/drawings/d/1OhA7p5-dmrk6dGeP_gWEXFD2pI1ik8KhUYNUSLUVgd4/pub?w=960&amp;h=720" />
+
+</div>
+<p>Also, a few <strong>best practices</strong> we have used throughout this training that are good to remember:</p>
+<ul>
+<li>Compulsively restart R</li>
+<li>Always check Git window after each change for expected changes</li>
+<li>Commit, then Pull before Push</li>
+<li>Rerun configure_toolbox.R after any data layer or model changes</li>
+<li>Save functions.R before the changes are reflected in Git window</li>
+<li>Close Excel before returning to <code>R</code> (this is less important on a Mac but will cause errors on a PC)</li>
+</ul>
+<!---next steps after March 1 training: 
+
+## Update pressures and resilience matrices
+
+- PlotFlower, PlotMap
+- updating pressures/resilience matrices
+- goals.csv and preindex function...
+- see https://cdn.rawgit.com/OHI-Science/ohi-science.github.io/dev/assets/downloads/pres/tutorial_tbx_modifications.html
+--->
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="prep-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="calcs-advanced.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+# Introduction {#intro}
+
+
+**In development.** 
+
+<!--- TODO: intro to OHI conceptually, Tbx stuff. See Best Practices paper. --->
+
+## Overview
+
+- how you move from collaborative conceptual planning -> data and models in the Toolbox, including reference points.
+- best practices: core and tailorable parts
+
+## OHI conceptually
+
+## Best practices
+
+## Tools and Resources
+
+<!--- Ning TODO ---> 
+
+- Google Drive folder
+- Starter Repo
+- Full Repo
+- website
+
+- a place to communicate using the same workflow you use for analysis.

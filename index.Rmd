@@ -1,0 +1,31 @@
+--- 
+title: "Ocean Health Index Toolbox Training"
+author: "Ocean Health Index Team"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: ohi-science/ohi-trainings
+description: "This is the official Ocean Health Index Toolbox training."
+---
+
+# Home {#home}
+
+**Welcome.**   
+
+**This training program is under active development and testing** — development is currently focused on Chapters \@ref(data-science) and \@ref(toolbox-ecosystem). Chapters \@ref(prep-data) and \@ref(calcs-basic) are nearly complete, and we are also outlining other chapters.
+
+
+Each chapter has materials for a 2-hour hands-on training. These training materials can be used to teach or can serve as a self-paced workshop without guided instruction. 
+
+
+<!---
+TODO, including: 
+
+- first X chapters are overview of the workflow, independent from Toolbox
+- next X chapters are Tbx specific
+
+TODO @jules32: citation information --->
