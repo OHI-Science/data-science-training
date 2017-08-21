@@ -1,0 +1,6 @@
+# Git and GitHub {#git-github}
+
+The purpose of Chapter \@ref(prep-data) is to introduce you to the basic workflow for preparing data for OHI. This is a a 2-hour hands-on training: you will be following along on your own computer and working with a copy of the demonstration repository (_toolbox-demo_) that is used throughout the this chapter.
+
+
+## Overview

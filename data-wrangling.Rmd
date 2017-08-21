@@ -1,0 +1,8 @@
+# Calculations: basic workflow {#calcs-basic} 
+
+The purpose of Chapter \@ref(calcs-basic) is to introduce you to the basic workflow for calculating OHI scores. This is a a 2-hour hands-on training: you will be following along on your own computer and working with a copy of the demonstration repository that is used throughout the this chapter.
+
+## Overview
+
+## Chapter Recap
+

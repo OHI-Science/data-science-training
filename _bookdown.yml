@@ -5,9 +5,10 @@ language:
 rmd_files: [
   "index.Rmd", 
   "introduction.Rmd", 
-  "data_science_workflow.Rmd", 
-  "toolbox_ecosystem.Rmd", 
-  "preparing_data.Rmd", 
-  "calculations_basic_workflow.Rmd",
-  "calculations_advanced_workflow.Rmd",
-  "updating_your_website.Rmd"]
+  "intro-viz.Rmd", 
+  "git-github.Rmd", 
+  "data-wrangling.Rmd",
+  "reproducible-workflow.Rmd"]
+
+
+

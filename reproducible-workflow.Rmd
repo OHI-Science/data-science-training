@@ -1,0 +1,11 @@
+# Calculations: advanced workflow {#calcs-advanced}
+
+**In development.** 
+
+The purpose of Chapter \@ref(calcs-advanced) is to build off the basic workflow for calculating OHI scores and do a few more advanced things. This is a a 2-hour hands-on training: you will be following along on your own computer and working with a copy of the demonstration repository that is used throughout the this chapter.
+
+## Overview
+
+•	Using GitHub to watch files change, look for mistakes
+•	Documentation with Markdown
+•	RMarkdown
