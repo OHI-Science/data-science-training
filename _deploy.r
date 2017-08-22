@@ -35,5 +35,6 @@ git2r::add(repo, sprintf('%s/*html', dir_gh_pages))
 git2r::commit(repo, message=sprintf("updating bookdown from %s@master::_deploy.r", repo_name))
 
 setwd(dir_gh_pages)
-system(sprintf('git push https://%s@github.com/%s.git HEAD:%s', gh_token, repo_slug, 'gh-pages'))
+system(sprintf('git push https://%s@github.com/%s.git HEAD:%s', 
+               gh_token, repo_slug, 'gh-pages'))
 setwd(dir_master)
