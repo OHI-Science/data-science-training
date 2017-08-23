@@ -1,4 +1,4 @@
-# Introduction {#intro}
+# Introduction and motivation {#intro}
 
 
 **In development.** 
@@ -39,3 +39,6 @@ See also section in toolbox-training
 ## Course prerequisites 
 
 R, RStudio, git, GitHub account.
+
+## Troubleshooting
+- updating R, RStudio (right-click on 'open', replace, etc)
