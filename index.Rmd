@@ -8,24 +8,14 @@ documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-github-repo: ohi-science/ohi-trainings
-description: "This is the official Ocean Health Index Toolbox training."
+github-repo: ohi-science/data-science-training
+description: "This is official data science training to for the Ocean Health Index. "
 ---
 
 # Home {#home}
 
 **Welcome.**   
 
-**This training program is under active development and testing** — development is currently focused on Chapters \@ref(data-science) and \@ref(toolbox-ecosystem). Chapters \@ref(prep-data) and \@ref(calcs-basic) are nearly complete, and we are also outlining other chapters.
+**This training program is under active development and testing** 
 
-
-Each chapter has materials for a 2-hour hands-on training. These training materials can be used to teach or can serve as a self-paced workshop without guided instruction. 
-
-
-<!---
-TODO, including: 
-
-- first X chapters are overview of the workflow, independent from Toolbox
-- next X chapters are Tbx specific
-
-TODO @jules32: citation information --->
+This is going to be fun. Learning to code is empowering... This 2-day workshop will leach what we use for the OHI, as described in our nature paper. It will teach you skills and a workflows that you can use in any research and analysis.

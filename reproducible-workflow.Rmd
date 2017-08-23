@@ -1,8 +1,8 @@
-# Calculations: advanced workflow {#calcs-advanced}
+# Reproducible workflow {#workflow}
 
 **In development.** 
 
-The purpose of Chapter \@ref(calcs-advanced) is to build off the basic workflow for calculating OHI scores and do a few more advanced things. This is a a 2-hour hands-on training: you will be following along on your own computer and working with a copy of the demonstration repository that is used throughout the this chapter.
+The purpose of Chapter \@ref(workflow) is to build off the basic workflow for calculating OHI scores and do a few more advanced things. This is a a 2-hour hands-on training: you will be following along on your own computer and working with a copy of the demonstration repository that is used throughout the this chapter.
 
 ## Overview
 

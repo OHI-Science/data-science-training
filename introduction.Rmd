@@ -36,9 +36,12 @@ Going to teach you how to think differently, get into some of the theory but in 
 See also section in toolbox-training
 
 
+You're trying something new, you'll get error messages. they are your friends. yes. they are. 
+
 ## Course prerequisites 
 
 R, RStudio, git, GitHub account.
+Mindset listed above. 
 
 
 ## Why RStudio?
@@ -47,4 +50,7 @@ R, RStudio, git, GitHub account.
 - debugging
 - packages
 - community
+
+## Troubleshooting
+- updating R, RStudio (right-click on 'open', replace, etc)
 

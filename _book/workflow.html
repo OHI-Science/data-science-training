@@ -6,34 +6,34 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Ocean Health Index Toolbox Training</title>
-  <meta name="description" content="This is the official Ocean Health Index Toolbox training.">
-  <meta name="generator" content="bookdown 0.3.9 and GitBook 2.6.7">
+  <meta name="description" content="This is official data science training to for the Ocean Health Index.">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
 
   <meta property="og:title" content="Ocean Health Index Toolbox Training" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This is the official Ocean Health Index Toolbox training." />
-  <meta name="github-repo" content="ohi-science/ohi-trainings" />
+  <meta property="og:description" content="This is official data science training to for the Ocean Health Index." />
+  <meta name="github-repo" content="ohi-science/data-science-training" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Ocean Health Index Toolbox Training" />
   
-  <meta name="twitter:description" content="This is the official Ocean Health Index Toolbox training." />
+  <meta name="twitter:description" content="This is official data science training to for the Ocean Health Index." />
   
 
 <meta name="author" content="Ocean Health Index Team">
 
 
-<meta name="date" content="2017-02-15">
+<meta name="date" content="2017-08-23">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="introduction.html">
-<link rel="next" href="toolbox-ecosystem.html">
+<link rel="prev" href="calcs-basic.html">
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,43 +49,6 @@
 
 
 
-<style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-</style>
 
 </head>
 
@@ -99,81 +62,28 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Overview</a></li>
-<li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
-<li class="chapter" data-level="2.1" data-path="index.html"><a href="index.html#overview"><i class="fa fa-check"></i><b>2.1</b> Overview</a></li>
-<li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#ohi-conceptually"><i class="fa fa-check"></i><b>2.2</b> OHI conceptually</a></li>
-<li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#best-practices"><i class="fa fa-check"></i><b>2.3</b> Best practices</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Home</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction and motivation</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#course-overviewpractical-details"><i class="fa fa-check"></i><b>2.1</b> Course overview/Practical details</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#data-science-mindset"><i class="fa fa-check"></i><b>2.2</b> Data science mindset</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#course-prerequisites"><i class="fa fa-check"></i><b>2.3</b> Course prerequisites</a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#why-rstudio"><i class="fa fa-check"></i><b>2.4</b> Why RStudio?</a></li>
+<li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#troubleshooting"><i class="fa fa-check"></i><b>2.5</b> Troubleshooting</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="workflow.html"><a href="workflow.html"><i class="fa fa-check"></i><b>3</b> Workflow</a><ul>
-<li class="chapter" data-level="3.1" data-path="workflow.html"><a href="workflow.html#ohi-repo"><i class="fa fa-check"></i><b>3.1</b> OHI+ Repo</a></li>
-<li class="chapter" data-level="3.2" data-path="workflow.html"><a href="workflow.html#rstudio-github-workflow"><i class="fa fa-check"></i><b>3.2</b> RStudio-GitHub workflow</a></li>
-<li class="chapter" data-level="3.3" data-path="workflow.html"><a href="workflow.html#how-you-work"><i class="fa fa-check"></i><b>3.3</b> How you work</a></li>
-<li class="chapter" data-level="3.4" data-path="workflow.html"><a href="workflow.html#develop-skills"><i class="fa fa-check"></i><b>3.4</b> Developing these skills</a></li>
+<li class="chapter" data-level="3" data-path="r-viz.html"><a href="r-viz.html"><i class="fa fa-check"></i><b>3</b> Introduction to R and RStudio through Data Visualization</a><ul>
+<li class="chapter" data-level="3.1" data-path="r-viz.html"><a href="r-viz.html#intro-to-r-and-rstudio"><i class="fa fa-check"></i><b>3.1</b> Intro to R and RStudio</a></li>
+<li class="chapter" data-level="3.2" data-path="r-viz.html"><a href="r-viz.html#troubleshooting-1"><i class="fa fa-check"></i><b>3.2</b> Troubleshooting</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="toolbox-ecosystem.html"><a href="toolbox-ecosystem.html"><i class="fa fa-check"></i><b>4</b> Toolbox Ecosystem</a><ul>
-<li class="chapter" data-level="4.1" data-path="toolbox-ecosystem.html"><a href="toolbox-ecosystem.html#overview-1"><i class="fa fa-check"></i><b>4.1</b> Overview</a></li>
-<li class="chapter" data-level="4.2" data-path="toolbox-ecosystem.html"><a href="toolbox-ecosystem.html#files-and-organization"><i class="fa fa-check"></i><b>4.2</b> Files and organization</a><ul>
-<li class="chapter" data-level="4.2.1" data-path="toolbox-ecosystem.html"><a href="toolbox-ecosystem.html#functions.r"><i class="fa fa-check"></i><b>4.2.1</b> functions.r</a></li>
+<li class="chapter" data-level="4" data-path="git-github.html"><a href="git-github.html"><i class="fa fa-check"></i><b>4</b> Git and GitHub</a><ul>
+<li class="chapter" data-level="4.1" data-path="git-github.html"><a href="git-github.html#overview"><i class="fa fa-check"></i><b>4.1</b> Overview</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="toolbox-ecosystem.html"><a href="toolbox-ecosystem.html#ohicore"><i class="fa fa-check"></i><b>4.3</b> <code>ohicore</code></a></li>
+<li class="chapter" data-level="5" data-path="calcs-basic.html"><a href="calcs-basic.html"><i class="fa fa-check"></i><b>5</b> Calculations: basic workflow</a><ul>
+<li class="chapter" data-level="5.1" data-path="calcs-basic.html"><a href="calcs-basic.html#overview-1"><i class="fa fa-check"></i><b>5.1</b> Overview</a></li>
+<li class="chapter" data-level="5.2" data-path="calcs-basic.html"><a href="calcs-basic.html#chapter-recap"><i class="fa fa-check"></i><b>5.2</b> Chapter Recap</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="preparing-data.html"><a href="preparing-data.html"><i class="fa fa-check"></i><b>5</b> Preparing data</a><ul>
-<li class="chapter" data-level="5.1" data-path="preparing-data.html"><a href="preparing-data.html#overview-2"><i class="fa fa-check"></i><b>5.1</b> Overview</a></li>
-<li class="chapter" data-level="5.2" data-path="preparing-data.html"><a href="preparing-data.html#data-layer-formatting"><i class="fa fa-check"></i><b>5.2</b> Data layer formatting</a></li>
-<li class="chapter" data-level="5.3" data-path="preparing-data.html"><a href="preparing-data.html#data-wrangling"><i class="fa fa-check"></i><b>5.3</b> Data wrangling</a></li>
-<li class="chapter" data-level="5.4" data-path="preparing-data.html"><a href="preparing-data.html#save-and-register-data-layer"><i class="fa fa-check"></i><b>5.4</b> Save and register data layer</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="calculating-scores.html"><a href="calculating-scores.html"><i class="fa fa-check"></i><b>6</b> Calculating scores</a><ul>
-<li class="chapter" data-level="6.1" data-path="calculating-scores.html"><a href="calculating-scores.html#overview-3"><i class="fa fa-check"></i><b>6.1</b> Overview</a></li>
-<li class="chapter" data-level="6.2" data-path="calculating-scores.html"><a href="calculating-scores.html#calculate_scores.r-workflow"><i class="fa fa-check"></i><b>6.2</b> <code>calculate_scores.r</code> workflow</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="calculating-scores.html"><a href="calculating-scores.html#calculate-overall-scores"><i class="fa fa-check"></i><b>6.2.1</b> Calculate overall scores</a></li>
-<li class="chapter" data-level="6.2.2" data-path="calculating-scores.html"><a href="calculating-scores.html#try-it-out"><i class="fa fa-check"></i><b>6.2.2</b> Try it out</a></li>
-</ul></li>
-<li class="chapter" data-level="6.3" data-path="calculating-scores.html"><a href="calculating-scores.html#installing-ohicore"><i class="fa fa-check"></i><b>6.3</b> Installing ohicore</a></li>
-<li class="chapter" data-level="6.4" data-path="calculating-scores.html"><a href="calculating-scores.html#substituting-new-data-layers"><i class="fa fa-check"></i><b>6.4</b> Substituting new data layers</a></li>
-<li class="chapter" data-level="6.5" data-path="calculating-scores.html"><a href="calculating-scores.html#source-configure_toolbox.r"><i class="fa fa-check"></i><b>6.5</b> Source <code>configure_toolbox.r</code></a><ul>
-<li class="chapter" data-level="6.5.1" data-path="calculating-scores.html"><a href="calculating-scores.html#explore-goal-model"><i class="fa fa-check"></i><b>6.5.1</b> Explore goal model</a></li>
-<li class="chapter" data-level="6.5.2" data-path="calculating-scores.html"><a href="calculating-scores.html#selectlayersdata"><i class="fa fa-check"></i><b>6.5.2</b> SelectLayersData</a></li>
-<li class="chapter" data-level="6.5.3" data-path="calculating-scores.html"><a href="calculating-scores.html#calculate-status"><i class="fa fa-check"></i><b>6.5.3</b> Calculate status</a></li>
-<li class="chapter" data-level="6.5.4" data-path="calculating-scores.html"><a href="calculating-scores.html#calculate-trend"><i class="fa fa-check"></i><b>6.5.4</b> Calculate trend</a></li>
-<li class="chapter" data-level="6.5.5" data-path="calculating-scores.html"><a href="calculating-scores.html#combine-status-and-trend-scores"><i class="fa fa-check"></i><b>6.5.5</b> Combine status and trend scores</a></li>
-</ul></li>
-<li class="chapter" data-level="6.6" data-path="calculating-scores.html"><a href="calculating-scores.html#developing-goal-models"><i class="fa fa-check"></i><b>6.6</b> Developing goal models</a><ul>
-<li class="chapter" data-level="6.6.1" data-path="calculating-scores.html"><a href="calculating-scores.html#update-goal-call-in-goals.csv"><i class="fa fa-check"></i><b>6.6.1</b> Update goal call in <code>goals.csv</code>**</a></li>
-</ul></li>
-<li class="chapter" data-level="6.7" data-path="calculating-scores.html"><a href="calculating-scores.html#removing-goals"><i class="fa fa-check"></i><b>6.7</b> Removing goals</a></li>
-<li class="chapter" data-level="6.8" data-path="calculating-scores.html"><a href="calculating-scores.html#changing-subgoals"><i class="fa fa-check"></i><b>6.8</b> Changing subgoals</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="updating-your-website.html"><a href="updating-your-website.html"><i class="fa fa-check"></i><b>7</b> Updating your website</a><ul>
-<li class="chapter" data-level="7.1" data-path="updating-your-website.html"><a href="updating-your-website.html#overview-4"><i class="fa fa-check"></i><b>7.1</b> Overview</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="brainstorm.html"><a href="brainstorm.html"><i class="fa fa-check"></i><b>8</b> Brainstorm</a><ul>
-<li class="chapter" data-level="8.1" data-path="brainstorm.html"><a href="brainstorm.html#overview-5"><i class="fa fa-check"></i><b>8.1</b> Overview</a><ul>
-<li class="chapter" data-level="8.1.1" data-path="brainstorm.html"><a href="brainstorm.html#prerequisites"><i class="fa fa-check"></i><b>8.1.1</b> Prerequisites</a></li>
-</ul></li>
-<li class="chapter" data-level="8.2" data-path="brainstorm.html"><a href="brainstorm.html#remind-yourself-of-the-toolbox-file-ecosystem"><i class="fa fa-check"></i><b>8.2</b> Remind yourself of the Toolbox file ecosystem</a></li>
-<li class="chapter" data-level="8.3" data-path="brainstorm.html"><a href="brainstorm.html#calculate_scores.r-workflow-1"><i class="fa fa-check"></i><b>8.3</b> <code>calculate_scores.r</code> workflow</a><ul>
-<li class="chapter" data-level="8.3.1" data-path="brainstorm.html"><a href="brainstorm.html#run-install_ohicore.r"><i class="fa fa-check"></i><b>8.3.1</b> run <code>install_ohicore.r</code></a></li>
-<li class="chapter" data-level="8.3.2" data-path="brainstorm.html"><a href="brainstorm.html#region2016calculate_scores.r"><i class="fa fa-check"></i><b>8.3.2</b> region2016/calculate_scores.r</a></li>
-<li class="chapter" data-level="8.3.3" data-path="brainstorm.html"><a href="brainstorm.html#recap-of-what-just-happened"><i class="fa fa-check"></i><b>8.3.3</b> Recap of what just happened</a></li>
-</ul></li>
-<li class="chapter" data-level="8.4" data-path="brainstorm.html"><a href="brainstorm.html#update-a-data-layer-and-lets-see-the-whole-process-again."><i class="fa fa-check"></i><b>8.4</b> Update a data layer and let’s see the whole process again.</a><ul>
-<li class="chapter" data-level="8.4.1" data-path="brainstorm.html"><a href="brainstorm.html#update-data-layer-but-with-the-same-layer-name"><i class="fa fa-check"></i><b>8.4.1</b> update data layer but with the same layer name</a></li>
-<li class="chapter" data-level="8.4.2" data-path="brainstorm.html"><a href="brainstorm.html#rerun-calculate_scores.r"><i class="fa fa-check"></i><b>8.4.2</b> rerun calculate_scores.r</a></li>
-</ul></li>
-<li class="chapter" data-level="8.5" data-path="brainstorm.html"><a href="brainstorm.html#configure_toolbox.r"><i class="fa fa-check"></i><b>8.5</b> configure_toolbox.r</a><ul>
-<li class="chapter" data-level="8.5.1" data-path="brainstorm.html"><a href="brainstorm.html#loads-libraries"><i class="fa fa-check"></i><b>8.5.1</b> loads libraries</a></li>
-<li class="chapter" data-level="8.5.2" data-path="brainstorm.html"><a href="brainstorm.html#ohicoreconf"><i class="fa fa-check"></i><b>8.5.2</b> <code>ohicore::Conf()</code></a></li>
-<li class="chapter" data-level="8.5.3" data-path="brainstorm.html"><a href="brainstorm.html#ohicorechecklayers"><i class="fa fa-check"></i><b>8.5.3</b> <code>ohicore::CheckLayers()</code></a></li>
-<li class="chapter" data-level="8.5.4" data-path="brainstorm.html"><a href="brainstorm.html#ohicorelayers"><i class="fa fa-check"></i><b>8.5.4</b> <code>ohicore::Layers()</code></a></li>
-</ul></li>
-<li class="chapter" data-level="8.6" data-path="brainstorm.html"><a href="brainstorm.html#functions.r-1"><i class="fa fa-check"></i><b>8.6</b> <code>functions.r</code></a></li>
-<li class="chapter" data-level="8.7" data-path="brainstorm.html"><a href="brainstorm.html#todiscuss"><i class="fa fa-check"></i><b>8.7</b> TODISCUSS</a><ul>
-<li class="chapter" data-level="8.7.1" data-path="brainstorm.html"><a href="brainstorm.html#change-the-goal-model-with-the-same-data-layers"><i class="fa fa-check"></i><b>8.7.1</b> change the goal model with the same data layers</a></li>
-<li class="chapter" data-level="8.7.2" data-path="brainstorm.html"><a href="brainstorm.html#add-a-new-layer-and-have-the-goal-model-use-the-new-layer"><i class="fa fa-check"></i><b>8.7.2</b> add a new layer, and have the goal model use the new layer</a></li>
-</ul></li>
-<li class="chapter" data-level="8.8" data-path="brainstorm.html"><a href="brainstorm.html#todiscuss-1"><i class="fa fa-check"></i><b>8.8</b> TODISCUSS</a></li>
+<li class="chapter" data-level="6" data-path="workflow.html"><a href="workflow.html"><i class="fa fa-check"></i><b>6</b> Reproducible workflow</a><ul>
+<li class="chapter" data-level="6.1" data-path="workflow.html"><a href="workflow.html#overview-2"><i class="fa fa-check"></i><b>6.1</b> Overview</a></li>
+<li class="chapter" data-level="6.2" data-path="workflow.html"><a href="workflow.html#tips"><i class="fa fa-check"></i><b>6.2</b> Tips</a></li>
 </ul></li>
 </ul>
 
@@ -193,31 +103,18 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="workflow" class="section level1">
-<h1><span class="header-section-number">Chapter 3</span> Workflow</h1>
-<ul>
-<li>what you get in the OHI+ repo (very high-level: you get data and code, you’ll operate with an R package ohicore)</li>
-<li>use RStudio, GitHub to work reproducibly and collaboratively</li>
-<li>how you work</li>
-</ul>
-<div id="ohi-repo" class="section level2">
-<h2><span class="header-section-number">3.1</span> OHI+ Repo</h2>
-<ul>
-<li>what is in the OHI+ repo, not file-by-file, but high-level</li>
-</ul>
+<h1><span class="header-section-number">Chapter 6</span> Reproducible workflow</h1>
+<p><strong>In development.</strong></p>
+<p>The purpose of Chapter <a href="workflow.html#workflow">6</a> is to build off the basic workflow for calculating OHI scores and do a few more advanced things. This is a a 2-hour hands-on training: you will be following along on your own computer and working with a copy of the demonstration repository that is used throughout the this chapter.</p>
+<div id="overview-2" class="section level2">
+<h2><span class="header-section-number">6.1</span> Overview</h2>
+<p>• Using GitHub to watch files change, look for mistakes • Documentation with Markdown • RMarkdown</p>
 </div>
-<div id="rstudio-github-workflow" class="section level2">
-<h2><span class="header-section-number">3.2</span> RStudio-GitHub workflow</h2>
-</div>
-<div id="how-you-work" class="section level2">
-<h2><span class="header-section-number">3.3</span> How you work</h2>
+<div id="tips" class="section level2">
+<h2><span class="header-section-number">6.2</span> Tips</h2>
 <ul>
-<li>commit often (i.e. bundled as tasks you complete)</li>
-<li>use the Git tab to help you check your work – what files updated, does that make sense?</li>
+<li><code>source()</code> your file to see if there are any typos that you’ve missed</li>
 </ul>
-</div>
-<div id="develop-skills" class="section level2">
-<h2><span class="header-section-number">3.4</span> Developing these skills</h2>
-<p>2-day self-paced workshop: <a href="http://jules32.github.io/2016-07-12-Oxford/overview/">Reproducible Science with RStudio and GitHub</a>. This is a <a href="https://software-carpentry.org/">Software Carpentry</a> workshop by our team to help you develop skills with the RStudio/GitHub workflow.</p>
 
 </div>
 </div>
@@ -226,8 +123,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="toolbox-ecosystem.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="calcs-basic.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
