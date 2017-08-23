@@ -1,17 +1,18 @@
-# Introduction to R and RStudio through Data Visualization {#r-viz}
+# R and RStudio through Data Visualization {#r-viz}
 
 **In development.** 
 
-## Intro to R and RStudio
+ R and RStudio
+- layout 
 - packages
-## Data visualization
+
+ Data visualization
 
 Why do we start with data viz? Not only is data viz a big part of analysis, it’s a way to SEE your progress as you learn to code.
 
 - Conceptual and building, cheatsheet images
 
-
-## Troubleshooting
+ Troubleshooting
 
 the `+` because you didn't complete a line. Get out of it with esc
 

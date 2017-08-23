@@ -29,6 +29,7 @@ repo <- git2r::clone(url=repo_url,
 system(sprintf('cp %s/* %s', dir_master_book, dir_gh_pages))
 
 ## NOTE/TODO: may have to update libs/ directory too for formatting. 
+## TODO: if no .nojekyll in the gh-pages, add.
 
 ## add and commit gh-pages branch
 git2r::add(repo, sprintf('%s/*html', dir_gh_pages))
