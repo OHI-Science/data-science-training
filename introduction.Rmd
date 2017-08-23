@@ -39,3 +39,10 @@ See also section in toolbox-training
 ## Course prerequisites 
 
 R, RStudio, git, GitHub account.
+
+## Why RStudio?
+
+- airport
+- debugging
+- packages
+- community

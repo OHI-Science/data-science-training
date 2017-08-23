@@ -9,3 +9,7 @@
 Why do we start with data viz? Not only is data viz a big part of analysis, it’s a way to SEE your progress as you learn to code.
 
 - Conceptual and building, cheatsheet images
+
+## Common troubleshooting 
+
+the `+` because you didn't complete a line. Get out of it with esc
