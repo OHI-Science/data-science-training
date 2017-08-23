@@ -10,4 +10,8 @@ Why do we start with data viz? Not only is data viz a big part of analysis, itâ€
 
 - Conceptual and building, cheatsheet images
 
+
 ## Troubleshooting
+
+the `+` because you didn't complete a line. Get out of it with esc
+

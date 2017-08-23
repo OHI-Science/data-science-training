@@ -40,5 +40,11 @@ See also section in toolbox-training
 
 R, RStudio, git, GitHub account.
 
-## Troubleshooting
-- updating R, RStudio (right-click on 'open', replace, etc)
+
+## Why RStudio?
+
+- airport
+- debugging
+- packages
+- community
+
