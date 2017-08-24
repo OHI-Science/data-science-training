@@ -24,9 +24,13 @@ We’ll start with data viz, and then will start using GitHub for reproducible w
 
 New but will become increasingly familiar. We’ll start you off with some momentum, like if you were going to learn to ride a bike or ...
 
-Expect that there is a way to do what you want to do
+## Expect that there is a way to do what you want to do
 
-How to ask for help and how to see what answers are useful
+
+
+## Data science is a discipline
+
+It has theories, methods, and tools. 
 
 Tidyverse and Hadley’s graphic
 
@@ -35,8 +39,12 @@ Going to teach you how to think differently, get into some of the theory but in 
 
 See also section in toolbox-training
 
+### Error messages are your friend
 
+They help you learn
 You're trying something new, you'll get error messages. they are your friends. yes. they are. 
+
+## Asking for help and recognizing useful answers
 
 ## Course prerequisites 
 
