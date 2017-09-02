@@ -1,0 +1,28 @@
+# Motivation {#motivation}
+
+## Welcome 
+
+This is going to be fun and empowering. Code of conduct. You are all welcome here. Please tell me if it's ever not. 
+
+Everyone is coming from a different place with different experiences. Stickies. 
+You are all welcome here and encouraged to help each other. 
+
+## Collaboration
+
+- First, with you. If you don't think you collaborate, you might not be doing science. Future you. 
+- Then, with your lab and and collaborators. 
+- And, with collaborators that don't yet exist. 
+
+## Reproducibility
+
+- record of your analyses. 
+- rerun them!
+- modify them, maybe change a threshold, try a different coefficient, etc, maybe today
+- modify them, make a new figure, in 6 months! 
+
+
+## Mindset
+
+- stop confounding data science with your science. Expect that someone has had your problem before or done what you want to do. 
+
+

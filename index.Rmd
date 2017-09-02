@@ -1,5 +1,5 @@
 --- 
-title: "Ocean Health Index Toolbox Training"
+title: "Collaborative, Reproducible Science"
 author: "Ocean Health Index Team"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -16,6 +16,19 @@ description: "This is official data science training to for the Ocean Health Ind
 
 **Welcome.**   
 
+It's an experiment; teaching you coding and version control together. 
+
+I've learned an enormous amount about coding and teaching how to code from these resources:
+- R for Data Science: Wickham and Grolemund
+- Jenny Bryan
+- SWC
+- DC
+
+All open source.
+
+
 **This training program is under active development and testing** 
 
 This is going to be fun. Learning to code is empowering... This 2-day workshop will leach what we use for the OHI, as described in our nature paper. It will teach you skills and a workflows that you can use in any research and analysis.
+
+## TODO License 

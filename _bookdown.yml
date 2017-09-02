@@ -4,9 +4,13 @@ language:
     chapter_name: "Chapter "
 rmd_files: [
   "index.Rmd", 
-  "introduction.Rmd", 
+  "overview.Rmd",
+  "motivation.Rmd",
+  "orientation.Rmd",# diff title!!! orientation-to-r-rstudio.Rmd synonym orientation??
+  "github-rstudio.Rmd",
+  "introduction.Rmd", ## decommission
   "intro-viz.Rmd", 
-  "git-github.Rmd", 
+  "git-github.Rmd", ## decommission
   "data-wrangling.Rmd",
   "reproducible-workflow.Rmd"]
 

@@ -1,0 +1,7 @@
+# Overview and Prerequesites {#overview}
+
+- you'll learn 3 broad tools all at the same time: coding in R/RStudio, collaborative version control with Git/GitHub, and communication/publishing with markdown/GitHub. All at the same time because that's how you'll work in reality. I made all of these training materials with these tools.
+
+- based on literature: best and good enough practices
+- also based on our team's experience of how to do better science in less time
+

@@ -1,8 +1,8 @@
-## Ocean Health Index Toolbox Training materials
+## Collaborative. Reproducible. Science.
 
-These materials are available as a book at http://ohi-science.org/toolbox-training. 
+These materials are available as a book at http://ohi-science.org/XXXX
 
-Please clone or download https://github.com/OHI-Science/toolbox-demo to accompany this training.
+Please clone or download https://github.com/OHI-Science/XXXXX to accompany this training.
 
 To render this book: `bookdown::render_book("index.Rmd", "bookdown::gitbook")`
 
