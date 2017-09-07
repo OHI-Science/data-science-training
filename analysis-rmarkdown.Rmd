@@ -1,0 +1,46 @@
+# Analysis with RMarkdown {#rmarkdown}
+
+## Objectives & Resources
+
+- intro to Markdown
+- intro to RMarkdown
+- more practice with GitHub
+- more practice with tidyverse
+
+## Intro to Markdown
+
+- knit, preview
+- push to GitHub
+
+## Intro to RMarkdown
+
+
+
+## More practice data wrangling, data viz
+
+## functions, for loops
+
+The purpose of this chapter is to build off the basic workflow for calculating OHI scores and do a few more advanced things. This is a a 2-hour hands-on training: you will be following along on your own computer and working with a copy of the demonstration repository that is used throughout the this chapter.
+
+## Overview
+
+•	Using GitHub to watch files change, look for mistakes
+•	Documentation with Markdown
+•	RMarkdown
+
+## Update the README
+
+Documentation is a really important part of coding, so let's look at the README. If we look at GitHub.com, you can see that the README is displayed nicely like online. Let's add some more description about what our GitHub repositoryis for. 
+
+And if there's time: notice that there are a few `#`s that make the plain text into a bold header on GitHub.com. This is called Markdown. There are a few syntax rules for Markdown; we can look at them by going to the help menu. The one I want us to try out here if there's time is adding an image to it as well. Let's add this: 
+
+`![](my_plot.png)`
+
+...and then commit and push this to GitHub.com and have a look!
+
+
+## Tips
+
+- `source()` your file to see if there are any typos that you've missed 
+
+## Troubleshooting

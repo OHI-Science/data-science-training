@@ -6,13 +6,13 @@ rmd_files: [
   "index.Rmd", 
   "overview.Rmd",
   "motivation.Rmd",
-  "orientation.Rmd",# diff title!!! orientation-to-r-rstudio.Rmd synonym orientation??
-  "github-rstudio.Rmd",
-  "introduction.Rmd", ## decommission
-  "intro-viz.Rmd", 
-  "git-github.Rmd", ## decommission
+  "r-rstudio-orientation.Rmd",
+  "github-rstudio-workflow.Rmd",
+  "viz.Rmd", 
   "data-wrangling.Rmd",
-  "reproducible-workflow.Rmd"]
-
+  "analysis-rmarkdown.Rmd", ## come back here for first pass
+  "collaborate-github.Rmd",
+  "more-r-power.Rmd"]
+delete_merged_file: true
 
 

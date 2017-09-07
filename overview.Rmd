@@ -1,7 +1,27 @@
 # Overview and Prerequesites {#overview}
 
+This is a 2-day bootcamp for hands-on learning of R, RStudio, Git, and GitHub, and will teach reproducible workflows that can be used in analyses of all kinds, including Ocean Health Index assessments. 
+
 - you'll learn 3 broad tools all at the same time: coding in R/RStudio, collaborative version control with Git/GitHub, and communication/publishing with markdown/GitHub. All at the same time because that's how you'll work in reality. I made all of these training materials with these tools.
+
+2-day workshop, split into 4 primary topics. Table of morning, afternoon, day 1, day 2. These materials can be used to teach this 2-day bootcamp, or can be used as a self-paced course
+
+We’ll start with data viz, and then will start using GitHub for reproducible workflows on Day 1. Then on day 2 we’ll continue to use GitHub with RStudio as a way to practice as we learn.
+
 
 - based on literature: best and good enough practices
 - also based on our team's experience of how to do better science in less time
 
+## Prerequesites
+
+R, RStudio, Git, and GitHub are freely available and open-source, meaning that anyone can download...
+
+
+## Credit
+
+This material builds from a lot of materials developed by others. In particular, it pulls from the following resources, which are excellent and highly recommended for further learning and as resources later on: 
+
+- [R for Data Science]
+- [STAT 545]
+- [Software Carpentry]
+- [Happy Git with R]

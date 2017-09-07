@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Collaborative, Reproducible Science</title>
+  <meta name="description" content="This is official data science training to for the Ocean Health Index.">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Collaborative, Reproducible Science" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is official data science training to for the Ocean Health Index." />
+  <meta name="github-repo" content="ohi-science/data-science-training" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Collaborative, Reproducible Science" />
+  
+  <meta name="twitter:description" content="This is official data science training to for the Ocean Health Index." />
+  
+
+<meta name="author" content="Ocean Health Index Team">
+
+
+<meta name="date" content="2017-09-06">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="orientation.html">
+<link rel="next" href="github-rstudio.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Home</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#todo-license"><i class="fa fa-check"></i><b>1.1</b> TODO License</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="overview.html"><a href="overview.html"><i class="fa fa-check"></i><b>2</b> Overview and Prerequesites</a><ul>
+<li class="chapter" data-level="2.1" data-path="overview.html"><a href="overview.html#prerequesites"><i class="fa fa-check"></i><b>2.1</b> Prerequesites</a></li>
+<li class="chapter" data-level="2.2" data-path="overview.html"><a href="overview.html#credit"><i class="fa fa-check"></i><b>2.2</b> Credit</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="motivation.html"><a href="motivation.html"><i class="fa fa-check"></i><b>3</b> Motivation</a><ul>
+<li class="chapter" data-level="3.1" data-path="motivation.html"><a href="motivation.html#welcome"><i class="fa fa-check"></i><b>3.1</b> Welcome</a></li>
+<li class="chapter" data-level="3.2" data-path="motivation.html"><a href="motivation.html#collaboration"><i class="fa fa-check"></i><b>3.2</b> Collaboration</a></li>
+<li class="chapter" data-level="3.3" data-path="motivation.html"><a href="motivation.html#reproducibility"><i class="fa fa-check"></i><b>3.3</b> Reproducibility</a></li>
+<li class="chapter" data-level="3.4" data-path="motivation.html"><a href="motivation.html#mindset"><i class="fa fa-check"></i><b>3.4</b> Mindset</a></li>
+<li class="chapter" data-level="3.5" data-path="motivation.html"><a href="motivation.html#data-science-is-a-discipline"><i class="fa fa-check"></i><b>3.5</b> Data science is a discipline</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="orientation.html"><a href="orientation.html"><i class="fa fa-check"></i><b>4</b> R and RStudio Orientation</a><ul>
+<li class="chapter" data-level="4.1" data-path="orientation.html"><a href="orientation.html#objectives"><i class="fa fa-check"></i><b>4.1</b> Objectives</a></li>
+<li class="chapter" data-level="4.2" data-path="orientation.html"><a href="orientation.html#resources"><i class="fa fa-check"></i><b>4.2</b> Resources</a></li>
+<li class="chapter" data-level="4.3" data-path="orientation.html"><a href="orientation.html#why-learn-r-with-rstudio"><i class="fa fa-check"></i><b>4.3</b> Why learn R with RStudio&gt;</a></li>
+<li class="chapter" data-level="4.4" data-path="orientation.html"><a href="orientation.html#r-at-the-console-rstudio-goodies"><i class="fa fa-check"></i><b>4.4</b> R at the console, RStudio goodies</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="orientation.html"><a href="orientation.html#error-messages-are-your-friends"><i class="fa fa-check"></i><b>4.4.1</b> Error messages are your friends</a></li>
+<li class="chapter" data-level="4.4.2" data-path="orientation.html"><a href="orientation.html#logical-operators-and-expressions"><i class="fa fa-check"></i><b>4.4.2</b> Logical operators and expressions</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="orientation.html"><a href="orientation.html#r-functions-help-pages"><i class="fa fa-check"></i><b>4.5</b> R functions, help pages</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="orientation.html"><a href="orientation.html#your-turn"><i class="fa fa-check"></i><b>4.5.1</b> Your turn</a></li>
+<li class="chapter" data-level="4.5.2" data-path="orientation.html"><a href="orientation.html#your-turn-1"><i class="fa fa-check"></i><b>4.5.2</b> Your turn</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="working-directories-rstudio-projects-scripts.html"><a href="working-directories-rstudio-projects-scripts.html"><i class="fa fa-check"></i><b>5</b> Working directories, RStudio projects, scripts</a><ul>
+<li class="chapter" data-level="5.0.1" data-path="working-directories-rstudio-projects-scripts.html"><a href="working-directories-rstudio-projects-scripts.html#working-directory"><i class="fa fa-check"></i><b>5.0.1</b> Working directory</a></li>
+<li class="chapter" data-level="5.1" data-path="working-directories-rstudio-projects-scripts.html"><a href="working-directories-rstudio-projects-scripts.html#rstudio-projects"><i class="fa fa-check"></i><b>5.1</b> RStudio projects</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="working-directories-rstudio-projects-scripts.html"><a href="working-directories-rstudio-projects-scripts.html#you-try-ask-for-help-and-recognize-useful-answers"><i class="fa fa-check"></i><b>5.1.1</b> You try – Ask for help and recognize useful answers</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="working-directories-rstudio-projects-scripts.html"><a href="working-directories-rstudio-projects-scripts.html#troubleshooting"><i class="fa fa-check"></i><b>5.2</b> Troubleshooting</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="github-rstudio.html"><a href="github-rstudio.html"><i class="fa fa-check"></i><b>6</b> GitHub-RStudio Workflow and R Scripts</a><ul>
+<li class="chapter" data-level="6.1" data-path="github-rstudio.html"><a href="github-rstudio.html#objectives-1"><i class="fa fa-check"></i><b>6.1</b> Objectives</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="viz.html"><a href="viz.html"><i class="fa fa-check"></i><b>7</b> R and RStudio through Data Visualization</a><ul>
+<li class="chapter" data-level="7.1" data-path="viz.html"><a href="viz.html#objectives-2"><i class="fa fa-check"></i><b>7.1</b> Objectives</a></li>
+<li class="chapter" data-level="7.2" data-path="viz.html"><a href="viz.html#resources-1"><i class="fa fa-check"></i><b>7.2</b> Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="wrangling.html"><a href="wrangling.html"><i class="fa fa-check"></i><b>8</b> Data wrangling with the tidyverse</a><ul>
+<li class="chapter" data-level="8.1" data-path="overview.html"><a href="overview.html#overview"><i class="fa fa-check"></i><b>8.1</b> Overview</a></li>
+<li class="chapter" data-level="8.2" data-path="wrangling.html"><a href="wrangling.html#resources-2"><i class="fa fa-check"></i><b>8.2</b> Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>9</b> Analysis with RMarkdown</a><ul>
+<li class="chapter" data-level="9.1" data-path="rmarkdown.html"><a href="rmarkdown.html#objectives-3"><i class="fa fa-check"></i><b>9.1</b> Objectives</a></li>
+<li class="chapter" data-level="9.2" data-path="rmarkdown.html"><a href="rmarkdown.html#intro-to-markdown"><i class="fa fa-check"></i><b>9.2</b> Intro to Markdown</a></li>
+<li class="chapter" data-level="9.3" data-path="rmarkdown.html"><a href="rmarkdown.html#intro-to-rmarkdown"><i class="fa fa-check"></i><b>9.3</b> Intro to RMarkdown</a></li>
+<li class="chapter" data-level="9.4" data-path="rmarkdown.html"><a href="rmarkdown.html#more-practice-data-wrangling-data-viz"><i class="fa fa-check"></i><b>9.4</b> More practice data wrangling, data viz</a></li>
+<li class="chapter" data-level="9.5" data-path="rmarkdown.html"><a href="rmarkdown.html#functions-for-loops"><i class="fa fa-check"></i><b>9.5</b> functions, for loops</a></li>
+<li class="chapter" data-level="9.6" data-path="rmarkdown.html"><a href="rmarkdown.html#overview-1"><i class="fa fa-check"></i><b>9.6</b> Overview</a></li>
+<li class="chapter" data-level="9.7" data-path="rmarkdown.html"><a href="rmarkdown.html#tips"><i class="fa fa-check"></i><b>9.7</b> Tips</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="collaborate.html"><a href="collaborate.html"><i class="fa fa-check"></i><b>10</b> Collaborate with GitHub</a><ul>
+<li class="chapter" data-level="10.1" data-path="collaborate.html"><a href="collaborate.html#objectives-4"><i class="fa fa-check"></i><b>10.1</b> Objectives</a></li>
+<li class="chapter" data-level="10.2" data-path="collaborate.html"><a href="collaborate.html#pull-request-to-your-friends-repo"><i class="fa fa-check"></i><b>10.2</b> pull request to your friend’s repo</a></li>
+<li class="chapter" data-level="10.3" data-path="collaborate.html"><a href="collaborate.html#create-gh-pages-repo-and-give-someone-permission"><i class="fa fa-check"></i><b>10.3</b> create gh-pages repo and give someone permission</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="power.html"><a href="power.html"><i class="fa fa-check"></i><b>11</b> More R poweR</a><ul>
+<li class="chapter" data-level="11.1" data-path="power.html"><a href="power.html#objectives-5"><i class="fa fa-check"></i><b>11.1</b> Objectives</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Collaborative, Reproducible Science</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="working-directories-rstudio-projects-scripts" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> Working directories, RStudio projects, scripts</h1>
+<p>So we will talk about scripts in a moment, but first let’s talk about where they should live.</p>
+<p><em>We’re not going to cover workspaces today, but this is another alternative to scripts. You can learn about it in this RStudio article: <a href="https://support.rstudio.com/hc/en-us/articles/200711843-Working-Directories-and-Workspaces">Working Directories and Workspaces</a>.</em></p>
+<div id="working-directory" class="section level3">
+<h3><span class="header-section-number">5.0.1</span> Working directory</h3>
+<p>Any process running on your computer has a notion of its “working directory”. In R, this is where R will look, by default, for files you ask it to load. It is also where, by default, any files you write to disk will go. You have a sense of this because whenever you go to save a Word doc or download, it asks where. You often have to navigate to put it exactly where you want it. There are a few ways to check your working directory in RStudio.</p>
+<p>You can explicitly check your working directory with:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">getwd</span>()</code></pre></div>
+<p>It is also displayed at the top of the RStudio console.</p>
+<p>As a beginning R user, it’s OK let your home directory or any other weird directory on your computer be R’s working directory. <em>Very soon</em>, I urge you to evolve to the next level, where you organize your analytical projects into directories and, when working on Project A, set R’s working directory to Project A’s directory.</p>
+<p>You can set R’s working directory at the command line like so. You could also do this in a script.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;~/myCoolProject&quot;</span>)</code></pre></div>
+<p>But there’s a better way. A way that also puts you on the path to managing your R work like an expert.</p>
+</div>
+<div id="rstudio-projects" class="section level2">
+<h2><span class="header-section-number">5.1</span> RStudio projects</h2>
+<p>Keeping all the files associated with a project organized together – input data, R scripts, analytical results, figures – is such a wise and common practice that RStudio has built-in support for this via its <em>projects</em>. More here: <a href="https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects">Using Projects</a>.</p>
+<p>Let’s make one to use for the rest of today.</p>
+<blockquote>
+<p>Do this: File &gt; New Project … New Directory &gt; Empty Project. The directory name you choose here will be the project name. Call it whatever you want (or follow me for convenience).</p>
+</blockquote>
+<p>I created a directory and, therefore RStudio project, called <code>data-carpentry</code> in a folder called <code>tmp</code> in my home directory, FYI. What do you notice about your RStudio pane? Look in the right corner–‘data-carpentry’.</p>
+<p>Now check that the “home” directory for your project is the working directory of our current R process:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">getwd</span>()
+<span class="co"># &quot;/Users/julialowndes/tmp/data-carpentry&quot; </span></code></pre></div>
+<p><strong>About paths</strong>: The above is the absolute path: it starts at the <code>/Users</code> root and is specific to my computer (<code>julialowndes</code>) and where I saved it. So if I did an analysis with this filepath, it wouldn’t work on your computer before you altered the filepath.</p>
+<p>But with an RStudio project, your paths within this project can be relative, which means they <em>start</em> in the <code>data-carpentry</code> folder, wherever it is. So we can just use filepaths within our project from a relative place, and it can work on your computer or mine, without worrying about the absolute paths. (Analogy: I can give you directions from this building to the pub, since we’re all here in this shared space already. I can’t give you all directions from your home to this building and then the pub, because you all live in different places. But I can give directions relative to this building).</p>
+<div id="you-try-ask-for-help-and-recognize-useful-answers" class="section level3">
+<h3><span class="header-section-number">5.1.1</span> You try – Ask for help and recognize useful answers</h3>
+<p>TODO</p>
+</div>
+</div>
+<div id="troubleshooting" class="section level2">
+<h2><span class="header-section-number">5.2</span> Troubleshooting</h2>
+<ul>
+<li>the <code>+</code> because you didn’t complete a line. Get out of it with esc</li>
+<li>updating R, RStudio (right-click on ‘open’, replace, etc)</li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="orientation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="github-rstudio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

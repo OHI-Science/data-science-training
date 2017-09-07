@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Collaborative, Reproducible Science</title>
+  <meta name="description" content="This is official data science training to for the Ocean Health Index.">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Collaborative, Reproducible Science" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is official data science training to for the Ocean Health Index." />
+  <meta name="github-repo" content="ohi-science/data-science-training" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Collaborative, Reproducible Science" />
+  
+  <meta name="twitter:description" content="This is official data science training to for the Ocean Health Index." />
+  
+
+<meta name="author" content="Ocean Health Index Team">
+
+
+<meta name="date" content="2017-09-06">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="motivation.html">
+<link rel="next" href="github-rstudio.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Home</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#todo-license"><i class="fa fa-check"></i><b>1.1</b> TODO License</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="overview.html"><a href="overview.html"><i class="fa fa-check"></i><b>2</b> Overview and Prerequesites</a><ul>
+<li class="chapter" data-level="2.1" data-path="overview.html"><a href="overview.html#prerequesites"><i class="fa fa-check"></i><b>2.1</b> Prerequesites</a></li>
+<li class="chapter" data-level="2.2" data-path="overview.html"><a href="overview.html#credit"><i class="fa fa-check"></i><b>2.2</b> Credit</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="motivation.html"><a href="motivation.html"><i class="fa fa-check"></i><b>3</b> Motivation</a><ul>
+<li class="chapter" data-level="3.1" data-path="motivation.html"><a href="motivation.html#welcome"><i class="fa fa-check"></i><b>3.1</b> Welcome</a></li>
+<li class="chapter" data-level="3.2" data-path="motivation.html"><a href="motivation.html#collaboration"><i class="fa fa-check"></i><b>3.2</b> Collaboration</a></li>
+<li class="chapter" data-level="3.3" data-path="motivation.html"><a href="motivation.html#reproducibility"><i class="fa fa-check"></i><b>3.3</b> Reproducibility</a></li>
+<li class="chapter" data-level="3.4" data-path="motivation.html"><a href="motivation.html#mindset"><i class="fa fa-check"></i><b>3.4</b> Mindset</a></li>
+<li class="chapter" data-level="3.5" data-path="motivation.html"><a href="motivation.html#data-science-is-a-discipline"><i class="fa fa-check"></i><b>3.5</b> Data science is a discipline</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="orientation.html"><a href="orientation.html"><i class="fa fa-check"></i><b>4</b> R and RStudio Orientation</a><ul>
+<li class="chapter" data-level="4.1" data-path="orientation.html"><a href="orientation.html#objectives-resources"><i class="fa fa-check"></i><b>4.1</b> Objectives &amp; Resources</a></li>
+<li class="chapter" data-level="4.2" data-path="orientation.html"><a href="orientation.html#why-learn-r-with-rstudio"><i class="fa fa-check"></i><b>4.2</b> Why learn R with RStudio</a></li>
+<li class="chapter" data-level="4.3" data-path="orientation.html"><a href="orientation.html#r-at-the-console-rstudio-goodies"><i class="fa fa-check"></i><b>4.3</b> R at the console, RStudio goodies</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="orientation.html"><a href="orientation.html#error-messages-are-your-friends"><i class="fa fa-check"></i><b>4.3.1</b> Error messages are your friends</a></li>
+<li class="chapter" data-level="4.3.2" data-path="orientation.html"><a href="orientation.html#logical-operators-and-expressions"><i class="fa fa-check"></i><b>4.3.2</b> Logical operators and expressions</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="orientation.html"><a href="orientation.html#r-functions-help-pages"><i class="fa fa-check"></i><b>4.4</b> R functions, help pages</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="orientation.html"><a href="orientation.html#your-turn"><i class="fa fa-check"></i><b>4.4.1</b> Your turn</a></li>
+<li class="chapter" data-level="4.4.2" data-path="orientation.html"><a href="orientation.html#your-turn-1"><i class="fa fa-check"></i><b>4.4.2</b> Your turn</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="orientation.html"><a href="orientation.html#setup-git-github"><i class="fa fa-check"></i><b>4.5</b> Setup Git &amp; GitHub</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="orientation.html"><a href="orientation.html#you-try"><i class="fa fa-check"></i><b>4.5.1</b> You try</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="orientation.html"><a href="orientation.html#troubleshooting"><i class="fa fa-check"></i><b>4.6</b> Troubleshooting</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="github-rstudio.html"><a href="github-rstudio.html"><i class="fa fa-check"></i><b>5</b> GitHub-RStudio Workflow and R Scripts</a><ul>
+<li class="chapter" data-level="5.1" data-path="github-rstudio.html"><a href="github-rstudio.html#objectives-resources-1"><i class="fa fa-check"></i><b>5.1</b> Objectives &amp; Resources</a></li>
+<li class="chapter" data-level="5.2" data-path="github-rstudio.html"><a href="github-rstudio.html#why-should-scientists-use-github"><i class="fa fa-check"></i><b>5.2</b> Why should scientists use Github?</a></li>
+<li class="chapter" data-level="5.3" data-path="github-rstudio.html"><a href="github-rstudio.html#git-and-github"><i class="fa fa-check"></i><b>5.3</b> Git and Github</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="github-rstudio.html"><a href="github-rstudio.html#some-github-terminology"><i class="fa fa-check"></i><b>5.3.1</b> Some Github terminology</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="github-rstudio.html"><a href="github-rstudio.html#create-a-repository-on-your-github-account"><i class="fa fa-check"></i><b>5.4</b> Create a repository on your Github account</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="github-rstudio.html"><a href="github-rstudio.html#step-1"><i class="fa fa-check"></i><b>5.4.1</b> Step 1</a></li>
+<li class="chapter" data-level="5.4.2" data-path="github-rstudio.html"><a href="github-rstudio.html#step-2"><i class="fa fa-check"></i><b>5.4.2</b> Step 2</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="github-rstudio.html"><a href="github-rstudio.html#clone-your-repository-using-rstudio"><i class="fa fa-check"></i><b>5.5</b> Clone your repository using RStudio</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="github-rstudio.html"><a href="github-rstudio.html#rstudio-projects-.rproj"><i class="fa fa-check"></i><b>5.5.1</b> RStudio projects (.Rproj)</a></li>
+<li class="chapter" data-level="5.5.2" data-path="github-rstudio.html"><a href="github-rstudio.html#git-rstudio-troubleshooting"><i class="fa fa-check"></i><b>5.5.2</b> Git-RStudio Troubleshooting</a></li>
+<li class="chapter" data-level="5.5.3" data-path="github-rstudio.html"><a href="github-rstudio.html#step-0"><i class="fa fa-check"></i><b>5.5.3</b> Step 0</a></li>
+<li class="chapter" data-level="5.5.4" data-path="github-rstudio.html"><a href="github-rstudio.html#step-1-1"><i class="fa fa-check"></i><b>5.5.4</b> Step 1</a></li>
+<li class="chapter" data-level="5.5.5" data-path="github-rstudio.html"><a href="github-rstudio.html#step-2-1"><i class="fa fa-check"></i><b>5.5.5</b> Step 2</a></li>
+<li class="chapter" data-level="5.5.6" data-path="github-rstudio.html"><a href="github-rstudio.html#step-3"><i class="fa fa-check"></i><b>5.5.6</b> Step 3</a></li>
+<li class="chapter" data-level="5.5.7" data-path="github-rstudio.html"><a href="github-rstudio.html#step-4"><i class="fa fa-check"></i><b>5.5.7</b> Step 4</a></li>
+<li class="chapter" data-level="5.5.8" data-path="github-rstudio.html"><a href="github-rstudio.html#step-5"><i class="fa fa-check"></i><b>5.5.8</b> Step 5</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="github-rstudio.html"><a href="github-rstudio.html#add-files-to-local-repository-and-sync-to-remote-github.com"><i class="fa fa-check"></i><b>5.6</b> Add files to local repository and sync to remote (github.com)</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="github-rstudio.html"><a href="github-rstudio.html#pull"><i class="fa fa-check"></i><b>5.6.1</b> Pull</a></li>
+<li class="chapter" data-level="5.6.2" data-path="github-rstudio.html"><a href="github-rstudio.html#stage"><i class="fa fa-check"></i><b>5.6.2</b> Stage</a></li>
+<li class="chapter" data-level="5.6.3" data-path="github-rstudio.html"><a href="github-rstudio.html#commit"><i class="fa fa-check"></i><b>5.6.3</b> Commit</a></li>
+<li class="chapter" data-level="5.6.4" data-path="github-rstudio.html"><a href="github-rstudio.html#push"><i class="fa fa-check"></i><b>5.6.4</b> Push</a></li>
+<li class="chapter" data-level="5.6.5" data-path="github-rstudio.html"><a href="github-rstudio.html#repeat"><i class="fa fa-check"></i><b>5.6.5</b> Repeat!</a></li>
+<li class="chapter" data-level="5.6.6" data-path="github-rstudio.html"><a href="github-rstudio.html#explore-remote-github"><i class="fa fa-check"></i><b>5.6.6</b> Explore remote Github</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="github-rstudio.html"><a href="github-rstudio.html#create-an-r-script"><i class="fa fa-check"></i><b>5.7</b> Create an R script</a><ul>
+<li class="chapter" data-level="5.7.1" data-path="github-rstudio.html"><a href="github-rstudio.html#committing---how-often-tracking-changes-in-your-files"><i class="fa fa-check"></i><b>5.7.1</b> Committing - how often? Tracking changes in your files</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="github-rstudio.html"><a href="github-rstudio.html#troubleshooting-1"><i class="fa fa-check"></i><b>5.8</b> Troubleshooting</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="viz.html"><a href="viz.html"><i class="fa fa-check"></i><b>6</b> R and RStudio through Data Visualization</a><ul>
+<li class="chapter" data-level="6.1" data-path="viz.html"><a href="viz.html#objectives"><i class="fa fa-check"></i><b>6.1</b> Objectives</a></li>
+<li class="chapter" data-level="6.2" data-path="viz.html"><a href="viz.html#resources"><i class="fa fa-check"></i><b>6.2</b> Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="wrangling.html"><a href="wrangling.html"><i class="fa fa-check"></i><b>7</b> Data wrangling with the tidyverse</a><ul>
+<li class="chapter" data-level="7.1" data-path="overview.html"><a href="overview.html#overview"><i class="fa fa-check"></i><b>7.1</b> Overview</a></li>
+<li class="chapter" data-level="7.2" data-path="wrangling.html"><a href="wrangling.html#resources-1"><i class="fa fa-check"></i><b>7.2</b> Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>8</b> Analysis with RMarkdown</a><ul>
+<li class="chapter" data-level="8.1" data-path="rmarkdown.html"><a href="rmarkdown.html#objectives-1"><i class="fa fa-check"></i><b>8.1</b> Objectives</a></li>
+<li class="chapter" data-level="8.2" data-path="rmarkdown.html"><a href="rmarkdown.html#intro-to-markdown"><i class="fa fa-check"></i><b>8.2</b> Intro to Markdown</a></li>
+<li class="chapter" data-level="8.3" data-path="rmarkdown.html"><a href="rmarkdown.html#intro-to-rmarkdown"><i class="fa fa-check"></i><b>8.3</b> Intro to RMarkdown</a></li>
+<li class="chapter" data-level="8.4" data-path="rmarkdown.html"><a href="rmarkdown.html#more-practice-data-wrangling-data-viz"><i class="fa fa-check"></i><b>8.4</b> More practice data wrangling, data viz</a></li>
+<li class="chapter" data-level="8.5" data-path="rmarkdown.html"><a href="rmarkdown.html#functions-for-loops"><i class="fa fa-check"></i><b>8.5</b> functions, for loops</a></li>
+<li class="chapter" data-level="8.6" data-path="rmarkdown.html"><a href="rmarkdown.html#overview-1"><i class="fa fa-check"></i><b>8.6</b> Overview</a></li>
+<li class="chapter" data-level="8.7" data-path="rmarkdown.html"><a href="rmarkdown.html#update-the-readme"><i class="fa fa-check"></i><b>8.7</b> Update the README</a></li>
+<li class="chapter" data-level="8.8" data-path="rmarkdown.html"><a href="rmarkdown.html#tips"><i class="fa fa-check"></i><b>8.8</b> Tips</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="collaborate.html"><a href="collaborate.html"><i class="fa fa-check"></i><b>9</b> Collaborate with GitHub</a><ul>
+<li class="chapter" data-level="9.1" data-path="collaborate.html"><a href="collaborate.html#objectives-2"><i class="fa fa-check"></i><b>9.1</b> Objectives</a></li>
+<li class="chapter" data-level="9.2" data-path="collaborate.html"><a href="collaborate.html#pull-request-to-your-friends-repo"><i class="fa fa-check"></i><b>9.2</b> pull request to your friend’s repo</a></li>
+<li class="chapter" data-level="9.3" data-path="collaborate.html"><a href="collaborate.html#create-gh-pages-repo-and-give-someone-permission"><i class="fa fa-check"></i><b>9.3</b> create gh-pages repo and give someone permission</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="power.html"><a href="power.html"><i class="fa fa-check"></i><b>10</b> More R poweR</a><ul>
+<li class="chapter" data-level="10.1" data-path="power.html"><a href="power.html#objectives-3"><i class="fa fa-check"></i><b>10.1</b> Objectives</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Collaborative, Reproducible Science</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="orientation" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> R and RStudio Orientation</h1>
+<!---
+To prepare ahead of time:
+--->
+<div id="objectives-resources" class="section level2">
+<h2><span class="header-section-number">4.1</span> Objectives &amp; Resources</h2>
+<ul>
+<li>get oriented to RStudio</li>
+<li>R variables</li>
+<li>R functions (packages?)<br />
+</li>
+<li>help pages</li>
+<li>configure github</li>
+</ul>
+<p>This lesson is a combination of excellent lessons by others (thank you Jenny Bryan and Data Carpentry!) that I have combined and modified for our workshop today. I definitely recommend reading through the original lessons and using them as reference:</p>
+<p><a href="https://stat545-ubc.github.io/">Dr. Jenny Bryan’s lectures from STAT545 at UBC</a></p>
+<ul>
+<li><a href="http://stat545-ubc.github.io/block002_hello-r-workspace-wd-project.html">R basics, workspace and working directory, RStudio projects</a></li>
+<li><a href="http://stat545-ubc.github.io/block006_care-feeding-data.html">Basic care and feeding of data in R</a></li>
+</ul>
+<p><a href="http://www.datacarpentry.org/R-ecology-lesson">Data Carpentry R ecology lesson</a></p>
+<ul>
+<li><a href="http://www.datacarpentry.org/R-ecology-lesson/01-intro-to-r.html">R for data analysis and visualization of Ecological Data/Intro to R</a></li>
+<li><a href="http://www.datacarpentry.org/R-ecology-lesson/02-starting-with-data.html">R for data analysis and visualization of Ecological Data/Starting with data</a></li>
+</ul>
+<p>RStudio has great resources about its IDE (IDE stands for integrated development environment):</p>
+<ul>
+<li><a href="https://www.rstudio.com/resources/webinars/">webinar</a> and</li>
+<li><a href="https://www.rstudio.com/resources/cheatsheets/">cheatsheet</a> for more.</li>
+</ul>
+</div>
+<div id="why-learn-r-with-rstudio" class="section level2">
+<h2><span class="header-section-number">4.2</span> Why learn R with RStudio</h2>
+<p>You are all here today to learn how to code. Coding made me a better scientist because I was able to think more clearly about analyses, and become more efficient in doing so. Data scientists are creating tools that make coding more intuitive for new coders like us, and there is a wealth of awesome instruction and resources available to learn more and get help.</p>
+<p>Here is an analogy to start us off. <strong>If you were a pilot, R is an an airplane.</strong> You can use R to go places! With practice you’ll gain skills and confidence; you can fly further distances and get through tricky situations. You will become an awesome pilot and can fly your plane anywhere.</p>
+<p>And <strong>if R were an airplane, RStudio is the airport</strong>. RStudio provides support! Runways, communication and other services, and just makes your overall life easier. So although you can fly your plane without an airport and we could learn R without RStudio, that’s not what we’re going to do.</p>
+<blockquote>
+<p>We are learning R together with RStudio and its many supporting features.</p>
+</blockquote>
+<p>Something else to start us off is to mention that you are learning a new language here. It’s an ongoing process, it takes time, you’ll make mistakes, it can be frustrating, but it will be overwhelmingly awesome in the long run. We all speak at least one language; it’s a similar process, really. And no matter how fluent you are, you’ll always be learning, you’ll be trying things in new contexts, etc, just like everybody else. And just like any form of communication, there will be miscommunications but hands down we are all better off because of it.</p>
+<p>While language is a familiar concept, programming languages are in a different context from spoken languages, but you will get to know this context with time. For example: you have a concept that there is a first meal of the day, and there is a name for that: in English it’s “breakfast”. So if you’re learning Spanish, you could expect there is a word for this concept of a first meal. (And you’d be right: ‘desayuno’). <strong>We will get you to expect that programming languages also have words (called functions in R) for concepts as well</strong>. You’ll soon expect that there is a way to order values numerically. Or alphabetically. Or search for patterns in text. Or calculate the median. Or reorganize columns to rows. Or subset exactly what you want. We will get you increase your expectations and learn to ask and find what you’re looking for.</p>
+<ul>
+<li>airport</li>
+<li>debugging</li>
+<li>packages</li>
+<li>community</li>
+</ul>
+</div>
+<div id="r-at-the-console-rstudio-goodies" class="section level2">
+<h2><span class="header-section-number">4.3</span> R at the console, RStudio goodies</h2>
+<p>TODO: add screenshots</p>
+<p>Launch RStudio/R.</p>
+<p>Notice the default panes:</p>
+<ul>
+<li>Console (entire left)</li>
+<li>Environment/History (tabbed in upper right)</li>
+<li>Files/Plots/Packages/Help (tabbed in lower right)</li>
+</ul>
+<p>FYI: you can change the default location of the panes, among many other things: <a href="https://support.rstudio.com/hc/en-us/articles/200549016-Customizing-RStudio">Customizing RStudio</a>.</p>
+<p>Go into the Console, where we interact with the live R process.</p>
+<p>Make an assignment and then inspect the object you just created.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">3</span> *<span class="st"> </span><span class="dv">4</span>
+x</code></pre></div>
+<pre><code>## [1] 12</code></pre>
+<p>In my head I hear, e.g., “x gets 12”.</p>
+<p>All R statements where you create objects – “assignments” – have this form: <code>objectName &lt;- value</code>.</p>
+<p>I’ll write it in the command line with a hashtag <code>#</code>, which is the way R comments so it won’t be evaluated.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># objectName &lt;- value</span>
+
+## this is also how you write notes in your code to explain what you are doing.</code></pre></div>
+<p>Object names cannot start with a digit and cannot contain certain other characters such as a comma or a space. You will be wise to adopt a <a href="http://en.wikipedia.org/wiki/Snake_case">convention for demarcating words</a> in names.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># i_use_snake_case</span>
+<span class="co"># other.people.use.periods</span>
+<span class="co"># evenOthersUseCamelCase</span></code></pre></div>
+<p>Make an assignment</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">this_is_a_really_long_name &lt;-<span class="st"> </span><span class="fl">2.5</span></code></pre></div>
+<p>To inspect this variable, instead of typing it, we can press the up arrow key and call your command history, with the most recent commands first. Let’s do that, and then delete the assignment:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">this_is_a_really_long_name</code></pre></div>
+<pre><code>## [1] 2.5</code></pre>
+<p>Another way to inspect this variable is to begin typing <code>this_</code>…and RStudio will automagically have suggested completions for you that you can select by hitting the tab key, then press return.</p>
+<p>And another way to inspect this is by looking at the Environment pane in RStudio.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">this_is_a_really_long_name</code></pre></div>
+<pre><code>## [1] 2.5</code></pre>
+<p>One more:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">science_rocks &lt;-<span class="st"> </span><span class="dv">2</span></code></pre></div>
+<p>Let’s try to inspect:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sciencerocks
+<span class="co"># Error: object &#39;sciencerocks&#39; not found</span></code></pre></div>
+<div id="error-messages-are-your-friends" class="section level3">
+<h3><span class="header-section-number">4.3.1</span> Error messages are your friends</h3>
+<p>Implicit contract with the computer / scripting language: Computer will do tedious computation for you. In return, you will be completely precise in your instructions. Typos matter. Case matters. You’ll need to pay attention to how you type.</p>
+<p>Remember that this is a language, not unsimilar to English! There are times you aren’t understood – it’s going to happen. There are different ways this can happen. Sometimes you’ll get an error. This is like someone saying ‘What?’ or ‘Pardon’? Error messages can also be more useful, like when they say ‘I didn’t understand this specific part of what you said, I was expecting something else’. That is a great type of error message. Error messages are your friend. Google them (copy-and-paste!) to figure out what they mean.</p>
+<img src="img/practicalDev_googleErrorMessage.jpg" width="400"/>
+<p>And also know that there are errors that can creep in more subtly, when you are giving information that is understood, but not in the way you meant. Like if I’m telling a story about tables and you’re picturing where you eat breakfast and I’m talking about data. This can leave me thinking I’ve gotten something across that the listener (or R) interpreted very differently. And as I continue telling my story you get more and more confused… So write clean code and check your work as you go to minimize these circumstances!</p>
+</div>
+<div id="logical-operators-and-expressions" class="section level3">
+<h3><span class="header-section-number">4.3.2</span> Logical operators and expressions</h3>
+<p>A moment about <strong>logical operators and expressions</strong>. We can ask questions about the objects we just made.</p>
+<ul>
+<li><code>==</code> means ‘is equal to’</li>
+<li><code>!=</code> means ‘is not equal to’</li>
+<li><code>&lt;</code> means ` is less than’</li>
+<li><code>&gt;</code> means ` is greater than’</li>
+<li><code>&lt;=</code> means ` is less than or equal to’</li>
+<li><code>&gt;=</code> means ` is greater than or equal to’</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">science_rocks ==<span class="st"> </span><span class="dv">2</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">science_rocks &lt;=<span class="st"> </span><span class="dv">30</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">science_rocks !=<span class="st"> </span><span class="dv">5</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<blockquote>
+<p>Shortcuts You will make lots of assignments and the operator <code>&lt;-</code> is a pain to type. Don’t be lazy and use <code>=</code>, although it would work, because it will just sow confusion later. Instead, utilize <strong>RStudio’s keyboard shortcut: Alt + - (the minus sign)</strong>. Notice that RStudio automagically surrounds <code>&lt;-</code> with spaces, which demonstrates a useful code formatting practice. Code is miserable to read on a good day. Give your eyes a break and use spaces. RStudio offers many handy <a href="https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts">keyboard shortcuts</a>. Also, Alt+Shift+K brings up a keyboard shortcut reference card.</p>
+</blockquote>
+<blockquote>
+<p>My most common shortcuts include command-Z (undo), and combinations of arrow keys in combination with shift/option/command (moving quickly up, down, sideways, with or without highlighting.</p>
+</blockquote>
+<p>When assigning a value to an object, R does not print anything. You can force R to print the value by using parentheses or by typing the object name:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weight_kg &lt;-<span class="st"> </span><span class="dv">55</span>    <span class="co"># doesn&#39;t print anything</span>
+(weight_kg &lt;-<span class="st"> </span><span class="dv">55</span>)  <span class="co"># but putting parenthesis around the call prints the value of `weight_kg`</span></code></pre></div>
+<pre><code>## [1] 55</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weight_kg          <span class="co"># and so does typing the name of the object</span></code></pre></div>
+<pre><code>## [1] 55</code></pre>
+<p>Now that R has <code>weight_kg</code> in memory, we can do arithmetic with it. For instance, we may want to convert this weight into pounds (weight in pounds is 2.2 times the weight in kg):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="fl">2.2</span> *<span class="st"> </span>weight_kg</code></pre></div>
+<pre><code>## [1] 121</code></pre>
+<p>We can also change a variable’s value by assigning it a new one:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weight_kg &lt;-<span class="st"> </span><span class="fl">57.5</span>
+<span class="fl">2.2</span> *<span class="st"> </span>weight_kg</code></pre></div>
+<pre><code>## [1] 126.5</code></pre>
+<p>This means that assigning a value to one variable does not change the values of other variables. For example, let’s store the animal’s weight in pounds in a new variable, <code>weight_lb</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weight_lb &lt;-<span class="st"> </span><span class="fl">2.2</span> *<span class="st"> </span>weight_kg</code></pre></div>
+<p>and then change <code>weight_kg</code> to 100.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weight_kg &lt;-<span class="st"> </span><span class="dv">100</span></code></pre></div>
+<p>What do you think is the current content of the object <code>weight_lb</code>? 126.5 or 220?</p>
+</div>
+</div>
+<div id="r-functions-help-pages" class="section level2">
+<h2><span class="header-section-number">4.4</span> R functions, help pages</h2>
+<p>R has a mind-blowing collection of built-in functions that are accessed like so</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># function_name(argument1 = my_first_argument, argument2 = my_second_argument...)</span></code></pre></div>
+<p>Let’s try using <code>seq()</code> which makes regular sequences of numbers and, while we’re at it, demo more helpful features of RStudio.</p>
+<p>Type <code>se</code> and hit TAB. A pop up shows you possible completions. Specify <code>seq()</code> by typing more to disambiguate or using the up/down arrows to select. Notice the floating tool-tip-type help that pops up, reminding you of a function’s arguments. If you want even more help, press F1 as directed to get the full documentation in the help tab of the lower right pane.</p>
+<p>Type the arguments <code>1, 10</code> and hit return.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>)</code></pre></div>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<p>We could probably infer that the <code>seq()</code> function makes a sequence, but let’s learn for sure. Type (and you can autocomplete) and let’s explore the help page:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?seq 
+<span class="kw">help</span>(seq) <span class="co"># same as ?seq</span>
+<span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">10</span>) <span class="co"># same as seq(1, 10); R assumes by position</span></code></pre></div>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">10</span>, <span class="dt">by =</span> <span class="dv">2</span>)</code></pre></div>
+<pre><code>## [1] 1 3 5 7 9</code></pre>
+<p>The above also demonstrates something about how R resolves function arguments. You can always specify in <code>name = value</code> form. But if you do not, R attempts to resolve by position. So above, it is assumed that we want a sequence <code>from = 1</code> that goes <code>to = 10</code>. Since we didn’t specify step size, the default value of <code>by</code> in the function definition is used, which ends up being 1 in this case. For functions I call often, I might use this resolve by position for the first argument or maybe the first two. After that, I always use <code>name = value</code>.</p>
+<p>The help page tells the name of the package in the top left, and broken down into sections:</p>
+<ul>
+<li>Description: An extended description of what the function does.</li>
+<li>Usage: The arguments of the function and their default values.</li>
+<li>Arguments: An explanation of the data each argument is expecting.</li>
+<li>Details: Any important details to be aware of.</li>
+<li>Value: The data the function returns.</li>
+<li>See Also: Any related functions you might find useful.</li>
+<li>Examples: Some examples for how to use the function.</li>
+</ul>
+<p>The examples can be copy-pasted into the console for you to understand what’s going on. Remember we were talking about expecting there to be a function for something you want to do? Let’s try it. <code>min()</code>, <code>max()</code>, <code>log()</code>…</p>
+<div id="your-turn" class="section level3">
+<h3><span class="header-section-number">4.4.1</span> Your turn</h3>
+<blockquote>
+<p>Exercise: Talk to your neighbor(s) and look up the help file for a function you know. Try the examples, see if you learn anything new. (need ideas? <code>?getwd()</code>, <code>?plot()</code>, <code>?mean()</code>, <code>?log()</code>).</p>
+</blockquote>
+<p>Help for when you only sort of remember the function name: double-questionmark:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">??install </code></pre></div>
+<p>Not all functions have (or require) arguments:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">date</span>()</code></pre></div>
+<pre><code>## [1] &quot;Wed Sep  6 16:26:21 2017&quot;</code></pre>
+<p>Now look at your workspace – in the upper right pane. The workspace is where user-defined objects accumulate. You can also get a listing of these objects with commands:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">objects</span>()</code></pre></div>
+<pre><code>## [1] &quot;science_rocks&quot;              &quot;this_is_a_really_long_name&quot;
+## [3] &quot;weight_kg&quot;                  &quot;weight_lb&quot;                 
+## [5] &quot;x&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ls</span>()</code></pre></div>
+<pre><code>## [1] &quot;science_rocks&quot;              &quot;this_is_a_really_long_name&quot;
+## [3] &quot;weight_kg&quot;                  &quot;weight_lb&quot;                 
+## [5] &quot;x&quot;</code></pre>
+<p>If you want to remove the object named <code>weight_kg</code>, you can do this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(weight_kg)</code></pre></div>
+<p>To remove everything:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>())</code></pre></div>
+<p>or click the broom in RStudio’s Environment pane.</p>
+</div>
+<div id="your-turn-1" class="section level3">
+<h3><span class="header-section-number">4.4.2</span> Your turn</h3>
+<blockquote>
+<p>Exercise: Clear your workspace, then create a few new variables. Create a variable that is the mean of a sequence of 1-20. What’s a good name for your variable? Does it matter what your ‘by’ argument is? Why?</p>
+</blockquote>
+</div>
+</div>
+<div id="setup-git-github" class="section level2">
+<h2><span class="header-section-number">4.5</span> Setup Git &amp; GitHub</h2>
+<p>We’re going to switch gears from R for a moment and set up Git and GitHub, which we will be using along with R and RStudio for the rest of the workshop. This set up is a one-time thing! You will only have to do this once per computer. We’ll walk through this together.</p>
+<ol style="list-style-type: decimal">
+<li><p>Create <strong>Github</strong> account at <a href="http://github.com" class="uri">http://github.com</a>, if you don’t already have one. For username, I recommend all lower-case letters, short as you can. I recommend using your <em>.edu email</em>, since you can request free private repositories via <a href="https://education.github.com/">GitHub Education</a> discount.</p></li>
+<li><p>Configure <strong>git</strong> with global commands, which means it will apply ‘globally’ to all files on your computer, rather than to a specific folder. Open the Git Bash program (Windows) or the Terminal (Mac) and type the following:</p>
+<pre><code># display your version of git
+git --version
+
+# replace USER with your Github user account
+git config –-global user.name USER
+
+# replace NAME@EMAIL.EDU with the email you used to register with Github
+git config –-global user.email NAME@EMAIL.EDU
+
+# list your config to confirm user.* variables set
+git config --list</code></pre></li>
+</ol>
+<p>Not only have you just set up git, you have just used the command line. We don’t have time to learn much of the command line today, but you’re still able to use it following explicit instructions. There are great resources for learning the command line, check out <a href="http://remi-daigle.github.io/2016-04-15-UCSB/shell/">this tutorial from SWC at UCSB</a>.</p>
+<!--- remove this stuff and instead set up Git/GitHub.
+## Working directory
+
+Any process running on your computer has a notion of its "working directory". In R, this is where R will look, by default, for files you ask it to load. It is also where, by default, any files you write to disk will go. You have a sense of this because whenever you go to save a Word doc or download, it asks where. You often have to navigate to put it exactly where you want it. There are a few ways to check your working directory in RStudio.
+
+You can explicitly check your working directory with:
+
+```r
+getwd()
+```
+It is also displayed at the top of the RStudio console.
+
+As a beginning R user, it's OK let your home directory or any other weird directory on your computer be R's working directory. _Very soon_, I urge you to evolve to the next level, where you organize your analytical projects into directories and, when working on Project A, set R's working directory to Project A's directory.
+
+You can set R's working directory at the command line like so. You could also do this in a script.
+
+
+```r
+setwd("~/myCoolProject")
+```
+
+But there's a better way. A way that also puts you on the path to managing your R work like an expert.
+
+## RStudio projects
+
+Keeping all the files associated with a project organized together -- input data, R scripts, analytical results, figures -- is such a wise and common practice that RStudio has built-in support for this via its _projects_. More here: [Using Projects](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects).
+
+Let's make one to use for the rest of today. 
+
+> Do this: File > New Project ... New Directory > Empty Project. The directory name you choose here will be the project name. Call it whatever you want (or follow me for convenience).
+
+I created a directory and, therefore RStudio project, called `data-carpentry` in a folder called `tmp` in my home directory, FYI.
+What do you notice about your RStudio pane? Look in the right corner--'data-carpentry'.
+
+Now check that the "home" directory for your project is the working directory of our current R process:
+
+
+```r
+getwd()
+# "/Users/julialowndes/tmp/data-carpentry" 
+```
+
+**About paths**: The above is the absolute path: it starts at the `/Users` root and is specific to my computer (`julialowndes`) and where I saved it. So if I did an analysis with this filepath, it wouldn't work on your computer before you altered the filepath. 
+
+But with an RStudio project, your paths within this project can be relative, which means they *start* in the `data-carpentry` folder, wherever it is. So we can just use filepaths within our project from a relative place, and it can work on your computer or mine, without worrying about the absolute paths. (Analogy: I can give you directions from this building to the pub, since we're all here in this shared space already. I can't give you all directions from your home to this building and then the pub, because you all live in different places. But I can give directions relative to this building). 
+--->
+<div id="you-try" class="section level3">
+<h3><span class="header-section-number">4.5.1</span> You try</h3>
+<p>Ask for help and recognize useful answers TODO</p>
+<!---if time before break: set up git --->
+</div>
+</div>
+<div id="troubleshooting" class="section level2">
+<h2><span class="header-section-number">4.6</span> Troubleshooting</h2>
+<ul>
+<li>the <code>+</code> because you didn’t complete a line. Get out of it with esc</li>
+<li>updating R, RStudio (right-click on ‘open’, replace, etc)</li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="motivation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="github-rstudio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

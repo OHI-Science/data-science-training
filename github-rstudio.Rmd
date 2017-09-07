@@ -1,9 +1,0 @@
-# GitHub-RStudio Workflow and R Scripts {#github}
-
-Philosophy: gh repo and Rproject
-
-- Intro to GitHub.com
-- create GH repo
-- clone, and create an Rproject
-- scripts (this is the flight plan, but you still need to tell the plane where to go)
-- practice in R, practice gh

@@ -1,0 +1,44 @@
+# R and RStudio through Data Visualization {#viz}
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(htmltools)
+```
+
+**In development.** 
+
+## Objectives & Resources
+
+- learn ggplot2 with `mpg` dataframe
+- practice writing script
+
+
+Why do we start with data viz? Not only is data viz a big part of analysis, it’s a way to SEE your progress as you learn to code.
+
+- Conceptual and building, cheatsheet images
+
+- http://r4ds.had.co.nz/data-visualisation.html
+- https://pdfs.semanticscholar.org/d779/6f85dabccd18673f382c100fc06f55e8b501.pdf
+
+TODO: Draw heavily from http://r4ds.had.co.nz/data-visualisation.html; 
+
+## Install our first package: `ggplot2`
+
+## First Steps
+
+## Aesthetic mappings
+
+### Your turn
+
+## Common problems
+
+...
+
+## Coordinate systems
+
+### Your turn
+
+## The Layered Grammar of Graphics
+
+## Troubleshooting
+

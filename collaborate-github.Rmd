@@ -1,0 +1,13 @@
+# Collaborate with GitHub {#collaborate}
+
+## Objectives
+
+- contribute to a repo that you don't own
+- give permission to a collaborator
+- practice more ggplot2
+
+## pull request to your friend's repo
+
+## create gh-pages repo and give someone permission
+
+- Rmd analysis

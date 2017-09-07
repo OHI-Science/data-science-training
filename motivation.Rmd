@@ -23,6 +23,26 @@ You are all welcome here and encouraged to help each other.
 
 ## Mindset
 
+
+New but will become increasingly familiar. We’ll start you off with some momentum, like if you were going to learn to ride a bike or ...
+
+Expect that there is a way to do what you want to do
+
 - stop confounding data science with your science. Expect that someone has had your problem before or done what you want to do. 
 
+
+<!---If you plan to program mostly in one particular language on a single platform (such as Mac or Windows), you might try an integrated development environment (IDE). IDEs integrate text editing, syntax highlighting, version control, help, build tools, and debugging in one interface, simplifying development. 
+
+http://r-bio.github.io/intro-git-rstudio/--->
+
+## Data science is a discipline
+
+It has theories, methods, and tools. 
+
+Tidyverse and Hadley’s graphic. Tidy data.
+
+Going to teach you how to think differently, get into some of the theory but in the context of hands-on work.
+
+
+See also section in toolbox-training
 

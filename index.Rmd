@@ -31,4 +31,20 @@ All open source.
 
 This is going to be fun. Learning to code is empowering... This 2-day workshop will leach what we use for the OHI, as described in our nature paper. It will teach you skills and a workflows that you can use in any research and analysis.
 
+Make sure you read \@ref(overview). 
+
+Suggested breakdown for a 2-day workshop: 
+
+|time       |      Day 1|      Day 2|
+|:----------|----------:|----------:|
+|9-10:30    |  Motivation, R and RStudio|  more analysis with RMarkdown|
+|break      |  | |
+|11-12:30   | GitHub, scripting in R|  more analysis with RMarkdown|
+|lunch      |  ||
+|13:30-15:00 |  analysis: visualization| collaboration with GitHub|
+|break      |  |  |
+|15:30-17:00 |  analysis: data wrangling|  More R poweR|
+
+
+
 ## TODO License 
