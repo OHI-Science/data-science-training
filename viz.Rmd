@@ -1,6 +1,6 @@
 # R and RStudio through Data Visualization {#viz}
 
-```{r setup, include=FALSE}
+```{r viz ops, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(htmltools)
 ```
@@ -19,6 +19,12 @@ Why do we start with data viz? Not only is data viz a big part of analysis, itâ€
 
 - http://r4ds.had.co.nz/data-visualisation.html
 - https://pdfs.semanticscholar.org/d779/6f85dabccd18673f382c100fc06f55e8b501.pdf
+
+- [ggplot2-cheatsheet-2.0.pdf](../cheatsheets/ggplot2-cheatsheet-2.0.pdf)
+- [Interactive Plots and Maps - Environmental Informatics](http://ucsb-bren.github.io/env-info/wk06_widgets.html)
+- [Graphs with ggplot2 - Cookbook for R](http://www.cookbook-r.com/Graphs/#graphs-with-ggplot2)
+- [ggplot2 Essentials - STHDA](http://www.sthda.com/english/wiki/ggplot2-essentials)
+
 
 TODO: Draw heavily from http://r4ds.had.co.nz/data-visualisation.html; 
 
@@ -39,6 +45,8 @@ TODO: Draw heavily from http://r4ds.had.co.nz/data-visualisation.html;
 ### Your turn
 
 ## The Layered Grammar of Graphics
+
+## Plotly?
 
 ## Troubleshooting
 

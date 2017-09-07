@@ -9,14 +9,25 @@
 - practice 
 - what's next
 
-What's next??
-
 You'll soon have questions that are outside the scope of this workshop, how do you find answers?
 
 
-TODO: change this from base-R
+## Importing data
+
+TODO
+
+Remember you'll use `install.packages("package-name-in-quotes")` and then `library(package-name)`, and then you can explore the help or vignettes. And also, of course, Google to see how to use them!
+
+- `readr` to read in .csv files
+- `readxl` to read in Excel files
+- `stringr` to work with strings
+- `lubridate` to work with dates
+
+
 
 ## Subsetting data
+
+TODO: change this from base-R
 
 You will want to isolate bits of your data; maybe you want to just look at a single country or a few years. R calls this subsetting. There are several ways to do this. We'll go through a few options in base R so that you're familiar with them, and know how to read them. But then we'll move on to a new, better, intuitive, and game changing way with the `dplyr` package afterwards.
 

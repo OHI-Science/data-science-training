@@ -1,5 +1,11 @@
 # Analysis with RMarkdown {#rmarkdown}
 
+```{r rmd ops, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(htmltools)
+```
+
+
 ## Objectives & Resources
 
 - intro to Markdown
@@ -7,40 +13,110 @@
 - more practice with GitHub
 - more practice with tidyverse
 
+![](img/practicalDev_changingstuff.jpg)
+
+See [Mastering Markdown · GitHub Guides](https://guides.github.com/features/mastering-markdown/) and add some more personalized content to the README of your own, like a bulleted list or blockquote.
+For on the fly rendering, the [atom](https://atom.io/) text editor is good.
+
+
 ## Intro to Markdown
 
-- knit, preview
-- push to GitHub
 
-## Intro to RMarkdown
+### from GitHub.com
+
+Let's learn markdown by editing the `README.md` on github.com for convenience. A README.md file can be added to every folder in a repository, and they are automatically displayed when the repository is opened on github.com  
+
+The `README.md` is in **markdown**, simple syntax for conversion to HTML. `.md` is a kind of text file, so you only need a text editor to read it. If you were editing this on your computer, you could do this right in RStudio, which has a built-in text editor. (You could also do it in another text editor program, but RStudio is convenient). Copy-paste the following into your `README.md`: 
+  
+```
+# my-project
+
+This project is based on [Collaborative, Reproducible Science training ](https://ohi-science.org/data-science-training/).
+
+## Introduction
+
+Markdown syntax changes plain text to **bold** and *italics*:
+
+1. **Git**
+1. **Github**
+1. *Markdown*
+1. *Rmarkdown*
+
+## Conclusion
+
+![](https://octodex.github.com/images/labtocat.png)
+
+```
+
+Notice the syntax for:
 
 
+- **headers** get rendered at multiple levels: `#`, `##`
+- **link**: `[](http://...)`
+- **image**: `![](http://...)` — note the `!`
+- *italics*: `*word*` 
+- **bold**: `**word**`
+- **numbered list** gets automatically sequenced: `1.`, `1.`
+
+### from RStudio
+
+Let's go back to RStudio. Pull so that you have the most recent version of your README locally. Let's open it and have a look. Documentation is a really important part of coding, so let's look at the README. If we look at GitHub.com, you can see that the README is displayed nicely like online. Let's add some more description about what our GitHub repository is for. 
+    
+Now click on the Preview button to see the markdown rendered as HTML.
+
+Let's change the image to the plot we made yesterday. 
+
+`![](my_plot.png)`
+    
+
+There are some good [cheatsheets](https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet) to get you started, and here is one built into RStudio:
+<br />
+<br />
+
+![](img/md_cheatsheet.png)
+
+knit with the button; also `knitr`
+
+### Your turn
+
+Update the README, push to GitHub
+
+
+
+## RMarkdown from RStudio
+
+Back in RStudio, let's create a new Rmarkdown file, which allows us to weave markdown text with chunks of R code to be evaluated and output content like tables and plots.
+
+File -> New File -> Rmarkdown... -> Document of output format HTML, OK.
+
+`r img(src='img/rstudio_new-rmd-doc-html.png', width=300)`
+
+You can give it a Title of "My Project". After you click OK, most importantly File -> Save as `index` (which will get named with the filename extension `index.Rmd`).
+
+Some initial text is already provided for you. Let's go ahead and "Knit HTML".
+
+Notice how the markdown is rendered similar to as before + **R code chunks** are surrounded by 3 backticks and `{r LABEL}`. These are evaluated and return the output text in the case of `summary(cars)` and the output plot in the case of `plot(pressure)`.
+
+Notice how the code `plot(pressure)` is not shown in the HTML output because of the R code chunk option `echo=FALSE`.
+
+**Before we continue exploring Rmarkdown**, let's sync this the .rmd and .html to github.com. Enter a message like "added index" and click on "Commit and Sync gh-pages". This will update <https://github.com/USER/my-project>, and now you can also see your project website with a default `index.html` viewable at <http://USER.github.io/my-project>
+
+### Your turn
+
+## Resources
+
+Were you hoping for an RStudio Cheatsheet? Here it is: 
+
+- [rmarkdown-cheatsheet.pdf](http://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf)
+- <http://rmarkdown.rstudio.com>
+- [knitr in a knutshell - Karl Broman](http://kbroman.org/knitr_knutshell/)
+
+save, commit, push
 
 ## More practice data wrangling, data viz
 
-## functions, for loops
+let's do it from our RMarkdown now
 
-The purpose of this chapter is to build off the basic workflow for calculating OHI scores and do a few more advanced things. This is a a 2-hour hands-on training: you will be following along on your own computer and working with a copy of the demonstration repository that is used throughout the this chapter.
-
-## Overview
-
-•	Using GitHub to watch files change, look for mistakes
-•	Documentation with Markdown
-•	RMarkdown
-
-## Update the README
-
-Documentation is a really important part of coding, so let's look at the README. If we look at GitHub.com, you can see that the README is displayed nicely like online. Let's add some more description about what our GitHub repositoryis for. 
-
-And if there's time: notice that there are a few `#`s that make the plain text into a bold header on GitHub.com. This is called Markdown. There are a few syntax rules for Markdown; we can look at them by going to the help menu. The one I want us to try out here if there's time is adding an image to it as well. Let's add this: 
-
-`![](my_plot.png)`
-
-...and then commit and push this to GitHub.com and have a look!
-
-
-## Tips
-
-- `source()` your file to see if there are any typos that you've missed 
+### Your turn
 
 ## Troubleshooting

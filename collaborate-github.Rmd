@@ -6,6 +6,9 @@
 - give permission to a collaborator
 - practice more ggplot2
 
+1. add their neighbor as a collaborator to their repo
+1. practice more; make changes to their repo, and to their neighbor's. 
+
 ## pull request to your friend's repo
 
 ## create gh-pages repo and give someone permission

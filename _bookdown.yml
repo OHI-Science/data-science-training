@@ -10,7 +10,7 @@ rmd_files: [
   "github-rstudio-workflow.Rmd",
   "viz.Rmd", 
   "data-wrangling.Rmd",
-  "analysis-rmarkdown.Rmd", ## come back here for first pass
+  "analysis-rmarkdown.Rmd",
   "collaborate-github.Rmd",
   "more-r-power.Rmd"]
 delete_merged_file: true

@@ -1,6 +1,6 @@
 # Data wrangling with the tidyverse {#wrangling} 
 
-```{r setup, include=FALSE}
+```{r wrangling ops, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(htmltools)
 ```
@@ -34,25 +34,7 @@ Right now we are going to use `dplyr` to wrangle this tidyish data set (the tran
 
 ![](img/r4ds_data-science.png)
 
-### setup
-
-We'll do this in a new R script in the `software-carpentry` folder we created this morning. 
-
-**Here's what to do:**
-
-1. Open RStudio
-1. Make sure you're in your `software-carpentry` repo (and if not, get there)
-1. New File > R Script
-1. Save as `gapminder-wrangle.r`
-
-Today's materials are again borrowing from some excellent sources, including:
-
-- Jenny Bryan's lectures from STAT545 at UBC: [Introduction to dplyr](http://stat545.com/block009_dplyr-intro.html)
-- Hadley Wickham and Garrett Grolemund's [R for Data Science](http://r4ds.had.co.nz/)
-- Software Carpentry's R for reproducible scientific analysis materials: [Dataframe manipulation with dplyr](http://swcarpentry.github.io/r-novice-gapminder/13-dplyr.html)
-- First developed for [Software Carpentry at UCSB](http://remi-daigle.github.io/2016-04-15-UCSB/dplyr/)
-
-## `dplyr` overview
+### `dplyr` overview
 
 There are five `dplyr` functions that you will use to do the vast majority of data manipulations:
 
@@ -77,6 +59,26 @@ All verbs work similarly:
 3. The result is a new data frame.
 
 Together these properties make it easy to chain together multiple simple steps to achieve a complex result.
+
+
+### setup
+
+We'll do this in a new R script in the `software-carpentry` folder we created this morning. 
+
+**Here's what to do:**
+
+1. Open RStudio
+1. Make sure you're in your `software-carpentry` repo (and if not, get there)
+1. New File > R Script
+1. Save as `gapminder-wrangle.r`
+
+Today's materials are again borrowing from some excellent sources, including:
+
+- Jenny Bryan's lectures from STAT545 at UBC: [Introduction to dplyr](http://stat545.com/block009_dplyr-intro.html)
+- Hadley Wickham and Garrett Grolemund's [R for Data Science](http://r4ds.had.co.nz/)
+- Software Carpentry's R for reproducible scientific analysis materials: [Dataframe manipulation with dplyr](http://swcarpentry.github.io/r-novice-gapminder/13-dplyr.html)
+- First developed for [Software Carpentry at UCSB](http://remi-daigle.github.io/2016-04-15-UCSB/dplyr/)
+
 
 ### install `dplyr` // TODO:: `tidyverse`
 
@@ -253,7 +255,7 @@ gapminder %>%
 ```
 Think: "Take `gapminder`, then select the variables year and lifeExp, then show the first 4 rows."
 
-## Revel in the convenience
+### Revel in the convenience
 Let's do a little analysis where we calculate the mean gdp for Cambodia. 
 
 Here's the gapminder data for Cambodia, but only certain variables:
@@ -297,7 +299,7 @@ gapminder %>%
   mutate(gdp = pop * gdpPercap)
 ```
 
-## `group_by` and `summarize`
+## `group_by` and `summarize` to operate on groups
 Great! And now we want to calculate the mean gdp across all years (Let's pretend that's a good idea statistically) 
 
 Visually, we are doing this (thanks RStudio for your [cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)): 
@@ -361,7 +363,7 @@ gapminder %>%
   arrange(desc(year))
 ```
 
-## TODO: variable classes?
+### TODO: variable classes?
 
 Let's explore a numeric variable: life expectancy.
 ```{r, eval=FALSE}
@@ -551,7 +553,7 @@ gap_long %>%
     summarize(means = mean(obs_values))
 ```
 
-## From long to intermediate format with spread()
+## From long to intermediate format with `spread()`
 
 ![](img/rstudio-cheatsheet-reshaping-data-spread.png)
 
@@ -616,7 +618,7 @@ gap_wide_new <- gap_long %>%
 str(gap_wide_new)
 ```
 
-## clean up and save your .r script
+### clean up and save your .r script
 
 Spend some time cleaning up and saving `gapminder-wrangle.r`
 Restart R. In RStudio, use *Session > Restart R*. Otherwise, quit R with `q()` and re-launch it.
@@ -753,20 +755,12 @@ gap_wide_new <- gap_long %>%
 str(gap_wide_new)
 ```
 
-## Other tidyr awesomeness 
+### Other tidyr awesomeness 
 
 - `complete()`
 
 ------
 
-## Importing data
-
-We don't have time to discuss importing data, but here are some packages by Hadley Wickham to explore and use. Remember you'll use `install.packages("package-name-in-quotes")` and then `library(package-name)`, and then you can explore the help or vignettes. And also, of course, Google to see how to use them!
-
-- `readr` to read in .csv files
-- `readxl` to read in Excel files
-- `stringr` to work with strings
-- `lubridate` to work with dates
 
 ## Other links
 

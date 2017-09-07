@@ -1,6 +1,6 @@
 # GitHub-RStudio Workflow and R Scripts {#github-rstudio}
 
-```{r setup, include=FALSE}
+```{r gh ops, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(htmltools)
 ```
@@ -292,6 +292,7 @@ The files you added should be on github.com:
 
 ## Create an R script
 
+- `source()` your file to see if there are any typos that you've missed 
 
 ### Committing - how often? Tracking changes in your files
 Whenever you make changes to the files in Github, you will walk through the Pull -> Stage -> Commit -> Push steps.
