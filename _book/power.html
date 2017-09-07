@@ -234,7 +234,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="10.1" data-path="power.html"><a href="power.html#objectives-1"><i class="fa fa-check"></i><b>10.1</b> Objectives</a></li>
 <li class="chapter" data-level="10.2" data-path="power.html"><a href="power.html#importing-data"><i class="fa fa-check"></i><b>10.2</b> Importing data</a></li>
 <li class="chapter" data-level="10.3" data-path="power.html"><a href="power.html#subsetting-data"><i class="fa fa-check"></i><b>10.3</b> Subsetting data</a><ul>
-<li class="chapter" data-level="10.3.1" data-path="power.html"><a href="power.html#subsetting-with-base-rows-columns-notatation"><i class="fa fa-check"></i><b>10.3.1</b> subsetting with base <code>[rows, columns]</code> notatation</a></li>
+<li class="chapter" data-level="10.3.1" data-path="power.html"><a href="power.html#subsetting-with-base-rows-columns-notation"><i class="fa fa-check"></i><b>10.3.1</b> subsetting with base <code>[rows, columns]</code> notation</a></li>
 <li class="chapter" data-level="10.3.2" data-path="power.html"><a href="power.html#subsetting-with-base-subset-function"><i class="fa fa-check"></i><b>10.3.2</b> subsetting with base <code>subset()</code> function</a></li>
 </ul></li>
 <li class="chapter" data-level="10.4" data-path="power.html"><a href="power.html#repeating-operations-with-for-loops"><i class="fa fa-check"></i><b>10.4</b> Repeating operations with for loops</a></li>
@@ -287,8 +287,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>TODO: change this from base-R</p>
 <p>You will want to isolate bits of your data; maybe you want to just look at a single country or a few years. R calls this subsetting. There are several ways to do this. We’ll go through a few options in base R so that you’re familiar with them, and know how to read them. But then we’ll move on to a new, better, intuitive, and game changing way with the <code>dplyr</code> package afterwards.</p>
 <p>Remember your logical expressions from this morning? We’ll use <code>==</code> here.</p>
-<div id="subsetting-with-base-rows-columns-notatation" class="section level3">
-<h3><span class="header-section-number">10.3.1</span> subsetting with base <code>[rows, columns]</code> notatation</h3>
+<div id="subsetting-with-base-rows-columns-notation" class="section level3">
+<h3><span class="header-section-number">10.3.1</span> subsetting with base <code>[rows, columns]</code> notation</h3>
 <p>This notation is something you’ll see a lot in base R. the brackets <code>[ ]</code> allow you to extract parts of an object. Within the brackets, the comma separates rows from columns.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## subset numeric data
 gapminder[gapminder$lifeExp &lt;<span class="dv">32</span>, ] <span class="co"># don&#39;t forget this comma! </span>

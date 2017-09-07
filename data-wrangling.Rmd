@@ -416,7 +416,7 @@ In the 'long' format, you usually have 1 column for the observed variable and th
 
 For the 'wide' format each row is often a site/subject/patient and you have multiple observation variables containing the same type of data. These can be either repeated observations over time, or observation of multiple variables (or a mix of both). Data input may be simpler or some other applications may prefer the 'wide' format. However, many of `R`'s functions have been designed assuming you have 'long' format data. 
 
-These data formats mainly affect readability. For humans, the wide format is often more intuitive since we can often see more of the data on the screen due to it's shape. However, the long format is more machine readable and is closer to the formating of databases. The ID variables in our dataframes are similar to the fields in a database and observed variables are like the database values.
+These data formats mainly affect readability. For humans, the wide format is often more intuitive since we can often see more of the data on the screen due to it's shape. However, the long format is more machine readable and is closer to the formatting of databases. The ID variables in our dataframes are similar to the fields in a database and observed variables are like the database values.
 
 > Question: Is gapminder a purely long, purely wide, or some intermediate format?
 
@@ -602,7 +602,7 @@ all.equal(gap_normal,gapminder)
 str(gap_normal)
 str(gapminder)
 ```
-Mine shows a slight difference because one is a data.frame and one is a tbl_df, which is similar to a data.frame. We won't get into this difference now, I fm feeling good atout these data sets! We've gone from the longest format back to the intermediate and we didn't introduce any errors in our code.
+Mine shows a slight difference because one is a data.frame and one is a tbl_df, which is similar to a data.frame. We won't get into this difference now, I'm feeling good about these data sets! We've gone from the longest format back to the intermediate and we didn't introduce any errors in our code.
 
 > Exercise: convert gap_long all the way back to gap_wide. Hint: you'll need to create appropriate labels for all our new variables (time*metric combinations) with `tidyr::unite()`. 
 

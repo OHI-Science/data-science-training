@@ -53,7 +53,7 @@ Here's what we'll do:
 ![](img/MessySaves.png)
 <br />
 <br />
-When you open your respository, you only see the most recent version.  But, it easy to compare versions, and you can easily revert to previous versions. 
+When you open your repository, you only see the most recent version.  But, it easy to compare versions, and you can easily revert to previous versions. 
 <br />
 <br />
 2. Improves collaborative efforts.  Different researchers can work on the same files at the same time!

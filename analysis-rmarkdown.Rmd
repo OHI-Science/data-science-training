@@ -85,9 +85,9 @@ Update the README, push to GitHub
 
 ## RMarkdown from RStudio
 
-Back in RStudio, let's create a new Rmarkdown file, which allows us to weave markdown text with chunks of R code to be evaluated and output content like tables and plots.
+Back in RStudio, let's create a new RMarkdown file, which allows us to weave markdown text with chunks of R code to be evaluated and output content like tables and plots.
 
-File -> New File -> Rmarkdown... -> Document of output format HTML, OK.
+File -> New File -> RMarkdown... -> Document of output format HTML, OK.
 
 `r img(src='img/rstudio_new-rmd-doc-html.png', width=300)`
 

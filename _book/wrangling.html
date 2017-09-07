@@ -234,7 +234,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="10.1" data-path="power.html"><a href="power.html#objectives-1"><i class="fa fa-check"></i><b>10.1</b> Objectives</a></li>
 <li class="chapter" data-level="10.2" data-path="power.html"><a href="power.html#importing-data"><i class="fa fa-check"></i><b>10.2</b> Importing data</a></li>
 <li class="chapter" data-level="10.3" data-path="power.html"><a href="power.html#subsetting-data"><i class="fa fa-check"></i><b>10.3</b> Subsetting data</a><ul>
-<li class="chapter" data-level="10.3.1" data-path="power.html"><a href="power.html#subsetting-with-base-rows-columns-notatation"><i class="fa fa-check"></i><b>10.3.1</b> subsetting with base <code>[rows, columns]</code> notatation</a></li>
+<li class="chapter" data-level="10.3.1" data-path="power.html"><a href="power.html#subsetting-with-base-rows-columns-notation"><i class="fa fa-check"></i><b>10.3.1</b> subsetting with base <code>[rows, columns]</code> notation</a></li>
 <li class="chapter" data-level="10.3.2" data-path="power.html"><a href="power.html#subsetting-with-base-subset-function"><i class="fa fa-check"></i><b>10.3.2</b> subsetting with base <code>subset()</code> function</a></li>
 </ul></li>
 <li class="chapter" data-level="10.4" data-path="power.html"><a href="power.html#repeating-operations-with-for-loops"><i class="fa fa-check"></i><b>10.4</b> Repeating operations with for loops</a></li>
@@ -572,7 +572,7 @@ gapminder %&gt;%
 </ul>
 <p>In the ‘long’ format, you usually have 1 column for the observed variable and the other columns are ID variables.</p>
 <p>For the ‘wide’ format each row is often a site/subject/patient and you have multiple observation variables containing the same type of data. These can be either repeated observations over time, or observation of multiple variables (or a mix of both). Data input may be simpler or some other applications may prefer the ‘wide’ format. However, many of <code>R</code>‘s functions have been designed assuming you have ’long’ format data.</p>
-<p>These data formats mainly affect readability. For humans, the wide format is often more intuitive since we can often see more of the data on the screen due to it’s shape. However, the long format is more machine readable and is closer to the formating of databases. The ID variables in our dataframes are similar to the fields in a database and observed variables are like the database values.</p>
+<p>These data formats mainly affect readability. For humans, the wide format is often more intuitive since we can often see more of the data on the screen due to it’s shape. However, the long format is more machine readable and is closer to the formatting of databases. The ID variables in our dataframes are similar to the fields in a database and observed variables are like the database values.</p>
 <blockquote>
 <p>Question: Is gapminder a purely long, purely wide, or some intermediate format?</p>
 </blockquote>
@@ -706,7 +706,7 @@ gap_normal &lt;-<span class="st"> </span>gap_normal[,<span class="kw">names</spa
 <span class="kw">all.equal</span>(gap_normal,gapminder)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(gap_normal)
 <span class="kw">str</span>(gapminder)</code></pre></div>
-<p>Mine shows a slight difference because one is a data.frame and one is a tbl_df, which is similar to a data.frame. We won’t get into this difference now, I fm feeling good atout these data sets! We’ve gone from the longest format back to the intermediate and we didn’t introduce any errors in our code.</p>
+<p>Mine shows a slight difference because one is a data.frame and one is a tbl_df, which is similar to a data.frame. We won’t get into this difference now, I’m feeling good about these data sets! We’ve gone from the longest format back to the intermediate and we didn’t introduce any errors in our code.</p>
 <blockquote>
 <p>Exercise: convert gap_long all the way back to gap_wide. Hint: you’ll need to create appropriate labels for all our new variables (time*metric combinations) with <code>tidyr::unite()</code>.</p>
 </blockquote>

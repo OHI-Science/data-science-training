@@ -33,7 +33,7 @@ You will want to isolate bits of your data; maybe you want to just look at a sin
 
 Remember your logical expressions from this morning? We'll use `==` here. 
 
-### subsetting with base `[rows, columns]` notatation 
+### subsetting with base `[rows, columns]` notation 
 This notation is something you'll see a lot in base R. the brackets `[ ]` allow you to extract parts of an object. Within the brackets, the comma separates rows from columns. 
 ```{r, eval=FALSE}
 ## subset numeric data
