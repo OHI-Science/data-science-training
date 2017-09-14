@@ -6,13 +6,13 @@ rmd_files: [
   "index.Rmd", 
   "overview.Rmd",
   "motivation.Rmd",
-  "r-rstudio-orientation.Rmd",
+  "r-rstudio-orientation.Rmd", ## http://socviz.co/
   "github-rstudio-workflow.Rmd",
   "viz.Rmd", 
   "data-wrangling.Rmd",
   "analysis-rmarkdown.Rmd",
   "collaborate-github.Rmd",
-  "more-r-power.Rmd"]
+  "more-r-power.Rmd"] # let's talk about filenames
 delete_merged_file: true
 
 
