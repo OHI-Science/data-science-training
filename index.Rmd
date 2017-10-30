@@ -1,5 +1,5 @@
 --- 
-title: "Collaborative, Reproducible Science"
+title: "Introduction to Open Data Science"
 author: "Ocean Health Index Team"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -12,26 +12,15 @@ github-repo: ohi-science/data-science-training
 description: "This is official data science training to for the Ocean Health Index. "
 ---
 
-# Home {#home}
+# Welcome {#welcome}
 
-**Welcome.**   **This training program is under active development and testing** 
+**Welcome.**   **This training program is under active development and testing**.
 
-We are going to teaching you how to code along with a reproducible, collaborative workflow. 
+This 2-day training workshop will introduce you to open data science and get you started working with data in an open, reproducible, and collaborative way. Open data science means science that others can access and reuse without much fuss because all methods, data, and code are available and well-communicated. You will learn a workflow with R, RStudio, Git, and GitHub, as we describe in [Lowndes *et al.* 2017: *Our path to better science in less time using open data science tools*](https://www.nature.com/articles/s41559-017-0160).
 
-There are a many fantastic coding and teaching resources that these materials borrow from:
+This is going to be fun; learning open data science tools and practices is empowering! This training book is written so you can use it as self-paced learning, or it can be used to teach an in-person workshop. Either way, you will have your computer as you learn so that you can do everything yourself hands-on. 
 
-- R for Data Science: Wickham and Grolemund
-- Jenny Bryan
-- SWC
-- DC
-- etc, with links.
-
-All open source.
-
-
-This is going to be fun. Learning to code is empowering... This 2-day workshop will teach what we use for the OHI, as described in our nature paper. It will teach you skills and a workflows that you can use in any research and analysis.
-
-Make sure you read \@ref(overview). 
+Before you begin, be sure you are all set up: see  Chapter \@ref(overview): Overview and Prerequisites. 
 
 Suggested breakdown for a 2-day workshop: 
 
@@ -46,5 +35,5 @@ Suggested breakdown for a 2-day workshop:
 |15:30-17:00 |  analysis: data wrangling|  More R poweR|
 
 
-
-## TODO License 
+## License 
+<!---TODO--->

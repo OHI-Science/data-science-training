@@ -26,3 +26,11 @@ This material builds from a lot of materials developed by others. In particular,
 - [STAT 545]
 - [Software Carpentry]
 - [Happy Git with R]
+
+There are a many fantastic coding and teaching resources that these materials borrow from:
+
+- R for Data Science: Wickham and Grolemund
+- Jenny Bryan
+- SWC
+- DC
+- etc, with links.
