@@ -1,36 +1,33 @@
 # Overview and Prerequisites {#overview}
 
-This is a 2-day bootcamp for hands-on learning of R, RStudio, Git, and GitHub, and will teach reproducible workflows that can be used in analyses of all kinds, including Ocean Health Index assessments. 
+This is a 2-day training workshop to learn R, RStudio, Git, and GitHub. You will learn a reproducible workflow that can be used in analyses of all kinds, including Ocean Health Index assessments. This is really powerful, cool stuff: I made and published this book using these tools and workflow.
 
-- you'll learn 3 broad tools all at the same time: coding in R/RStudio, collaborative version control with Git/GitHub, and communication/publishing with markdown/GitHub. All at the same time because that's how you'll work in reality. I made all of these training materials with these tools.
+We will practice learning three main tools and practices all at the same time: coding with best practices (R/RStudio), collaborative version control (Git/GitHub), and communication/publishing (R markdown/GitHub). This training will teach these all together to reinforce these tools and practices, because that is how you'll work in your own projects. 
 
-2-day workshop, split into 4 primary topics. Table of morning, afternoon, day 1, day 2. These materials can be used to teach this 2-day bootcamp, or can be used as a self-paced course
-
-We’ll start with data viz, and then will start using GitHub for reproducible workflows on Day 1. Then on day 2 we’ll continue to use GitHub with RStudio as a way to practice as we learn.
-
+<!---
 More often than not, there are more than one way to do things. I'm going to focus mostly on what I have ended up using day-to-day; I try to incorporate better practices as I come upon them but that's not always the case. RStudio has some built-in redundancy too that I'll try to show you so that you can approach things in different ways and ease in.
 
 - based on literature: best and good enough practices
 - also based on our team's experience of how to do better science in less time
 
+--->
 ## Prerequisites
 
-R, RStudio, Git, and GitHub are freely available and open-source, meaning that anyone can download...
+Before the training, please make sure you have done the following: 
+
+1. Have up-to-date versions of `R` and RStudio and have RStudio configured with Git/GitHub 
+    - Download and install R: https://cloud.r-project.org
+    - Download and install RStudio: http://www.rstudio.com/download 
+    - Create a GitHub account: https://github.com *Note! Shorter names that kind of identify you are better, and use your work email!*
+1. Get comfortable: if you're not in a physical workshop, be set up with two screens if possible. You will be following along in RStudio on your own computer while also watching a virtual training or following this tutorial on your own.
 
 
 ## Credit
 
-This material builds from a lot of materials developed by others. In particular, it pulls from the following resources, which are excellent and highly recommended for further learning and as resources later on: 
+This material builds from a lot of materials developed by others. In particular, it pulls from the following resources, which are extremely excellent and highly recommended for further learning and as resources later on. Specific lessons will also cite more resources.
 
-- [R for Data Science]
-- [STAT 545]
-- [Software Carpentry]
-- [Happy Git with R]
+- [R for Data Science](http://r4ds.had.co.nz/) by Hadley Wickham and Garrett Grolemund
+- [STAT 545](http://stat545.com/) by Jenny Bryan
+- [Software Carpentry](https://software-carpentry.org/lessons/) by the Carpentries
+- [Happy Git with R](http://happygitwithr.com)
 
-There are a many fantastic coding and teaching resources that these materials borrow from:
-
-- R for Data Science: Wickham and Grolemund
-- Jenny Bryan
-- SWC
-- DC
-- etc, with links.

@@ -30,8 +30,8 @@ This lesson is a combination of excellent lessons by others (thank you Jenny Bry
 
 RStudio has great resources about its IDE (IDE stands for integrated development environment): 
 
-- [webinar](https://www.rstudio.com/resources/webinars/) and 
-- [cheatsheet](https://www.rstudio.com/resources/cheatsheets/) for more. 
+- [webinars](https://www.rstudio.com/resources/webinars/) 
+- [cheatsheets](https://www.rstudio.com/resources/cheatsheets/)
 
 
 ## Why learn R with RStudio
@@ -40,26 +40,26 @@ You are all here today to learn how to code. Coding made me a better scientist b
 
 Here is an analogy to start us off. **If you were a pilot, R is an an airplane.** You can use R to go places! With practice you'll gain skills and confidence; you can fly further distances and get through tricky situations. You will become an awesome pilot and can fly your plane anywhere. 
 
-And **if R were an airplane, RStudio is the airport**. RStudio provides support! Runways, communication and other services, and just makes your overall life easier. So although you can fly your plane without an airport and we could learn R without RStudio, that's not what we're going to do. 
+And **if R were an airplane, RStudio is the airport**. RStudio provides support! Runways, communication, community, and other services, and just makes your overall life easier. So it's not just the infrastructure (the user interface or IDE), although it is a great way to learn and interact with your variables, files, and interact directly with GitHub. It's also data science philosophy, R packages, community, and more. So although you can fly your plane without an airport and we could learn R without RStudio, that's not what we're going to do. 
 
 > We are learning R together with RStudio and its many supporting features. 
 
-Something else to start us off is to mention that you are learning a new language here. It's an ongoing process, it takes time, you'll make mistakes, it can be frustrating, but it will be overwhelmingly awesome in the long run. We all speak at least one language; it's a similar process, really. And no matter how fluent you are, you'll always be learning, you'll be trying things in new contexts, etc, just like everybody else. And just like any form of communication, there will be miscommunications but hands down we are all better off because of it. 
+Something else to start us off is to mention that you are learning a new language here. It's an ongoing process, it takes time, you'll make mistakes, it can be frustrating, but it will be overwhelmingly awesome in the long run. We all speak at least one language; it's a similar process, really. And no matter how fluent you are, you'll always be learning, you'll be trying things in new contexts, etc, just like everybody else. And just like any form of communication, there will be miscommunications that can be frustrating, but hands down we are all better off because of it. 
 
 While language is a familiar concept, programming languages are in a different context from spoken languages, but you will get to know this context with time. For example: you have a concept that there is a first meal of the day, and there is a name for that: in English it's "breakfast". So if you're learning Spanish, you could expect there is a word for this concept of a first meal. (And you'd be right: 'desayuno'). **We will get you to expect that programming languages also have words (called functions in R) for concepts as well**. You'll soon expect that there is a way to order values numerically. Or alphabetically. Or search for patterns in text. Or calculate the median. Or reorganize columns to rows. Or subset exactly what you want. We will get you increase your expectations and learn to ask and find what you're looking for.
 
-
+<!---TODO:
 - airport
 - debugging
 - packages
 - community
-
+--->
 
 ## R at the console, RStudio goodies
 
-TODO: add screenshots
-
 Launch RStudio/R.
+
+![](img/RStudio_IDE.png)
 
 Notice the default panes:
 
@@ -70,7 +70,14 @@ Notice the default panes:
 FYI: you can change the default location of the panes, among many other things: [Customizing RStudio](https://support.rstudio.com/hc/en-us/articles/200549016-Customizing-RStudio). 
 
 
-Go into the Console, where we interact with the live R process.
+An important first question: **where are we?** 
+
+If you've just opened RStudio for the first time, you'll be in your Home directory. This is noted by the `~/` at the top of the console. You can see too that the Files pane in the lower right shows what is in the Home directory where you are. You can navigate around within that Files pane and explore, but note that you won't change where you are: even as you click through you'll still be Home: `~/`. 
+
+![](img/RStudio_IDE_homedir.png)
+
+
+OK let's go into the Console, where we interact with the live R process.
 
 Make an assignment and then inspect the object you just created.
 
@@ -84,9 +91,9 @@ All R statements where you create objects -- "assignments" -- have this form: `o
 
 I'll write it in the command line with a hashtag `#`, which is the way R comments so it won't be evaluated. 
 ```{r eval = FALSE}
-# objectName <- value
+## objectName <- value
 
-## this is also how you write notes in your code to explain what you are doing.
+## This is also how you write notes in your code to explain what you are doing.
 ```
 
 Object names cannot start with a digit and cannot contain certain other characters such as a comma or a space. You will be wise to adopt a [convention for demarcating words](http://en.wikipedia.org/wiki/Snake_case) in names.
@@ -110,12 +117,6 @@ this_is_a_really_long_name
 
 Another way to inspect this variable is to begin typing `this_`...and RStudio will automagically have suggested completions for you that you can select by hitting the tab key, then press return. 
 
-And another way to inspect this is by looking at the Environment pane in RStudio. 
-
-```{r}
-this_is_a_really_long_name
-```
-
 One more:
 ```{r}
 science_rocks <- 2
@@ -129,7 +130,7 @@ sciencerocks
 
 ### Error messages are your friends
 
-Implicit contract with the computer / scripting language: Computer will do tedious computation for you. In return, you will be completely precise in your instructions. Typos matter. Case matters. You'll need to pay attention to how you type.
+Implicit contract with the computer / scripting language: Computer will do tedious computation for you. In return, you will be completely precise in your instructions. Typos matter. Case matters. Pay attention to how you type.
 
 Remember that this is a language, not unsimilar to English! There are times you aren't understood -- it's going to happen. There are different ways this can happen. Sometimes you'll get an error. This is like someone saying 'What?' or 'Pardon'? Error messages can also be more useful, like when they say 'I didn't understand this specific part of what you said, I was expecting something else'. That is a great type of error message. Error messages are your friend. Google them (copy-and-paste!) to figure out what they mean. 
 
@@ -198,11 +199,23 @@ weight_kg <- 100
 
 What do you think is the current content of the object `weight_lb`? 126.5 or 220?
 
+<!---TODO::
+Add more practice
+--->
+
 ## R functions, help pages
 
-R has a mind-blowing collection of built-in functions that are accessed like so
+R has a mind-blowing collection of built-in functions that are used with the same syntax: function name with parentheses around what the function needs in order to do what it was built to do. When you type a function like this, we say we are "calling the function". `verb(noun = something, adjective = something, etc)`. This example is from [R for Data Science]((http://r4ds.had.co.nz/pipes):
+
 ```{r eval = FALSE, tidy = FALSE}
-# function_name(argument1 = my_first_argument, argument2 = my_second_argument...)
+
+## we can call a function without passing it anything (closed parens), and assign it to foo_foo
+foo_foo <- little_bunny()
+
+## and you can pass that foo_foo object to other functions
+hop(foo_foo, through = forest) 
+scoop(foo_foo, up = field_mice) 
+bop(foo_foo, on = head)
 ```
 
 Let's try using `seq()` which makes regular sequences of numbers and, while we're at it, demo more helpful features of RStudio.

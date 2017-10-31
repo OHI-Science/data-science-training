@@ -18,6 +18,7 @@ dir_gh_pages <- sprintf('~/github/clip-n-ship/%s', repo_name)
 dir_master <- sprintf('~/github/%s', repo_name)
 dir_master_book <- sprintf('~/github/%s/_book', repo_name)
 
+## TODO: if gh-pages branch doesn't exist, create an empty branch.
 
 ## clone gh-pages branch to temporary location
 unlink(dir_gh_pages, recursive=TRUE, force=TRUE) # delete if temporary location exists
