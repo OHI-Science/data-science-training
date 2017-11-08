@@ -205,18 +205,22 @@ Add more practice
 
 ## R functions, help pages
 
-R has a mind-blowing collection of built-in functions that are used with the same syntax: function name with parentheses around what the function needs in order to do what it was built to do. When you type a function like this, we say we are "calling the function". `verb(noun = something, adjective = something, etc)`. This example is from [R for Data Science]((http://r4ds.had.co.nz/pipes):
+R has a mind-blowing collection of built-in functions that are used with the same syntax: function name with parentheses around what the function needs in order to do what it was built to do. When you type a function like this, we say we are "calling the function". `verb(noun = something, adjective = something, etc)`. This example is from [R for Data Science](http://r4ds.had.co.nz/pipes) using a children's poem called [Little Bunny Foo Foo](https://en.wikipedia.org/wiki/Little_Bunny_Foo_Foo).
 
+We can call a function without passing it anything (nothing inside the closed parentheses), and assign it to a variable called `foo_foo`.
 ```{r eval = FALSE, tidy = FALSE}
-
-## we can call a function without passing it anything (closed parens), and assign it to foo_foo
 foo_foo <- little_bunny()
 
-## and you can pass that foo_foo object to other functions
+```
+
+And since `foo_foo` is an object, you can pass it to other functions:
+```{r eval = FALSE, tidy = FALSE}
 hop(foo_foo, through = forest) 
 scoop(foo_foo, up = field_mice) 
 bop(foo_foo, on = head)
 ```
+
+OK, so now let's look at a real function.
 
 Let's try using `seq()` which makes regular sequences of numbers and, while we're at it, demo more helpful features of RStudio.
 

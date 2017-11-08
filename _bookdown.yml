@@ -14,5 +14,7 @@ rmd_files: [
   "collaborate-github.Rmd",
   "more-r-power.Rmd"] # let's talk about filenames
 delete_merged_file: true
+  css:
+    - css/lesson.css
 
 
