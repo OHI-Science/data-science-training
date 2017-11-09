@@ -7,7 +7,7 @@ rmd_files: [
   "overview.Rmd",
   "motivation.Rmd",
   "r-rstudio-orientation.Rmd", ## http://socviz.co/
-  "github-rstudio-workflow.Rmd",
+  "rstudio-github.Rmd",
   "viz.Rmd", 
   "data-wrangling.Rmd",
   "analysis-rmarkdown.Rmd",

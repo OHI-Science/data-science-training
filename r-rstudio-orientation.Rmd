@@ -9,11 +9,13 @@ library(htmltools)
 
 ## Objectives & Resources
 
+<!---TODO!
 - get oriented to RStudio
 - R variables
 - R functions (packages?)  
 - help pages
 - configure github
+--->
 
 This lesson is a combination of excellent lessons by others (thank you Jenny Bryan and Data Carpentry!) that I have combined and modified for our workshop today. I definitely recommend reading through the original lessons and using them as reference:   
 
@@ -44,7 +46,7 @@ And **if R were an airplane, RStudio is the airport**. RStudio provides support!
 
 > We are learning R together with RStudio and its many supporting features. 
 
-Something else to start us off is to mention that you are learning a new language here. It's an ongoing process, it takes time, you'll make mistakes, it can be frustrating, but it will be overwhelmingly awesome in the long run. We all speak at least one language; it's a similar process, really. And no matter how fluent you are, you'll always be learning, you'll be trying things in new contexts, etc, just like everybody else. And just like any form of communication, there will be miscommunications that can be frustrating, but hands down we are all better off because of it. 
+Something else to start us off is to mention that you are learning a new language here. It's an ongoing process, it takes time, you'll make mistakes, it can be frustrating, but it will be overwhelmingly awesome in the long run. We all speak at least one language; it's a similar process, really. And no matter how fluent you are, you'll always be learning, you'll be trying things in new contexts, learning words that mean the same as others, etc, just like everybody else. And just like any form of communication, there will be miscommunications that can be frustrating, but hands down we are all better off because of it. 
 
 While language is a familiar concept, programming languages are in a different context from spoken languages, but you will get to know this context with time. For example: you have a concept that there is a first meal of the day, and there is a name for that: in English it's "breakfast". So if you're learning Spanish, you could expect there is a word for this concept of a first meal. (And you'd be right: 'desayuno'). **We will get you to expect that programming languages also have words (called functions in R) for concepts as well**. You'll soon expect that there is a way to order values numerically. Or alphabetically. Or search for patterns in text. Or calculate the median. Or reorganize columns to rows. Or subset exactly what you want. We will get you increase your expectations and learn to ask and find what you're looking for.
 
@@ -119,7 +121,7 @@ Another way to inspect this variable is to begin typing `this_`...and RStudio wi
 
 One more:
 ```{r}
-science_rocks <- 2
+science_rocks <- 100
 ```
 
 Let's try to inspect:
@@ -197,7 +199,7 @@ and then change `weight_kg` to 100.
 weight_kg <- 100
 ```
 
-What do you think is the current content of the object `weight_lb`? 126.5 or 220?
+What do you think is the current content of the object `weight_lb`? 126.5 or 220? Why?
 
 <!---TODO::
 Add more practice
@@ -209,18 +211,22 @@ R has a mind-blowing collection of built-in functions that are used with the sam
 
 We can call a function without passing it anything (nothing inside the closed parentheses), and assign it to a variable called `foo_foo`.
 ```{r eval = FALSE, tidy = FALSE}
-foo_foo <- little_bunny()
-
+## foo_foo <- little_bunny()
 ```
 
 And since `foo_foo` is an object, you can pass it to other functions:
 ```{r eval = FALSE, tidy = FALSE}
-hop(foo_foo, through = forest) 
-scoop(foo_foo, up = field_mice) 
-bop(foo_foo, on = head)
+## hop(foo_foo, through = forest) 
+## scoop(foo_foo, up = field_mice) 
+## bop(foo_foo, on = head)
 ```
 
-OK, so now let's look at a real function.
+What would happen if I tried to run one of those lines above? I would get an error because they aren't real functions, and R tells me so: 
+```{r eval = FALSE, tidy = FALSE}
+foo_foo <- little_bunny()
+# Error in little_bunny() : could not find function "little_bunny"
+```
+And that's great, this error message is helpful: R doesn't know what the `little_bunny` function is, and to be honest, neither do we. We didn't expect that it would know what to do. OK, so now let's look at a real function.
 
 Let's try using `seq()` which makes regular sequences of numbers and, while we're at it, demo more helpful features of RStudio.
 
@@ -254,24 +260,29 @@ The help page tells the name of the package in the top left, and broken down int
  - See Also: Any related functions you might find useful.
  - Examples: Some examples for how to use the function.
 
-The examples can be copy-pasted into the console for you to understand what's going on. Remember we were talking about expecting there to be a function for something you want to do? Let's try it. `min()`, `max()`, `log()`...
+The examples can be copy-pasted into the console for you to understand what's going on. Remember we were talking about expecting there to be a function for something you want to do? Let's try it. 
 
 ### Your turn
 
-> Exercise: Talk to your neighbor(s) and look up the help file for a function you know. Try the examples, see if you learn anything new. (need ideas? `?getwd()`, `?plot()`, `?mean()`, `?log()`).
+> Exercise: Talk to your neighbor(s) and look up the help file for a function that you know or expect to exist. Here are some ideas: `?getwd()`, `?plot()`,  `min()`, `max()`, `?mean()`, `?log()`).
 
-Help for when you only sort of remember the function name: double-questionmark:
+And there's also help for when you only sort of remember the function name: double-questionmark:
 ```{r}
 ??install 
 ```
 
 
-Not all functions have (or require) arguments:
+As we saw with creating the `foo_foo` variable above, not all functions have (or require) arguments:
 ```{r}
 date()
 ```
 
-Now look at your workspace -- in the upper right pane. The workspace is where user-defined objects accumulate. You can also get a listing of these objects with commands:
+## Clearing the environment
+Now look at the objects in your environment (workspace) -- in the upper right pane. The workspace is where user-defined objects accumulate. 
+
+![](img/RStudio_IDE_env.png)
+
+You can also get a listing of these objects with a few different R commands:
 
 ```{r}
 objects()
@@ -316,7 +327,7 @@ We're going to switch gears from R for a moment and set up Git and GitHub, which
         # list your config to confirm user.* variables set
         git config --list
 
-Not only have you just set up git, you have just used the command line. We don't have time to learn much of the command line today, but you're still able to use it following explicit instructions. There are great resources for learning the command line, check out [this tutorial from SWC at UCSB](http://remi-daigle.github.io/2016-04-15-UCSB/shell/). 
+Not only have you just set up git as a one-time-only thing, you have just used the command line. We don't have time to learn much of the command line today, but you just successfully used it following explicit instructions, which is huge! There are great resources for learning the command line, check out [this tutorial from SWC at UCSB](http://remi-daigle.github.io/2016-04-15-UCSB/shell/). 
 
 
 <!--- remove this stuff and instead set up Git/GitHub.
@@ -361,17 +372,32 @@ getwd()
 **About paths**: The above is the absolute path: it starts at the `/Users` root and is specific to my computer (`julialowndes`) and where I saved it. So if I did an analysis with this filepath, it wouldn't work on your computer before you altered the filepath. 
 
 But with an RStudio project, your paths within this project can be relative, which means they *start* in the `data-carpentry` folder, wherever it is. So we can just use filepaths within our project from a relative place, and it can work on your computer or mine, without worrying about the absolute paths. (Analogy: I can give you directions from this building to the pub, since we're all here in this shared space already. I can't give you all directions from your home to this building and then the pub, because you all live in different places. But I can give directions relative to this building). 
---->
+
 
 
 ### You try
 Ask for help and recognize useful answers
  TODO 
 
-<!---if time before break: set up git --->
+--->
+
 
 ## Troubleshooting
 
-- the `+` because you didn't complete a line. Get out of it with esc
-- updating R, RStudio (right-click on 'open', replace, etc)
+Here are some additional things we didn't have time to discuss:
+
+### I just entered a command and nothing's happening
+
+It may be because you didn't complete a command: is there a little `+` in your console? R is saying that it is waiting for you to finish. In the example below, I need to close that parenthesis.
+
+```{r, eval=FALSE}
+> x <- seq(1, 10
++ 
+```
+
+
+### How do I update RStudio?
+
+To see if you have the most current version of RStudio, go to the Help bar > Check for Updates. If there is an update available, you'll have the option to Quit and Download, which will take you to http://www.rstudio.com/download. When you download and install, choose to replace the previous version. 
+
 

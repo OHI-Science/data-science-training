@@ -1,6 +1,6 @@
 --- 
 title: "Introduction to Open Data Science"
-author: "Ocean Health Index Team"
+author: "Julie Lowndes & The Ocean Health Index Team"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook

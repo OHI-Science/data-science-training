@@ -1,17 +1,18 @@
-# GitHub-RStudio Workflow and R Scripts {#github-rstudio}
+# RStudio+GitHub and R Scripts {#rstudio-github}
 
 ```{r gh ops, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(htmltools)
 ```
-
+<!---TODO
 Philosophy: gh repo and Rproject
+--->
 
 ## Objectives & Resources
 
 We will learn about version control using git and GitHub. git will track and version your files, GitHub stores this online and enables you to collaborate with others (and yourself). Although git and GitHub are two different things, distinct from each other, I think of them as a bundle since I always use them together. It also helped me to think of GitHub like Dropbox: you make folders that are 'tracked' and can be synced to the cloud. GitHub does this too, but you have to be more deliberate about when syncs are made. This is because GitHub saves these as different versions, with information about who contributed when, line-by-line. This makes collaboration easier, and it allows you to roll-back to different versions or contribute to others' work. 
 
-Today, we'll interface with GitHub from our local computers using RStudio, GitHub's Desktop App, and a touch of the command line. But there are many other ways to interact with GitHub; [here is a list of git clients](http://stat545.com/git02_git-clients.html) Jenny Bryan has put together. You have the largest suite of options if you interface through the command line, but the most common things you'll do can be done through one of these other applications (i.e. the GitHub Desktop App).
+Today, we'll interface with GitHub from our local computers using RStudio. There are many other ways to interact with GitHub, including GitHub's Desktop App or the command line ([here is Jenny Bryan's list of git clients](http://stat545.com/git02_git-clients.html)), but today we are going to work from RStudio. You have the largest suite of options if you interface through the command line, but the most common things you'll do can be done through one of these other applications (i.e. RStudio and the GitHub Desktop App).
 
 *Note:* These materials borrow from: 
 
@@ -20,7 +21,7 @@ Today, we'll interface with GitHub from our local computers using RStudio, GitHu
 - Melanie Frazier's [GitHub Quickstart](https://rawgit.com/nazrug/Quickstart/master/GithubQuickstart.html)
 - Ben Best's [Software Carpentry at UCSB](http://remi-daigle.github.io/2016-04-15-UCSB/git/)
 
-
+<!---TODO
 - Intro to GitHub.com
 - create GH repo
 - clone, and create an Rproject
@@ -28,6 +29,7 @@ Today, we'll interface with GitHub from our local computers using RStudio, GitHu
 - practice in R, practice gh
 
 TODO: link to resources
+--->
 
 Today, we'll only introduce the features and terminology that scientists need to learn to begin managing their projects.
 
@@ -289,6 +291,12 @@ The files you added should be on github.com:
 ![](img/Github_remote.png)
 <br />
 <br />
+
+## RStudio-GitHub workflow
+
+Here is what we consider "The RStudio-GitHub Workflow":
+
+TODO!
 
 ## Create an R script
 
