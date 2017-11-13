@@ -23,7 +23,7 @@ Remember you'll use `install.packages("package-name-in-quotes")` and then `libra
 - `stringr` to work with strings
 - `lubridate` to work with dates
 
-
+Also tidyr::spread, gather
 
 ## Subsetting data
 
