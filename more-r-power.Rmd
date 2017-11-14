@@ -30,6 +30,8 @@ purrr:: LOVE LISTS
 - plays nicely with pipes
 repurrsive
 
+Show how piping can be used in normal model fitting too (get away from nested stuff)
+
 ## Subsetting data
 
 TODO: change this from base-R
