@@ -25,6 +25,11 @@ Remember you'll use `install.packages("package-name-in-quotes")` and then `libra
 
 Also tidyr::spread, gather
 
+purrr:: LOVE LISTS
+- more efficient than for loops
+- plays nicely with pipes
+repurrsive
+
 ## Subsetting data
 
 TODO: change this from base-R
