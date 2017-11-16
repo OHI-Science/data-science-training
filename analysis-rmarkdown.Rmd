@@ -115,7 +115,8 @@ save, commit, push
 
 ## More practice data wrangling, data viz
 
-let's do it from our RMarkdown now
+let's do it from our RMarkdown now.
+MORE DPLYR (GROUP BY?), AND TIDYR. MAYBE MORE GGPLOT2?
 
 ### Your turn
 

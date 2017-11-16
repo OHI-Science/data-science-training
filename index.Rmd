@@ -1,15 +1,15 @@
 --- 
 title: "Introduction to Open Data Science"
-author: "Julie Lowndes & The Ocean Health Index Team"
+author: "Julie Lowndes & The OHI Team"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
-output: bookdown::gitbook
+# output: bookdown::gitbook
 documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 github-repo: ohi-science/data-science-training
-description: "This is official data science training to for the Ocean Health Index. "
+description: "This is official data science training for the Ocean Health Index, as described in Lowndes et al. 2017."
 ---
 
 # Welcome {#welcome}

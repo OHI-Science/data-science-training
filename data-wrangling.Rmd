@@ -5,7 +5,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(htmltools)
 ```
 
-TODO!!! this is all piecemeal from different lessons; make sure it all jives
+TODO!!! this is all piecemeal from different lessons; make sure it all jives. New script for wrangling with gapminder. MAYBE THIS IS JUST DPLYR AND PIPES
 
 ## Overview & Resources
 
@@ -225,6 +225,8 @@ gapminder %>% head(3)
 **I've advised you to think "gets" whenever you see the assignment operator, `<-`. Similary, you should think "and then" whenever you see the pipe operator, `%>%`.**
 
 You are probably not impressed yet, but the magic will soon happen.
+
+Fun break: check out [this gif about it from Twitter](https://twitter.com/backerman150/status/926479565869993984).
 
 ## Use `dplyr::select()` to subset data column-wise (variables)
 

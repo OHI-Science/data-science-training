@@ -4,16 +4,20 @@
 
 ## Welcome 
 
-This is going to be fun and empowering. Code of conduct. You are all welcome here. Please tell me if it's ever not. 
+This is going to be a fun workshop.  
 
-Everyone is coming from a different place with different experiences. Stickies. 
+The tools we are going to learn today are super powerful, and empowering. 
+
+The plan is to expose you to a lot of great tools that you can have confidence using in your research. You'll be working hands-on and doing the same things on your own computer as we do live on up on the screen. We're going to go through a lot in these two days and it's less important that you remember it all. More imporatantly, you'll have experience with it and confidence that you can do it. And, you can use these materials as a reference as you go forward with your analyses. 
+
+Everyone in this workshop is coming from a different place with different experiences and expectations. But everyone will learn something new here, because there is so much innovation in the data science world. Even instructors and helpers learn something new every time, from each other and from your questions. 
+
 You are all welcome here and encouraged to help each other. 
+
 
 ## Collaboration
 
-- First, with you. If you don't think you collaborate, you might not be doing science. Future you. 
-- Then, with your lab and and collaborators. 
-- And, with collaborators that don't yet exist. 
+Everything we learn today is to going to help you collaborate with your most important collaborator — YOU. Science is collaborative, starting with Future You, your current collaborators, and anyone wanting to build off your science later on. 
 
 ## Reproducibility
 
@@ -45,6 +49,4 @@ Tidyverse and Hadley’s graphic. Tidy data.
 
 Going to teach you how to think differently, get into some of the theory but in the context of hands-on work.
 
-
-See also section in toolbox-training
 

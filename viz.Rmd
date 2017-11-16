@@ -9,9 +9,10 @@ library(htmltools)
 
 ## Objectives & Resources
 
-- learn ggplot2 with `mpg` dataframe
-- practice writing script
-
+- learn ggplot2 with `mpg` dataframe (important to play with other data than your own, you'll learn something.)
+- practice writing a script (maybe call it mpg_viz.R?)
+- practice rstudio-github workflow
+- use and credit http://r4ds.had.co.nz/data-visualisation.html
 
 Why do we start with data viz? Not only is data viz a big part of analysis, it’s a way to SEE your progress as you learn to code.
 
@@ -34,6 +35,8 @@ TODO: Draw heavily from http://r4ds.had.co.nz/data-visualisation.html;
 
 ## Aesthetic mappings
 
+## push to GitHub
+
 ### Your turn
 
 ## Common problems
@@ -46,7 +49,7 @@ TODO: Draw heavily from http://r4ds.had.co.nz/data-visualisation.html;
 
 ## The Layered Grammar of Graphics
 
-## Plotly?
+## push to GitHub
 
 ## Troubleshooting
 
