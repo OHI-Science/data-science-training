@@ -15,6 +15,7 @@ library(htmltools)
 - use and credit http://r4ds.had.co.nz/data-visualisation.html
 
 Why do we start with data viz? Not only is data viz a big part of analysis, itâ€™s a way to SEE your progress as you learn to code.
+"ggplot2 implements the grammar of graphics, a coherent system for describing and building graphs. With ggplot2, you can do more faster by learning one system and applying it in many places." - [R4DS](http://r4ds.had.co.nz/data-visualisation.html)
 
 - Conceptual and building, cheatsheet images
 
@@ -26,10 +27,15 @@ Why do we start with data viz? Not only is data viz a big part of analysis, itâ€
 - [Graphs with ggplot2 - Cookbook for R](http://www.cookbook-r.com/Graphs/#graphs-with-ggplot2)
 - [ggplot2 Essentials - STHDA](http://www.sthda.com/english/wiki/ggplot2-essentials)
 
+D Robinson:
+- http://varianceexplained.org/r/why-I-use-ggplot2/; add screenshipt of ggplot2 cheatsheet
+- http://varianceexplained.org/RData/
 
 TODO: Draw heavily from http://r4ds.had.co.nz/data-visualisation.html; 
 
 ## Install our first package: `ggplot2`
+
+<!--- or tidyverse --->
 
 ## First Steps
 

@@ -23,7 +23,14 @@ Remember you'll use `install.packages("package-name-in-quotes")` and then `libra
 - `stringr` to work with strings
 - `lubridate` to work with dates
 
+Also tidyr::spread, gather
 
+purrr:: LOVE LISTS
+- more efficient than for loops
+- plays nicely with pipes
+repurrsive
+
+Show how piping can be used in normal model fitting too (get away from nested stuff)
 
 ## Subsetting data
 
