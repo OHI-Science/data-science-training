@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="analysis.html">
-<link rel="next" href="collaborate.html">
+<link rel="prev" href="tidyr.html">
+<link rel="next" href="rmarkdown.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -264,106 +264,224 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="rmarkdown" class="section level1">
-<h1><span class="header-section-number">Chapter 10</span> Analysis with RMarkdown</h1>
-<div id="objectives-resources-3" class="section level2">
-<h2><span class="header-section-number">10.1</span> Objectives &amp; Resources</h2>
+<div id="analysis" class="section level1">
+<h1><span class="header-section-number">Chapter 9</span> Analysis, continued</h1>
+<div id="objectives" class="section level2">
+<h2><span class="header-section-number">9.1</span> Objectives</h2>
 <ul>
-<li>intro to Markdown</li>
-<li>intro to RMarkdown</li>
-<li>more practice with GitHub</li>
-<li>more practice with tidyverse</li>
+<li>data import, writing</li>
+<li>for loops</li>
+<li>conditionals</li>
+<li>mention classes</li>
+<li>practice</li>
+<li>what’s next</li>
+<li>Jenny Bryan filenames</li>
 </ul>
-<div class="figure">
-<img src="img/practicalDev_changingstuff.jpg" />
-
+<p>When trying to see if a number or text is equal to some <em>single</em> value, use <code>==</code>. To check it against <em>multiple</em> values, use <code>%in%</code>. mine’s “%!in%” &lt;- Negate(“%in%”)</p>
+<p>list.files file.path() message() (with an if statement maybe) get file extensions <a href="https://stat.ethz.ch/R-manual/R-devel/library/tools/html/fileutils.html" class="uri">https://stat.ethz.ch/R-manual/R-devel/library/tools/html/fileutils.html</a></p>
+<p>You’ll soon have questions that are outside the scope of this workshop, how do you find answers?</p>
 </div>
-<p>See <a href="https://guides.github.com/features/mastering-markdown/">Mastering Markdown · GitHub Guides</a> and add some more personalized content to the README of your own, like a bulleted list or blockquote. For on the fly rendering, the <a href="https://atom.io/">atom</a> text editor is good.</p>
-</div>
-<div id="intro-to-markdown" class="section level2">
-<h2><span class="header-section-number">10.2</span> Intro to Markdown</h2>
-<div id="from-github.com" class="section level3">
-<h3><span class="header-section-number">10.2.1</span> from GitHub.com</h3>
-<p>Let’s learn markdown by editing the <code>README.md</code> on github.com for convenience. A README.md file can be added to every folder in a repository, and they are automatically displayed when the repository is opened on github.com</p>
-<p>The <code>README.md</code> is in <strong>markdown</strong>, simple syntax for conversion to HTML. <code>.md</code> is a kind of text file, so you only need a text editor to read it. If you were editing this on your computer, you could do this right in RStudio, which has a built-in text editor. (You could also do it in another text editor program, but RStudio is convenient). Copy-paste the following into your <code>README.md</code>:</p>
-<pre><code># my-project
-
-This project is based on [Collaborative, Reproducible Science training ](https://ohi-science.org/data-science-training/).
-
-## Introduction
-
-Markdown syntax changes plain text to **bold** and *italics*:
-
-1. **Git**
-1. **Github**
-1. *Markdown*
-1. *Rmarkdown*
-
-## Conclusion
-
-![](https://octodex.github.com/images/labtocat.png)
-</code></pre>
-<p>Notice the syntax for:</p>
+<div id="importing-data" class="section level2">
+<h2><span class="header-section-number">9.2</span> Importing data</h2>
+<p>TODO</p>
+<p>Remember you’ll use <code>install.packages(&quot;package-name-in-quotes&quot;)</code> and then <code>library(package-name)</code>, and then you can explore the help or vignettes. And also, of course, Google to see how to use them!</p>
 <ul>
-<li><strong>headers</strong> get rendered at multiple levels: <code>#</code>, <code>##</code></li>
-<li><strong>link</strong>: <code>[](http://...)</code></li>
-<li><strong>image</strong>: <code>![](http://...)</code> — note the <code>!</code></li>
-<li><em>italics</em>: <code>*word*</code></li>
-<li><strong>bold</strong>: <code>**word**</code></li>
-<li><strong>numbered list</strong> gets automatically sequenced: <code>1.</code>, <code>1.</code></li>
+<li><code>readr</code> to read in .csv files</li>
+<li><code>readxl</code> to read in Excel files</li>
+<li><code>stringr</code> to work with strings</li>
+<li><code>lubridate</code> to work with dates</li>
 </ul>
+<p>Also tidyr::spread, gather</p>
+<p>purrr:: LOVE LISTS - more efficient than for loops - plays nicely with pipes repurrsive</p>
+<p>Show how piping can be used in normal model fitting too (get away from nested stuff)</p>
 </div>
-<div id="from-rstudio" class="section level3">
-<h3><span class="header-section-number">10.2.2</span> from RStudio</h3>
-<p>Let’s go back to RStudio. Pull so that you have the most recent version of your README locally. Let’s open it and have a look. Documentation is a really important part of coding, so let’s look at the README. If we look at GitHub.com, you can see that the README is displayed nicely like online. Let’s add some more description about what our GitHub repository is for.</p>
-<p>Now click on the Preview button to see the markdown rendered as HTML.</p>
-<p>Let’s change the image to the plot we made yesterday.</p>
-<p><code>![](my_plot.png)</code></p>
-<p>There are some good <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet">cheatsheets</a> to get you started, and here is one built into RStudio: <br /> <br /></p>
-<div class="figure">
-<img src="img/md_cheatsheet.png" />
+<div id="subsetting-data" class="section level2">
+<h2><span class="header-section-number">9.3</span> Subsetting data</h2>
+<p>TODO: change this from base-R</p>
+<p>You will want to isolate bits of your data; maybe you want to just look at a single country or a few years. R calls this subsetting. There are several ways to do this. We’ll go through a few options in base R so that you’re familiar with them, and know how to read them. But then we’ll move on to a new, better, intuitive, and game changing way with the <code>dplyr</code> package afterwards.</p>
+<p>Remember your logical expressions from this morning? We’ll use <code>==</code> here.</p>
+<div id="subsetting-with-base-rows-columns-notation" class="section level3">
+<h3><span class="header-section-number">9.3.1</span> subsetting with base <code>[rows, columns]</code> notation</h3>
+<p>This notation is something you’ll see a lot in base R. the brackets <code>[ ]</code> allow you to extract parts of an object. Within the brackets, the comma separates rows from columns.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## subset numeric data
+gapminder[gapminder<span class="op">$</span>lifeExp <span class="op">&lt;</span><span class="dv">32</span>, ] <span class="co"># don&#39;t forget this comma! </span>
 
-</div>
-<p>knit with the button; also <code>knitr</code></p>
-</div>
-<div id="your-turn-5" class="section level3">
-<h3><span class="header-section-number">10.2.3</span> Your turn</h3>
-<p>Update the README, push to GitHub</p>
-</div>
-</div>
-<div id="rmarkdown-from-rstudio" class="section level2">
-<h2><span class="header-section-number">10.3</span> RMarkdown from RStudio</h2>
-<p>Back in RStudio, let’s create a new RMarkdown file, which allows us to weave markdown text with chunks of R code to be evaluated and output content like tables and plots.</p>
-<p>File -&gt; New File -&gt; RMarkdown… -&gt; Document of output format HTML, OK.</p>
-<img src="img/rstudio_new-rmd-doc-html.png" width="300"/>
-<p>You can give it a Title of “My Project”. After you click OK, most importantly File -&gt; Save as <code>index</code> (which will get named with the filename extension <code>index.Rmd</code>).</p>
-<p>Some initial text is already provided for you. Let’s go ahead and “Knit HTML”.</p>
-<p>Notice how the markdown is rendered similar to as before + <strong>R code chunks</strong> are surrounded by 3 backticks and <code>{r LABEL}</code>. These are evaluated and return the output text in the case of <code>summary(cars)</code> and the output plot in the case of <code>plot(pressure)</code>.</p>
-<p>Notice how the code <code>plot(pressure)</code> is not shown in the HTML output because of the R code chunk option <code>echo=FALSE</code>.</p>
-<p><strong>Before we continue exploring Rmarkdown</strong>, let’s sync this the .rmd and .html to github.com. Enter a message like “added index” and click on “Commit and Sync gh-pages”. This will update <a href="https://github.com/USER/my-project" class="uri">https://github.com/USER/my-project</a>, and now you can also see your project website with a default <code>index.html</code> viewable at <a href="http://USER.github.io/my-project" class="uri">http://USER.github.io/my-project</a></p>
-<div id="your-turn-6" class="section level3">
-<h3><span class="header-section-number">10.3.1</span> Your turn</h3>
-</div>
-</div>
-<div id="resources" class="section level2">
-<h2><span class="header-section-number">10.4</span> Resources</h2>
-<p>Were you hoping for an RStudio Cheatsheet? Here it is:</p>
+## subset factors
+gapminder[gapminder<span class="op">$</span>country <span class="op">==</span><span class="st"> &quot;Uruguay&quot;</span>, ] <span class="co"># don&#39;t forget this comma! </span></code></pre></div>
+<p>So our notation is saying ‘select these rows, and all columns’.</p>
+<p>We could also select which columns to keep using the <code>c()</code> function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gapminder[gapminder<span class="op">$</span>country <span class="op">==</span><span class="st"> &quot;Uruguay&quot;</span>,
+                     <span class="kw">c</span>(<span class="st">&quot;country&quot;</span>, <span class="st">&quot;year&quot;</span>, <span class="st">&quot;lifeExp&quot;</span>)] <span class="co"># ?c: combines values into a vector or list</span></code></pre></div>
+<p>Contrast the above command with this one accomplishing the same thing:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gapminder[<span class="dv">1621</span><span class="op">:</span><span class="dv">1632</span>, ] <span class="co"># No idea what we are inspecting. Don&#39;t do this.</span>
+
+gapminder[<span class="dv">1621</span><span class="op">:</span><span class="dv">1632</span>, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>)] <span class="co"># Ditto. </span></code></pre></div>
+<p>Yes, these both return the same result. But the second command is horrible for these reasons:</p>
 <ul>
-<li><a href="http://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf">rmarkdown-cheatsheet.pdf</a></li>
-<li><a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a></li>
-<li><a href="http://kbroman.org/knitr_knutshell/">knitr in a knutshell - Karl Broman</a></li>
+<li>It contains <a href="http://en.wikipedia.org/wiki/Magic_number_(programming)">Magic Numbers</a>. The reason for keeping rows 1621 to 1632 will be non-obvious to someone else and that includes <strong>you</strong> in a couple of weeks.</li>
+<li>It is fragile. If the rows of <code>gapminder</code> are reordered or if some observations are eliminated, these rows may no longer correspond to the Uruguay data.</li>
 </ul>
-<p>save, commit, push</p>
+<p>In contrast, the first command, is somewhat <strong>self-documenting</strong>; one does not need to be an R expert to take a pretty good guess at what’s happening. It’s also more robust. It will still produce the correct result even if <code>gapminder</code> has undergone some reasonable set of transformations (what if it were in in reverse alphabetical order?)</p>
 </div>
-<div id="more-practice-data-wrangling-data-viz" class="section level2">
-<h2><span class="header-section-number">10.5</span> More practice data wrangling, data viz</h2>
-<p>let’s do it from our RMarkdown now. MORE DPLYR (GROUP BY?), AND TIDYR. MAYBE MORE GGPLOT2?</p>
-<div id="your-turn-7" class="section level3">
-<h3><span class="header-section-number">10.5.1</span> Your turn</h3>
+<div id="subsetting-with-base-subset-function" class="section level3">
+<h3><span class="header-section-number">9.3.2</span> subsetting with base <code>subset()</code> function</h3>
+<p>But we can improve how we subset by using the base <code>subset()</code> function, which can isolate pieces of an object for inspection or assignment. <code>subset()</code>’s main argument is also (unfortunately) called <code>subset</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## subset gapminder
+?subset
+<span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country <span class="op">==</span><span class="st"> &quot;Mexico&quot;</span>) <span class="co"># Ah, inspecting Mexico. Self documenting!</span></code></pre></div>
+<p>This returns all the columns.</p>
+<p>But what if you just want a few of the columns? You can also subset the columns you want. You can use <code>subset =</code> and <code>select =</code> together to simultaneously subset rows and columns or variables.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country <span class="op">==</span><span class="st"> &quot;Mexico&quot;</span>, 
+       <span class="dt">select =</span> <span class="kw">c</span>(country, year, lifeExp)) <span class="co"># ?c: combines values into a vector or list</span></code></pre></div>
 </div>
 </div>
-<div id="troubleshooting-4" class="section level2">
-<h2><span class="header-section-number">10.6</span> Troubleshooting</h2>
+<div id="repeating-operations-with-for-loops" class="section level2">
+<h2><span class="header-section-number">9.4</span> Repeating operations with for loops</h2>
+<p>Let’s say we want to subset a few countries and plot pop through time. We could do it the way above, which would look like the following:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## plot population of some countries
+mexico &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country <span class="op">==</span><span class="st"> &quot;Mexico&quot;</span>)
+<span class="kw">plot</span>(mexico<span class="op">$</span>year, mexico<span class="op">$</span>pop)
+<span class="kw">dev.print</span>(pdf, <span class="st">&quot;mexico.pdf&quot;</span>)
+
+panama &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country <span class="op">==</span><span class="st"> &quot;Panama&quot;</span>) 
+<span class="kw">plot</span>(panama<span class="op">$</span>year, panama<span class="op">$</span>pop)
+<span class="kw">dev.print</span>(pdf, <span class="st">&quot;panama.pdf&quot;</span>)
+
+ecuador &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country <span class="op">==</span><span class="st"> &quot;Ecuador&quot;</span>)
+<span class="kw">plot</span>(ecuador<span class="op">$</span>year, ecuador<span class="op">$</span>pop)
+<span class="kw">dev.print</span>(pdf, <span class="st">&quot;ecuador&quot;</span>)</code></pre></div>
+<p>But you can see already it’s a lot of text, which means typo-prone and hard to read. Even if you copy-paste each one, there’s a lot of copy-paste, and is very typo-prone. Plus, what if you wanted to instead plot lifeExp? You’d have to remember to change it each time…it gets messy quick. And we’re just doing it with 3 countries here; what if we wanted to do it to all 142 countries? Eek.</p>
+<p>Better with a for loop. This will let us cycle through and do what we want to each thing in turn. If you want to iterate over a set of values, and perform the same operation on each, a <code>for</code> loop will do the job.</p>
+<p>The basic structure of a <code>for</code> loop is:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span>(iterator <span class="cf">in</span> set of values){
+  do a thing
+}</code></pre></div>
+<p>Let’s paste from what we had before, and modify it. Also, the <code>set of values</code> is the list of countries (<code>country_list</code>), and we want to iterate through each country (let’s spell it <code>cntry</code> so it’s distinctive).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span> (cntry <span class="cf">in</span> country_list) {
+  mexico &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country <span class="op">==</span><span class="st"> &quot;Mexico&quot;</span>) 
+  <span class="kw">plot</span>(mexico<span class="op">$</span>year, mexico<span class="op">$</span>pop)
+} </code></pre></div>
+<p>We can’t call it mexico anymore, but we could call it something more general. And let’s comment the plot() line out while we build this, and add a print statement to see if it’s behaving like we think it is.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span> (cntry <span class="cf">in</span> country_list) {
+  cntry_subset &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country <span class="op">==</span><span class="st"> </span>cntry)  
+  <span class="co"># plot(mexico$year, mexico$pop)</span>
+  <span class="kw">print</span>(cntry_subset)
+} </code></pre></div>
+<blockquote>
+<p>Question: what is the variable <code>cntry_subset</code> right now, after running the for loop?</p>
+</blockquote>
+<p>Is this doing what we think it’s doing? Let’s create the country list and print the results each time to test our progress:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">country_list &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Mexico&quot;</span>, <span class="st">&quot;Panama&quot;</span>, <span class="st">&quot;Ecuador&quot;</span>) <span class="co"># identify the thing to loop through</span>
+<span class="cf">for</span> (cntry <span class="cf">in</span> country_list) {
+  cntry_subset &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country <span class="op">==</span><span class="st"> </span>cntry)  
+  <span class="co"># plot(mexico$year, mexico$pop)</span>
+  <span class="kw">print</span>(cntry_subset)
+} </code></pre></div>
+<p>Excellent. Let’s move on with the plot.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">country_list &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Mexico&quot;</span>, <span class="st">&quot;Panama&quot;</span>, <span class="st">&quot;Ecuador&quot;</span>) 
+<span class="cf">for</span> (cntry <span class="cf">in</span> country_list) {
+  cntry_subset &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country <span class="op">==</span><span class="st"> </span>cntry) 
+  <span class="kw">plot</span>(cntry_subset<span class="op">$</span>year, cntry_subset<span class="op">$</span>pop)
+  <span class="kw">dev.print</span>(pdf, <span class="kw">paste0</span>(cntry,<span class="st">&quot;.pdf&quot;</span>)) <span class="co"># ?paste0() will paste a string</span>
+} </code></pre></div>
+<p>Great! And it doesn’t matter if we just use these three countries or all the countries–let’s try it.</p>
+<p>First let’s create a figure directory and make sure it saves there since it’s going to get out of hand quickly:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dir.create</span>(<span class="st">&#39;figures&#39;</span>) <span class="co"># this will be: software-carpentry/figures</span>
+
+country_list &lt;-<span class="st"> </span><span class="kw">unique</span>(gapminder<span class="op">$</span>country) <span class="co"># ?unique() returns the unique values</span>
+<span class="cf">for</span> (cntry <span class="cf">in</span> country_list) {
+  cntry_subset &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country <span class="op">==</span><span class="st"> </span>cntry) 
+  <span class="kw">plot</span>(cntry_subset<span class="op">$</span>year, cntry_subset<span class="op">$</span>pop)
+  <span class="kw">dev.print</span>(pdf, <span class="kw">paste0</span>(<span class="st">&quot;figures/&quot;</span>, cntry,<span class="st">&quot;.pdf&quot;</span>)) <span class="co"># don&#39;t forget the `/`: it&#39;s a path!</span>
+} </code></pre></div>
+<p>So that took a little longer than just the 3, but still super fast. For loops are sometimes just the thing you need to iterate over many things in your analyses.</p>
+<p>Now let’s say we also want to record the mean population of each country. We’d add a line to the for loop, and comment out all the plotting for now (to save time, you could also just leave it):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dir.create</span>(<span class="st">&#39;figures&#39;</span>) <span class="co"># this will be: software-carpentry/figures</span>
+
+country_list &lt;-<span class="st"> </span><span class="kw">unique</span>(gapminder<span class="op">$</span>country) 
+<span class="cf">for</span> (cntry <span class="cf">in</span> country_list) {
+  cntry_subset &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country <span class="op">==</span><span class="st"> </span>cntry) 
+  <span class="co"># plot(cntry_subset$year, cntry_subset$pop)</span>
+  <span class="co"># dev.print(pdf, paste0(&quot;figures/&quot;, cntry,&quot;.pdf&quot;))</span>
+  
+  pop_mean &lt;-<span class="st"> </span><span class="kw">mean</span>(cntry_subset<span class="op">$</span>pop)
+  <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&#39;mean pop for&#39;</span>, cntry, <span class="st">&#39;is&#39;</span>, pop_mean))
+} </code></pre></div>
+<p>We know it worked since it printed correctly. But we didn’t capture it: <code>cntry_subset</code> is just Zimbabwe. Let’s create an object outside the loop and add to it each time.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dir.create</span>(<span class="st">&#39;figures&#39;</span>) <span class="co"># this will be: software-carpentry/figures</span>
+
+country_list &lt;-<span class="st"> </span><span class="kw">unique</span>(gapminder<span class="op">$</span>country) <span class="co"># ?unique() returns the unique values</span>
+country_pop_mean &lt;-<span class="st"> </span><span class="kw">data.frame</span>()
+
+<span class="cf">for</span> (cntry <span class="cf">in</span> country_list) {
+  cntry_subset &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country <span class="op">==</span><span class="st"> </span>cntry) 
+  <span class="co"># plot(cntry_subset$year, cntry_subset$pop)</span>
+  <span class="co"># dev.print(pdf, paste0(&quot;figures/&quot;, cntry,&quot;.pdf&quot;)) </span>
+  
+  pop_mean &lt;-<span class="st"> </span><span class="kw">mean</span>(cntry_subset<span class="op">$</span>pop)
+  <span class="co"># print(paste(&#39;mean pop for&#39;, cntry, &#39;is&#39;, pop_mean))</span>
+  country_pop_mean &lt;-<span class="st"> </span><span class="kw">rbind</span>(country_pop_mean, <span class="kw">data.frame</span>(cntry, pop_mean))
+} </code></pre></div>
+<p>This approach can be useful, but ‘growing your results’ (building the result object incrementally) is computationally inefficient, so avoid it when you are iterating through a lot of values.</p>
+<p>For loops can also lead to temporary variables that you don’t need. But they can be really useful at times.</p>
+</div>
+<div id="conditional-statements-with-if-and-else" class="section level2">
+<h2><span class="header-section-number">9.5</span> conditional statements with <code>if</code> and <code>else</code></h2>
+<p>Often when we’re coding we want to control the flow of our actions. This can be done by setting actions to occur only if a condition or a set of conditions are met.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># if</span>
+<span class="cf">if</span> (condition is true) {
+  do something
+}
+
+<span class="co"># if ... else</span>
+<span class="cf">if</span> (condition is true) {
+  do something
+} <span class="cf">else</span> {  <span class="co"># that is, if the condition is false,</span>
+  do something different
+}</code></pre></div>
+<p>Say, for example, that in addition to saving population figures for all countries, we want to save life expectancy figures for countries in Asia only.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dir.create</span>(<span class="st">&#39;figures&#39;</span>) <span class="co"># this will be: software-carpentry/figures</span>
+
+country_list &lt;-<span class="st"> </span><span class="kw">unique</span>(gapminder<span class="op">$</span>country) <span class="co"># ?unique() returns the unique values</span>
+country_pop_mean &lt;-<span class="st"> </span><span class="kw">data.frame</span>()
+<span class="cf">for</span> (cntry <span class="cf">in</span> country_list) {
+  cntry_subset &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country <span class="op">==</span><span class="st"> </span>cntry) 
+  <span class="co"># plot(cntry_subset$year, cntry_subset$pop)</span>
+  <span class="co"># dev.print(pdf, paste0(&quot;figures/&quot;, cntry,&quot;.pdf&quot;)) </span>
+  
+  pop_mean &lt;-<span class="st"> </span><span class="kw">mean</span>(cntry_subset<span class="op">$</span>pop)
+  <span class="co"># print(paste(&#39;mean pop for&#39;, cntry, &#39;is&#39;, pop_mean))</span>
+  country_pop_mean &lt;-<span class="st"> </span><span class="kw">rbind</span>(country_pop_mean, <span class="kw">data.frame</span>(cntry, pop_mean))
+  
+  ## if Asia, calculate mean(lifeExp)
+  <span class="cf">if</span> (<span class="kw">unique</span>(cntry_subset<span class="op">$</span>continent) <span class="op">==</span><span class="st"> &quot;Asia&quot;</span>) { <span class="co"># read: if (the continent is Asia) {then}</span>
+    <span class="kw">plot</span>(cntry_subset<span class="op">$</span>year, cntry_subset<span class="op">$</span>lifeExp) 
+    <span class="kw">dev.print</span>(pdf, <span class="kw">paste0</span>(<span class="st">&quot;figures/&quot;</span>, cntry, <span class="st">&quot;_lifeExp.pdf&quot;</span>)) <span class="co"># change the filename</span>
+  }
+} </code></pre></div>
+<p>And if the country is in Africa, let’s plot the mean GDP.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dir.create</span>(<span class="st">&#39;figures&#39;</span>) <span class="co"># this will be: software-carpentry/figures</span>
+
+country_list &lt;-<span class="st"> </span><span class="kw">unique</span>(gapminder<span class="op">$</span>country) <span class="co"># ?unique() returns the unique values</span>
+country_pop_mean &lt;-<span class="st"> </span><span class="kw">data.frame</span>()
+<span class="cf">for</span> (cntry <span class="cf">in</span> country_list) {
+  cntry_subset &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country <span class="op">==</span><span class="st"> </span>cntry) 
+  <span class="co"># plot(cntry_subset$year, cntry_subset$pop)</span>
+  <span class="co"># dev.print(pdf, paste0(&quot;figures/&quot;, cntry,&quot;.pdf&quot;)) </span>
+  
+  pop_mean &lt;-<span class="st"> </span><span class="kw">mean</span>(cntry_subset<span class="op">$</span>pop)
+  <span class="co"># print(paste(&#39;mean pop for&#39;, cntry, &#39;is&#39;, pop_mean))</span>
+  country_pop_mean &lt;-<span class="st"> </span><span class="kw">rbind</span>(country_pop_mean, <span class="kw">data.frame</span>(cntry, pop_mean))
+  
+  ## if Asia, calculate mean(lifeExp)
+  <span class="cf">if</span> (<span class="kw">unique</span>(cntry_subset<span class="op">$</span>continent) <span class="op">==</span><span class="st"> &quot;Asia&quot;</span>) { <span class="co"># read: if (the continent is Asia) {then}</span>
+    <span class="kw">plot</span>(cntry_subset<span class="op">$</span>year, cntry_subset<span class="op">$</span>lifeExp) 
+    <span class="kw">dev.print</span>(pdf, <span class="kw">paste0</span>(<span class="st">&quot;figures/&quot;</span>, cntry, <span class="st">&quot;_lifeExp.pdf&quot;</span>)) 
+  } <span class="cf">else</span> <span class="cf">if</span> (<span class="kw">unique</span>(cntry_subset<span class="op">$</span>continent) <span class="op">==</span><span class="st"> &quot;Africa&quot;</span>) {
+    <span class="kw">plot</span>(cntry_subset<span class="op">$</span>year, cntry_subset<span class="op">$</span>gdpPercap) 
+    <span class="kw">dev.print</span>(pdf, <span class="kw">paste0</span>(<span class="st">&quot;figures/&quot;</span>, cntry, <span class="st">&quot;_gdpPercap.pdf&quot;</span>)) <span class="co"># change the filename</span>
+  }
+} </code></pre></div>
 
 </div>
 </div>
@@ -372,8 +490,8 @@ Markdown syntax changes plain text to **bold** and *italics*:
           </div>
         </div>
       </div>
-<a href="analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="collaborate.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="tidyr.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="rmarkdown.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

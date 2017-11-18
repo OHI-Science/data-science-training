@@ -1,4 +1,4 @@
-# More R poweR {#power}
+# Analysis, continued {#analysis}
 
 ## Objectives
 
@@ -8,6 +8,14 @@
 - mention classes
 - practice 
 - what's next
+- Jenny Bryan filenames
+
+When trying to see if a number or text is equal to some *single* value, use `==`. To check it against *multiple* values, use `%in%`. mine’s "%!in%" <- Negate("%in%")
+
+list.files
+file.path()
+message() (with an if statement maybe)
+get file extensions https://stat.ethz.ch/R-manual/R-devel/library/tools/html/fileutils.html
 
 You'll soon have questions that are outside the scope of this workshop, how do you find answers?
 

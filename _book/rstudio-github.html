@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="analysis.html">
-<link rel="next" href="collaborate.html">
+<link rel="prev" href="orientation.html">
+<link rel="next" href="viz.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -264,106 +264,236 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="rmarkdown" class="section level1">
-<h1><span class="header-section-number">Chapter 10</span> Analysis with RMarkdown</h1>
-<div id="objectives-resources-3" class="section level2">
-<h2><span class="header-section-number">10.1</span> Objectives &amp; Resources</h2>
+<div id="rstudio-github" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> RStudio+GitHub and R Scripts</h1>
+<!---TODO
+Philosophy: gh repo and Rproject
+--->
+<div id="objectives-resources-1" class="section level2">
+<h2><span class="header-section-number">5.1</span> Objectives &amp; Resources</h2>
+<p>We will learn about version control using git and GitHub. git will track and version your files, GitHub stores this online and enables you to collaborate with others (and yourself). Although git and GitHub are two different things, distinct from each other, I think of them as a bundle since I always use them together. It also helped me to think of GitHub like Dropbox: you make folders that are ‘tracked’ and can be synced to the cloud. GitHub does this too, but you have to be more deliberate about when syncs are made. This is because GitHub saves these as different versions, with information about who contributed when, line-by-line. This makes collaboration easier, and it allows you to roll-back to different versions or contribute to others’ work.</p>
+<p>Today, we’ll interface with GitHub from our local computers using RStudio. There are many other ways to interact with GitHub, including GitHub’s Desktop App or the command line (<a href="http://stat545.com/git02_git-clients.html">here is Jenny Bryan’s list of git clients</a>), but today we are going to work from RStudio. You have the largest suite of options if you interface through the command line, but the most common things you’ll do can be done through one of these other applications (i.e. RStudio and the GitHub Desktop App).</p>
+<p><em>Note:</em> These materials borrow from:</p>
 <ul>
-<li>intro to Markdown</li>
-<li>intro to RMarkdown</li>
-<li>more practice with GitHub</li>
-<li>more practice with tidyverse</li>
+<li>Jenny Bryan’s lectures from STAT545 at UBC: <a href="http://stat545.com/git09_shell.html">The Shell</a></li>
+<li>Jenny Bryan’s <a href="http://happygitwithr.com">Happy git with R</a> tutorial</li>
+<li>Melanie Frazier’s <a href="https://rawgit.com/nazrug/Quickstart/master/GithubQuickstart.html">GitHub Quickstart</a></li>
+<li>Ben Best’s <a href="http://remi-daigle.github.io/2016-04-15-UCSB/git/">Software Carpentry at UCSB</a></li>
 </ul>
+<!---TODO
+- Intro to GitHub.com
+- create GH repo
+- clone, and create an Rproject
+- scripts (this is the flight plan, but you still need to tell the plane where to go)
+- practice in R, practice gh
+
+TODO: link to resources
+--->
+<p>Today, we’ll only introduce the features and terminology that scientists need to learn to begin managing their projects.</p>
+<p>Here’s what we’ll do:</p>
+<ol style="list-style-type: decimal">
+<li>set up git on our local computer</li>
+<li>create a repository on github.com</li>
+<li>clone using RStudio</li>
+<li>add a few files and sync: pull, commit, push</li>
+<li>explore github.com: files, commit history, file history, blame</li>
+<li>clone using the GitHub Desktop App</li>
+<li>add a few files and sync: pull, commit, push</li>
+<li>explore github.com: files, commit history, file history, blame</li>
+<li>practice: edit/add files and sync using RStudio or GitHub Desktop (or a combination)</li>
+</ol>
+</div>
+<div id="why-should-scientists-use-github" class="section level2">
+<h2><span class="header-section-number">5.2</span> Why should scientists use Github?</h2>
+<ol style="list-style-type: decimal">
+<li>Ends (or, nearly ends) the horror of keeping track of versions. Basically, we get away from this: <br /> <br /> <img src="img/MessySaves.png" /> <br /> <br /> When you open your repository, you only see the most recent version. But, it easy to compare versions, and you can easily revert to previous versions. <br /> <br /></li>
+<li>Improves collaborative efforts. Different researchers can work on the same files at the same time!</li>
+<li>It is easy to share and distribute files through the Github website.</li>
+<li>Your files are available anywhere, you just need internet connection!</li>
+</ol>
+</div>
+<div id="git-and-github" class="section level2">
+<h2><span class="header-section-number">5.3</span> Git and Github</h2>
+<ul>
+<li><p><strong>Git</strong> is a version control system that lets you track changes to files over time. These files can be any kind of file (eg .doc, .pdf, .xls), but free text differences are most easily visible (eg txt, csv, md).</p></li>
+<li><p><strong>Github</strong> is a website for storing your git versioned files remotely. It has many nice features to be able visualize differences between <a href="https://help.github.com/articles/rendering-and-diffing-images/">images</a>, <a href="https://help.github.com/articles/mapping-geojson-files-on-github/">rendering</a> &amp; <a href="https://github.com/blog/1772-diffable-more-customizable-maps">diffing</a> map data files, <a href="https://help.github.com/articles/rendering-csv-and-tsv-data/">render text data files</a>, and <a href="https://help.github.com/articles/rendering-differences-in-prose-documents/">track changes in text</a>.</p></li>
+</ul>
+<blockquote>
+<p>If you are a student you can get the micro account which includes 5 private repositories for free (normally a $7/month value). You can sign up for the student account <a href="https://education.github.com/pack">here</a>. Instructors can also request a free organization <a href="https://education.github.com/">account, “Request a discount”</a>.</p>
+</blockquote>
+<p>Github was developed for social coding (i.e., sort of like an open source Wikipedia for programmers). Consequently, much of the functionality and terminology of Github (e.g., branches and pull requests) isn’t necessary for a scientist getting started.</p>
+<p>These concepts are more important for coders who want the entire coding community (and not just people working on the same project) to be able to suggest changes to their code. This isn’t how most scientists will use Github.</p>
+<p>To get the full functionality of Github, you will eventually want to learn other concepts. But, this can wait.</p>
+<div id="some-github-terminology" class="section level3">
+<h3><span class="header-section-number">5.3.1</span> Some Github terminology</h3>
+<ul>
+<li><strong>User</strong>: A Github account for you (e.g., jules32).</li>
+<li><strong>Organization</strong>: The Github account for one or more user (e.g., datacarpentry).</li>
+<li><strong>Repository</strong>: A folder within the organization that includes files dedicated to a project.</li>
+<li><strong>Local Github</strong>: Copies of Github files located your computer.</li>
+<li><strong>Remote Github</strong>: Github files located on the <a href="https://github.com" class="uri">https://github.com</a> website.</li>
+<li><strong>Clone</strong>: Process of making a local copy of a remote Github repository. This only needs to be done once (unless you mess up your local copy).</li>
+<li><strong>Pull</strong>: Copy changes on the remote Github repository to your local Github repository. This is useful if multiple people are making changes to a repository.</li>
+<li><strong>Push</strong>: Save local changes to remote Github <br /> <br /></li>
+</ul>
+<p><img src="img/push_pull_clone.png" /> <br /> <br /></p>
+</div>
+</div>
+<div id="create-a-repository-on-your-github-account" class="section level2">
+<h2><span class="header-section-number">5.4</span> Create a repository on your Github account</h2>
+<div id="step-1" class="section level3">
+<h3><span class="header-section-number">5.4.1</span> Step 1</h3>
+<p><br /> <br /> <img src="img/create_repository.png" /> <br /> <br /></p>
+</div>
+<div id="step-2" class="section level3">
+<h3><span class="header-section-number">5.4.2</span> Step 2</h3>
+<p><br /> <br /> <img src="img/create_repository_2.png" /> <br /> <br /></p>
+<p>The <em>Add gitignore</em> option adds a document where you can identify files or file-types you want Github to ignore. These files will stay in on the local Github folder (the one on your computer), but will not be uploaded onto the web version of Github.</p>
+<p>The <em>Add a license</em> option adds a license that describes how other people can use your Github files (e.g., open source, but no one can profit from them, etc.). We won’t worry about this today. Our new repository!</p>
+<p>Notice how the README.md file we created is automatically displayed at the bottom. <br /> <br /></p>
+<p><img src="img/New_repository.png" /> <br /> <br /></p>
+<p><strong>From here, you will work locally (on your computer).</strong></p>
+</div>
+</div>
+<div id="clone-your-repository-using-rstudio" class="section level2">
+<h2><span class="header-section-number">5.5</span> Clone your repository using RStudio</h2>
+<p>Cloning copies the Remote repository on Github.com to your local computer, but unlike downloading, cloning keeps all the version control and user information bundled with the files.</p>
+<p>We’ll start of by cloning to our local computer using RStudio. Then we’ll also show how to do this in the Desktop App because it’s good to know there are other approaches, and sometimes it can take some extra steps to get RStudio working nicely with git.</p>
+<div id="rstudio-projects-.rproj" class="section level3">
+<h3><span class="header-section-number">5.5.1</span> RStudio projects (.Rproj)</h3>
+<p>TODO: RStudio project! Yes, you can use these without Git, but you probably never will, so that’s why we’re learning it together.</p>
+</div>
+<div id="git-rstudio-troubleshooting" class="section level3">
+<h3><span class="header-section-number">5.5.2</span> Git-RStudio Troubleshooting</h3>
+<p>If you have problems, we’ll help you out using HappyGitWithR’s sections on <a href="http://happygitwithr.com/rstudio-see-git.html">Detect Git from RStudio</a> and <a href="http://happygitwithr.com/troubleshooting.html">RStudio, Git, GitHub Hell (troubleshooting)</a>. But you can follow along this morning with the Desktop App.</p>
+</div>
+<div id="step-0" class="section level3">
+<h3><span class="header-section-number">5.5.3</span> Step 0</h3>
+<p>Where do you want to keep all your github repositories? It can be good practice to keep them all together somewhere where you can easily find them. For the workshop, let’s all make a folder called <code>github</code> (all lowercase!) in our home directories. So it will look like this:</p>
+<ul>
+<li>Windows: <code>Users\[User]\Documents\github\</code></li>
+<li>Mac: <code>Users/[User]/github/</code></li>
+</ul>
+</div>
+<div id="step-1-1" class="section level3">
+<h3><span class="header-section-number">5.5.4</span> Step 1</h3>
+<p>Copy the web address of the repository you want to clone: <br /></p>
 <div class="figure">
-<img src="img/practicalDev_changingstuff.jpg" />
+<img src="img/clone_step1.png" />
 
 </div>
-<p>See <a href="https://guides.github.com/features/mastering-markdown/">Mastering Markdown · GitHub Guides</a> and add some more personalized content to the README of your own, like a bulleted list or blockquote. For on the fly rendering, the <a href="https://atom.io/">atom</a> text editor is good.</p>
+<p><br /></p>
+<p>And, then, from RStudio: <br /> <br /></p>
 </div>
-<div id="intro-to-markdown" class="section level2">
-<h2><span class="header-section-number">10.2</span> Intro to Markdown</h2>
-<div id="from-github.com" class="section level3">
-<h3><span class="header-section-number">10.2.1</span> from GitHub.com</h3>
-<p>Let’s learn markdown by editing the <code>README.md</code> on github.com for convenience. A README.md file can be added to every folder in a repository, and they are automatically displayed when the repository is opened on github.com</p>
-<p>The <code>README.md</code> is in <strong>markdown</strong>, simple syntax for conversion to HTML. <code>.md</code> is a kind of text file, so you only need a text editor to read it. If you were editing this on your computer, you could do this right in RStudio, which has a built-in text editor. (You could also do it in another text editor program, but RStudio is convenient). Copy-paste the following into your <code>README.md</code>:</p>
-<pre><code># my-project
-
-This project is based on [Collaborative, Reproducible Science training ](https://ohi-science.org/data-science-training/).
-
-## Introduction
-
-Markdown syntax changes plain text to **bold** and *italics*:
-
-1. **Git**
-1. **Github**
-1. *Markdown*
-1. *Rmarkdown*
-
-## Conclusion
-
-![](https://octodex.github.com/images/labtocat.png)
-</code></pre>
-<p>Notice the syntax for:</p>
-<ul>
-<li><strong>headers</strong> get rendered at multiple levels: <code>#</code>, <code>##</code></li>
-<li><strong>link</strong>: <code>[](http://...)</code></li>
-<li><strong>image</strong>: <code>![](http://...)</code> — note the <code>!</code></li>
-<li><em>italics</em>: <code>*word*</code></li>
-<li><strong>bold</strong>: <code>**word**</code></li>
-<li><strong>numbered list</strong> gets automatically sequenced: <code>1.</code>, <code>1.</code></li>
-</ul>
+<div id="step-2-1" class="section level3">
+<h3><span class="header-section-number">5.5.5</span> Step 2</h3>
+<p><img src="img/new_project_1.png" /> <br /> <br /></p>
 </div>
-<div id="from-rstudio" class="section level3">
-<h3><span class="header-section-number">10.2.2</span> from RStudio</h3>
-<p>Let’s go back to RStudio. Pull so that you have the most recent version of your README locally. Let’s open it and have a look. Documentation is a really important part of coding, so let’s look at the README. If we look at GitHub.com, you can see that the README is displayed nicely like online. Let’s add some more description about what our GitHub repository is for.</p>
-<p>Now click on the Preview button to see the markdown rendered as HTML.</p>
-<p>Let’s change the image to the plot we made yesterday.</p>
-<p><code>![](my_plot.png)</code></p>
-<p>There are some good <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet">cheatsheets</a> to get you started, and here is one built into RStudio: <br /> <br /></p>
+<div id="step-3" class="section level3">
+<h3><span class="header-section-number">5.5.6</span> Step 3</h3>
+<p><br /> <br /></p>
+<p><img src="img/new_project_2.png" /> <br /> <br /></p>
+</div>
+<div id="step-4" class="section level3">
+<h3><span class="header-section-number">5.5.7</span> Step 4</h3>
+<p><br /> <br /></p>
+<p><img src="img/new_project_3.png" /> <br /> <br /></p>
+</div>
+<div id="step-5" class="section level3">
+<h3><span class="header-section-number">5.5.8</span> Step 5</h3>
+<p>Save it in your github folder (click on Browse) to do this.</p>
+<p><br /> <br /></p>
 <div class="figure">
-<img src="img/md_cheatsheet.png" />
+<img src="img/new_project_4.png" />
 
 </div>
-<p>knit with the button; also <code>knitr</code></p>
-</div>
-<div id="your-turn-5" class="section level3">
-<h3><span class="header-section-number">10.2.3</span> Your turn</h3>
-<p>Update the README, push to GitHub</p>
-</div>
-</div>
-<div id="rmarkdown-from-rstudio" class="section level2">
-<h2><span class="header-section-number">10.3</span> RMarkdown from RStudio</h2>
-<p>Back in RStudio, let’s create a new RMarkdown file, which allows us to weave markdown text with chunks of R code to be evaluated and output content like tables and plots.</p>
-<p>File -&gt; New File -&gt; RMarkdown… -&gt; Document of output format HTML, OK.</p>
-<img src="img/rstudio_new-rmd-doc-html.png" width="300"/>
-<p>You can give it a Title of “My Project”. After you click OK, most importantly File -&gt; Save as <code>index</code> (which will get named with the filename extension <code>index.Rmd</code>).</p>
-<p>Some initial text is already provided for you. Let’s go ahead and “Knit HTML”.</p>
-<p>Notice how the markdown is rendered similar to as before + <strong>R code chunks</strong> are surrounded by 3 backticks and <code>{r LABEL}</code>. These are evaluated and return the output text in the case of <code>summary(cars)</code> and the output plot in the case of <code>plot(pressure)</code>.</p>
-<p>Notice how the code <code>plot(pressure)</code> is not shown in the HTML output because of the R code chunk option <code>echo=FALSE</code>.</p>
-<p><strong>Before we continue exploring Rmarkdown</strong>, let’s sync this the .rmd and .html to github.com. Enter a message like “added index” and click on “Commit and Sync gh-pages”. This will update <a href="https://github.com/USER/my-project" class="uri">https://github.com/USER/my-project</a>, and now you can also see your project website with a default <code>index.html</code> viewable at <a href="http://USER.github.io/my-project" class="uri">http://USER.github.io/my-project</a></p>
-<div id="your-turn-6" class="section level3">
-<h3><span class="header-section-number">10.3.1</span> Your turn</h3>
+<p><br /> <br /></p>
+<p>If everything went well, the repository will be added to the list located here: <img src="img/select_project.png" /></p>
+<p><br /> <br /></p>
+<p>And the repository will be saved to the Github folder on your computer: <br /> <br /></p>
+<p><img src="img/cloned_repository.png" /> <br /> <br /></p>
+<p>Ta da!!!! The folder doesn’t contain much of interest, but we are going to change that.</p>
 </div>
 </div>
-<div id="resources" class="section level2">
-<h2><span class="header-section-number">10.4</span> Resources</h2>
-<p>Were you hoping for an RStudio Cheatsheet? Here it is:</p>
+<div id="add-files-to-local-repository-and-sync-to-remote-github.com" class="section level2">
+<h2><span class="header-section-number">5.6</span> Add files to local repository and sync to remote (github.com)</h2>
+<p>The repository will contain:</p>
 <ul>
-<li><a href="http://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf">rmarkdown-cheatsheet.pdf</a></li>
-<li><a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a></li>
-<li><a href="http://kbroman.org/knitr_knutshell/">knitr in a knutshell - Karl Broman</a></li>
+<li>.gitignore file</li>
+<li>README.md</li>
+<li>Rproj</li>
 </ul>
-<p>save, commit, push</p>
+<p>And, I typically create the following:</p>
+<ul>
+<li>folders for “data” and “figures”<br />
+</li>
+<li>R scripts</li>
+<li>etc.</li>
+</ul>
+<p>I’m going to copy-paste the R script we created yesterday into our R project.</p>
+<p>To make changes to the repository, you will work from your computer (“local Github”).</p>
+<p>When files are changed in the local repository, these changes will be reflected in the Git tab of RStudio: <br /> <br /></p>
+<p><img src="img/modify_files.png" /> <br /> <br /></p>
+<p>These are the codes RStudio uses to describe how the files are changed, (from the RStudio <a href="http://www.rstudio.com/wp-content/uploads/2016/01/rstudio-IDE-cheatsheet.pdf">cheatsheet</a>): <img src="img/modified.png" /></p>
+<p>When you are ready to commit your changes, you follow these steps: <br /> <br /></p>
+<p><img src="img/commit_overview.png" /> <br /> <br /></p>
+<p>We walk through this process below:</p>
+<div id="pull" class="section level3">
+<h3><span class="header-section-number">5.6.1</span> Pull</h3>
+<p>From the Git tab, “Pull” the repository. This makes sure your local repository is synced with the remote repository. This is very important if other people are making changes to the repository or if you are working from multiple computers. <br /> <br /></p>
+<p><img src="img/pull.png" /> <br /> <br /></p>
 </div>
-<div id="more-practice-data-wrangling-data-viz" class="section level2">
-<h2><span class="header-section-number">10.5</span> More practice data wrangling, data viz</h2>
-<p>let’s do it from our RMarkdown now. MORE DPLYR (GROUP BY?), AND TIDYR. MAYBE MORE GGPLOT2?</p>
-<div id="your-turn-7" class="section level3">
-<h3><span class="header-section-number">10.5.1</span> Your turn</h3>
+<div id="stage" class="section level3">
+<h3><span class="header-section-number">5.6.2</span> Stage</h3>
+<p>Stage the files you want to commit. In RStudio, this involves checking the “Staged” boxes: <br /></p>
+<p><img src="img/staged.png" /> <br /> <br /></p>
+</div>
+<div id="commit" class="section level3">
+<h3><span class="header-section-number">5.6.3</span> Commit</h3>
+<p><br /></p>
+<p><img src="img/commit.png" /> <br /> <br /></p>
+</div>
+<div id="push" class="section level3">
+<h3><span class="header-section-number">5.6.4</span> Push</h3>
+<p><br /></p>
+<p><img src="img/push.png" /> <br /></p>
+</div>
+<div id="repeat" class="section level3">
+<h3><span class="header-section-number">5.6.5</span> Repeat!</h3>
+<p>This time let’s make a change to a file we have already committed. Maybe add some comments to our R script.</p>
+</div>
+<div id="explore-remote-github" class="section level3">
+<h3><span class="header-section-number">5.6.6</span> Explore remote Github</h3>
+<p>The files you added should be on github.com: <br /></p>
+<p><img src="img/Github_remote.png" /> <br /> <br /></p>
 </div>
 </div>
-<div id="troubleshooting-4" class="section level2">
-<h2><span class="header-section-number">10.6</span> Troubleshooting</h2>
+<div id="rstudio-github-workflow" class="section level2">
+<h2><span class="header-section-number">5.7</span> RStudio-GitHub workflow</h2>
+<p>Here is what we consider “The RStudio-GitHub Workflow”:</p>
+<p>TODO!</p>
+</div>
+<div id="create-an-r-script" class="section level2">
+<h2><span class="header-section-number">5.8</span> Create an R script</h2>
+<ul>
+<li><code>source()</code> your file to see if there are any typos that you’ve missed</li>
+</ul>
+<div id="committing---how-often-tracking-changes-in-your-files" class="section level3">
+<h3><span class="header-section-number">5.8.1</span> Committing - how often? Tracking changes in your files</h3>
+<p>Whenever you make changes to the files in Github, you will walk through the Pull -&gt; Stage -&gt; Commit -&gt; Push steps.</p>
+<p>I tend to do this every time I finish a task (basically when I start getting nervous that I will lose my work). Once something is committed, it is very difficult to lose it.</p>
+<p>One thing that I love about about Github is that it is easy to see how files have changed over time. Usually I compare commits through github.com: <br /> <br /></p>
+<p><img src="img/commit_history.png" /> <br /> <br /> <br /> <br /></p>
+<p><img src="img/commit_compare_2.png" /> <br /> <br /></p>
+<p>You can click on the commits to see how the files changed from the previous commit: <br /> <br /></p>
+<p><img src="img/commit_compare_3.png" /> <br /> <br /></p>
+</div>
+</div>
+<div id="troubleshooting-1" class="section level2">
+<h2><span class="header-section-number">5.9</span> Troubleshooting</h2>
+<ul>
+<li>if you’re having trouble with connecting with RStudio, you can also use the GitHub Desktop App - <a href="https://www.youtube.com/watch?v=XdhuWDdu-rk">3-minute youtube video</a></li>
+</ul>
 
 </div>
 </div>
@@ -372,8 +502,8 @@ Markdown syntax changes plain text to **bold** and *italics*:
           </div>
         </div>
       </div>
-<a href="analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="collaborate.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="orientation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="viz.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

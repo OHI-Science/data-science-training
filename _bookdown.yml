@@ -9,12 +9,12 @@ rmd_files: [
   "r-rstudio-orientation.Rmd", ## http://socviz.co/
   "rstudio-github.Rmd",
   "viz.Rmd", 
-  "data-wrangling.Rmd",
+  "data-wrangling-dplyr.Rmd",
+  "data-wrangling-tidyr.Rmd",
+  "analysis-continued.Rmd", # let's talk about filenames
   "analysis-rmarkdown.Rmd",
-  "collaborate-github.Rmd",
-  "more-r-power.Rmd"] # let's talk about filenames
+  "collaborate-github.Rmd"] 
 delete_merged_file: true
-  css:
-    - css/lesson.css
+
 
 
