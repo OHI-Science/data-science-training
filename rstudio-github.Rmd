@@ -1,4 +1,4 @@
-# RStudio+GitHub and R Scripts {#rstudio-github}
+# Using RStudio+GitHub, and R Scripts {#rstudio-github}
 
 ```{r gh ops, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -94,16 +94,18 @@ To get the full functionality of Github, you will eventually want to learn other
 <br />
 
 
-## Create a repository on your Github account
+## Create a repository on Github.com
 
-### Step 1
+First, go to your account on github.com and click "New repository".
 <br />
 <br />
 ![](img/create_repository.png)
 <br />
 <br />
 
-### Step 2
+Choose a name.Call it whatever you want (the shorter the better), or follow me for convenience. I will call mine `my-repo`. 
+
+Also, add a description, make it public, create a README file, and create your repo!
 <br />
 <br />
 ![](img/create_repository_2.png)
@@ -113,7 +115,8 @@ To get the full functionality of Github, you will eventually want to learn other
 The *Add gitignore* option adds a document where you can identify files or file-types you want Github to ignore. These files will stay in on the local Github folder (the one on your computer), but will not be uploaded onto the web version of Github.
 
 The *Add a license* option adds a license that describes how other people can use your Github files (e.g., open source, but no one can profit from them, etc.).  We won't worry about this today.
-Our new repository!  
+
+Check out our new repository!  
 
 Notice how the README.md file we created is automatically displayed at the bottom.
 <br />
@@ -125,47 +128,49 @@ Notice how the README.md file we created is automatically displayed at the botto
 
 **From here, you will work locally (on your computer).**
 
-## Clone your repository using RStudio
+## Create your `github` folder 
 
-Cloning copies the Remote repository on Github.com to your local computer, but unlike downloading, cloning keeps all the version control and user information bundled with the files. 
 
-We'll start of by cloning to our local computer using RStudio. Then we'll also show how to do this in the Desktop App because it's good to know there are other approaches, and sometimes it can take some extra steps to get RStudio working nicely with git. 
 
+<!---
 ### RStudio projects (.Rproj)
 
 TODO: RStudio project! Yes, you can use these without Git, but you probably never will, so that's why we're learning it together.
+--->
 
-### Git-RStudio Troubleshooting
+We are going to be cloning a copy of our Remote repository on Github.com to our local computers. Unlike downloading, cloning keeps all the version control and user information bundled with the files. 
 
-If you have problems, we'll help you out using  HappyGitWithR's sections on [Detect Git from RStudio](http://happygitwithr.com/rstudio-see-git.html) and [RStudio, Git, GitHub Hell (troubleshooting)](http://happygitwithr.com/troubleshooting.html). But you can follow along this morning with the Desktop App. 
+Let's be organized and deliberate about where we want to keep all of our GitHub repositories (since this is the first of many in your career). 
 
-### Step 0
-
-Where do you want to keep all your github repositories? It can be good practice to keep them all together somewhere where you can easily find them. For the workshop, let's all make a folder called `github` (all lowercase!) in our home directories. So it will look like this: 
+Let's all make a folder called `github` (all lowercase!) in our home directories. So it will look like this: 
 
 - Windows: `Users\[User]\Documents\github\`
 - Mac: `Users/[User]/github/`
 
-### Step 1
-Copy the web address of the repository you want to clone:
+This will let us take advantage of something that is really key about GitHub.com: you can easily navigate through folders within repositories and the urls reflect this navigation. The greatness of this will be evident soon. So let's set ourselves up for easily translating (and remembering) those navigation paths by having a folder called `github` that will serve as our 'github.com'.
+
+So really. Make sure that you have an all-lowercase folder called `github` in your home directory!!
+
+## Clone your repository using RStudio
+
+We'll start of by cloning to our local computer using RStudio. 
+
+Step 1: Copy the web address of the repository you want to clone.
 <br />
 
 
 ![](img/clone_step1.png)
 
 <br />
-
-And, then, from RStudio:
-<br />
 <br />
 
-### Step 2
+Step 2: from RStudio, go to New Project (also in the File menu).
 
 ![](img/new_project_1.png)
 <br />
 <br />
 
-### Step 3
+Step 3: Select Version Control
 
 <br />
 <br />
@@ -174,7 +179,7 @@ And, then, from RStudio:
 <br />
 <br />
 
-### Step 4
+Step 4: Select Git
 
 <br />
 <br />
@@ -183,7 +188,7 @@ And, then, from RStudio:
 <br />
 <br />
 
-### Step 5
+Step 5: Paste it in the Repository URL field, and type tab to autofill the Project Directory name. Make sure you keep the Project Directory Name THE SAME as the repository name from the URL.
 
 Save it in your github folder (click on Browse) to do this. 
 
@@ -211,7 +216,7 @@ And the repository will be saved to the Github folder on your computer:
 
 Ta da!!!!  The folder doesn't contain much of interest, but we are going to change that.
 
-## Add files to local repository and sync to remote (github.com)
+## Add files to our local repo
 
 The repository will contain:
 
@@ -225,7 +230,7 @@ And, I typically create the following:
 * R scripts
 * etc.
 
-I'm going to copy-paste the R script we created yesterday into our R project.
+I'm going to copy-paste an image from my desktop into the folder.
 
 To make changes to the repository, you will work from your computer ("local Github").
 
@@ -239,6 +244,8 @@ When files are changed in the local repository, these changes will be reflected 
 
 These are the codes RStudio uses to describe how the files are changed, (from the RStudio [cheatsheet](http://www.rstudio.com/wp-content/uploads/2016/01/rstudio-IDE-cheatsheet.pdf)):
 ![](img/modified.png)
+
+## Syncing to GitHub from RStudio
 
 When you are ready to commit your changes, you follow these steps:
 <br />
@@ -280,10 +287,6 @@ Stage the files you want to commit.  In RStudio, this involves checking the "Sta
 ![](img/push.png)
 <br />
 
-### Repeat!
-
-This time let's make a change to a file we have already committed. Maybe add some comments to our R script. 
-
 ### Explore remote Github
 The files you added should be on github.com:
 <br />
@@ -292,17 +295,54 @@ The files you added should be on github.com:
 <br />
 <br />
 
-## RStudio-GitHub workflow
+## Your turn!
 
-Here is what we consider "The RStudio-GitHub Workflow":
+This time let's edit an existing file instead of adding something new. Open your README file by clicking on it in the Files pane (lower right corner). Write a few lines of text, save, and see what happens in your Git Tab. Sync it to your remote repository (Github.com).
 
-TODO!
 
 ## Create an R script
 
-- `source()` your file to see if there are any typos that you've missed 
+OK, now, let's go back to RStudio, and get ourselves back into learning R. We are going to create an R script. What is an R script? It's a text file with a .R extension. Writing R commands in the console like we did this morning is great, but limited; it's hard to keep track of and hard to efficiently share with others. Plus, as your analyses get more complicated, you need to be able to see them all in one place. 
 
-### Committing - how often? Tracking changes in your files
+Go to File > New File > R Script (or click the green plus in the top left corner). 
+
+Let's set up this script for the rest of the day. Let's start off with a few comments so that we know what it is for, and save it. 
+
+```
+## swc-mbari.R
+## learning R
+## J Lowndes lowndes@nceas.uscb.edu
+```
+
+Now, let's save it. I'm going to call my file `swc-mbari.R`.
+
+OK. Now let's practice with some of those commands that we were working on this morning. 
+
+Below your comments, type: 
+
+```
+x <- seq(1:15)
+```
+
+Now, hitting return does not execute this command; remember, it's just a text file. To execute it, we need to get what we typed in the script down into the console. How do we do it? There are several ways (let's do each of them):
+
+1. copy-paste this line into the console.
+2. select the line (or simply put the cursor there), and click 'Run'. This is available from 
+    a. the bar above the script (green arrow)
+    b. the menu bar: Code > Run Selected Line(s)
+    c. keyboard shortcut: command-return
+3. source the script, which means running the whole thing. This is also great for to see if there are any typos in your code that you've missed. You can do this by:
+    a. clicking Source (blue arrow in the bar above the script).
+    b. typing `source('swc-mbari.R')` in the console (or from another R script!!!). 
+
+## Your turn
+
+Add a few more commands to your script from this morning. Execute them by trying the three ways above.
+
+Then, sync your script to GitHub.
+
+
+## Committing - how often? Tracking changes in your files
 Whenever you make changes to the files in Github, you will walk through the Pull -> Stage -> Commit -> Push steps.
 
 I tend to do this every time I finish a task (basically when I start getting nervous that I will lose my work).  Once something is committed, it is very difficult to lose it.
@@ -334,4 +374,8 @@ You can click on the commits to see how the files changed from the previous comm
 
 ## Troubleshooting
 
-- if you're having trouble with connecting with RStudio, you can also use the GitHub Desktop App - [3-minute youtube video](https://www.youtube.com/watch?v=XdhuWDdu-rk)
+If you have problems, we'll help you out using Jenny Bryan's [HappyGitWithR](http://happygitwithr.com), particularly the sections on [Detect Git from RStudio](http://happygitwithr.com/rstudio-see-git.html) and [RStudio, Git, GitHub Hell (troubleshooting)](http://happygitwithr.com/troubleshooting.html). 
+
+You can follow along this morning with the Desktop App: [3-minute youtube video](https://www.youtube.com/watch?v=XdhuWDdu-rk)
+
+

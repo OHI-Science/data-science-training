@@ -1,4 +1,4 @@
-# R and RStudio Orientation {#orientation}
+# R/RStudio Orientation, GitHub Setup {#orientation}
 
 
 ```{r setup, include = FALSE, cache = FALSE}
