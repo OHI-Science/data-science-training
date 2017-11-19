@@ -5,7 +5,6 @@ language:
 rmd_files: [
   "index.Rmd", 
   "overview.Rmd",
-  "motivation.Rmd",
   "r-rstudio-orientation.Rmd", ## http://socviz.co/
   "rstudio-github.Rmd",
   "viz.Rmd", 
