@@ -21,6 +21,8 @@ file.path()
 message() (with an if statement maybe)
 get file extensions https://stat.ethz.ch/R-manual/R-devel/library/tools/html/fileutils.html
 
+- installing packages from github
+
 You'll soon have questions that are outside the scope of this workshop, how do you find answers?
 
 

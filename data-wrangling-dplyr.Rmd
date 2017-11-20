@@ -5,76 +5,18 @@ knitr::opts_chunk$set(echo = TRUE)
 library(htmltools)
 ```
 
-TODO!!! this is all piecemeal from different lessons; make sure it all jives. 
 <!---New script for wrangling with gapminder. MAYBE THIS IS JUST DPLYR AND PIPES. AND COMPARE WITH BASE R. --->
 
 ## Objectives & Resources
 
 **Objectives**
 
-- learn dplyr, tidyr with gapminder package
+- learn about tidy data
+- learn `dplyr` with `gapminder` data
 - practice RStudio-GitHub workflow
 
 **Resources**
 
-- cheatsheets
-
-
-## Tidy Data
-
-Hadley Wickham, RStudio's Chief Scientist, has been building R packages for data wrangling and visualization based on the idea of **tidy data**. Great resources include RStudio's [data wrangling cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)  (screenshots below are from this cheatsheet) and [data wrangling webinar](https://www.rstudio.com/resources/webinars/data-wrangling-with-r-and-rstudio/). 
-
-Tidy data has a simple convention: put variables in the columns and observations in the rows.
-
-![](img/tidy_data.png)
-</br>
-</br>
-Our `gapminder` dataset is pretty tidy. This enables you to work with it the way you'd want, for your analyses, plots, etc. 
-</br>
-</br>
-![](img/tidy_img.png) 
-
-Right now we are going to use `dplyr` to wrangle this tidyish data set (the transform part of the cycle), and then come back to tidying messy data using `tidyr` once we've had some fun wrangling. 
-
-![](img/r4ds_data-science.png)
-
-### `dplyr` overview
-
-There are five `dplyr` functions that you will use to do the vast majority of data manipulations:
-
-- **pick observations by their values (`filter()`)**,
-    - `r img(src='img/rstudio-cheatsheet-filter.png', width=300)` 
-- **pick variables by their names (`select()`)**,
-    - `r img(src='img/rstudio-cheatsheet-select.png', width=300)`
-- **create new variables with functions of existing variables (`mutate()`)**, 
-    - `r img(src='img/rstudio-cheatsheet-mutate.png', width=300)`
-- **collapse many values down to a single summary (`summarise()`)**,
-    - `r img(src='img/rstudio-cheatsheet-summarise.png', width=300)`
-- **reorder the rows (`arrange()`)**
-
-
-
-These can all be used in conjunction with `group_by()` which changes the scope of each function from operating on the entire dataset to operating on it group-by-group. These six functions provide the verbs for a language of data manipulation.
-
-All verbs work similarly:
-
-1. The first argument is a data frame.
-2. The subsequent arguments describe what to do with the data frame. You can refer to columns in the data frame directly without using `$`.
-3. The result is a new data frame.
-
-Together these properties make it easy to chain together multiple simple steps to achieve a complex result.
-
-
-### setup
-
-We'll do this in a new R script in the `software-carpentry` folder we created this morning. 
-
-**Here's what to do:**
-
-1. Open RStudio
-1. Make sure you're in your `software-carpentry` repo (and if not, get there)
-1. New File > R Script
-1. Save as `gapminder-wrangle.r`
 
 Today's materials are again borrowing from some excellent sources, including:
 
@@ -82,33 +24,67 @@ Today's materials are again borrowing from some excellent sources, including:
 - Hadley Wickham and Garrett Grolemund's [R for Data Science](http://r4ds.had.co.nz/)
 - Software Carpentry's R for reproducible scientific analysis materials: [Dataframe manipulation with dplyr](http://swcarpentry.github.io/r-novice-gapminder/13-dplyr.html)
 - First developed for [Software Carpentry at UCSB](http://remi-daigle.github.io/2016-04-15-UCSB/dplyr/)
+- [RStudio's data wrangling cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf) 
+- [RStudio's data wrangling webinar](https://www.rstudio.com/resources/webinars/data-wrangling-with-r-and-rstudio/) 
 
 
-### install `dplyr` // TODO:: `tidyverse`
+## Tidy Data
 
-Packages are bundles of functions, along with help pages and other goodies that make them easier for others to use, (ie. vignettes). 
+Hadley Wickham, RStudio's Chief Scientist, has been building R packages for data wrangling and visualization based on the idea of **tidy data**. 
 
-So far we've been using packages included in 'base R'; they are 'out-of-the-box' functions. You can also install packages from online. The most traditional is [CRAN, the Comprehensive R Archive Network](https://cran.r-project.org/). This is where you went to download R originally, and will go again to look for updates. 
+Tidy data has a simple convention: put variables in the columns and observations in the rows.
 
-You don't need to go to CRAN's website to install packages, we can do it from within R with the command `install.packages("package-name-in-quotes")`.
-```{r, messages=FALSE}
-## from CRAN:
-#install.packages("dplyr") ## do this once only to install the package on your computer.
-library(dplyr) ## do this every time you restart R and need it 
-```
+![](img/tidy_data.png)
+</br>
+</br>
+The `mpg` dataset we were working with this morning was an example of tidy data. When data are tidy, you are set up to work with it for your analyses, plots, etc. 
+</br>
+</br>
+![](img/tidy_img_mpg.png) 
 
-What's the difference between `install.packages()` and `library()`? Why do you need both? Here's my analogy: 
+Right now we are going to use `dplyr` to wrangle this tidyish data set (the transform part of the cycle), and then come back to tidying messy data using `tidyr` once we've had some fun wrangling. 
 
-- `install.packages()` is setting up electricity for your house. Just need to do this once (let's ignore monthly bills). 
-- `library()` is turning on the lights. You only turn them on when you need them, otherwise it wouldn't be efficient. And when you quit R, it turns the lights off, but the electricity lines are still there. So when you come back, you'll have to turn them on again with `library()`, but you already have your electricity set up.
+![](img/r4ds_data-science.png)
 
-## Meet your first data.frame: gapminder
+And actually, Hadley Wickham and RStudio have created a ton of packages that help you at every step of the way here. This is from one of Hadley's recent presentations: 
 
-We will work with some of the data from the [Gapminder project](http://www.gapminder.org). Have a look at `data/gapminder.csv` by navigating to it in the RStudio file pane and looking at it (RStudio is also a text editor so you can read this file right here). 
+![](img/tidyverse_wickham_pres.jpg)
+
+`dplyr` and `ggplot2` are actually both bundled into a huge package called `tidyverse`. We will install `tidyverse` now, and use a few functions from the packages within. Also, check out [tidyverse.org/](https://www.tidyverse.org)
+
+
+### setup
+
+We'll do this in an R script.
+
+**Here's what to do:**
+
+1. Clear your workspace (Session > Restart R)
+1. New File > R Script
+1. Save as `gapminder-wrangle.r`, and add a comment or two to the top (name of the script, your name)
+
+## Explore the gapminder data.frame
+
+We will work with some of the data from the [Gapminder project](http://www.gapminder.org). 
+
+The data are on GitHub, in our course webite. Navigate there by going to: 
+
+github.com > ohi-science > data-science-training > data > gapminder.csv
+
+or by copy-pasting this in the browser: `https://github.com/OHI-Science/data-science-training/blob/master/data/gapminder.csv`
+
+Have a look at the data. It's a .csv file, which you've probably encountered before, but GitHub has formatted it nicely so it's easy to look at. You can see that for every country and year, there are several columns with data in them. 
+
+![](img/gapminder_gh.png)
+
+We can read this data into R directly from GitHub, without downloading it. We can do that by clicking on the Raw button on the top-right of the data. This displays it as the raw csv file, without formatting. Copy the url: 
+https://github.com/OHI-Science/data-science-training/blob/master/data/gapminder.csv
+
+Now, let's go back to RStudio. In our R script, let's read in this csv file and name the variable "gapminder". 
 
 ```{r, eval=FALSE}
 ## read gapminder csv
-gapminder <- read.csv('data/gapminder.csv')
+gapminder <- read.csv('https://github.com/OHI-Science/data-science-training/blob/master/data/gapminder.csv') 
 ```
 
 Let's inspect: 
@@ -146,8 +122,8 @@ More ways to learn basic info on a data.frame.
 ```{r, eval=FALSE}
 names(gapminder)
 dim(gapminder)    # ?dim dimension
-ncol(gapminder)   # ?ncol number of columns; same as dim(gapminder)[1]
-nrow(gapminder)   # ?nrow number of rows; same as dim(gapminder)[2]
+ncol(gapminder)   # ?ncol number of columns
+nrow(gapminder)   # ?nrow number of rows
 ```
 
 We can combine using `c()` to reverse-engineer `dim()`! Just a side-note here, but I wanted to introduce you to `c()`: we'll use it later.
@@ -172,19 +148,46 @@ summary(gapminder$lifeExp) # same information, just formatted slightly different
 ```
 
 
+
+## `dplyr` overview
+
+OK, so let's start wrangling with dplyr.
+
+There are five `dplyr` functions that you will use to do the vast majority of data manipulations:
+
+- **pick observations by their values (`filter()`)**,
+    - `r htmltools::img(src='img/rstudio-cheatsheet-filter.png', width=300)` 
+- **pick variables by their names (`select()`)**,
+    - `r htmltools::img(src='img/rstudio-cheatsheet-select.png', width=300)`
+- **create new variables with functions of existing variables (`mutate()`)**, 
+    - `r htmltools::img(src='img/rstudio-cheatsheet-mutate.png', width=300)`
+- **collapse many values down to a single summary (`summarise()`)**,
+    - `r htmltools::img(src='img/rstudio-cheatsheet-summarise.png', width=300)`
+- **reorder the rows (`arrange()`)**
+
+
+These can all be used in conjunction with `group_by()` which changes the scope of each function from operating on the entire dataset to operating on it group-by-group. These six functions provide the verbs for a language of data manipulation.
+
+All verbs work similarly:
+
+1. The first argument is a data frame.
+2. The subsequent arguments describe what to do with the data frame. You can refer to columns in the data frame directly without using `$`.
+3. The result is a new data frame.
+
+Together these properties make it easy to chain together multiple simple steps to achieve a complex result.
+
+
+### install `tidyverse` (which as `dplyr` inside)
+
+In your R script, write the following. This has become a standard practice for how to load a library in a script, and if you get an error that the library doesn't exist, you can install the package easily by running the code within the comment (highlight `install.packages("tidyverse")` and run it).
+
+```{r, messages=FALSE}
+library(tidyverse)     ## install.packages("tidyverse")
+```
+
 ## Use `dplyr::filter()` to subset data row-wise (observations).
 
 You will want to isolate bits of your data; maybe you want to just look at a single country or a few years. R calls this subsetting. There are several ways to do this. We'll go through a few options in base R so that you're familiar with them, and know how to read them. But then we'll move on to a new, better, intuitive, and game changing way with the `dplyr` package afterwards.
-
-First let's read in the gapminder data. Earlier, we read in a `.csv` of the gapminder data. But Jenny Bryan has also released this as an R package, so you could also install it from CRAN and load it into as extra practice for loading packages.
-```{r}
-# install.packages('gapminder') # instead of reading in the csv
-library(gapminder) # this is the package name
-```
-
-```{r, eval=FALSE}
-str(gapminder) # there's still a data frame named 'gapminder'
-```
 
 `filter()` takes logical expressions and returns the rows for which all are `TRUE`. 
 

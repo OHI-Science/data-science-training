@@ -6,11 +6,53 @@ This is a 2-day training workshop to learn R, RStudio, Git, and GitHub, and it's
 
 We will practice learning three main things all at the same time: coding with best practices (R/RStudio), collaborative version control (Git/GitHub), and communication/publishing (RMarkdown/GitHub). This training will teach these all together to reinforce skills and best practices, and get you comfortable with a workflow that you can use in your own projects. 
 
-The plan is to expose you to a lot of great tools that you can have confidence using in your research. You'll be working hands-on and doing the same things on your own computer as we do live on up on the screen. We're going to go through a lot in these two days and it's less important that you remember it all. More imporatantly, you'll have experience with it and confidence that you can do it. And, you can use these materials as a reference as you go forward with your analyses. 
+## What to expect
+
+This is going to be a fun workshop. 
+
+The plan is to expose you to a lot of great tools that you can have confidence using in your research. You'll be working hands-on and doing the same things on your own computer as we do live on up on the screen. We're going to go through a lot in these two days and it's less important that you remember it all. More imporatantly, you'll have experience with it and confidence that you can do it. The main thing to take away is that there *are* good ways to approach your analyses; we will teach you to expect that so you can find what you need and use it! And, you can use these materials as a reference as you go forward with your analyses. 
+
+We'll be talking about : 
+
+- how to THINK about data. And not just any data; tidy data.
+- how to increase reproducibility in your science
+- how to more easily collaborate with others--including your future self!
+- how the #rstats community is fantastic. The tools we're using are developed by real people. They are building great stuff and helping people of all skill-levels learn how to use it. 
 
 Everyone in this workshop is coming from a different place with different experiences and expectations. But everyone will learn something new here, because there is so much innovation in the data science world. Even instructors and helpers learn something new every time, from each other and from your questions. 
 
 You are all welcome here and encouraged to help each other. 
+
+### Tidy data workflow
+
+We will be learning about tidy data. 
+
+[**Hadley Wickham**](http://hadley.nz/) has developed a ton of the tools we'll use today. 
+Here's an overview of techniques to be covered in Hadley Wickham and Garrett Grolemund of RStudio's book [R for Data Science](http://r4ds.had.co.nz/):
+
+![](img/r4ds_data-science.png)
+
+We will be focusing on: 
+
+- **Tidy**: `tidyr` to organize rows of data into unique values
+- **Transform**: `dplyr` to manipulate/wrangle data based on subsetting by rows or columns, sorting and joining
+- **Visualise**: 
+    - `ggplot2` static plots, using grammar of graphics principles
+- **Communicate**
+    - online website with _Github Pages_
+    - version with _git_
+    - dynamic documents with _Rmarkdown_
+    
+## Gapminder data: 
+We'll be using the [gapminder dataset](http://www.gapminder.org/world) pioneered by [Hans Rosling](https://www.ted.com/speakers/hans_rosling). These data represent the health and wealth of every nation in the world. 
+
+While these data are not conservation or environmental oriented, it is a fantastically rich data set with many parallels to data you may have and wrangling you will need to do. It's important to be open to separate your science questions from data questions, and working with other people's data is a good way to do it. These data will be familiar to data that you're likely working with: there is information for many indicators for many study sites for many years.
+
+## By the end of the course...
+
+By the end of the course you'll wrangle the gapminder data, make your own graphics that you'll publish on a webpage you've built with GitHub and RMarkdown. Woop!
+
+I made this training book with GitHub and RStudio's RMarkdown, which is what we'll be learning in the workshop.
 
 
 ## Prerequisites

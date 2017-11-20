@@ -23,6 +23,7 @@ In this lesson we will:
 - configure git on our computers
 
 **Resources**
+
 This lesson is a combination of excellent lessons by others (thank you Jenny Bryan and Data Carpentry!) that I have combined and modified for our workshop today. I definitely recommend reading through the original lessons and using them as reference:   
 
 [Dr. Jenny Bryan's lectures from STAT545 at UBC](https://stat545-ubc.github.io/)
@@ -31,10 +32,6 @@ This lesson is a combination of excellent lessons by others (thank you Jenny Bry
 - [Basic care and feeding of data in R](http://stat545-ubc.github.io/block006_care-feeding-data.html)
 
 
-[Data Carpentry R ecology lesson](http://www.datacarpentry.org/R-ecology-lesson)
-
-- [R for data analysis and visualization of Ecological Data/Intro to R](http://www.datacarpentry.org/R-ecology-lesson/01-intro-to-r.html)
-- [R for data analysis and visualization of Ecological Data/Starting with data](http://www.datacarpentry.org/R-ecology-lesson/02-starting-with-data.html)
 
 RStudio has great resources about its IDE (IDE stands for integrated development environment): 
 

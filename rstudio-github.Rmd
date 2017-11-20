@@ -301,6 +301,8 @@ Let's also explore commit history, file history, blame.
 
 This time let's edit an existing file instead of adding something new. Open your README file by clicking on it in the Files pane (lower right corner). Write a few lines of text, save, and see what happens in your Git Tab. Sync it to your remote repository (Github.com).
 
+Also, go to your Finder/Windows Explorer, and copy-paste something into your local GitHub repo. Then go back to RStudio and confirm that git tracked it. Remember, git will track anything within that folder (the way Dropbox does), it's not specific to RStudio!
+
 
 ## Create an R script
 
@@ -309,6 +311,8 @@ OK, now, let's go back to RStudio, and get ourselves back into learning R. We ar
 Go to File > New File > R Script (or click the green plus in the top left corner). 
 
 Let's set up this script for the rest of the day. Let's start off with a few comments so that we know what it is for, and save it. 
+
+By creating a script, we are seeing the 4th pane of the RStudio console, which is essentially a text editor. 
 
 ```
 ## swc-mbari.R

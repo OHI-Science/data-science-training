@@ -1,4 +1,4 @@
-# R and RStudio through Data Visualization {#viz}
+# Visualizing data {#viz}
 
 ```{r viz ops, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -43,7 +43,27 @@ D Robinson:
 
 <!--- use the `swc-mbari.R script that we created in the previous section, or create a new script --->
 
-## First Steps
+Packages are bundles of functions, along with help pages and other goodies that make them easier for others to use, (ie. vignettes). 
+
+So far we've been using packages included in 'base R'; they are 'out-of-the-box' functions. You can also install packages from online created by the vast and growing R user community. The most traditional place to download packages is from [CRAN, the Comprehensive R Archive Network](https://cran.r-project.org/). This is where you went to download R originally, and will go again to look for updates. You can also install packages directly from GitHub, which we'll do tomorrow.
+
+You don't need to go to CRAN's website to install packages, we can do it from within R with the command `install.packages("package-name-in-quotes")`.
+
+```{r, eval=FALSE, messages=FALSE}
+## from CRAN:
+install.packages("ggplot2") ## do this once only to install the package on your computer.
+```
+
+```{r, messages=FALSE}
+library(dplyr) ## do this every time you restart R and need it 
+```
+
+What's the difference between `install.packages()` and `library()`? Why do you need both? Here's my analogy: 
+
+- `install.packages()` is setting up electricity for your house. Just need to do this once (let's ignore monthly bills). 
+- `library()` is turning on the lights. You only turn them on when you need them, otherwise it wouldn't be efficient. And when you quit R, it turns the lights off, but the electricity lines are still there. So when you come back, you'll have to turn them on again with `library()`, but you already have your electricity set up.
+
+You can also install packages by going to the Packages tab in the bottom right pane. You can see the packages that you have installed (listed) and loaded (checkbox). You can also install packages using the install button, or check to see if any of your installed packages have updates available (update button). You can also click on the name of the package to see all the functions inside it — this is a super helpful feature that I use all the time.
 
 ## Aesthetic mappings
 
