@@ -9,6 +9,8 @@ library(htmltools)
 
 ## Objectives & Resources
 
+#### Objectives
+
 - learn ggplot2 with `mpg` dataframe (important to play with other data than your own, you'll learn something.)
 - practice writing a script (maybe call it mpg_viz.R?)
 - practice rstudio-github workflow
@@ -22,6 +24,10 @@ Why do we start with data viz? Not only is data viz a big part of analysis, itâ€
 - http://r4ds.had.co.nz/data-visualisation.html
 - https://pdfs.semanticscholar.org/d779/6f85dabccd18673f382c100fc06f55e8b501.pdf
 
+#### Resources
+
+Here are some resources that helped make this tutorial: 
+- [R for Data Science](http://r4ds.had.co.nz/data-visualisation.html)
 - [ggplot2-cheatsheet-2.0.pdf](../cheatsheets/ggplot2-cheatsheet-2.0.pdf)
 - [Interactive Plots and Maps - Environmental Informatics](http://ucsb-bren.github.io/env-info/wk06_widgets.html)
 - [Graphs with ggplot2 - Cookbook for R](http://www.cookbook-r.com/Graphs/#graphs-with-ggplot2)
@@ -31,11 +37,10 @@ D Robinson:
 - http://varianceexplained.org/r/why-I-use-ggplot2/; add screenshot of ggplot2 cheatsheet
 - http://varianceexplained.org/RData/
 
-TODO: Draw heavily from http://r4ds.had.co.nz/data-visualisation.html; 
 
 ## Install our first package: `ggplot2`
 
-<!--- or tidyverse --->
+<!--- use the `swc-mbari.R script that we created in the previous section, or create a new script --->
 
 ## First Steps
 

@@ -26,13 +26,13 @@ Before the training, please make sure you have done the following:
 <!---
 ## Motivation 
 
-<---
+
 More often than not, there are more than one way to do things. I'm going to focus mostly on what I have ended up using day-to-day; I try to incorporate better practices as I come upon them but that's not always the case. RStudio has some built-in redundancy too that I'll try to show you so that you can approach things in different ways and ease in.
 
 - based on literature: best and good enough practices
 - also based on our team's experience of how to do better science in less time
 
---- >
+
 
 
 ## Collaboration
@@ -55,7 +55,7 @@ Expect that there is a way to do what you want to do
 - stop confounding data science with your science. Expect that someone has had your problem before or done what you want to do. 
 
 
-<---If you plan to program mostly in one particular language on a single platform (such as Mac or Windows), you might try an integrated development environment (IDE). IDEs integrate text editing, syntax highlighting, version control, help, build tools, and debugging in one interface, simplifying development. --- >
+If you plan to program mostly in one particular language on a single platform (such as Mac or Windows), you might try an integrated development environment (IDE). IDEs integrate text editing, syntax highlighting, version control, help, build tools, and debugging in one interface, simplifying development. 
 
 http://r-bio.github.io/intro-git-rstudio/
 

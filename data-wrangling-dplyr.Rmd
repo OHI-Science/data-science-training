@@ -5,7 +5,8 @@ knitr::opts_chunk$set(echo = TRUE)
 library(htmltools)
 ```
 
-TODO!!! this is all piecemeal from different lessons; make sure it all jives. New script for wrangling with gapminder. MAYBE THIS IS JUST DPLYR AND PIPES
+TODO!!! this is all piecemeal from different lessons; make sure it all jives. 
+<!---New script for wrangling with gapminder. MAYBE THIS IS JUST DPLYR AND PIPES. AND COMPARE WITH BASE R. --->
 
 ## Overview & Resources
 
