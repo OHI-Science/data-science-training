@@ -10,13 +10,19 @@ library(htmltools)
 ## Objectives & Resources
 
 <!---TODO!
-- get oriented to RStudio
-- R variables
-- R functions (packages?)  
-- help pages
-- configure github
---->
 
+--->
+**Objectives**
+
+In this lesson we will:
+
+- get oriented to the RStudio interface
+- work with R in the console
+- be introduced to built-in R functions
+- learn to use the help pages
+- configure git on our computers
+
+**Resources**
 This lesson is a combination of excellent lessons by others (thank you Jenny Bryan and Data Carpentry!) that I have combined and modified for our workshop today. I definitely recommend reading through the original lessons and using them as reference:   
 
 [Dr. Jenny Bryan's lectures from STAT545 at UBC](https://stat545-ubc.github.io/)

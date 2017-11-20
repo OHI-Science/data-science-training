@@ -1,6 +1,8 @@
 # Collaborate with GitHub {#collaborate}
 
-## Objectives
+## Objectives and Resources
+
+**Objectives**
 
 - contribute to a repo that you don't own
 - give permission to a collaborator
@@ -8,6 +10,8 @@
 
 1. add their neighbor as a collaborator to their repo
 1. practice more; make changes to their repo, and to their neighbor's. 
+
+**Resources**
 
 ## pull request to your friend's repo
 

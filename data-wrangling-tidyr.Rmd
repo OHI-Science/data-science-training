@@ -5,6 +5,15 @@ knitr::opts_chunk$set(echo = TRUE)
 library(htmltools)
 ```
 
+## Objectives & Resources
+
+**Objectives**
+
+- learn tidyr with gapminder package
+- practice RStudio-GitHub workflow
+
+**Resources**
+
 
 ## `tidyr` overview
 

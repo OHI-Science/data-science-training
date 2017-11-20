@@ -1,6 +1,8 @@
 # Analysis, continued {#analysis}
 
-## Objectives
+## Objectives and Resources
+
+**Objectives**
 
 - data import, writing
 - for loops
@@ -9,6 +11,8 @@
 - practice 
 - what's next
 - Jenny Bryan filenames
+
+**Resources**
 
 When trying to see if a number or text is equal to some *single* value, use `==`. To check it against *multiple* values, use `%in%`. mine’s "%!in%" <- Negate("%in%")
 

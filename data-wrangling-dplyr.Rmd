@@ -8,11 +8,14 @@ library(htmltools)
 TODO!!! this is all piecemeal from different lessons; make sure it all jives. 
 <!---New script for wrangling with gapminder. MAYBE THIS IS JUST DPLYR AND PIPES. AND COMPARE WITH BASE R. --->
 
-## Overview & Resources
+## Objectives & Resources
+
+**Objectives**
 
 - learn dplyr, tidyr with gapminder package
 - practice RStudio-GitHub workflow
 
+**Resources**
 
 - cheatsheets
 

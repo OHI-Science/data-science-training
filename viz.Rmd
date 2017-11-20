@@ -11,6 +11,7 @@ library(htmltools)
 
 #### Objectives
 
+- install our first package, `ggplot2`
 - learn ggplot2 with `mpg` dataframe (important to play with other data than your own, you'll learn something.)
 - practice writing a script (maybe call it mpg_viz.R?)
 - practice rstudio-github workflow

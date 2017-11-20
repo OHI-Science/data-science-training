@@ -37,5 +37,5 @@ Suggested breakdown for a 2-day workshop:
 |15:30-17:00 |  analysis: data wrangling (dplyr)|  more...|
 
 
-## License 
+**License** 
 <!---TODO--->

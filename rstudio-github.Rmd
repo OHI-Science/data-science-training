@@ -21,10 +21,11 @@ Today, we'll interface with GitHub from our local computers using RStudio. There
 Here's what we'll do (we already set up git on our local computer in the previous section): 
 
 1. create a repository on Github.com
-1. clone using RStudio 
-1. add a few files and sync: pull, stage, commit, push
+1. clone locally using RStudio 
+1. learn the RStudio-GitHub workflow by syncing to Github.com: pull, stage, commit, push
 1. explore github.com: files, commit history, file history, blame
-1. practice: edit/add files and sync with an R script
+1. create an R script 
+1. practice the RStudio-GitHub workflow by editing and adding files 
 
 #### Resources
 
@@ -244,7 +245,7 @@ When files are changed in the local repository, these changes will be reflected 
 These are the codes RStudio uses to describe how the files are changed, (from the RStudio [cheatsheet](http://www.rstudio.com/wp-content/uploads/2016/01/rstudio-IDE-cheatsheet.pdf)):
 ![](img/modified.png)
 
-## Syncing to GitHub from RStudio
+## Sync from RStudio to GitHub
 
 When you are ready to commit your changes, you follow these steps:
 <br />

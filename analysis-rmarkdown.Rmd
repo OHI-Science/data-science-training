@@ -8,10 +8,14 @@ library(htmltools)
 
 ## Objectives & Resources
 
+**Objectives** 
+
 - intro to Markdown
 - intro to RMarkdown
 - more practice with GitHub
 - more practice with tidyverse
+
+**Resources**
 
 ![](img/practicalDev_changingstuff.jpg)
 
