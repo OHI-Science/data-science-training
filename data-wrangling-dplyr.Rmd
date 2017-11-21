@@ -5,7 +5,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(htmltools)
 ```
 
-## Objectives & Resources
+## Overview {.objectives}
 
 We are going to introduce you to data wrangling in R first with the tidyverse. The tidyverse is a new suite of packages that match a philosophy of data science developed by Hadley Wickham and the RStudio team. I find it to be a more straight-forward way to learn R. We will also show you by comparison what code will look like in "Base R", which means, in R without any additional packages (like the "tidyverse" package)  installed. I like David Robinson's blog post on the topic of [teaching the tidyverse first](http://varianceexplained.org/r/teach-hard-way).
 
@@ -19,7 +19,6 @@ For some things, base-R is more straight forward, and we'll show you that too. W
 
 **Resources**
 
-
 Today's materials are again borrowing from some excellent sources, including:
 
 - Jenny Bryan's lectures from STAT545 at UBC: [Introduction to dplyr](http://stat545.com/block009_dplyr-intro.html)
@@ -29,6 +28,15 @@ Today's materials are again borrowing from some excellent sources, including:
 - [RStudio's data wrangling cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf) 
 - [RStudio's data wrangling webinar](https://www.rstudio.com/resources/webinars/data-wrangling-with-r-and-rstudio/) 
 
+## Prerequisites {.prereq}
+
+**R Skill Level**: Beginner - you've got basics of R down and are ready to wrangle your data.
+
+We will use the `dplyr` package, which will have been installed with:
+
+```r
+install.packages('tidyverse')
+```
 
 ## Tidy Data
 
@@ -226,13 +234,14 @@ filter(gapminder, country == "Mexico", year == 2002)
 ```
 
 
-### Your turn
+## Your turn {.challenge}
 
 What is the mean life expenctancy of Sweden? Hint: do this in 2 steps by assigning a variable and then using the `mean()` function.
 
 Then, sync to Github.com (pull, stage, commit, push).
 
-*Answer*: 
+### Answer {.solution} 
+
 ```{r, eval=FALSE}
 x <- filter(gapminder, country == "Sweden")  
 mean(x$lifeExp)  
@@ -343,13 +352,13 @@ gapminder %>%
   mutate(gdp = pop * gdpPercap)
 ```
 
-### Your turn
+## Your turn {.challenge}
 
 Find the maximum gdpPercap of Egypt and Vietnam Create a new column. 
 
 Then, sync to Github.com (pull, stage, commit, push).
 
-*Answer*
+### Answer {.solution}
 ```{r, eval=FALSE}
 gapminder %>%
   select(-continent, -lifeExp) %>% # not super necessary but to simplify
@@ -430,7 +439,11 @@ gapminder %>%
   arrange(max_gdp)
 ```
 
-## Your turn
+## Your turn {.challenge}
+
+Find the maximum gdpPercap of Egypt and Vietnam Create a new column. 
+
+Then, sync to Github.com (pull, stage, commit, push).
 
 Do the following: 
 
@@ -438,6 +451,9 @@ Do the following:
 1. save your data frame as a variable
 1. Sync your R script to GitHub (pull, stage, commit, push)
 
+### Answer {.solution}
+
+...
 
 ## All together now
 
@@ -495,6 +511,16 @@ mex$max_gdp <- max(mex$gdp)
 
 Note too that the chain operator `%>%` that we used with the `tidyverse` lets us get away from the temporary variable x1. 
 
-### Your turn
+## Your Turn {.challenge}
 
 Get your script cleaned up and sync it for the last time today!
+
+### Answers {.solution} 
+...
+
+## Key Points {.keypoints}
+
+- Data manipulation functions in `dplyr` allow you to `filter()` by rows and `select()` by columns, create new columns with `mutate()`, and `group_by()` unique column values to apply `summarize()` for new columns that define aggregate values across groupings.
+- The "then" operator `%>%` allows you to chain successive operations without needing to define intermediary variables for creating the most parsimonious, easily read analysis.
+
+

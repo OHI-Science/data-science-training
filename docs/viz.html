@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Introduction to Open Data Science</title>
+  <meta name="description" content="This is official data science training for the Ocean Health Index, as described in Lowndes et al. 2017.">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Introduction to Open Data Science" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is official data science training for the Ocean Health Index, as described in Lowndes et al. 2017." />
+  <meta name="github-repo" content="ohi-science/data-science-training" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Introduction to Open Data Science" />
+  
+  <meta name="twitter:description" content="This is official data science training for the Ocean Health Index, as described in Lowndes et al. 2017." />
+  
+
+<meta name="author" content="Julie Lowndes &amp; The OHI Team">
+
+
+<meta name="date" content="2017-11-21">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="rstudio-github.html">
+<link rel="next" href="dplyr.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/lesson.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">OHI Data Science Training</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome</a></li>
+<li class="chapter" data-level="2" data-path="overview.html"><a href="overview.html"><i class="fa fa-check"></i><b>2</b> Overview</a><ul>
+<li class="chapter" data-level="2.1" data-path="overview.html"><a href="overview.html#what-to-expect"><i class="fa fa-check"></i><b>2.1</b> What to expect</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="overview.html"><a href="overview.html#tidy-data-workflow"><i class="fa fa-check"></i><b>2.1.1</b> Tidy data workflow</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="overview.html"><a href="overview.html#gapminder-data"><i class="fa fa-check"></i><b>2.2</b> Gapminder data:</a></li>
+<li class="chapter" data-level="2.3" data-path="overview.html"><a href="overview.html#by-the-end-of-the-course"><i class="fa fa-check"></i><b>2.3</b> By the end of the course…</a></li>
+<li class="chapter" data-level="2.4" data-path="overview.html"><a href="overview.html#prerequisites"><i class="fa fa-check"></i><b>2.4</b> Prerequisites</a></li>
+<li class="chapter" data-level="2.5" data-path="overview.html"><a href="overview.html#credit"><i class="fa fa-check"></i><b>2.5</b> Credit</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="orientation.html"><a href="orientation.html"><i class="fa fa-check"></i><b>3</b> R/RStudio Orientation, GitHub Setup</a><ul>
+<li class="chapter" data-level="3.1" data-path="orientation.html"><a href="orientation.html#objectives-resources"><i class="fa fa-check"></i><b>3.1</b> Objectives &amp; Resources</a></li>
+<li class="chapter" data-level="3.2" data-path="orientation.html"><a href="orientation.html#why-learn-r-with-rstudio"><i class="fa fa-check"></i><b>3.2</b> Why learn R with RStudio</a></li>
+<li class="chapter" data-level="3.3" data-path="orientation.html"><a href="orientation.html#r-at-the-console-rstudio-goodies"><i class="fa fa-check"></i><b>3.3</b> R at the console, RStudio goodies</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="orientation.html"><a href="orientation.html#error-messages-are-your-friends"><i class="fa fa-check"></i><b>3.3.1</b> Error messages are your friends</a></li>
+<li class="chapter" data-level="3.3.2" data-path="orientation.html"><a href="orientation.html#logical-operators-and-expressions"><i class="fa fa-check"></i><b>3.3.2</b> Logical operators and expressions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="orientation.html"><a href="orientation.html#r-functions-help-pages"><i class="fa fa-check"></i><b>3.4</b> R functions, help pages</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="orientation.html"><a href="orientation.html#your-turn"><i class="fa fa-check"></i><b>3.4.1</b> Your turn</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="orientation.html"><a href="orientation.html#clearing-the-environment"><i class="fa fa-check"></i><b>3.5</b> Clearing the environment</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="orientation.html"><a href="orientation.html#your-turn-1"><i class="fa fa-check"></i><b>3.5.1</b> Your turn</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="orientation.html"><a href="orientation.html#setup-git-github"><i class="fa fa-check"></i><b>3.6</b> Setup Git &amp; GitHub</a></li>
+<li class="chapter" data-level="3.7" data-path="orientation.html"><a href="orientation.html#troubleshooting"><i class="fa fa-check"></i><b>3.7</b> Troubleshooting</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="orientation.html"><a href="orientation.html#i-just-entered-a-command-and-nothings-happening"><i class="fa fa-check"></i><b>3.7.1</b> I just entered a command and nothing’s happening</a></li>
+<li class="chapter" data-level="3.7.2" data-path="orientation.html"><a href="orientation.html#how-do-i-update-rstudio"><i class="fa fa-check"></i><b>3.7.2</b> How do I update RStudio?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="rstudio-github.html"><a href="rstudio-github.html"><i class="fa fa-check"></i><b>4</b> Using RStudio+GitHub, and R Scripts</a><ul>
+<li class="chapter" data-level="4.1" data-path="rstudio-github.html"><a href="rstudio-github.html#objectives-resources-1"><i class="fa fa-check"></i><b>4.1</b> Objectives &amp; Resources</a></li>
+<li class="chapter" data-level="4.2" data-path="rstudio-github.html"><a href="rstudio-github.html#why-should-scientists-use-github"><i class="fa fa-check"></i><b>4.2</b> Why should scientists use Github?</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="rstudio-github.html"><a href="rstudio-github.html#what-are-git-and-github"><i class="fa fa-check"></i><b>4.2.1</b> What are Git and Github?</a></li>
+<li class="chapter" data-level="4.2.2" data-path="rstudio-github.html"><a href="rstudio-github.html#some-github-terminology"><i class="fa fa-check"></i><b>4.2.2</b> Some Github terminology</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="rstudio-github.html"><a href="rstudio-github.html#create-a-repository-on-github.com"><i class="fa fa-check"></i><b>4.3</b> Create a repository on Github.com</a></li>
+<li class="chapter" data-level="4.4" data-path="rstudio-github.html"><a href="rstudio-github.html#clone-your-repository-using-rstudio"><i class="fa fa-check"></i><b>4.4</b> Clone your repository using RStudio</a></li>
+<li class="chapter" data-level="4.5" data-path="rstudio-github.html"><a href="rstudio-github.html#inspect-your-repository"><i class="fa fa-check"></i><b>4.5</b> Inspect your repository</a></li>
+<li class="chapter" data-level="4.6" data-path="rstudio-github.html"><a href="rstudio-github.html#add-files-to-our-local-repo"><i class="fa fa-check"></i><b>4.6</b> Add files to our local repo</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="rstudio-github.html"><a href="rstudio-github.html#inspect-what-has-changed"><i class="fa fa-check"></i><b>4.6.1</b> Inspect what has changed</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="rstudio-github.html"><a href="rstudio-github.html#sync-from-rstudio-to-github"><i class="fa fa-check"></i><b>4.7</b> Sync from RStudio to GitHub</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="rstudio-github.html"><a href="rstudio-github.html#pull"><i class="fa fa-check"></i><b>4.7.1</b> Pull</a></li>
+<li class="chapter" data-level="4.7.2" data-path="rstudio-github.html"><a href="rstudio-github.html#stage"><i class="fa fa-check"></i><b>4.7.2</b> Stage</a></li>
+<li class="chapter" data-level="4.7.3" data-path="rstudio-github.html"><a href="rstudio-github.html#commit"><i class="fa fa-check"></i><b>4.7.3</b> Commit</a></li>
+<li class="chapter" data-level="4.7.4" data-path="rstudio-github.html"><a href="rstudio-github.html#push"><i class="fa fa-check"></i><b>4.7.4</b> Push</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="rstudio-github.html"><a href="rstudio-github.html#explore-remote-github"><i class="fa fa-check"></i><b>4.8</b> Explore remote Github</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="rstudio-github.html"><a href="rstudio-github.html#your-turn-2"><i class="fa fa-check"></i><b>4.8.1</b> Your turn!</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="rstudio-github.html"><a href="rstudio-github.html#create-an-r-script"><i class="fa fa-check"></i><b>4.9</b> Create an R script</a><ul>
+<li class="chapter" data-level="4.9.1" data-path="rstudio-github.html"><a href="rstudio-github.html#your-turn-3"><i class="fa fa-check"></i><b>4.9.1</b> Your turn</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="rstudio-github.html"><a href="rstudio-github.html#committing---how-often-tracking-changes-in-your-files"><i class="fa fa-check"></i><b>4.10</b> Committing - how often? Tracking changes in your files</a></li>
+<li class="chapter" data-level="4.11" data-path="rstudio-github.html"><a href="rstudio-github.html#troubleshooting-1"><i class="fa fa-check"></i><b>4.11</b> Troubleshooting</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="viz.html"><a href="viz.html"><i class="fa fa-check"></i><b>5</b> Visualizing data</a><ul>
+<li class="chapter" data-level="5.1" data-path="viz.html"><a href="viz.html#objectives-resources-2"><i class="fa fa-check"></i><b>5.1</b> Objectives &amp; Resources</a></li>
+<li class="chapter" data-level="5.2" data-path="viz.html"><a href="viz.html#install-our-first-package-tidyverse"><i class="fa fa-check"></i><b>5.2</b> Install our first package: <code>tidyverse</code></a></li>
+<li class="chapter" data-level="5.3" data-path="viz.html"><a href="viz.html#aesthetic-mappings"><i class="fa fa-check"></i><b>5.3</b> Aesthetic mappings</a></li>
+<li class="chapter" data-level="5.4" data-path="viz.html"><a href="viz.html#push-to-github"><i class="fa fa-check"></i><b>5.4</b> push to GitHub</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="viz.html"><a href="viz.html#your-turn-4"><i class="fa fa-check"></i><b>5.4.1</b> Your turn</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="viz.html"><a href="viz.html#common-problems"><i class="fa fa-check"></i><b>5.5</b> Common problems</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="viz.html"><a href="viz.html#your-turn-5"><i class="fa fa-check"></i><b>5.5.1</b> Your turn</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="viz.html"><a href="viz.html#the-layered-grammar-of-graphics"><i class="fa fa-check"></i><b>5.6</b> The Layered Grammar of Graphics</a></li>
+<li class="chapter" data-level="5.7" data-path="viz.html"><a href="viz.html#push-to-github-1"><i class="fa fa-check"></i><b>5.7</b> push to GitHub</a></li>
+<li class="chapter" data-level="5.8" data-path="viz.html"><a href="viz.html#end-of-the-day-intro-to-markdown-readme"><i class="fa fa-check"></i><b>5.8</b> end of the day: intro to Markdown (README)?</a></li>
+<li class="chapter" data-level="5.9" data-path="viz.html"><a href="viz.html#troubleshooting-2"><i class="fa fa-check"></i><b>5.9</b> Troubleshooting</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>6</b> Data wrangling with dplyr (tidyverse)</a><ul>
+<li class="chapter" data-level="6.1" data-path="overview.html"><a href="overview.html#overview"><i class="fa fa-check"></i><b>6.1</b> Overview</a></li>
+<li class="chapter" data-level="6.2" data-path="dplyr.html"><a href="dplyr.html#prerequisites-1"><i class="fa fa-check"></i><b>6.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="6.3" data-path="dplyr.html"><a href="dplyr.html#tidy-data"><i class="fa fa-check"></i><b>6.3</b> Tidy Data</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="dplyr.html"><a href="dplyr.html#setup"><i class="fa fa-check"></i><b>6.3.1</b> setup</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="dplyr.html"><a href="dplyr.html#explore-the-gapminder-data.frame"><i class="fa fa-check"></i><b>6.4</b> Explore the gapminder data.frame</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="dplyr.html"><a href="dplyr.html#read-data-with-readrread_csv"><i class="fa fa-check"></i><b>6.4.1</b> read data with <code>readr::read_csv()</code></a></li>
+<li class="chapter" data-level="6.4.2" data-path="dplyr.html"><a href="dplyr.html#look-at-the-variables-inside-a-data.frame"><i class="fa fa-check"></i><b>6.4.2</b> Look at the variables inside a data.frame</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="dplyr.html"><a href="dplyr.html#dplyr-overview"><i class="fa fa-check"></i><b>6.5</b> <code>dplyr</code> overview</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="dplyr.html"><a href="dplyr.html#install-tidyverse-which-has-dplyr-inside"><i class="fa fa-check"></i><b>6.5.1</b> install <code>tidyverse</code> (which has <code>dplyr</code> inside)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="dplyr.html"><a href="dplyr.html#use-dplyrfilter-to-subset-data-row-wise-observations."><i class="fa fa-check"></i><b>6.6</b> Use <code>dplyr::filter()</code> to subset data row-wise (observations).</a></li>
+<li class="chapter" data-level="6.7" data-path="dplyr.html"><a href="dplyr.html#your-turn-6"><i class="fa fa-check"></i><b>6.7</b> Your turn</a><ul>
+<li class="chapter" data-level="6.7.1" data-path="dplyr.html"><a href="dplyr.html#answer"><i class="fa fa-check"></i><b>6.7.1</b> Answer</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="dplyr.html"><a href="dplyr.html#meet-the-new-pipe-operator"><i class="fa fa-check"></i><b>6.8</b> Meet the new pipe operator</a></li>
+<li class="chapter" data-level="6.9" data-path="dplyr.html"><a href="dplyr.html#use-dplyrselect-to-subset-data-column-wise-variables"><i class="fa fa-check"></i><b>6.9</b> Use <code>dplyr::select()</code> to subset data column-wise (variables)</a><ul>
+<li class="chapter" data-level="6.9.1" data-path="dplyr.html"><a href="dplyr.html#revel-in-the-convenience"><i class="fa fa-check"></i><b>6.9.1</b> Revel in the convenience</a></li>
+</ul></li>
+<li class="chapter" data-level="6.10" data-path="dplyr.html"><a href="dplyr.html#use-dplyrmutate-to-add-new-variables"><i class="fa fa-check"></i><b>6.10</b> Use <code>dplyr::mutate()</code> to add new variables</a></li>
+<li class="chapter" data-level="6.11" data-path="dplyr.html"><a href="dplyr.html#your-turn-7"><i class="fa fa-check"></i><b>6.11</b> Your turn</a><ul>
+<li class="chapter" data-level="6.11.1" data-path="dplyr.html"><a href="dplyr.html#answer-1"><i class="fa fa-check"></i><b>6.11.1</b> Answer</a></li>
+</ul></li>
+<li class="chapter" data-level="6.12" data-path="dplyr.html"><a href="dplyr.html#dplyrgroup_by-to-operate-on-groups"><i class="fa fa-check"></i><b>6.12</b> <code>dplyr::group_by()</code> to operate on groups</a><ul>
+<li class="chapter" data-level="6.12.1" data-path="dplyr.html"><a href="dplyr.html#dplyrsummarize-with-group_by"><i class="fa fa-check"></i><b>6.12.1</b> <code>dplyr::summarize()</code> with <code>group_by()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.13" data-path="dplyr.html"><a href="dplyr.html#dplyrarrange-to-order"><i class="fa fa-check"></i><b>6.13</b> <code>dplyr::arrange()</code> to order</a></li>
+<li class="chapter" data-level="6.14" data-path="dplyr.html"><a href="dplyr.html#your-turn-8"><i class="fa fa-check"></i><b>6.14</b> Your turn</a><ul>
+<li class="chapter" data-level="6.14.1" data-path="dplyr.html"><a href="dplyr.html#answer-2"><i class="fa fa-check"></i><b>6.14.1</b> Answer</a></li>
+</ul></li>
+<li class="chapter" data-level="6.15" data-path="dplyr.html"><a href="dplyr.html#all-together-now"><i class="fa fa-check"></i><b>6.15</b> All together now</a><ul>
+<li class="chapter" data-level="6.15.1" data-path="dplyr.html"><a href="dplyr.html#compare-to-base-r"><i class="fa fa-check"></i><b>6.15.1</b> Compare to base R</a></li>
+</ul></li>
+<li class="chapter" data-level="6.16" data-path="dplyr.html"><a href="dplyr.html#your-turn-9"><i class="fa fa-check"></i><b>6.16</b> Your Turn</a><ul>
+<li class="chapter" data-level="6.16.1" data-path="dplyr.html"><a href="dplyr.html#answers"><i class="fa fa-check"></i><b>6.16.1</b> Answers</a></li>
+</ul></li>
+<li class="chapter" data-level="6.17" data-path="dplyr.html"><a href="dplyr.html#key-points"><i class="fa fa-check"></i><b>6.17</b> Key Points</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>7</b> Data wrangling with tidyr (tidyverse)</a><ul>
+<li class="chapter" data-level="7.1" data-path="tidyr.html"><a href="tidyr.html#objectives-resources-3"><i class="fa fa-check"></i><b>7.1</b> Objectives &amp; Resources</a></li>
+<li class="chapter" data-level="7.2" data-path="tidyr.html"><a href="tidyr.html#tidyr-overview"><i class="fa fa-check"></i><b>7.2</b> <code>tidyr</code> overview</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="tidyr.html"><a href="tidyr.html#install-tidyr-investigate-gapminder-data"><i class="fa fa-check"></i><b>7.2.1</b> Install <code>tidyr</code>, investigate gapminder data</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="tidyr.html"><a href="tidyr.html#from-wide-to-long-format-with-gather"><i class="fa fa-check"></i><b>7.3</b> From wide to long format with <code>gather()</code></a></li>
+<li class="chapter" data-level="7.4" data-path="tidyr.html"><a href="tidyr.html#from-long-to-intermediate-format-with-spread"><i class="fa fa-check"></i><b>7.4</b> From long to intermediate format with <code>spread()</code></a><ul>
+<li class="chapter" data-level="7.4.1" data-path="tidyr.html"><a href="tidyr.html#clean-up-and-save-your-.r-script"><i class="fa fa-check"></i><b>7.4.1</b> clean up and save your .r script</a></li>
+<li class="chapter" data-level="7.4.2" data-path="tidyr.html"><a href="tidyr.html#other-tidyr-awesomeness"><i class="fa fa-check"></i><b>7.4.2</b> Other tidyr awesomeness</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="tidyr.html"><a href="tidyr.html#other-links"><i class="fa fa-check"></i><b>7.5</b> Other links</a></li>
+<li class="chapter" data-level="7.6" data-path="tidyr.html"><a href="tidyr.html#your-turn-10"><i class="fa fa-check"></i><b>7.6</b> Your turn</a></li>
+<li class="chapter" data-level="7.7" data-path="tidyr.html"><a href="tidyr.html#troubleshooting-3"><i class="fa fa-check"></i><b>7.7</b> Troubleshooting</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>8</b> Analysis, continued</a><ul>
+<li class="chapter" data-level="8.1" data-path="analysis.html"><a href="analysis.html#objectives-and-resources"><i class="fa fa-check"></i><b>8.1</b> Objectives and Resources</a></li>
+<li class="chapter" data-level="8.2" data-path="analysis.html"><a href="analysis.html#importing-data"><i class="fa fa-check"></i><b>8.2</b> Importing data</a></li>
+<li class="chapter" data-level="8.3" data-path="analysis.html"><a href="analysis.html#repeating-operations-with-for-loops"><i class="fa fa-check"></i><b>8.3</b> Repeating operations with for loops</a></li>
+<li class="chapter" data-level="8.4" data-path="analysis.html"><a href="analysis.html#conditional-statements-with-if-and-else"><i class="fa fa-check"></i><b>8.4</b> conditional statements with <code>if</code> and <code>else</code></a><ul>
+<li class="chapter" data-level="8.4.1" data-path="analysis.html"><a href="analysis.html#todo-variable-classes"><i class="fa fa-check"></i><b>8.4.1</b> TODO: variable classes?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>9</b> Analysis with RMarkdown</a><ul>
+<li class="chapter" data-level="9.1" data-path="rmarkdown.html"><a href="rmarkdown.html#objectives-resources-4"><i class="fa fa-check"></i><b>9.1</b> Objectives &amp; Resources</a></li>
+<li class="chapter" data-level="9.2" data-path="rmarkdown.html"><a href="rmarkdown.html#intro-to-markdown"><i class="fa fa-check"></i><b>9.2</b> Intro to Markdown</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#from-github.com"><i class="fa fa-check"></i><b>9.2.1</b> from GitHub.com</a></li>
+<li class="chapter" data-level="9.2.2" data-path="rmarkdown.html"><a href="rmarkdown.html#from-rstudio"><i class="fa fa-check"></i><b>9.2.2</b> from RStudio</a></li>
+<li class="chapter" data-level="9.2.3" data-path="rmarkdown.html"><a href="rmarkdown.html#your-turn-11"><i class="fa fa-check"></i><b>9.2.3</b> Your turn</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="rmarkdown.html"><a href="rmarkdown.html#rmarkdown-from-rstudio"><i class="fa fa-check"></i><b>9.3</b> RMarkdown from RStudio</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="rmarkdown.html"><a href="rmarkdown.html#your-turn-12"><i class="fa fa-check"></i><b>9.3.1</b> Your turn</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="rmarkdown.html"><a href="rmarkdown.html#resources-2"><i class="fa fa-check"></i><b>9.4</b> Resources</a></li>
+<li class="chapter" data-level="9.5" data-path="rmarkdown.html"><a href="rmarkdown.html#more-practice-data-wrangling-data-viz"><i class="fa fa-check"></i><b>9.5</b> More practice data wrangling, data viz</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="rmarkdown.html"><a href="rmarkdown.html#your-turn-13"><i class="fa fa-check"></i><b>9.5.1</b> Your turn</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="rmarkdown.html"><a href="rmarkdown.html#troubleshooting-4"><i class="fa fa-check"></i><b>9.6</b> Troubleshooting</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="collaborate.html"><a href="collaborate.html"><i class="fa fa-check"></i><b>10</b> Collaborate with GitHub</a><ul>
+<li class="chapter" data-level="10.1" data-path="collaborate.html"><a href="collaborate.html#objectives-and-resources-1"><i class="fa fa-check"></i><b>10.1</b> Objectives and Resources</a></li>
+<li class="chapter" data-level="10.2" data-path="collaborate.html"><a href="collaborate.html#pull-request-to-your-friends-repo"><i class="fa fa-check"></i><b>10.2</b> pull request to your friend’s repo</a></li>
+<li class="chapter" data-level="10.3" data-path="collaborate.html"><a href="collaborate.html#create-gh-pages-repo-and-give-someone-permission"><i class="fa fa-check"></i><b>10.3</b> create gh-pages repo and give someone permission</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to Open Data Science</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="viz" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> Visualizing data</h1>
+<p><strong>In development.</strong></p>
+<div id="objectives-resources-2" class="section level2">
+<h2><span class="header-section-number">5.1</span> Objectives &amp; Resources</h2>
+<div id="objectives-1" class="section level4">
+<h4><span class="header-section-number">5.1.0.1</span> Objectives</h4>
+<ul>
+<li>install our first package, <code>ggplot2</code>, by installing <code>tidyverse</code></li>
+<li>learn ggplot2 with <code>mpg</code> dataframe (important to play with other data than your own, you’ll learn something.)</li>
+<li>practice writing a script (maybe call it mpg_viz.R?)</li>
+<li>practice rstudio-github workflow</li>
+<li>use and credit <a href="http://r4ds.had.co.nz/data-visualisation.html" class="uri">http://r4ds.had.co.nz/data-visualisation.html</a></li>
+</ul>
+<p>Why do we start with data viz? Not only is data viz a big part of analysis, it’s a way to SEE your progress as you learn to code. “ggplot2 implements the grammar of graphics, a coherent system for describing and building graphs. With ggplot2, you can do more faster by learning one system and applying it in many places.” - <a href="http://r4ds.had.co.nz/data-visualisation.html">R4DS</a></p>
+<ul>
+<li><p>Conceptual and building, cheatsheet images</p></li>
+<li><a href="http://r4ds.had.co.nz/data-visualisation.html" class="uri">http://r4ds.had.co.nz/data-visualisation.html</a></li>
+<li><p><a href="https://pdfs.semanticscholar.org/d779/6f85dabccd18673f382c100fc06f55e8b501.pdf" class="uri">https://pdfs.semanticscholar.org/d779/6f85dabccd18673f382c100fc06f55e8b501.pdf</a></p></li>
+</ul>
+</div>
+<div id="resources-1" class="section level4">
+<h4><span class="header-section-number">5.1.0.2</span> Resources</h4>
+<p>Here are some resources that helped make this tutorial: - <a href="http://r4ds.had.co.nz/data-visualisation.html">R for Data Science</a> - <a href="../cheatsheets/ggplot2-cheatsheet-2.0.pdf">ggplot2-cheatsheet-2.0.pdf</a> - <a href="http://ucsb-bren.github.io/env-info/wk06_widgets.html">Interactive Plots and Maps - Environmental Informatics</a> - <a href="http://www.cookbook-r.com/Graphs/#graphs-with-ggplot2">Graphs with ggplot2 - Cookbook for R</a> - <a href="http://www.sthda.com/english/wiki/ggplot2-essentials">ggplot2 Essentials - STHDA</a></p>
+<p>D Robinson: - <a href="http://varianceexplained.org/r/why-I-use-ggplot2/" class="uri">http://varianceexplained.org/r/why-I-use-ggplot2/</a>; add screenshot of ggplot2 cheatsheet - <a href="http://varianceexplained.org/RData/" class="uri">http://varianceexplained.org/RData/</a></p>
+</div>
+</div>
+<div id="install-our-first-package-tidyverse" class="section level2">
+<h2><span class="header-section-number">5.2</span> Install our first package: <code>tidyverse</code></h2>
+<!--- use the `swc-mbari.R script that we created in the previous section, or create a new script --->
+<p>Packages are bundles of functions, along with help pages and other goodies that make them easier for others to use, (ie. vignettes).</p>
+<p>So far we’ve been using packages included in ‘base R’; they are ‘out-of-the-box’ functions. You can also install packages from online created by the vast and growing R user community. The most traditional place to download packages is from <a href="https://cran.r-project.org/">CRAN, the Comprehensive R Archive Network</a>. This is where you went to download R originally, and will go again to look for updates. You can also install packages directly from GitHub, which we’ll do tomorrow.</p>
+<p>You don’t need to go to CRAN’s website to install packages, we can do it from within R with the command <code>install.packages(&quot;package-name-in-quotes&quot;)</code>.</p>
+<p>We are going to be using the package <code>ggplot2</code>, which is actually bundled into a huge package called <code>tidyverse</code>. We will install <code>tidyverse</code> now, and use a few functions from the packages within. Also, check out <a href="https://www.tidyverse.org">tidyverse.org/</a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## from CRAN:
+<span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>) ## do this once only to install the package on your computer.</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse) ## do this every time you restart R and need it </code></pre></div>
+<pre><code>## Loading tidyverse: ggplot2
+## Loading tidyverse: tibble
+## Loading tidyverse: tidyr
+## Loading tidyverse: readr
+## Loading tidyverse: purrr
+## Loading tidyverse: dplyr</code></pre>
+<pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.4.1</code></pre>
+<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.4.2</code></pre>
+<pre><code>## Warning: package &#39;purrr&#39; was built under R version 3.4.1</code></pre>
+<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.4.2</code></pre>
+<pre><code>## Conflicts with tidy packages ----------------------------------------------</code></pre>
+<pre><code>## filter(): dplyr, stats
+## lag():    dplyr, stats</code></pre>
+<p>When you do this, it will tell you which packages are inside of <code>tidyverse</code> that have also been installed. Note that there are a few name conflicts; it is alerting you that we’ll be using two functions from dplyr instead of the built-in stats package.</p>
+<p>What’s the difference between <code>install.packages()</code> and <code>library()</code>? Why do you need both? Here’s my analogy:</p>
+<ul>
+<li><code>install.packages()</code> is setting up electricity for your house. Just need to do this once (let’s ignore monthly bills).</li>
+<li><code>library()</code> is turning on the lights. You only turn them on when you need them, otherwise it wouldn’t be efficient. And when you quit R, it turns the lights off, but the electricity lines are still there. So when you come back, you’ll have to turn them on again with <code>library()</code>, but you already have your electricity set up.</li>
+</ul>
+<p>You can also install packages by going to the Packages tab in the bottom right pane. You can see the packages that you have installed (listed) and loaded (checkbox). You can also install packages using the install button, or check to see if any of your installed packages have updates available (update button). You can also click on the name of the package to see all the functions inside it — this is a super helpful feature that I use all the time.</p>
+</div>
+<div id="aesthetic-mappings" class="section level2">
+<h2><span class="header-section-number">5.3</span> Aesthetic mappings</h2>
+<div class="figure">
+<img src="img/rstudio-cheatsheet-ggplot.png" />
+
+</div>
+</div>
+<div id="push-to-github" class="section level2">
+<h2><span class="header-section-number">5.4</span> push to GitHub</h2>
+<div id="your-turn-4" class="section level3">
+<h3><span class="header-section-number">5.4.1</span> Your turn</h3>
+</div>
+</div>
+<div id="common-problems" class="section level2">
+<h2><span class="header-section-number">5.5</span> Common problems</h2>
+<p>…</p>
+<div id="your-turn-5" class="section level3">
+<h3><span class="header-section-number">5.5.1</span> Your turn</h3>
+</div>
+</div>
+<div id="the-layered-grammar-of-graphics" class="section level2">
+<h2><span class="header-section-number">5.6</span> The Layered Grammar of Graphics</h2>
+</div>
+<div id="push-to-github-1" class="section level2">
+<h2><span class="header-section-number">5.7</span> push to GitHub</h2>
+<p>Explore GitHub; show that your fig has a URL you could share with someone</p>
+</div>
+<div id="end-of-the-day-intro-to-markdown-readme" class="section level2">
+<h2><span class="header-section-number">5.8</span> end of the day: intro to Markdown (README)?</h2>
+<p>so they can post a figure on a readme?</p>
+</div>
+<div id="troubleshooting-2" class="section level2">
+<h2><span class="header-section-number">5.9</span> Troubleshooting</h2>
+
+</div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/lesson.js"></script>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="rstudio-github.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="dplyr.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/OHI-Science/data-science-training/edit/master/viz.Rmd",
+"text": "Edit"
+},
+"download": ["data-science-training.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
