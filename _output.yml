@@ -1,0 +1,20 @@
+bookdown::gitbook:
+  css:
+    - lib/css/bootstrap.min.css
+    - lib/css/style.css
+    - lib/css/lesson.css
+  includes:
+    after_body: _after_body.html
+  config:
+    toc:
+      before: |
+        <li><a href="./">OHI Data Science Training</a></li>
+      after: |
+        <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
+    edit: https://github.com/OHI-Science/data-science-training/edit/master/%s
+    download: ["pdf"]
+bookdown::pdf_book:
+  includes:
+    in_header: _preamble.tex
+  latex_engine: xelatex
+  keep_tex: yes

@@ -1,10 +1,20 @@
 ## Collaborative. Reproducible. Science.
 
-These materials are available as a book at http://ohi-science.org/XXXX
+These materials are available as a book at http://ohi-science.org/data-science-training/
 
-Please clone or download https://github.com/OHI-Science/XXXXX to accompany this training.
+Please clone or download https://github.com/OHI-Science/data-science-training to accompany this training.
 
-To render this book: `bookdown::render_book("index.Rmd", "bookdown::gitbook")`
+### Rendering
+
+To render this book in RStudio: Build tab > Build Book. Or on the command line:
+
+```R
+rmarkdown::render_site(encoding = 'UTF-8')
+````
+
+This will build the HTML and PDF versions of the book into the docs folder. Beware: the contents of the docs folder get blown away first, so you should always edit content outside of this. 
+
+### Acknowledgements
 
 Many thanks to the creators of `bookdown`: 
 

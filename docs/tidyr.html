@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Introduction to Open Data Science</title>
+  <meta name="description" content="This is official data science training for the Ocean Health Index, as described in Lowndes et al. 2017.">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Introduction to Open Data Science" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is official data science training for the Ocean Health Index, as described in Lowndes et al. 2017." />
+  <meta name="github-repo" content="ohi-science/data-science-training" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Introduction to Open Data Science" />
+  
+  <meta name="twitter:description" content="This is official data science training for the Ocean Health Index, as described in Lowndes et al. 2017." />
+  
+
+<meta name="author" content="Julie Lowndes &amp; The OHI Team">
+
+
+<meta name="date" content="2017-11-21">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="dplyr.html">
+<link rel="next" href="analysis.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="lib/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/style.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/lesson.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">OHI Data Science Training</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome</a></li>
+<li class="chapter" data-level="2" data-path="overview.html"><a href="overview.html"><i class="fa fa-check"></i><b>2</b> Overview</a><ul>
+<li class="chapter" data-level="2.1" data-path="overview.html"><a href="overview.html#what-to-expect"><i class="fa fa-check"></i><b>2.1</b> What to expect</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="overview.html"><a href="overview.html#tidy-data-workflow"><i class="fa fa-check"></i><b>2.1.1</b> Tidy data workflow</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="overview.html"><a href="overview.html#gapminder-data"><i class="fa fa-check"></i><b>2.2</b> Gapminder data:</a></li>
+<li class="chapter" data-level="2.3" data-path="overview.html"><a href="overview.html#by-the-end-of-the-course"><i class="fa fa-check"></i><b>2.3</b> By the end of the course…</a></li>
+<li class="chapter" data-level="2.4" data-path="overview.html"><a href="overview.html#prerequisites"><i class="fa fa-check"></i><b>2.4</b> Prerequisites</a></li>
+<li class="chapter" data-level="2.5" data-path="overview.html"><a href="overview.html#credit"><i class="fa fa-check"></i><b>2.5</b> Credit</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="orientation.html"><a href="orientation.html"><i class="fa fa-check"></i><b>3</b> R/RStudio Orientation, GitHub Setup</a><ul>
+<li class="chapter" data-level="3.1" data-path="orientation.html"><a href="orientation.html#objectives-resources"><i class="fa fa-check"></i><b>3.1</b> Objectives &amp; Resources</a></li>
+<li class="chapter" data-level="3.2" data-path="orientation.html"><a href="orientation.html#why-learn-r-with-rstudio"><i class="fa fa-check"></i><b>3.2</b> Why learn R with RStudio</a></li>
+<li class="chapter" data-level="3.3" data-path="orientation.html"><a href="orientation.html#r-at-the-console-rstudio-goodies"><i class="fa fa-check"></i><b>3.3</b> R at the console, RStudio goodies</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="orientation.html"><a href="orientation.html#error-messages-are-your-friends"><i class="fa fa-check"></i><b>3.3.1</b> Error messages are your friends</a></li>
+<li class="chapter" data-level="3.3.2" data-path="orientation.html"><a href="orientation.html#logical-operators-and-expressions"><i class="fa fa-check"></i><b>3.3.2</b> Logical operators and expressions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="orientation.html"><a href="orientation.html#r-functions-help-pages"><i class="fa fa-check"></i><b>3.4</b> R functions, help pages</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="orientation.html"><a href="orientation.html#your-turn"><i class="fa fa-check"></i><b>3.4.1</b> Your turn</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="orientation.html"><a href="orientation.html#clearing-the-environment"><i class="fa fa-check"></i><b>3.5</b> Clearing the environment</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="orientation.html"><a href="orientation.html#your-turn-1"><i class="fa fa-check"></i><b>3.5.1</b> Your turn</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="orientation.html"><a href="orientation.html#setup-git-github"><i class="fa fa-check"></i><b>3.6</b> Setup Git &amp; GitHub</a></li>
+<li class="chapter" data-level="3.7" data-path="orientation.html"><a href="orientation.html#troubleshooting"><i class="fa fa-check"></i><b>3.7</b> Troubleshooting</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="orientation.html"><a href="orientation.html#i-just-entered-a-command-and-nothings-happening"><i class="fa fa-check"></i><b>3.7.1</b> I just entered a command and nothing’s happening</a></li>
+<li class="chapter" data-level="3.7.2" data-path="orientation.html"><a href="orientation.html#how-do-i-update-rstudio"><i class="fa fa-check"></i><b>3.7.2</b> How do I update RStudio?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="rstudio-github.html"><a href="rstudio-github.html"><i class="fa fa-check"></i><b>4</b> Using RStudio+GitHub, and R Scripts</a><ul>
+<li class="chapter" data-level="4.1" data-path="rstudio-github.html"><a href="rstudio-github.html#objectives-resources-1"><i class="fa fa-check"></i><b>4.1</b> Objectives &amp; Resources</a></li>
+<li class="chapter" data-level="4.2" data-path="rstudio-github.html"><a href="rstudio-github.html#why-should-scientists-use-github"><i class="fa fa-check"></i><b>4.2</b> Why should scientists use Github?</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="rstudio-github.html"><a href="rstudio-github.html#what-are-git-and-github"><i class="fa fa-check"></i><b>4.2.1</b> What are Git and Github?</a></li>
+<li class="chapter" data-level="4.2.2" data-path="rstudio-github.html"><a href="rstudio-github.html#some-github-terminology"><i class="fa fa-check"></i><b>4.2.2</b> Some Github terminology</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="rstudio-github.html"><a href="rstudio-github.html#create-a-repository-on-github.com"><i class="fa fa-check"></i><b>4.3</b> Create a repository on Github.com</a></li>
+<li class="chapter" data-level="4.4" data-path="rstudio-github.html"><a href="rstudio-github.html#clone-your-repository-using-rstudio"><i class="fa fa-check"></i><b>4.4</b> Clone your repository using RStudio</a></li>
+<li class="chapter" data-level="4.5" data-path="rstudio-github.html"><a href="rstudio-github.html#inspect-your-repository"><i class="fa fa-check"></i><b>4.5</b> Inspect your repository</a></li>
+<li class="chapter" data-level="4.6" data-path="rstudio-github.html"><a href="rstudio-github.html#add-files-to-our-local-repo"><i class="fa fa-check"></i><b>4.6</b> Add files to our local repo</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="rstudio-github.html"><a href="rstudio-github.html#inspect-what-has-changed"><i class="fa fa-check"></i><b>4.6.1</b> Inspect what has changed</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="rstudio-github.html"><a href="rstudio-github.html#sync-from-rstudio-to-github"><i class="fa fa-check"></i><b>4.7</b> Sync from RStudio to GitHub</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="rstudio-github.html"><a href="rstudio-github.html#pull"><i class="fa fa-check"></i><b>4.7.1</b> Pull</a></li>
+<li class="chapter" data-level="4.7.2" data-path="rstudio-github.html"><a href="rstudio-github.html#stage"><i class="fa fa-check"></i><b>4.7.2</b> Stage</a></li>
+<li class="chapter" data-level="4.7.3" data-path="rstudio-github.html"><a href="rstudio-github.html#commit"><i class="fa fa-check"></i><b>4.7.3</b> Commit</a></li>
+<li class="chapter" data-level="4.7.4" data-path="rstudio-github.html"><a href="rstudio-github.html#push"><i class="fa fa-check"></i><b>4.7.4</b> Push</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="rstudio-github.html"><a href="rstudio-github.html#explore-remote-github"><i class="fa fa-check"></i><b>4.8</b> Explore remote Github</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="rstudio-github.html"><a href="rstudio-github.html#your-turn-2"><i class="fa fa-check"></i><b>4.8.1</b> Your turn!</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="rstudio-github.html"><a href="rstudio-github.html#create-an-r-script"><i class="fa fa-check"></i><b>4.9</b> Create an R script</a><ul>
+<li class="chapter" data-level="4.9.1" data-path="rstudio-github.html"><a href="rstudio-github.html#your-turn-3"><i class="fa fa-check"></i><b>4.9.1</b> Your turn</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="rstudio-github.html"><a href="rstudio-github.html#committing---how-often-tracking-changes-in-your-files"><i class="fa fa-check"></i><b>4.10</b> Committing - how often? Tracking changes in your files</a></li>
+<li class="chapter" data-level="4.11" data-path="rstudio-github.html"><a href="rstudio-github.html#troubleshooting-1"><i class="fa fa-check"></i><b>4.11</b> Troubleshooting</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="viz.html"><a href="viz.html"><i class="fa fa-check"></i><b>5</b> Visualizing data</a><ul>
+<li class="chapter" data-level="5.1" data-path="viz.html"><a href="viz.html#objectives-resources-2"><i class="fa fa-check"></i><b>5.1</b> Objectives &amp; Resources</a></li>
+<li class="chapter" data-level="5.2" data-path="viz.html"><a href="viz.html#install-our-first-package-tidyverse"><i class="fa fa-check"></i><b>5.2</b> Install our first package: <code>tidyverse</code></a></li>
+<li class="chapter" data-level="5.3" data-path="viz.html"><a href="viz.html#aesthetic-mappings"><i class="fa fa-check"></i><b>5.3</b> Aesthetic mappings</a></li>
+<li class="chapter" data-level="5.4" data-path="viz.html"><a href="viz.html#push-to-github"><i class="fa fa-check"></i><b>5.4</b> push to GitHub</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="viz.html"><a href="viz.html#your-turn-4"><i class="fa fa-check"></i><b>5.4.1</b> Your turn</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="viz.html"><a href="viz.html#common-problems"><i class="fa fa-check"></i><b>5.5</b> Common problems</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="viz.html"><a href="viz.html#your-turn-5"><i class="fa fa-check"></i><b>5.5.1</b> Your turn</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="viz.html"><a href="viz.html#the-layered-grammar-of-graphics"><i class="fa fa-check"></i><b>5.6</b> The Layered Grammar of Graphics</a></li>
+<li class="chapter" data-level="5.7" data-path="viz.html"><a href="viz.html#push-to-github-1"><i class="fa fa-check"></i><b>5.7</b> push to GitHub</a></li>
+<li class="chapter" data-level="5.8" data-path="viz.html"><a href="viz.html#end-of-the-day-intro-to-markdown-readme"><i class="fa fa-check"></i><b>5.8</b> end of the day: intro to Markdown (README)?</a></li>
+<li class="chapter" data-level="5.9" data-path="viz.html"><a href="viz.html#troubleshooting-2"><i class="fa fa-check"></i><b>5.9</b> Troubleshooting</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>6</b> Data wrangling with dplyr (tidyverse)</a><ul>
+<li class="chapter" data-level="6.1" data-path="overview.html"><a href="overview.html#overview"><i class="fa fa-check"></i><b>6.1</b> Overview</a></li>
+<li class="chapter" data-level="6.2" data-path="dplyr.html"><a href="dplyr.html#prerequisites-1"><i class="fa fa-check"></i><b>6.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="6.3" data-path="dplyr.html"><a href="dplyr.html#tidy-data"><i class="fa fa-check"></i><b>6.3</b> Tidy Data</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="dplyr.html"><a href="dplyr.html#setup"><i class="fa fa-check"></i><b>6.3.1</b> setup</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="dplyr.html"><a href="dplyr.html#explore-the-gapminder-data.frame"><i class="fa fa-check"></i><b>6.4</b> Explore the gapminder data.frame</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="dplyr.html"><a href="dplyr.html#read-data-with-readrread_csv"><i class="fa fa-check"></i><b>6.4.1</b> read data with <code>readr::read_csv()</code></a></li>
+<li class="chapter" data-level="6.4.2" data-path="dplyr.html"><a href="dplyr.html#look-at-the-variables-inside-a-data.frame"><i class="fa fa-check"></i><b>6.4.2</b> Look at the variables inside a data.frame</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="dplyr.html"><a href="dplyr.html#dplyr-overview"><i class="fa fa-check"></i><b>6.5</b> <code>dplyr</code> overview</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="dplyr.html"><a href="dplyr.html#install-tidyverse-which-has-dplyr-inside"><i class="fa fa-check"></i><b>6.5.1</b> install <code>tidyverse</code> (which has <code>dplyr</code> inside)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="dplyr.html"><a href="dplyr.html#use-dplyrfilter-to-subset-data-row-wise-observations."><i class="fa fa-check"></i><b>6.6</b> Use <code>dplyr::filter()</code> to subset data row-wise (observations).</a></li>
+<li class="chapter" data-level="6.7" data-path="dplyr.html"><a href="dplyr.html#your-turn-6"><i class="fa fa-check"></i><b>6.7</b> Your turn</a><ul>
+<li class="chapter" data-level="6.7.1" data-path="dplyr.html"><a href="dplyr.html#answer"><i class="fa fa-check"></i><b>6.7.1</b> Answer</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="dplyr.html"><a href="dplyr.html#meet-the-new-pipe-operator"><i class="fa fa-check"></i><b>6.8</b> Meet the new pipe operator</a></li>
+<li class="chapter" data-level="6.9" data-path="dplyr.html"><a href="dplyr.html#use-dplyrselect-to-subset-data-column-wise-variables"><i class="fa fa-check"></i><b>6.9</b> Use <code>dplyr::select()</code> to subset data column-wise (variables)</a><ul>
+<li class="chapter" data-level="6.9.1" data-path="dplyr.html"><a href="dplyr.html#revel-in-the-convenience"><i class="fa fa-check"></i><b>6.9.1</b> Revel in the convenience</a></li>
+</ul></li>
+<li class="chapter" data-level="6.10" data-path="dplyr.html"><a href="dplyr.html#use-dplyrmutate-to-add-new-variables"><i class="fa fa-check"></i><b>6.10</b> Use <code>dplyr::mutate()</code> to add new variables</a></li>
+<li class="chapter" data-level="6.11" data-path="dplyr.html"><a href="dplyr.html#your-turn-7"><i class="fa fa-check"></i><b>6.11</b> Your turn</a><ul>
+<li class="chapter" data-level="6.11.1" data-path="dplyr.html"><a href="dplyr.html#answer-1"><i class="fa fa-check"></i><b>6.11.1</b> Answer</a></li>
+</ul></li>
+<li class="chapter" data-level="6.12" data-path="dplyr.html"><a href="dplyr.html#dplyrgroup_by-to-operate-on-groups"><i class="fa fa-check"></i><b>6.12</b> <code>dplyr::group_by()</code> to operate on groups</a><ul>
+<li class="chapter" data-level="6.12.1" data-path="dplyr.html"><a href="dplyr.html#dplyrsummarize-with-group_by"><i class="fa fa-check"></i><b>6.12.1</b> <code>dplyr::summarize()</code> with <code>group_by()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.13" data-path="dplyr.html"><a href="dplyr.html#dplyrarrange-to-order"><i class="fa fa-check"></i><b>6.13</b> <code>dplyr::arrange()</code> to order</a></li>
+<li class="chapter" data-level="6.14" data-path="dplyr.html"><a href="dplyr.html#your-turn-8"><i class="fa fa-check"></i><b>6.14</b> Your turn</a><ul>
+<li class="chapter" data-level="6.14.1" data-path="dplyr.html"><a href="dplyr.html#answer-2"><i class="fa fa-check"></i><b>6.14.1</b> Answer</a></li>
+</ul></li>
+<li class="chapter" data-level="6.15" data-path="dplyr.html"><a href="dplyr.html#all-together-now"><i class="fa fa-check"></i><b>6.15</b> All together now</a><ul>
+<li class="chapter" data-level="6.15.1" data-path="dplyr.html"><a href="dplyr.html#compare-to-base-r"><i class="fa fa-check"></i><b>6.15.1</b> Compare to base R</a></li>
+</ul></li>
+<li class="chapter" data-level="6.16" data-path="dplyr.html"><a href="dplyr.html#your-turn-9"><i class="fa fa-check"></i><b>6.16</b> Your Turn</a><ul>
+<li class="chapter" data-level="6.16.1" data-path="dplyr.html"><a href="dplyr.html#answers"><i class="fa fa-check"></i><b>6.16.1</b> Answers</a></li>
+</ul></li>
+<li class="chapter" data-level="6.17" data-path="dplyr.html"><a href="dplyr.html#key-points"><i class="fa fa-check"></i><b>6.17</b> Key Points</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>7</b> Data wrangling with tidyr (tidyverse)</a><ul>
+<li class="chapter" data-level="7.1" data-path="tidyr.html"><a href="tidyr.html#objectives-resources-3"><i class="fa fa-check"></i><b>7.1</b> Objectives &amp; Resources</a></li>
+<li class="chapter" data-level="7.2" data-path="tidyr.html"><a href="tidyr.html#tidyr-overview"><i class="fa fa-check"></i><b>7.2</b> <code>tidyr</code> overview</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="tidyr.html"><a href="tidyr.html#install-tidyr-investigate-gapminder-data"><i class="fa fa-check"></i><b>7.2.1</b> Install <code>tidyr</code>, investigate gapminder data</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="tidyr.html"><a href="tidyr.html#from-wide-to-long-format-with-gather"><i class="fa fa-check"></i><b>7.3</b> From wide to long format with <code>gather()</code></a></li>
+<li class="chapter" data-level="7.4" data-path="tidyr.html"><a href="tidyr.html#from-long-to-intermediate-format-with-spread"><i class="fa fa-check"></i><b>7.4</b> From long to intermediate format with <code>spread()</code></a><ul>
+<li class="chapter" data-level="7.4.1" data-path="tidyr.html"><a href="tidyr.html#clean-up-and-save-your-.r-script"><i class="fa fa-check"></i><b>7.4.1</b> clean up and save your .r script</a></li>
+<li class="chapter" data-level="7.4.2" data-path="tidyr.html"><a href="tidyr.html#other-tidyr-awesomeness"><i class="fa fa-check"></i><b>7.4.2</b> Other tidyr awesomeness</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="tidyr.html"><a href="tidyr.html#other-links"><i class="fa fa-check"></i><b>7.5</b> Other links</a></li>
+<li class="chapter" data-level="7.6" data-path="tidyr.html"><a href="tidyr.html#your-turn-10"><i class="fa fa-check"></i><b>7.6</b> Your turn</a></li>
+<li class="chapter" data-level="7.7" data-path="tidyr.html"><a href="tidyr.html#troubleshooting-3"><i class="fa fa-check"></i><b>7.7</b> Troubleshooting</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>8</b> Analysis, continued</a><ul>
+<li class="chapter" data-level="8.1" data-path="analysis.html"><a href="analysis.html#objectives-and-resources"><i class="fa fa-check"></i><b>8.1</b> Objectives and Resources</a></li>
+<li class="chapter" data-level="8.2" data-path="analysis.html"><a href="analysis.html#importing-data"><i class="fa fa-check"></i><b>8.2</b> Importing data</a></li>
+<li class="chapter" data-level="8.3" data-path="analysis.html"><a href="analysis.html#repeating-operations-with-for-loops"><i class="fa fa-check"></i><b>8.3</b> Repeating operations with for loops</a></li>
+<li class="chapter" data-level="8.4" data-path="analysis.html"><a href="analysis.html#conditional-statements-with-if-and-else"><i class="fa fa-check"></i><b>8.4</b> conditional statements with <code>if</code> and <code>else</code></a><ul>
+<li class="chapter" data-level="8.4.1" data-path="analysis.html"><a href="analysis.html#todo-variable-classes"><i class="fa fa-check"></i><b>8.4.1</b> TODO: variable classes?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>9</b> Analysis with RMarkdown</a><ul>
+<li class="chapter" data-level="9.1" data-path="rmarkdown.html"><a href="rmarkdown.html#objectives-resources-4"><i class="fa fa-check"></i><b>9.1</b> Objectives &amp; Resources</a></li>
+<li class="chapter" data-level="9.2" data-path="rmarkdown.html"><a href="rmarkdown.html#intro-to-markdown"><i class="fa fa-check"></i><b>9.2</b> Intro to Markdown</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#from-github.com"><i class="fa fa-check"></i><b>9.2.1</b> from GitHub.com</a></li>
+<li class="chapter" data-level="9.2.2" data-path="rmarkdown.html"><a href="rmarkdown.html#from-rstudio"><i class="fa fa-check"></i><b>9.2.2</b> from RStudio</a></li>
+<li class="chapter" data-level="9.2.3" data-path="rmarkdown.html"><a href="rmarkdown.html#your-turn-11"><i class="fa fa-check"></i><b>9.2.3</b> Your turn</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="rmarkdown.html"><a href="rmarkdown.html#rmarkdown-from-rstudio"><i class="fa fa-check"></i><b>9.3</b> RMarkdown from RStudio</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="rmarkdown.html"><a href="rmarkdown.html#your-turn-12"><i class="fa fa-check"></i><b>9.3.1</b> Your turn</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="rmarkdown.html"><a href="rmarkdown.html#resources-2"><i class="fa fa-check"></i><b>9.4</b> Resources</a></li>
+<li class="chapter" data-level="9.5" data-path="rmarkdown.html"><a href="rmarkdown.html#more-practice-data-wrangling-data-viz"><i class="fa fa-check"></i><b>9.5</b> More practice data wrangling, data viz</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="rmarkdown.html"><a href="rmarkdown.html#your-turn-13"><i class="fa fa-check"></i><b>9.5.1</b> Your turn</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="rmarkdown.html"><a href="rmarkdown.html#troubleshooting-4"><i class="fa fa-check"></i><b>9.6</b> Troubleshooting</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="collaborate.html"><a href="collaborate.html"><i class="fa fa-check"></i><b>10</b> Collaborate with GitHub</a><ul>
+<li class="chapter" data-level="10.1" data-path="collaborate.html"><a href="collaborate.html#objectives-and-resources-1"><i class="fa fa-check"></i><b>10.1</b> Objectives and Resources</a></li>
+<li class="chapter" data-level="10.2" data-path="collaborate.html"><a href="collaborate.html#pull-request-to-your-friends-repo"><i class="fa fa-check"></i><b>10.2</b> pull request to your friend’s repo</a></li>
+<li class="chapter" data-level="10.3" data-path="collaborate.html"><a href="collaborate.html#create-gh-pages-repo-and-give-someone-permission"><i class="fa fa-check"></i><b>10.3</b> create gh-pages repo and give someone permission</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to Open Data Science</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="tidyr" class="section level1">
+<h1><span class="header-section-number">Chapter 7</span> Data wrangling with tidyr (tidyverse)</h1>
+<div id="objectives-resources-3" class="section level2">
+<h2><span class="header-section-number">7.1</span> Objectives &amp; Resources</h2>
+<p><strong>Objectives</strong></p>
+<ul>
+<li>learn tidyr with gapminder package</li>
+<li>other wrangling: joins, bind_cols (see <a href="http://r4ds.had.co.nz/relational-data" class="uri">http://r4ds.had.co.nz/relational-data</a>)</li>
+<li>practice RStudio-GitHub workflow</li>
+<li>your turn: use the data wrangling cheat sheet to explore window functions</li>
+</ul>
+<p><strong>Resources</strong></p>
+<!---
+> Exercise: with your neighbor, find the maximum life expectancy for countries in Asia. What is the earliest year you encounter? The latest? Hint: you can use or `base::max` and `dplyr::arrange()`...
+
+
+```r
+## possible result--no peeking!!
+gapminder %>%
+  filter(continent == 'Asia') %>%
+  group_by(country) %>%
+  filter(lifeExp == max(lifeExp)) %>%
+  arrange(desc(year))
+```
+
+--->
+</div>
+<div id="tidyr-overview" class="section level2">
+<h2><span class="header-section-number">7.2</span> <code>tidyr</code> overview</h2>
+<p>Often, data must be reshaped for it to become tidy data. What does that mean? There are four main verbs we’ll use, which are essentially pairs of opposites:</p>
+<ul>
+<li>turn columns into rows (<code>gather()</code>),</li>
+<li>turn rows into columns (<code>spread()</code>),</li>
+<li>turn a character column into multiple columns (<code>separate()</code>),</li>
+<li>turn multiple character columns into a single column (<code>unite()</code>)</li>
+</ul>
+<div class="figure">
+<img src="img/rstudio-cheatsheet-spread-gather-sep-unite.png" />
+
+</div>
+<p>You use <code>spread()</code> and <code>gather()</code> to transform or reshape data between ‘wide’ to ‘long’ formats. ‘long’ format is the tidy data we are after, where:</p>
+<ul>
+<li>each column is a variable</li>
+<li>each row is an observation</li>
+</ul>
+<p>In the ‘long’ format, you usually have 1 column for the observed variable and the other columns are ID variables.</p>
+<p>For the ‘wide’ format each row is often a site/subject/patient and you have multiple observation variables containing the same type of data. These can be either repeated observations over time, or observation of multiple variables (or a mix of both). Data input may be simpler or some other applications may prefer the ‘wide’ format. However, many of <code>R</code>‘s functions have been designed assuming you have ’long’ format data.</p>
+<p>These data formats mainly affect readability. For humans, the wide format is often more intuitive since we can often see more of the data on the screen due to it’s shape. However, the long format is more machine readable and is closer to the formatting of databases. The ID variables in our dataframes are similar to the fields in a database and observed variables are like the database values.</p>
+<blockquote>
+<p>Question: Is gapminder a purely long, purely wide, or some intermediate format?</p>
+</blockquote>
+<p>Sometimes, as with the gapminder dataset, we have multiple types of observed data. It is somewhere in between the purely ‘long’ and ‘wide’ data formats:</p>
+<ul>
+<li>3 “ID variables” (<code>continent</code>, <code>country</code>, <code>year</code>)</li>
+<li>3 “Observation variables” (<code>pop</code>,<code>lifeExp</code>,<code>gdpPercap</code>).</li>
+</ul>
+<p>It’s pretty common to have data in this intermediate format in most cases despite not having ALL observations in 1 column, since all 3 observation variables have different units. But we can play with switching it to long format and wide to show what that means (i.e. long would be 4 ID variables and 1 Observation variable).</p>
+<p><strong>Note:</strong> Generally, mathematical operations are better in long format, although some plotting functions actually work better with wide format.</p>
+<div id="install-tidyr-investigate-gapminder-data" class="section level3">
+<h3><span class="header-section-number">7.2.1</span> Install <code>tidyr</code>, investigate gapminder data</h3>
+<p>First install and load <code>tidyr</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#install.packages(&quot;tidyr&quot;)</span>
+<span class="kw">library</span>(<span class="st">&quot;tidyr&quot;</span>) <span class="co"># warning messages are OK</span></code></pre></div>
+</div>
+</div>
+<div id="from-wide-to-long-format-with-gather" class="section level2">
+<h2><span class="header-section-number">7.3</span> From wide to long format with <code>gather()</code></h2>
+<img src="img/rstudio-cheatsheet-reshaping-data-gather.png" width="500"/>
+<p>We’ve been working with pretty tidy data. So for practice, now let’s work with these data in a wider format, maybe the way you or your colleague entered it in a spreadsheet. We’ll work with it to get it back to the way we like it.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_wide &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;data/gapminder_wide.csv&#39;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(gap_wide)
+<span class="kw">str</span>(gap_wide)</code></pre></div>
+<p>While wide format is nice for data entry, it’s not nice for calculations. What if you were asked for the mean population after 1990 in Algeria? Possible, but ugly. Let’s tidy it back to the intermediate format we’ve been using.</p>
+<blockquote>
+<p>Question: let’s talk this through together. If we’re trying to turn the <code>gap_wide</code> format into <code>gapminder</code> format, what structure does it have that we like? And that we want to change?</p>
+</blockquote>
+<ul>
+<li>We like the continent and country columns. We won’t want to change those.</li>
+<li>For long format, we’d want just 1 column identifying the variable name (<code>tidyr</code> calls this a <strong>‘key’</strong>), and 1 column for the data (<code>tidyr</code> calls this the ’<strong>value’</strong>).</li>
+<li>For intermediate format, we’d want 3 columns for <code>gdpPercap</code>, <code>lifeExp</code>, and <code>pop</code>.</li>
+<li>We would like year as a separate column.</li>
+</ul>
+<p>Let’s get it to long format. We’ll have to do this in 2 steps. The first step is to take all of those column names and make them a variable in a new column, and transfer the values into another column.</p>
+<p>Let’s have a look at <code>gather()</code>’s help:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?gather</code></pre></div>
+<blockquote>
+<p>Question: What is our <strong>key-value pair</strong>?</p>
+</blockquote>
+<p>We need to name two new variables in the key-value pair, one for the key, one for the value. Let’s name them <code>obstype_year</code> and <code>obs_value</code>.</p>
+<p>Here’s the start of what we’ll do:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_long &lt;-<span class="st"> </span>gap_wide %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">gather</span>(<span class="dt">key   =</span> obstype_year,
+         <span class="dt">value =</span> obs_values)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(gap_long)
+<span class="kw">head</span>(gap_long)
+<span class="kw">tail</span>(gap_long)</code></pre></div>
+<p>So this has reshaped our dataframe, but really not how we wanted. Very important to check, and listen to that warning message–dropping attributes seems very suspicious. Like suspenders.</p>
+<p>What went wrong? Notice that it didn’t know that we wanted to keep <code>continent</code> and <code>country</code> untouched; we need to give it more information about which columns we want reshaped. We can do this in several ways.</p>
+<p>One way: identify the column numbers you want to use. Not ideal because column numbers could change, but it does exactly what we want! And illustrates it nicely.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_long &lt;-<span class="st"> </span>gap_wide %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">gather</span>(<span class="dt">key   =</span> obstype_year,
+         <span class="dt">value =</span> obs_values,
+         <span class="dv">3</span>:<span class="dv">38</span>)  <span class="co"># could also do -1, -2: &#39;not column one, not column two</span>
+<span class="kw">str</span>(gap_long)
+<span class="kw">head</span>(gap_long)
+<span class="kw">tail</span>(gap_long)</code></pre></div>
+<p>Better way: identify the columns by name. Listing them out by explicit name can be a good approach if there are a few. But I’m not going to list them out here, and way too much potential for error if you tried gdpPercap_1952, gdpPercap_1957, gdpPercap_1962… So let’s use some of <code>dplyr</code>’s awesome helper functions.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_long &lt;-<span class="st"> </span>gap_wide %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">gather</span>(<span class="dt">key   =</span> obstype_year,
+         <span class="dt">value =</span> obs_values,
+         dplyr::<span class="kw">starts_with</span>(<span class="st">&#39;pop&#39;</span>),
+         dplyr::<span class="kw">starts_with</span>(<span class="st">&#39;lifeExp&#39;</span>),
+         dplyr::<span class="kw">starts_with</span>(<span class="st">&#39;gdpPercap&#39;</span>))
+<span class="kw">str</span>(gap_long)
+<span class="kw">head</span>(gap_long)
+<span class="kw">tail</span>(gap_long)</code></pre></div>
+<p>Success! And you could also do it this way.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_long &lt;-<span class="st"> </span>gap_wide %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">gather</span>(<span class="dt">key   =</span> obstype_year,
+         <span class="dt">value =</span> obs_values,
+         -continent, -country)
+<span class="kw">str</span>(gap_long)
+<span class="kw">head</span>(gap_long)
+<span class="kw">tail</span>(gap_long)</code></pre></div>
+<p>To recap:</p>
+<p>Inside <code>gather()</code> we first name the new column for the new ID variable (<code>obstype_year</code>), the name for the new amalgamated observation variable (<code>obs_value</code>), then the names of the old observation variable. We could have typed out all the observation variables, but as in the <code>select()</code> function (see <code>dplyr</code> lesson), we can use the <code>starts_with()</code> argument to select all variables that starts with the desired character string. Gather also allows the alternative syntax of using the <code>-</code> symbol to identify which variables are not to be gathered (i.e. ID variables)</p>
+<p>OK, but we’re not done yet. <code>obstype_year</code> actually contains 2 pieces of information, the observation type (<code>pop</code>,<code>lifeExp</code>, or <code>gdpPercap</code>) and the <code>year</code>. We can use the <code>separate()</code> function to split the character strings into multiple variables</p>
+<p><code>?separate</code> –&gt; we’ll tell it which column we want separated, name new columns that we want to create, and tell it what we want it to separate by. Since the <code>obstype_year</code> variable has observation types and years separated by a <code>_</code>, we’ll use that.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_long &lt;-<span class="st"> </span>gap_wide %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">gather</span>(<span class="dt">key   =</span> obstype_year,
+         <span class="dt">value =</span> obs_values,
+         -continent, -country) %&gt;%
+<span class="st">  </span><span class="kw">separate</span>(obstype_year,
+           <span class="dt">into =</span> <span class="kw">c</span>(<span class="st">&#39;obs_type&#39;</span>,<span class="st">&#39;year&#39;</span>),
+           <span class="dt">sep=</span><span class="st">&quot;_&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(gap_long)
+<span class="kw">head</span>(gap_long)
+<span class="kw">tail</span>(gap_long)</code></pre></div>
+<p>Excellent. This is long format: every row is a unique observation. Yay!</p>
+<blockquote>
+<p>Exercise: Using <code>gap_long</code>, calculate the mean life expectancy, population, and gdpPercap for each continent. <strong>Hint:</strong> use the <code>group_by()</code> and <code>summarize()</code> functions we learned in the <code>dplyr</code> lesson</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># solution (no peeking!)</span>
+gap_long %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(continent, obs_type) %&gt;%
+<span class="st">    </span><span class="kw">summarize</span>(<span class="dt">means =</span> <span class="kw">mean</span>(obs_values))</code></pre></div>
+</div>
+<div id="from-long-to-intermediate-format-with-spread" class="section level2">
+<h2><span class="header-section-number">7.4</span> From long to intermediate format with <code>spread()</code></h2>
+<div class="figure">
+<img src="img/rstudio-cheatsheet-reshaping-data-spread.png" />
+
+</div>
+<p>Now just to double-check our work, let’s use the opposite of <code>gather()</code> to spread our observation variables back to the original format with the aptly named <code>spread()</code>. You pass <code>spread()</code> the key and value pair, which is now <code>obs_type</code> and <code>obs_values</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_normal &lt;-<span class="st"> </span>gap_long %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">spread</span>(obs_type, obs_values)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(gap_normal)
+<span class="kw">dim</span>(gapminder)
+<span class="kw">names</span>(gap_normal)
+<span class="kw">names</span>(gapminder)</code></pre></div>
+<p>Now we’ve got an intermediate dataframe <code>gap_normal</code> with the same dimensions as the original <code>gapminder</code>, but the order of the variables is different. Let’s fix that before checking if they are <code>all.equal()</code>.</p>
+<blockquote>
+<p>Exercise: reorder the columns in gap_normal to match gapminder.</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Solution, no peeking!</span>
+
+<span class="co"># one way with dplyr (also nice because can chain this from gap_normal creation)</span>
+gap_normal &lt;-<span class="st"> </span>gap_normal %&gt;%
+<span class="st">  </span><span class="kw">select</span>(country, continent, year, lifeExp, pop, gdpPercap)
+
+<span class="co"># another way with base R</span>
+gap_normal &lt;-<span class="st"> </span>gap_normal[,<span class="kw">names</span>(gapminder)]</code></pre></div>
+<p>Now let’s check if they are all.equal (<code>?all.equal</code>) is a handy test</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">all.equal</span>(gap_normal,gapminder)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(gap_normal)
+<span class="kw">head</span>(gapminder)</code></pre></div>
+<p>We’re almost there, the original was sorted by <code>country</code>, <code>continent</code>, then <code>year</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_normal &lt;-<span class="st"> </span>gap_normal %&gt;%<span class="st"> </span><span class="kw">arrange</span>(country,continent,year)
+<span class="kw">all.equal</span>(gap_normal,gapminder)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(gap_normal)
+<span class="kw">str</span>(gapminder)</code></pre></div>
+<p>Mine shows a slight difference because one is a data.frame and one is a tbl_df, which is similar to a data.frame. We won’t get into this difference now, I’m feeling good about these data sets! We’ve gone from the longest format back to the intermediate and we didn’t introduce any errors in our code.</p>
+<blockquote>
+<p>Exercise: convert gap_long all the way back to gap_wide. Hint: you’ll need to create appropriate labels for all our new variables (time*metric combinations) with <code>tidyr::unite()</code>.</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Solution, no peeking: </span>
+<span class="kw">head</span>(gap_long) <span class="co"># remember the columns</span>
+
+gap_wide_new &lt;-<span class="st"> </span>gap_long %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="co"># first unite obs_type and year into a new column called var_names. Separate by _</span>
+<span class="st">  </span><span class="kw">unite</span>(<span class="dt">col =</span> var_names, obs_type, year, <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="co"># then spread var_names out by key-value pair.</span>
+<span class="st">  </span><span class="kw">spread</span>(<span class="dt">key =</span> var_names, <span class="dt">value =</span> obs_values)
+<span class="kw">str</span>(gap_wide_new)</code></pre></div>
+<div id="clean-up-and-save-your-.r-script" class="section level3">
+<h3><span class="header-section-number">7.4.1</span> clean up and save your .r script</h3>
+<p>Spend some time cleaning up and saving <code>gapminder-wrangle.r</code> Restart R. In RStudio, use <em>Session &gt; Restart R</em>. Otherwise, quit R with <code>q()</code> and re-launch it.</p>
+<p>Your final R script could look something like this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## install, load dplyr
+<span class="co">#install.packages(&quot;dplyr&quot;) ## do this once only to install the package on your computer.</span>
+<span class="kw">library</span>(dplyr)
+
+## load gapminder
+<span class="kw">library</span>(gapminder) <span class="co"># this is the package name</span>
+<span class="kw">str</span>(gapminder) <span class="co"># there&#39;s still a data frame named &#39;gapminder&#39;</span>
+
+## practice dplyr::filter()
+<span class="kw">filter</span>(gapminder, lifeExp &lt;<span class="st"> </span><span class="dv">29</span>)
+<span class="kw">filter</span>(gapminder, country ==<span class="st"> &quot;Mexico&quot;</span>)
+<span class="kw">filter</span>(gapminder, country %in%<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Mexico&quot;</span>, <span class="st">&quot;Afghanistan&quot;</span>))
+
+## base R alternatives to dplyr::filter()
+gapminder[gapminder$lifeExp &lt;<span class="st"> </span><span class="dv">29</span>, ] ## repeat `gapminder`, [i, j] indexing is distracting
+<span class="kw">subset</span>(gapminder, country ==<span class="st"> &quot;Mexico&quot;</span>) ## almost same as filter ... but wait ...
+
+## pipe operator %&gt;%
+gapminder %&gt;%<span class="st"> </span>head <span class="co"># this...</span>
+<span class="kw">head</span>(gapminder) <span class="co"># ...is the same as this!</span>
+gapminder %&gt;%<span class="st"> </span><span class="kw">head</span>(<span class="dv">3</span>) <span class="co"># can pass arguments! this...</span>
+<span class="kw">head</span>(gapminder, <span class="dv">3</span>) <span class="co"># ...is the same as this!</span>
+
+## practice dplyr::select() with %&gt;%
+<span class="kw">select</span>(gapminder, year, lifeExp) <span class="co"># this...</span>
+gapminder %&gt;%<span class="st"> </span><span class="kw">select</span>(year, lifeExp) <span class="co"># ...is the same as this!</span>
+
+## practice with %&gt;% chains
+gapminder %&gt;%
+<span class="st">  </span><span class="kw">select</span>(year, lifeExp) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">head</span>(<span class="dv">4</span>) <span class="co"># doesn&#39;t have to be a dplyr function</span>
+
+gapminder %&gt;%
+<span class="st">  </span><span class="kw">filter</span>(country ==<span class="st"> &quot;Cambodia&quot;</span>) %&gt;%
+<span class="st">  </span><span class="kw">select</span>(-continent, -lifeExp) <span class="co"># same as select(country, year, pop, gdpPercap) </span>
+
+<span class="co"># compare to base R, hard to read!</span>
+gapminder[gapminder$country ==<span class="st"> &quot;Cambodia&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;country&quot;</span>, <span class="st">&quot;year&quot;</span>, <span class="st">&quot;pop&quot;</span>, <span class="st">&quot;gdpPercap&quot;</span>)]
+<span class="kw">subset</span>(gapminder, country ==<span class="st"> &quot;Cambodia&quot;</span>, <span class="dt">select =</span> <span class="kw">c</span>(country, year, pop, gdpPercap))
+
+## dplyr::mutate() adds new columns
+gapminder %&gt;%
+<span class="st">  </span><span class="kw">filter</span>(country ==<span class="st"> &quot;Cambodia&quot;</span>) %&gt;%
+<span class="st">  </span><span class="kw">select</span>(-continent, -lifeExp) %&gt;%
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">gdp =</span> pop *<span class="st"> </span>gdpPercap)
+
+## dplyr::summarize() or summarise() adds new column when grouping
+gapminder %&gt;%
+<span class="st">  </span><span class="kw">filter</span>(country ==<span class="st"> &quot;Cambodia&quot;</span>) %&gt;%
+<span class="st">  </span><span class="kw">select</span>(-continent, -lifeExp) %&gt;%
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">gdp =</span> pop *<span class="st"> </span>gdpPercap) %&gt;%
+<span class="st">  </span><span class="kw">group_by</span>(country) %&gt;%
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean_gdp =</span> <span class="kw">mean</span>(gdp)) %&gt;%
+<span class="st">  </span><span class="kw">ungroup</span>() <span class="co"># if you use group_by, also use ungroup() to save heartache later</span>
+
+## summarize for all countries (replaces our for loop!)
+gapminder %&gt;%
+<span class="st">  </span><span class="kw">select</span>(-continent, -lifeExp) %&gt;%
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">gdp =</span> pop *<span class="st"> </span>gdpPercap) %&gt;%
+<span class="st">  </span><span class="kw">group_by</span>(country) %&gt;%
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean_gdp =</span> <span class="kw">mean</span>(gdp)) %&gt;%
+<span class="st">  </span><span class="kw">ungroup</span>() <span class="co"># if you use group_by, also use ungroup() to save heartache later</span>
+
+## install tidyr
+<span class="kw">install.packages</span>(<span class="st">&quot;tidyr&quot;</span>)
+<span class="kw">library</span>(tidyr)
+
+## load wide data
+gap_wide &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;data/gapminder_wide.csv&#39;</span>)
+<span class="kw">head</span>(gap_wide)
+<span class="kw">str</span>(gap_wide)
+
+## practice tidyr::gather() wide to long
+gap_long &lt;-<span class="st"> </span>gap_wide %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">gather</span>(<span class="dt">key   =</span> obstype_year,
+         <span class="dt">value =</span> obs_values,
+         -continent, -country) 
+<span class="co"># or </span>
+gap_long &lt;-<span class="st"> </span>gap_wide %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">gather</span>(<span class="dt">key   =</span> obstype_year,
+         <span class="dt">value =</span> obs_values,
+         dplyr::<span class="kw">starts_with</span>(<span class="st">&#39;pop&#39;</span>),
+         dplyr::<span class="kw">starts_with</span>(<span class="st">&#39;lifeExp&#39;</span>),
+         dplyr::<span class="kw">starts_with</span>(<span class="st">&#39;gdpPercap&#39;</span>))
+<span class="co"># or (but always be wary of numerics because they could change silently)</span>
+gap_long &lt;-<span class="st"> </span>gap_wide %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">gather</span>(<span class="dt">key   =</span> obstype_year,
+         <span class="dt">value =</span> obs_values,
+         <span class="dv">3</span>:<span class="dv">38</span>)  <span class="co"># could also do -1, -2: &#39;not column one, not column two</span>
+
+
+## gather() and separate() to create our original gapminder
+gap_long &lt;-<span class="st"> </span>gap_wide %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">gather</span>(<span class="dt">key   =</span> obstype_year,
+         <span class="dt">value =</span> obs_values,
+         -continent, -country) %&gt;%
+<span class="st">  </span><span class="kw">separate</span>(obstype_year,
+           <span class="dt">into =</span> <span class="kw">c</span>(<span class="st">&#39;obs_type&#39;</span>,<span class="st">&#39;year&#39;</span>),
+           <span class="dt">sep=</span><span class="st">&quot;_&quot;</span>)
+
+## practice: can still do calculations in long format
+gap_long %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(continent, obs_type) %&gt;%
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">means =</span> <span class="kw">mean</span>(obs_values))
+
+## spread() from normal to wide
+gap_normal &lt;-<span class="st"> </span>gap_long %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">spread</span>(obs_type, obs_values) %&gt;%
+<span class="st">  </span><span class="kw">select</span>(country, continent, year, lifeExp, pop, gdpPercap)
+<span class="co"># or </span>
+gap_normal &lt;-<span class="st"> </span>gap_long %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">spread</span>(obs_type, obs_values)
+gap_normal &lt;-<span class="st"> </span>gap_normal[,<span class="kw">names</span>(gapminder)]
+
+## check that all.equal()
+<span class="kw">all.equal</span>(gap_normal,gapminder)
+
+## unite() and spread(): convert gap_long to gap_wide
+<span class="kw">head</span>(gap_long) <span class="co"># remember the columns</span>
+
+gap_wide_new &lt;-<span class="st"> </span>gap_long %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="co"># first unite obs_type and year into a new column called var_names. Separate by _</span>
+<span class="st">  </span><span class="kw">unite</span>(<span class="dt">col =</span> var_names, obs_type, year, <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="co"># then spread var_names out by key-value pair.</span>
+<span class="st">  </span><span class="kw">spread</span>(<span class="dt">key =</span> var_names, <span class="dt">value =</span> obs_values)
+<span class="kw">str</span>(gap_wide_new)</code></pre></div>
+</div>
+<div id="other-tidyr-awesomeness" class="section level3">
+<h3><span class="header-section-number">7.4.2</span> Other tidyr awesomeness</h3>
+<ul>
+<li><code>complete()</code></li>
+</ul>
+<hr />
+</div>
+</div>
+<div id="other-links" class="section level2">
+<h2><span class="header-section-number">7.5</span> Other links</h2>
+<ul>
+<li><a href="http://ucsb-bren.github.io/env-info/wk04_tidyr.html">Tidying up Data - Env Info</a> - <a href="https://github.com/ucsb-bren/env-info/blob/gh-pages/wk04_tidyr.Rmd">Rmd</a></li>
+<li><a href="http://bbest.github.io/dplyr-tidyr-tutorial/">Data wrangling with dplyr and tidyr - Tyler Clavelle &amp; Dan Ovando</a> - <a href="https://github.com/bbest/dplyr-tidyr-tutorial/blob/gh-pages/index.Rmd">Rmd</a></li>
+</ul>
+</div>
+<div id="your-turn-10" class="section level2">
+<h2><span class="header-section-number">7.6</span> Your turn</h2>
+<p>ggplot2</p>
+</div>
+<div id="troubleshooting-3" class="section level2">
+<h2><span class="header-section-number">7.7</span> Troubleshooting</h2>
+
+</div>
+</div>
+<script src="lib/js/jquery.min.js"></script>
+<script src="lib/js/bootstrap.min.js"></script>
+<script src="lib/js/lesson.js"></script>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="dplyr.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/OHI-Science/data-science-training/edit/master/data-wrangling-tidyr.Rmd",
+"text": "Edit"
+},
+"download": ["data-science-training.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
