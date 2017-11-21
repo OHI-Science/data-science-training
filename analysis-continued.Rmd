@@ -6,16 +6,28 @@
 
 exposure and lots of practice: 
 
+Do a little analysis: for a continent, loop through and make figs, save them each.
+
 - importing and writing data
-- for loops 
-    - save ggplot figs http://r4ds.had.co.nz/iteration.html
-- if statements (conditionals) 
-    - write message() to yourself
+    - write a local copy of gapminder data to data/ folder
 - strings and filenames: 
     - Jenny Bryan pres, list.files(), file.path()
     - stringr() http://r4ds.had.co.nz/strings.html
+- for loops introduce R Script
+    - save ggplot figs (also using stringr, paste()) http://r4ds.had.co.nz/iteration.html
+- if statements (conditionals) 
+    - write message() to yourself
 - installing packages from github
 - also mention: lubridate, purrr (don't get into them)
+
+- end with a ton of resources:
+https://peerj.com/collections/50-practicaldatascistats/
+
+FINISH: organization and workflows
+source, 
+set up a folder for figs, intermediate analyses, final outputs
+(could even do an R package, etc). 
+
 
 
 **Resources**
@@ -31,6 +43,44 @@ get file extensions https://stat.ethz.ch/R-manual/R-devel/library/tools/html/fil
 - left_join
 
 You'll soon have questions that are outside the scope of this workshop, how do you find answers?
+
+
+## Create an R script
+
+OK, now, let's go back to RStudio, and get ourselves back into learning R. We are going to create an R script. What is an R script? It's a text file with a .R extension. Writing R commands in the console like we did this morning is great, but limited; it's hard to keep track of and hard to efficiently share with others. Plus, as your analyses get more complicated, you need to be able to see them all in one place. 
+
+Go to File > New File > R Script (or click the green plus in the top left corner). 
+
+Let's set up this script for the rest of the day. Let's start off with a few comments so that we know what it is for, and save it. 
+
+By creating a script, we are seeing the 4th pane of the RStudio console, which is essentially a text editor. 
+
+```
+## swc-mbari.R
+## learning R
+## J Lowndes lowndes@nceas.uscb.edu
+```
+
+Now, let's save it. I'm going to call my file `swc-mbari.R`.
+
+OK. Now let's practice with some of those commands that we were working on this morning. 
+
+Below your comments, type: 
+
+```
+x <- seq(1:15)
+```
+
+Now, hitting return does not execute this command; remember, it's just a text file. To execute it, we need to get what we typed in the script down into the console. How do we do it? There are several ways (let's do each of them):
+
+1. copy-paste this line into the console.
+2. select the line (or simply put the cursor there), and click 'Run'. This is available from 
+    a. the bar above the script (green arrow)
+    b. the menu bar: Code > Run Selected Line(s)
+    c. keyboard shortcut: command-return
+3. source the script, which means running the whole thing. This is also great for to see if there are any typos in your code that you've missed. You can do this by:
+    a. clicking Source (blue arrow in the bar above the script).
+    b. typing `source('swc-mbari.R')` in the console (or from another R file!!!). 
 
 
 ## Importing data

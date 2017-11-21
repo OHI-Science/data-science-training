@@ -20,6 +20,7 @@ In this lesson we will:
 - work with R in the console
 - be introduced to built-in R functions
 - learn to use the help pages
+- explore RMarkdown
 - configure git on our computers
 
 **Resources**
@@ -309,6 +310,68 @@ or click the broom in RStudio's Environment pane.
 ### Your turn
 
 > Exercise: Clear your workspace, then create a few new variables. Create a variable that is the mean of a sequence of 1-20. What's a good name for your variable? Does it matter what your 'by' argument is? Why?
+
+## RMarkdown
+
+Now we are going to also introduce RMarkdown. This is really key for collaborative research, so we're going to get started with it early and then use it for the rest of the day. 
+
+An Rmarkdown file will allow us to weave markdown text with chunks of R code to be evaluated and output content like tables and plots.
+
+File -> New File -> Rmarkdown... -> Document of output format HTML, OK.
+
+`r img(src='img/rstudio_new-rmd-doc-html.png', width=300)`
+
+You can give it a Title like "My Project". Then click OK. 
+
+OK, first off: by opening a file, we are seeing the 4th pane of the RStudio console, which is essentially a text editor. This lets us organize our files within RStudio instead of having a bunch of differnt windows open.
+
+Let's have a look at this file — it's not blank; there is some initial text is already provided for you. Notice a few things about it: 
+
+- There are white and grey sections. R code is in grey sections, and other text is in white. 
+
+![](img/rmarkdown.png)
+
+
+Let's go ahead and "Knit HTML". 
+
+![](img/rmarkdown_side_by_side.png)
+
+What do you notice between the two? 
+
+Notice how the grey **R code chunks** are surrounded by 3 backticks and `{r LABEL}`. These are evaluated and return the output text in the case of `summary(cars)` and the output plot in the case of `plot(pressure)`.
+
+Notice how the code `plot(pressure)` is not shown in the HTML output because of the R code chunk option `echo=FALSE`.
+
+More details...
+
+This RMarkdown file has 2 different languages within it: **R** and **Markdown**. 
+
+We don't know that much R yet, but you can see that we are taking a summary of some data called 'cars', and then plotting. There's a lot more to learn about R, and we'll get into it for the next few days. 
+
+The second language is Markdown. This is a formatting language for plain text, and there are only about 15 rules to know. 
+
+Notice the syntax for:
+
+- **headers** get rendered at multiple levels: `#`, `##`
+- **bold**: `**word**`
+
+There are some good [cheatsheets](https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet) to get you started, and here is one built into RStudio:
+<br />
+<br />
+
+![](img/md_cheatsheet.png)
+<br />
+<br />
+
+See [Mastering Markdown · GitHub Guides](https://guides.github.com/features/mastering-markdown/) and add some more personalized content to the README of your own, like a bulleted list or blockquote.
+
+Learn more: http://rmarkdown.rstudio.com/
+
+### Your Turn
+
+1. In Markdown, Write some italic text, and make a numbered list. 
+Use the Markdown Quick Reference (in the menu bar: Help > Markdown Quick Reference). 
+1. Reknit your html file. 
 
 ## Setup Git & GitHub
 
