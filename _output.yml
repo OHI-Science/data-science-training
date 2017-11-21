@@ -1,8 +1,8 @@
 bookdown::gitbook:
   css:
-    - css/bootstrap.min.css
-    - css/style.css
-    - css/lesson.css
+    - lib/css/bootstrap.min.css
+    - lib/css/style.css
+    - lib/css/lesson.css
   includes:
     after_body: _after_body.html
   config:
