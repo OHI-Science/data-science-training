@@ -25,7 +25,7 @@
 <meta name="author" content="Julie Lowndes &amp; The OHI Team">
 
 
-<meta name="date" content="2017-11-20">
+<meta name="date" content="2017-11-21">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -157,7 +157,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="5" data-path="viz.html"><a href="viz.html"><i class="fa fa-check"></i><b>5</b> Visualizing data</a><ul>
 <li class="chapter" data-level="5.1" data-path="viz.html"><a href="viz.html#objectives-resources-2"><i class="fa fa-check"></i><b>5.1</b> Objectives &amp; Resources</a></li>
-<li class="chapter" data-level="5.2" data-path="viz.html"><a href="viz.html#install-our-first-package-ggplot2"><i class="fa fa-check"></i><b>5.2</b> Install our first package: <code>ggplot2</code></a></li>
+<li class="chapter" data-level="5.2" data-path="viz.html"><a href="viz.html#install-our-first-package-tidyverse"><i class="fa fa-check"></i><b>5.2</b> Install our first package: <code>tidyverse</code></a></li>
 <li class="chapter" data-level="5.3" data-path="viz.html"><a href="viz.html#aesthetic-mappings"><i class="fa fa-check"></i><b>5.3</b> Aesthetic mappings</a></li>
 <li class="chapter" data-level="5.4" data-path="viz.html"><a href="viz.html#push-to-github"><i class="fa fa-check"></i><b>5.4</b> push to GitHub</a><ul>
 <li class="chapter" data-level="5.4.1" data-path="viz.html"><a href="viz.html#your-turn-4"><i class="fa fa-check"></i><b>5.4.1</b> Your turn</a></li>
@@ -176,10 +176,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6.2.1" data-path="dplyr.html"><a href="dplyr.html#setup"><i class="fa fa-check"></i><b>6.2.1</b> setup</a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="dplyr.html"><a href="dplyr.html#explore-the-gapminder-data.frame"><i class="fa fa-check"></i><b>6.3</b> Explore the gapminder data.frame</a><ul>
-<li class="chapter" data-level="6.3.1" data-path="dplyr.html"><a href="dplyr.html#look-at-the-variables-inside-a-data.frame"><i class="fa fa-check"></i><b>6.3.1</b> Look at the variables inside a data.frame</a></li>
+<li class="chapter" data-level="6.3.1" data-path="dplyr.html"><a href="dplyr.html#read-data-with-readrread_csv"><i class="fa fa-check"></i><b>6.3.1</b> read data with <code>readr::read_csv()</code></a></li>
+<li class="chapter" data-level="6.3.2" data-path="dplyr.html"><a href="dplyr.html#look-at-the-variables-inside-a-data.frame"><i class="fa fa-check"></i><b>6.3.2</b> Look at the variables inside a data.frame</a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="dplyr.html"><a href="dplyr.html#dplyr-overview"><i class="fa fa-check"></i><b>6.4</b> <code>dplyr</code> overview</a><ul>
-<li class="chapter" data-level="6.4.1" data-path="dplyr.html"><a href="dplyr.html#install-tidyverse-which-as-dplyr-inside"><i class="fa fa-check"></i><b>6.4.1</b> install <code>tidyverse</code> (which as <code>dplyr</code> inside)</a></li>
+<li class="chapter" data-level="6.4.1" data-path="dplyr.html"><a href="dplyr.html#install-tidyverse-which-has-dplyr-inside"><i class="fa fa-check"></i><b>6.4.1</b> install <code>tidyverse</code> (which has <code>dplyr</code> inside)</a></li>
 </ul></li>
 <li class="chapter" data-level="6.5" data-path="dplyr.html"><a href="dplyr.html#use-dplyrfilter-to-subset-data-row-wise-observations."><i class="fa fa-check"></i><b>6.5</b> Use <code>dplyr::filter()</code> to subset data row-wise (observations).</a><ul>
 <li class="chapter" data-level="6.5.1" data-path="dplyr.html"><a href="dplyr.html#your-turn-6"><i class="fa fa-check"></i><b>6.5.1</b> Your turn</a></li>
@@ -188,9 +189,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6.7" data-path="dplyr.html"><a href="dplyr.html#use-dplyrselect-to-subset-data-column-wise-variables"><i class="fa fa-check"></i><b>6.7</b> Use <code>dplyr::select()</code> to subset data column-wise (variables)</a><ul>
 <li class="chapter" data-level="6.7.1" data-path="dplyr.html"><a href="dplyr.html#revel-in-the-convenience"><i class="fa fa-check"></i><b>6.7.1</b> Revel in the convenience</a></li>
 </ul></li>
-<li class="chapter" data-level="6.8" data-path="dplyr.html"><a href="dplyr.html#use-mutate-to-add-new-variables"><i class="fa fa-check"></i><b>6.8</b> Use <code>mutate()</code> to add new variables</a></li>
-<li class="chapter" data-level="6.9" data-path="dplyr.html"><a href="dplyr.html#group_by-and-summarize-to-operate-on-groups"><i class="fa fa-check"></i><b>6.9</b> <code>group_by</code> and <code>summarize</code> to operate on groups</a><ul>
-<li class="chapter" data-level="6.9.1" data-path="dplyr.html"><a href="dplyr.html#todo-variable-classes"><i class="fa fa-check"></i><b>6.9.1</b> TODO: variable classes?</a></li>
+<li class="chapter" data-level="6.8" data-path="dplyr.html"><a href="dplyr.html#use-dplyrmutate-to-add-new-variables"><i class="fa fa-check"></i><b>6.8</b> Use <code>dplyr::mutate()</code> to add new variables</a><ul>
+<li class="chapter" data-level="6.8.1" data-path="dplyr.html"><a href="dplyr.html#your-turn-7"><i class="fa fa-check"></i><b>6.8.1</b> Your turn</a></li>
+</ul></li>
+<li class="chapter" data-level="6.9" data-path="dplyr.html"><a href="dplyr.html#dplyrgroup_by-to-operate-on-groups"><i class="fa fa-check"></i><b>6.9</b> <code>dplyr::group_by()</code> to operate on groups</a><ul>
+<li class="chapter" data-level="6.9.1" data-path="dplyr.html"><a href="dplyr.html#dplyrsummarize-with-group_by"><i class="fa fa-check"></i><b>6.9.1</b> <code>dplyr::summarize()</code> with <code>group_by()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.10" data-path="dplyr.html"><a href="dplyr.html#dplyrarrange-to-order"><i class="fa fa-check"></i><b>6.10</b> <code>dplyr::arrange()</code> to order</a></li>
+<li class="chapter" data-level="6.11" data-path="dplyr.html"><a href="dplyr.html#your-turn-8"><i class="fa fa-check"></i><b>6.11</b> Your turn</a></li>
+<li class="chapter" data-level="6.12" data-path="dplyr.html"><a href="dplyr.html#all-together-now"><i class="fa fa-check"></i><b>6.12</b> All together now</a><ul>
+<li class="chapter" data-level="6.12.1" data-path="dplyr.html"><a href="dplyr.html#compare-to-base-r"><i class="fa fa-check"></i><b>6.12.1</b> Compare to base R</a></li>
+<li class="chapter" data-level="6.12.2" data-path="dplyr.html"><a href="dplyr.html#your-turn-9"><i class="fa fa-check"></i><b>6.12.2</b> Your turn</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>7</b> Data wrangling with tidyr (tidyverse)</a><ul>
@@ -204,31 +213,30 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="7.4.2" data-path="tidyr.html"><a href="tidyr.html#other-tidyr-awesomeness"><i class="fa fa-check"></i><b>7.4.2</b> Other tidyr awesomeness</a></li>
 </ul></li>
 <li class="chapter" data-level="7.5" data-path="tidyr.html"><a href="tidyr.html#other-links"><i class="fa fa-check"></i><b>7.5</b> Other links</a></li>
-<li class="chapter" data-level="7.6" data-path="tidyr.html"><a href="tidyr.html#troubleshooting-3"><i class="fa fa-check"></i><b>7.6</b> Troubleshooting</a></li>
+<li class="chapter" data-level="7.6" data-path="tidyr.html"><a href="tidyr.html#your-turn-10"><i class="fa fa-check"></i><b>7.6</b> Your turn</a></li>
+<li class="chapter" data-level="7.7" data-path="tidyr.html"><a href="tidyr.html#troubleshooting-3"><i class="fa fa-check"></i><b>7.7</b> Troubleshooting</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>8</b> Analysis, continued</a><ul>
 <li class="chapter" data-level="8.1" data-path="analysis.html"><a href="analysis.html#objectives-and-resources"><i class="fa fa-check"></i><b>8.1</b> Objectives and Resources</a></li>
 <li class="chapter" data-level="8.2" data-path="analysis.html"><a href="analysis.html#importing-data"><i class="fa fa-check"></i><b>8.2</b> Importing data</a></li>
-<li class="chapter" data-level="8.3" data-path="analysis.html"><a href="analysis.html#subsetting-data"><i class="fa fa-check"></i><b>8.3</b> Subsetting data</a><ul>
-<li class="chapter" data-level="8.3.1" data-path="analysis.html"><a href="analysis.html#subsetting-with-base-rows-columns-notation"><i class="fa fa-check"></i><b>8.3.1</b> subsetting with base <code>[rows, columns]</code> notation</a></li>
-<li class="chapter" data-level="8.3.2" data-path="analysis.html"><a href="analysis.html#subsetting-with-base-subset-function"><i class="fa fa-check"></i><b>8.3.2</b> subsetting with base <code>subset()</code> function</a></li>
+<li class="chapter" data-level="8.3" data-path="analysis.html"><a href="analysis.html#repeating-operations-with-for-loops"><i class="fa fa-check"></i><b>8.3</b> Repeating operations with for loops</a></li>
+<li class="chapter" data-level="8.4" data-path="analysis.html"><a href="analysis.html#conditional-statements-with-if-and-else"><i class="fa fa-check"></i><b>8.4</b> conditional statements with <code>if</code> and <code>else</code></a><ul>
+<li class="chapter" data-level="8.4.1" data-path="analysis.html"><a href="analysis.html#todo-variable-classes"><i class="fa fa-check"></i><b>8.4.1</b> TODO: variable classes?</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="analysis.html"><a href="analysis.html#repeating-operations-with-for-loops"><i class="fa fa-check"></i><b>8.4</b> Repeating operations with for loops</a></li>
-<li class="chapter" data-level="8.5" data-path="analysis.html"><a href="analysis.html#conditional-statements-with-if-and-else"><i class="fa fa-check"></i><b>8.5</b> conditional statements with <code>if</code> and <code>else</code></a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>9</b> Analysis with RMarkdown</a><ul>
 <li class="chapter" data-level="9.1" data-path="rmarkdown.html"><a href="rmarkdown.html#objectives-resources-5"><i class="fa fa-check"></i><b>9.1</b> Objectives &amp; Resources</a></li>
 <li class="chapter" data-level="9.2" data-path="rmarkdown.html"><a href="rmarkdown.html#intro-to-markdown"><i class="fa fa-check"></i><b>9.2</b> Intro to Markdown</a><ul>
 <li class="chapter" data-level="9.2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#from-github.com"><i class="fa fa-check"></i><b>9.2.1</b> from GitHub.com</a></li>
 <li class="chapter" data-level="9.2.2" data-path="rmarkdown.html"><a href="rmarkdown.html#from-rstudio"><i class="fa fa-check"></i><b>9.2.2</b> from RStudio</a></li>
-<li class="chapter" data-level="9.2.3" data-path="rmarkdown.html"><a href="rmarkdown.html#your-turn-7"><i class="fa fa-check"></i><b>9.2.3</b> Your turn</a></li>
+<li class="chapter" data-level="9.2.3" data-path="rmarkdown.html"><a href="rmarkdown.html#your-turn-11"><i class="fa fa-check"></i><b>9.2.3</b> Your turn</a></li>
 </ul></li>
 <li class="chapter" data-level="9.3" data-path="rmarkdown.html"><a href="rmarkdown.html#rmarkdown-from-rstudio"><i class="fa fa-check"></i><b>9.3</b> RMarkdown from RStudio</a><ul>
-<li class="chapter" data-level="9.3.1" data-path="rmarkdown.html"><a href="rmarkdown.html#your-turn-8"><i class="fa fa-check"></i><b>9.3.1</b> Your turn</a></li>
+<li class="chapter" data-level="9.3.1" data-path="rmarkdown.html"><a href="rmarkdown.html#your-turn-12"><i class="fa fa-check"></i><b>9.3.1</b> Your turn</a></li>
 </ul></li>
 <li class="chapter" data-level="9.4" data-path="rmarkdown.html"><a href="rmarkdown.html#resources-2"><i class="fa fa-check"></i><b>9.4</b> Resources</a></li>
 <li class="chapter" data-level="9.5" data-path="rmarkdown.html"><a href="rmarkdown.html#more-practice-data-wrangling-data-viz"><i class="fa fa-check"></i><b>9.5</b> More practice data wrangling, data viz</a><ul>
-<li class="chapter" data-level="9.5.1" data-path="rmarkdown.html"><a href="rmarkdown.html#your-turn-9"><i class="fa fa-check"></i><b>9.5.1</b> Your turn</a></li>
+<li class="chapter" data-level="9.5.1" data-path="rmarkdown.html"><a href="rmarkdown.html#your-turn-13"><i class="fa fa-check"></i><b>9.5.1</b> Your turn</a></li>
 </ul></li>
 <li class="chapter" data-level="9.6" data-path="rmarkdown.html"><a href="rmarkdown.html#troubleshooting-4"><i class="fa fa-check"></i><b>9.6</b> Troubleshooting</a></li>
 </ul></li>
@@ -259,20 +267,31 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="objectives-and-resources" class="section level2">
 <h2><span class="header-section-number">8.1</span> Objectives and Resources</h2>
 <p><strong>Objectives</strong></p>
+<p>exposure and lots of practice:</p>
 <ul>
-<li>data import, writing</li>
-<li>for loops</li>
-<li>conditionals</li>
-<li>mention classes</li>
-<li>practice</li>
-<li>what’s next</li>
-<li>Jenny Bryan filenames</li>
+<li>importing and writing data</li>
+<li>for loops
+<ul>
+<li>save ggplot figs <a href="http://r4ds.had.co.nz/iteration.html" class="uri">http://r4ds.had.co.nz/iteration.html</a></li>
+</ul></li>
+<li>if statements (conditionals)
+<ul>
+<li>write message() to yourself</li>
+</ul></li>
+<li>strings and filenames:
+<ul>
+<li>Jenny Bryan pres, list.files(), file.path()</li>
+<li>stringr() <a href="http://r4ds.had.co.nz/strings.html" class="uri">http://r4ds.had.co.nz/strings.html</a></li>
+</ul></li>
+<li>installing packages from github</li>
+<li>also mention: lubridate, purrr (don’t get into them)</li>
 </ul>
 <p><strong>Resources</strong></p>
 <p>When trying to see if a number or text is equal to some <em>single</em> value, use <code>==</code>. To check it against <em>multiple</em> values, use <code>%in%</code>. mine’s “%!in%” &lt;- Negate(“%in%”)</p>
 <p>list.files file.path() message() (with an if statement maybe) get file extensions <a href="https://stat.ethz.ch/R-manual/R-devel/library/tools/html/fileutils.html" class="uri">https://stat.ethz.ch/R-manual/R-devel/library/tools/html/fileutils.html</a></p>
 <ul>
 <li>installing packages from github</li>
+<li>left_join</li>
 </ul>
 <p>You’ll soon have questions that are outside the scope of this workshop, how do you find answers?</p>
 </div>
@@ -286,52 +305,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><code>stringr</code> to work with strings</li>
 <li><code>lubridate</code> to work with dates</li>
 </ul>
-<p>Also tidyr::spread, gather</p>
 <p>purrr:: LOVE LISTS - more efficient than for loops - plays nicely with pipes repurrsive</p>
 <p>Show how piping can be used in normal model fitting too (get away from nested stuff)</p>
 </div>
-<div id="subsetting-data" class="section level2">
-<h2><span class="header-section-number">8.3</span> Subsetting data</h2>
-<p>TODO: change this from base-R</p>
-<p>You will want to isolate bits of your data; maybe you want to just look at a single country or a few years. R calls this subsetting. There are several ways to do this. We’ll go through a few options in base R so that you’re familiar with them, and know how to read them. But then we’ll move on to a new, better, intuitive, and game changing way with the <code>dplyr</code> package afterwards.</p>
-<p>Remember your logical expressions from this morning? We’ll use <code>==</code> here.</p>
-<div id="subsetting-with-base-rows-columns-notation" class="section level3">
-<h3><span class="header-section-number">8.3.1</span> subsetting with base <code>[rows, columns]</code> notation</h3>
-<p>This notation is something you’ll see a lot in base R. the brackets <code>[ ]</code> allow you to extract parts of an object. Within the brackets, the comma separates rows from columns.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## subset numeric data
-gapminder[gapminder<span class="op">$</span>lifeExp <span class="op">&lt;</span><span class="dv">32</span>, ] <span class="co"># don&#39;t forget this comma! </span>
-
-## subset factors
-gapminder[gapminder<span class="op">$</span>country <span class="op">==</span><span class="st"> &quot;Uruguay&quot;</span>, ] <span class="co"># don&#39;t forget this comma! </span></code></pre></div>
-<p>So our notation is saying ‘select these rows, and all columns’.</p>
-<p>We could also select which columns to keep using the <code>c()</code> function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gapminder[gapminder<span class="op">$</span>country <span class="op">==</span><span class="st"> &quot;Uruguay&quot;</span>,
-                     <span class="kw">c</span>(<span class="st">&quot;country&quot;</span>, <span class="st">&quot;year&quot;</span>, <span class="st">&quot;lifeExp&quot;</span>)] <span class="co"># ?c: combines values into a vector or list</span></code></pre></div>
-<p>Contrast the above command with this one accomplishing the same thing:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gapminder[<span class="dv">1621</span><span class="op">:</span><span class="dv">1632</span>, ] <span class="co"># No idea what we are inspecting. Don&#39;t do this.</span>
-
-gapminder[<span class="dv">1621</span><span class="op">:</span><span class="dv">1632</span>, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>)] <span class="co"># Ditto. </span></code></pre></div>
-<p>Yes, these both return the same result. But the second command is horrible for these reasons:</p>
-<ul>
-<li>It contains <a href="http://en.wikipedia.org/wiki/Magic_number_(programming)">Magic Numbers</a>. The reason for keeping rows 1621 to 1632 will be non-obvious to someone else and that includes <strong>you</strong> in a couple of weeks.</li>
-<li>It is fragile. If the rows of <code>gapminder</code> are reordered or if some observations are eliminated, these rows may no longer correspond to the Uruguay data.</li>
-</ul>
-<p>In contrast, the first command, is somewhat <strong>self-documenting</strong>; one does not need to be an R expert to take a pretty good guess at what’s happening. It’s also more robust. It will still produce the correct result even if <code>gapminder</code> has undergone some reasonable set of transformations (what if it were in in reverse alphabetical order?)</p>
-</div>
-<div id="subsetting-with-base-subset-function" class="section level3">
-<h3><span class="header-section-number">8.3.2</span> subsetting with base <code>subset()</code> function</h3>
-<p>But we can improve how we subset by using the base <code>subset()</code> function, which can isolate pieces of an object for inspection or assignment. <code>subset()</code>’s main argument is also (unfortunately) called <code>subset</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## subset gapminder
-?subset
-<span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country <span class="op">==</span><span class="st"> &quot;Mexico&quot;</span>) <span class="co"># Ah, inspecting Mexico. Self documenting!</span></code></pre></div>
-<p>This returns all the columns.</p>
-<p>But what if you just want a few of the columns? You can also subset the columns you want. You can use <code>subset =</code> and <code>select =</code> together to simultaneously subset rows and columns or variables.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country <span class="op">==</span><span class="st"> &quot;Mexico&quot;</span>, 
-       <span class="dt">select =</span> <span class="kw">c</span>(country, year, lifeExp)) <span class="co"># ?c: combines values into a vector or list</span></code></pre></div>
-</div>
-</div>
 <div id="repeating-operations-with-for-loops" class="section level2">
-<h2><span class="header-section-number">8.4</span> Repeating operations with for loops</h2>
+<h2><span class="header-section-number">8.3</span> Repeating operations with for loops</h2>
 <p>Let’s say we want to subset a few countries and plot pop through time. We could do it the way above, which would look like the following:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## plot population of some countries
 mexico &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country <span class="op">==</span><span class="st"> &quot;Mexico&quot;</span>)
@@ -421,7 +399,7 @@ country_pop_mean &lt;-<span class="st"> </span><span class="kw">data.frame</span
 <p>For loops can also lead to temporary variables that you don’t need. But they can be really useful at times.</p>
 </div>
 <div id="conditional-statements-with-if-and-else" class="section level2">
-<h2><span class="header-section-number">8.5</span> conditional statements with <code>if</code> and <code>else</code></h2>
+<h2><span class="header-section-number">8.4</span> conditional statements with <code>if</code> and <code>else</code></h2>
 <p>Often when we’re coding we want to control the flow of our actions. This can be done by setting actions to occur only if a condition or a set of conditions are met.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># if</span>
 <span class="cf">if</span> (condition is true) {
@@ -477,7 +455,30 @@ country_pop_mean &lt;-<span class="st"> </span><span class="kw">data.frame</span
     <span class="kw">dev.print</span>(pdf, <span class="kw">paste0</span>(<span class="st">&quot;figures/&quot;</span>, cntry, <span class="st">&quot;_gdpPercap.pdf&quot;</span>)) <span class="co"># change the filename</span>
   }
 } </code></pre></div>
+<div id="todo-variable-classes" class="section level3">
+<h3><span class="header-section-number">8.4.1</span> TODO: variable classes?</h3>
+<p>Let’s explore a numeric variable: life expectancy.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## explore numeric variable
+<span class="kw">summary</span>(gapminder<span class="op">$</span>lifeExp)
+<span class="kw">hist</span>(gapminder<span class="op">$</span>lifeExp)</code></pre></div>
+<p>Let’s explore a categorical variable (stored as a <em>factor</em> in R): continent.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## explore factor variable
+<span class="kw">summary</span>(gapminder<span class="op">$</span>continent)
+<span class="kw">levels</span>(gapminder<span class="op">$</span>continent)
+<span class="kw">nlevels</span>(gapminder<span class="op">$</span>continent)
+<span class="kw">hist</span>(gapminder<span class="op">$</span>continent) <span class="co"># whaaaa!?</span></code></pre></div>
+<p>This error is because of what factors are ‘under the hood’: R is really storing integer codes 1, 2, 3 here, but represent them as text to us. Factors can be problematic to us because of this, but you can learn to navigate with them. There are resources to learn how to <a href="http://stat545.com/block014_factors.html">properly care and feed for factors</a>.</p>
+<p>One thing you’ll learn is how to visualize factors with which functions/packages.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(gapminder<span class="op">$</span>continent) <span class="co"># ?class returns the class type of the object</span>
+<span class="kw">table</span>(gapminder<span class="op">$</span>continent) <span class="co"># ?table builds a table based on factor levels </span>
+<span class="kw">class</span>(<span class="kw">table</span>(gapminder<span class="op">$</span>continent)) <span class="co"># this has morphed the factor...</span>
+<span class="kw">hist</span>(<span class="kw">table</span>(gapminder<span class="op">$</span>continent)) <span class="co"># so we can plot!</span></code></pre></div>
+<p>I don’t want us to get too bogged down with what’s going on with <code>table()</code> and plotting factors, but I want to expose you to these situations because you will encounter them. Googling the error messages you get, and knowing how to look for good responses is a critical skill. (I tend to look for responses from stackoverflow.com that are recent and have green checks, and ignore snarky comments).</p>
+<blockquote>
+<p>Exercise with your neighbor: Explore <code>gapminder$gdpPercap</code>. What kind of data is it? So which commands do you use?</p>
+</blockquote>
 
+</div>
 </div>
 </div>
             </section>

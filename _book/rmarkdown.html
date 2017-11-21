@@ -25,7 +25,7 @@
 <meta name="author" content="Julie Lowndes &amp; The OHI Team">
 
 
-<meta name="date" content="2017-11-20">
+<meta name="date" content="2017-11-21">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -157,7 +157,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="5" data-path="viz.html"><a href="viz.html"><i class="fa fa-check"></i><b>5</b> Visualizing data</a><ul>
 <li class="chapter" data-level="5.1" data-path="viz.html"><a href="viz.html#objectives-resources-2"><i class="fa fa-check"></i><b>5.1</b> Objectives &amp; Resources</a></li>
-<li class="chapter" data-level="5.2" data-path="viz.html"><a href="viz.html#install-our-first-package-ggplot2"><i class="fa fa-check"></i><b>5.2</b> Install our first package: <code>ggplot2</code></a></li>
+<li class="chapter" data-level="5.2" data-path="viz.html"><a href="viz.html#install-our-first-package-tidyverse"><i class="fa fa-check"></i><b>5.2</b> Install our first package: <code>tidyverse</code></a></li>
 <li class="chapter" data-level="5.3" data-path="viz.html"><a href="viz.html#aesthetic-mappings"><i class="fa fa-check"></i><b>5.3</b> Aesthetic mappings</a></li>
 <li class="chapter" data-level="5.4" data-path="viz.html"><a href="viz.html#push-to-github"><i class="fa fa-check"></i><b>5.4</b> push to GitHub</a><ul>
 <li class="chapter" data-level="5.4.1" data-path="viz.html"><a href="viz.html#your-turn-4"><i class="fa fa-check"></i><b>5.4.1</b> Your turn</a></li>
@@ -176,10 +176,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6.2.1" data-path="dplyr.html"><a href="dplyr.html#setup"><i class="fa fa-check"></i><b>6.2.1</b> setup</a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="dplyr.html"><a href="dplyr.html#explore-the-gapminder-data.frame"><i class="fa fa-check"></i><b>6.3</b> Explore the gapminder data.frame</a><ul>
-<li class="chapter" data-level="6.3.1" data-path="dplyr.html"><a href="dplyr.html#look-at-the-variables-inside-a-data.frame"><i class="fa fa-check"></i><b>6.3.1</b> Look at the variables inside a data.frame</a></li>
+<li class="chapter" data-level="6.3.1" data-path="dplyr.html"><a href="dplyr.html#read-data-with-readrread_csv"><i class="fa fa-check"></i><b>6.3.1</b> read data with <code>readr::read_csv()</code></a></li>
+<li class="chapter" data-level="6.3.2" data-path="dplyr.html"><a href="dplyr.html#look-at-the-variables-inside-a-data.frame"><i class="fa fa-check"></i><b>6.3.2</b> Look at the variables inside a data.frame</a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="dplyr.html"><a href="dplyr.html#dplyr-overview"><i class="fa fa-check"></i><b>6.4</b> <code>dplyr</code> overview</a><ul>
-<li class="chapter" data-level="6.4.1" data-path="dplyr.html"><a href="dplyr.html#install-tidyverse-which-as-dplyr-inside"><i class="fa fa-check"></i><b>6.4.1</b> install <code>tidyverse</code> (which as <code>dplyr</code> inside)</a></li>
+<li class="chapter" data-level="6.4.1" data-path="dplyr.html"><a href="dplyr.html#install-tidyverse-which-has-dplyr-inside"><i class="fa fa-check"></i><b>6.4.1</b> install <code>tidyverse</code> (which has <code>dplyr</code> inside)</a></li>
 </ul></li>
 <li class="chapter" data-level="6.5" data-path="dplyr.html"><a href="dplyr.html#use-dplyrfilter-to-subset-data-row-wise-observations."><i class="fa fa-check"></i><b>6.5</b> Use <code>dplyr::filter()</code> to subset data row-wise (observations).</a><ul>
 <li class="chapter" data-level="6.5.1" data-path="dplyr.html"><a href="dplyr.html#your-turn-6"><i class="fa fa-check"></i><b>6.5.1</b> Your turn</a></li>
@@ -188,9 +189,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6.7" data-path="dplyr.html"><a href="dplyr.html#use-dplyrselect-to-subset-data-column-wise-variables"><i class="fa fa-check"></i><b>6.7</b> Use <code>dplyr::select()</code> to subset data column-wise (variables)</a><ul>
 <li class="chapter" data-level="6.7.1" data-path="dplyr.html"><a href="dplyr.html#revel-in-the-convenience"><i class="fa fa-check"></i><b>6.7.1</b> Revel in the convenience</a></li>
 </ul></li>
-<li class="chapter" data-level="6.8" data-path="dplyr.html"><a href="dplyr.html#use-mutate-to-add-new-variables"><i class="fa fa-check"></i><b>6.8</b> Use <code>mutate()</code> to add new variables</a></li>
-<li class="chapter" data-level="6.9" data-path="dplyr.html"><a href="dplyr.html#group_by-and-summarize-to-operate-on-groups"><i class="fa fa-check"></i><b>6.9</b> <code>group_by</code> and <code>summarize</code> to operate on groups</a><ul>
-<li class="chapter" data-level="6.9.1" data-path="dplyr.html"><a href="dplyr.html#todo-variable-classes"><i class="fa fa-check"></i><b>6.9.1</b> TODO: variable classes?</a></li>
+<li class="chapter" data-level="6.8" data-path="dplyr.html"><a href="dplyr.html#use-dplyrmutate-to-add-new-variables"><i class="fa fa-check"></i><b>6.8</b> Use <code>dplyr::mutate()</code> to add new variables</a><ul>
+<li class="chapter" data-level="6.8.1" data-path="dplyr.html"><a href="dplyr.html#your-turn-7"><i class="fa fa-check"></i><b>6.8.1</b> Your turn</a></li>
+</ul></li>
+<li class="chapter" data-level="6.9" data-path="dplyr.html"><a href="dplyr.html#dplyrgroup_by-to-operate-on-groups"><i class="fa fa-check"></i><b>6.9</b> <code>dplyr::group_by()</code> to operate on groups</a><ul>
+<li class="chapter" data-level="6.9.1" data-path="dplyr.html"><a href="dplyr.html#dplyrsummarize-with-group_by"><i class="fa fa-check"></i><b>6.9.1</b> <code>dplyr::summarize()</code> with <code>group_by()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.10" data-path="dplyr.html"><a href="dplyr.html#dplyrarrange-to-order"><i class="fa fa-check"></i><b>6.10</b> <code>dplyr::arrange()</code> to order</a></li>
+<li class="chapter" data-level="6.11" data-path="dplyr.html"><a href="dplyr.html#your-turn-8"><i class="fa fa-check"></i><b>6.11</b> Your turn</a></li>
+<li class="chapter" data-level="6.12" data-path="dplyr.html"><a href="dplyr.html#all-together-now"><i class="fa fa-check"></i><b>6.12</b> All together now</a><ul>
+<li class="chapter" data-level="6.12.1" data-path="dplyr.html"><a href="dplyr.html#compare-to-base-r"><i class="fa fa-check"></i><b>6.12.1</b> Compare to base R</a></li>
+<li class="chapter" data-level="6.12.2" data-path="dplyr.html"><a href="dplyr.html#your-turn-9"><i class="fa fa-check"></i><b>6.12.2</b> Your turn</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>7</b> Data wrangling with tidyr (tidyverse)</a><ul>
@@ -204,31 +213,30 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="7.4.2" data-path="tidyr.html"><a href="tidyr.html#other-tidyr-awesomeness"><i class="fa fa-check"></i><b>7.4.2</b> Other tidyr awesomeness</a></li>
 </ul></li>
 <li class="chapter" data-level="7.5" data-path="tidyr.html"><a href="tidyr.html#other-links"><i class="fa fa-check"></i><b>7.5</b> Other links</a></li>
-<li class="chapter" data-level="7.6" data-path="tidyr.html"><a href="tidyr.html#troubleshooting-3"><i class="fa fa-check"></i><b>7.6</b> Troubleshooting</a></li>
+<li class="chapter" data-level="7.6" data-path="tidyr.html"><a href="tidyr.html#your-turn-10"><i class="fa fa-check"></i><b>7.6</b> Your turn</a></li>
+<li class="chapter" data-level="7.7" data-path="tidyr.html"><a href="tidyr.html#troubleshooting-3"><i class="fa fa-check"></i><b>7.7</b> Troubleshooting</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>8</b> Analysis, continued</a><ul>
 <li class="chapter" data-level="8.1" data-path="analysis.html"><a href="analysis.html#objectives-and-resources"><i class="fa fa-check"></i><b>8.1</b> Objectives and Resources</a></li>
 <li class="chapter" data-level="8.2" data-path="analysis.html"><a href="analysis.html#importing-data"><i class="fa fa-check"></i><b>8.2</b> Importing data</a></li>
-<li class="chapter" data-level="8.3" data-path="analysis.html"><a href="analysis.html#subsetting-data"><i class="fa fa-check"></i><b>8.3</b> Subsetting data</a><ul>
-<li class="chapter" data-level="8.3.1" data-path="analysis.html"><a href="analysis.html#subsetting-with-base-rows-columns-notation"><i class="fa fa-check"></i><b>8.3.1</b> subsetting with base <code>[rows, columns]</code> notation</a></li>
-<li class="chapter" data-level="8.3.2" data-path="analysis.html"><a href="analysis.html#subsetting-with-base-subset-function"><i class="fa fa-check"></i><b>8.3.2</b> subsetting with base <code>subset()</code> function</a></li>
+<li class="chapter" data-level="8.3" data-path="analysis.html"><a href="analysis.html#repeating-operations-with-for-loops"><i class="fa fa-check"></i><b>8.3</b> Repeating operations with for loops</a></li>
+<li class="chapter" data-level="8.4" data-path="analysis.html"><a href="analysis.html#conditional-statements-with-if-and-else"><i class="fa fa-check"></i><b>8.4</b> conditional statements with <code>if</code> and <code>else</code></a><ul>
+<li class="chapter" data-level="8.4.1" data-path="analysis.html"><a href="analysis.html#todo-variable-classes"><i class="fa fa-check"></i><b>8.4.1</b> TODO: variable classes?</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="analysis.html"><a href="analysis.html#repeating-operations-with-for-loops"><i class="fa fa-check"></i><b>8.4</b> Repeating operations with for loops</a></li>
-<li class="chapter" data-level="8.5" data-path="analysis.html"><a href="analysis.html#conditional-statements-with-if-and-else"><i class="fa fa-check"></i><b>8.5</b> conditional statements with <code>if</code> and <code>else</code></a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>9</b> Analysis with RMarkdown</a><ul>
 <li class="chapter" data-level="9.1" data-path="rmarkdown.html"><a href="rmarkdown.html#objectives-resources-5"><i class="fa fa-check"></i><b>9.1</b> Objectives &amp; Resources</a></li>
 <li class="chapter" data-level="9.2" data-path="rmarkdown.html"><a href="rmarkdown.html#intro-to-markdown"><i class="fa fa-check"></i><b>9.2</b> Intro to Markdown</a><ul>
 <li class="chapter" data-level="9.2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#from-github.com"><i class="fa fa-check"></i><b>9.2.1</b> from GitHub.com</a></li>
 <li class="chapter" data-level="9.2.2" data-path="rmarkdown.html"><a href="rmarkdown.html#from-rstudio"><i class="fa fa-check"></i><b>9.2.2</b> from RStudio</a></li>
-<li class="chapter" data-level="9.2.3" data-path="rmarkdown.html"><a href="rmarkdown.html#your-turn-7"><i class="fa fa-check"></i><b>9.2.3</b> Your turn</a></li>
+<li class="chapter" data-level="9.2.3" data-path="rmarkdown.html"><a href="rmarkdown.html#your-turn-11"><i class="fa fa-check"></i><b>9.2.3</b> Your turn</a></li>
 </ul></li>
 <li class="chapter" data-level="9.3" data-path="rmarkdown.html"><a href="rmarkdown.html#rmarkdown-from-rstudio"><i class="fa fa-check"></i><b>9.3</b> RMarkdown from RStudio</a><ul>
-<li class="chapter" data-level="9.3.1" data-path="rmarkdown.html"><a href="rmarkdown.html#your-turn-8"><i class="fa fa-check"></i><b>9.3.1</b> Your turn</a></li>
+<li class="chapter" data-level="9.3.1" data-path="rmarkdown.html"><a href="rmarkdown.html#your-turn-12"><i class="fa fa-check"></i><b>9.3.1</b> Your turn</a></li>
 </ul></li>
 <li class="chapter" data-level="9.4" data-path="rmarkdown.html"><a href="rmarkdown.html#resources-2"><i class="fa fa-check"></i><b>9.4</b> Resources</a></li>
 <li class="chapter" data-level="9.5" data-path="rmarkdown.html"><a href="rmarkdown.html#more-practice-data-wrangling-data-viz"><i class="fa fa-check"></i><b>9.5</b> More practice data wrangling, data viz</a><ul>
-<li class="chapter" data-level="9.5.1" data-path="rmarkdown.html"><a href="rmarkdown.html#your-turn-9"><i class="fa fa-check"></i><b>9.5.1</b> Your turn</a></li>
+<li class="chapter" data-level="9.5.1" data-path="rmarkdown.html"><a href="rmarkdown.html#your-turn-13"><i class="fa fa-check"></i><b>9.5.1</b> Your turn</a></li>
 </ul></li>
 <li class="chapter" data-level="9.6" data-path="rmarkdown.html"><a href="rmarkdown.html#troubleshooting-4"><i class="fa fa-check"></i><b>9.6</b> Troubleshooting</a></li>
 </ul></li>
@@ -318,7 +326,7 @@ Markdown syntax changes plain text to **bold** and *italics*:
 </div>
 <p>knit with the button; also <code>knitr</code></p>
 </div>
-<div id="your-turn-7" class="section level3">
+<div id="your-turn-11" class="section level3">
 <h3><span class="header-section-number">9.2.3</span> Your turn</h3>
 <p>Update the README, push to GitHub</p>
 </div>
@@ -333,7 +341,7 @@ Markdown syntax changes plain text to **bold** and *italics*:
 <p>Notice how the markdown is rendered similar to as before + <strong>R code chunks</strong> are surrounded by 3 backticks and <code>{r LABEL}</code>. These are evaluated and return the output text in the case of <code>summary(cars)</code> and the output plot in the case of <code>plot(pressure)</code>.</p>
 <p>Notice how the code <code>plot(pressure)</code> is not shown in the HTML output because of the R code chunk option <code>echo=FALSE</code>.</p>
 <p><strong>Before we continue exploring Rmarkdown</strong>, let’s sync this the .rmd and .html to github.com. Enter a message like “added index” and click on “Commit and Sync gh-pages”. This will update <a href="https://github.com/USER/my-project" class="uri">https://github.com/USER/my-project</a>, and now you can also see your project website with a default <code>index.html</code> viewable at <a href="http://USER.github.io/my-project" class="uri">http://USER.github.io/my-project</a></p>
-<div id="your-turn-8" class="section level3">
+<div id="your-turn-12" class="section level3">
 <h3><span class="header-section-number">9.3.1</span> Your turn</h3>
 </div>
 </div>
@@ -350,7 +358,7 @@ Markdown syntax changes plain text to **bold** and *italics*:
 <div id="more-practice-data-wrangling-data-viz" class="section level2">
 <h2><span class="header-section-number">9.5</span> More practice data wrangling, data viz</h2>
 <p>let’s do it from our RMarkdown now. MORE DPLYR (GROUP BY?), AND TIDYR. MAYBE MORE GGPLOT2?</p>
-<div id="your-turn-9" class="section level3">
+<div id="your-turn-13" class="section level3">
 <h3><span class="header-section-number">9.5.1</span> Your turn</h3>
 </div>
 </div>

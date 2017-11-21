@@ -11,7 +11,7 @@ library(htmltools)
 
 #### Objectives
 
-- install our first package, `ggplot2`
+- install our first package, `ggplot2`, by installing `tidyverse`
 - learn ggplot2 with `mpg` dataframe (important to play with other data than your own, you'll learn something.)
 - practice writing a script (maybe call it mpg_viz.R?)
 - practice rstudio-github workflow
@@ -39,7 +39,7 @@ D Robinson:
 - http://varianceexplained.org/RData/
 
 
-## Install our first package: `ggplot2`
+## Install our first package: `tidyverse`
 
 <!--- use the `swc-mbari.R script that we created in the previous section, or create a new script --->
 
@@ -49,14 +49,18 @@ So far we've been using packages included in 'base R'; they are 'out-of-the-box'
 
 You don't need to go to CRAN's website to install packages, we can do it from within R with the command `install.packages("package-name-in-quotes")`.
 
+We are going to be using the package `ggplot2`, which is actually bundled into a huge package called `tidyverse`. We will install `tidyverse` now, and use a few functions from the packages within. Also, check out [tidyverse.org/](https://www.tidyverse.org).
+
 ```{r, eval=FALSE, messages=FALSE}
 ## from CRAN:
-install.packages("ggplot2") ## do this once only to install the package on your computer.
+install.packages("tidyverse") ## do this once only to install the package on your computer.
 ```
 
-```{r, messages=FALSE}
-library(dplyr) ## do this every time you restart R and need it 
+```{r}
+library(tidyverse) ## do this every time you restart R and need it 
 ```
+
+When you do this, it will tell you which packages are inside of `tidyverse` that have also been installed. Note that there are a few name conflicts; it is alerting you that we'll be using two functions from dplyr instead of the built-in stats package.
 
 What's the difference between `install.packages()` and `library()`? Why do you need both? Here's my analogy: 
 
@@ -66,6 +70,8 @@ What's the difference between `install.packages()` and `library()`? Why do you n
 You can also install packages by going to the Packages tab in the bottom right pane. You can see the packages that you have installed (listed) and loaded (checkbox). You can also install packages using the install button, or check to see if any of your installed packages have updates available (update button). You can also click on the name of the package to see all the functions inside it — this is a super helpful feature that I use all the time.
 
 ## Aesthetic mappings
+
+![](img/rstudio-cheatsheet-ggplot.png)
 
 ## push to GitHub
 
@@ -81,6 +87,8 @@ You can also install packages by going to the Packages tab in the bottom right p
 ## The Layered Grammar of Graphics
 
 ## push to GitHub
+
+Explore GitHub; show that your fig has a URL you could share with someone
 
 ## end of the day: intro to Markdown (README)?
 so they can post a figure on a readme?

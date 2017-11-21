@@ -10,9 +10,31 @@ library(htmltools)
 **Objectives**
 
 - learn tidyr with gapminder package
+- other wrangling: joins, bind_cols (see http://r4ds.had.co.nz/relational-data)
 - practice RStudio-GitHub workflow
+- your turn: use the data wrangling cheat sheet to explore window functions
+
 
 **Resources**
+
+
+
+<!---
+> Exercise: with your neighbor, find the maximum life expectancy for countries in Asia. What is the earliest year you encounter? The latest? Hint: you can use or `base::max` and `dplyr::arrange()`...
+
+```{r, eval=FALSE}
+## possible result--no peeking!!
+gapminder %>%
+  filter(continent == 'Asia') %>%
+  group_by(country) %>%
+  filter(lifeExp == max(lifeExp)) %>%
+  arrange(desc(year))
+```
+
+--->
+
+
+
 
 
 ## `tidyr` overview
@@ -387,5 +409,8 @@ str(gap_wide_new)
 * [Data wrangling with dplyr and tidyr - Tyler Clavelle & Dan Ovando](http://bbest.github.io/dplyr-tidyr-tutorial/) - [Rmd](https://github.com/bbest/dplyr-tidyr-tutorial/blob/gh-pages/index.Rmd)
 
 
+## Your turn
+
+ggplot2
 
 ## Troubleshooting

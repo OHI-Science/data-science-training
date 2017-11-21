@@ -6,7 +6,9 @@
 
 - contribute to a repo that you don't own
 - give permission to a collaborator
-- practice more ggplot2
+- open as a new RStudio project!
+- collaborate with a partner, explore github.com blame, history
+- practice more ggplot2 collab
 
 1. add their neighbor as a collaborator to their repo
 1. practice more; make changes to their repo, and to their neighbor's. 
