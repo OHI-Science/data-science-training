@@ -1,6 +1,6 @@
 --- 
 title: "Introduction to Open Data Science"
-author: "Julie Lowndes & The OHI Team"
+author: "The Ocean Health Index Team"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 # output: bookdown::gitbook
@@ -9,7 +9,7 @@ bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 github-repo: ohi-science/data-science-training
-description: "This is official data science training for the Ocean Health Index, as described in Lowndes et al. 2017."
+description: "This is official open data science training for the Ocean Health Index."
 ---
 
 # Welcome {#welcome}
@@ -28,9 +28,9 @@ Suggested breakdown for a 2-day workshop:
 |:----------|----------:|----------:|
 |9-10:30    |  Motivation, R and RStudio|  Wrangling (tidyr)|
 |break      |  | |
-|11-12:30   | GitHub, scripting in R|  Extended analysis (importing, for loops, etc) |
+|11-12:30   | GitHub, scripting in R|  Extended analysis |
 |lunch      |  ||
-|13:30-15:00 |  Visualization (gpplot2)| Collaborating with GitHub|
+|13:30-15:00 |  Visualization (ggplot2)| Collaborating with GitHub|
 |break      |  |  |
 |15:30-17:00 |  Wrangling (dplyr)|  Extended analysis 2|
 

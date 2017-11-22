@@ -1,4 +1,4 @@
-# Using RStudio+GitHub, and R Scripts {#rstudio-github}
+# RStudio + GitHub {#rstudio-github}
 
 ```{r gh ops, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -24,8 +24,8 @@ Here's what we'll do (we already set up git on our local computer in the previou
 1. clone locally using RStudio 
 1. learn the RStudio-GitHub workflow by syncing to Github.com: pull, stage, commit, push
 1. explore github.com: files, commit history, file history
-1. create an R script 
 1. practice the RStudio-GitHub workflow by editing and adding files 
+1. practice R Markdown
 
 #### Resources
 
@@ -347,11 +347,11 @@ Now, let's write some R code.
 x <- seq(1:15)
 ```
 
-Now, hitting return does not execute this command; remember, it's just a text file. To execute it, we need to get what we typed in the script down into the console. How do we do it? There are several ways (let's do each of them):
+Now, hitting return does not execute this command; remember, it's just a text file. To execute it, we need to get what we typed in the the R chunk (the grey R code) down into the console. How do we do it? There are several ways (let's do each of them):
 
 1. copy-paste this line into the console.
 1. select the line (or simply put the cursor there), and click 'Run'. This is available from 
-    a. the bar above the script (green arrow)
+    a. the bar above the file (green arrow)
     b. the menu bar: Code > Run Selected Line(s)
     c. keyboard shortcut: command-return
 1. click the green arrow at the right of the code chunk
@@ -360,7 +360,7 @@ Now, hitting return does not execute this command; remember, it's just a text fi
 
 Add a few more commands to your file from this morning. Execute them by trying the three ways above.
 
-Then, sync your script to GitHub.
+Then, sync your file to GitHub.
 
 
 ## Committing - how often? Tracking changes in your files
@@ -397,11 +397,3 @@ You can click on the commits to see how the files changed from the previous comm
 ## Troubleshooting
 
 If you have problems, we'll help you out using Jenny Bryan's [HappyGitWithR](http://happygitwithr.com), particularly the sections on [Detect Git from RStudio](http://happygitwithr.com/rstudio-see-git.html) and [RStudio, Git, GitHub Hell (troubleshooting)](http://happygitwithr.com/troubleshooting.html). 
-
-You can follow along this morning with the Desktop App: [3-minute youtube video](https://www.youtube.com/watch?v=XdhuWDdu-rk)
-
-<!---
-### RStudio projects (.Rproj)
-
-TODO: RStudio project! Yes, you can use these without Git, but you probably never will, so that's why we're learning it together.
---->

@@ -7,11 +7,8 @@ library(htmltools)
 ```
 
 
-## Objectives & Resources
+## Overview
 
-<!---TODO!
-
---->
 **Objectives**
 
 In this lesson we will:
@@ -326,7 +323,7 @@ File -> New File -> Rmarkdown... -> Document of output format HTML, OK.
 
 You can give it a Title like "My Project". Then click OK. 
 
-OK, first off: by opening a file, we are seeing the 4th pane of the RStudio console, which is essentially a text editor. This lets us organize our files within RStudio instead of having a bunch of differnt windows open.
+OK, first off: by opening a file, we are seeing the 4th pane of the RStudio console, which is essentially a text editor. This lets us organize our files within RStudio instead of having a bunch of different windows open.
 
 Let's have a look at this file — it's not blank; there is some initial text is already provided for you. Notice a few things about it: 
 
@@ -366,13 +363,16 @@ There are some good [cheatsheets](https://github.com/adam-p/markdown-here/wiki/M
 <br />
 <br />
 
-See [Mastering Markdown · GitHub Guides](https://guides.github.com/features/mastering-markdown/) and add some more personalized content to the README of your own, like a bulleted list or blockquote.
+**Important**: note that the hashtag `#` is used differently in Markdown and in R: 
+
+- in R, a hashtag indicates a comment that will not be evaluated. You can use as many as you want: `#` is equivalent to `######`. It's just a matter of style. I use two `##` to indicate a comment so that it's clearer what is a comment versus what I don't want to run at the moment.
+- in Markdown, a hashtag indicates a level of a header. And the number you use matters: `#` is a "level one header", meaning the biggest font and the top of the hierarchy. `###` is a level three header, and will show up nested below the `#` and `##` headers.
 
 Learn more: http://rmarkdown.rstudio.com/
 
 ### Your Turn
 
-1. In Markdown, Write some italic text, and make a numbered list. 
+1. In Markdown, Write some italic text, and make a numbered list. And add a few subheaders.
 Use the Markdown Quick Reference (in the menu bar: Help > Markdown Quick Reference). 
 1. Reknit your html file. 
 

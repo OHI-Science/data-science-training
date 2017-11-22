@@ -1,43 +1,31 @@
-# Wrangling (tidyr) {#tidyr} 
+# Wrangling (`tidyr`) {#tidyr} 
 
 ```{r wrangling ops, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(htmltools)
 ```
 
-## Objectives & Resources
+## Overview
+
+Now you have some experience wrangling and working with tidy data. But we all know that not all data that you have are tidy. So how do we make data more tidy? With `tidyr`. 
 
 **Objectives**
 
 - learn tidyr with gapminder package
-- other wrangling: joins, bind_cols (see http://r4ds.had.co.nz/relational-data)
+- other wrangling: joins, binding
 - practice RStudio-GitHub workflow
 - your turn: use the data wrangling cheat sheet to explore window functions
 
 
 **Resources**
 
+These materials borrow heavily from: 
+
+- [R for Data Science: Relational Data](http://r4ds.had.co.nz/relational-data)
+- [R for Data Science: Tidy Data](http://r4ds.had.co.nz/tidy-data.html#spreading-and-gathering)
 
 
-<!---
-> Exercise: with your neighbor, find the maximum life expectancy for countries in Asia. What is the earliest year you encounter? The latest? Hint: you can use or `base::max` and `dplyr::arrange()`...
-
-```{r, eval=FALSE}
-## possible result--no peeking!!
-gapminder %>%
-  filter(continent == 'Asia') %>%
-  group_by(country) %>%
-  filter(lifeExp == max(lifeExp)) %>%
-  arrange(desc(year))
-```
-
---->
-
-
-
-
-
-## `tidyr` overview
+## `tidyr` basics
 
 Often, data must be reshaped for it to become tidy data. What does that mean? There are four main verbs we'll use, which are essentially pairs of opposites:
 
@@ -47,6 +35,8 @@ Often, data must be reshaped for it to become tidy data. What does that mean? Th
 - turn multiple character columns into a single column (`unite()`)
 
 ![](img/rstudio-cheatsheet-spread-gather-sep-unite.png)
+
+<br>
 
 You use `spread()` and `gather()` to transform or reshape data between 'wide' to 'long' formats. 'long' format is the tidy data we are after, where:
 
@@ -66,34 +56,73 @@ Sometimes, as with the gapminder dataset, we have multiple types of observed dat
 - 3 "ID variables" (`continent`, `country`, `year`) 
 - 3 "Observation variables" (`pop`,`lifeExp`,`gdpPercap`). 
 
-It's pretty common to have data in this intermediate format in most cases despite not having ALL observations in 1 column, since all 3 observation variables have different units. But we can play with switching it to long format and wide to show what that means (i.e. long would be 4 ID variables and 1 Observation variable).
+It's pretty common to have data in this intermediate format in most cases despite not having ALL observations in 1 column, since all 3 observation variables have different units. But we can play with switching it to long format and wide to show what that means (i.e. long would be 4 ID variables and 1 observation variable).
 
 **Note:** Generally, mathematical operations are better in long format, although some plotting functions actually work better with wide format.
 
+### Setup
 
-### Install `tidyr`, investigate gapminder data
+We'll work today in RMarkdown. You can either continue from the same RMarkdown as yesterday, or begin a new one. 
 
-First install and load `tidyr`:
-```{r,message=FALSE}
-#install.packages("tidyr")
-library("tidyr") # warning messages are OK
+**Here's what to do:**
+
+1. Clear your workspace (Session > Restart R)
+1. New File > R Markdown..., save as something other than `gapminder-wrangle.Rmd` and delete irrelevant info, or just continue using `gapminder-wrangle.Rmd`
+
+I'm going to write this in my R Markdown file:
+
+```
+Data wrangling with `tidyr`, which is part of the tidyverse. We are going to tidy some data!
 ```
 
-## From wide to long format with `gather()`
+### load `tidyverse` (which has `tidyr` inside)
+
+First load `tidyr` in an R chunk. You already have installed the tidyverse, so you should be able to just load it like this (using the comment so you can run `install.packages("tidyverse")` easily if need be):
+
+```{r, message=FALSE}
+library(tidyverse) # install.packages("tidyverse")
+```
+
+
+## Explore gapminder data — wide format.
+
+Yesterday we started off with the gapminder data in a format that was already tidy. But what if it weren't? Let's look at a different version of those data. 
+
+The data are on GitHub. Navigate there by going to: 
+
+github.com > ohi-science > data-science-training > data > gapminder_wide.csv
+
+or by copy-pasting this in the browser: `https://github.com/OHI-Science/data-science-training/blob/master/data/gapminder_wide.csv`
+
+Have a look at the data. You can see there are a lot more columns than the version we looked at before. This format is pretty common, because it can be a lot more intuitive to *enter* data in this way.
+
+![](img/gapminder_wide_gh.png)
+
+But we want it to be in a tidy way so that we can work with it more easily. So here we go. 
+
+
+## `gather()` data from wide to long format
 
 `r img(src='img/rstudio-cheatsheet-reshaping-data-gather.png', width=500)` 
 
-We've been working with pretty tidy data. So for practice, now let's work with these data in a wider format, maybe the way you or your colleague entered it in a spreadsheet. We'll work with it to get it back to the way we like it.
+Read in the data from GitHub. Remember, you need to click on the 'Raw' button first so you can read it directly. Let's also read in the gapminder data from yesterday so that we can use it to compare later on. 
+
 ```{r, eval=FALSE}
-gap_wide <- read.csv('data/gapminder_wide.csv')
+## wide format
+gap_wide <- read.csv('https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder_wide.csv')
+
+## yesterday's format (intermediate)
+gapminder <- read.csv('https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder.csv')
 ```
+
+Let's have a look:
 
 ```{r, eval=FALSE}
 head(gap_wide)
 str(gap_wide)
 ```
 
-While wide format is nice for data entry, it's not nice for calculations. What if you were asked for the mean population after 1990 in Algeria? Possible, but ugly. Let's tidy it back to the intermediate format we've been using. 
+While wide format is nice for data entry, it's not nice for calculations. Some of the columns are a mix of variable (e.g. "gdpPercap") and data ("1952").  What if you were asked for the mean population after 1990 in Algeria? Possible, but ugly. But we know it doesn't need to be so ugly. Let's tidy it back to the format we've been using. 
 
 > Question: let's talk this through together. If we're trying to turn the `gap_wide` format into `gapminder` format, what structure does it have that we like? And that we want to change?
 
@@ -102,7 +131,7 @@ While wide format is nice for data entry, it's not nice for calculations. What i
 - For intermediate format, we'd want 3 columns for `gdpPercap`, `lifeExp`, and `pop`.
 - We would like year as a separate column. 
 
-Let's get it to long format. We'll have to do this in 2 steps. The first step is to take all of those column names and make them a variable in a new column, and transfer the values into another column. 
+Let's get it to long format. We'll have to do this in 2 steps. The first step is to take all of those column names (e.g. `lifeExp_1970`) and make them a variable in a new column, and transfer the values into another column. Let's learn by doing:
 
 Let's have a look at `gather()`'s help: 
 ```{r, eval=FALSE}
@@ -111,7 +140,7 @@ Let's have a look at `gather()`'s help:
 
 > Question: What is our **key-value pair**? 
 
-We need to name two new variables in the key-value pair, one for the key, one for the value. Let's name them `obstype_year` and `obs_value`.  
+We need to name two new variables in the key-value pair, one for the key, one for the value. It can be hard to wrap your mind around this, so let's give it a try. Let's name them `obstype_year` and `obs_value`.  
 
 Here's the start of what we'll do: 
 ```{r, eval=FALSE}
@@ -119,27 +148,23 @@ gap_long <- gap_wide %>%
   gather(key   = obstype_year,
          value = obs_values)
 ```
+
+We got a warning message. This means that `gather()` worked, but maybe not how we wanted it to to. 
+
+Although we were already planning to inspect our work, let's definitely do it now:
+
 ```{r, eval=FALSE}
 str(gap_long)
 head(gap_long)
 tail(gap_long)
 ```
-So this has reshaped our dataframe, but really not how we wanted. Very important to check, and listen to that warning message--dropping attributes seems very suspicious. Like suspenders.
+
+So we have successfully reshaped our dataframe, but really not how we wanted. Very important to check, and listen to that warning message--dropping attributes seems very suspicious. 
 
 What went wrong? Notice that it didn't know that we wanted to keep `continent` and `country` untouched; we need to give it more information about which columns we want reshaped. We can do this in several ways.
 
-One way: identify the column numbers you want to use. Not ideal because column numbers could change, but it does exactly what we want! And illustrates it nicely.
-```{r, eval=FALSE}
-gap_long <- gap_wide %>% 
-  gather(key   = obstype_year,
-         value = obs_values,
-         3:38)  # could also do -1, -2: 'not column one, not column two
-str(gap_long)
-head(gap_long)
-tail(gap_long)
-```
+A good way: identify the columns by name. Listing them out by explicit name can be a good approach if there are a few. But there's a lot here: over 30. But I'm not going to list them out here, and way too much potential for error if you tried gdpPercap_1952, gdpPercap_1957, gdpPercap_1962... But we could use some of `dplyr`'s awesome helper functions — because we expect that there is a better way to do this!
 
-Better way: identify the columns by name. Listing them out by explicit name can be a good approach if there are a few. But I'm not going to list them out here, and way too much potential for error if you tried gdpPercap_1952, gdpPercap_1957, gdpPercap_1962... So let's use some of `dplyr`'s awesome helper functions. 
 ```{r, eval=FALSE}
 gap_long <- gap_wide %>% 
   gather(key   = obstype_year,
@@ -147,28 +172,34 @@ gap_long <- gap_wide %>%
          dplyr::starts_with('pop'),
          dplyr::starts_with('lifeExp'),
          dplyr::starts_with('gdpPercap'))
+
 str(gap_long)
 head(gap_long)
 tail(gap_long)
 ```
-Success! And you could also do it this way. 
+
+Success! And there is another way that is nice to use if your columns don't follow such a structured pattern: you can exclude the columns you *don't* want. 
 
 ```{r, eval=FALSE}
 gap_long <- gap_wide %>% 
   gather(key   = obstype_year,
          value = obs_values,
          -continent, -country)
+
 str(gap_long)
 head(gap_long)
 tail(gap_long)
 ```
+
 To recap: 
 
-Inside `gather()` we first name the new column for the new ID variable (`obstype_year`), the name for the new amalgamated observation variable (`obs_value`), then the names of the old observation variable. We could have typed out all the observation variables, but as in the `select()` function (see `dplyr` lesson), we can use the `starts_with()` argument to select all variables that starts with the desired character string. Gather also allows the alternative syntax of using the `-` symbol to identify which variables are not to be gathered (i.e. ID variables)
+Inside `gather()` we first name the new column for the new ID variable (`obstype_year`), the name for the new amalgamated observation variable (`obs_value`), then the names of the old observation variable. We could have typed out all the observation variables, but as in the `select()` function (see `dplyr` lesson), we can use the `starts_with()` argument to select all variables that starts with the desired character string. Gather also allows the alternative syntax of using the `-` symbol to identify which variables are not to be gathered (i.e. ID variables).
 
-OK, but we're not done yet. `obstype_year` actually contains 2 pieces of information, the observation type (`pop`,`lifeExp`, or `gdpPercap`) and the `year`. We can use the `separate()` function to split the character strings into multiple variables
 
-`?separate` --> we'll tell it which column we want separated, name new columns that we want to create, and tell it what we want it to separate by. Since the `obstype_year` variable has observation types and years separated by a `_`, we'll use that. 
+OK, but we're not done yet. `obstype_year` actually contains two pieces of information, the observation type (`pop`,`lifeExp`, or `gdpPercap`) and the `year`. We can use the `separate()` function to split the character strings into multiple variables.
+
+`?separate` --> the main arguments are `separate(data, col, into, sep ...)`. So we need to specify which column we want separated, name the new columns that we want to create, and specify what we want it to separate by. Since the `obstype_year` variable has observation types and years separated by a `_`, we'll use that. 
+
 ```{r, eval=FALSE}
 gap_long <- gap_wide %>% 
   gather(key   = obstype_year,
@@ -178,6 +209,7 @@ gap_long <- gap_wide %>%
            into = c('obs_type','year'),
            sep="_")
 ```
+No warning messages...still we inspect:
 ```{r, eval=FALSE}
 str(gap_long)
 head(gap_long)
@@ -185,7 +217,13 @@ tail(gap_long)
 ```
 Excellent. This is long format: every row is a unique observation. Yay!
 
-> Exercise: Using `gap_long`, calculate the mean life expectancy, population, and gdpPercap for each continent. **Hint:** use the `group_by()` and `summarize()` functions we learned in the `dplyr` lesson
+### Your turn
+
+1. Using `gap_long`, calculate the mean life expectancy, population, and gdpPercap for each continent. **Hint:** use the `dplyr::group_by()` and `dplyr::summarize()` functions 
+
+2. What other helper functions can you use with `dplyr::select()`? Would any be useful in our example above? Why or why not?
+
+3. Knit the R Markdown file and sync to Github (pull, stage, commit, push)
 
 ```{r, eval=FALSE}
 # solution (no peeking!)
@@ -194,15 +232,20 @@ gap_long %>%
     summarize(means = mean(obs_values))
 ```
 
-## From long to intermediate format with `spread()`
+## `spread()` data from long to intermediate format
+
+Alright! Now just to double-check our work, let's use the opposite of `gather()` to spread our observation variables back to the original format with the aptly named `spread()`. You pass `spread()` the key and value pair, which is now `obs_type` and `obs_values`.
 
 ![](img/rstudio-cheatsheet-reshaping-data-spread.png)
 
-Now just to double-check our work, let's use the opposite of `gather()` to spread our observation variables back to the original format with the aptly named `spread()`. You pass `spread()` the key and value pair, which is now `obs_type` and `obs_values`.
+
 ```{r, eval=FALSE}
 gap_normal <- gap_long %>% 
   spread(obs_type, obs_values)
 ```
+
+No warning messages is good...but still let's check:
+
 ```{r, eval=FALSE}
 dim(gap_normal)
 dim(gapminder)
@@ -212,12 +255,13 @@ names(gapminder)
 
 Now we've got an intermediate dataframe `gap_normal` with the same dimensions as the original `gapminder`, but the order of the variables is different. Let's fix that before checking if they are `all.equal()`.
 
-> Exercise: reorder the columns in gap_normal to match gapminder. 
+### Your turn
 
+Reorder the columns in "gap_normal" to match "gapminder". 
+
+#### Answer (no peeking!)
 ```{r, eval=FALSE}
-# Solution, no peeking!
-
-# one way with dplyr (also nice because can chain this from gap_normal creation)
+# one way with dplyr and %>%
 gap_normal <- gap_normal %>%
   select(country, continent, year, lifeExp, pop, gdpPercap)
 
@@ -227,28 +271,59 @@ gap_normal <- gap_normal[,names(gapminder)]
 
 Now let's check if they are all.equal (`?all.equal`) is a handy test
 ```{r, eval=FALSE}
-all.equal(gap_normal,gapminder)
+all.equal(gap_normal, gapminder)
 ```
+
+Hmm. Our `all.equal()` test didn't pass. Let's try to figure out why:
+
 ```{r, eval=FALSE}
 head(gap_normal)
 head(gapminder)
 ```
 
-We're almost there, the original was sorted by `country`, `continent`, then `year`.
+Ah, they are ordered differently. We're almost there, the original was ordered by `country`, `continent`, then `year`.
+
 ```{r, eval=FALSE}
-gap_normal <- gap_normal %>% arrange(country,continent,year)
-all.equal(gap_normal,gapminder)
+gap_normal <- gap_normal %>% 
+  arrange(country, continent, year)
+
+all.equal(gap_normal, gapminder)
 ```
+
+Better...
+
 ```{r, eval=FALSE}
 str(gap_normal)
 str(gapminder)
 ```
-Mine shows a slight difference because one is a data.frame and one is a tbl_df, which is similar to a data.frame. We won't get into this difference now, I'm feeling good about these data sets! We've gone from the longest format back to the intermediate and we didn't introduce any errors in our code.
 
-> Exercise: convert gap_long all the way back to gap_wide. Hint: you'll need to create appropriate labels for all our new variables (time*metric combinations) with `tidyr::unite()`. 
+Mine currently shows that the in gapminder, "year" is an integer (int), but in gap_normal, "year" is a character. So let's change that and see if that helps: 
 
 ```{r, eval=FALSE}
-# Solution, no peeking: 
+gap_normal <- gap_normal %>%
+  mutate(year = as.integer(year))
+
+all.equal(gap_normal, gapminder)
+```
+
+Hooray!
+
+```{r, eval=FALSE}
+str(gap_normal)
+str(gapminder)
+```
+
+
+(In the past, mine has shown a slight difference because one is a data.frame and one is a tbl_df, which is similar to a data.frame. We won't get into this difference now, I'm feeling good about these data sets! We've gone from the longest format back to the intermediate and we didn't introduce any errors in our code.)
+
+## Your turn
+
+1. Convert "gap_long" all the way back to gap_wide. Hint: you'll need to create appropriate labels for all our new variables (time*metric combinations) with the opposite of separate: `tidyr::unite()`. 
+
+2. Knit the R Markdown file and sync to Github (pull, stage, commit, push)
+
+### Answer (no peeking)
+```{r, eval=FALSE}
 head(gap_long) # remember the columns
 
 gap_wide_new <- gap_long %>% 
@@ -259,84 +334,21 @@ gap_wide_new <- gap_long %>%
 str(gap_wide_new)
 ```
 
-### clean up and save your .r script
+### clean up and save your .Rmd 
 
-Spend some time cleaning up and saving `gapminder-wrangle.r`
+Spend some time cleaning up and saving `gapminder-wrangle.Rmd`
 Restart R. In RStudio, use *Session > Restart R*. Otherwise, quit R with `q()` and re-launch it.
 
-Your final R script could look something like this: 
+This morning's .Rmd could look something like this: 
 
 ```{r, eval=FALSE}
 
-## install, load dplyr
-#install.packages("dplyr") ## do this once only to install the package on your computer.
-library(dplyr)
-
-## load gapminder
-library(gapminder) # this is the package name
-str(gapminder) # there's still a data frame named 'gapminder'
-
-## practice dplyr::filter()
-filter(gapminder, lifeExp < 29)
-filter(gapminder, country == "Mexico")
-filter(gapminder, country %in% c("Mexico", "Afghanistan"))
-
-## base R alternatives to dplyr::filter()
-gapminder[gapminder$lifeExp < 29, ] ## repeat `gapminder`, [i, j] indexing is distracting
-subset(gapminder, country == "Mexico") ## almost same as filter ... but wait ...
-
-## pipe operator %>%
-gapminder %>% head # this...
-head(gapminder) # ...is the same as this!
-gapminder %>% head(3) # can pass arguments! this...
-head(gapminder, 3) # ...is the same as this!
-
-## practice dplyr::select() with %>%
-select(gapminder, year, lifeExp) # this...
-gapminder %>% select(year, lifeExp) # ...is the same as this!
-
-## practice with %>% chains
-gapminder %>%
-  select(year, lifeExp) %>% 
-  head(4) # doesn't have to be a dplyr function
-
-gapminder %>%
-  filter(country == "Cambodia") %>%
-  select(-continent, -lifeExp) # same as select(country, year, pop, gdpPercap) 
-
-# compare to base R, hard to read!
-gapminder[gapminder$country == "Cambodia", c("country", "year", "pop", "gdpPercap")]
-subset(gapminder, country == "Cambodia", select = c(country, year, pop, gdpPercap))
-
-## dplyr::mutate() adds new columns
-gapminder %>%
-  filter(country == "Cambodia") %>%
-  select(-continent, -lifeExp) %>%
-  mutate(gdp = pop * gdpPercap)
-
-## dplyr::summarize() or summarise() adds new column when grouping
-gapminder %>%
-  filter(country == "Cambodia") %>%
-  select(-continent, -lifeExp) %>%
-  mutate(gdp = pop * gdpPercap) %>%
-  group_by(country) %>%
-  summarize(mean_gdp = mean(gdp)) %>%
-  ungroup() # if you use group_by, also use ungroup() to save heartache later
-
-## summarize for all countries (replaces our for loop!)
-gapminder %>%
-  select(-continent, -lifeExp) %>%
-  mutate(gdp = pop * gdpPercap) %>%
-  group_by(country) %>%
-  summarize(mean_gdp = mean(gdp)) %>%
-  ungroup() # if you use group_by, also use ungroup() to save heartache later
-
-## install tidyr
-install.packages("tidyr")
-library(tidyr)
+## load tidyr (in tidyverse)
+library(tidyverse) # install.packages("tidyverse")
 
 ## load wide data
-gap_wide <- read.csv('data/gapminder_wide.csv')
+gap_wide <- read.csv('https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder_wide.csv')
+
 head(gap_wide)
 str(gap_wide)
 
@@ -352,12 +364,6 @@ gap_long <- gap_wide %>%
          dplyr::starts_with('pop'),
          dplyr::starts_with('lifeExp'),
          dplyr::starts_with('gdpPercap'))
-# or (but always be wary of numerics because they could change silently)
-gap_long <- gap_wide %>% 
-  gather(key   = obstype_year,
-         value = obs_values,
-         3:38)  # could also do -1, -2: 'not column one, not column two
-
 
 ## gather() and separate() to create our original gapminder
 gap_long <- gap_wide %>% 
@@ -377,10 +383,6 @@ gap_long %>%
 gap_normal <- gap_long %>% 
   spread(obs_type, obs_values) %>%
   select(country, continent, year, lifeExp, pop, gdpPercap)
-# or 
-gap_normal <- gap_long %>% 
-  spread(obs_type, obs_values)
-gap_normal <- gap_normal[,names(gapminder)]
 
 ## check that all.equal()
 all.equal(gap_normal,gapminder)
@@ -396,9 +398,12 @@ gap_wide_new <- gap_long %>%
 str(gap_wide_new)
 ```
 
-### Other tidyr awesomeness 
+### `complte`: other `tidyr` awesomeness 
 
 - `complete()`
+For this, let's look at Jarrett Byrnes' blog on the topic:
+
+http://www.imachordata.com/you-complete-me/
 
 ------
 
@@ -408,9 +413,3 @@ str(gap_wide_new)
 * [Tidying up Data - Env Info](http://ucsb-bren.github.io/env-info/wk04_tidyr.html) - [Rmd](https://github.com/ucsb-bren/env-info/blob/gh-pages/wk04_tidyr.Rmd)
 * [Data wrangling with dplyr and tidyr - Tyler Clavelle & Dan Ovando](http://bbest.github.io/dplyr-tidyr-tutorial/) - [Rmd](https://github.com/bbest/dplyr-tidyr-tutorial/blob/gh-pages/index.Rmd)
 
-
-## Your turn
-
-ggplot2
-
-## Troubleshooting

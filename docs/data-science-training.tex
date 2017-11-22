@@ -25,7 +25,7 @@
 \usepackage{hyperref}
 \hypersetup{unicode=true,
             pdftitle={Introduction to Open Data Science},
-            pdfauthor={Julie Lowndes \& The OHI Team},
+            pdfauthor={The Ocean Health Index Team},
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
@@ -117,7 +117,7 @@
   \title{Introduction to Open Data Science}
   \pretitle{\vspace{\droptitle}\centering\huge}
   \posttitle{\par}
-  \author{Julie Lowndes \& The OHI Team}
+  \author{The Ocean Health Index Team}
   \preauthor{\centering\large\emph}
   \postauthor{\par}
   \predate{\centering\large\emph}
@@ -182,64 +182,17 @@ Suggested breakdown for a 2-day workshop:
 
 \begin{longtable}[]{@{}lrr@{}}
 \toprule
-\begin{minipage}[b]{0.15\columnwidth}\raggedright\strut
-time\strut
-\end{minipage} & \begin{minipage}[b]{0.15\columnwidth}\raggedleft\strut
-Day 1\strut
-\end{minipage} & \begin{minipage}[b]{0.15\columnwidth}\raggedleft\strut
-Day 2\strut
-\end{minipage}\tabularnewline
+time & Day 1 & Day 2\tabularnewline
 \midrule
 \endhead
-\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-9-10:30\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedleft\strut
-Motivation, R and RStudio\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedleft\strut
-Wrangling (tidyr)\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-break\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedleft\strut
-\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedleft\strut
-\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-11-12:30\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedleft\strut
-GitHub, scripting in R\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedleft\strut
-Extended analysis (importing, for loops, etc)\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-lunch\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedleft\strut
-\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedleft\strut
-\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-13:30-15:00\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedleft\strut
-Visualization (gpplot2)\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedleft\strut
-Collaborating with GitHub\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-break\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedleft\strut
-\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedleft\strut
-\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-15:30-17:00\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedleft\strut
-Wrangling (dplyr)\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedleft\strut
-Extended analysis 2\strut
-\end{minipage}\tabularnewline
+9-10:30 & Motivation, R and RStudio & Wrangling (tidyr)\tabularnewline
+break & &\tabularnewline
+11-12:30 & GitHub, scripting in R & Extended analysis\tabularnewline
+lunch & &\tabularnewline
+13:30-15:00 & Visualization (ggplot2) & Collaborating with
+GitHub\tabularnewline
+break & &\tabularnewline
+15:30-17:00 & Wrangling (dplyr) & Extended analysis 2\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -299,9 +252,16 @@ Everyone in this workshop is coming from a different place with
 different experiences and expectations. But everyone will learn
 something new here, because there is so much innovation in the data
 science world. Even instructors and helpers learn something new every
-time, from each other and from your questions.
+time, from each other and from your questions. You are all welcome here
+and encouraged to help each other.
 
-You are all welcome here and encouraged to help each other.
+Here are some important themes throughout:
+
+\begin{figure}
+\centering
+\includegraphics{img/practical_dev_both.png}
+\caption{}
+\end{figure}
 
 \subsection{Tidy data workflow}\label{tidy-data-workflow}
 
@@ -428,7 +388,7 @@ resources.
 
 \chapter{R/RStudio Orientation, GitHub Setup}\label{orientation}
 
-\section{Objectives \& Resources}\label{objectives-resources}
+\section{Overview}\label{overview}
 
 \textbf{Objectives}
 
@@ -1001,7 +961,7 @@ functions have (or require) arguments:
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "Tue Nov 21 17:41:52 2017"
+## [1] "Tue Nov 21 22:26:01 2017"
 \end{verbatim}
 
 \section{Clearing the environment}\label{clearing-the-environment}
@@ -1085,7 +1045,7 @@ You can give it a Title like ``My Project''. Then click OK.
 
 OK, first off: by opening a file, we are seeing the 4th pane of the
 RStudio console, which is essentially a text editor. This lets us
-organize our files within RStudio instead of having a bunch of differnt
+organize our files within RStudio instead of having a bunch of different
 windows open.
 
 Let's have a look at this file --- it's not blank; there is some initial
@@ -1151,10 +1111,24 @@ to get you started, and here is one built into RStudio:
 
 \includegraphics{img/md_cheatsheet.png}
 
-See
-\href{https://guides.github.com/features/mastering-markdown/}{Mastering
-Markdown · GitHub Guides} and add some more personalized content to the
-README of your own, like a bulleted list or blockquote.
+\textbf{Important}: note that the hashtag \texttt{\#} is used
+differently in Markdown and in R:
+
+\begin{itemize}
+\tightlist
+\item
+  in R, a hashtag indicates a comment that will not be evaluated. You
+  can use as many as you want: \texttt{\#} is equivalent to
+  \texttt{\#\#\#\#\#\#}. It's just a matter of style. I use two
+  \texttt{\#\#} to indicate a comment so that it's clearer what is a
+  comment versus what I don't want to run at the moment.
+\item
+  in Markdown, a hashtag indicates a level of a header. And the number
+  you use matters: \texttt{\#} is a ``level one header'', meaning the
+  biggest font and the top of the hierarchy. \texttt{\#\#\#} is a level
+  three header, and will show up nested below the \texttt{\#} and
+  \texttt{\#\#} headers.
+\end{itemize}
 
 Learn more: \url{http://rmarkdown.rstudio.com/}
 
@@ -1164,9 +1138,9 @@ Learn more: \url{http://rmarkdown.rstudio.com/}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  In Markdown, Write some italic text, and make a numbered list. Use the
-  Markdown Quick Reference (in the menu bar: Help \textgreater{}
-  Markdown Quick Reference).
+  In Markdown, Write some italic text, and make a numbered list. And add
+  a few subheaders. Use the Markdown Quick Reference (in the menu bar:
+  Help \textgreater{} Markdown Quick Reference).
 \item
   Reknit your html file.
 \end{enumerate}
@@ -1241,7 +1215,7 @@ you'll have the option to Quit and Download, which will take you to
 \url{http://www.rstudio.com/download}. When you download and install,
 choose to replace the previous version.
 
-\chapter{Using RStudio+GitHub, and R Scripts}\label{rstudio-github}
+\chapter{RStudio + GitHub}\label{rstudio-github}
 
 We will learn about version control using git and GitHub, and we will
 interface with this through RStudio.
@@ -1257,7 +1231,7 @@ these as different versions, with information about who contributed
 when, line-by-line. This makes collaboration easier, and it allows you
 to roll-back to different versions or contribute to others' work.
 
-\section{Objectives \& Resources}\label{objectives-resources-1}
+\section{Objectives \& Resources}\label{objectives-resources}
 
 \subsubsection{Objectives}\label{objectives}
 
@@ -1286,9 +1260,9 @@ previous section):
 \item
   explore github.com: files, commit history, file history
 \item
-  create an R script
-\item
   practice the RStudio-GitHub workflow by editing and adding files
+\item
+  practice R Markdown
 \end{enumerate}
 
 \subsubsection{Resources}\label{resources}
@@ -1709,9 +1683,9 @@ x <- seq(1:15)
 \end{verbatim}
 
 Now, hitting return does not execute this command; remember, it's just a
-text file. To execute it, we need to get what we typed in the script
-down into the console. How do we do it? There are several ways (let's do
-each of them):
+text file. To execute it, we need to get what we typed in the the R
+chunk (the grey R code) down into the console. How do we do it? There
+are several ways (let's do each of them):
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1726,7 +1700,7 @@ each of them):
   \def\labelenumii{\alph{enumii}.}
   \tightlist
   \item
-    the bar above the script (green arrow)
+    the bar above the file (green arrow)
   \item
     the menu bar: Code \textgreater{} Run Selected Line(s)
   \item
@@ -1741,7 +1715,7 @@ each of them):
 Add a few more commands to your file from this morning. Execute them by
 trying the three ways above.
 
-Then, sync your script to GitHub.
+Then, sync your file to GitHub.
 
 \section{Committing - how often? Tracking changes in your
 files}\label{committing---how-often-tracking-changes-in-your-files}
@@ -1776,15 +1750,11 @@ Git from RStudio} and
 \href{http://happygitwithr.com/troubleshooting.html}{RStudio, Git,
 GitHub Hell (troubleshooting)}.
 
-You can follow along this morning with the Desktop App:
-\href{https://www.youtube.com/watch?v=XdhuWDdu-rk}{3-minute youtube
-video}
-
 \chapter{Visualizing data}\label{viz}
 
 \textbf{In development.}
 
-\section{Objectives \& Resources}\label{objectives-resources-2}
+\section{Objectives \& Resources}\label{objectives-resources-1}
 
 \subsubsection{Objectives}\label{objectives-1}
 
@@ -1938,7 +1908,17 @@ so they can post a figure on a readme?
 
 \section{Troubleshooting}\label{troubleshooting-2}
 
-\chapter{Wrangling (dplyr)}\label{dplyr}
+\chapter{\texorpdfstring{Wrangling
+(\texttt{dplyr})}{Wrangling (dplyr)}}\label{dplyr}
+
+\begin{quote}
+Data scientists, according to interviews and expert estimates, spend
+from 50 percent to 80 percent of their time mired in the mundane labor
+of collecting and preparing data, before it can be explored for useful
+information. -
+\href{http://www.nytimes.com/2014/08/18/technology/for-big-data-scientists-hurdle-to-insights-is-janitor-work.html}{NYTimes
+(2014)}
+\end{quote}
 
 \section{\texorpdfstring{Overview of
 \texttt{dplyr}}{Overview of dplyr}}\label{overview-of-dplyr}
@@ -2050,7 +2030,7 @@ Hadley's recent presentations:
 \caption{}
 \end{figure}
 
-\subsection{setup}\label{setup}
+\subsection{Setup}\label{setup}
 
 We'll do this in a new RMarkdown file.
 
@@ -2067,9 +2047,27 @@ We'll do this in a new RMarkdown file.
   Save as \texttt{gapminder-wrangle.Rmd}
 \item
   Delete the irrelevant text and write a little note to yourself about
-  how we'll be warngling gapminder data using dplyr. You can edit the
+  how we'll be wrangling gapminder data using dplyr. You can edit the
   title too if you need to.
 \end{enumerate}
+
+\subsection{\texorpdfstring{load \texttt{tidyverse} (which has
+\texttt{dplyr}
+inside)}{load tidyverse (which has dplyr inside)}}\label{load-tidyverse-which-has-dplyr-inside}
+
+In your R Markdown file, let's make sure we've got our libraries loaded.
+Write the following:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tidyverse)     ## install.packages("tidyverse")}
+\end{Highlighting}
+\end{Shaded}
+
+This is becoming standard practice for how to load a library in a file,
+and if you get an error that the library doesn't exist, you can install
+the package easily by running the code within the comment (highlight
+\texttt{install.packages("tidyverse")} and run it).
 
 \section{Explore the gapminder
 data.frame}\label{explore-the-gapminder-data.frame}
@@ -2077,8 +2075,7 @@ data.frame}\label{explore-the-gapminder-data.frame}
 We will work with some of the data from the
 \href{http://www.gapminder.org}{Gapminder project}.
 
-The data are on GitHub, in our course webite. Navigate there by going
-to:
+The data are on GitHub. Navigate there by going to:
 
 github.com \textgreater{} ohi-science \textgreater{}
 data-science-training \textgreater{} data \textgreater{} gapminder.csv
@@ -2108,9 +2105,9 @@ url:
 \url{https://raw.githubusercontent.com/jules32/2017-11-30-MBARI/gh-pages/data/gapminder.csv}
 
 Now, let's go back to RStudio. In our R Markdown, let's read this csv
-file and name the variable ``gapminder''. We will use the read\_csv
-function from the readr package (part of the tidyverse, so it's already
-installed!). And for comparison, you could also do it in base-R.
+file and name the variable ``gapminder''. We will use the
+\texttt{read\_csv()} function from the \texttt{readr} package (part of
+the tidyverse, so it's already installed!).
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2227,7 +2224,7 @@ common operator you'll see in R.
 \end{Shaded}
 
 \section{\texorpdfstring{\texttt{dplyr}
-overview}{dplyr overview}}\label{dplyr-overview}
+basics}{dplyr basics}}\label{dplyr-basics}
 
 OK, so let's start wrangling with dplyr.
 
@@ -2289,27 +2286,8 @@ All verbs work similarly:
 Together these properties make it easy to chain together multiple simple
 steps to achieve a complex result.
 
-\subsection{\texorpdfstring{install \texttt{tidyverse} (which has
-\texttt{dplyr}
-inside)}{install tidyverse (which has dplyr inside)}}\label{install-tidyverse-which-has-dplyr-inside}
-
-In your R Markdow file, let's make sure we've got our libraries loaded.
-Write the following:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{library}\NormalTok{(tidyverse)     ## install.packages("tidyverse")}
-\end{Highlighting}
-\end{Shaded}
-
-This is becoming standard practice for how to load a library in a file,
-and if you get an error that the library doesn't exist, you can install
-the package easily by running the code within the comment (highlight
-\texttt{install.packages("tidyverse")} and run it).
-
-\section{\texorpdfstring{Use \texttt{dplyr::filter()} to subset data
-row-wise
-(observations).}{Use dplyr::filter() to subset data row-wise (observations).}}\label{use-dplyrfilter-to-subset-data-row-wise-observations.}
+\section{\texorpdfstring{\texttt{filter()} subsets data row-wise
+(observations).}{filter() subsets data row-wise (observations).}}\label{filter-subsets-data-row-wise-observations.}
 
 You will want to isolate bits of your data; maybe you want to just look
 at a single country or a few years. R calls this subsetting.
@@ -2364,7 +2342,7 @@ criteria:
 
 \section{Your turn}\label{your-turn-7}
 
-What is the mean life expenctancy of Sweden? Hint: do this in 2 steps by
+What is the mean life expectancy of Sweden? Hint: do this in 2 steps by
 assigning a variable and then using the \texttt{mean()} function.
 
 Then, sync to Github.com (pull, stage, commit, push).
@@ -2378,7 +2356,8 @@ Then, sync to Github.com (pull, stage, commit, push).
 \end{Highlighting}
 \end{Shaded}
 
-\section{Meet the new pipe operator}\label{meet-the-new-pipe-operator}
+\section{\texorpdfstring{Meet the new pipe \texttt{\%\textgreater{}\%}
+operator}{Meet the new pipe \%\textgreater{}\% operator}}\label{meet-the-new-pipe-operator}
 
 Before we go any further, we should exploit the new pipe operator that
 \texttt{dplyr} imports from the
@@ -2427,9 +2406,8 @@ Fun break: check out
 \href{https://twitter.com/backerman150/status/926479565869993984}{this
 gif about \%\textgreater{}\% from Twitter}.
 
-\section{\texorpdfstring{Use \texttt{dplyr::select()} to subset data
-column-wise
-(variables)}{Use dplyr::select() to subset data column-wise (variables)}}\label{use-dplyrselect-to-subset-data-column-wise-variables}
+\section{\texorpdfstring{\texttt{select()} subsets data column-wise
+(variables)}{select() subsets data column-wise (variables)}}\label{select-subsets-data-column-wise-variables}
 
 Back to \texttt{dplyr} \ldots{}
 
@@ -2502,8 +2480,8 @@ are fewer columns we \emph{don't} want. So instead, we can do:
 \end{Highlighting}
 \end{Shaded}
 
-\section{\texorpdfstring{Use \texttt{dplyr::mutate()} to add new
-variables}{Use dplyr::mutate() to add new variables}}\label{use-dplyrmutate-to-add-new-variables}
+\section{\texorpdfstring{\texttt{mutate()} adds new
+variables}{mutate() adds new variables}}\label{mutate-adds-new-variables}
 
 Alright, let's keep going.
 
@@ -2543,13 +2521,13 @@ population and GDP per capita.
 \end{Highlighting}
 \end{Shaded}
 
-\section{Your turn}\label{your-turn-8}
+\subsection{Your turn}\label{your-turn-8}
 
 Find the maximum gdpPercap of Egypt and Vietnam Create a new column.
 
 Then, sync to Github.com (pull, stage, commit, push).
 
-\subsection{Answer}\label{answer-1}
+\subsubsection{Answer}\label{answer-1}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2578,8 +2556,8 @@ what you want! You are now set up nicely to maybe take a proportion of
 gdpPercap/max\_gdpPercap for each year or something. But maybe you just
 wanted that max\_gdpPercap for something else. Let's keep going\ldots{}
 
-\section{\texorpdfstring{\texttt{dplyr::group\_by()} to operate on
-groups}{dplyr::group\_by() to operate on groups}}\label{dplyrgroup_by-to-operate-on-groups}
+\section{\texorpdfstring{\texttt{group\_by()} operates on
+groups}{group\_by() operates on groups}}\label{group_by-operates-on-groups}
 
 Let's tackle that first issue first. So how do we less painfully
 calculate the max gdpPercap for all countries?
@@ -2622,8 +2600,8 @@ OK, this is great. But what if this what we needed, a max\_gdp value for
 each country. We don't need that kind of repeated value for each of the
 max\_gdp values. Here's the next function:
 
-\subsection{\texorpdfstring{\texttt{dplyr::summarize()} with
-\texttt{group\_by()}}{dplyr::summarize() with group\_by()}}\label{dplyrsummarize-with-group_by}
+\subsection{\texorpdfstring{\texttt{summarize()} with
+\texttt{group\_by()}}{summarize() with group\_by()}}\label{summarize-with-group_by}
 
 We want to operate on a group, but actually collapse or distill the
 output from that group. The \texttt{summarize()} function will do that
@@ -2649,8 +2627,8 @@ columns that are grouped\_by or summarized. So if we wanted to keep
 other columns, we'd have to do it another way (we'll get into it
 tomorrow).
 
-\section{\texorpdfstring{\texttt{dplyr::arrange()} to
-order}{dplyr::arrange() to order}}\label{dplyrarrange-to-order}
+\section{\texorpdfstring{\texttt{arrange()} orders
+columns}{arrange() orders columns}}\label{arrange-orders-columns}
 
 This is ordered alphabetically, which is cool. But let's say we wanted
 to order it in ascending order for \texttt{max\_gdp}. The dplyr function
@@ -2667,31 +2645,36 @@ is \texttt{arrange()}.
 \end{Highlighting}
 \end{Shaded}
 
-\section{Your turn}\label{your-turn-9}
-
-Find the maximum gdpPercap of Egypt and Vietnam Create a new column.
-
-Then, sync to Github.com (pull, stage, commit, push).
-
-Do the following:
+\subsection{Your turn}\label{your-turn-9}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
   arrange your data frame in descending order (opposite of what we've
-  done). Expect that this is possible: use the Help pages.
+  done). Expect that this is possible: \texttt{?arrange}
 \item
   save your data frame as a variable
 \item
-  Knit your RMarkdown file
+  find the maximum life expectancy for countries in Asia. What is the
+  earliest year you encounter? The latest? Hint: you can use or
+  \texttt{base::max} and \texttt{dplyr::arrange()}\ldots{}
 \item
-  Sync your .Rmd and .html to GitHub (pull, stage, commit, push)
+  Knit your RMarkdown file, and sync it to GitHub (pull, stage, commit,
+  push)
 \end{enumerate}
 
-\subsection{Answer}\label{answer-2}
+\subsubsection{Answer (no peeking!)}\label{answer-no-peeking}
 
-\ldots{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gapminder }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(continent }\OperatorTok{==}\StringTok{ 'Asia'}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(country) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(lifeExp }\OperatorTok{==}\StringTok{ }\KeywordTok{max}\NormalTok{(lifeExp)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{arrange}\NormalTok{(year) }
+\end{Highlighting}
+\end{Shaded}
 
 \section{All together now}\label{all-together-now}
 
@@ -2732,7 +2715,7 @@ is how what we have just done would look like in Base R.
 \subsection{Compare to base R}\label{compare-to-base-r}
 
 Let's compare with some base R code to accomplish the same things. Base
-R requires subsetting with the \texttt{{[}rows,\ columns{]}} notatation.
+R requires subsetting with the \texttt{{[}rows,\ columns{]}} notation.
 This notation is something you'll see a lot in base R. the brackets
 \texttt{{[}\ {]}} allow you to extract parts of an object. Within the
 brackets, the comma separates rows from columns.
@@ -2773,11 +2756,11 @@ Note too that the chain operator \texttt{\%\textgreater{}\%} that we
 used with the \texttt{tidyverse} lets us get away from the temporary
 variable x1.
 
-\section{Your Turn}\label{your-turn-10}
+\subsection{Your Turn}\label{your-turn-10}
 
 Get your RMarkdown file cleaned up and sync it for the last time today!
 
-\subsection{Answers}\label{answers}
+\subsubsection{Answers}\label{answers}
 
 \ldots{}
 
@@ -2797,9 +2780,14 @@ Get your RMarkdown file cleaned up and sync it for the last time today!
   for creating the most parsimonious, easily read analysis.
 \end{itemize}
 
-\chapter{Wrangling (tidyr)}\label{tidyr}
+\chapter{\texorpdfstring{Wrangling
+(\texttt{tidyr})}{Wrangling (tidyr)}}\label{tidyr}
 
-\section{Objectives \& Resources}\label{objectives-resources-3}
+\section{Overview}\label{overview-1}
+
+Now you have some experience wrangling and working with tidy data. But
+we all know that not all data that you have are tidy. So how do we make
+data more tidy? With \texttt{tidyr}.
 
 \textbf{Objectives}
 
@@ -2808,8 +2796,7 @@ Get your RMarkdown file cleaned up and sync it for the last time today!
 \item
   learn tidyr with gapminder package
 \item
-  other wrangling: joins, bind\_cols (see
-  \url{http://r4ds.had.co.nz/relational-data})
+  other wrangling: joins, binding
 \item
   practice RStudio-GitHub workflow
 \item
@@ -2819,8 +2806,20 @@ Get your RMarkdown file cleaned up and sync it for the last time today!
 
 \textbf{Resources}
 
+These materials borrow heavily from:
+
+\begin{itemize}
+\tightlist
+\item
+  \href{http://r4ds.had.co.nz/relational-data}{R for Data Science:
+  Relational Data}
+\item
+  \href{http://r4ds.had.co.nz/tidy-data.html\#spreading-and-gathering}{R
+  for Data Science: Tidy Data}
+\end{itemize}
+
 \section{\texorpdfstring{\texttt{tidyr}
-overview}{tidyr overview}}\label{tidyr-overview}
+basics}{tidyr basics}}\label{tidyr-basics}
 
 Often, data must be reshaped for it to become tidy data. What does that
 mean? There are four main verbs we'll use, which are essentially pairs
@@ -2898,38 +2897,98 @@ It's pretty common to have data in this intermediate format in most
 cases despite not having ALL observations in 1 column, since all 3
 observation variables have different units. But we can play with
 switching it to long format and wide to show what that means (i.e.~long
-would be 4 ID variables and 1 Observation variable).
+would be 4 ID variables and 1 observation variable).
 
 \textbf{Note:} Generally, mathematical operations are better in long
 format, although some plotting functions actually work better with wide
 format.
 
-\subsection{\texorpdfstring{Install \texttt{tidyr}, investigate
-gapminder
-data}{Install tidyr, investigate gapminder data}}\label{install-tidyr-investigate-gapminder-data}
+\subsection{Setup}\label{setup-1}
 
-First install and load \texttt{tidyr}:
+We'll work today in RMarkdown. You can either continue from the same
+RMarkdown as yesterday, or begin a new one.
+
+\textbf{Here's what to do:}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Clear your workspace (Session \textgreater{} Restart R)
+\item
+  New File \textgreater{} R Markdown\ldots{}, save as something other
+  than \texttt{gapminder-wrangle.Rmd} and delete irrelevant info, or
+  just continue using \texttt{gapminder-wrangle.Rmd}
+\end{enumerate}
+
+I'm going to write this in my R Markdown file:
+
+\begin{verbatim}
+Data wrangling with `tidyr`, which is part of the tidyverse. We are going to tidy some data!
+\end{verbatim}
+
+\subsection{\texorpdfstring{load \texttt{tidyverse} (which has
+\texttt{tidyr}
+inside)}{load tidyverse (which has tidyr inside)}}\label{load-tidyverse-which-has-tidyr-inside}
+
+First load \texttt{tidyr} in an R chunk. You already have installed the
+tidyverse, so you should be able to just load it like this (using the
+comment so you can run \texttt{install.packages("tidyverse")} easily if
+need be):
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{#install.packages("tidyr")}
-\KeywordTok{library}\NormalTok{(}\StringTok{"tidyr"}\NormalTok{) }\CommentTok{# warning messages are OK}
+\KeywordTok{library}\NormalTok{(tidyverse) }\CommentTok{# install.packages("tidyverse")}
 \end{Highlighting}
 \end{Shaded}
 
-\section{\texorpdfstring{From wide to long format with
-\texttt{gather()}}{From wide to long format with gather()}}\label{from-wide-to-long-format-with-gather}
+\section{Explore gapminder data --- wide
+format.}\label{explore-gapminder-data-wide-format.}
 
-We've been working with pretty tidy data. So for practice, now let's
-work with these data in a wider format, maybe the way you or your
-colleague entered it in a spreadsheet. We'll work with it to get it back
-to the way we like it.
+Yesterday we started off with the gapminder data in a format that was
+already tidy. But what if it weren't? Let's look at a different version
+of those data.
+
+The data are on GitHub. Navigate there by going to:
+
+github.com \textgreater{} ohi-science \textgreater{}
+data-science-training \textgreater{} data \textgreater{}
+gapminder\_wide.csv
+
+or by copy-pasting this in the browser:
+\texttt{https://github.com/OHI-Science/data-science-training/blob/master/data/gapminder\_wide.csv}
+
+Have a look at the data. You can see there are a lot more columns than
+the version we looked at before. This format is pretty common, because
+it can be a lot more intuitive to \emph{enter} data in this way.
+
+\begin{figure}
+\centering
+\includegraphics{img/gapminder_wide_gh.png}
+\caption{}
+\end{figure}
+
+But we want it to be in a tidy way so that we can work with it more
+easily. So here we go.
+
+\section{\texorpdfstring{\texttt{gather()} data from wide to long
+format}{gather() data from wide to long format}}\label{gather-data-from-wide-to-long-format}
+
+Read in the data from GitHub. Remember, you need to click on the `Raw'
+button first so you can read it directly. Let's also read in the
+gapminder data from yesterday so that we can use it to compare later on.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{gap_wide <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{'data/gapminder_wide.csv'}\NormalTok{)}
+\NormalTok{## wide format}
+\NormalTok{gap_wide <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{'https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder_wide.csv'}\NormalTok{)}
+
+\NormalTok{## yesterday's format (intermediate)}
+\NormalTok{gapminder <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{'https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder.csv'}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
+Let's have a look:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2939,9 +2998,11 @@ to the way we like it.
 \end{Shaded}
 
 While wide format is nice for data entry, it's not nice for
-calculations. What if you were asked for the mean population after 1990
-in Algeria? Possible, but ugly. Let's tidy it back to the intermediate
-format we've been using.
+calculations. Some of the columns are a mix of variable (e.g.
+``gdpPercap'') and data (``1952''). What if you were asked for the mean
+population after 1990 in Algeria? Possible, but ugly. But we know it
+doesn't need to be so ugly. Let's tidy it back to the format we've been
+using.
 
 \begin{quote}
 Question: let's talk this through together. If we're trying to turn the
@@ -2966,8 +3027,9 @@ does it have that we like? And that we want to change?
 \end{itemize}
 
 Let's get it to long format. We'll have to do this in 2 steps. The first
-step is to take all of those column names and make them a variable in a
-new column, and transfer the values into another column.
+step is to take all of those column names (e.g. \texttt{lifeExp\_1970})
+and make them a variable in a new column, and transfer the values into
+another column. Let's learn by doing:
 
 Let's have a look at \texttt{gather()}'s help:
 
@@ -2982,7 +3044,8 @@ Question: What is our \textbf{key-value pair}?
 \end{quote}
 
 We need to name two new variables in the key-value pair, one for the
-key, one for the value. Let's name them \texttt{obstype\_year} and
+key, one for the value. It can be hard to wrap your mind around this, so
+let's give it a try. Let's name them \texttt{obstype\_year} and
 \texttt{obs\_value}.
 
 Here's the start of what we'll do:
@@ -2995,6 +3058,12 @@ Here's the start of what we'll do:
 \end{Highlighting}
 \end{Shaded}
 
+We got a warning message. This means that \texttt{gather()} worked, but
+maybe not how we wanted it to to.
+
+Although we were already planning to inspect our work, let's definitely
+do it now:
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{str}\NormalTok{(gap_long)}
@@ -3003,36 +3072,22 @@ Here's the start of what we'll do:
 \end{Highlighting}
 \end{Shaded}
 
-So this has reshaped our dataframe, but really not how we wanted. Very
-important to check, and listen to that warning message--dropping
-attributes seems very suspicious. Like suspenders.
+So we have successfully reshaped our dataframe, but really not how we
+wanted. Very important to check, and listen to that warning
+message--dropping attributes seems very suspicious.
 
 What went wrong? Notice that it didn't know that we wanted to keep
 \texttt{continent} and \texttt{country} untouched; we need to give it
 more information about which columns we want reshaped. We can do this in
 several ways.
 
-One way: identify the column numbers you want to use. Not ideal because
-column numbers could change, but it does exactly what we want! And
-illustrates it nicely.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{gap_long <-}\StringTok{ }\NormalTok{gap_wide }\OperatorTok{%>%}\StringTok{ }
-\StringTok{  }\KeywordTok{gather}\NormalTok{(}\DataTypeTok{key   =}\NormalTok{ obstype_year,}
-         \DataTypeTok{value =}\NormalTok{ obs_values,}
-         \DecValTok{3}\OperatorTok{:}\DecValTok{38}\NormalTok{)  }\CommentTok{# could also do -1, -2: 'not column one, not column two}
-\KeywordTok{str}\NormalTok{(gap_long)}
-\KeywordTok{head}\NormalTok{(gap_long)}
-\KeywordTok{tail}\NormalTok{(gap_long)}
-\end{Highlighting}
-\end{Shaded}
-
-Better way: identify the columns by name. Listing them out by explicit
-name can be a good approach if there are a few. But I'm not going to
-list them out here, and way too much potential for error if you tried
-gdpPercap\_1952, gdpPercap\_1957, gdpPercap\_1962\ldots{} So let's use
-some of \texttt{dplyr}'s awesome helper functions.
+A good way: identify the columns by name. Listing them out by explicit
+name can be a good approach if there are a few. But there's a lot here:
+over 30. But I'm not going to list them out here, and way too much
+potential for error if you tried gdpPercap\_1952, gdpPercap\_1957,
+gdpPercap\_1962\ldots{} But we could use some of \texttt{dplyr}'s
+awesome helper functions --- because we expect that there is a better
+way to do this!
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3042,13 +3097,16 @@ some of \texttt{dplyr}'s awesome helper functions.
 \NormalTok{         dplyr}\OperatorTok{::}\KeywordTok{starts_with}\NormalTok{(}\StringTok{'pop'}\NormalTok{),}
 \NormalTok{         dplyr}\OperatorTok{::}\KeywordTok{starts_with}\NormalTok{(}\StringTok{'lifeExp'}\NormalTok{),}
 \NormalTok{         dplyr}\OperatorTok{::}\KeywordTok{starts_with}\NormalTok{(}\StringTok{'gdpPercap'}\NormalTok{))}
+
 \KeywordTok{str}\NormalTok{(gap_long)}
 \KeywordTok{head}\NormalTok{(gap_long)}
 \KeywordTok{tail}\NormalTok{(gap_long)}
 \end{Highlighting}
 \end{Shaded}
 
-Success! And you could also do it this way.
+Success! And there is another way that is nice to use if your columns
+don't follow such a structured pattern: you can exclude the columns you
+\emph{don't} want.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3056,6 +3114,7 @@ Success! And you could also do it this way.
 \StringTok{  }\KeywordTok{gather}\NormalTok{(}\DataTypeTok{key   =}\NormalTok{ obstype_year,}
          \DataTypeTok{value =}\NormalTok{ obs_values,}
          \OperatorTok{-}\NormalTok{continent, }\OperatorTok{-}\NormalTok{country)}
+
 \KeywordTok{str}\NormalTok{(gap_long)}
 \KeywordTok{head}\NormalTok{(gap_long)}
 \KeywordTok{tail}\NormalTok{(gap_long)}
@@ -3072,18 +3131,20 @@ variables, but as in the \texttt{select()} function (see \texttt{dplyr}
 lesson), we can use the \texttt{starts\_with()} argument to select all
 variables that starts with the desired character string. Gather also
 allows the alternative syntax of using the \texttt{-} symbol to identify
-which variables are not to be gathered (i.e.~ID variables)
+which variables are not to be gathered (i.e.~ID variables).
 
-OK, but we're not done yet. \texttt{obstype\_year} actually contains 2
+OK, but we're not done yet. \texttt{obstype\_year} actually contains two
 pieces of information, the observation type
 (\texttt{pop},\texttt{lifeExp}, or \texttt{gdpPercap}) and the
 \texttt{year}. We can use the \texttt{separate()} function to split the
-character strings into multiple variables
+character strings into multiple variables.
 
-\texttt{?separate} --\textgreater{} we'll tell it which column we want
-separated, name new columns that we want to create, and tell it what we
-want it to separate by. Since the \texttt{obstype\_year} variable has
-observation types and years separated by a \texttt{\_}, we'll use that.
+\texttt{?separate} --\textgreater{} the main arguments are
+\texttt{separate(data,\ col,\ into,\ sep\ ...)}. So we need to specify
+which column we want separated, name the new columns that we want to
+create, and specify what we want it to separate by. Since the
+\texttt{obstype\_year} variable has observation types and years
+separated by a \texttt{\_}, we'll use that.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3097,6 +3158,8 @@ observation types and years separated by a \texttt{\_}, we'll use that.
 \end{Highlighting}
 \end{Shaded}
 
+No warning messages\ldots{}still we inspect:
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{str}\NormalTok{(gap_long)}
@@ -3107,12 +3170,21 @@ observation types and years separated by a \texttt{\_}, we'll use that.
 
 Excellent. This is long format: every row is a unique observation. Yay!
 
-\begin{quote}
-Exercise: Using \texttt{gap\_long}, calculate the mean life expectancy,
-population, and gdpPercap for each continent. \textbf{Hint:} use the
-\texttt{group\_by()} and \texttt{summarize()} functions we learned in
-the \texttt{dplyr} lesson
-\end{quote}
+\subsection{Your turn}\label{your-turn-11}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Using \texttt{gap\_long}, calculate the mean life expectancy,
+  population, and gdpPercap for each continent. \textbf{Hint:} use the
+  \texttt{dplyr::group\_by()} and \texttt{dplyr::summarize()} functions
+\item
+  What other helper functions can you use with \texttt{dplyr::select()}?
+  Would any be useful in our example above? Why or why not?
+\item
+  Knit the R Markdown file and sync to Github (pull, stage, commit,
+  push)
+\end{enumerate}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3123,8 +3195,15 @@ the \texttt{dplyr} lesson
 \end{Highlighting}
 \end{Shaded}
 
-\section{\texorpdfstring{From long to intermediate format with
-\texttt{spread()}}{From long to intermediate format with spread()}}\label{from-long-to-intermediate-format-with-spread}
+\section{\texorpdfstring{\texttt{spread()} data from long to
+intermediate
+format}{spread() data from long to intermediate format}}\label{spread-data-from-long-to-intermediate-format}
+
+Alright! Now just to double-check our work, let's use the opposite of
+\texttt{gather()} to spread our observation variables back to the
+original format with the aptly named \texttt{spread()}. You pass
+\texttt{spread()} the key and value pair, which is now
+\texttt{obs\_type} and \texttt{obs\_values}.
 
 \begin{figure}
 \centering
@@ -3132,18 +3211,14 @@ the \texttt{dplyr} lesson
 \caption{}
 \end{figure}
 
-Now just to double-check our work, let's use the opposite of
-\texttt{gather()} to spread our observation variables back to the
-original format with the aptly named \texttt{spread()}. You pass
-\texttt{spread()} the key and value pair, which is now
-\texttt{obs\_type} and \texttt{obs\_values}.
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{gap_normal <-}\StringTok{ }\NormalTok{gap_long }\OperatorTok{%>%}\StringTok{ }
 \StringTok{  }\KeywordTok{spread}\NormalTok{(obs_type, obs_values)}
 \end{Highlighting}
 \end{Shaded}
+
+No warning messages is good\ldots{}but still let's check:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3159,15 +3234,15 @@ same dimensions as the original \texttt{gapminder}, but the order of the
 variables is different. Let's fix that before checking if they are
 \texttt{all.equal()}.
 
-\begin{quote}
-Exercise: reorder the columns in gap\_normal to match gapminder.
-\end{quote}
+\subsection{Your turn}\label{your-turn-12}
+
+Reorder the columns in ``gap\_normal'' to match ``gapminder''.
+
+\subsubsection{Answer (no peeking!)}\label{answer-no-peeking-1}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{# Solution, no peeking!}
-
-\CommentTok{# one way with dplyr (also nice because can chain this from gap_normal creation)}
+\CommentTok{# one way with dplyr and %>%}
 \NormalTok{gap_normal <-}\StringTok{ }\NormalTok{gap_normal }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{select}\NormalTok{(country, continent, year, lifeExp, pop, gdpPercap)}
 
@@ -3181,9 +3256,12 @@ test
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{all.equal}\NormalTok{(gap_normal,gapminder)}
+\KeywordTok{all.equal}\NormalTok{(gap_normal, gapminder)}
 \end{Highlighting}
 \end{Shaded}
+
+Hmm. Our \texttt{all.equal()} test didn't pass. Let's try to figure out
+why:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3192,15 +3270,19 @@ test
 \end{Highlighting}
 \end{Shaded}
 
-We're almost there, the original was sorted by \texttt{country},
-\texttt{continent}, then \texttt{year}.
+Ah, they are ordered differently. We're almost there, the original was
+ordered by \texttt{country}, \texttt{continent}, then \texttt{year}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{gap_normal <-}\StringTok{ }\NormalTok{gap_normal }\OperatorTok{%>%}\StringTok{ }\KeywordTok{arrange}\NormalTok{(country,continent,year)}
-\KeywordTok{all.equal}\NormalTok{(gap_normal,gapminder)}
+\NormalTok{gap_normal <-}\StringTok{ }\NormalTok{gap_normal }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{arrange}\NormalTok{(country, continent, year)}
+
+\KeywordTok{all.equal}\NormalTok{(gap_normal, gapminder)}
 \end{Highlighting}
 \end{Shaded}
+
+Better\ldots{}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3209,21 +3291,51 @@ We're almost there, the original was sorted by \texttt{country},
 \end{Highlighting}
 \end{Shaded}
 
-Mine shows a slight difference because one is a data.frame and one is a
-tbl\_df, which is similar to a data.frame. We won't get into this
-difference now, I'm feeling good about these data sets! We've gone from
-the longest format back to the intermediate and we didn't introduce any
-errors in our code.
-
-\begin{quote}
-Exercise: convert gap\_long all the way back to gap\_wide. Hint: you'll
-need to create appropriate labels for all our new variables (time*metric
-combinations) with \texttt{tidyr::unite()}.
-\end{quote}
+Mine currently shows that the in gapminder, ``year'' is an integer
+(int), but in gap\_normal, ``year'' is a character. So let's change that
+and see if that helps:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{# Solution, no peeking: }
+\NormalTok{gap_normal <-}\StringTok{ }\NormalTok{gap_normal }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{year =} \KeywordTok{as.integer}\NormalTok{(year))}
+
+\KeywordTok{all.equal}\NormalTok{(gap_normal, gapminder)}
+\end{Highlighting}
+\end{Shaded}
+
+Hooray!
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{str}\NormalTok{(gap_normal)}
+\KeywordTok{str}\NormalTok{(gapminder)}
+\end{Highlighting}
+\end{Shaded}
+
+(In the past, mine has shown a slight difference because one is a
+data.frame and one is a tbl\_df, which is similar to a data.frame. We
+won't get into this difference now, I'm feeling good about these data
+sets! We've gone from the longest format back to the intermediate and we
+didn't introduce any errors in our code.)
+
+\section{Your turn}\label{your-turn-13}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Convert ``gap\_long'' all the way back to gap\_wide. Hint: you'll need
+  to create appropriate labels for all our new variables (time*metric
+  combinations) with the opposite of separate: \texttt{tidyr::unite()}.
+\item
+  Knit the R Markdown file and sync to Github (pull, stage, commit,
+  push)
+\end{enumerate}
+
+\subsection{Answer (no peeking)}\label{answer-no-peeking-2}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \KeywordTok{head}\NormalTok{(gap_long) }\CommentTok{# remember the columns}
 
 \NormalTok{gap_wide_new <-}\StringTok{ }\NormalTok{gap_long }\OperatorTok{%>%}\StringTok{ }
@@ -3235,86 +3347,23 @@ combinations) with \texttt{tidyr::unite()}.
 \end{Highlighting}
 \end{Shaded}
 
-\subsection{clean up and save your .r
-script}\label{clean-up-and-save-your-.r-script}
+\subsection{clean up and save your
+.Rmd}\label{clean-up-and-save-your-.rmd}
 
-Spend some time cleaning up and saving \texttt{gapminder-wrangle.r}
+Spend some time cleaning up and saving \texttt{gapminder-wrangle.Rmd}
 Restart R. In RStudio, use \emph{Session \textgreater{} Restart R}.
 Otherwise, quit R with \texttt{q()} and re-launch it.
 
-Your final R script could look something like this:
+This morning's .Rmd could look something like this:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{## install, load dplyr}
-\CommentTok{#install.packages("dplyr") ## do this once only to install the package on your computer.}
-\KeywordTok{library}\NormalTok{(dplyr)}
-
-\NormalTok{## load gapminder}
-\KeywordTok{library}\NormalTok{(gapminder) }\CommentTok{# this is the package name}
-\KeywordTok{str}\NormalTok{(gapminder) }\CommentTok{# there's still a data frame named 'gapminder'}
-
-\NormalTok{## practice dplyr::filter()}
-\KeywordTok{filter}\NormalTok{(gapminder, lifeExp }\OperatorTok{<}\StringTok{ }\DecValTok{29}\NormalTok{)}
-\KeywordTok{filter}\NormalTok{(gapminder, country }\OperatorTok{==}\StringTok{ "Mexico"}\NormalTok{)}
-\KeywordTok{filter}\NormalTok{(gapminder, country }\OperatorTok{%in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Mexico"}\NormalTok{, }\StringTok{"Afghanistan"}\NormalTok{))}
-
-\NormalTok{## base R alternatives to dplyr::filter()}
-\NormalTok{gapminder[gapminder}\OperatorTok{$}\NormalTok{lifeExp }\OperatorTok{<}\StringTok{ }\DecValTok{29}\NormalTok{, ] ## repeat `gapminder`, [i, j] indexing is distracting}
-\KeywordTok{subset}\NormalTok{(gapminder, country }\OperatorTok{==}\StringTok{ "Mexico"}\NormalTok{) ## almost same as filter ... but wait ...}
-
-\NormalTok{## pipe operator %>%}
-\NormalTok{gapminder }\OperatorTok{%>%}\StringTok{ }\NormalTok{head }\CommentTok{# this...}
-\KeywordTok{head}\NormalTok{(gapminder) }\CommentTok{# ...is the same as this!}
-\NormalTok{gapminder }\OperatorTok{%>%}\StringTok{ }\KeywordTok{head}\NormalTok{(}\DecValTok{3}\NormalTok{) }\CommentTok{# can pass arguments! this...}
-\KeywordTok{head}\NormalTok{(gapminder, }\DecValTok{3}\NormalTok{) }\CommentTok{# ...is the same as this!}
-
-\NormalTok{## practice dplyr::select() with %>%}
-\KeywordTok{select}\NormalTok{(gapminder, year, lifeExp) }\CommentTok{# this...}
-\NormalTok{gapminder }\OperatorTok{%>%}\StringTok{ }\KeywordTok{select}\NormalTok{(year, lifeExp) }\CommentTok{# ...is the same as this!}
-
-\NormalTok{## practice with %>% chains}
-\NormalTok{gapminder }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{select}\NormalTok{(year, lifeExp) }\OperatorTok{%>%}\StringTok{ }
-\StringTok{  }\KeywordTok{head}\NormalTok{(}\DecValTok{4}\NormalTok{) }\CommentTok{# doesn't have to be a dplyr function}
-
-\NormalTok{gapminder }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{filter}\NormalTok{(country }\OperatorTok{==}\StringTok{ "Cambodia"}\NormalTok{) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\NormalTok{continent, }\OperatorTok{-}\NormalTok{lifeExp) }\CommentTok{# same as select(country, year, pop, gdpPercap) }
-
-\CommentTok{# compare to base R, hard to read!}
-\NormalTok{gapminder[gapminder}\OperatorTok{$}\NormalTok{country }\OperatorTok{==}\StringTok{ "Cambodia"}\NormalTok{, }\KeywordTok{c}\NormalTok{(}\StringTok{"country"}\NormalTok{, }\StringTok{"year"}\NormalTok{, }\StringTok{"pop"}\NormalTok{, }\StringTok{"gdpPercap"}\NormalTok{)]}
-\KeywordTok{subset}\NormalTok{(gapminder, country }\OperatorTok{==}\StringTok{ "Cambodia"}\NormalTok{, }\DataTypeTok{select =} \KeywordTok{c}\NormalTok{(country, year, pop, gdpPercap))}
-
-\NormalTok{## dplyr::mutate() adds new columns}
-\NormalTok{gapminder }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{filter}\NormalTok{(country }\OperatorTok{==}\StringTok{ "Cambodia"}\NormalTok{) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\NormalTok{continent, }\OperatorTok{-}\NormalTok{lifeExp) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{gdp =}\NormalTok{ pop }\OperatorTok{*}\StringTok{ }\NormalTok{gdpPercap)}
-
-\NormalTok{## dplyr::summarize() or summarise() adds new column when grouping}
-\NormalTok{gapminder }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{filter}\NormalTok{(country }\OperatorTok{==}\StringTok{ "Cambodia"}\NormalTok{) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\NormalTok{continent, }\OperatorTok{-}\NormalTok{lifeExp) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{gdp =}\NormalTok{ pop }\OperatorTok{*}\StringTok{ }\NormalTok{gdpPercap) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{group_by}\NormalTok{(country) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{mean_gdp =} \KeywordTok{mean}\NormalTok{(gdp)) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{ungroup}\NormalTok{() }\CommentTok{# if you use group_by, also use ungroup() to save heartache later}
-
-\NormalTok{## summarize for all countries (replaces our for loop!)}
-\NormalTok{gapminder }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\NormalTok{continent, }\OperatorTok{-}\NormalTok{lifeExp) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{gdp =}\NormalTok{ pop }\OperatorTok{*}\StringTok{ }\NormalTok{gdpPercap) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{group_by}\NormalTok{(country) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{mean_gdp =} \KeywordTok{mean}\NormalTok{(gdp)) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{ungroup}\NormalTok{() }\CommentTok{# if you use group_by, also use ungroup() to save heartache later}
-
-\NormalTok{## install tidyr}
-\KeywordTok{install.packages}\NormalTok{(}\StringTok{"tidyr"}\NormalTok{)}
-\KeywordTok{library}\NormalTok{(tidyr)}
+\NormalTok{## load tidyr (in tidyverse)}
+\KeywordTok{library}\NormalTok{(tidyverse) }\CommentTok{# install.packages("tidyverse")}
 
 \NormalTok{## load wide data}
-\NormalTok{gap_wide <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{'data/gapminder_wide.csv'}\NormalTok{)}
+\NormalTok{gap_wide <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{'https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder_wide.csv'}\NormalTok{)}
+
 \KeywordTok{head}\NormalTok{(gap_wide)}
 \KeywordTok{str}\NormalTok{(gap_wide)}
 
@@ -3330,12 +3379,6 @@ Your final R script could look something like this:
 \NormalTok{         dplyr}\OperatorTok{::}\KeywordTok{starts_with}\NormalTok{(}\StringTok{'pop'}\NormalTok{),}
 \NormalTok{         dplyr}\OperatorTok{::}\KeywordTok{starts_with}\NormalTok{(}\StringTok{'lifeExp'}\NormalTok{),}
 \NormalTok{         dplyr}\OperatorTok{::}\KeywordTok{starts_with}\NormalTok{(}\StringTok{'gdpPercap'}\NormalTok{))}
-\CommentTok{# or (but always be wary of numerics because they could change silently)}
-\NormalTok{gap_long <-}\StringTok{ }\NormalTok{gap_wide }\OperatorTok{%>%}\StringTok{ }
-\StringTok{  }\KeywordTok{gather}\NormalTok{(}\DataTypeTok{key   =}\NormalTok{ obstype_year,}
-         \DataTypeTok{value =}\NormalTok{ obs_values,}
-         \DecValTok{3}\OperatorTok{:}\DecValTok{38}\NormalTok{)  }\CommentTok{# could also do -1, -2: 'not column one, not column two}
-
 
 \NormalTok{## gather() and separate() to create our original gapminder}
 \NormalTok{gap_long <-}\StringTok{ }\NormalTok{gap_wide }\OperatorTok{%>%}\StringTok{ }
@@ -3355,10 +3398,6 @@ Your final R script could look something like this:
 \NormalTok{gap_normal <-}\StringTok{ }\NormalTok{gap_long }\OperatorTok{%>%}\StringTok{ }
 \StringTok{  }\KeywordTok{spread}\NormalTok{(obs_type, obs_values) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{select}\NormalTok{(country, continent, year, lifeExp, pop, gdpPercap)}
-\CommentTok{# or }
-\NormalTok{gap_normal <-}\StringTok{ }\NormalTok{gap_long }\OperatorTok{%>%}\StringTok{ }
-\StringTok{  }\KeywordTok{spread}\NormalTok{(obs_type, obs_values)}
-\NormalTok{gap_normal <-}\StringTok{ }\NormalTok{gap_normal[,}\KeywordTok{names}\NormalTok{(gapminder)]}
 
 \NormalTok{## check that all.equal()}
 \KeywordTok{all.equal}\NormalTok{(gap_normal,gapminder)}
@@ -3375,13 +3414,17 @@ Your final R script could look something like this:
 \end{Highlighting}
 \end{Shaded}
 
-\subsection{Other tidyr awesomeness}\label{other-tidyr-awesomeness}
+\subsection{\texorpdfstring{\texttt{complte}: other \texttt{tidyr}
+awesomeness}{complte: other tidyr awesomeness}}\label{complte-other-tidyr-awesomeness}
 
 \begin{itemize}
 \tightlist
 \item
-  \texttt{complete()}
+  \texttt{complete()} For this, let's look at Jarrett Byrnes' blog on
+  the topic:
 \end{itemize}
+
+\url{http://www.imachordata.com/you-complete-me/}
 
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
@@ -3399,13 +3442,7 @@ Your final R script could look something like this:
   \href{https://github.com/bbest/dplyr-tidyr-tutorial/blob/gh-pages/index.Rmd}{Rmd}
 \end{itemize}
 
-\section{Your turn}\label{your-turn-11}
-
-ggplot2
-
-\section{Troubleshooting}\label{troubleshooting-3}
-
-\chapter{Analysis, continued}\label{analysis}
+\chapter{Extended analysis}\label{analysis}
 
 \section{Objectives and Resources}\label{objectives-and-resources}
 
@@ -3901,189 +3938,9 @@ Exercise with your neighbor: Explore \texttt{gapminder\$gdpPercap}. What
 kind of data is it? So which commands do you use?
 \end{quote}
 
-\chapter{Analysis with RMarkdown}\label{rmarkdown}
-
-\section{Objectives \& Resources}\label{objectives-resources-4}
-
-\textbf{Objectives}
-
-\begin{itemize}
-\tightlist
-\item
-  intro to Markdown
-\item
-  intro to RMarkdown
-\item
-  more practice with GitHub
-\item
-  more practice with tidyverse
-\end{itemize}
-
-\textbf{Resources}
-
-\begin{figure}
-\centering
-\includegraphics{img/practicalDev_changingstuff.jpg}
-\caption{}
-\end{figure}
-
-See
-\href{https://guides.github.com/features/mastering-markdown/}{Mastering
-Markdown · GitHub Guides} and add some more personalized content to the
-README of your own, like a bulleted list or blockquote. For on the fly
-rendering, the \href{https://atom.io/}{atom} text editor is good.
-
-\section{Intro to Markdown}\label{intro-to-markdown}
-
-\subsection{from GitHub.com}\label{from-github.com}
-
-Let's learn markdown by editing the \texttt{README.md} on github.com for
-convenience. A README.md file can be added to every folder in a
-repository, and they are automatically displayed when the repository is
-opened on github.com
-
-The \texttt{README.md} is in \textbf{markdown}, simple syntax for
-conversion to HTML. \texttt{.md} is a kind of text file, so you only
-need a text editor to read it. If you were editing this on your
-computer, you could do this right in RStudio, which has a built-in text
-editor. (You could also do it in another text editor program, but
-RStudio is convenient). Copy-paste the following into your
-\texttt{README.md}:
-
-\begin{verbatim}
-# my-project
-
-This project is based on [Collaborative, Reproducible Science training ](https://ohi-science.org/data-science-training/).
-
-## Introduction
-
-Markdown syntax changes plain text to **bold** and *italics*:
-
-1. **Git**
-1. **Github**
-1. *Markdown*
-1. *Rmarkdown*
-
-## Conclusion
-
-![](https://octodex.github.com/images/labtocat.png)
-\end{verbatim}
-
-Notice the syntax for:
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{headers} get rendered at multiple levels: \texttt{\#},
-  \texttt{\#\#}
-\item
-  \textbf{link}: \texttt{{[}{]}(http://...)}
-\item
-  \textbf{image}: \texttt{!{[}{]}(http://...)} --- note the \texttt{!}
-\item
-  \emph{italics}: \texttt{*word*}
-\item
-  \textbf{bold}: \texttt{**word**}
-\item
-  \textbf{numbered list} gets automatically sequenced: \texttt{1.},
-  \texttt{1.}
-\end{itemize}
-
-\subsection{from RStudio}\label{from-rstudio}
-
-Let's go back to RStudio. Pull so that you have the most recent version
-of your README locally. Let's open it and have a look. Documentation is
-a really important part of coding, so let's look at the README. If we
-look at GitHub.com, you can see that the README is displayed nicely like
-online. Let's add some more description about what our GitHub repository
-is for.
-
-Now click on the Preview button to see the markdown rendered as HTML.
-
-Let's change the image to the plot we made yesterday.
-
-\texttt{!{[}{]}(my\_plot.png)}
-
-There are some good
-\href{https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet}{cheatsheets}
-to get you started, and here is one built into RStudio:
-
-\begin{figure}
-\centering
-\includegraphics{img/md_cheatsheet.png}
-\caption{}
-\end{figure}
-
-knit with the button; also \texttt{knitr}
-
-\subsection{Your turn}\label{your-turn-12}
-
-Update the README, push to GitHub
-
-\section{RMarkdown from RStudio}\label{rmarkdown-from-rstudio}
-
-Back in RStudio, let's create a new RMarkdown file, which allows us to
-weave markdown text with chunks of R code to be evaluated and output
-content like tables and plots.
-
-File -\textgreater{} New File -\textgreater{} RMarkdown\ldots{}
--\textgreater{} Document of output format HTML, OK.
-
-You can give it a Title of ``My Project''. After you click OK, most
-importantly File -\textgreater{} Save as \texttt{index} (which will get
-named with the filename extension \texttt{index.Rmd}).
-
-Some initial text is already provided for you. Let's go ahead and ``Knit
-HTML''.
-
-Notice how the markdown is rendered similar to as before + \textbf{R
-code chunks} are surrounded by 3 backticks and \texttt{\{r\ LABEL\}}.
-These are evaluated and return the output text in the case of
-\texttt{summary(cars)} and the output plot in the case of
-\texttt{plot(pressure)}.
-
-Notice how the code \texttt{plot(pressure)} is not shown in the HTML
-output because of the R code chunk option \texttt{echo=FALSE}.
-
-\textbf{Before we continue exploring Rmarkdown}, let's sync this the
-.rmd and .html to github.com. Enter a message like ``added index'' and
-click on ``Commit and Sync gh-pages''. This will update
-\url{https://github.com/USER/my-project}, and now you can also see your
-project website with a default \texttt{index.html} viewable at
-\url{http://USER.github.io/my-project}
-
-\subsection{Your turn}\label{your-turn-13}
-
-\section{Resources}\label{resources-2}
-
-Were you hoping for an RStudio Cheatsheet? Here it is:
-
-\begin{itemize}
-\tightlist
-\item
-  \href{http://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf}{rmarkdown-cheatsheet.pdf}
-\item
-  \url{http://rmarkdown.rstudio.com}
-\item
-  \href{http://kbroman.org/knitr_knutshell/}{knitr in a knutshell - Karl
-  Broman}
-\end{itemize}
-
-save, commit, push
-
-\section{More practice data wrangling, data
-viz}\label{more-practice-data-wrangling-data-viz}
-
-let's do it from our RMarkdown now. MORE DPLYR (GROUP BY?), AND TIDYR.
-MAYBE MORE GGPLOT2?
-
-\subsection{Your turn}\label{your-turn-14}
-
-\section{Troubleshooting}\label{troubleshooting-4}
-
 \chapter{Collaborate with GitHub}\label{collaborate}
 
-\section{Objectives and Resources}\label{objectives-and-resources-1}
+\section{Overview}\label{overview-2}
 
 \textbf{Objectives}
 

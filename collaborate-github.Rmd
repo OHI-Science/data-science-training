@@ -1,6 +1,6 @@
 # Collaborate with GitHub {#collaborate}
 
-## Objectives and Resources
+## Overview
 
 **Objectives**
 
@@ -20,3 +20,12 @@
 ## create gh-pages repo and give someone permission
 
 - Rmd analysis
+
+
+<!---
+### RStudio projects (.Rproj)
+
+Follow the steps for cloning that we did before, but when you get to a critical point, click open in another project
+
+TODO: RStudio project! Yes, you can use these without Git, but you probably never will, so that's why we're learning it together.
+--->

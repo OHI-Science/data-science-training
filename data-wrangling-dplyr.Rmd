@@ -3,12 +3,15 @@ output:
   pdf_document: default
   html_document: default
 ---
-# Wrangling (dplyr) {#dplyr} 
+# Wrangling (`dplyr`) {#dplyr} 
 
 ```{r wrangling1, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(htmltools)
 ```
+
+> Data scientists, according to interviews and expert estimates, spend from 50 percent to 80 percent of their time mired in the mundane labor of collecting and preparing data, before it can be explored for useful information. - [NYTimes (2014)](http://www.nytimes.com/2014/08/18/technology/for-big-data-scientists-hurdle-to-insights-is-janitor-work.html)
+
 
 ## Overview of `dplyr` {.objectives}
 
@@ -66,7 +69,7 @@ And actually, Hadley Wickham and RStudio have created a ton of packages that hel
 ![](img/tidyverse_wickham_pres.jpg)
 
 
-### setup
+### Setup
 
 We'll do this in a new RMarkdown file. 
 
@@ -75,13 +78,23 @@ We'll do this in a new RMarkdown file.
 1. Clear your workspace (Session > Restart R)
 1. New File > R Markdown...
 1. Save as `gapminder-wrangle.Rmd`
-1. Delete the irrelevant text and write a little note to yourself about how we'll be warngling gapminder data using dplyr. You can edit the title too if you need to.
+1. Delete the irrelevant text and write a little note to yourself about how we'll be wrangling gapminder data using dplyr. You can edit the title too if you need to.
+
+### load `tidyverse` (which has `dplyr` inside)
+
+In your R Markdown file, let's make sure we've got our libraries loaded. Write the following: 
+
+```{r, eval=FALSE}
+library(tidyverse)     ## install.packages("tidyverse")
+```
+This is becoming standard practice for how to load a library in a file, and if you get an error that the library doesn't exist, you can install the package easily by running the code within the comment (highlight `install.packages("tidyverse")` and run it).
+
 
 ## Explore the gapminder data.frame
 
 We will work with some of the data from the [Gapminder project](http://www.gapminder.org). 
 
-The data are on GitHub, in our course webite. Navigate there by going to: 
+The data are on GitHub. Navigate there by going to: 
 
 github.com > ohi-science > data-science-training > data > gapminder.csv
 
@@ -97,7 +110,7 @@ We can read this data into R directly from GitHub, without downloading it. We ca
 
 https://raw.githubusercontent.com/jules32/2017-11-30-MBARI/gh-pages/data/gapminder.csv
 
-Now, let's go back to RStudio. In our R Markdown, let's read this csv file and name the variable "gapminder". We will use the read_csv function from the readr package (part of the tidyverse, so it's already installed!). And for comparison, you could also do it in base-R. 
+Now, let's go back to RStudio. In our R Markdown, let's read this csv file and name the variable "gapminder". We will use the `read_csv()` function from the `readr` package (part of the tidyverse, so it's already installed!). 
 
 ```{r, eval=FALSE}
 ## read gapminder csv. Note the readr:: prefix identifies which package it's in
@@ -166,7 +179,7 @@ summary(gapminder$lifeExp) # same information, just formatted slightly different
 ```
 
 
-## `dplyr` overview
+## `dplyr` basics
 
 OK, so let's start wrangling with dplyr.
 
@@ -201,17 +214,7 @@ All verbs work similarly:
 Together these properties make it easy to chain together multiple simple steps to achieve a complex result.
 
 
-### install `tidyverse` (which has `dplyr` inside)
-
-In your R Markdow file, let's make sure we've got our libraries loaded. Write the following: 
-
-```{r, eval=FALSE}
-library(tidyverse)     ## install.packages("tidyverse")
-```
-This is becoming standard practice for how to load a library in a file, and if you get an error that the library doesn't exist, you can install the package easily by running the code within the comment (highlight `install.packages("tidyverse")` and run it).
-
-
-## Use `dplyr::filter()` to subset data row-wise (observations).
+## `filter()` subsets data row-wise (observations).
 
 You will want to isolate bits of your data; maybe you want to just look at a single country or a few years. R calls this subsetting. 
 
@@ -249,7 +252,7 @@ filter(gapminder, country == "Mexico", year == 2002)
 
 ## Your turn {.challenge}
 
-What is the mean life expenctancy of Sweden? Hint: do this in 2 steps by assigning a variable and then using the `mean()` function.
+What is the mean life expectancy of Sweden? Hint: do this in 2 steps by assigning a variable and then using the `mean()` function.
 
 Then, sync to Github.com (pull, stage, commit, push).
 
@@ -268,7 +271,7 @@ x2$pop - x1$pop
 ##  1906415
 --->
 
-## Meet the new pipe operator
+## Meet the new pipe `%>%` operator
 
 Before we go any further, we should exploit the new pipe operator that `dplyr` imports from the [`magrittr`](https://github.com/smbache/magrittr) package by Stefan Bache. **This is going to change your data analytical life**. You no longer need to enact multi-operation commands by nesting them inside each other. And we won't need to make temporary variables like we did in the Sweden example above. This new syntax leads to code that is much easier to write and to read: it actually tells the story of your analysis.
 
@@ -292,7 +295,7 @@ You are probably not impressed yet, but the magic will soon happen.
 
 Fun break: check out [this gif about %>% from Twitter](https://twitter.com/backerman150/status/926479565869993984).
 
-## Use `dplyr::select()` to subset data column-wise (variables)
+## `select()` subsets data column-wise (variables)
 
 Back to `dplyr` ...
 
@@ -341,7 +344,7 @@ gapminder %>%
   select(-continent, -lifeExp) # you can use - to deselect columns
 ```
 
-## Use `dplyr::mutate()` to add new variables
+## `mutate()` adds new variables
 
 Alright, let's keep going. 
 
@@ -365,13 +368,13 @@ gapminder %>%
   mutate(gdp = pop * gdpPercap)
 ```
 
-## Your turn {.challenge}
+### Your turn {.challenge}
 
 Find the maximum gdpPercap of Egypt and Vietnam Create a new column. 
 
 Then, sync to Github.com (pull, stage, commit, push).
 
-### Answer {.solution}
+#### Answer {.solution}
 ```{r, eval=FALSE}
 gapminder %>%
   select(-continent, -lifeExp) %>% # not super necessary but to simplify
@@ -391,7 +394,7 @@ With the things we know so far, the answers you have are maybe a bit limiting. F
 
 And second, this `max_gdpPercap` column is pretty redundant, because it's a repeated value a ton of times. Sometimes this is exactly what you want! You are now set up nicely to maybe take a proportion of gdpPercap/max_gdpPercap for each year or something. But maybe you just wanted that max_gdpPercap for something else. Let's keep going...
 
-## `dplyr::group_by()` to operate on groups
+## `group_by()` operates on groups
 
 Let's tackle that first issue first. So how do we less painfully calculate the max gdpPercap for all countries? 
 
@@ -420,7 +423,7 @@ gapminder %>%
 
 OK, this is great. But what if this what we needed, a max_gdp value for each country. We don't need that kind of repeated value for each of the max_gdp values. Here's the next function: 
 
-### `dplyr::summarize()` with `group_by()`
+### `summarize()` with `group_by()`
 
 We want to operate on a group, but actually collapse or distill the output from that group. The `summarize()` function will do that for us.
 
@@ -439,7 +442,7 @@ gapminder %>%
 
 How cool is that! `summarize()` will actually only keep the columns that are grouped_by or summarized. So if we wanted to keep other columns, we'd have to do it another way (we'll get into it tomorrow). 
 
-## `dplyr::arrange()` to order 
+## `arrange()` orders columns
 
 This is ordered alphabetically, which is cool. But let's say we wanted to order it in ascending order for `max_gdp`. The dplyr function is `arrange()`. 
 
@@ -452,22 +455,22 @@ gapminder %>%
   arrange(max_gdp)
 ```
 
-## Your turn {.challenge}
+### Your turn
 
-Find the maximum gdpPercap of Egypt and Vietnam Create a new column. 
-
-Then, sync to Github.com (pull, stage, commit, push).
-
-Do the following: 
-
-1. arrange your data frame in descending order (opposite of what we've done). Expect that this is possible: use the Help pages. 
+1. arrange your data frame in descending order (opposite of what we've done). Expect that this is possible: `?arrange`
 1. save your data frame as a variable
-1. Knit your RMarkdown file
-1. Sync your .Rmd and .html to GitHub (pull, stage, commit, push)
+1. find the maximum life expectancy for countries in Asia. What is the earliest year you encounter? The latest? Hint: you can use or `base::max` and `dplyr::arrange()`...
+1. Knit your RMarkdown file, and sync it to GitHub (pull, stage, commit, push)
 
-### Answer {.solution}
+#### Answer (no peeking!)
+```{r, eval=FALSE}
+gapminder %>%
+  filter(continent == 'Asia') %>%
+  group_by(country) %>%
+  filter(lifeExp == max(lifeExp)) %>%
+  arrange(year) 
+```
 
-...
 
 ## All together now
 
@@ -497,7 +500,7 @@ I actually am borrowing this "All together now" from Tony Fischetti's blog post 
 
 ### Compare to base R
 
-Let's compare with some base R code to accomplish the same things. Base R requires subsetting with the `[rows, columns]` notatation. This notation is something you'll see a lot in base R. the brackets `[ ]` allow you to extract parts of an object. Within the brackets, the comma separates rows from columns. 
+Let's compare with some base R code to accomplish the same things. Base R requires subsetting with the `[rows, columns]` notation. This notation is something you'll see a lot in base R. the brackets `[ ]` allow you to extract parts of an object. Within the brackets, the comma separates rows from columns. 
 
 If we don't write anything after the comma, that means "all columns". And if we don't write anything before the comma, that means "all rows". 
 
@@ -525,11 +528,13 @@ mex$max_gdp <- max(mex$gdp)
 
 Note too that the chain operator `%>%` that we used with the `tidyverse` lets us get away from the temporary variable x1. 
 
-## Your Turn {.challenge}
+<!---https://twitter.com/bencapistrant/status/932646247101534209--->
+
+### Your Turn {.challenge}
 
 Get your RMarkdown file cleaned up and sync it for the last time today!
 
-### Answers {.solution} 
+#### Answers {.solution} 
 ...
 
 ## Key Points {.keypoints}
