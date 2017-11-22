@@ -1,16 +1,15 @@
 # Visualizing data {#viz}
 
+This lesson borrows heavily from Hadley Wickham's R4DS, and the Software Carpentry R for Ecology lesson. (add links)
+
 ```{r viz ops, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, warning = F, message = F)
 library(htmltools)
 ```
 
-**In development.** 
-
 ## Objectives & Resources
 
-#### Objectives
-
+### Objectives
 - install our first package, `ggplot2`, by installing `tidyverse`
 - learn ggplot2 with `mpg` dataframe (important to play with other data than your own, you'll learn something.)
 - practice writing a script (maybe call it mpg_viz.R?)
@@ -20,23 +19,15 @@ library(htmltools)
 Why do we start with data viz? Not only is data viz a big part of analysis, it’s a way to SEE your progress as you learn to code.
 "ggplot2 implements the grammar of graphics, a coherent system for describing and building graphs. With ggplot2, you can do more faster by learning one system and applying it in many places." - [R4DS](http://r4ds.had.co.nz/data-visualisation.html)
 
-- Conceptual and building, cheatsheet images
+### Resources
 
-- http://r4ds.had.co.nz/data-visualisation.html
-- https://pdfs.semanticscholar.org/d779/6f85dabccd18673f382c100fc06f55e8b501.pdf
-
-#### Resources
-
-Here are some resources that helped make this tutorial: 
-- [R for Data Science](http://r4ds.had.co.nz/data-visualisation.html)
-- [ggplot2-cheatsheet-2.0.pdf](../cheatsheets/ggplot2-cheatsheet-2.0.pdf)
-- [Interactive Plots and Maps - Environmental Informatics](http://ucsb-bren.github.io/env-info/wk06_widgets.html)
-- [Graphs with ggplot2 - Cookbook for R](http://www.cookbook-r.com/Graphs/#graphs-with-ggplot2)
-- [ggplot2 Essentials - STHDA](http://www.sthda.com/english/wiki/ggplot2-essentials)
-
-D Robinson:
-- http://varianceexplained.org/r/why-I-use-ggplot2/; add screenshot of ggplot2 cheatsheet
-- http://varianceexplained.org/RData/
+Here are some resources that helped make this tutorial:  
+- [R for Data Science](http://r4ds.had.co.nz/data-visualisation.html)  
+- [ggplot2-cheatsheet-2.0.pdf](../cheatsheets/ggplot2-cheatsheet-2.0.pdf)  
+- [Interactive Plots and Maps - Environmental Informatics](http://ucsb-bren.github.io/env-info/wk06_widgets.html)  
+- [Graphs with ggplot2 - Cookbook for R](http://www.cookbook-r.com/Graphs/#graphs-with-ggplot2)  
+- [ggplot2 Essentials - STHDA](http://www.sthda.com/english/wiki/ggplot2-essentials)  
+- ["Why I use ggplot2" - David Robinson Blog Post](http://varianceexplained.org/r/why-I-use-ggplot2/)
 
 
 ## Install our first package: `tidyverse`
@@ -62,20 +53,29 @@ library(tidyverse) ## do this every time you restart R and need it
 
 When you do this, it will tell you which packages are inside of `tidyverse` that have also been installed. Note that there are a few name conflicts; it is alerting you that we'll be using two functions from dplyr instead of the built-in stats package.
 
-What's the difference between `install.packages()` and `library()`? Why do you need both? Here's my analogy: 
+What's the difference between `install.packages()` and `library()`? Why do you need both? Here's an analogy: 
 
 - `install.packages()` is setting up electricity for your house. Just need to do this once (let's ignore monthly bills). 
 - `library()` is turning on the lights. You only turn them on when you need them, otherwise it wouldn't be efficient. And when you quit R, it turns the lights off, but the electricity lines are still there. So when you come back, you'll have to turn them on again with `library()`, but you already have your electricity set up.
 
 You can also install packages by going to the Packages tab in the bottom right pane. You can see the packages that you have installed (listed) and loaded (checkbox). You can also install packages using the install button, or check to see if any of your installed packages have updates available (update button). You can also click on the name of the package to see all the functions inside it — this is a super helpful feature that I use all the time.
 
-## Aesthetic mappings
 
+## Plotting with **`ggplot2`**
+
+**`ggplot2`** is a plotting package that makes it simple to create complex plots from data in a data frame. It provides a more programmatic interface for specifying what variables to plot, how they are displayed, and general visual properties. Therefore, we only need minimal changes if the underlying data change or if we decide to change from a bar plot to a scatterplot. This helps in creating publication quality plots with minimal amounts of adjustments and tweaking.
+
+ggplot likes data in the 'long' format: i.e., a column for every dimension, and a row for every observation. Well structured data will save you lots of time when making figures with ggplot.
+
+ggplot graphics are built step by step by adding new elements. Adding layers in this fashion allows for extensive flexibility and customization of plots.
+
+<br>
 ![](img/rstudio-cheatsheet-ggplot.png)
+<br>
 
 ## Data
 
-We are going to use the `mpg` dataset which provides information on **Fuel economy data for 38 car models**. 
+We are going to use the `mpg` dataset which provides information on fuel economy data for 38 car models. 
 
 This data comes preloaded with the `tidyverse` so it is already loaded into R. Let's take a look at it.
 
@@ -92,22 +92,6 @@ Among the variables in `mpg` are:
   fuel efficiency when they travel the same distance. 
 
 To learn more about `mpg`, open its help page by running `?mpg`.
-
-## Plotting with **`ggplot2`**
-
-**`ggplot2`** is a plotting package that makes it simple to create complex plots
-from data in a data frame. It provides a more programmatic interface for
-specifying what variables to plot, how they are displayed, and general visual
-properties. Therefore, we only need minimal changes if the underlying data change  
-or if we decide to change from a bar plot to a scatterplot. This helps in creating
-publication quality plots with minimal amounts of adjustments and tweaking.
-
-ggplot likes data in the 'long' format: i.e., a column for every dimension,
-and a row for every observation. Well structured data will save you lots of time
-when making figures with ggplot.
-
-ggplot graphics are built step by step by adding new elements. Adding layers in
-this fashion allows for extensive flexibility and customization of plots.
 
 To build a ggplot, we need to:
 
@@ -130,7 +114,7 @@ ggplot(data = mpg, aes(x = displ, y = hwy))
       lines, bars). **`ggplot2`** offers many different geoms; we will use some 
       common ones today, including:
       * `geom_point()` for scatter plots, dot plots, etc.
-      * `geom_boxplot()` for, well, boxplots!
+      * `geom_bar()` for bar charts
       * `geom_line()` for trend lines, time-series, etc.  
 
 To add a geom to the plot use `+` operator. Because we have two continuous variables,  
@@ -166,29 +150,7 @@ Notes:
 a layer. If, instead, the `+` sign is added in the line before the other layer,
 **`ggplot2`** will not add the new layer and will return an error message.
 
-**Commit, Pull and Push to GitHub**
-
-### Exercises
-
-You can do each of these exercises in their own R code chunk.
-
-1.  Run `ggplot(data = mpg)`. What do you see?
-
-1.  How many rows are in `mpg`? How many columns?
-
-1.  What does the `drv` variable describe?  Read the help for `?mpg` to find
-    out.
-     
-1.  Make a scatterplot of `hwy` vs `cyl`.
-
-1.  What happens if you make a scatterplot of `class` vs `drv`? Why is
-    the plot not useful?
-
-
-## Common problems
-
-...
-
+> **STOP: let's Commit, Pull and Push to GitHub**
 
 ## Building your plots iteratively
 
@@ -216,12 +178,7 @@ ggplot(data = mpg, aes(x = displ, y = hwy)) +
 ```
 
 
-In the above example, we mapped `class` to the color aesthetic, but we could have mapped `class` to the size aesthetic in the same way. In this case, the exact size of each point would reveal its class affiliation. We get a _warning_ here, because mapping an unordered variable (`class`) to an ordered aesthetic (`size`) is not a good idea.
-
-```{r}
-ggplot(data = mpg) + 
-  geom_point(mapping = aes(x = displ, y = hwy, size = class))
-```
+In the above example, we mapped `class` to the color aesthetic, but we could have mapped `class` to the shape aesthetic in the same way. In this case, the shape of each point would reveal its class affiliation.
 
 ```{r}
 ggplot(data = mpg) + 
@@ -231,13 +188,26 @@ ggplot(data = mpg) +
 What happened to the SUVs? ggplot2 will only use six shapes at a time. By default, additional groups will go unplotted when you use the shape aesthetic.
 
 
+> ### Exercise
+>
+> Make a scatterplot of `hwy` vs `cty` with different size points representing each car class and different colors for each fuel type.
+>
+
+We get a _warning_ here, because mapping an unordered variable (`class`) to an ordered aesthetic (`size`) is not a good idea.
+
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = cty, y = hwy, size = class, color = fl))
+```
+
+
 We can also add colors for all the points. Here, the color doesn't convey information about a variable, but only changes the appearance of the plot. To set an aesthetic manually, set the aesthetic by name as an argument of your geom function; i.e. it goes _outside_ of `aes()`. You'll need to pick a value that makes sense for that aesthetic:
 
 * The name of a color as a character string.
 
 * The size of a point in mm.
 
-* The shape of a point as a number, as shown in Figure \@ref(fig:shapes).
+* The shape of a point as a number.
 
 ```{r adding-colors, purl=FALSE}
 ggplot(data = mpg, aes(x = displ, y = hwy)) +
@@ -246,44 +216,38 @@ ggplot(data = mpg, aes(x = displ, y = hwy)) +
 
 
 
-### Exercises
+> ### Exercise
 
-1.  What's gone wrong with this code? Why are the points not blue?
-
-```{r}
+> 1.  What's gone wrong with this code?
+>
+```{r, eval=F}
     ggplot(data = mpg) + 
       geom_point(aes(x = displ, y = hwy, color = "blue"))
 ```
-    
-    
-###JAMIE - may want to remove/alter some of these. I don't introduce the concept of "mapping"    
-1.  Which variables in `mpg` are categorical? Which variables are continuous? 
-    (Hint: type `?mpg` to read the documentation for the dataset). How
-    can you see this information when you run `mpg`?
-
-1.  Map a continuous variable to `color`, `size`, and `shape`. How do
-    these aesthetics behave differently for categorical vs. continuous
-    variables? 
-    
-1.  What happens if you map the same variable to multiple aesthetics? 
-
-1.  What does the `stroke` aesthetic do? What shapes does it work with?
-    (Hint: use `?geom_point`)
-    
-1.  What happens if you map an aesthetic to something other than a variable 
+>    
+>   
+>  2. Plot `hwy` vs `displ` and have the point color to indicate `cty` mpg.
+>  3. Now instead of color, use shape to indicate `cty` mpg. Why are these two aesthetics behaving differently?
+>  4. What happens if you map an aesthetic to something other than a variable 
     name, like `aes(colour = displ < 5)`?  
+    
+```{r, echo=F, eval=F}
+ggplot(data = mpg, aes(x = displ, y = hwy, color = cty)) +
+  geom_point()
 
+ggplot(data = mpg, aes(x = displ, y = hwy, shape = cty)) +
+  geom_point()
 
-## push to GitHub
-
-Explore GitHub; show that your fig has a URL you could share with someone
-
+ggplot(data = mpg, aes(x = displ, y = hwy, color = cty < 20)) +
+  geom_point()
+```
+>
+> **STOP: commit, pull and push to github**
+>
 
 ## Faceting
 
-ggplot has a special technique called *faceting* that allows the user to split one plot
-into multiple plots based on a factor included in the dataset. We will use it to
-make a time series plot for each species:
+ggplot has a special technique called *faceting* that allows the user to split one plot into multiple plots based on a factor included in the dataset. We will use it to make a time series plot for each car manufacturer:
 
 ```{r first-facet, purl=FALSE}
 ggplot(data = mpg, aes(x = displ, y = hwy)) +
@@ -311,41 +275,49 @@ the background to white using the function `theme_bw()`.
 
 ## **`ggplot2`** themes
 
-In addition to `theme_bw()`, which changes the plot background to white, **`ggplot2`**
-comes with several other themes which can be useful to quickly change the look
-of your visualization. The complete list of themes is available
-at <http://docs.ggplot2.org/current/ggtheme.html>. `theme_minimal()` and
-`theme_light()` are popular, and `theme_void()` can be useful as a starting
-point to create a new hand-crafted theme.
+In addition to `theme_bw()`, which changes the plot background to white, **`ggplot2`** comes with several other themes which can be useful to quickly change the look of your visualization. 
 
-The [ggthemes](https://cran.r-project.org/web/packages/ggthemes/vignettes/ggthemes.html) package
-provides a wide variety of options (including an Excel 2003 theme).
-The [**`ggplot2`** extensions website](https://www.ggplot2-exts.org) provides a list
-of packages that extend the capabilities of **`ggplot2`**, including additional
-themes.
+>
+> ### Exercise
+>
+> Spend a couple minutes trying out your plot with different plot themes. The complete list of themes is available at <http://docs.ggplot2.org/current/ggtheme.html>. `theme_minimal()` and `theme_light()` are popular, and `theme_void()` can be useful as a starting point to create a new hand-crafted theme.
+>
 
+The [ggthemes](https://cran.r-project.org/web/packages/ggthemes/vignettes/ggthemes.html) package provides a wide variety of options (including an Excel 2003 theme). The [**`ggplot2`** extensions website](https://www.ggplot2-exts.org) provides a list of packages that extend the capabilities of **`ggplot2`**, including additional themes.
 
 ## Geometric objects (geoms)
 
-A __geom__ is the geometrical object that a plot uses to represent data. People often describe plots by the type of geom that the plot uses. For example, bar charts use bar geoms, line charts use line geoms, boxplots use boxplot geoms, and so on. Scatterplots break the trend; they use the point geom. As we see above, you can use different geoms to plot the same data. 
+A __geom__ is the geometrical object that a plot uses to represent data. People often describe plots by the type of geom that the plot uses. For example, bar charts use bar geoms, line charts use line geoms, boxplots use boxplot geoms, and so on. Scatterplots break the trend; they use the point geom. You can use different geoms to plot the same data. To change the geom in your plot, change the geom function that you add to `ggplot()`. Let's look at the number of cars in each driving class (`drv`).
 
-To change the geom in your plot, change the geom function that you add to `ggplot()`. For instance, to plot a smoothed mean from the data above, use `geom_smooth`.
+```{r}
+ggplot(mpg, aes(x = drv, y = hwy)) + 
+  geom_jitter()
 
-```{r eval = FALSE}
+ggplot(mpg, aes(x = drv, y = hwy)) + 
+  geom_boxplot()
+
+ggplot(mpg, aes(x = drv, y = hwy)) + 
+  geom_violin()
+```
+
+To plot a smoothed mean from the data above, use `geom_smooth`.
+
+```{r}
 ggplot(data = mpg) + 
   geom_smooth(aes(x = displ, y = hwy))
 ```
 
-ggplot2 provides over 30 geoms, and extension packages provide even more (see <https://www.ggplot2-exts.org> for a sampling). The best way to get a comprehensive overview is the ggplot2 cheatsheet, which you can find at <http://rstudio.com/cheatsheets>. To learn more about any single geom, use help: `?geom_smooth`.
+`ggplot2` provides over 30 geoms, and extension packages provide even more (see <https://www.ggplot2-exts.org> for a sampling). The best way to get a comprehensive overview is the [ggplot2 cheatsheet](http://rstudio.com/cheatsheets). To learn more about any single geom, use help: `?geom_smooth`.
 
 To display multiple geoms in the same plot, add multiple geom functions to `ggplot()`:
 
-```{r, message = FALSE}
+```{r}
 ggplot(data = mpg) + 
   geom_point(aes(x = displ, y = hwy)) +
   geom_smooth(aes(x = displ, y = hwy))
 ```
-Notice that this plot contains two geoms in the same graph! If this makes you excited, buckle up. In the next section, we will learn how to place multiple geoms in the same plot.
+
+Notice that this plot contains two geoms in the same graph!
 
 This, however, introduces some duplication in our code. Imagine if you wanted to change the y-axis to display `cty` instead of `hwy`. You'd need to change the variable in two places, and you might forget to update one. You can avoid this type of repetition by passing a set of mappings to `ggplot()`. ggplot2 will treat these mappings as global mappings that apply to each geom in the graph.  In other words, this code will produce the same plot as the previous code:
 
@@ -357,7 +329,7 @@ ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
 
 If you place mappings in a geom function, ggplot2 will treat them as local mappings for the layer. It will use these mappings to extend or overwrite the global mappings _for that layer only_. This makes it possible to display different aesthetics in different layers.
 
-```{r, message = FALSE}
+```{r}
 ggplot(data = mpg, aes(x = displ, y = hwy)) + 
   geom_point(aes(color = class)) + 
   geom_smooth()
@@ -404,7 +376,7 @@ ggplot(data = mpg, aes(x = displ, y = hwy)) +
 > * Try using a different color palette (see http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/).
 
 
-### Bar chart
+## Bar charts
 
 Next, let's take a look at a bar chart. Bar charts seem simple, but they are interesting because they reveal something subtle about plots. Consider a basic bar chart, as drawn with `geom_bar()`. The following chart displays the total number of cars in the `mpg` dataset, grouped by `fl` (fuel type).
 
@@ -413,7 +385,7 @@ ggplot(data = mpg) +
   geom_bar(aes(x = fl))
 ```
 
-On the x-axis, the chart displays `trans`, a variable from `mpg`. On the y-axis, it displays count, but count is not a variable in `mpg`! Where does count come from? Many graphs, like scatterplots, plot the raw values of your dataset. Other graphs, like bar charts, calculate new values to plot:
+On the x-axis, the chart displays `fl`, a variable from `mpg`. On the y-axis, it displays count, but count is not a variable in `mpg`! Where does count come from? Many graphs, like scatterplots, plot the raw values of your dataset. Other graphs, like bar charts, calculate new values to plot:
 
 * bar charts, histograms, and frequency polygons bin your data 
   and then plot bin counts, the number of points that fall in each bin.
@@ -431,16 +403,16 @@ You can learn which stat a geom uses by inspecting the default value for the `st
 ggplot2 provides over 20 stats for you to use. Each stat is a function, so you can get help in the usual way, e.g. `?stat_bin`. To see a complete list of stats, try the ggplot2 cheatsheet.
 
   
-## Position adjustments
+### Position adjustments
 
 There's one more piece of magic associated with bar charts. You can colour a bar chart using either the `color` aesthetic, or, more usefully, `fill`:
 
-```{r out.width = "50%", fig.align = "default"}
+```{r}
 ggplot(data = mpg) + 
   geom_bar(aes(x = fl, fill = fl))
 ```
 
-Note what happens if you map the fill aesthetic to another variable, like `class`: the bars are automatically stacked. Each colored rectangle represents a combination of `fl` and `class`.
+This isn't particularly useful since both the geom and the color are displaying the same information. Instead, map the fill aesthetic to another variable, like `class`: the bars are automatically stacked. Each colored rectangle represents a combination of `fl` and `class`.
 
 ```{r}
 ggplot(data = mpg) + 
@@ -472,11 +444,12 @@ The stacking is performed automatically by the __position adjustment__ specified
 > With all of this information in hand, please take another five minutes to either
 > improve one of the plots generated in this exercise or create a beautiful graph
 > of your own. Use the RStudio [**`ggplot2`** cheat sheet](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf) for
-> inspiration.
+> inspiration. Remember to use the help documentation (e.g. `?geom_bar`)
 
 > Here are some ideas:
 
-> * See if you can change the thickness of the lines.
+> * Plot different variables using `geom_bar()`. For what variables is this geom useful?
+> * Flip the x and y axes.
 > * Can you find a way to change the name of the legend? What about its labels?
 > * Try using a different color palette (see http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/).
 
@@ -502,4 +475,4 @@ ggsave("name_of_file.png", my_plot, width = 15, height = 10)
 
 Note: The parameters `width` and `height` also determine the font size in the saved plot.
 
-## Final save, commit, pull and push to github.
+## Save and push to GitHub
