@@ -178,8 +178,6 @@ your own computer as you learn.
 Before you begin, be sure you are all set up: see Chapter
 \ref{overview}: Overview and Prerequisites.
 
-ICE BREAKER
-
 Suggested breakdown for a 2-day workshop:
 
 \begin{longtable}[]{@{}lrr@{}}
@@ -198,7 +196,7 @@ Day 2\strut
 \end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedleft\strut
 Motivation, R and RStudio\strut
 \end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedleft\strut
-analysis: data wrangling (more dplyr, tidyr)\strut
+Wrangling (tidyr)\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
 break\strut
@@ -212,7 +210,7 @@ break\strut
 \end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedleft\strut
 GitHub, scripting in R\strut
 \end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedleft\strut
-analysis continued (importing, for loops, etc)\strut
+Extended analysis (importing, for loops, etc)\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
 lunch\strut
@@ -224,9 +222,9 @@ lunch\strut
 \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
 13:30-15:00\strut
 \end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedleft\strut
-analysis: visualization\strut
+Visualization (gpplot2)\strut
 \end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedleft\strut
-collaboration with GitHub and RMarkdown\strut
+Collaborating with GitHub\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
 break\strut
@@ -238,9 +236,9 @@ break\strut
 \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
 15:30-17:00\strut
 \end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedleft\strut
-analysis: data wrangling (dplyr)\strut
+Wrangling (dplyr)\strut
 \end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedleft\strut
-more\ldots{}\strut
+Extended analysis 2\strut
 \end{minipage}\tabularnewline
 \bottomrule
 \end{longtable}
@@ -446,6 +444,8 @@ In this lesson we will:
   be introduced to built-in R functions
 \item
   learn to use the help pages
+\item
+  explore RMarkdown
 \item
   configure git on our computers
 \end{itemize}
@@ -915,6 +915,11 @@ let's explore the help page:
 \begin{Highlighting}[]
 \NormalTok{?seq }
 \KeywordTok{help}\NormalTok{(seq) }\CommentTok{# same as ?seq}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \KeywordTok{seq}\NormalTok{(}\DataTypeTok{from =} \DecValTok{1}\NormalTok{, }\DataTypeTok{to =} \DecValTok{10}\NormalTok{) }\CommentTok{# same as seq(1, 10); R assumes by position}
 \end{Highlighting}
 \end{Shaded}
@@ -996,7 +1001,7 @@ functions have (or require) arguments:
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "Tue Nov 21 14:24:12 2017"
+## [1] "Tue Nov 21 16:44:32 2017"
 \end{verbatim}
 
 \section{Clearing the environment}\label{clearing-the-environment}
@@ -1063,6 +1068,108 @@ Exercise: Clear your workspace, then create a few new variables. Create
 a variable that is the mean of a sequence of 1-20. What's a good name
 for your variable? Does it matter what your `by' argument is? Why?
 \end{quote}
+
+\section{RMarkdown}\label{rmarkdown}
+
+Now we are going to also introduce RMarkdown. This is really key for
+collaborative research, so we're going to get started with it early and
+then use it for the rest of the day.
+
+An Rmarkdown file will allow us to weave markdown text with chunks of R
+code to be evaluated and output content like tables and plots.
+
+File -\textgreater{} New File -\textgreater{} Rmarkdown\ldots{}
+-\textgreater{} Document of output format HTML, OK.
+
+You can give it a Title like ``My Project''. Then click OK.
+
+OK, first off: by opening a file, we are seeing the 4th pane of the
+RStudio console, which is essentially a text editor. This lets us
+organize our files within RStudio instead of having a bunch of differnt
+windows open.
+
+Let's have a look at this file --- it's not blank; there is some initial
+text is already provided for you. Notice a few things about it:
+
+\begin{itemize}
+\tightlist
+\item
+  There are white and grey sections. R code is in grey sections, and
+  other text is in white.
+\end{itemize}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{img/rmarkdown.png}
+\caption{}
+\end{figure}
+
+Let's go ahead and ``Knit HTML''.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{img/rmarkdown_side_by_side.png}
+\caption{}
+\end{figure}
+
+What do you notice between the two?
+
+Notice how the grey \textbf{R code chunks} are surrounded by 3 backticks
+and \texttt{\{r\ LABEL\}}. These are evaluated and return the output
+text in the case of \texttt{summary(cars)} and the output plot in the
+case of \texttt{plot(pressure)}.
+
+Notice how the code \texttt{plot(pressure)} is not shown in the HTML
+output because of the R code chunk option \texttt{echo=FALSE}.
+
+More details\ldots{}
+
+This RMarkdown file has 2 different languages within it: \textbf{R} and
+\textbf{Markdown}.
+
+We don't know that much R yet, but you can see that we are taking a
+summary of some data called `cars', and then plotting. There's a lot
+more to learn about R, and we'll get into it for the next few days.
+
+The second language is Markdown. This is a formatting language for plain
+text, and there are only about 15 rules to know.
+
+Notice the syntax for:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{headers} get rendered at multiple levels: \texttt{\#},
+  \texttt{\#\#}
+\item
+  \textbf{bold}: \texttt{**word**}
+\end{itemize}
+
+There are some good
+\href{https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet}{cheatsheets}
+to get you started, and here is one built into RStudio:
+
+\includegraphics{img/md_cheatsheet.png}
+
+See
+\href{https://guides.github.com/features/mastering-markdown/}{Mastering
+Markdown · GitHub Guides} and add some more personalized content to the
+README of your own, like a bulleted list or blockquote.
+
+Learn more: \url{http://rmarkdown.rstudio.com/}
+
+\subsection{Your Turn}\label{your-turn-2}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  In Markdown, Write some italic text, and make a numbered list. Use the
+  Markdown Quick Reference (in the menu bar: Help \textgreater{}
+  Markdown Quick Reference).
+\item
+  Reknit your html file.
+\end{enumerate}
 
 \section{Setup Git \& GitHub}\label{setup-git-github}
 
@@ -1531,7 +1638,7 @@ The files you added should be on github.com:
 
 Let's also explore commit history, file history.
 
-\subsection{Your turn!}\label{your-turn-2}
+\subsection{Your turn!}\label{your-turn-3}
 
 This time let's edit an existing file instead of adding something new.
 Open your README file by clicking on it in the Files pane (lower right
@@ -1543,36 +1650,59 @@ your local GitHub repo. Then go back to RStudio and confirm that git
 tracked it. Remember, git will track anything within that folder (the
 way Dropbox does), it's not specific to RStudio!
 
-\section{Create an R script}\label{create-an-r-script}
+\section{Create a new R Markdown
+file}\label{create-a-new-r-markdown-file}
 
 OK, now, let's go back to RStudio, and get ourselves back into learning
-R. We are going to create an R script. What is an R script? It's a text
-file with a .R extension. Writing R commands in the console like we did
-this morning is great, but limited; it's hard to keep track of and hard
-to efficiently share with others. Plus, as your analyses get more
-complicated, you need to be able to see them all in one place.
+R. We are going to use R Markdown so that you can write notes to
+yourself in Markdown, and have a record of all your R code. Writing R
+commands in the console like we did this morning is great, but limited;
+it's hard to keep track of and hard to efficiently share with others.
+Plus, as your analyses get more complicated, you need to be able to see
+them all in one place.
 
-Go to File \textgreater{} New File \textgreater{} R Script (or click the
-green plus in the top left corner).
+Go to File \textgreater{} New File \textgreater{} R Markdown \ldots{}
+(or click the green plus in the top left corner).
 
-Let's set up this script for the rest of the day. Let's start off with a
-few comments so that we know what it is for, and save it.
+Let's set up this file so we can use it for the rest of the day. I'm
+going to delete all the text that is already there and write some new
+text.
 
-By creating a script, we are seeing the 4th pane of the RStudio console,
-which is essentially a text editor.
+Here's what I'm going to write in my R Markdown file to begin:
 
 \begin{verbatim}
-## swc-mbari.R
-## learning R
-## J Lowndes lowndes@nceas.uscb.edu
+---
+title: "My Project"
+author: "Julie"
+date: "11/21/2017"
+output: html_document
+---
+
+# Data wrangling with dplyr
+
+We are going use "gapminder" data to learn `dplyr`. It's going to be amazing. 
 \end{verbatim}
 
-Now, let's save it. I'm going to call my file \texttt{swc-mbari.R}.
+Now, let's save it. I'm going to call my file
+\texttt{wrangle-dplyr.Rmd}.
 
 OK. Now let's practice with some of those commands that we were working
 on this morning.
 
-Below your comments, type:
+Create a new chunk in your RMarkdown first in one of these ways:
+
+\begin{itemize}
+\tightlist
+\item
+  click ``Insert \textgreater{} R'' at the top of the editor pane
+\item
+  type by hand ```\{r\} ```
+\item
+  if you haven't deleted a chunk that came with the new file, edit that
+  one
+\end{itemize}
+
+Now, let's write some R code.
 
 \begin{verbatim}
 x <- seq(1:15)
@@ -1603,26 +1733,13 @@ each of them):
     keyboard shortcut: command-return
   \end{enumerate}
 \item
-  source the script, which means running the whole thing. This is also
-  great for to see if there are any typos in your code that you've
-  missed. You can do this by:
-
-  \begin{enumerate}
-  \def\labelenumii{\alph{enumii}.}
-  \tightlist
-  \item
-    clicking Source (blue arrow in the bar above the script).
-  \item
-    typing
-    \texttt{source(\textquotesingle{}swc-mbari.R\textquotesingle{})} in
-    the console (or from another R script!!!).
-  \end{enumerate}
+  click the green arrow at the right of the code chunk
 \end{enumerate}
 
-\subsection{Your turn}\label{your-turn-3}
+\subsection{Your turn}\label{your-turn-4}
 
-Add a few more commands to your script from this morning. Execute them
-by trying the three ways above.
+Add a few more commands to your file from this morning. Execute them by
+trying the three ways above.
 
 Then, sync your script to GitHub.
 
@@ -1798,13 +1915,13 @@ that I use all the time.
 
 \section{push to GitHub}\label{push-to-github}
 
-\subsection{Your turn}\label{your-turn-4}
+\subsection{Your turn}\label{your-turn-5}
 
 \section{Common problems}\label{common-problems}
 
 \ldots{}
 
-\subsection{Your turn}\label{your-turn-5}
+\subsection{Your turn}\label{your-turn-6}
 
 \section{The Layered Grammar of
 Graphics}\label{the-layered-grammar-of-graphics}
@@ -1821,9 +1938,10 @@ so they can post a figure on a readme?
 
 \section{Troubleshooting}\label{troubleshooting-2}
 
-\chapter{Data wrangling with dplyr (tidyverse)}\label{dplyr}
+\chapter{Wrangling (dplyr)}\label{dplyr}
 
-\section{Overview}\label{overview}
+\section{\texorpdfstring{Overview of
+\texttt{dplyr}}{Overview of dplyr}}\label{overview-of-dplyr}
 
 We are going to introduce you to data wrangling in R first with the
 tidyverse. The tidyverse is a new suite of packages that match a
@@ -1934,7 +2052,7 @@ Hadley's recent presentations:
 
 \subsection{setup}\label{setup}
 
-We'll do this in an R script.
+We'll do this in a new RMarkdown file.
 
 \textbf{Here's what to do:}
 
@@ -1944,10 +2062,13 @@ We'll do this in an R script.
 \item
   Clear your workspace (Session \textgreater{} Restart R)
 \item
-  New File \textgreater{} R Script
+  New File \textgreater{} R Markdown\ldots{}
 \item
-  Save as \texttt{gapminder-wrangle.R}, and add a comment or two to the
-  top (name of the script, your name)
+  Save as \texttt{gapminder-wrangle.Rmd}
+\item
+  Delete the irrelevant text and write a little note to yourself about
+  how we'll be warngling gapminder data using dplyr. You can edit the
+  title too if you need to.
 \end{enumerate}
 
 \section{Explore the gapminder
@@ -1986,9 +2107,9 @@ url:
 
 \url{https://raw.githubusercontent.com/jules32/2017-11-30-MBARI/gh-pages/data/gapminder.csv}
 
-Now, let's go back to RStudio. In our R script, let's read this csv file
-and name the variable ``gapminder''. We will use the read\_csv function
-from the readr package (part of the tidyverse, so it's already
+Now, let's go back to RStudio. In our R Markdown, let's read this csv
+file and name the variable ``gapminder''. We will use the read\_csv
+function from the readr package (part of the tidyverse, so it's already
 installed!). And for comparison, you could also do it in base-R.
 
 \begin{Shaded}
@@ -2116,33 +2237,33 @@ majority of data manipulations:
 \begin{itemize}
 \tightlist
 \item
-  \textbf{pick observations by their values (\texttt{filter()})},
+  \textbf{\texttt{filter()}}: pick observations by their values
+\end{itemize}
 
-  \begin{itemize}
-  \item
-  \end{itemize}
+\begin{itemize}
+\tightlist
 \item
-  \textbf{pick variables by their names (\texttt{select()})},
+  \textbf{\texttt{select()}}: pick variables by their names
+\end{itemize}
 
-  \begin{itemize}
-  \item
-  \end{itemize}
+\begin{itemize}
+\tightlist
 \item
-  \textbf{create new variables with functions of existing variables
-  (\texttt{mutate()})},
+  \textbf{\texttt{mutate()}}: create new variables with functions of
+  existing variables
+\end{itemize}
 
-  \begin{itemize}
-  \item
-  \end{itemize}
+\begin{itemize}
+\tightlist
 \item
-  \textbf{collapse many values down to a single summary
-  (\texttt{summarise()})},
+  \textbf{\texttt{summarise()}}: collapse many values down to a single
+  summary
+\end{itemize}
 
-  \begin{itemize}
-  \item
-  \end{itemize}
+\begin{itemize}
+\tightlist
 \item
-  \textbf{reorder the rows (\texttt{arrange()})}
+  \textbf{\texttt{arrange()}}: reorder the rows
 \end{itemize}
 
 These can all be used in conjunction with \texttt{group\_by()} which
@@ -2172,8 +2293,8 @@ steps to achieve a complex result.
 \texttt{dplyr}
 inside)}{install tidyverse (which has dplyr inside)}}\label{install-tidyverse-which-has-dplyr-inside}
 
-In your R script, let's make sure we've got our libraries loaded. Write
-the following:
+In your R Markdow file, let's make sure we've got our libraries loaded.
+Write the following:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2181,10 +2302,10 @@ the following:
 \end{Highlighting}
 \end{Shaded}
 
-This has become a standard practice for how to load a library in a
-script, and if you get an error that the library doesn't exist, you can
-install the package easily by running the code within the comment
-(highlight \texttt{install.packages("tidyverse")} and run it).
+This is becoming standard practice for how to load a library in a file,
+and if you get an error that the library doesn't exist, you can install
+the package easily by running the code within the comment (highlight
+\texttt{install.packages("tidyverse")} and run it).
 
 \section{\texorpdfstring{Use \texttt{dplyr::filter()} to subset data
 row-wise
@@ -2241,7 +2362,7 @@ criteria:
 \end{Highlighting}
 \end{Shaded}
 
-\section{Your turn}\label{your-turn-6}
+\section{Your turn}\label{your-turn-7}
 
 What is the mean life expenctancy of Sweden? Hint: do this in 2 steps by
 assigning a variable and then using the \texttt{mean()} function.
@@ -2422,7 +2543,7 @@ population and GDP per capita.
 \end{Highlighting}
 \end{Shaded}
 
-\section{Your turn}\label{your-turn-7}
+\section{Your turn}\label{your-turn-8}
 
 Find the maximum gdpPercap of Egypt and Vietnam Create a new column.
 
@@ -2546,7 +2667,7 @@ is \texttt{arrange()}.
 \end{Highlighting}
 \end{Shaded}
 
-\section{Your turn}\label{your-turn-8}
+\section{Your turn}\label{your-turn-9}
 
 Find the maximum gdpPercap of Egypt and Vietnam Create a new column.
 
@@ -2563,7 +2684,9 @@ Do the following:
 \item
   save your data frame as a variable
 \item
-  Sync your R script to GitHub (pull, stage, commit, push)
+  Knit your RMarkdown file
+\item
+  Sync your .Rmd and .html to GitHub (pull, stage, commit, push)
 \end{enumerate}
 
 \subsection{Answer}\label{answer-2}
@@ -2650,9 +2773,9 @@ Note too that the chain operator \texttt{\%\textgreater{}\%} that we
 used with the \texttt{tidyverse} lets us get away from the temporary
 variable x1.
 
-\section{Your Turn}\label{your-turn-9}
+\section{Your Turn}\label{your-turn-10}
 
-Get your script cleaned up and sync it for the last time today!
+Get your RMarkdown file cleaned up and sync it for the last time today!
 
 \subsection{Answers}\label{answers}
 
@@ -2674,7 +2797,7 @@ Get your script cleaned up and sync it for the last time today!
   for creating the most parsimonious, easily read analysis.
 \end{itemize}
 
-\chapter{Data wrangling with tidyr (tidyverse)}\label{tidyr}
+\chapter{Wrangling (tidyr)}\label{tidyr}
 
 \section{Objectives \& Resources}\label{objectives-resources-3}
 
@@ -3276,7 +3399,7 @@ Your final R script could look something like this:
   \href{https://github.com/bbest/dplyr-tidyr-tutorial/blob/gh-pages/index.Rmd}{Rmd}
 \end{itemize}
 
-\section{Your turn}\label{your-turn-10}
+\section{Your turn}\label{your-turn-11}
 
 ggplot2
 
@@ -3290,25 +3413,17 @@ ggplot2
 
 exposure and lots of practice:
 
+Do a little analysis: for a continent, loop through and make figs, save
+them each.
+
 \begin{itemize}
-\tightlist
 \item
   importing and writing data
-\item
-  for loops
 
   \begin{itemize}
   \tightlist
   \item
-    save ggplot figs \url{http://r4ds.had.co.nz/iteration.html}
-  \end{itemize}
-\item
-  if statements (conditionals)
-
-  \begin{itemize}
-  \tightlist
-  \item
-    write message() to yourself
+    write a local copy of gapminder data to data/ folder
   \end{itemize}
 \item
   strings and filenames:
@@ -3321,10 +3436,33 @@ exposure and lots of practice:
     stringr() \url{http://r4ds.had.co.nz/strings.html}
   \end{itemize}
 \item
+  for loops introduce R Script
+
+  \begin{itemize}
+  \tightlist
+  \item
+    save ggplot figs (also using stringr, paste())
+    \url{http://r4ds.had.co.nz/iteration.html}
+  \end{itemize}
+\item
+  if statements (conditionals)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    write message() to yourself
+  \end{itemize}
+\item
   installing packages from github
 \item
   also mention: lubridate, purrr (don't get into them)
+\item
+  end with a ton of resources:
+  \url{https://peerj.com/collections/50-practicaldatascistats/}
 \end{itemize}
+
+FINISH: organization and workflows source, set up a folder for figs,
+intermediate analyses, final outputs (could even do an R package, etc).
 
 \textbf{Resources}
 
@@ -3346,6 +3484,82 @@ extensions
 
 You'll soon have questions that are outside the scope of this workshop,
 how do you find answers?
+
+\section{Create an R script}\label{create-an-r-script}
+
+OK, now, let's go back to RStudio, and get ourselves back into learning
+R. We are going to create an R script. What is an R script? It's a text
+file with a .R extension. Writing R commands in the console like we did
+this morning is great, but limited; it's hard to keep track of and hard
+to efficiently share with others. Plus, as your analyses get more
+complicated, you need to be able to see them all in one place.
+
+Go to File \textgreater{} New File \textgreater{} R Script (or click the
+green plus in the top left corner).
+
+Let's set up this script for the rest of the day. Let's start off with a
+few comments so that we know what it is for, and save it.
+
+By creating a script, we are seeing the 4th pane of the RStudio console,
+which is essentially a text editor.
+
+\begin{verbatim}
+## swc-mbari.R
+## learning R
+## J Lowndes lowndes@nceas.uscb.edu
+\end{verbatim}
+
+Now, let's save it. I'm going to call my file \texttt{swc-mbari.R}.
+
+OK. Now let's practice with some of those commands that we were working
+on this morning.
+
+Below your comments, type:
+
+\begin{verbatim}
+x <- seq(1:15)
+\end{verbatim}
+
+Now, hitting return does not execute this command; remember, it's just a
+text file. To execute it, we need to get what we typed in the script
+down into the console. How do we do it? There are several ways (let's do
+each of them):
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  copy-paste this line into the console.
+\item
+  select the line (or simply put the cursor there), and click `Run'.
+  This is available from
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    the bar above the script (green arrow)
+  \item
+    the menu bar: Code \textgreater{} Run Selected Line(s)
+  \item
+    keyboard shortcut: command-return
+  \end{enumerate}
+\item
+  source the script, which means running the whole thing. This is also
+  great for to see if there are any typos in your code that you've
+  missed. You can do this by:
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    clicking Source (blue arrow in the bar above the script).
+  \item
+    typing
+    \texttt{source(\textquotesingle{}swc-mbari.R\textquotesingle{})} in
+    the console (or from another R file!!!).
+  \end{enumerate}
+\end{enumerate}
 
 \section{Importing data}\label{importing-data}
 
@@ -3802,7 +4016,7 @@ to get you started, and here is one built into RStudio:
 
 knit with the button; also \texttt{knitr}
 
-\subsection{Your turn}\label{your-turn-11}
+\subsection{Your turn}\label{your-turn-12}
 
 Update the README, push to GitHub
 
@@ -3838,7 +4052,7 @@ click on ``Commit and Sync gh-pages''. This will update
 project website with a default \texttt{index.html} viewable at
 \url{http://USER.github.io/my-project}
 
-\subsection{Your turn}\label{your-turn-12}
+\subsection{Your turn}\label{your-turn-13}
 
 \section{Resources}\label{resources-2}
 
@@ -3863,7 +4077,7 @@ viz}\label{more-practice-data-wrangling-data-viz}
 let's do it from our RMarkdown now. MORE DPLYR (GROUP BY?), AND TIDYR.
 MAYBE MORE GGPLOT2?
 
-\subsection{Your turn}\label{your-turn-13}
+\subsection{Your turn}\label{your-turn-14}
 
 \section{Troubleshooting}\label{troubleshooting-4}
 

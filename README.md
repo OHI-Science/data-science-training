@@ -12,7 +12,7 @@ To render this book in RStudio: Build tab > Build Book. Or on the command line:
 rmarkdown::render_site(encoding = 'UTF-8')
 ````
 
-This will build the HTML and PDF versions of the book into the docs folder. Beware: the contents of the docs folder get blown away first, so you should always edit content outside of this. 
+This will build the HTML and PDF versions of the book into the `docs/` folder, which should not be directly edited.
 
 ### Acknowledgements
 

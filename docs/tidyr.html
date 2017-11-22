@@ -180,7 +180,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.9" data-path="viz.html"><a href="viz.html#troubleshooting-2"><i class="fa fa-check"></i><b>5.9</b> Troubleshooting</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>6</b> Wrangling (dplyr)</a><ul>
-<li class="chapter" data-level="6.1" data-path="overview.html"><a href="overview.html#overview"><i class="fa fa-check"></i><b>6.1</b> Overview</a></li>
+<li class="chapter" data-level="6.1" data-path="dplyr.html"><a href="dplyr.html#overview-of-dplyr"><i class="fa fa-check"></i><b>6.1</b> Overview of <code class="objectives">dplyr</code></a></li>
 <li class="chapter" data-level="6.2" data-path="dplyr.html"><a href="dplyr.html#prerequisites-1"><i class="fa fa-check"></i><b>6.2</b> Prerequisites</a></li>
 <li class="chapter" data-level="6.3" data-path="dplyr.html"><a href="dplyr.html#tidy-data"><i class="fa fa-check"></i><b>6.3</b> Tidy Data</a><ul>
 <li class="chapter" data-level="6.3.1" data-path="dplyr.html"><a href="dplyr.html#setup"><i class="fa fa-check"></i><b>6.3.1</b> setup</a></li>
@@ -373,7 +373,7 @@ gapminder %>%
 </blockquote>
 <p>We need to name two new variables in the key-value pair, one for the key, one for the value. Let’s name them <code>obstype_year</code> and <code>obs_value</code>.</p>
 <p>Here’s the start of what we’ll do:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_long &lt;-<span class="st"> </span>gap_wide <span class="op">%&gt;%</span><span class="st"> </span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_long &lt;-<span class="st"> </span>gap_wide %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">gather</span>(<span class="dt">key   =</span> obstype_year,
          <span class="dt">value =</span> obs_values)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(gap_long)
@@ -382,28 +382,28 @@ gapminder %>%
 <p>So this has reshaped our dataframe, but really not how we wanted. Very important to check, and listen to that warning message–dropping attributes seems very suspicious. Like suspenders.</p>
 <p>What went wrong? Notice that it didn’t know that we wanted to keep <code>continent</code> and <code>country</code> untouched; we need to give it more information about which columns we want reshaped. We can do this in several ways.</p>
 <p>One way: identify the column numbers you want to use. Not ideal because column numbers could change, but it does exactly what we want! And illustrates it nicely.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_long &lt;-<span class="st"> </span>gap_wide <span class="op">%&gt;%</span><span class="st"> </span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_long &lt;-<span class="st"> </span>gap_wide %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">gather</span>(<span class="dt">key   =</span> obstype_year,
          <span class="dt">value =</span> obs_values,
-         <span class="dv">3</span><span class="op">:</span><span class="dv">38</span>)  <span class="co"># could also do -1, -2: &#39;not column one, not column two</span>
+         <span class="dv">3</span>:<span class="dv">38</span>)  <span class="co"># could also do -1, -2: &#39;not column one, not column two</span>
 <span class="kw">str</span>(gap_long)
 <span class="kw">head</span>(gap_long)
 <span class="kw">tail</span>(gap_long)</code></pre></div>
 <p>Better way: identify the columns by name. Listing them out by explicit name can be a good approach if there are a few. But I’m not going to list them out here, and way too much potential for error if you tried gdpPercap_1952, gdpPercap_1957, gdpPercap_1962… So let’s use some of <code>dplyr</code>’s awesome helper functions.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_long &lt;-<span class="st"> </span>gap_wide <span class="op">%&gt;%</span><span class="st"> </span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_long &lt;-<span class="st"> </span>gap_wide %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">gather</span>(<span class="dt">key   =</span> obstype_year,
          <span class="dt">value =</span> obs_values,
-         dplyr<span class="op">::</span><span class="kw">starts_with</span>(<span class="st">&#39;pop&#39;</span>),
-         dplyr<span class="op">::</span><span class="kw">starts_with</span>(<span class="st">&#39;lifeExp&#39;</span>),
-         dplyr<span class="op">::</span><span class="kw">starts_with</span>(<span class="st">&#39;gdpPercap&#39;</span>))
+         dplyr::<span class="kw">starts_with</span>(<span class="st">&#39;pop&#39;</span>),
+         dplyr::<span class="kw">starts_with</span>(<span class="st">&#39;lifeExp&#39;</span>),
+         dplyr::<span class="kw">starts_with</span>(<span class="st">&#39;gdpPercap&#39;</span>))
 <span class="kw">str</span>(gap_long)
 <span class="kw">head</span>(gap_long)
 <span class="kw">tail</span>(gap_long)</code></pre></div>
 <p>Success! And you could also do it this way.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_long &lt;-<span class="st"> </span>gap_wide <span class="op">%&gt;%</span><span class="st"> </span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_long &lt;-<span class="st"> </span>gap_wide %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">gather</span>(<span class="dt">key   =</span> obstype_year,
          <span class="dt">value =</span> obs_values,
-         <span class="op">-</span>continent, <span class="op">-</span>country)
+         -continent, -country)
 <span class="kw">str</span>(gap_long)
 <span class="kw">head</span>(gap_long)
 <span class="kw">tail</span>(gap_long)</code></pre></div>
@@ -411,10 +411,10 @@ gapminder %>%
 <p>Inside <code>gather()</code> we first name the new column for the new ID variable (<code>obstype_year</code>), the name for the new amalgamated observation variable (<code>obs_value</code>), then the names of the old observation variable. We could have typed out all the observation variables, but as in the <code>select()</code> function (see <code>dplyr</code> lesson), we can use the <code>starts_with()</code> argument to select all variables that starts with the desired character string. Gather also allows the alternative syntax of using the <code>-</code> symbol to identify which variables are not to be gathered (i.e. ID variables)</p>
 <p>OK, but we’re not done yet. <code>obstype_year</code> actually contains 2 pieces of information, the observation type (<code>pop</code>,<code>lifeExp</code>, or <code>gdpPercap</code>) and the <code>year</code>. We can use the <code>separate()</code> function to split the character strings into multiple variables</p>
 <p><code>?separate</code> –&gt; we’ll tell it which column we want separated, name new columns that we want to create, and tell it what we want it to separate by. Since the <code>obstype_year</code> variable has observation types and years separated by a <code>_</code>, we’ll use that.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_long &lt;-<span class="st"> </span>gap_wide <span class="op">%&gt;%</span><span class="st"> </span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_long &lt;-<span class="st"> </span>gap_wide %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">gather</span>(<span class="dt">key   =</span> obstype_year,
          <span class="dt">value =</span> obs_values,
-         <span class="op">-</span>continent, <span class="op">-</span>country) <span class="op">%&gt;%</span>
+         -continent, -country) %&gt;%
 <span class="st">  </span><span class="kw">separate</span>(obstype_year,
            <span class="dt">into =</span> <span class="kw">c</span>(<span class="st">&#39;obs_type&#39;</span>,<span class="st">&#39;year&#39;</span>),
            <span class="dt">sep=</span><span class="st">&quot;_&quot;</span>)</code></pre></div>
@@ -426,8 +426,8 @@ gapminder %>%
 <p>Exercise: Using <code>gap_long</code>, calculate the mean life expectancy, population, and gdpPercap for each continent. <strong>Hint:</strong> use the <code>group_by()</code> and <code>summarize()</code> functions we learned in the <code>dplyr</code> lesson</p>
 </blockquote>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># solution (no peeking!)</span>
-gap_long <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">group_by</span>(continent, obs_type) <span class="op">%&gt;%</span>
+gap_long %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(continent, obs_type) %&gt;%
 <span class="st">    </span><span class="kw">summarize</span>(<span class="dt">means =</span> <span class="kw">mean</span>(obs_values))</code></pre></div>
 </div>
 <div id="from-long-to-intermediate-format-with-spread" class="section level2">
@@ -437,7 +437,7 @@ gap_long <span class="op">%&gt;%</span><span class="st"> </span>
 
 </div>
 <p>Now just to double-check our work, let’s use the opposite of <code>gather()</code> to spread our observation variables back to the original format with the aptly named <code>spread()</code>. You pass <code>spread()</code> the key and value pair, which is now <code>obs_type</code> and <code>obs_values</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_normal &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span><span class="st"> </span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_normal &lt;-<span class="st"> </span>gap_long %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">spread</span>(obs_type, obs_values)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(gap_normal)
 <span class="kw">dim</span>(gapminder)
@@ -450,7 +450,7 @@ gap_long <span class="op">%&gt;%</span><span class="st"> </span>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Solution, no peeking!</span>
 
 <span class="co"># one way with dplyr (also nice because can chain this from gap_normal creation)</span>
-gap_normal &lt;-<span class="st"> </span>gap_normal <span class="op">%&gt;%</span>
+gap_normal &lt;-<span class="st"> </span>gap_normal %&gt;%
 <span class="st">  </span><span class="kw">select</span>(country, continent, year, lifeExp, pop, gdpPercap)
 
 <span class="co"># another way with base R</span>
@@ -460,7 +460,7 @@ gap_normal &lt;-<span class="st"> </span>gap_normal[,<span class="kw">names</spa
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(gap_normal)
 <span class="kw">head</span>(gapminder)</code></pre></div>
 <p>We’re almost there, the original was sorted by <code>country</code>, <code>continent</code>, then <code>year</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_normal &lt;-<span class="st"> </span>gap_normal <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(country,continent,year)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_normal &lt;-<span class="st"> </span>gap_normal %&gt;%<span class="st"> </span><span class="kw">arrange</span>(country,continent,year)
 <span class="kw">all.equal</span>(gap_normal,gapminder)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(gap_normal)
 <span class="kw">str</span>(gapminder)</code></pre></div>
@@ -471,9 +471,9 @@ gap_normal &lt;-<span class="st"> </span>gap_normal[,<span class="kw">names</spa
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Solution, no peeking: </span>
 <span class="kw">head</span>(gap_long) <span class="co"># remember the columns</span>
 
-gap_wide_new &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span><span class="st"> </span>
+gap_wide_new &lt;-<span class="st"> </span>gap_long %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="co"># first unite obs_type and year into a new column called var_names. Separate by _</span>
-<span class="st">  </span><span class="kw">unite</span>(<span class="dt">col =</span> var_names, obs_type, year, <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">unite</span>(<span class="dt">col =</span> var_names, obs_type, year, <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>) %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="co"># then spread var_names out by key-value pair.</span>
 <span class="st">  </span><span class="kw">spread</span>(<span class="dt">key =</span> var_names, <span class="dt">value =</span> obs_values)
 <span class="kw">str</span>(gap_wide_new)</code></pre></div>
@@ -490,58 +490,58 @@ gap_wide_new &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</spa
 <span class="kw">str</span>(gapminder) <span class="co"># there&#39;s still a data frame named &#39;gapminder&#39;</span>
 
 ## practice dplyr::filter()
-<span class="kw">filter</span>(gapminder, lifeExp <span class="op">&lt;</span><span class="st"> </span><span class="dv">29</span>)
-<span class="kw">filter</span>(gapminder, country <span class="op">==</span><span class="st"> &quot;Mexico&quot;</span>)
-<span class="kw">filter</span>(gapminder, country <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Mexico&quot;</span>, <span class="st">&quot;Afghanistan&quot;</span>))
+<span class="kw">filter</span>(gapminder, lifeExp &lt;<span class="st"> </span><span class="dv">29</span>)
+<span class="kw">filter</span>(gapminder, country ==<span class="st"> &quot;Mexico&quot;</span>)
+<span class="kw">filter</span>(gapminder, country %in%<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Mexico&quot;</span>, <span class="st">&quot;Afghanistan&quot;</span>))
 
 ## base R alternatives to dplyr::filter()
-gapminder[gapminder<span class="op">$</span>lifeExp <span class="op">&lt;</span><span class="st"> </span><span class="dv">29</span>, ] ## repeat `gapminder`, [i, j] indexing is distracting
-<span class="kw">subset</span>(gapminder, country <span class="op">==</span><span class="st"> &quot;Mexico&quot;</span>) ## almost same as filter ... but wait ...
+gapminder[gapminder$lifeExp &lt;<span class="st"> </span><span class="dv">29</span>, ] ## repeat `gapminder`, [i, j] indexing is distracting
+<span class="kw">subset</span>(gapminder, country ==<span class="st"> &quot;Mexico&quot;</span>) ## almost same as filter ... but wait ...
 
 ## pipe operator %&gt;%
-gapminder <span class="op">%&gt;%</span><span class="st"> </span>head <span class="co"># this...</span>
+gapminder %&gt;%<span class="st"> </span>head <span class="co"># this...</span>
 <span class="kw">head</span>(gapminder) <span class="co"># ...is the same as this!</span>
-gapminder <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>(<span class="dv">3</span>) <span class="co"># can pass arguments! this...</span>
+gapminder %&gt;%<span class="st"> </span><span class="kw">head</span>(<span class="dv">3</span>) <span class="co"># can pass arguments! this...</span>
 <span class="kw">head</span>(gapminder, <span class="dv">3</span>) <span class="co"># ...is the same as this!</span>
 
 ## practice dplyr::select() with %&gt;%
 <span class="kw">select</span>(gapminder, year, lifeExp) <span class="co"># this...</span>
-gapminder <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(year, lifeExp) <span class="co"># ...is the same as this!</span>
+gapminder %&gt;%<span class="st"> </span><span class="kw">select</span>(year, lifeExp) <span class="co"># ...is the same as this!</span>
 
 ## practice with %&gt;% chains
-gapminder <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">select</span>(year, lifeExp) <span class="op">%&gt;%</span><span class="st"> </span>
+gapminder %&gt;%
+<span class="st">  </span><span class="kw">select</span>(year, lifeExp) %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">head</span>(<span class="dv">4</span>) <span class="co"># doesn&#39;t have to be a dplyr function</span>
 
-gapminder <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">filter</span>(country <span class="op">==</span><span class="st"> &quot;Cambodia&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>continent, <span class="op">-</span>lifeExp) <span class="co"># same as select(country, year, pop, gdpPercap) </span>
+gapminder %&gt;%
+<span class="st">  </span><span class="kw">filter</span>(country ==<span class="st"> &quot;Cambodia&quot;</span>) %&gt;%
+<span class="st">  </span><span class="kw">select</span>(-continent, -lifeExp) <span class="co"># same as select(country, year, pop, gdpPercap) </span>
 
 <span class="co"># compare to base R, hard to read!</span>
-gapminder[gapminder<span class="op">$</span>country <span class="op">==</span><span class="st"> &quot;Cambodia&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;country&quot;</span>, <span class="st">&quot;year&quot;</span>, <span class="st">&quot;pop&quot;</span>, <span class="st">&quot;gdpPercap&quot;</span>)]
-<span class="kw">subset</span>(gapminder, country <span class="op">==</span><span class="st"> &quot;Cambodia&quot;</span>, <span class="dt">select =</span> <span class="kw">c</span>(country, year, pop, gdpPercap))
+gapminder[gapminder$country ==<span class="st"> &quot;Cambodia&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;country&quot;</span>, <span class="st">&quot;year&quot;</span>, <span class="st">&quot;pop&quot;</span>, <span class="st">&quot;gdpPercap&quot;</span>)]
+<span class="kw">subset</span>(gapminder, country ==<span class="st"> &quot;Cambodia&quot;</span>, <span class="dt">select =</span> <span class="kw">c</span>(country, year, pop, gdpPercap))
 
 ## dplyr::mutate() adds new columns
-gapminder <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">filter</span>(country <span class="op">==</span><span class="st"> &quot;Cambodia&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>continent, <span class="op">-</span>lifeExp) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">gdp =</span> pop <span class="op">*</span><span class="st"> </span>gdpPercap)
+gapminder %&gt;%
+<span class="st">  </span><span class="kw">filter</span>(country ==<span class="st"> &quot;Cambodia&quot;</span>) %&gt;%
+<span class="st">  </span><span class="kw">select</span>(-continent, -lifeExp) %&gt;%
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">gdp =</span> pop *<span class="st"> </span>gdpPercap)
 
 ## dplyr::summarize() or summarise() adds new column when grouping
-gapminder <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">filter</span>(country <span class="op">==</span><span class="st"> &quot;Cambodia&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>continent, <span class="op">-</span>lifeExp) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">gdp =</span> pop <span class="op">*</span><span class="st"> </span>gdpPercap) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">group_by</span>(country) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean_gdp =</span> <span class="kw">mean</span>(gdp)) <span class="op">%&gt;%</span>
+gapminder %&gt;%
+<span class="st">  </span><span class="kw">filter</span>(country ==<span class="st"> &quot;Cambodia&quot;</span>) %&gt;%
+<span class="st">  </span><span class="kw">select</span>(-continent, -lifeExp) %&gt;%
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">gdp =</span> pop *<span class="st"> </span>gdpPercap) %&gt;%
+<span class="st">  </span><span class="kw">group_by</span>(country) %&gt;%
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean_gdp =</span> <span class="kw">mean</span>(gdp)) %&gt;%
 <span class="st">  </span><span class="kw">ungroup</span>() <span class="co"># if you use group_by, also use ungroup() to save heartache later</span>
 
 ## summarize for all countries (replaces our for loop!)
-gapminder <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>continent, <span class="op">-</span>lifeExp) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">gdp =</span> pop <span class="op">*</span><span class="st"> </span>gdpPercap) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">group_by</span>(country) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean_gdp =</span> <span class="kw">mean</span>(gdp)) <span class="op">%&gt;%</span>
+gapminder %&gt;%
+<span class="st">  </span><span class="kw">select</span>(-continent, -lifeExp) %&gt;%
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">gdp =</span> pop *<span class="st"> </span>gdpPercap) %&gt;%
+<span class="st">  </span><span class="kw">group_by</span>(country) %&gt;%
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean_gdp =</span> <span class="kw">mean</span>(gdp)) %&gt;%
 <span class="st">  </span><span class="kw">ungroup</span>() <span class="co"># if you use group_by, also use ungroup() to save heartache later</span>
 
 ## install tidyr
@@ -554,44 +554,44 @@ gap_wide &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span cl
 <span class="kw">str</span>(gap_wide)
 
 ## practice tidyr::gather() wide to long
-gap_long &lt;-<span class="st"> </span>gap_wide <span class="op">%&gt;%</span><span class="st"> </span>
+gap_long &lt;-<span class="st"> </span>gap_wide %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">gather</span>(<span class="dt">key   =</span> obstype_year,
          <span class="dt">value =</span> obs_values,
-         <span class="op">-</span>continent, <span class="op">-</span>country) 
+         -continent, -country) 
 <span class="co"># or </span>
-gap_long &lt;-<span class="st"> </span>gap_wide <span class="op">%&gt;%</span><span class="st"> </span>
+gap_long &lt;-<span class="st"> </span>gap_wide %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">gather</span>(<span class="dt">key   =</span> obstype_year,
          <span class="dt">value =</span> obs_values,
-         dplyr<span class="op">::</span><span class="kw">starts_with</span>(<span class="st">&#39;pop&#39;</span>),
-         dplyr<span class="op">::</span><span class="kw">starts_with</span>(<span class="st">&#39;lifeExp&#39;</span>),
-         dplyr<span class="op">::</span><span class="kw">starts_with</span>(<span class="st">&#39;gdpPercap&#39;</span>))
+         dplyr::<span class="kw">starts_with</span>(<span class="st">&#39;pop&#39;</span>),
+         dplyr::<span class="kw">starts_with</span>(<span class="st">&#39;lifeExp&#39;</span>),
+         dplyr::<span class="kw">starts_with</span>(<span class="st">&#39;gdpPercap&#39;</span>))
 <span class="co"># or (but always be wary of numerics because they could change silently)</span>
-gap_long &lt;-<span class="st"> </span>gap_wide <span class="op">%&gt;%</span><span class="st"> </span>
+gap_long &lt;-<span class="st"> </span>gap_wide %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">gather</span>(<span class="dt">key   =</span> obstype_year,
          <span class="dt">value =</span> obs_values,
-         <span class="dv">3</span><span class="op">:</span><span class="dv">38</span>)  <span class="co"># could also do -1, -2: &#39;not column one, not column two</span>
+         <span class="dv">3</span>:<span class="dv">38</span>)  <span class="co"># could also do -1, -2: &#39;not column one, not column two</span>
 
 
 ## gather() and separate() to create our original gapminder
-gap_long &lt;-<span class="st"> </span>gap_wide <span class="op">%&gt;%</span><span class="st"> </span>
+gap_long &lt;-<span class="st"> </span>gap_wide %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">gather</span>(<span class="dt">key   =</span> obstype_year,
          <span class="dt">value =</span> obs_values,
-         <span class="op">-</span>continent, <span class="op">-</span>country) <span class="op">%&gt;%</span>
+         -continent, -country) %&gt;%
 <span class="st">  </span><span class="kw">separate</span>(obstype_year,
            <span class="dt">into =</span> <span class="kw">c</span>(<span class="st">&#39;obs_type&#39;</span>,<span class="st">&#39;year&#39;</span>),
            <span class="dt">sep=</span><span class="st">&quot;_&quot;</span>)
 
 ## practice: can still do calculations in long format
-gap_long <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">group_by</span>(continent, obs_type) <span class="op">%&gt;%</span>
+gap_long %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(continent, obs_type) %&gt;%
 <span class="st">  </span><span class="kw">summarize</span>(<span class="dt">means =</span> <span class="kw">mean</span>(obs_values))
 
 ## spread() from normal to wide
-gap_normal &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">spread</span>(obs_type, obs_values) <span class="op">%&gt;%</span>
+gap_normal &lt;-<span class="st"> </span>gap_long %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">spread</span>(obs_type, obs_values) %&gt;%
 <span class="st">  </span><span class="kw">select</span>(country, continent, year, lifeExp, pop, gdpPercap)
 <span class="co"># or </span>
-gap_normal &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span><span class="st"> </span>
+gap_normal &lt;-<span class="st"> </span>gap_long %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">spread</span>(obs_type, obs_values)
 gap_normal &lt;-<span class="st"> </span>gap_normal[,<span class="kw">names</span>(gapminder)]
 
@@ -601,9 +601,9 @@ gap_normal &lt;-<span class="st"> </span>gap_normal[,<span class="kw">names</spa
 ## unite() and spread(): convert gap_long to gap_wide
 <span class="kw">head</span>(gap_long) <span class="co"># remember the columns</span>
 
-gap_wide_new &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span><span class="st"> </span>
+gap_wide_new &lt;-<span class="st"> </span>gap_long %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="co"># first unite obs_type and year into a new column called var_names. Separate by _</span>
-<span class="st">  </span><span class="kw">unite</span>(<span class="dt">col =</span> var_names, obs_type, year, <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">unite</span>(<span class="dt">col =</span> var_names, obs_type, year, <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>) %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="co"># then spread var_names out by key-value pair.</span>
 <span class="st">  </span><span class="kw">spread</span>(<span class="dt">key =</span> var_names, <span class="dt">value =</span> obs_values)
 <span class="kw">str</span>(gap_wide_new)</code></pre></div>

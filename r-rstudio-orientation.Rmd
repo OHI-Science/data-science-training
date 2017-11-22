@@ -243,9 +243,12 @@ seq(1, 10)
 
 We could probably infer that the `seq()` function makes a sequence, but let's learn for sure. Type (and you can autocomplete) and let's explore the help page:
 
-```{r}
+```{r, eval=F}
 ?seq 
 help(seq) # same as ?seq
+```
+
+```{r}
 seq(from = 1, to = 10) # same as seq(1, 10); R assumes by position
 seq(from = 1, to = 10, by = 2)
 ```
@@ -271,7 +274,7 @@ The examples can be copy-pasted into the console for you to understand what's go
 > Exercise: Talk to your neighbor(s) and look up the help file for a function that you know or expect to exist. Here are some ideas: `?getwd()`, `?plot()`,  `min()`, `max()`, `?mean()`, `?log()`).
 
 And there's also help for when you only sort of remember the function name: double-questionmark:
-```{r}
+```{r, eval=F}
 ??install 
 ```
 

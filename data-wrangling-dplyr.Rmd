@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 # Wrangling (dplyr) {#dplyr} 
 
 ```{r wrangling1, include=FALSE}
@@ -5,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(htmltools)
 ```
 
-## Overview {.objectives}
+## Overview of `dplyr` {.objectives}
 
 We are going to introduce you to data wrangling in R first with the tidyverse. The tidyverse is a new suite of packages that match a philosophy of data science developed by Hadley Wickham and the RStudio team. I find it to be a more straight-forward way to learn R. We will also show you by comparison what code will look like in "Base R", which means, in R without any additional packages (like the "tidyverse" package)  installed. I like David Robinson's blog post on the topic of [teaching the tidyverse first](http://varianceexplained.org/r/teach-hard-way).
 
@@ -167,16 +172,23 @@ OK, so let's start wrangling with dplyr.
 
 There are five `dplyr` functions that you will use to do the vast majority of data manipulations:
 
-- **pick observations by their values (`filter()`)**,
-    - `r htmltools::img(src='img/rstudio-cheatsheet-filter.png', width=300)` 
-- **pick variables by their names (`select()`)**,
-    - `r htmltools::img(src='img/rstudio-cheatsheet-select.png', width=300)`
-- **create new variables with functions of existing variables (`mutate()`)**, 
-    - `r htmltools::img(src='img/rstudio-cheatsheet-mutate.png', width=300)`
-- **collapse many values down to a single summary (`summarise()`)**,
-    - `r htmltools::img(src='img/rstudio-cheatsheet-summarise.png', width=300)`
-- **reorder the rows (`arrange()`)**
+- **`filter()`**: pick observations by their values
 
+  `r htmltools::img(src='img/rstudio-cheatsheet-filter.png', width=300)` 
+    
+- **`select()`**: pick variables by their names
+
+  `r htmltools::img(src='img/rstudio-cheatsheet-select.png', width=300)`
+    
+- **`mutate()`**: create new variables with functions of existing variables 
+
+  `r htmltools::img(src='img/rstudio-cheatsheet-mutate.png', width=300)`
+    
+- **`summarise()`**: collapse many values down to a single summary 
+
+  `r htmltools::img(src='img/rstudio-cheatsheet-summarise.png', width=300)`
+  
+- **`arrange()`**: reorder the rows
 
 These can all be used in conjunction with `group_by()` which changes the scope of each function from operating on the entire dataset to operating on it group-by-group. These six functions provide the verbs for a language of data manipulation.
 
@@ -515,10 +527,7 @@ Note too that the chain operator `%>%` that we used with the `tidyverse` lets us
 
 ## Your Turn {.challenge}
 
-<<<<<<< HEAD
 Get your RMarkdown file cleaned up and sync it for the last time today!
-=======
-Get your script cleaned up and sync it for the last time today!
 
 ### Answers {.solution} 
 ...
@@ -528,5 +537,3 @@ Get your script cleaned up and sync it for the last time today!
 - Data manipulation functions in `dplyr` allow you to `filter()` by rows and `select()` by columns, create new columns with `mutate()`, and `group_by()` unique column values to apply `summarize()` for new columns that define aggregate values across groupings.
 - The "then" operator `%>%` allows you to chain successive operations without needing to define intermediary variables for creating the most parsimonious, easily read analysis.
 
-
->>>>>>> cee216bd776de5fc4f566a3137ad311f48514d3c
