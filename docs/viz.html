@@ -180,7 +180,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.9" data-path="viz.html"><a href="viz.html#troubleshooting-2"><i class="fa fa-check"></i><b>5.9</b> Troubleshooting</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>6</b> Wrangling (dplyr)</a><ul>
-<li class="chapter" data-level="6.1" data-path="dplyr.html"><a href="dplyr.html#overview-of-dplyr"><i class="fa fa-check"></i><b>6.1</b> Overview of <code class="objectives">dplyr</code></a></li>
+<li class="chapter" data-level="6.1" data-path="dplyr.html"><a href="dplyr.html#overview-of-dplyr"><i class="fa fa-check"></i><b>6.1</b> Overview of <code>dplyr</code></a></li>
 <li class="chapter" data-level="6.2" data-path="dplyr.html"><a href="dplyr.html#prerequisites-1"><i class="fa fa-check"></i><b>6.2</b> Prerequisites</a></li>
 <li class="chapter" data-level="6.3" data-path="dplyr.html"><a href="dplyr.html#tidy-data"><i class="fa fa-check"></i><b>6.3</b> Tidy Data</a><ul>
 <li class="chapter" data-level="6.3.1" data-path="dplyr.html"><a href="dplyr.html#setup"><i class="fa fa-check"></i><b>6.3.1</b> setup</a></li>
@@ -320,19 +320,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## from CRAN:
 <span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>) ## do this once only to install the package on your computer.</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse) ## do this every time you restart R and need it </code></pre></div>
-<pre><code>## Loading tidyverse: ggplot2
-## Loading tidyverse: tibble
-## Loading tidyverse: tidyr
-## Loading tidyverse: readr
-## Loading tidyverse: purrr
-## Loading tidyverse: dplyr</code></pre>
-<pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.4.1</code></pre>
-<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.4.2</code></pre>
-<pre><code>## Warning: package &#39;purrr&#39; was built under R version 3.4.1</code></pre>
+<pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.4.2</code></pre>
+<pre><code>## ── Attaching packages ───────────── tidyverse 1.2.0 ──</code></pre>
+<pre><code>## ✔ ggplot2 2.2.1.9000     ✔ purrr   0.2.4     
+## ✔ tibble  1.3.4          ✔ dplyr   0.7.4     
+## ✔ tidyr   0.7.2          ✔ stringr 1.2.0     
+## ✔ readr   1.1.1          ✔ forcats 0.2.0</code></pre>
+<pre><code>## Warning: package &#39;purrr&#39; was built under R version 3.4.2</code></pre>
 <pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.4.2</code></pre>
-<pre><code>## Conflicts with tidy packages ----------------------------------------------</code></pre>
-<pre><code>## filter(): dplyr, stats
-## lag():    dplyr, stats</code></pre>
+<pre><code>## ── Conflicts ──────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()</code></pre>
 <p>When you do this, it will tell you which packages are inside of <code>tidyverse</code> that have also been installed. Note that there are a few name conflicts; it is alerting you that we’ll be using two functions from dplyr instead of the built-in stats package.</p>
 <p>What’s the difference between <code>install.packages()</code> and <code>library()</code>? Why do you need both? Here’s my analogy:</p>
 <ul>

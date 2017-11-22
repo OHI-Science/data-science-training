@@ -180,7 +180,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.9" data-path="viz.html"><a href="viz.html#troubleshooting-2"><i class="fa fa-check"></i><b>5.9</b> Troubleshooting</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>6</b> Wrangling (dplyr)</a><ul>
-<li class="chapter" data-level="6.1" data-path="dplyr.html"><a href="dplyr.html#overview-of-dplyr"><i class="fa fa-check"></i><b>6.1</b> Overview of <code class="objectives">dplyr</code></a></li>
+<li class="chapter" data-level="6.1" data-path="dplyr.html"><a href="dplyr.html#overview-of-dplyr"><i class="fa fa-check"></i><b>6.1</b> Overview of <code>dplyr</code></a></li>
 <li class="chapter" data-level="6.2" data-path="dplyr.html"><a href="dplyr.html#prerequisites-1"><i class="fa fa-check"></i><b>6.2</b> Prerequisites</a></li>
 <li class="chapter" data-level="6.3" data-path="dplyr.html"><a href="dplyr.html#tidy-data"><i class="fa fa-check"></i><b>6.3</b> Tidy Data</a><ul>
 <li class="chapter" data-level="6.3.1" data-path="dplyr.html"><a href="dplyr.html#setup"><i class="fa fa-check"></i><b>6.3.1</b> setup</a></li>
@@ -368,31 +368,31 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">8.4</span> Repeating operations with for loops</h2>
 <p>Let’s say we want to subset a few countries and plot pop through time. We could do it the way above, which would look like the following:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## plot population of some countries
-mexico &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country ==<span class="st"> &quot;Mexico&quot;</span>)
-<span class="kw">plot</span>(mexico$year, mexico$pop)
+mexico &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country <span class="op">==</span><span class="st"> &quot;Mexico&quot;</span>)
+<span class="kw">plot</span>(mexico<span class="op">$</span>year, mexico<span class="op">$</span>pop)
 <span class="kw">dev.print</span>(pdf, <span class="st">&quot;mexico.pdf&quot;</span>)
 
-panama &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country ==<span class="st"> &quot;Panama&quot;</span>) 
-<span class="kw">plot</span>(panama$year, panama$pop)
+panama &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country <span class="op">==</span><span class="st"> &quot;Panama&quot;</span>) 
+<span class="kw">plot</span>(panama<span class="op">$</span>year, panama<span class="op">$</span>pop)
 <span class="kw">dev.print</span>(pdf, <span class="st">&quot;panama.pdf&quot;</span>)
 
-ecuador &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country ==<span class="st"> &quot;Ecuador&quot;</span>)
-<span class="kw">plot</span>(ecuador$year, ecuador$pop)
+ecuador &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country <span class="op">==</span><span class="st"> &quot;Ecuador&quot;</span>)
+<span class="kw">plot</span>(ecuador<span class="op">$</span>year, ecuador<span class="op">$</span>pop)
 <span class="kw">dev.print</span>(pdf, <span class="st">&quot;ecuador&quot;</span>)</code></pre></div>
 <p>But you can see already it’s a lot of text, which means typo-prone and hard to read. Even if you copy-paste each one, there’s a lot of copy-paste, and is very typo-prone. Plus, what if you wanted to instead plot lifeExp? You’d have to remember to change it each time…it gets messy quick. And we’re just doing it with 3 countries here; what if we wanted to do it to all 142 countries? Eek.</p>
 <p>Better with a for loop. This will let us cycle through and do what we want to each thing in turn. If you want to iterate over a set of values, and perform the same operation on each, a <code>for</code> loop will do the job.</p>
 <p>The basic structure of a <code>for</code> loop is:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">for(iterator in set of values){
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span>(iterator <span class="cf">in</span> set of values){
   do a thing
 }</code></pre></div>
 <p>Let’s paste from what we had before, and modify it. Also, the <code>set of values</code> is the list of countries (<code>country_list</code>), and we want to iterate through each country (let’s spell it <code>cntry</code> so it’s distinctive).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">for (cntry in country_list) {
-  mexico &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country ==<span class="st"> &quot;Mexico&quot;</span>) 
-  <span class="kw">plot</span>(mexico$year, mexico$pop)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span> (cntry <span class="cf">in</span> country_list) {
+  mexico &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country <span class="op">==</span><span class="st"> &quot;Mexico&quot;</span>) 
+  <span class="kw">plot</span>(mexico<span class="op">$</span>year, mexico<span class="op">$</span>pop)
 } </code></pre></div>
 <p>We can’t call it mexico anymore, but we could call it something more general. And let’s comment the plot() line out while we build this, and add a print statement to see if it’s behaving like we think it is.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">for (cntry in country_list) {
-  cntry_subset &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country ==<span class="st"> </span>cntry)  
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span> (cntry <span class="cf">in</span> country_list) {
+  cntry_subset &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country <span class="op">==</span><span class="st"> </span>cntry)  
   <span class="co"># plot(mexico$year, mexico$pop)</span>
   <span class="kw">print</span>(cntry_subset)
 } </code></pre></div>
@@ -401,53 +401,53 @@ ecuador &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, 
 </blockquote>
 <p>Is this doing what we think it’s doing? Let’s create the country list and print the results each time to test our progress:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">country_list &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Mexico&quot;</span>, <span class="st">&quot;Panama&quot;</span>, <span class="st">&quot;Ecuador&quot;</span>) <span class="co"># identify the thing to loop through</span>
-for (cntry in country_list) {
-  cntry_subset &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country ==<span class="st"> </span>cntry)  
+<span class="cf">for</span> (cntry <span class="cf">in</span> country_list) {
+  cntry_subset &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country <span class="op">==</span><span class="st"> </span>cntry)  
   <span class="co"># plot(mexico$year, mexico$pop)</span>
   <span class="kw">print</span>(cntry_subset)
 } </code></pre></div>
 <p>Excellent. Let’s move on with the plot.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">country_list &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Mexico&quot;</span>, <span class="st">&quot;Panama&quot;</span>, <span class="st">&quot;Ecuador&quot;</span>) 
-for (cntry in country_list) {
-  cntry_subset &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country ==<span class="st"> </span>cntry) 
-  <span class="kw">plot</span>(cntry_subset$year, cntry_subset$pop)
+<span class="cf">for</span> (cntry <span class="cf">in</span> country_list) {
+  cntry_subset &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country <span class="op">==</span><span class="st"> </span>cntry) 
+  <span class="kw">plot</span>(cntry_subset<span class="op">$</span>year, cntry_subset<span class="op">$</span>pop)
   <span class="kw">dev.print</span>(pdf, <span class="kw">paste0</span>(cntry,<span class="st">&quot;.pdf&quot;</span>)) <span class="co"># ?paste0() will paste a string</span>
 } </code></pre></div>
 <p>Great! And it doesn’t matter if we just use these three countries or all the countries–let’s try it.</p>
 <p>First let’s create a figure directory and make sure it saves there since it’s going to get out of hand quickly:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dir.create</span>(<span class="st">&#39;figures&#39;</span>) <span class="co"># this will be: software-carpentry/figures</span>
 
-country_list &lt;-<span class="st"> </span><span class="kw">unique</span>(gapminder$country) <span class="co"># ?unique() returns the unique values</span>
-for (cntry in country_list) {
-  cntry_subset &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country ==<span class="st"> </span>cntry) 
-  <span class="kw">plot</span>(cntry_subset$year, cntry_subset$pop)
+country_list &lt;-<span class="st"> </span><span class="kw">unique</span>(gapminder<span class="op">$</span>country) <span class="co"># ?unique() returns the unique values</span>
+<span class="cf">for</span> (cntry <span class="cf">in</span> country_list) {
+  cntry_subset &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country <span class="op">==</span><span class="st"> </span>cntry) 
+  <span class="kw">plot</span>(cntry_subset<span class="op">$</span>year, cntry_subset<span class="op">$</span>pop)
   <span class="kw">dev.print</span>(pdf, <span class="kw">paste0</span>(<span class="st">&quot;figures/&quot;</span>, cntry,<span class="st">&quot;.pdf&quot;</span>)) <span class="co"># don&#39;t forget the `/`: it&#39;s a path!</span>
 } </code></pre></div>
 <p>So that took a little longer than just the 3, but still super fast. For loops are sometimes just the thing you need to iterate over many things in your analyses.</p>
 <p>Now let’s say we also want to record the mean population of each country. We’d add a line to the for loop, and comment out all the plotting for now (to save time, you could also just leave it):</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dir.create</span>(<span class="st">&#39;figures&#39;</span>) <span class="co"># this will be: software-carpentry/figures</span>
 
-country_list &lt;-<span class="st"> </span><span class="kw">unique</span>(gapminder$country) 
-for (cntry in country_list) {
-  cntry_subset &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country ==<span class="st"> </span>cntry) 
+country_list &lt;-<span class="st"> </span><span class="kw">unique</span>(gapminder<span class="op">$</span>country) 
+<span class="cf">for</span> (cntry <span class="cf">in</span> country_list) {
+  cntry_subset &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country <span class="op">==</span><span class="st"> </span>cntry) 
   <span class="co"># plot(cntry_subset$year, cntry_subset$pop)</span>
   <span class="co"># dev.print(pdf, paste0(&quot;figures/&quot;, cntry,&quot;.pdf&quot;))</span>
   
-  pop_mean &lt;-<span class="st"> </span><span class="kw">mean</span>(cntry_subset$pop)
+  pop_mean &lt;-<span class="st"> </span><span class="kw">mean</span>(cntry_subset<span class="op">$</span>pop)
   <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&#39;mean pop for&#39;</span>, cntry, <span class="st">&#39;is&#39;</span>, pop_mean))
 } </code></pre></div>
 <p>We know it worked since it printed correctly. But we didn’t capture it: <code>cntry_subset</code> is just Zimbabwe. Let’s create an object outside the loop and add to it each time.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dir.create</span>(<span class="st">&#39;figures&#39;</span>) <span class="co"># this will be: software-carpentry/figures</span>
 
-country_list &lt;-<span class="st"> </span><span class="kw">unique</span>(gapminder$country) <span class="co"># ?unique() returns the unique values</span>
+country_list &lt;-<span class="st"> </span><span class="kw">unique</span>(gapminder<span class="op">$</span>country) <span class="co"># ?unique() returns the unique values</span>
 country_pop_mean &lt;-<span class="st"> </span><span class="kw">data.frame</span>()
 
-for (cntry in country_list) {
-  cntry_subset &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country ==<span class="st"> </span>cntry) 
+<span class="cf">for</span> (cntry <span class="cf">in</span> country_list) {
+  cntry_subset &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country <span class="op">==</span><span class="st"> </span>cntry) 
   <span class="co"># plot(cntry_subset$year, cntry_subset$pop)</span>
   <span class="co"># dev.print(pdf, paste0(&quot;figures/&quot;, cntry,&quot;.pdf&quot;)) </span>
   
-  pop_mean &lt;-<span class="st"> </span><span class="kw">mean</span>(cntry_subset$pop)
+  pop_mean &lt;-<span class="st"> </span><span class="kw">mean</span>(cntry_subset<span class="op">$</span>pop)
   <span class="co"># print(paste(&#39;mean pop for&#39;, cntry, &#39;is&#39;, pop_mean))</span>
   country_pop_mean &lt;-<span class="st"> </span><span class="kw">rbind</span>(country_pop_mean, <span class="kw">data.frame</span>(cntry, pop_mean))
 } </code></pre></div>
@@ -458,56 +458,56 @@ for (cntry in country_list) {
 <h2><span class="header-section-number">8.5</span> conditional statements with <code>if</code> and <code>else</code></h2>
 <p>Often when we’re coding we want to control the flow of our actions. This can be done by setting actions to occur only if a condition or a set of conditions are met.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># if</span>
-if (condition is true) {
+<span class="cf">if</span> (condition is true) {
   do something
 }
 
 <span class="co"># if ... else</span>
-if (condition is true) {
+<span class="cf">if</span> (condition is true) {
   do something
-} else {  <span class="co"># that is, if the condition is false,</span>
+} <span class="cf">else</span> {  <span class="co"># that is, if the condition is false,</span>
   do something different
 }</code></pre></div>
 <p>Say, for example, that in addition to saving population figures for all countries, we want to save life expectancy figures for countries in Asia only.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dir.create</span>(<span class="st">&#39;figures&#39;</span>) <span class="co"># this will be: software-carpentry/figures</span>
 
-country_list &lt;-<span class="st"> </span><span class="kw">unique</span>(gapminder$country) <span class="co"># ?unique() returns the unique values</span>
+country_list &lt;-<span class="st"> </span><span class="kw">unique</span>(gapminder<span class="op">$</span>country) <span class="co"># ?unique() returns the unique values</span>
 country_pop_mean &lt;-<span class="st"> </span><span class="kw">data.frame</span>()
-for (cntry in country_list) {
-  cntry_subset &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country ==<span class="st"> </span>cntry) 
+<span class="cf">for</span> (cntry <span class="cf">in</span> country_list) {
+  cntry_subset &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country <span class="op">==</span><span class="st"> </span>cntry) 
   <span class="co"># plot(cntry_subset$year, cntry_subset$pop)</span>
   <span class="co"># dev.print(pdf, paste0(&quot;figures/&quot;, cntry,&quot;.pdf&quot;)) </span>
   
-  pop_mean &lt;-<span class="st"> </span><span class="kw">mean</span>(cntry_subset$pop)
+  pop_mean &lt;-<span class="st"> </span><span class="kw">mean</span>(cntry_subset<span class="op">$</span>pop)
   <span class="co"># print(paste(&#39;mean pop for&#39;, cntry, &#39;is&#39;, pop_mean))</span>
   country_pop_mean &lt;-<span class="st"> </span><span class="kw">rbind</span>(country_pop_mean, <span class="kw">data.frame</span>(cntry, pop_mean))
   
   ## if Asia, calculate mean(lifeExp)
-  if (<span class="kw">unique</span>(cntry_subset$continent) ==<span class="st"> &quot;Asia&quot;</span>) { <span class="co"># read: if (the continent is Asia) {then}</span>
-    <span class="kw">plot</span>(cntry_subset$year, cntry_subset$lifeExp) 
+  <span class="cf">if</span> (<span class="kw">unique</span>(cntry_subset<span class="op">$</span>continent) <span class="op">==</span><span class="st"> &quot;Asia&quot;</span>) { <span class="co"># read: if (the continent is Asia) {then}</span>
+    <span class="kw">plot</span>(cntry_subset<span class="op">$</span>year, cntry_subset<span class="op">$</span>lifeExp) 
     <span class="kw">dev.print</span>(pdf, <span class="kw">paste0</span>(<span class="st">&quot;figures/&quot;</span>, cntry, <span class="st">&quot;_lifeExp.pdf&quot;</span>)) <span class="co"># change the filename</span>
   }
 } </code></pre></div>
 <p>And if the country is in Africa, let’s plot the mean GDP.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dir.create</span>(<span class="st">&#39;figures&#39;</span>) <span class="co"># this will be: software-carpentry/figures</span>
 
-country_list &lt;-<span class="st"> </span><span class="kw">unique</span>(gapminder$country) <span class="co"># ?unique() returns the unique values</span>
+country_list &lt;-<span class="st"> </span><span class="kw">unique</span>(gapminder<span class="op">$</span>country) <span class="co"># ?unique() returns the unique values</span>
 country_pop_mean &lt;-<span class="st"> </span><span class="kw">data.frame</span>()
-for (cntry in country_list) {
-  cntry_subset &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country ==<span class="st"> </span>cntry) 
+<span class="cf">for</span> (cntry <span class="cf">in</span> country_list) {
+  cntry_subset &lt;-<span class="st"> </span><span class="kw">subset</span>(gapminder, <span class="dt">subset =</span> country <span class="op">==</span><span class="st"> </span>cntry) 
   <span class="co"># plot(cntry_subset$year, cntry_subset$pop)</span>
   <span class="co"># dev.print(pdf, paste0(&quot;figures/&quot;, cntry,&quot;.pdf&quot;)) </span>
   
-  pop_mean &lt;-<span class="st"> </span><span class="kw">mean</span>(cntry_subset$pop)
+  pop_mean &lt;-<span class="st"> </span><span class="kw">mean</span>(cntry_subset<span class="op">$</span>pop)
   <span class="co"># print(paste(&#39;mean pop for&#39;, cntry, &#39;is&#39;, pop_mean))</span>
   country_pop_mean &lt;-<span class="st"> </span><span class="kw">rbind</span>(country_pop_mean, <span class="kw">data.frame</span>(cntry, pop_mean))
   
   ## if Asia, calculate mean(lifeExp)
-  if (<span class="kw">unique</span>(cntry_subset$continent) ==<span class="st"> &quot;Asia&quot;</span>) { <span class="co"># read: if (the continent is Asia) {then}</span>
-    <span class="kw">plot</span>(cntry_subset$year, cntry_subset$lifeExp) 
+  <span class="cf">if</span> (<span class="kw">unique</span>(cntry_subset<span class="op">$</span>continent) <span class="op">==</span><span class="st"> &quot;Asia&quot;</span>) { <span class="co"># read: if (the continent is Asia) {then}</span>
+    <span class="kw">plot</span>(cntry_subset<span class="op">$</span>year, cntry_subset<span class="op">$</span>lifeExp) 
     <span class="kw">dev.print</span>(pdf, <span class="kw">paste0</span>(<span class="st">&quot;figures/&quot;</span>, cntry, <span class="st">&quot;_lifeExp.pdf&quot;</span>)) 
-  } else if (<span class="kw">unique</span>(cntry_subset$continent) ==<span class="st"> &quot;Africa&quot;</span>) {
-    <span class="kw">plot</span>(cntry_subset$year, cntry_subset$gdpPercap) 
+  } <span class="cf">else</span> <span class="cf">if</span> (<span class="kw">unique</span>(cntry_subset<span class="op">$</span>continent) <span class="op">==</span><span class="st"> &quot;Africa&quot;</span>) {
+    <span class="kw">plot</span>(cntry_subset<span class="op">$</span>year, cntry_subset<span class="op">$</span>gdpPercap) 
     <span class="kw">dev.print</span>(pdf, <span class="kw">paste0</span>(<span class="st">&quot;figures/&quot;</span>, cntry, <span class="st">&quot;_gdpPercap.pdf&quot;</span>)) <span class="co"># change the filename</span>
   }
 } </code></pre></div>
@@ -515,20 +515,20 @@ for (cntry in country_list) {
 <h3><span class="header-section-number">8.5.1</span> TODO: variable classes?</h3>
 <p>Let’s explore a numeric variable: life expectancy.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## explore numeric variable
-<span class="kw">summary</span>(gapminder$lifeExp)
-<span class="kw">hist</span>(gapminder$lifeExp)</code></pre></div>
+<span class="kw">summary</span>(gapminder<span class="op">$</span>lifeExp)
+<span class="kw">hist</span>(gapminder<span class="op">$</span>lifeExp)</code></pre></div>
 <p>Let’s explore a categorical variable (stored as a <em>factor</em> in R): continent.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## explore factor variable
-<span class="kw">summary</span>(gapminder$continent)
-<span class="kw">levels</span>(gapminder$continent)
-<span class="kw">nlevels</span>(gapminder$continent)
-<span class="kw">hist</span>(gapminder$continent) <span class="co"># whaaaa!?</span></code></pre></div>
+<span class="kw">summary</span>(gapminder<span class="op">$</span>continent)
+<span class="kw">levels</span>(gapminder<span class="op">$</span>continent)
+<span class="kw">nlevels</span>(gapminder<span class="op">$</span>continent)
+<span class="kw">hist</span>(gapminder<span class="op">$</span>continent) <span class="co"># whaaaa!?</span></code></pre></div>
 <p>This error is because of what factors are ‘under the hood’: R is really storing integer codes 1, 2, 3 here, but represent them as text to us. Factors can be problematic to us because of this, but you can learn to navigate with them. There are resources to learn how to <a href="http://stat545.com/block014_factors.html">properly care and feed for factors</a>.</p>
 <p>One thing you’ll learn is how to visualize factors with which functions/packages.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(gapminder$continent) <span class="co"># ?class returns the class type of the object</span>
-<span class="kw">table</span>(gapminder$continent) <span class="co"># ?table builds a table based on factor levels </span>
-<span class="kw">class</span>(<span class="kw">table</span>(gapminder$continent)) <span class="co"># this has morphed the factor...</span>
-<span class="kw">hist</span>(<span class="kw">table</span>(gapminder$continent)) <span class="co"># so we can plot!</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(gapminder<span class="op">$</span>continent) <span class="co"># ?class returns the class type of the object</span>
+<span class="kw">table</span>(gapminder<span class="op">$</span>continent) <span class="co"># ?table builds a table based on factor levels </span>
+<span class="kw">class</span>(<span class="kw">table</span>(gapminder<span class="op">$</span>continent)) <span class="co"># this has morphed the factor...</span>
+<span class="kw">hist</span>(<span class="kw">table</span>(gapminder<span class="op">$</span>continent)) <span class="co"># so we can plot!</span></code></pre></div>
 <p>I don’t want us to get too bogged down with what’s going on with <code>table()</code> and plotting factors, but I want to expose you to these situations because you will encounter them. Googling the error messages you get, and knowing how to look for good responses is a critical skill. (I tend to look for responses from stackoverflow.com that are recent and have green checks, and ignore snarky comments).</p>
 <blockquote>
 <p>Exercise with your neighbor: Explore <code>gapminder$gdpPercap</code>. What kind of data is it? So which commands do you use?</p>
