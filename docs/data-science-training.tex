@@ -122,7 +122,7 @@
   \postauthor{\par}
   \predate{\centering\large\emph}
   \postdate{\par}
-  \date{2017-11-21}
+  \date{2017-11-22}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -962,7 +962,7 @@ functions have (or require) arguments:
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "Tue Nov 21 22:33:51 2017"
+## [1] "Wed Nov 22 13:17:38 2017"
 \end{verbatim}
 
 \section{Clearing the environment}\label{clearing-the-environment}
@@ -1753,11 +1753,12 @@ GitHub Hell (troubleshooting)}.
 
 \chapter{Visualizing data}\label{viz}
 
-\textbf{In development.}
+This lesson borrows heavily from Hadley Wickham's R4DS, and the Software
+Carpentry R for Ecology lesson. (add links)
 
 \section{Objectives \& Resources}\label{objectives-resources-1}
 
-\subsubsection{Objectives}\label{objectives-1}
+\subsection{Objectives}\label{objectives-1}
 
 \begin{itemize}
 \tightlist
@@ -1782,32 +1783,22 @@ describing and building graphs. With ggplot2, you can do more faster by
 learning one system and applying it in many places.'' -
 \href{http://r4ds.had.co.nz/data-visualisation.html}{R4DS}
 
-\begin{itemize}
-\item
-  Conceptual and building, cheatsheet images
-\item
-  \url{http://r4ds.had.co.nz/data-visualisation.html}
-\item
-  \url{https://pdfs.semanticscholar.org/d779/6f85dabccd18673f382c100fc06f55e8b501.pdf}
-\end{itemize}
+\subsection{Resources}\label{resources-1}
 
-\subsubsection{Resources}\label{resources-1}
-
-Here are some resources that helped make this tutorial: -
-\href{http://r4ds.had.co.nz/data-visualisation.html}{R for Data Science}
+Here are some resources that helped make this tutorial:\\
+- \href{http://r4ds.had.co.nz/data-visualisation.html}{R for Data
+Science}\\
 -
-\href{../cheatsheets/ggplot2-cheatsheet-2.0.pdf}{ggplot2-cheatsheet-2.0.pdf}
+\href{../cheatsheets/ggplot2-cheatsheet-2.0.pdf}{ggplot2-cheatsheet-2.0.pdf}\\
 -
 \href{http://ucsb-bren.github.io/env-info/wk06_widgets.html}{Interactive
-Plots and Maps - Environmental Informatics} -
-\href{http://www.cookbook-r.com/Graphs/\#graphs-with-ggplot2}{Graphs
-with ggplot2 - Cookbook for R} -
-\href{http://www.sthda.com/english/wiki/ggplot2-essentials}{ggplot2
-Essentials - STHDA}
-
-D Robinson: - \url{http://varianceexplained.org/r/why-I-use-ggplot2/};
-add screenshot of ggplot2 cheatsheet -
-\url{http://varianceexplained.org/RData/}
+Plots and Maps - Environmental Informatics}\\
+- \href{http://www.cookbook-r.com/Graphs/\#graphs-with-ggplot2}{Graphs
+with ggplot2 - Cookbook for R}\\
+- \href{http://www.sthda.com/english/wiki/ggplot2-essentials}{ggplot2
+Essentials - STHDA}\\
+- \href{http://varianceexplained.org/r/why-I-use-ggplot2/}{``Why I use
+ggplot2'' - David Robinson Blog Post}
 
 \section{\texorpdfstring{Install our first package:
 \texttt{tidyverse}}{Install our first package: tidyverse}}\label{install-our-first-package-tidyverse}
@@ -1853,7 +1844,7 @@ few name conflicts; it is alerting you that we'll be using two functions
 from dplyr instead of the built-in stats package.
 
 What's the difference between \texttt{install.packages()} and
-\texttt{library()}? Why do you need both? Here's my analogy:
+\texttt{library()}? Why do you need both? Here's an analogy:
 
 \begin{itemize}
 \tightlist
@@ -1876,38 +1867,749 @@ available (update button). You can also click on the name of the package
 to see all the functions inside it --- this is a super helpful feature
 that I use all the time.
 
-\section{Aesthetic mappings}\label{aesthetic-mappings}
+\section{\texorpdfstring{Plotting with
+\textbf{\texttt{ggplot2}}}{Plotting with ggplot2}}\label{plotting-with-ggplot2}
 
-\begin{figure}
-\centering
-\includegraphics{img/rstudio-cheatsheet-ggplot.png}
-\caption{}
-\end{figure}
+\textbf{\texttt{ggplot2}} is a plotting package that makes it simple to
+create complex plots from data in a data frame. It provides a more
+programmatic interface for specifying what variables to plot, how they
+are displayed, and general visual properties. Therefore, we only need
+minimal changes if the underlying data change or if we decide to change
+from a bar plot to a scatterplot. This helps in creating publication
+quality plots with minimal amounts of adjustments and tweaking.
 
-\section{push to GitHub}\label{push-to-github}
+ggplot likes data in the `long' format: i.e., a column for every
+dimension, and a row for every observation. Well structured data will
+save you lots of time when making figures with ggplot.
 
-\subsection{Your turn}\label{your-turn-5}
+ggplot graphics are built step by step by adding new elements. Adding
+layers in this fashion allows for extensive flexibility and
+customization of plots.
 
-\section{Common problems}\label{common-problems}
+ \includegraphics{img/rstudio-cheatsheet-ggplot.png}
 
-\ldots{}
+\section{Data}\label{data}
 
-\subsection{Your turn}\label{your-turn-6}
+We are going to use the \texttt{mpg} dataset which provides information
+on fuel economy data for 38 car models.
 
-\section{The Layered Grammar of
-Graphics}\label{the-layered-grammar-of-graphics}
+This data comes preloaded with the \texttt{tidyverse} so it is already
+loaded into R. Let's take a look at it.
 
-\section{push to GitHub}\label{push-to-github-1}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mpg}
+\end{Highlighting}
+\end{Shaded}
 
-Explore GitHub; show that your fig has a URL you could share with
-someone
+\begin{verbatim}
+## # A tibble: 234 x 11
+##    manufacturer      model displ  year   cyl      trans   drv   cty   hwy
+##           <chr>      <chr> <dbl> <int> <int>      <chr> <chr> <int> <int>
+##  1         audi         a4   1.8  1999     4   auto(l5)     f    18    29
+##  2         audi         a4   1.8  1999     4 manual(m5)     f    21    29
+##  3         audi         a4   2.0  2008     4 manual(m6)     f    20    31
+##  4         audi         a4   2.0  2008     4   auto(av)     f    21    30
+##  5         audi         a4   2.8  1999     6   auto(l5)     f    16    26
+##  6         audi         a4   2.8  1999     6 manual(m5)     f    18    26
+##  7         audi         a4   3.1  2008     6   auto(av)     f    18    27
+##  8         audi a4 quattro   1.8  1999     4 manual(m5)     4    18    26
+##  9         audi a4 quattro   1.8  1999     4   auto(l5)     4    16    25
+## 10         audi a4 quattro   2.0  2008     4 manual(m6)     4    20    28
+## # ... with 224 more rows, and 2 more variables: fl <chr>, class <chr>
+\end{verbatim}
 
-\section{end of the day: intro to Markdown
-(README)?}\label{end-of-the-day-intro-to-markdown-readme}
+Among the variables in \texttt{mpg} are:
 
-so they can post a figure on a readme?
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \texttt{displ}, a car's engine size, in litres.
+\item
+  \texttt{hwy}, a car's fuel efficiency on the highway, in miles per
+  gallon (mpg). A car with a low fuel efficiency consumes more fuel than
+  a car with a high fuel efficiency when they travel the same distance.
+\end{enumerate}
 
-\section{Troubleshooting}\label{troubleshooting-2}
+To learn more about \texttt{mpg}, open its help page by running
+\texttt{?mpg}.
+
+To build a ggplot, we need to:
+
+\begin{itemize}
+\tightlist
+\item
+  use the \texttt{ggplot()} function and bind the plot to a specific
+  data frame using the\\
+  \texttt{data} argument
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ mpg)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  define aesthetics (\texttt{aes}), by selecting the variables to be
+  plotted and the\\
+  variables to define the presentation such as plotting size, shape
+  color, etc.
+\end{itemize}
+
+Run this code to put \texttt{displ} on the x-axis and \texttt{hwy} on
+the y-axis:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ mpg, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ displ, }\DataTypeTok{y =}\NormalTok{ hwy))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  add \texttt{geoms} -- graphical representation of the data in the plot
+  (points, lines, bars). \textbf{\texttt{ggplot2}} offers many different
+  geoms; we will use some common ones today, including:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{geom\_point()} for scatter plots, dot plots, etc.
+  \item
+    \texttt{geom\_bar()} for bar charts
+  \item
+    \texttt{geom\_line()} for trend lines, time-series, etc.
+  \end{itemize}
+\end{itemize}
+
+To add a geom to the plot use \texttt{+} operator. Because we have two
+continuous variables,\\
+let's use \texttt{geom\_point()} first:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ mpg, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ displ, }\DataTypeTok{y =}\NormalTok{ hwy)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data-science-training_files/figure-latex/first-ggplot-1.pdf}
+
+The \texttt{+} in the \textbf{\texttt{ggplot2}} package is particularly
+useful because it allows you to modify existing \texttt{ggplot} objects.
+This means you can easily set up plot ``templates'' and conveniently
+explore different types of plots, so the above plot can also be
+generated with code like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Assign plot to a variable}
+\NormalTok{car_plot <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ mpg, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ displ, }\DataTypeTok{y =}\NormalTok{ hwy))}
+
+\CommentTok{# Draw the plot}
+\NormalTok{car_plot }\OperatorTok{+}\StringTok{ }
+\StringTok{    }\KeywordTok{geom_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+Notes:
+
+\begin{itemize}
+\tightlist
+\item
+  Anything you put in the \texttt{ggplot()} function can be seen by any
+  geom layers that you add (i.e., these are universal plot settings).
+  This includes the x and y axis you set up in \texttt{aes()}.
+\item
+  You can also specify aesthetics for a given geom independently of the
+  aesthetics defined globally in the \texttt{ggplot()} function.
+\item
+  The \texttt{+} sign used to add layers must be placed at the end of
+  each line containing a layer. If, instead, the \texttt{+} sign is
+  added in the line before the other layer, \textbf{\texttt{ggplot2}}
+  will not add the new layer and will return an error message.
+\end{itemize}
+
+\begin{quote}
+\textbf{STOP: let's Commit, Pull and Push to GitHub}
+\end{quote}
+
+\section{Building your plots
+iteratively}\label{building-your-plots-iteratively}
+
+Building plots with ggplot is typically an iterative process. We start
+by defining the dataset we'll use, lay the axes, and choose a geom:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ mpg, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ displ, }\DataTypeTok{y =}\NormalTok{ hwy)) }\OperatorTok{+}
+\StringTok{    }\KeywordTok{geom_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data-science-training_files/figure-latex/create-ggplot-object-1.pdf}
+
+Then, we start modifying this plot to extract more information from it.
+For instance, we can add transparency (\texttt{alpha}) to avoid
+overplotting:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ mpg, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ displ, }\DataTypeTok{y =}\NormalTok{ hwy)) }\OperatorTok{+}
+\StringTok{    }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{alpha =} \FloatTok{0.4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data-science-training_files/figure-latex/adding-transparency-1.pdf}
+
+Or to color each species in the plot differently:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ mpg, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ displ, }\DataTypeTok{y =}\NormalTok{ hwy)) }\OperatorTok{+}
+\StringTok{    }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{color =}\NormalTok{ class))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data-science-training_files/figure-latex/color-by-species-1.pdf}
+
+In the above example, we mapped \texttt{class} to the color aesthetic,
+but we could have mapped \texttt{class} to the shape aesthetic in the
+same way. In this case, the shape of each point would reveal its class
+affiliation.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ mpg) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{mapping =} \KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ displ, }\DataTypeTok{y =}\NormalTok{ hwy, }\DataTypeTok{shape =}\NormalTok{ class))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data-science-training_files/figure-latex/unnamed-chunk-34-1.pdf}
+
+What happened to the SUVs? ggplot2 will only use six shapes at a time.
+By default, additional groups will go unplotted when you use the shape
+aesthetic.
+
+\begin{quote}
+\subsection{Exercise}\label{exercise}
+
+Make a scatterplot of \texttt{hwy} vs \texttt{cty} with different size
+points representing each car class and different colors for each fuel
+type.
+\end{quote}
+
+We get a \emph{warning} here, because mapping an unordered variable
+(\texttt{class}) to an ordered aesthetic (\texttt{size}) is not a good
+idea.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ mpg) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{mapping =} \KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ cty, }\DataTypeTok{y =}\NormalTok{ hwy, }\DataTypeTok{size =}\NormalTok{ class, }\DataTypeTok{color =}\NormalTok{ fl))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data-science-training_files/figure-latex/unnamed-chunk-35-1.pdf}
+
+We can also add colors for all the points. Here, the color doesn't
+convey information about a variable, but only changes the appearance of
+the plot. To set an aesthetic manually, set the aesthetic by name as an
+argument of your geom function; i.e.~it goes \emph{outside} of
+\texttt{aes()}. You'll need to pick a value that makes sense for that
+aesthetic:
+
+\begin{itemize}
+\item
+  The name of a color as a character string.
+\item
+  The size of a point in mm.
+\item
+  The shape of a point as a number.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ mpg, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ displ, }\DataTypeTok{y =}\NormalTok{ hwy)) }\OperatorTok{+}
+\StringTok{    }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{alpha =} \FloatTok{0.4}\NormalTok{, }\DataTypeTok{color =} \StringTok{"blue"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data-science-training_files/figure-latex/adding-colors-1.pdf}
+
+\begin{quote}
+\subsection{Exercise}\label{exercise-1}
+\end{quote}
+
+\begin{quote}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  What's gone wrong with this code?
+\end{enumerate}
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ mpg) }\OperatorTok{+}\StringTok{ }
+\StringTok{      }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ displ, }\DataTypeTok{y =}\NormalTok{ hwy, }\DataTypeTok{color =} \StringTok{"blue"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Plot \texttt{hwy} vs \texttt{displ} and have the point color to
+  indicate \texttt{cty} mpg.
+\item
+  Now instead of color, use shape to indicate \texttt{cty} mpg. Why are
+  these two aesthetics behaving differently?
+\item
+  What happens if you map an aesthetic to something other than a
+  variable name, like \texttt{aes(colour\ =\ displ\ \textless{}\ 5)}?
+\end{enumerate}
+\end{quote}
+
+\begin{quote}
+\textbf{STOP: commit, pull and push to github}
+\end{quote}
+
+\section{Faceting}\label{faceting}
+
+ggplot has a special technique called \emph{faceting} that allows the
+user to split one plot into multiple plots based on a factor included in
+the dataset. We will use it to make a time series plot for each car
+manufacturer:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ mpg, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ displ, }\DataTypeTok{y =}\NormalTok{ hwy)) }\OperatorTok{+}
+\StringTok{    }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}
+\StringTok{    }\KeywordTok{facet_wrap}\NormalTok{(}\OperatorTok{~}\StringTok{ }\NormalTok{manufacturer)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data-science-training_files/figure-latex/first-facet-1.pdf}
+
+We can now make the faceted plot by splitting further by class using
+\texttt{color} (within a single plot):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ mpg, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ displ, }\DataTypeTok{y =}\NormalTok{ hwy, }\DataTypeTok{color =}\NormalTok{ class)) }\OperatorTok{+}
+\StringTok{     }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}
+\StringTok{     }\KeywordTok{facet_wrap}\NormalTok{(}\OperatorTok{~}\StringTok{ }\NormalTok{manufacturer)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data-science-training_files/figure-latex/facet-by-species-and-sex-1.pdf}
+
+Usually plots with white background look more readable when printed. We
+can set the background to white using the function \texttt{theme\_bw()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ mpg, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ displ, }\DataTypeTok{y =}\NormalTok{ hwy, }\DataTypeTok{color =}\NormalTok{ class)) }\OperatorTok{+}
+\StringTok{     }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}
+\StringTok{     }\KeywordTok{facet_wrap}\NormalTok{(}\OperatorTok{~}\StringTok{ }\NormalTok{manufacturer) }\OperatorTok{+}
+\StringTok{     }\KeywordTok{theme_bw}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data-science-training_files/figure-latex/facet-by-species-and-sex-white-bg-1.pdf}
+
+\section{\texorpdfstring{\textbf{\texttt{ggplot2}}
+themes}{ggplot2 themes}}\label{ggplot2-themes}
+
+In addition to \texttt{theme\_bw()}, which changes the plot background
+to white, \textbf{\texttt{ggplot2}} comes with several other themes
+which can be useful to quickly change the look of your visualization.
+
+\begin{quote}
+\subsection{Exercise}\label{exercise-2}
+
+Spend a couple minutes trying out your plot with different plot themes.
+The complete list of themes is available at
+\url{http://docs.ggplot2.org/current/ggtheme.html}.
+\texttt{theme\_minimal()} and \texttt{theme\_light()} are popular, and
+\texttt{theme\_void()} can be useful as a starting point to create a new
+hand-crafted theme.
+\end{quote}
+
+The
+\href{https://cran.r-project.org/web/packages/ggthemes/vignettes/ggthemes.html}{ggthemes}
+package provides a wide variety of options (including an Excel 2003
+theme). The
+\href{https://www.ggplot2-exts.org}{\textbf{\texttt{ggplot2}} extensions
+website} provides a list of packages that extend the capabilities of
+\textbf{\texttt{ggplot2}}, including additional themes.
+
+\section{Geometric objects (geoms)}\label{geometric-objects-geoms}
+
+A \textbf{geom} is the geometrical object that a plot uses to represent
+data. People often describe plots by the type of geom that the plot
+uses. For example, bar charts use bar geoms, line charts use line geoms,
+boxplots use boxplot geoms, and so on. Scatterplots break the trend;
+they use the point geom. You can use different geoms to plot the same
+data. To change the geom in your plot, change the geom function that you
+add to \texttt{ggplot()}. Let's look at the number of cars in each
+driving class (\texttt{drv}).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ drv, }\DataTypeTok{y =}\NormalTok{ hwy)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_jitter}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data-science-training_files/figure-latex/unnamed-chunk-38-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ drv, }\DataTypeTok{y =}\NormalTok{ hwy)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data-science-training_files/figure-latex/unnamed-chunk-38-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ drv, }\DataTypeTok{y =}\NormalTok{ hwy)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_violin}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data-science-training_files/figure-latex/unnamed-chunk-38-3.pdf}
+
+To plot a smoothed mean from the data above, use \texttt{geom\_smooth}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ mpg) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ displ, }\DataTypeTok{y =}\NormalTok{ hwy))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data-science-training_files/figure-latex/unnamed-chunk-39-1.pdf}
+
+\texttt{ggplot2} provides over 30 geoms, and extension packages provide
+even more (see \url{https://www.ggplot2-exts.org} for a sampling). The
+best way to get a comprehensive overview is the
+\href{http://rstudio.com/cheatsheets}{ggplot2 cheatsheet}. To learn more
+about any single geom, use help: \texttt{?geom\_smooth}.
+
+To display multiple geoms in the same plot, add multiple geom functions
+to \texttt{ggplot()}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ mpg) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ displ, }\DataTypeTok{y =}\NormalTok{ hwy)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ displ, }\DataTypeTok{y =}\NormalTok{ hwy))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data-science-training_files/figure-latex/unnamed-chunk-40-1.pdf}
+
+Notice that this plot contains two geoms in the same graph!
+
+This, however, introduces some duplication in our code. Imagine if you
+wanted to change the y-axis to display \texttt{cty} instead of
+\texttt{hwy}. You'd need to change the variable in two places, and you
+might forget to update one. You can avoid this type of repetition by
+passing a set of mappings to \texttt{ggplot()}. ggplot2 will treat these
+mappings as global mappings that apply to each geom in the graph. In
+other words, this code will produce the same plot as the previous code:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ mpg, }\DataTypeTok{mapping =} \KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ displ, }\DataTypeTok{y =}\NormalTok{ hwy)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+If you place mappings in a geom function, ggplot2 will treat them as
+local mappings for the layer. It will use these mappings to extend or
+overwrite the global mappings \emph{for that layer only}. This makes it
+possible to display different aesthetics in different layers.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ mpg, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ displ, }\DataTypeTok{y =}\NormalTok{ hwy)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{color =}\NormalTok{ class)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data-science-training_files/figure-latex/unnamed-chunk-42-1.pdf}
+
+\section{Customization}\label{customization}
+
+Take a look at the
+\href{https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf}{\textbf{\texttt{ggplot2}}
+cheat sheet}, and think of ways you could improve the plot.
+
+Now, let's change names of axes to something more informative than `hwy'
+and `displ' and add a title to the figure:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ mpg, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ displ, }\DataTypeTok{y =}\NormalTok{ hwy)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{color =}\NormalTok{ class)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Relationship between engine size and miles per gallon (mpg)"}\NormalTok{,}
+         \DataTypeTok{x =} \StringTok{"Highway MPG"}\NormalTok{,}
+         \DataTypeTok{y =} \StringTok{"Engine displacement (liters)"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme_bw}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data-science-training_files/figure-latex/number-species-year-with-right-labels-1.pdf}
+
+The axes have more informative names, but their readability can be
+improved by increasing the font size:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ mpg, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ displ, }\DataTypeTok{y =}\NormalTok{ hwy)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{color =}\NormalTok{ class)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Relationship between engine size and mpg"}\NormalTok{,}
+         \DataTypeTok{x =} \StringTok{"Highway MPG"}\NormalTok{,}
+         \DataTypeTok{y =} \StringTok{"Engine displacement (liters)"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme_bw}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{text=}\KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size =} \DecValTok{16}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data-science-training_files/figure-latex/number-species-year-with-right-labels-xfont-size-1.pdf}
+
+\begin{quote}
+\subsection{Challenge}\label{challenge}
+\end{quote}
+
+\begin{quote}
+With all of this information in hand, please take another five minutes
+to either improve one of the plots generated in this exercise or create
+a beautiful graph of your own. Use the RStudio
+\href{https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf}{\textbf{\texttt{ggplot2}}
+cheat sheet} for inspiration.
+\end{quote}
+
+\begin{quote}
+Here are some ideas:
+\end{quote}
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  See if you can change the thickness of the lines.
+\item
+  Can you find a way to change the name of the legend? What about its
+  labels?
+\item
+  Try using a different color palette (see
+  \url{http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/}).
+\end{itemize}
+\end{quote}
+
+\section{Bar charts}\label{bar-charts}
+
+Next, let's take a look at a bar chart. Bar charts seem simple, but they
+are interesting because they reveal something subtle about plots.
+Consider a basic bar chart, as drawn with \texttt{geom\_bar()}. The
+following chart displays the total number of cars in the \texttt{mpg}
+dataset, grouped by \texttt{fl} (fuel type).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ mpg) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ fl))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data-science-training_files/figure-latex/unnamed-chunk-43-1.pdf}
+
+On the x-axis, the chart displays \texttt{fl}, a variable from
+\texttt{mpg}. On the y-axis, it displays count, but count is not a
+variable in \texttt{mpg}! Where does count come from? Many graphs, like
+scatterplots, plot the raw values of your dataset. Other graphs, like
+bar charts, calculate new values to plot:
+
+\begin{itemize}
+\item
+  bar charts, histograms, and frequency polygons bin your data and then
+  plot bin counts, the number of points that fall in each bin.
+\item
+  smoothers fit a model to your data and then plot predictions from the
+  model.
+\item
+  boxplots compute a robust summary of the distribution and then display
+  a specially formatted box.
+\end{itemize}
+
+The algorithm used to calculate new values for a graph is called a
+\textbf{stat}, short for statistical transformation.
+
+You can learn which stat a geom uses by inspecting the default value for
+the \texttt{stat} argument. For example, \texttt{?geom\_bar} shows that
+the default value for \texttt{stat} is ``count'', which means that
+\texttt{geom\_bar()} uses \texttt{stat\_count()}. \texttt{stat\_count()}
+is documented on the same page as \texttt{geom\_bar()}, and if you
+scroll down you can find a section called ``Computed variables''. That
+describes how it computes two new variables: \texttt{count} and
+\texttt{prop}.
+
+ggplot2 provides over 20 stats for you to use. Each stat is a function,
+so you can get help in the usual way, e.g. \texttt{?stat\_bin}. To see a
+complete list of stats, try the ggplot2 cheatsheet.
+
+\subsection{Position adjustments}\label{position-adjustments}
+
+There's one more piece of magic associated with bar charts. You can
+colour a bar chart using either the \texttt{color} aesthetic, or, more
+usefully, \texttt{fill}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ mpg) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ fl, }\DataTypeTok{fill =}\NormalTok{ fl))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data-science-training_files/figure-latex/unnamed-chunk-44-1.pdf}
+
+This isn't particularly useful since both the geom and the color are
+displaying the same information. Instead, map the fill aesthetic to
+another variable, like \texttt{class}: the bars are automatically
+stacked. Each colored rectangle represents a combination of \texttt{fl}
+and \texttt{class}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ mpg) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ fl, }\DataTypeTok{fill =}\NormalTok{ class))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data-science-training_files/figure-latex/unnamed-chunk-45-1.pdf}
+
+The stacking is performed automatically by the \textbf{position
+adjustment} specified by the \texttt{position} argument. If you don't
+want a stacked bar chart, you can use \texttt{"dodge"} or
+\texttt{"fill"}.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{position\ =\ "fill"} works like stacking, but makes each set
+  of stacked bars the same height. This makes it easier to compare
+  proportions across groups.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ mpg) }\OperatorTok{+}\StringTok{ }
+\StringTok{      }\KeywordTok{geom_bar}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ fl, }\DataTypeTok{fill =}\NormalTok{ class), }\DataTypeTok{position =} \StringTok{"fill"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data-science-training_files/figure-latex/unnamed-chunk-46-1.pdf}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{position\ =\ "dodge"} places overlapping objects directly
+  \emph{beside} one another. This makes it easier to compare individual
+  values.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ mpg) }\OperatorTok{+}\StringTok{ }
+\StringTok{      }\KeywordTok{geom_bar}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ fl, }\DataTypeTok{fill =}\NormalTok{ class), }\DataTypeTok{position =} \StringTok{"dodge"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data-science-training_files/figure-latex/unnamed-chunk-47-1.pdf}
+
+\begin{quote}
+\subsection{Challenge}\label{challenge-1}
+\end{quote}
+
+\begin{quote}
+With all of this information in hand, please take another five minutes
+to either improve one of the plots generated in this exercise or create
+a beautiful graph of your own. Use the RStudio
+\href{https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf}{\textbf{\texttt{ggplot2}}
+cheat sheet} for inspiration. Remember to use the help documentation
+(e.g. \texttt{?geom\_bar})
+\end{quote}
+
+\begin{quote}
+Here are some ideas:
+\end{quote}
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  Plot different variables using \texttt{geom\_bar()}. For what
+  variables is this geom useful?
+\item
+  Flip the x and y axes.
+\item
+  Can you find a way to change the name of the legend? What about its
+  labels?
+\item
+  Try using a different color palette (see
+  \url{http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/}).
+\end{itemize}
+\end{quote}
+
+\section{Arranging and exporting
+plots}\label{arranging-and-exporting-plots}
+
+After creating your plot, you can save it to a file in your favorite
+format. The Export tab in the \textbf{Plot} pane in RStudio will save
+your plots at low resolution, which will not be accepted by many
+journals and will not scale well for posters.
+
+Instead, use the \texttt{ggsave()} function, which allows you easily
+change the dimension and resolution of your plot by adjusting the
+appropriate arguments (\texttt{width}, \texttt{height} and
+\texttt{dpi}):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_plot <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ mpg, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ displ, }\DataTypeTok{y =}\NormalTok{ hwy)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{color =}\NormalTok{ class)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Relationship between engine size and mpg"}\NormalTok{,}
+         \DataTypeTok{x =} \StringTok{"Highway MPG"}\NormalTok{,}
+         \DataTypeTok{y =} \StringTok{"Engine displacement (liters)"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme_bw}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{text=}\KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size =} \DecValTok{16}\NormalTok{))}
+
+\KeywordTok{ggsave}\NormalTok{(}\StringTok{"name_of_file.png"}\NormalTok{, my_plot, }\DataTypeTok{width =} \DecValTok{15}\NormalTok{, }\DataTypeTok{height =} \DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Note: The parameters \texttt{width} and \texttt{height} also determine
+the font size in the saved plot.
+
+\section{Save and push to GitHub}\label{save-and-push-to-github}
 
 \chapter{\texorpdfstring{Wrangling
 (\texttt{dplyr})}{Wrangling (dplyr)}}\label{dplyr}
@@ -2341,7 +3043,7 @@ criteria:
 \end{Highlighting}
 \end{Shaded}
 
-\section{Your turn}\label{your-turn-7}
+\section{Your turn}\label{your-turn-5}
 
 What is the mean life expectancy of Sweden? Hint: do this in 2 steps by
 assigning a variable and then using the \texttt{mean()} function.
@@ -2522,7 +3224,7 @@ population and GDP per capita.
 \end{Highlighting}
 \end{Shaded}
 
-\subsection{Your turn}\label{your-turn-8}
+\subsection{Your turn}\label{your-turn-6}
 
 Find the maximum gdpPercap of Egypt and Vietnam Create a new column.
 
@@ -2646,7 +3348,7 @@ is \texttt{arrange()}.
 \end{Highlighting}
 \end{Shaded}
 
-\subsection{Your turn}\label{your-turn-9}
+\subsection{Your turn}\label{your-turn-7}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -2757,7 +3459,7 @@ Note too that the chain operator \texttt{\%\textgreater{}\%} that we
 used with the \texttt{tidyverse} lets us get away from the temporary
 variable x1.
 
-\subsection{Your Turn}\label{your-turn-10}
+\subsection{Your Turn}\label{your-turn-8}
 
 Get your RMarkdown file cleaned up and sync it for the last time today!
 
@@ -3171,7 +3873,7 @@ No warning messages\ldots{}still we inspect:
 
 Excellent. This is long format: every row is a unique observation. Yay!
 
-\subsection{Your turn}\label{your-turn-11}
+\subsection{Your turn}\label{your-turn-9}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -3235,7 +3937,7 @@ same dimensions as the original \texttt{gapminder}, but the order of the
 variables is different. Let's fix that before checking if they are
 \texttt{all.equal()}.
 
-\subsection{Your turn}\label{your-turn-12}
+\subsection{Your turn}\label{your-turn-10}
 
 Reorder the columns in ``gap\_normal'' to match ``gapminder''.
 
@@ -3320,7 +4022,7 @@ won't get into this difference now, I'm feeling good about these data
 sets! We've gone from the longest format back to the intermediate and we
 didn't introduce any errors in our code.)
 
-\section{Your turn}\label{your-turn-13}
+\section{Your turn}\label{your-turn-11}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
