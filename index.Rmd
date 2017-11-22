@@ -28,7 +28,7 @@ Suggested breakdown for a 2-day workshop:
 |:----------|----------:|----------:|
 |9-10:30    |  Motivation, R and RStudio|  Wrangling (tidyr)|
 |break      |  | |
-|11-12:30   | GitHub, scripting in R|  Extended analysis |
+|11-12:30   | RStudio + GitHub + RMarkdown|  Extended analysis |
 |lunch      |  ||
 |13:30-15:00 |  Visualization (ggplot2)| Collaborating with GitHub|
 |break      |  |  |
