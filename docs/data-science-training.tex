@@ -962,7 +962,7 @@ functions have (or require) arguments:
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "Mon Nov 27 14:08:18 2017"
+## [1] "Mon Nov 27 14:53:42 2017"
 \end{verbatim}
 
 \section{Clearing the environment}\label{clearing-the-environment}
@@ -4612,43 +4612,13 @@ up). Let's read in the file our colleague sent us:
 \begin{Highlighting}[]
 \NormalTok{## read in our colleague's data to join}
 \NormalTok{countries_estimated <-}\StringTok{ }\NormalTok{gapminder <-}\StringTok{ }\NormalTok{readr}\OperatorTok{::}\KeywordTok{read_csv}\NormalTok{(}\StringTok{'https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/countries_estimated.csv'}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
-\begin{verbatim}
-## Error in open.connection(con, "rb"): HTTP error 404.
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \NormalTok{## have a look}
 \KeywordTok{head}\NormalTok{(countries_estimated)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Error in head(countries_estimated): object 'countries_estimated' not found
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \KeywordTok{summary}\NormalTok{(countries_estimated)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Error in summary(countries_estimated): object 'countries_estimated' not found
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \KeywordTok{str}\NormalTok{(countries_estimated)}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-## Error in str(countries_estimated): object 'countries_estimated' not found
-\end{verbatim}
 
 (If you're interested, here is the code that I used to create this fake
 dataset:)

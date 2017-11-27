@@ -568,15 +568,12 @@ country_list &lt;-<span class="st"> </span><span class="kw">unique</span>(gap_eu
 <h2><span class="header-section-number">8.6</span> Joining datasets</h2>
 <p>Let’s say that our colleague just sent us another file that identifies when the data we’re using was estimated versus measured (I’m making this up). Let’s read in the file our colleague sent us:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## read in our colleague&#39;s data to join
-countries_estimated &lt;-<span class="st"> </span>gapminder &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/countries_estimated.csv&#39;</span>)</code></pre></div>
-<pre><code>## Error in open.connection(con, &quot;rb&quot;): HTTP error 404.</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## have a look
-<span class="kw">head</span>(countries_estimated)</code></pre></div>
-<pre><code>## Error in head(countries_estimated): object &#39;countries_estimated&#39; not found</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(countries_estimated)</code></pre></div>
-<pre><code>## Error in summary(countries_estimated): object &#39;countries_estimated&#39; not found</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(countries_estimated)</code></pre></div>
-<pre><code>## Error in str(countries_estimated): object &#39;countries_estimated&#39; not found</code></pre>
+countries_estimated &lt;-<span class="st"> </span>gapminder &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/countries_estimated.csv&#39;</span>)
+
+## have a look
+<span class="kw">head</span>(countries_estimated)
+<span class="kw">summary</span>(countries_estimated)
+<span class="kw">str</span>(countries_estimated)</code></pre></div>
 <p>(If you’re interested, here is the code that I used to create this fake dataset:)</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span>countries_list <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">estimated =</span> <span class="kw">runif</span>(<span class="kw">length</span>(country), <span class="dv">0</span>, <span class="dv">1</span>)) <span class="op">%&gt;%</span>
