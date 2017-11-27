@@ -2,31 +2,29 @@
 
 ## Objectives and Resources
 
+Do a little analysis: loop through and make figs, save them each.
+
 **Objectives**
 
-exposure and lots of practice: 
-
-Do a little analysis: for a continent, loop through and make figs, save them each.
-
-- importing and writing data
-    - write a local copy of gapminder data to data/ folder
-- strings and filenames: 
-    - Jenny Bryan pres, list.files(), file.path()
-    - stringr() http://r4ds.had.co.nz/strings.html
+- discuss good filenaming practices
+- create an R script
+- for loops
+- if statements
 - for loops introduce R Script
-    - save ggplot figs (also using stringr, paste()) http://r4ds.had.co.nz/iteration.html
+    - save ggplot figs (also using stringr, paste())
+    - file.path() http://r4ds.had.co.nz/iteration.html
+- make sure your loop worked like you wanted
 - if statements (conditionals) 
     - write message() to yourself
-- installing packages from github
+    - list.files()
+- importing and writing data
+    - write a local copy of gapminder data to data/ folder
+    - installing packages from github
+
 - also mention: lubridate, purrr (don't get into them)
 
-- end with a ton of resources:
-https://peerj.com/collections/50-practicaldatascistats/
 
-FINISH: organization and workflows
-source, 
-set up a folder for figs, intermediate analyses, final outputs
-(could even do an R package, etc). 
+
 
 
 
@@ -39,39 +37,49 @@ file.path()
 message() (with an if statement maybe)
 get file extensions https://stat.ethz.ch/R-manual/R-devel/library/tools/html/fileutils.html
 
-- installing packages from github
 - left_join
 
-You'll soon have questions that are outside the scope of this workshop, how do you find answers?
+## Naming files
+
+Now is a good interlude to talk about naming things. 
+
+We are going to take five minutes to talk through [Jenny Bryan's three principles for naming files](https://speakerdeck.com/jennybc/how-to-name-files):
+
+1. machine readable
+1. human readable
+1. play well with default ordering
+
+## Analysis plan
+
+OK, here is the plan for our analysis. We want to plot the gdpPercap for each country in the gapminder data frame. We will label each one and save it in a folder called figures. We will learn a bunch of things as we go. 
 
 
 ## Create an R script
 
-OK, now, let's go back to RStudio, and get ourselves back into learning R. We are going to create an R script. What is an R script? It's a text file with a .R extension. Writing R commands in the console like we did this morning is great, but limited; it's hard to keep track of and hard to efficiently share with others. Plus, as your analyses get more complicated, you need to be able to see them all in one place. 
+OK, now, we are going to create an R script. What is an R script? It's a text file with a .R extension. We've been writing R code in R Markdown files so far; R scripts are just R code without the Markdown along with it. 
 
 Go to File > New File > R Script (or click the green plus in the top left corner). 
 
-Let's set up this script for the rest of the day. Let's start off with a few comments so that we know what it is for, and save it. 
-
-By creating a script, we are seeing the 4th pane of the RStudio console, which is essentially a text editor. 
+Let's start off with a few comments so that we know what it is for, and save it:
 
 ```
-## swc-mbari.R
-## learning R
+## gapminder-analysis.R
+## analysis with gapminder data
 ## J Lowndes lowndes@nceas.uscb.edu
 ```
 
-Now, let's save it. I'm going to call my file `swc-mbari.R`.
+We'll be working with the gapminder data again so let's read it in here: 
 
-OK. Now let's practice with some of those commands that we were working on this morning. 
+```{r, message=FALSE}
+## load libraries
+library(tidyverse)
 
-Below your comments, type: 
+## read in gapminder data
+gapminder <- readr::read_csv('https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder.csv')
 
 ```
-x <- seq(1:15)
-```
 
-Now, hitting return does not execute this command; remember, it's just a text file. To execute it, we need to get what we typed in the script down into the console. How do we do it? There are several ways (let's do each of them):
+Remember, like in R Markdown, hitting return does not execute this command. To execute it, we need to get what we typed in the script down into the console. Here is how we can do that:
 
 1. copy-paste this line into the console.
 2. select the line (or simply put the cursor there), and click 'Run'. This is available from 
@@ -80,113 +88,232 @@ Now, hitting return does not execute this command; remember, it's just a text fi
     c. keyboard shortcut: command-return
 3. source the script, which means running the whole thing. This is also great for to see if there are any typos in your code that you've missed. You can do this by:
     a. clicking Source (blue arrow in the bar above the script).
-    b. typing `source('swc-mbari.R')` in the console (or from another R file!!!). 
+    b. typing `source('gapminder-analysis.R')` in the console (or from another R file!!!). 
 
+## Automation with for loops
 
-## Importing data
+Our plan is to plot gdpPercap for each country. This means that we want to do the same operation (plotting gdpPercap) on a bunch of different things (countries). Yesterday we learned the dplyr's `group_by()` function, and this is super powerful to automate through groups. But there are things that `group_by()` can't do, like plotting. So we will use a for loop.
 
-TODO
+Let's start off with what this would look like for just one country. I'm going to demonstrate with Afghanistan:
 
-Remember you'll use `install.packages("package-name-in-quotes")` and then `library(package-name)`, and then you can explore the help or vignettes. And also, of course, Google to see how to use them!
+<!---TODO
+For the figures, we want it to label the currency, which we have in another data file (=join). And, we'll want to add Westeros to the dataframe (=rbind) and create that figure too. 
+--->
 
-- `readr` to read in .csv files
-- `readxl` to read in Excel files
-- `stringr` to work with strings
-- `lubridate` to work with dates
+```{r}
+## filter the country to plot
+gap_to_plot <- gapminder %>%
+  filter(country == "Afghanistan")
 
-
-purrr:: LOVE LISTS
-- more efficient than for loops
-- plays nicely with pipes
-repurrsive
-
-Show how piping can be used in normal model fitting too (get away from nested stuff)
-
-
-## Repeating operations with for loops
-
-Let's say we want to subset a few countries and plot pop through time. We could do it the way above, which would look like the following: 
-```{r, eval=FALSE}
-## plot population of some countries
-mexico <- subset(gapminder, subset = country == "Mexico")
-plot(mexico$year, mexico$pop)
-dev.print(pdf, "mexico.pdf")
-
-panama <- subset(gapminder, subset = country == "Panama") 
-plot(panama$year, panama$pop)
-dev.print(pdf, "panama.pdf")
-
-ecuador <- subset(gapminder, subset = country == "Ecuador")
-plot(ecuador$year, ecuador$pop)
-dev.print(pdf, "ecuador")
+## plot
+ggplot(data = gap_to_plot, aes(x = year, y = gdpPercap)) + 
+  geom_point() +
+  labs(title = "Afghanistan")
 ```
 
-But you can see already it's a lot of text, which means typo-prone and hard to read. Even if you copy-paste each one, there's a lot of copy-paste, and is very typo-prone. Plus, what if you wanted to instead plot lifeExp? You'd have to remember to change it each time...it gets messy quick. And we're just doing it with 3 countries here; what if we wanted to do it to all 142 countries? Eek. 
+Let's actually give this a better title than just the country name. Let's use the `base::paste()` function from to paste two strings together so that the title is more descriptive. Use `?paste` to see what the "sep" variable does. 
+```{r}
+## filter the country to plot
+gap_to_plot <- gapminder %>%
+  filter(country == "Afghanistan")
 
+## plot
+ggplot(data = gap_to_plot, aes(x = year, y = gdpPercap)) + 
+  geom_point() +
+  ## add title and save
+  labs(title = paste("Afghanistan", "GDP per capita", sep = " "))
+```
+
+And as a last step, let's save this figure using `base::file.path()` (which works like paste() would if sep = "/"). 
+```{r}
+## filter the country to plot
+gap_to_plot <- gapminder %>%
+  filter(country == "Afghanistan")
+
+## plot
+ggplot(data = gap_to_plot, aes(x = year, y = gdpPercap)) + 
+  geom_point() +
+## add title and save
+  labs(title = paste("Afghanistan", "GDP per capita", sep = " ")) +
+  ggsave(filename = "Afghanistan_gdpPercap.png",
+         width = 15, height = 10)
+```
+
+OK. So we can check in our figures/folder and see that this works well. And there wasn't that much code needed to get us here, but we definitely do not want to copy this for every country. Even if we copy-pasted and switched out the names, it would be very typo-prone. Plus, what if you wanted to instead plot lifeExp? You'd have to remember to change it each time...it gets messy quick. 
 
 Better with a for loop. This will let us cycle through and do what we want to each thing in turn. If you want to iterate over a set of values, and perform the same operation on each, a `for` loop will do the job.
 
+### Basic structure
+
 The basic structure of a `for` loop is:
 ```{r, eval=FALSE}
-for(iterator in set of values){
+for( each item in set of items ){
   do a thing
 }
 ```
+Note the `( )` and the `{ }`. We talk about iterating through each item in the for loop, which makes each item an iterator.
 
-Let's paste from what we had before, and modify it. Also, the `set of values` is the list of countries (`country_list`), and we want to iterate through each country (let's spell it `cntry` so it's distinctive). 
+So looking back at our Afghanistan code: all of this is pretty much the "do a thing" part. And we can see that there are only a few places that are specific to Afghanistan. If we could make those places not specific to Afghanistan, we would be set. 
+
+![](img/for_loop_logic.png)
+
+Let's paste from what we had before, and modify it. I'm also going to use RStudio's identation help to indent the lines within the for loop by highlighting the code in this chunk and going to Code > Reindent Lines (shortcut: command I)
 ```{r, eval=FALSE}
-for (cntry in country_list) {
-  mexico <- subset(gapminder, subset = country == "Mexico") 
-  plot(mexico$year, mexico$pop)
+for( each item in set of items ){
+  
+  ## filter the country to plot
+  gap_to_plot <- gapminder %>%
+    filter(country == "Afghanistan")
+  
+  ## plot
+  ggplot(data = gap_to_plot, aes(x = year, y = gdpPercap)) + 
+    geom_point() +
+    ## add title and save
+    labs(title = paste("Afghanistan", "GDP per capita", sep = " ")) +
+    ggsave(filename = "Afghanistan_gdpPercap.png",
+           width = 15, height = 10)
 } 
 ```
 
-We can't call it mexico anymore, but we could call it something more general. And let's comment the plot() line out while we build this, and add a print statement to see if it's behaving like we think it is. 
+OK. So let's start with the beginning of the for loop. We want a list of countries that we will iterate through. We can do that by adding this code before the for loop. And we will need to name the iterator something, so let's call it cntry so that it has a distinct name. 
+
+We can also add a print statement so that we can watch it iterate:
 ```{r, eval=FALSE}
-for (cntry in country_list) {
-  cntry_subset <- subset(gapminder, subset = country == cntry)  
-  # plot(mexico$year, mexico$pop)
-  print(cntry_subset)
+## create a list of countries
+country_list <- c("Albania", "Fiji", "Spain")
+
+for( cntry in country_list ){
+  
+  ## filter the country to plot
+  gap_to_plot <- gapminder %>%
+    filter(country == "Afghanistan")
+  
+  ## add a print message 
+  print(paste("Plotting ", cntry))
+  
+  ## plot
+  ggplot(data = gap_to_plot, aes(x = year, y = gdpPercap)) + 
+    geom_point() +
+    ## add title and save
+    labs(title = paste("Afghanistan", "GDP per capita", sep = " ")) +
+    ggsave(filename = "Afghanistan_gdpPercap.png",
+           width = 15, height = 10)
 } 
 ```
 
-> Question: what is the variable `cntry_subset` right now, after running the for loop? 
+At this point, we do have a functioning for loop. For each item in the `country_list$country`, the for loop will iterate over the code within the `{ }`, changing `cntry` each time as it goes through the list. And we can see it works because our print statement displays each country. 
 
-Is this doing what we think it's doing? Let's create the country list and print the results each time to test our progress: 
+But our code doesn't work the way we expected. Why? Well, is looping through the 3 countries in our country_list, but it is creating plots for Afghanistan each time. We can see that by looking in the git tab: only that one Afghanistan figure. It's because we haven't brought the `cntry` variable into the for loop. Let's do that now. 
+
+### Functioning for loop
+
 ```{r, eval=FALSE}
-country_list <- c("Mexico", "Panama", "Ecuador") # identify the thing to loop through
-for (cntry in country_list) {
-  cntry_subset <- subset(gapminder, subset = country == cntry)  
-  # plot(mexico$year, mexico$pop)
-  print(cntry_subset)
+## create a list of countries
+country_list <- c("Albania", "Fiji", "Spain") 
+
+for( cntry in country_list ){
+  
+  ## filter the country to plot
+  gap_to_plot <- gapminder %>%
+    filter(country == cntry)
+  
+  ## add a print message 
+  print(paste("Plotting ", cntry))
+  
+  ## plot
+  ggplot(data = gap_to_plot, aes(x = year, y = gdpPercap)) + 
+    geom_point() +
+    ## add title and save
+    labs(title = paste(cntry, "GDP per capita", sep = " ")) +
+    ggsave(filename = paste(cntry, "_gdpPercap.png", sep = ""), 
+           width = 15, height = 10)
 } 
 ```
 
-Excellent. Let's move on with the plot. 
-```{r, eval=FALSE}
-country_list <- c("Mexico", "Panama", "Ecuador") 
-for (cntry in country_list) {
-  cntry_subset <- subset(gapminder, subset = country == cntry) 
-  plot(cntry_subset$year, cntry_subset$pop)
-  dev.print(pdf, paste0(cntry,".pdf")) # ?paste0() will paste a string
-} 
-```
 
 Great! And it doesn't matter if we just use these three countries or all the countries--let's try it. 
 
-First let's create a figure directory and make sure it saves there since it's going to get out of hand quickly: 
-```{r, eval=FALSE}
-dir.create('figures') # this will be: software-carpentry/figures
+But first let's create a figure directory and make sure it saves there since it's going to get out of hand quickly. We could do this from the Finder/Windows Explorer, or from the "Files" pane in RStudio by clicking "New Folder" (green plus button). But we are going to do it in R. A folder is called a directory:
 
+```{r, eval=FALSE}
+dir.create("figures") 
+
+## create a list of countries
 country_list <- unique(gapminder$country) # ?unique() returns the unique values
-for (cntry in country_list) {
-  cntry_subset <- subset(gapminder, subset = country == cntry) 
-  plot(cntry_subset$year, cntry_subset$pop)
-  dev.print(pdf, paste0("figures/", cntry,".pdf")) # don't forget the `/`: it's a path!
+
+for( cntry in country_list ){
+  
+  ## filter the country to plot
+  gap_to_plot <- gapminder %>%
+    filter(country == cntry)
+  
+  ## add a print message 
+  print(paste("Plotting ", cntry))
+  
+  ## plot
+  ggplot(data = gap_to_plot, aes(x = year, y = gdpPercap)) + 
+    geom_point() +
+    ## add title and save
+    labs(title = paste(cntry, "GDP per capita", sep = " ")) +
+    ggsave(filename = paste("figures/", cntry, "_gdpPercap.png", sep = ""), 
+           width = 15, height = 10)
 } 
 ```
 
 So that took a little longer than just the 3, but still super fast. For loops are sometimes just the thing you need to iterate over many things in your analyses. 
+
+### Clean up our repo
+
+OK we now have 142 figures that we just created. They exist locally on our computer, and we have the code to recreate them anytime. But, we don't really need to push them to GitHub. Let's delete the figures/ folder and see it disappear from the Git tab. 
+
+### Your turn
+
+1. Modify our for loop so that it loops through countries in Europe only, and saves them to a new subfolder inside the (recreated) figures folder called "Europe". 
+1. Sync to GitHub
+
+#### Answer
+
+## Conditional statements with `if` and `else` 
+
+Often when we're coding we want to control the flow of our actions. This can be done
+by setting actions to occur only if a condition or a set of conditions are met.
+```{r, eval=FALSE}
+# if
+if (condition is true) {
+  do something
+}
+
+# if ... else
+if (condition is true) {
+  do something
+} else {  # that is, if the condition is false,
+  do something different
+}
+```
+
+Say, for example, that in addition to saving population figures for all countries, we want to save life expectancy figures for countries in Asia only. 
+```{r, eval=FALSE}
+dir.create('figures') # this will be: software-carpentry/figures
+
+country_list <- unique(gapminder$country) # ?unique() returns the unique values
+country_pop_mean <- data.frame()
+for (cntry in country_list) {
+  cntry_subset <- subset(gapminder, subset = country == cntry) 
+  # plot(cntry_subset$year, cntry_subset$pop)
+  # dev.print(pdf, paste0("figures/", cntry,".pdf")) 
+  
+  pop_mean <- mean(cntry_subset$pop)
+  # print(paste('mean pop for', cntry, 'is', pop_mean))
+  country_pop_mean <- rbind(country_pop_mean, data.frame(cntry, pop_mean))
+  
+  ## if Asia, calculate mean(lifeExp)
+  if (unique(cntry_subset$continent) == "Asia") { # read: if (the continent is Asia) {then}
+    plot(cntry_subset$year, cntry_subset$lifeExp) 
+    dev.print(pdf, paste0("figures/", cntry, "_lifeExp.pdf")) # change the filename
+  }
+} 
+```
+
 
 Now let's say we also want to record the mean population of each country. We'd add a line to the for loop, and comment out all the plotting for now (to save time, you could also just leave it): 
 ```{r, eval=FALSE}
@@ -225,6 +352,101 @@ the result object incrementally) is computationally inefficient, so avoid
 it when you are iterating through a lot of values.
 
 For loops can also lead to temporary variables that you don't need. But they can be really useful at times. 
+
+## Here
+
+
+
+
+
+```{r, eval=FALSE}
+
+gapminder <- readr::read_csv('https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder.csv')
+
+## filter the of countries in Europe
+countries_europe <- gapminder %>% 
+  filter(continent == "Europe") %>%
+  select(country) %>%
+  distinct() 
+
+## create a folder for figures
+dir.create("figures")
+
+## iterate through each country
+for (cntry in countries_europe$country) { # cntry = "Albania"
+ 
+  ## filter each iteration
+  gap_cntry <- gapminder %>%
+    filter(country == cntry)
+  
+  ## plot
+  ggplot(data = gap_cntry, aes(x = year, y = gdpPercap)) + 
+    geom_point() + 
+    
+    ## labels
+    labs(title = paste(cntry, "population by year"),
+         subtitle = paste("Local currency: x")) +
+    
+    ## save
+    ggsave(filename = file.path("figures",
+                                paste(cntry, "_gdp_by_year.png", sep='')), 
+           device = "png", width = 15, height = 10)
+  
+}
+
+```
+
+
+
+
+Now, do the same by plotting gdp. Think: should the gdp calculation go inside the for loop or outside?
+
+
+All together now:
+```{r}
+
+gapminder <- readr::read_csv('https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder.csv')
+
+gap_europe <- 
+
+## filter for Europe, calc gdp
+gap_europe <- gapminder %>%
+  filter(continent == "Europe") %>%
+  dplyr::group_by(country) %>%
+  dplyr::mutate(gdp = pop * gdpPercap)
+  
+## vector of countries   
+countries_europe <- unique(gap_europe$country)
+
+
+for (cntry in countries_europe) { # cntry = "Albania"
+ 
+  gap_cntry <- gap_europe %>%
+    filter(country == cntry)
+  
+  ggplot(data = gap_cntry, aes(x = year, y = gdp)) + 
+    geom_point() + 
+    labs(title = paste(cntry, "GDP by year"),
+         subtitle = paste("Local currency: x")) +
+    ## save
+    ggsave(filename = file.path("figures",
+                                paste(cntry, "_gdp_by_year.png", sep='')), 
+           device = "png", width = 15, height = 10)
+  
+}
+
+
+
+
+```
+
+## Your turn
+
+Plot gdp for just Asia. What would you do differently? What goes inside the for loop?
+
+Save the file with the label "Albania GDP 1950-2007"
+
+
 
 ## conditional statements with `if` and `else`
 
@@ -295,36 +517,29 @@ for (cntry in country_list) {
 ```
 
 
-### TODO: variable classes?
+## Importing and Installing
 
-Let's explore a numeric variable: life expectancy.
-```{r, eval=FALSE}
-## explore numeric variable
-summary(gapminder$lifeExp)
-hist(gapminder$lifeExp)
-```
+TODO
 
-Let's explore a categorical variable (stored as a *factor* in R): continent.
-```{r, eval=FALSE}
-## explore factor variable
-summary(gapminder$continent)
-levels(gapminder$continent)
-nlevels(gapminder$continent)
-hist(gapminder$continent) # whaaaa!?
-```
-This error is because of what factors are 'under the hood': R is really storing integer codes 1, 2, 3 here, but represent them as text to us. Factors can be problematic to us because of this, but you can learn to navigate with them. There are resources to learn how to [properly care and feed for factors](http://stat545.com/block014_factors.html).
+Remember you'll use `install.packages("package-name-in-quotes")` and then `library(package-name)`, and then you can explore the help or vignettes. And also, of course, Google to see how to use them!
 
-One thing you'll learn is how to visualize factors with which functions/packages.
-```{r, eval=FALSE}
-class(gapminder$continent) # ?class returns the class type of the object
-table(gapminder$continent) # ?table builds a table based on factor levels 
-class(table(gapminder$continent)) # this has morphed the factor...
-hist(table(gapminder$continent)) # so we can plot!
-```
-I don't want us to get too bogged down with what's going on with `table()` and plotting factors, but I want to expose you to these situations because you will encounter them. Googling the error messages you get, and knowing how to look for good responses is a critical skill. (I tend to look for responses from stackoverflow.com that are recent and have green checks, and ignore snarky comments). 
+- `readr` to read in .csv files
+- `readxl` to read in Excel files
+- `stringr` to work with strings
+- `lubridate` to work with dates
 
-> Exercise with your neighbor: Explore `gapminder$gdpPercap`. What kind of data is it? So which commands do you use? 
+- `devtools::install_github()`
 
+## Organization and workflows
+- source(),
+- set up a folder for figs, intermediate analyses, final outputs, figures
+- could even do an R package. `devtools`, `roxygen2`. http://r-pkgs.had.co.nz/ 
 
+You'll soon have questions that are outside the scope of this workshop, how do you find answers?
 
+- end with a ton of resources:
+https://peerj.com/collections/50-practicaldatascistats/
 
+## Ideas for Extended Analysis 2
+
+- stringr() http://r4ds.had.co.nz/strings.html

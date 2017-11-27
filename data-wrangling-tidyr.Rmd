@@ -109,10 +109,10 @@ Read in the data from GitHub. Remember, you need to click on the 'Raw' button fi
 
 ```{r, eval=FALSE}
 ## wide format
-gap_wide <- read.csv('https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder_wide.csv')
+gap_wide <- readr::read_csv('https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder_wide.csv')
 
 ## yesterday's format (intermediate)
-gapminder <- read.csv('https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder.csv')
+gapminder <- readr::read_csv('https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder.csv')
 ```
 
 Let's have a look:
@@ -398,9 +398,8 @@ gap_wide_new <- gap_long %>%
 str(gap_wide_new)
 ```
 
-### `complte`: other `tidyr` awesomeness 
+### `complete`: other `tidyr` awesomeness 
 
-- `complete()`
 For this, let's look at Jarrett Byrnes' blog on the topic:
 
 http://www.imachordata.com/you-complete-me/
