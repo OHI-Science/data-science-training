@@ -2,10 +2,15 @@
 
 ## Overview
 
+The collaborative power of GitHub and RStudio is really game changing. So far we've been collaborating with our most important collaborator: ourselves. But, we are lucky that in science we have so many other collaborators, so let's learn how to use GitHub with one of them. 
+
+We are going to teach you the simplest way to collaborate with someone, which is for both of you to have administration privileges. GitHub is built for software developer teams, and there is a lot of features that we as scientists won't use immediately. 
+
+We will do this all with a partner, and you'll work pretty independently, with us providing help as you go. 
+
 **Objectives**
 
-- contribute to a repo that you don't own
-- give permission to a collaborator
+- create a new repo and give permission to a collaborator
 - open as a new RStudio project!
 - collaborate with a partner, explore github.com blame, history
 - practice more ggplot2 collab
@@ -15,9 +20,12 @@
 
 **Resources**
 
-## pull request to your friend's repo
 
 ## create gh-pages repo and give someone permission
+
+## clone to a new Rproject
+
+## Rmd analysis together
 
 - Rmd analysis
 

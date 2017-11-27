@@ -122,7 +122,7 @@
   \postauthor{\par}
   \predate{\centering\large\emph}
   \postdate{\par}
-  \date{2017-11-22}
+  \date{2017-11-27}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -962,7 +962,7 @@ functions have (or require) arguments:
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "Wed Nov 22 13:17:38 2017"
+## [1] "Mon Nov 27 14:08:18 2017"
 \end{verbatim}
 
 \section{Clearing the environment}\label{clearing-the-environment}
@@ -2597,8 +2597,8 @@ appropriate arguments (\texttt{width}, \texttt{height} and
 \StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{color =}\NormalTok{ class)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_smooth}\NormalTok{() }\OperatorTok{+}
 \StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Relationship between engine size and mpg"}\NormalTok{,}
-         \DataTypeTok{x =} \StringTok{"Highway MPG"}\NormalTok{,}
-         \DataTypeTok{y =} \StringTok{"Engine displacement (liters)"}\NormalTok{) }\OperatorTok{+}
+       \DataTypeTok{x =} \StringTok{"Highway MPG"}\NormalTok{,}
+       \DataTypeTok{y =} \StringTok{"Engine displacement (liters)"}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{theme_bw}\NormalTok{() }\OperatorTok{+}
 \StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{text=}\KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size =} \DecValTok{16}\NormalTok{))}
 
@@ -3684,10 +3684,10 @@ gapminder data from yesterday so that we can use it to compare later on.
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{## wide format}
-\NormalTok{gap_wide <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{'https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder_wide.csv'}\NormalTok{)}
+\NormalTok{gap_wide <-}\StringTok{ }\NormalTok{readr}\OperatorTok{::}\KeywordTok{read_csv}\NormalTok{(}\StringTok{'https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder_wide.csv'}\NormalTok{)}
 
 \NormalTok{## yesterday's format (intermediate)}
-\NormalTok{gapminder <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{'https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder.csv'}\NormalTok{)}
+\NormalTok{gapminder <-}\StringTok{ }\NormalTok{readr}\OperatorTok{::}\KeywordTok{read_csv}\NormalTok{(}\StringTok{'https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder.csv'}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4117,15 +4117,10 @@ This morning's .Rmd could look something like this:
 \end{Highlighting}
 \end{Shaded}
 
-\subsection{\texorpdfstring{\texttt{complte}: other \texttt{tidyr}
-awesomeness}{complte: other tidyr awesomeness}}\label{complte-other-tidyr-awesomeness}
+\subsection{\texorpdfstring{\texttt{complete}: other \texttt{tidyr}
+awesomeness}{complete: other tidyr awesomeness}}\label{complete-other-tidyr-awesomeness}
 
-\begin{itemize}
-\tightlist
-\item
-  \texttt{complete()} For this, let's look at Jarrett Byrnes' blog on
-  the topic:
-\end{itemize}
+For this, let's look at Jarrett Byrnes' blog on the topic:
 
 \url{http://www.imachordata.com/you-complete-me/}
 
@@ -4149,41 +4144,28 @@ awesomeness}{complte: other tidyr awesomeness}}\label{complte-other-tidyr-awesom
 
 \section{Objectives and Resources}\label{objectives-and-resources}
 
+Now we are going to build a little analysis. We will learn to automate
+our analyses with a for loop. We will make figs, save them each with
+automated labeling. Then, we will join data from different files and
+conditionally label them with if/else statements.
+
+Ultimately, with our analysis, we want to plot\ldots{}
+
 \textbf{Objectives}
-
-exposure and lots of practice:
-
-Do a little analysis: for a continent, loop through and make figs, save
-them each.
 
 \begin{itemize}
 \item
-  importing and writing data
-
-  \begin{itemize}
-  \tightlist
-  \item
-    write a local copy of gapminder data to data/ folder
-  \end{itemize}
+  discuss good file naming practices
 \item
-  strings and filenames:
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Jenny Bryan pres, list.files(), file.path()
-  \item
-    stringr() \url{http://r4ds.had.co.nz/strings.html}
-  \end{itemize}
+  create an R script
 \item
-  for loops introduce R Script
-
-  \begin{itemize}
-  \tightlist
-  \item
-    save ggplot figs (also using stringr, paste())
-    \url{http://r4ds.had.co.nz/iteration.html}
-  \end{itemize}
+  for loops
+\item
+  joining data
+\item
+  if statements
+\item
+  make sure your loop worked like you wanted
 \item
   if statements (conditionals)
 
@@ -4191,79 +4173,83 @@ them each.
   \tightlist
   \item
     write message() to yourself
+  \item
+    list.files()
   \end{itemize}
 \item
-  installing packages from github
-\item
-  also mention: lubridate, purrr (don't get into them)
-\item
-  end with a ton of resources:
-  \url{https://peerj.com/collections/50-practicaldatascistats/}
-\end{itemize}
+  importing and writing data
 
-FINISH: organization and workflows source, set up a folder for figs,
-intermediate analyses, final outputs (could even do an R package, etc).
+  \begin{itemize}
+  \tightlist
+  \item
+    write a local copy of gapminder data to data/ folder
+  \item
+    installing packages from github
+  \end{itemize}
+\end{itemize}
 
 \textbf{Resources}
 
-When trying to see if a number or text is equal to some \emph{single}
-value, use \texttt{==}. To check it against \emph{multiple} values, use
-\texttt{\%in\%}. mine's ``\%!in\%'' \textless{}- Negate(``\%in\%'')
+\section{Naming files}\label{naming-files}
 
-list.files file.path() message() (with an if statement maybe) get file
-extensions
-\url{https://stat.ethz.ch/R-manual/R-devel/library/tools/html/fileutils.html}
+Now is a good interlude to talk about naming things.
 
-\begin{itemize}
+We are going to take five minutes to talk through
+\href{https://speakerdeck.com/jennybc/how-to-name-files}{Jenny Bryan's
+three principles for naming files}:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  installing packages from github
+  machine readable
 \item
-  left\_join
-\end{itemize}
+  human readable
+\item
+  play well with default ordering
+\end{enumerate}
 
-You'll soon have questions that are outside the scope of this workshop,
-how do you find answers?
+\section{Analysis plan}\label{analysis-plan}
+
+OK, here is the plan for our analysis. We want to plot the gdpPercap for
+each country in the gapminder data frame. We will label each one and
+save it in a folder called figures. We will learn a bunch of things as
+we go.
 
 \section{Create an R script}\label{create-an-r-script}
 
-OK, now, let's go back to RStudio, and get ourselves back into learning
-R. We are going to create an R script. What is an R script? It's a text
-file with a .R extension. Writing R commands in the console like we did
-this morning is great, but limited; it's hard to keep track of and hard
-to efficiently share with others. Plus, as your analyses get more
-complicated, you need to be able to see them all in one place.
+OK, now, we are going to create an R script. What is an R script? It's a
+text file with a .R extension. We've been writing R code in R Markdown
+files so far; R scripts are just R code without the Markdown along with
+it.
 
 Go to File \textgreater{} New File \textgreater{} R Script (or click the
 green plus in the top left corner).
 
-Let's set up this script for the rest of the day. Let's start off with a
-few comments so that we know what it is for, and save it.
-
-By creating a script, we are seeing the 4th pane of the RStudio console,
-which is essentially a text editor.
+Let's start off with a few comments so that we know what it is for, and
+save it:
 
 \begin{verbatim}
-## swc-mbari.R
-## learning R
+## gapminder-analysis.R
+## analysis with gapminder data
 ## J Lowndes lowndes@nceas.uscb.edu
 \end{verbatim}
 
-Now, let's save it. I'm going to call my file \texttt{swc-mbari.R}.
+We'll be working with the gapminder data again so let's read it in here:
 
-OK. Now let's practice with some of those commands that we were working
-on this morning.
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## load libraries}
+\KeywordTok{library}\NormalTok{(tidyverse)}
 
-Below your comments, type:
+\NormalTok{## read in gapminder data}
+\NormalTok{gapminder <-}\StringTok{ }\NormalTok{readr}\OperatorTok{::}\KeywordTok{read_csv}\NormalTok{(}\StringTok{'https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder.csv'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
-\begin{verbatim}
-x <- seq(1:15)
-\end{verbatim}
-
-Now, hitting return does not execute this command; remember, it's just a
-text file. To execute it, we need to get what we typed in the script
-down into the console. How do we do it? There are several ways (let's do
-each of them):
+Remember, like in R Markdown, hitting return does not execute this
+command. To execute it, we need to get what we typed in the script down
+into the console. Here is how we can do that:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -4296,138 +4282,208 @@ each of them):
     clicking Source (blue arrow in the bar above the script).
   \item
     typing
-    \texttt{source(\textquotesingle{}swc-mbari.R\textquotesingle{})} in
-    the console (or from another R file!!!).
+    \texttt{source(\textquotesingle{}gapminder-analysis.R\textquotesingle{})}
+    in the console (or from another R file!!!).
   \end{enumerate}
 \end{enumerate}
 
-\section{Importing data}\label{importing-data}
+\section{Automation with for loops}\label{automation-with-for-loops}
 
-TODO
+Our plan is to plot gdpPercap for each country. This means that we want
+to do the same operation (plotting gdpPercap) on a bunch of different
+things (countries). Yesterday we learned the dplyr's
+\texttt{group\_by()} function, and this is super powerful to automate
+through groups. But there are things that \texttt{group\_by()} can't do,
+like plotting. So we will use a for loop.
 
-Remember you'll use \texttt{install.packages("package-name-in-quotes")}
-and then \texttt{library(package-name)}, and then you can explore the
-help or vignettes. And also, of course, Google to see how to use them!
-
-\begin{itemize}
-\tightlist
-\item
-  \texttt{readr} to read in .csv files
-\item
-  \texttt{readxl} to read in Excel files
-\item
-  \texttt{stringr} to work with strings
-\item
-  \texttt{lubridate} to work with dates
-\end{itemize}
-
-purrr:: LOVE LISTS - more efficient than for loops - plays nicely with
-pipes repurrsive
-
-Show how piping can be used in normal model fitting too (get away from
-nested stuff)
-
-\section{Repeating operations with for
-loops}\label{repeating-operations-with-for-loops}
-
-Let's say we want to subset a few countries and plot pop through time.
-We could do it the way above, which would look like the following:
+Let's start off with what this would look like for just one country. I'm
+going to demonstrate with Afghanistan:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{## plot population of some countries}
-\NormalTok{mexico <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(gapminder, }\DataTypeTok{subset =}\NormalTok{ country }\OperatorTok{==}\StringTok{ "Mexico"}\NormalTok{)}
-\KeywordTok{plot}\NormalTok{(mexico}\OperatorTok{$}\NormalTok{year, mexico}\OperatorTok{$}\NormalTok{pop)}
-\KeywordTok{dev.print}\NormalTok{(pdf, }\StringTok{"mexico.pdf"}\NormalTok{)}
+\NormalTok{## filter the country to plot}
+\NormalTok{gap_to_plot <-}\StringTok{ }\NormalTok{gapminder }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(country }\OperatorTok{==}\StringTok{ "Afghanistan"}\NormalTok{)}
 
-\NormalTok{panama <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(gapminder, }\DataTypeTok{subset =}\NormalTok{ country }\OperatorTok{==}\StringTok{ "Panama"}\NormalTok{) }
-\KeywordTok{plot}\NormalTok{(panama}\OperatorTok{$}\NormalTok{year, panama}\OperatorTok{$}\NormalTok{pop)}
-\KeywordTok{dev.print}\NormalTok{(pdf, }\StringTok{"panama.pdf"}\NormalTok{)}
-
-\NormalTok{ecuador <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(gapminder, }\DataTypeTok{subset =}\NormalTok{ country }\OperatorTok{==}\StringTok{ "Ecuador"}\NormalTok{)}
-\KeywordTok{plot}\NormalTok{(ecuador}\OperatorTok{$}\NormalTok{year, ecuador}\OperatorTok{$}\NormalTok{pop)}
-\KeywordTok{dev.print}\NormalTok{(pdf, }\StringTok{"ecuador"}\NormalTok{)}
+\NormalTok{## plot}
+\NormalTok{my_plot <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ gap_to_plot, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ year, }\DataTypeTok{y =}\NormalTok{ gdpPercap)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Afghanistan"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-But you can see already it's a lot of text, which means typo-prone and
-hard to read. Even if you copy-paste each one, there's a lot of
-copy-paste, and is very typo-prone. Plus, what if you wanted to instead
-plot lifeExp? You'd have to remember to change it each time\ldots{}it
-gets messy quick. And we're just doing it with 3 countries here; what if
-we wanted to do it to all 142 countries? Eek.
+Let's actually give this a better title than just the country name.
+Let's use the \texttt{base::paste()} function from to paste two strings
+together so that the title is more descriptive. Use \texttt{?paste} to
+see what the ``sep'' variable does.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## filter the country to plot}
+\NormalTok{gap_to_plot <-}\StringTok{ }\NormalTok{gapminder }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(country }\OperatorTok{==}\StringTok{ "Afghanistan"}\NormalTok{)}
+
+\NormalTok{## plot}
+\NormalTok{my_plot <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ gap_to_plot, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ year, }\DataTypeTok{y =}\NormalTok{ gdpPercap)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\NormalTok{## add title and save}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \KeywordTok{paste}\NormalTok{(}\StringTok{"Afghanistan"}\NormalTok{, }\StringTok{"GDP per capita"}\NormalTok{, }\DataTypeTok{sep =} \StringTok{" "}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+And as a last step, let's save this figure using
+\texttt{base::file.path()} (which works like paste() would if sep =
+``/'').
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## filter the country to plot}
+\NormalTok{gap_to_plot <-}\StringTok{ }\NormalTok{gapminder }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(country }\OperatorTok{==}\StringTok{ "Afghanistan"}\NormalTok{)}
+
+\NormalTok{## plot}
+\NormalTok{my_plot <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ gap_to_plot, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ year, }\DataTypeTok{y =}\NormalTok{ gdpPercap)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}
+\NormalTok{## add title and save}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \KeywordTok{paste}\NormalTok{(}\StringTok{"Afghanistan"}\NormalTok{, }\StringTok{"GDP per capita"}\NormalTok{, }\DataTypeTok{sep =} \StringTok{" "}\NormalTok{))}
+
+\KeywordTok{ggsave}\NormalTok{(}\DataTypeTok{filename =} \StringTok{"Afghanistan_gdpPercap.png"}\NormalTok{, }\DataTypeTok{plot =}\NormalTok{ my_plot,}
+         \DataTypeTok{width =} \DecValTok{15}\NormalTok{, }\DataTypeTok{height =} \DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+OK. So we can check in our figures/folder and see that this works well.
+And there wasn't that much code needed to get us here, but we definitely
+do not want to copy this for every country. Even if we copy-pasted and
+switched out the names, it would be very typo-prone. Plus, what if you
+wanted to instead plot lifeExp? You'd have to remember to change it each
+time\ldots{}it gets messy quick.
 
 Better with a for loop. This will let us cycle through and do what we
 want to each thing in turn. If you want to iterate over a set of values,
 and perform the same operation on each, a \texttt{for} loop will do the
 job.
 
+\subsection{For loop basic structure}\label{for-loop-basic-structure}
+
 The basic structure of a \texttt{for} loop is:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\ControlFlowTok{for}\NormalTok{(iterator }\ControlFlowTok{in}\NormalTok{ set of values)\{}
+\ControlFlowTok{for}\NormalTok{( each item }\ControlFlowTok{in}\NormalTok{ set of items )\{}
 \NormalTok{  do a thing}
 \NormalTok{\}}
 \end{Highlighting}
 \end{Shaded}
 
-Let's paste from what we had before, and modify it. Also, the
-\texttt{set\ of\ values} is the list of countries
-(\texttt{country\_list}), and we want to iterate through each country
-(let's spell it \texttt{cntry} so it's distinctive).
+Note the \texttt{(\ )} and the \texttt{\{\ \}}. We talk about iterating
+through each item in the for loop, which makes each item an iterator.
+
+So looking back at our Afghanistan code: all of this is pretty much the
+``do a thing'' part. And we can see that there are only a few places
+that are specific to Afghanistan. If we could make those places not
+specific to Afghanistan, we would be set.
+
+\begin{figure}
+\centering
+\includegraphics{img/for_loop_logic.png}
+\caption{}
+\end{figure}
+
+Let's paste from what we had before, and modify it. I'm also going to
+use RStudio's indentation help to indent the lines within the for loop
+by highlighting the code in this chunk and going to Code \textgreater{}
+Reindent Lines (shortcut: command I)
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\ControlFlowTok{for}\NormalTok{ (cntry }\ControlFlowTok{in}\NormalTok{ country_list) \{}
-\NormalTok{  mexico <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(gapminder, }\DataTypeTok{subset =}\NormalTok{ country }\OperatorTok{==}\StringTok{ "Mexico"}\NormalTok{) }
-  \KeywordTok{plot}\NormalTok{(mexico}\OperatorTok{$}\NormalTok{year, mexico}\OperatorTok{$}\NormalTok{pop)}
+\ControlFlowTok{for}\NormalTok{( each item }\ControlFlowTok{in}\NormalTok{ set of items )\{}
+  
+\NormalTok{  ## filter the country to plot}
+\NormalTok{  gap_to_plot <-}\StringTok{ }\NormalTok{gapminder }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{filter}\NormalTok{(country }\OperatorTok{==}\StringTok{ "Afghanistan"}\NormalTok{)}
+  
+\NormalTok{  ## plot}
+\NormalTok{  my_plot <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ gap_to_plot, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ year, }\DataTypeTok{y =}\NormalTok{ gdpPercap)) }\OperatorTok{+}\StringTok{ }
+\StringTok{    }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}
+\StringTok{    }\NormalTok{## add title and save}
+\StringTok{    }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \KeywordTok{paste}\NormalTok{(}\StringTok{"Afghanistan"}\NormalTok{, }\StringTok{"GDP per capita"}\NormalTok{, }\DataTypeTok{sep =} \StringTok{" "}\NormalTok{))}
+    
+  \KeywordTok{ggsave}\NormalTok{(}\DataTypeTok{filename =} \StringTok{"Afghanistan_gdpPercap.png"}\NormalTok{, }\DataTypeTok{plot =}\NormalTok{ my_plot}
+           \DataTypeTok{width =} \DecValTok{15}\NormalTok{, }\DataTypeTok{height =} \DecValTok{10}\NormalTok{)}
 \NormalTok{\} }
 \end{Highlighting}
 \end{Shaded}
 
-We can't call it mexico anymore, but we could call it something more
-general. And let's comment the plot() line out while we build this, and
-add a print statement to see if it's behaving like we think it is.
+OK. So let's start with the beginning of the for loop. We want a list of
+countries that we will iterate through. We can do that by adding this
+code before the for loop. And we will need to name the iterator
+something, so let's call it cntry so that it has a distinct name.
+
+We can also add a print statement so that we can watch it iterate:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\ControlFlowTok{for}\NormalTok{ (cntry }\ControlFlowTok{in}\NormalTok{ country_list) \{}
-\NormalTok{  cntry_subset <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(gapminder, }\DataTypeTok{subset =}\NormalTok{ country }\OperatorTok{==}\StringTok{ }\NormalTok{cntry)  }
-  \CommentTok{# plot(mexico$year, mexico$pop)}
-  \KeywordTok{print}\NormalTok{(cntry_subset)}
+\NormalTok{## create a list of countries}
+\NormalTok{country_list <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Albania"}\NormalTok{, }\StringTok{"Fiji"}\NormalTok{, }\StringTok{"Spain"}\NormalTok{)}
+
+\ControlFlowTok{for}\NormalTok{( cntry }\ControlFlowTok{in}\NormalTok{ country_list )\{}
+  
+\NormalTok{  ## filter the country to plot}
+\NormalTok{  gap_to_plot <-}\StringTok{ }\NormalTok{gapminder }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{filter}\NormalTok{(country }\OperatorTok{==}\StringTok{ "Afghanistan"}\NormalTok{)}
+  
+\NormalTok{  ## add a print message }
+  \KeywordTok{print}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"Plotting"}\NormalTok{, cntry))}
+  
+\NormalTok{  ## plot}
+\NormalTok{  my_plot <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ gap_to_plot, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ year, }\DataTypeTok{y =}\NormalTok{ gdpPercap)) }\OperatorTok{+}\StringTok{ }
+\StringTok{    }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}
+\StringTok{    }\NormalTok{## add title and save}
+\StringTok{    }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \KeywordTok{paste}\NormalTok{(}\StringTok{"Afghanistan"}\NormalTok{, }\StringTok{"GDP per capita"}\NormalTok{, }\DataTypeTok{sep =} \StringTok{" "}\NormalTok{))}
+  
+\KeywordTok{ggsave}\NormalTok{(}\DataTypeTok{filename =} \StringTok{"Afghanistan_gdpPercap.png"}\NormalTok{, }\DataTypeTok{plot =}\NormalTok{ my_plot,}
+           \DataTypeTok{width =} \DecValTok{15}\NormalTok{, }\DataTypeTok{height =} \DecValTok{10}\NormalTok{)}
 \NormalTok{\} }
 \end{Highlighting}
 \end{Shaded}
 
-\begin{quote}
-Question: what is the variable \texttt{cntry\_subset} right now, after
-running the for loop?
-\end{quote}
+At this point, we do have a functioning for loop. For each item in the
+\texttt{country\_list\$country}, the for loop will iterate over the code
+within the \texttt{\{\ \}}, changing \texttt{cntry} each time as it goes
+through the list. And we can see it works because our print statement
+displays each country.
 
-Is this doing what we think it's doing? Let's create the country list
-and print the results each time to test our progress:
+But our code doesn't work the way we expected. Why? Well, is looping
+through the 3 countries in our country\_list, but it is creating plots
+for Afghanistan each time. We can see that by looking in the git tab:
+only that one Afghanistan figure. It's because we haven't brought the
+\texttt{cntry} variable into the for loop. Let's do that now.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{country_list <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Mexico"}\NormalTok{, }\StringTok{"Panama"}\NormalTok{, }\StringTok{"Ecuador"}\NormalTok{) }\CommentTok{# identify the thing to loop through}
-\ControlFlowTok{for}\NormalTok{ (cntry }\ControlFlowTok{in}\NormalTok{ country_list) \{}
-\NormalTok{  cntry_subset <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(gapminder, }\DataTypeTok{subset =}\NormalTok{ country }\OperatorTok{==}\StringTok{ }\NormalTok{cntry)  }
-  \CommentTok{# plot(mexico$year, mexico$pop)}
-  \KeywordTok{print}\NormalTok{(cntry_subset)}
-\NormalTok{\} }
-\end{Highlighting}
-\end{Shaded}
-
-Excellent. Let's move on with the plot.
+\subsection{Executable for loop!}\label{executable-for-loop}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{country_list <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Mexico"}\NormalTok{, }\StringTok{"Panama"}\NormalTok{, }\StringTok{"Ecuador"}\NormalTok{) }
-\ControlFlowTok{for}\NormalTok{ (cntry }\ControlFlowTok{in}\NormalTok{ country_list) \{}
-\NormalTok{  cntry_subset <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(gapminder, }\DataTypeTok{subset =}\NormalTok{ country }\OperatorTok{==}\StringTok{ }\NormalTok{cntry) }
-  \KeywordTok{plot}\NormalTok{(cntry_subset}\OperatorTok{$}\NormalTok{year, cntry_subset}\OperatorTok{$}\NormalTok{pop)}
-  \KeywordTok{dev.print}\NormalTok{(pdf, }\KeywordTok{paste0}\NormalTok{(cntry,}\StringTok{".pdf"}\NormalTok{)) }\CommentTok{# ?paste0() will paste a string}
+\NormalTok{## create a list of countries}
+\NormalTok{country_list <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Albania"}\NormalTok{, }\StringTok{"Fiji"}\NormalTok{, }\StringTok{"Spain"}\NormalTok{) }
+
+\ControlFlowTok{for}\NormalTok{( cntry }\ControlFlowTok{in}\NormalTok{ country_list )\{}
+  
+\NormalTok{  ## filter the country to plot}
+\NormalTok{  gap_to_plot <-}\StringTok{ }\NormalTok{gapminder }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{filter}\NormalTok{(country }\OperatorTok{==}\StringTok{ }\NormalTok{cntry) }
+  
+\NormalTok{  ## add a print message }
+  \KeywordTok{print}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"Plotting"}\NormalTok{, cntry))}
+  
+\NormalTok{  ## plot}
+\NormalTok{  my_plot <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ gap_to_plot, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ year, }\DataTypeTok{y =}\NormalTok{ gdpPercap)) }\OperatorTok{+}\StringTok{ }
+\StringTok{    }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}
+\StringTok{    }\NormalTok{## add title and save}
+\StringTok{    }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \KeywordTok{paste}\NormalTok{(cntry, }\StringTok{"GDP per capita"}\NormalTok{, }\DataTypeTok{sep =} \StringTok{" "}\NormalTok{))}
+  
+\KeywordTok{ggsave}\NormalTok{(}\DataTypeTok{filename =} \KeywordTok{paste}\NormalTok{(cntry, }\StringTok{"_gdpPercap.png"}\NormalTok{, }\DataTypeTok{sep =} \StringTok{""}\NormalTok{), }\DataTypeTok{plot =}\NormalTok{ my_plot, }
+           \DataTypeTok{width =} \DecValTok{15}\NormalTok{, }\DataTypeTok{height =} \DecValTok{10}\NormalTok{)}
 \NormalTok{\} }
 \end{Highlighting}
 \end{Shaded}
@@ -4435,18 +4491,36 @@ Excellent. Let's move on with the plot.
 Great! And it doesn't matter if we just use these three countries or all
 the countries--let's try it.
 
-First let's create a figure directory and make sure it saves there since
-it's going to get out of hand quickly:
+But first let's create a figure directory and make sure it saves there
+since it's going to get out of hand quickly. We could do this from the
+Finder/Windows Explorer, or from the ``Files'' pane in RStudio by
+clicking ``New Folder'' (green plus button). But we are going to do it
+in R. A folder is called a directory:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{dir.create}\NormalTok{(}\StringTok{'figures'}\NormalTok{) }\CommentTok{# this will be: software-carpentry/figures}
+\KeywordTok{dir.create}\NormalTok{(}\StringTok{"figures"}\NormalTok{) }
 
+\NormalTok{## create a list of countries}
 \NormalTok{country_list <-}\StringTok{ }\KeywordTok{unique}\NormalTok{(gapminder}\OperatorTok{$}\NormalTok{country) }\CommentTok{# ?unique() returns the unique values}
-\ControlFlowTok{for}\NormalTok{ (cntry }\ControlFlowTok{in}\NormalTok{ country_list) \{}
-\NormalTok{  cntry_subset <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(gapminder, }\DataTypeTok{subset =}\NormalTok{ country }\OperatorTok{==}\StringTok{ }\NormalTok{cntry) }
-  \KeywordTok{plot}\NormalTok{(cntry_subset}\OperatorTok{$}\NormalTok{year, cntry_subset}\OperatorTok{$}\NormalTok{pop)}
-  \KeywordTok{dev.print}\NormalTok{(pdf, }\KeywordTok{paste0}\NormalTok{(}\StringTok{"figures/"}\NormalTok{, cntry,}\StringTok{".pdf"}\NormalTok{)) }\CommentTok{# don't forget the `/`: it's a path!}
+
+\ControlFlowTok{for}\NormalTok{( cntry }\ControlFlowTok{in}\NormalTok{ country_list )\{}
+  
+\NormalTok{  ## filter the country to plot}
+\NormalTok{  gap_to_plot <-}\StringTok{ }\NormalTok{gapminder }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{filter}\NormalTok{(country }\OperatorTok{==}\StringTok{ }\NormalTok{cntry)}
+  
+\NormalTok{  ## add a print message }
+  \KeywordTok{print}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"Plotting"}\NormalTok{, cntry))}
+  
+\NormalTok{  ## plot}
+\NormalTok{  my_plot <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ gap_to_plot, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ year, }\DataTypeTok{y =}\NormalTok{ gdpPercap)) }\OperatorTok{+}\StringTok{ }
+\StringTok{    }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}
+\StringTok{    }\NormalTok{## add title and save}
+\StringTok{    }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \KeywordTok{paste}\NormalTok{(cntry, }\StringTok{"GDP per capita"}\NormalTok{, }\DataTypeTok{sep =} \StringTok{" "}\NormalTok{))}
+  
+\KeywordTok{ggsave}\NormalTok{(}\DataTypeTok{filename =} \KeywordTok{paste}\NormalTok{(}\StringTok{"figures/"}\NormalTok{, cntry, }\StringTok{"_gdpPercap.png"}\NormalTok{, }\DataTypeTok{sep =} \StringTok{""}\NormalTok{), }\DataTypeTok{plot =}\NormalTok{ my_plot,}
+           \DataTypeTok{width =} \DecValTok{15}\NormalTok{, }\DataTypeTok{height =} \DecValTok{10}\NormalTok{)}
 \NormalTok{\} }
 \end{Highlighting}
 \end{Shaded}
@@ -4455,62 +4529,260 @@ So that took a little longer than just the 3, but still super fast. For
 loops are sometimes just the thing you need to iterate over many things
 in your analyses.
 
-Now let's say we also want to record the mean population of each
-country. We'd add a line to the for loop, and comment out all the
-plotting for now (to save time, you could also just leave it):
+\subsection{Clean up our repo}\label{clean-up-our-repo}
+
+OK we now have 142 figures that we just created. They exist locally on
+our computer, and we have the code to recreate them anytime. But, we
+don't really need to push them to GitHub. Let's delete the figures/
+folder and see it disappear from the Git tab.
+
+\subsection{Your turn}\label{your-turn-12}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Modify our for loop so that it:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    loops through countries in Europe only
+  \item
+    plots the cumulative mean gdpPercap (Hint: Use the
+    \href{https://www.rstudio.com/resources/cheatsheets/}{Data Wrangling
+    Cheatsheet}!)
+  \item
+    saves them to a new subfolder inside the (recreated) figures folder
+    called ``Europe''.
+  \end{itemize}
+\item
+  Sync to GitHub
+\end{enumerate}
+
+\subsubsection{Answer}\label{answer-2}
+
+No peeking!
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{dir.create}\NormalTok{(}\StringTok{'figures'}\NormalTok{) }\CommentTok{# this will be: software-carpentry/figures}
+\KeywordTok{dir.create}\NormalTok{(}\StringTok{"figures"}\NormalTok{) }
+\KeywordTok{dir.create}\NormalTok{(}\StringTok{"figures/Europe"}\NormalTok{) }
 
-\NormalTok{country_list <-}\StringTok{ }\KeywordTok{unique}\NormalTok{(gapminder}\OperatorTok{$}\NormalTok{country) }
-\ControlFlowTok{for}\NormalTok{ (cntry }\ControlFlowTok{in}\NormalTok{ country_list) \{}
-\NormalTok{  cntry_subset <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(gapminder, }\DataTypeTok{subset =}\NormalTok{ country }\OperatorTok{==}\StringTok{ }\NormalTok{cntry) }
-  \CommentTok{# plot(cntry_subset$year, cntry_subset$pop)}
-  \CommentTok{# dev.print(pdf, paste0("figures/", cntry,".pdf"))}
+\NormalTok{## create a list of countries. Calculations go here, not in the for loop}
+\NormalTok{gap_europe <-}\StringTok{ }\NormalTok{gapminder }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(continent }\OperatorTok{==}\StringTok{ "Europe"}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{gdpPercap_cummean =}\NormalTok{ dplyr}\OperatorTok{::}\KeywordTok{cummean}\NormalTok{(gdpPercap))}
+
+\NormalTok{country_list <-}\StringTok{ }\KeywordTok{unique}\NormalTok{(gap_europe}\OperatorTok{$}\NormalTok{country) }\CommentTok{# ?unique() returns the unique values}
+
+\ControlFlowTok{for}\NormalTok{( cntry }\ControlFlowTok{in}\NormalTok{ country_list )\{ }\CommentTok{# (cntry = country_list[1])}
   
-\NormalTok{  pop_mean <-}\StringTok{ }\KeywordTok{mean}\NormalTok{(cntry_subset}\OperatorTok{$}\NormalTok{pop)}
-  \KeywordTok{print}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{'mean pop for'}\NormalTok{, cntry, }\StringTok{'is'}\NormalTok{, pop_mean))}
+\NormalTok{  ## filter the country to plot}
+\NormalTok{  gap_to_plot <-}\StringTok{ }\NormalTok{gap_europe }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{filter}\NormalTok{(country }\OperatorTok{==}\StringTok{ }\NormalTok{cntry)}
+  
+\NormalTok{  ## add a print message }
+  \KeywordTok{print}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"Plotting"}\NormalTok{, cntry))}
+  
+\NormalTok{  ## plot}
+\NormalTok{  my_plot <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ gap_to_plot, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ year, }\DataTypeTok{y =}\NormalTok{ gdpPercap_cummean)) }\OperatorTok{+}\StringTok{ }
+\StringTok{    }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}
+\StringTok{    }\NormalTok{## add title and save}
+\StringTok{    }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \KeywordTok{paste}\NormalTok{(cntry, }\StringTok{"GDP per capita"}\NormalTok{, }\DataTypeTok{sep =} \StringTok{" "}\NormalTok{))}
+  
+\KeywordTok{ggsave}\NormalTok{(}\DataTypeTok{filename =} \KeywordTok{paste}\NormalTok{(}\StringTok{"figures/Europe"}\NormalTok{, cntry, }\StringTok{"_gdpPercap_cummean.png"}\NormalTok{, }\DataTypeTok{sep =} \StringTok{""}\NormalTok{), }
+       \DataTypeTok{plot =}\NormalTok{ my_plot, }\DataTypeTok{width =} \DecValTok{15}\NormalTok{, }\DataTypeTok{height =} \DecValTok{10}\NormalTok{)}
 \NormalTok{\} }
 \end{Highlighting}
 \end{Shaded}
 
-We know it worked since it printed correctly. But we didn't capture it:
-\texttt{cntry\_subset} is just Zimbabwe. Let's create an object outside
-the loop and add to it each time.
+Notice how we put the calculation for \texttt{cummean()} outside the for
+loop. It could have gone inside, but it's an operation that could be
+done just one time before hand (outside the loop) rather than multiple
+times as you go (inside the for loop).
+
+\section{Joining datasets}\label{joining-datasets}
+
+Let's say that our colleague just sent us another file that identifies
+when the data we're using was estimated versus measured (I'm making this
+up). Let's read in the file our colleague sent us:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{dir.create}\NormalTok{(}\StringTok{'figures'}\NormalTok{) }\CommentTok{# this will be: software-carpentry/figures}
-
-\NormalTok{country_list <-}\StringTok{ }\KeywordTok{unique}\NormalTok{(gapminder}\OperatorTok{$}\NormalTok{country) }\CommentTok{# ?unique() returns the unique values}
-\NormalTok{country_pop_mean <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{()}
-
-\ControlFlowTok{for}\NormalTok{ (cntry }\ControlFlowTok{in}\NormalTok{ country_list) \{}
-\NormalTok{  cntry_subset <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(gapminder, }\DataTypeTok{subset =}\NormalTok{ country }\OperatorTok{==}\StringTok{ }\NormalTok{cntry) }
-  \CommentTok{# plot(cntry_subset$year, cntry_subset$pop)}
-  \CommentTok{# dev.print(pdf, paste0("figures/", cntry,".pdf")) }
-  
-\NormalTok{  pop_mean <-}\StringTok{ }\KeywordTok{mean}\NormalTok{(cntry_subset}\OperatorTok{$}\NormalTok{pop)}
-  \CommentTok{# print(paste('mean pop for', cntry, 'is', pop_mean))}
-\NormalTok{  country_pop_mean <-}\StringTok{ }\KeywordTok{rbind}\NormalTok{(country_pop_mean, }\KeywordTok{data.frame}\NormalTok{(cntry, pop_mean))}
-\NormalTok{\} }
+\NormalTok{## read in our colleague's data to join}
+\NormalTok{countries_estimated <-}\StringTok{ }\NormalTok{gapminder <-}\StringTok{ }\NormalTok{readr}\OperatorTok{::}\KeywordTok{read_csv}\NormalTok{(}\StringTok{'https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/countries_estimated.csv'}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-This approach can be useful, but `growing your results' (building the
-result object incrementally) is computationally inefficient, so avoid it
-when you are iterating through a lot of values.
+\begin{verbatim}
+## Error in open.connection(con, "rb"): HTTP error 404.
+\end{verbatim}
 
-For loops can also lead to temporary variables that you don't need. But
-they can be really useful at times.
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## have a look}
+\KeywordTok{head}\NormalTok{(countries_estimated)}
+\end{Highlighting}
+\end{Shaded}
 
-\section{\texorpdfstring{conditional statements with \texttt{if} and
-\texttt{else}}{conditional statements with if and else}}\label{conditional-statements-with-if-and-else}
+\begin{verbatim}
+## Error in head(countries_estimated): object 'countries_estimated' not found
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(countries_estimated)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Error in summary(countries_estimated): object 'countries_estimated' not found
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{str}\NormalTok{(countries_estimated)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Error in str(countries_estimated): object 'countries_estimated' not found
+\end{verbatim}
+
+(If you're interested, here is the code that I used to create this fake
+dataset:)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\NormalTok{countries_list }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{estimated =} \KeywordTok{runif}\NormalTok{(}\KeywordTok{length}\NormalTok{(country), }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{estimated =} \KeywordTok{round}\NormalTok{(estimated))}
+
+\NormalTok{x}\OperatorTok{$}\NormalTok{estimated[x}\OperatorTok{$}\NormalTok{estimated }\OperatorTok{==}\StringTok{ }\DecValTok{0}\NormalTok{] =}\StringTok{ "no"}
+\NormalTok{x}\OperatorTok{$}\NormalTok{estimated[x}\OperatorTok{$}\NormalTok{estimated }\OperatorTok{==}\StringTok{ }\DecValTok{1}\NormalTok{] =}\StringTok{ "yes"}
+\NormalTok{readr}\OperatorTok{::}\KeywordTok{write_csv}\NormalTok{(x, }\StringTok{'data/countries_estimated.csv'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+So, what can we see about these data. It looks like there are 142
+countries represented, just like our gapminder data. There is only one
+entry (row) for each country. And we want to somehow join this data with
+the data we have from gapminder.
+
+We want to do this:
+
+\begin{figure}
+\centering
+\includegraphics{img/rstudio-cheatsheet-combine.png}
+\caption{}
+\end{figure}
+
+\subsection{Your turn}\label{your-turn-13}
+
+With a partner, look at RStudio's Data Wrangling Cheatsheet and explore
+the different ways that you could join data. Which way do you think
+would work here?
+
+\begin{figure}
+\centering
+\includegraphics{img/rstudio-cheatsheet-combine-options.png}
+\caption{}
+\end{figure}
+
+We are going to \texttt{left\_join()} the gapminder data with the
+estimated data. Left joining the gapminder data will keep all the
+information in gapminder, but with additional information from the
+estimated data. So gapminder doesn't lose any rows.
+
+Let's have a look:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## to check:}
+\KeywordTok{str}\NormalTok{(gapminder) }\CommentTok{# 1704 observations of 6 variables}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Classes 'tbl_df', 'tbl' and 'data.frame':    1704 obs. of  6 variables:
+##  $ country  : chr  "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" ...
+##  $ year     : int  1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
+##  $ pop      : num  8425333 9240934 10267083 11537966 13079460 ...
+##  $ continent: chr  "Asia" "Asia" "Asia" "Asia" ...
+##  $ lifeExp  : num  28.8 30.3 32 34 36.1 ...
+##  $ gdpPercap: num  779 821 853 836 740 ...
+##  - attr(*, "spec")=List of 2
+##   ..$ cols   :List of 6
+##   .. ..$ country  : list()
+##   .. .. ..- attr(*, "class")= chr  "collector_character" "collector"
+##   .. ..$ year     : list()
+##   .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+##   .. ..$ pop      : list()
+##   .. .. ..- attr(*, "class")= chr  "collector_double" "collector"
+##   .. ..$ continent: list()
+##   .. .. ..- attr(*, "class")= chr  "collector_character" "collector"
+##   .. ..$ lifeExp  : list()
+##   .. .. ..- attr(*, "class")= chr  "collector_double" "collector"
+##   .. ..$ gdpPercap: list()
+##   .. .. ..- attr(*, "class")= chr  "collector_double" "collector"
+##   ..$ default: list()
+##   .. ..- attr(*, "class")= chr  "collector_guess" "collector"
+##   ..- attr(*, "class")= chr "col_spec"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gapminder_est <-}\StringTok{ }\NormalTok{gapminder }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{left_join}\NormalTok{(countries_estimated, }
+            \DataTypeTok{by =} \StringTok{"country"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Error in tbl_vars(y): object 'countries_estimated' not found
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{str}\NormalTok{(gapminder_est) }\CommentTok{#1704 obs. of  7 variables}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Error in str(gapminder_est): object 'gapminder_est' not found
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(gapminder_est, }\DecValTok{20}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Error in head(gapminder_est, 20): object 'gapminder_est' not found
+\end{verbatim}
+
+So \texttt{left\_join()}ing added a 7th column to our data, and if we
+have a look at it (\texttt{head()}), you can see that the yes's and no's
+from the estimated data have been repeated.
+
+Great! Now we are going to continue with our analysis. We want to label
+our plots differently if they are based on estimated data. This means
+that when we go through our for loop, we want to conditionally plot
+them.
+
+\section{\texorpdfstring{Conditional statements with \texttt{if} and
+\texttt{else}}{Conditional statements with if and else}}\label{conditional-statements-with-if-and-else}
 
 Often when we're coding we want to control the flow of our actions. This
 can be done by setting actions to occur only if a condition or a set of
 conditions are met.
+
+In R and other languages, these are called ``if statements''.
+
+\subsection{if statement basic
+structure}\label{if-statement-basic-structure}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4528,131 +4800,245 @@ conditions are met.
 \end{Highlighting}
 \end{Shaded}
 
-Say, for example, that in addition to saving population figures for all
-countries, we want to save life expectancy figures for countries in Asia
-only.
+Let's bring this concept into our for loop for Europe that we've just
+done. What if we want to add the label ``Estimated'' to countries that
+were estimated? Here's what we'd do.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{dir.create}\NormalTok{(}\StringTok{'figures'}\NormalTok{) }\CommentTok{# this will be: software-carpentry/figures}
+\KeywordTok{dir.create}\NormalTok{(}\StringTok{"figures"}\NormalTok{) }
+\KeywordTok{dir.create}\NormalTok{(}\StringTok{"figures/Europe"}\NormalTok{) }
 
-\NormalTok{country_list <-}\StringTok{ }\KeywordTok{unique}\NormalTok{(gapminder}\OperatorTok{$}\NormalTok{country) }\CommentTok{# ?unique() returns the unique values}
-\NormalTok{country_pop_mean <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{()}
-\ControlFlowTok{for}\NormalTok{ (cntry }\ControlFlowTok{in}\NormalTok{ country_list) \{}
-\NormalTok{  cntry_subset <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(gapminder, }\DataTypeTok{subset =}\NormalTok{ country }\OperatorTok{==}\StringTok{ }\NormalTok{cntry) }
-  \CommentTok{# plot(cntry_subset$year, cntry_subset$pop)}
-  \CommentTok{# dev.print(pdf, paste0("figures/", cntry,".pdf")) }
+\NormalTok{## create a list of countries}
+\NormalTok{gap_europe <-}\StringTok{ }\NormalTok{gapminder_est }\OperatorTok{%>%}\StringTok{ }\NormalTok{## use instead of gapminder}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(continent }\OperatorTok{==}\StringTok{ "Europe"}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{gdpPercap_cummean =}\NormalTok{ dplyr}\OperatorTok{::}\KeywordTok{cummean}\NormalTok{(gdpPercap))}
+
+\NormalTok{country_list <-}\StringTok{ }\KeywordTok{unique}\NormalTok{(gap_europe}\OperatorTok{$}\NormalTok{country) }
+
+\ControlFlowTok{for}\NormalTok{( cntry }\ControlFlowTok{in}\NormalTok{ country_list )\{ }\CommentTok{# (cntry = country_list[1])}
   
-\NormalTok{  pop_mean <-}\StringTok{ }\KeywordTok{mean}\NormalTok{(cntry_subset}\OperatorTok{$}\NormalTok{pop)}
-  \CommentTok{# print(paste('mean pop for', cntry, 'is', pop_mean))}
-\NormalTok{  country_pop_mean <-}\StringTok{ }\KeywordTok{rbind}\NormalTok{(country_pop_mean, }\KeywordTok{data.frame}\NormalTok{(cntry, pop_mean))}
+\NormalTok{  ## filter the country to plot}
+\NormalTok{  gap_to_plot <-}\StringTok{ }\NormalTok{gap_europe }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{filter}\NormalTok{(country }\OperatorTok{==}\StringTok{ }\NormalTok{cntry)}
   
-\NormalTok{  ## if Asia, calculate mean(lifeExp)}
-  \ControlFlowTok{if}\NormalTok{ (}\KeywordTok{unique}\NormalTok{(cntry_subset}\OperatorTok{$}\NormalTok{continent) }\OperatorTok{==}\StringTok{ "Asia"}\NormalTok{) \{ }\CommentTok{# read: if (the continent is Asia) \{then\}}
-    \KeywordTok{plot}\NormalTok{(cntry_subset}\OperatorTok{$}\NormalTok{year, cntry_subset}\OperatorTok{$}\NormalTok{lifeExp) }
-    \KeywordTok{dev.print}\NormalTok{(pdf, }\KeywordTok{paste0}\NormalTok{(}\StringTok{"figures/"}\NormalTok{, cntry, }\StringTok{"_lifeExp.pdf"}\NormalTok{)) }\CommentTok{# change the filename}
+\NormalTok{  ## add a print message }
+  \KeywordTok{print}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"Plotting"}\NormalTok{, cntry))}
+  
+\NormalTok{  ## plot}
+\NormalTok{  my_plot <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ gap_to_plot, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ year, }\DataTypeTok{y =}\NormalTok{ gdpPercap_cummean)) }\OperatorTok{+}\StringTok{ }
+\StringTok{    }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}
+\StringTok{    }\NormalTok{## add title and save}
+\StringTok{    }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \KeywordTok{paste}\NormalTok{(cntry, }\StringTok{"GDP per capita"}\NormalTok{, }\DataTypeTok{sep =} \StringTok{" "}\NormalTok{))}
+  
+\NormalTok{  ## if estimated, add that as a subtitle. }
+  \ControlFlowTok{if}\NormalTok{ (gap_to_plot}\OperatorTok{$}\NormalTok{estimated }\OperatorTok{==}\StringTok{ "yes"}\NormalTok{) \{}
+    
+\NormalTok{    ## add a print statement just to check}
+    \KeywordTok{print}\NormalTok{(}\KeywordTok{paste}\NormalTok{(cntry, }\StringTok{"data are estimated"}\NormalTok{))}
+    
+\NormalTok{    my_plot <-}\StringTok{ }\NormalTok{my_plot }\OperatorTok{+}
+\StringTok{      }\KeywordTok{labs}\NormalTok{(}\KeywordTok{sutbtitle}\NormalTok{(}\StringTok{"Estimated data"}\NormalTok{))}
 \NormalTok{  \}}
+\CommentTok{#   Warning message:}
+\CommentTok{# In if (gap_to_plot$estimated == "yes") \{ :}
+\CommentTok{#   the condition has length > 1 and only the first element will be used}
+  
+  \KeywordTok{ggsave}\NormalTok{(}\DataTypeTok{filename =} \KeywordTok{paste}\NormalTok{(}\StringTok{"figures/Europe"}\NormalTok{, cntry, }\StringTok{"_gdpPercap_cummean.png"}\NormalTok{, }\DataTypeTok{sep =} \StringTok{""}\NormalTok{), }
+       \DataTypeTok{plot =}\NormalTok{ my_plot, }\DataTypeTok{width =} \DecValTok{15}\NormalTok{, }\DataTypeTok{height =} \DecValTok{10}\NormalTok{)}
+    
 \NormalTok{\} }
 \end{Highlighting}
 \end{Shaded}
 
-And if the country is in Africa, let's plot the mean GDP.
+This worked, but we got a warning message with the if statement. This is
+because if we look at \texttt{gap\_to\_plot\$estimated}, it is many
+``yes''s or ``no''s, and the if statement works just on the first one.
+We know that if any are yes, all are yes, but you can imagine that this
+could lead to problems down the line if you \emph{didn't} know that. So
+let's be explicit: \#\#\# Executable if statement
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{dir.create}\NormalTok{(}\StringTok{'figures'}\NormalTok{) }\CommentTok{# this will be: software-carpentry/figures}
+\KeywordTok{dir.create}\NormalTok{(}\StringTok{"figures"}\NormalTok{) }
+\KeywordTok{dir.create}\NormalTok{(}\StringTok{"figures/Europe"}\NormalTok{) }
 
-\NormalTok{country_list <-}\StringTok{ }\KeywordTok{unique}\NormalTok{(gapminder}\OperatorTok{$}\NormalTok{country) }\CommentTok{# ?unique() returns the unique values}
-\NormalTok{country_pop_mean <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{()}
-\ControlFlowTok{for}\NormalTok{ (cntry }\ControlFlowTok{in}\NormalTok{ country_list) \{}
-\NormalTok{  cntry_subset <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(gapminder, }\DataTypeTok{subset =}\NormalTok{ country }\OperatorTok{==}\StringTok{ }\NormalTok{cntry) }
-  \CommentTok{# plot(cntry_subset$year, cntry_subset$pop)}
-  \CommentTok{# dev.print(pdf, paste0("figures/", cntry,".pdf")) }
+\NormalTok{## create a list of countries}
+\NormalTok{gap_europe <-}\StringTok{ }\NormalTok{gapminder_est }\OperatorTok{%>%}\StringTok{ }\NormalTok{## use instead of gapminder}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(continent }\OperatorTok{==}\StringTok{ "Europe"}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{gdpPercap_cummean =}\NormalTok{ dplyr}\OperatorTok{::}\KeywordTok{cummean}\NormalTok{(gdpPercap))}
+
+\NormalTok{country_list <-}\StringTok{ }\KeywordTok{unique}\NormalTok{(gap_europe}\OperatorTok{$}\NormalTok{country) }
+
+\ControlFlowTok{for}\NormalTok{( cntry }\ControlFlowTok{in}\NormalTok{ country_list )\{ }\CommentTok{# (cntry = country_list[1])}
   
-\NormalTok{  pop_mean <-}\StringTok{ }\KeywordTok{mean}\NormalTok{(cntry_subset}\OperatorTok{$}\NormalTok{pop)}
-  \CommentTok{# print(paste('mean pop for', cntry, 'is', pop_mean))}
-\NormalTok{  country_pop_mean <-}\StringTok{ }\KeywordTok{rbind}\NormalTok{(country_pop_mean, }\KeywordTok{data.frame}\NormalTok{(cntry, pop_mean))}
+\NormalTok{  ## filter the country to plot}
+\NormalTok{  gap_to_plot <-}\StringTok{ }\NormalTok{gap_europe }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{filter}\NormalTok{(country }\OperatorTok{==}\StringTok{ }\NormalTok{cntry)}
   
-\NormalTok{  ## if Asia, calculate mean(lifeExp)}
-  \ControlFlowTok{if}\NormalTok{ (}\KeywordTok{unique}\NormalTok{(cntry_subset}\OperatorTok{$}\NormalTok{continent) }\OperatorTok{==}\StringTok{ "Asia"}\NormalTok{) \{ }\CommentTok{# read: if (the continent is Asia) \{then\}}
-    \KeywordTok{plot}\NormalTok{(cntry_subset}\OperatorTok{$}\NormalTok{year, cntry_subset}\OperatorTok{$}\NormalTok{lifeExp) }
-    \KeywordTok{dev.print}\NormalTok{(pdf, }\KeywordTok{paste0}\NormalTok{(}\StringTok{"figures/"}\NormalTok{, cntry, }\StringTok{"_lifeExp.pdf"}\NormalTok{)) }
-\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (}\KeywordTok{unique}\NormalTok{(cntry_subset}\OperatorTok{$}\NormalTok{continent) }\OperatorTok{==}\StringTok{ "Africa"}\NormalTok{) \{}
-    \KeywordTok{plot}\NormalTok{(cntry_subset}\OperatorTok{$}\NormalTok{year, cntry_subset}\OperatorTok{$}\NormalTok{gdpPercap) }
-    \KeywordTok{dev.print}\NormalTok{(pdf, }\KeywordTok{paste0}\NormalTok{(}\StringTok{"figures/"}\NormalTok{, cntry, }\StringTok{"_gdpPercap.pdf"}\NormalTok{)) }\CommentTok{# change the filename}
+\NormalTok{  ## add a print message }
+  \KeywordTok{print}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"Plotting"}\NormalTok{, cntry))}
+  
+\NormalTok{  ## plot}
+\NormalTok{  my_plot <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ gap_to_plot, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ year, }\DataTypeTok{y =}\NormalTok{ gdpPercap_cummean)) }\OperatorTok{+}\StringTok{ }
+\StringTok{    }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}
+\StringTok{    }\NormalTok{## add title and save}
+\StringTok{    }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \KeywordTok{paste}\NormalTok{(cntry, }\StringTok{"GDP per capita"}\NormalTok{, }\DataTypeTok{sep =} \StringTok{" "}\NormalTok{))}
+  
+\NormalTok{  ## if estimated, add that as a subtitle. }
+  \ControlFlowTok{if}\NormalTok{ (}\KeywordTok{any}\NormalTok{(gap_to_plot}\OperatorTok{$}\NormalTok{estimated }\OperatorTok{==}\StringTok{ "yes"}\NormalTok{)) \{ }\CommentTok{# any() will return a single TRUE or FALSE}
+    
+    \KeywordTok{print}\NormalTok{(}\KeywordTok{paste}\NormalTok{(cntry, }\StringTok{"data are estimated"}\NormalTok{))}
+    
+\NormalTok{    my_plot <-}\StringTok{ }\NormalTok{my_plot }\OperatorTok{+}
+\StringTok{      }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{subtitle =} \StringTok{"Estimated data"}\NormalTok{)}
 \NormalTok{  \}}
+  \KeywordTok{ggsave}\NormalTok{(}\DataTypeTok{filename =} \KeywordTok{paste}\NormalTok{(}\StringTok{"figures/Europe"}\NormalTok{, cntry, }\StringTok{"_gdpPercap_cummean.png"}\NormalTok{, }\DataTypeTok{sep =} \StringTok{""}\NormalTok{), }
+       \DataTypeTok{plot =}\NormalTok{ my_plot, }\DataTypeTok{width =} \DecValTok{15}\NormalTok{, }\DataTypeTok{height =} \DecValTok{10}\NormalTok{)}
+    
 \NormalTok{\} }
 \end{Highlighting}
 \end{Shaded}
 
-\subsection{TODO: variable classes?}\label{todo-variable-classes}
+OK so this is working as we expect! But an if/else statement could make
+us extra sure that everything is working appropriately.
 
-Let's explore a numeric variable: life expectancy.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{## explore numeric variable}
-\KeywordTok{summary}\NormalTok{(gapminder}\OperatorTok{$}\NormalTok{lifeExp)}
-\KeywordTok{hist}\NormalTok{(gapminder}\OperatorTok{$}\NormalTok{lifeExp)}
-\end{Highlighting}
-\end{Shaded}
-
-Let's explore a categorical variable (stored as a \emph{factor} in R):
-continent.
+\subsection{Executable if/else
+statement}\label{executable-ifelse-statement}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{## explore factor variable}
-\KeywordTok{summary}\NormalTok{(gapminder}\OperatorTok{$}\NormalTok{continent)}
-\KeywordTok{levels}\NormalTok{(gapminder}\OperatorTok{$}\NormalTok{continent)}
-\KeywordTok{nlevels}\NormalTok{(gapminder}\OperatorTok{$}\NormalTok{continent)}
-\KeywordTok{hist}\NormalTok{(gapminder}\OperatorTok{$}\NormalTok{continent) }\CommentTok{# whaaaa!?}
+\KeywordTok{dir.create}\NormalTok{(}\StringTok{"figures"}\NormalTok{) }
+\KeywordTok{dir.create}\NormalTok{(}\StringTok{"figures/Europe"}\NormalTok{) }
+
+\NormalTok{## create a list of countries}
+\NormalTok{gap_europe <-}\StringTok{ }\NormalTok{gapminder_est }\OperatorTok{%>%}\StringTok{ }\NormalTok{## use instead of gapminder}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(continent }\OperatorTok{==}\StringTok{ "Europe"}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{gdpPercap_cummean =}\NormalTok{ dplyr}\OperatorTok{::}\KeywordTok{cummean}\NormalTok{(gdpPercap))}
+
+\NormalTok{country_list <-}\StringTok{ }\KeywordTok{unique}\NormalTok{(gap_europe}\OperatorTok{$}\NormalTok{country) }
+
+\ControlFlowTok{for}\NormalTok{( cntry }\ControlFlowTok{in}\NormalTok{ country_list )\{ }\CommentTok{# (cntry = country_list[1])}
+  
+\NormalTok{  ## filter the country to plot}
+\NormalTok{  gap_to_plot <-}\StringTok{ }\NormalTok{gap_europe }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{filter}\NormalTok{(country }\OperatorTok{==}\StringTok{ }\NormalTok{cntry)}
+  
+\NormalTok{  ## add a print message }
+  \KeywordTok{print}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"Plotting"}\NormalTok{, cntry))}
+  
+\NormalTok{  ## plot}
+\NormalTok{  my_plot <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ gap_to_plot, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ year, }\DataTypeTok{y =}\NormalTok{ gdpPercap_cummean)) }\OperatorTok{+}\StringTok{ }
+\StringTok{    }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}
+\StringTok{    }\NormalTok{## add title and save}
+\StringTok{    }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \KeywordTok{paste}\NormalTok{(cntry, }\StringTok{"GDP per capita"}\NormalTok{, }\DataTypeTok{sep =} \StringTok{" "}\NormalTok{))}
+  
+\NormalTok{  ## if estimated, add that as a subtitle. }
+  \ControlFlowTok{if}\NormalTok{ (}\KeywordTok{any}\NormalTok{(gap_to_plot}\OperatorTok{$}\NormalTok{estimated }\OperatorTok{==}\StringTok{ "yes"}\NormalTok{)) \{ }\CommentTok{# any() will return a single TRUE or FALSE}
+    
+    \KeywordTok{print}\NormalTok{(}\KeywordTok{paste}\NormalTok{(cntry, }\StringTok{"data are estimated"}\NormalTok{))}
+    
+\NormalTok{    my_plot <-}\StringTok{ }\NormalTok{my_plot }\OperatorTok{+}
+\StringTok{      }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{subtitle =} \StringTok{"Estimated data"}\NormalTok{)}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+    
+    \KeywordTok{print}\NormalTok{(}\KeywordTok{paste}\NormalTok{(cntry, }\StringTok{"data are reported"}\NormalTok{))}
+    
+\NormalTok{  \}}
+  \KeywordTok{ggsave}\NormalTok{(}\DataTypeTok{filename =} \KeywordTok{paste}\NormalTok{(}\StringTok{"figures/Europe"}\NormalTok{, cntry, }\StringTok{"_gdpPercap_cummean.png"}\NormalTok{, }\DataTypeTok{sep =} \StringTok{""}\NormalTok{), }
+       \DataTypeTok{plot =}\NormalTok{ my_plot, }\DataTypeTok{width =} \DecValTok{15}\NormalTok{, }\DataTypeTok{height =} \DecValTok{10}\NormalTok{)}
+    
+\NormalTok{\} }
 \end{Highlighting}
 \end{Shaded}
 
-This error is because of what factors are `under the hood': R is really
-storing integer codes 1, 2, 3 here, but represent them as text to us.
-Factors can be problematic to us because of this, but you can learn to
-navigate with them. There are resources to learn how to
-\href{http://stat545.com/block014_factors.html}{properly care and feed
-for factors}.
+So now we have a working for loop with conditional if/else statements
+that we could build from.
 
-One thing you'll learn is how to visualize factors with which
-functions/packages.
+\section{More R!}\label{more-r}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{class}\NormalTok{(gapminder}\OperatorTok{$}\NormalTok{continent) }\CommentTok{# ?class returns the class type of the object}
-\KeywordTok{table}\NormalTok{(gapminder}\OperatorTok{$}\NormalTok{continent) }\CommentTok{# ?table builds a table based on factor levels }
-\KeywordTok{class}\NormalTok{(}\KeywordTok{table}\NormalTok{(gapminder}\OperatorTok{$}\NormalTok{continent)) }\CommentTok{# this has morphed the factor...}
-\KeywordTok{hist}\NormalTok{(}\KeywordTok{table}\NormalTok{(gapminder}\OperatorTok{$}\NormalTok{continent)) }\CommentTok{# so we can plot!}
-\end{Highlighting}
-\end{Shaded}
+With just a little bit of time left, here are some things that you can
+look into more on your own.
 
-I don't want us to get too bogged down with what's going on with
-\texttt{table()} and plotting factors, but I want to expose you to these
-situations because you will encounter them. Googling the error messages
-you get, and knowing how to look for good responses is a critical skill.
-(I tend to look for responses from stackoverflow.com that are recent and
-have green checks, and ignore snarky comments).
+\subsection{Importing and Installing}\label{importing-and-installing}
 
-\begin{quote}
-Exercise with your neighbor: Explore \texttt{gapminder\$gdpPercap}. What
-kind of data is it? So which commands do you use?
-\end{quote}
+Here are some really helpful packages for you to work with:
+
+Remember you'll use \texttt{install.packages("package-name-in-quotes")}
+to install from CRAN.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{readr} to read in .csv files
+\item
+  \texttt{readxl} to read in Excel files
+\item
+  \texttt{stringr} to work with strings
+\item
+  \texttt{lubridate} to work with dates
+\end{itemize}
+
+You are also able to install packages directly with Github, using the
+\texttt{devtools} package. Then, instead of \texttt{install.packages()},
+you'll use \texttt{devtools::install\_github()}. And you can create
+\emph{your own} packages when you're ready. Read
+\url{http://r-pkgs.had.co.nz/} to learn how!
+
+\subsection{Organization and
+workflows}\label{organization-and-workflows}
+
+\begin{itemize}
+\tightlist
+\item
+  set up a folder for figs, intermediate analyses, final outputs,
+  figures
+\end{itemize}
+
+\subsection{Getting help}\label{getting-help}
+
+You'll soon have questions that are outside the scope of this workshop,
+how do you find answers?
+
+\begin{itemize}
+\tightlist
+\item
+  end with a ton of resources:
+  \url{https://peerj.com/collections/50-practicaldatascistats/}
+\end{itemize}
+
+\section{Ideas for Extended Analysis
+2}\label{ideas-for-extended-analysis-2}
+
+\begin{itemize}
+\tightlist
+\item
+  stringr() \url{http://r4ds.had.co.nz/strings.html}
+\end{itemize}
 
 \chapter{Collaborate with GitHub}\label{collaborate}
 
 \section{Overview}\label{overview-2}
+
+The collaborative power of GitHub and RStudio is really game changing.
+So far we've been collaborating with our most important collaborator:
+ourselves. But, we are lucky that in science we have so many other
+collaborators, so let's learn how to use GitHub with one of them.
+
+We are going to teach you the simplest way to collaborate with someone,
+which is for both of you to have administration privileges. GitHub is
+built for software developer teams, and there is a lot of features that
+we as scientists won't use immediately.
+
+We will do this all with a partner, and you'll work pretty
+independently, with us providing help as you go.
 
 \textbf{Objectives}
 
 \begin{itemize}
 \tightlist
 \item
-  contribute to a repo that you don't own
-\item
-  give permission to a collaborator
+  create a new repo and give permission to a collaborator
 \item
   open as a new RStudio project!
 \item
@@ -4672,11 +5058,12 @@ kind of data is it? So which commands do you use?
 
 \textbf{Resources}
 
-\section{pull request to your friend's
-repo}\label{pull-request-to-your-friends-repo}
-
 \section{create gh-pages repo and give someone
 permission}\label{create-gh-pages-repo-and-give-someone-permission}
+
+\section{clone to a new Rproject}\label{clone-to-a-new-rproject}
+
+\section{Rmd analysis together}\label{rmd-analysis-together}
 
 \begin{itemize}
 \tightlist
