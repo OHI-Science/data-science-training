@@ -1,4 +1,4 @@
-# Programming {#programming}
+# Programming in R {#programming}
 
 ## Objectives and Resources
 

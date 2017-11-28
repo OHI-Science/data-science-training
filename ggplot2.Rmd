@@ -1,4 +1,4 @@
-# Visualizing: `ggplot2` {#viz}
+# Visualizing: `ggplot2` {#ggplot2}
 
 Why do we start with data visualization? Not only is data viz a big part of analysis, it’s a way to SEE your progress as you learn to code.
 

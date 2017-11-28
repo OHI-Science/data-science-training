@@ -32,7 +32,7 @@ Suggested breakdown for a 2-day workshop:
 |lunch      |  ||
 |13:30-15:00 |  [Visualization: `ggplot2`](#ggplot2) | [Collaborating with GitHub](#collaborating) |
 |break      |  |  |
-|15:30-17:00 |  [Data Wrangling: `dplyr`)](#dplyr) | TBD... |
+|15:30-17:00 |  [Data Wrangling: `dplyr`](#dplyr) | TBD... |
 
 
 **License** 

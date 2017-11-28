@@ -11,9 +11,9 @@ Now you have some experience wrangling and working with tidy data. But we all kn
 
 **Objectives**
 
-- learn tidyr with gapminder package
+- learn `tidyr` with the `gapminder` package
 - other wrangling: joins, binding
-- practice RStudio-GitHub workflow
+- practice the RStudio-GitHub workflow
 - your turn: use the data wrangling cheat sheet to explore window functions
 
 
@@ -38,14 +38,14 @@ Often, data must be reshaped for it to become tidy data. What does that mean? Th
 
 <br>
 
-You use `spread()` and `gather()` to transform or reshape data between 'wide' to 'long' formats. 'long' format is the tidy data we are after, where:
+You use `spread()` and `gather()` to transform or reshape data between *wide* to *long* formats. *long* format is the tidy data we are after, where:
 
  - each column is a variable
  - each row is an observation
 
-In the 'long' format, you usually have 1 column for the observed variable and the other columns are ID variables.
+In the *long* format, you usually have 1 column for the observed variable and the other columns are ID variables.
 
-For the 'wide' format each row is often a site/subject/patient and you have multiple observation variables containing the same type of data. These can be either repeated observations over time, or observation of multiple variables (or a mix of both). Data input may be simpler or some other applications may prefer the 'wide' format. However, many of `R`'s functions have been designed assuming you have 'long' format data. 
+For the *wide* format each row is often a site/subject/patient and you have multiple observation variables containing the same type of data. These can be either repeated observations over time, or observation of multiple variables (or a mix of both). Data input may be simpler or some other applications may prefer the 'wide' format. However, many of `R`'s functions have been designed assuming you have 'long' format data. 
 
 These data formats mainly affect readability. For humans, the wide format is often more intuitive since we can often see more of the data on the screen due to it's shape. However, the long format is more machine readable and is closer to the formatting of databases. The ID variables in our dataframes are similar to the fields in a database and observed variables are like the database values.
 
