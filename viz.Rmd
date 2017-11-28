@@ -1,6 +1,10 @@
 # Visualizing data {#viz}
 
-This lesson borrows heavily from Hadley Wickham's R4DS, and the Software Carpentry R for Ecology lesson. (add links)
+Why do we start with data visualization? Not only is data viz a big part of analysis, it’s a way to SEE your progress as you learn to code.
+
+> "ggplot2 implements the grammar of graphics, a coherent system for describing and building graphs. With ggplot2, you can do more faster by learning one system and applying it in many places." - [R4DS](http://r4ds.had.co.nz/data-visualisation.html)
+
+This lesson borrows heavily from Hadley Wickham's [R for Data Science book](http://r4ds.had.co.nz/data-visualisation.html), and the Data Carpentry [R for Ecology curriculum](http://www.datacarpentry.org/R-ecology-lesson/).
 
 ```{r viz ops, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning = F, message = F)
@@ -12,17 +16,12 @@ library(htmltools)
 ### Objectives
 - install our first package, `ggplot2`, by installing `tidyverse`
 - learn ggplot2 with `mpg` dataframe (important to play with other data than your own, you'll learn something.)
-- practice writing a script (maybe call it mpg_viz.R?)
-- practice rstudio-github workflow
-- use and credit http://r4ds.had.co.nz/data-visualisation.html
-
-Why do we start with data viz? Not only is data viz a big part of analysis, it’s a way to SEE your progress as you learn to code.
-"ggplot2 implements the grammar of graphics, a coherent system for describing and building graphs. With ggplot2, you can do more faster by learning one system and applying it in many places." - [R4DS](http://r4ds.had.co.nz/data-visualisation.html)
+- practice writing a script in RMarkdown
+- practice the rstudio-github workflow
 
 ### Resources
 
-Here are some resources that helped make this tutorial:  
-- [R for Data Science](http://r4ds.had.co.nz/data-visualisation.html)  
+Here are some additional resources for data visualization in R:  
 - [ggplot2-cheatsheet-2.0.pdf](../cheatsheets/ggplot2-cheatsheet-2.0.pdf)  
 - [Interactive Plots and Maps - Environmental Informatics](http://ucsb-bren.github.io/env-info/wk06_widgets.html)  
 - [Graphs with ggplot2 - Cookbook for R](http://www.cookbook-r.com/Graphs/#graphs-with-ggplot2)  
@@ -32,11 +31,9 @@ Here are some resources that helped make this tutorial:
 
 ## Install our first package: `tidyverse`
 
-<!--- use the `swc-mbari.R script that we created in the previous section, or create a new script --->
-
 Packages are bundles of functions, along with help pages and other goodies that make them easier for others to use, (ie. vignettes). 
 
-So far we've been using packages included in 'base R'; they are 'out-of-the-box' functions. You can also install packages from online created by the vast and growing R user community. The most traditional place to download packages is from [CRAN, the Comprehensive R Archive Network](https://cran.r-project.org/). This is where you went to download R originally, and will go again to look for updates. You can also install packages directly from GitHub, which we'll do tomorrow.
+So far we've been using packages that are already included in *base R*. These can be considered *out-of-the-box* packages and include things such as `sum` and `mean`. You can also download and install packages created by the vast and growing R user community. The most traditional place to download packages is from [CRAN, the Comprehensive R Archive Network](https://cran.r-project.org/). This is where you went to download R originally, and will go again to look for updates. You can also install packages directly from GitHub, which we'll do tomorrow.
 
 You don't need to go to CRAN's website to install packages, we can do it from within R with the command `install.packages("package-name-in-quotes")`.
 
@@ -83,7 +80,7 @@ This data comes preloaded with the `tidyverse` so it is already loaded into R. L
 mpg
 ```
 
-Among the variables in `mpg` are:
+This dataframe is already in a *long* format where all rows are an observation and all columns are variables. Among the variables in `mpg` are:
 
 1. `displ`, a car's engine size, in litres.
 
@@ -92,6 +89,8 @@ Among the variables in `mpg` are:
   fuel efficiency when they travel the same distance. 
 
 To learn more about `mpg`, open its help page by running `?mpg`.
+
+Now we're going to visualize the data that is held in this dataframe.
 
 To build a ggplot, we need to:
 
@@ -275,15 +274,17 @@ the background to white using the function `theme_bw()`.
 
 ## **`ggplot2`** themes
 
-In addition to `theme_bw()`, which changes the plot background to white, **`ggplot2`** comes with several other themes which can be useful to quickly change the look of your visualization. 
+In addition to `theme_bw()`, which changes the plot background to white, **`ggplot2`** comes with several other themes which can be useful to quickly change the look of your visualization.
+
+The [ggthemes](https://cran.r-project.org/web/packages/ggthemes/vignettes/ggthemes.html) package provides a wide variety of options (including an Excel 2003 theme). The [**`ggplot2`** extensions website](https://www.ggplot2-exts.org) provides a list of packages that extend the capabilities of **`ggplot2`**, including additional themes.
 
 >
 > ### Exercise
 >
-> Spend a couple minutes trying out your plot with different plot themes. The complete list of themes is available at <http://docs.ggplot2.org/current/ggtheme.html>. `theme_minimal()` and `theme_light()` are popular, and `theme_void()` can be useful as a starting point to create a new hand-crafted theme.
+> Spend a couple minutes trying out your plot with different plot themes. The complete list of themes in `ggplot2` is available at <http://docs.ggplot2.org/current/ggtheme.html>. But for some more interesting themes, try installing the `ggthemes` package and using one of those themes. You can find more information on this package at <https://cran.r-project.org/web/packages/ggthemes/vignettes/ggthemes.html>
 >
 
-The [ggthemes](https://cran.r-project.org/web/packages/ggthemes/vignettes/ggthemes.html) package provides a wide variety of options (including an Excel 2003 theme). The [**`ggplot2`** extensions website](https://www.ggplot2-exts.org) provides a list of packages that extend the capabilities of **`ggplot2`**, including additional themes.
+
 
 ## Geometric objects (geoms)
 
@@ -435,7 +436,7 @@ The stacking is performed automatically by the __position adjustment__ specified
 
 ```{r}
     ggplot(data = mpg) + 
-      geom_bar(aes(x = fl, fill = class), position = "dodge")
+      geom_bar(aes(x = fl, fill = class), position = "dodge") 
 ```
 
 
@@ -450,9 +451,14 @@ The stacking is performed automatically by the __position adjustment__ specified
 
 > * Plot different variables using `geom_bar()`. For what variables is this geom useful?
 > * Flip the x and y axes.
-> * Can you find a way to change the name of the legend? What about its labels?
-> * Try using a different color palette (see http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/).
+> * Use `scale_x_discrete` to change the x-axis tick labels to "CNG", "Diesel", "Ethanol", "Premium", and "Regular"
 
+```{r}
+ggplot(data = mpg) + 
+      geom_bar(aes(x = fl, fill = class), position = "dodge") +
+   scale_x_discrete(labels=c("CNG", "Diesel", "Ethanol", "Premium", "Regular")) +
+  xlab("Fuel type")
+```
 
 ## Arranging and exporting plots
 
