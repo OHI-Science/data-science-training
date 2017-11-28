@@ -5,12 +5,12 @@ language:
 rmd_files: [
   "index.Rmd",
   "overview.Rmd",
-  "r-rstudio-orientation.Rmd", ## http://socviz.co/
-  "rstudio-github.Rmd",
-  "viz.Rmd",
-  "data-wrangling-dplyr.Rmd",
-  "data-wrangling-tidyr.Rmd",
-  "extended-analysis.Rmd",
-  "collaborate-github.Rmd"]
+  "rstudio.Rmd", ## http://socviz.co/
+  "github.Rmd",
+  "ggplot2.Rmd",
+  "dplyr.Rmd",
+  "tidyr.Rmd",
+  "programming.Rmd",
+  "collaborating.Rmd"]
 delete_merged_file: true
 output_dir: "docs"
