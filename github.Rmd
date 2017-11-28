@@ -1,4 +1,4 @@
-# RStudio + GitHub {#github}
+# GitHub {#github}
 
 ```{r gh ops, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -86,6 +86,28 @@ To get the full functionality of Github, you will eventually want to learn other
 ![](img/push_pull_clone.png)
 <br />
 <br />
+
+## Setup Git & GitHub
+
+We're going to switch gears from R for a moment and set up Git and GitHub, which we will be using along with R and RStudio for the rest of the workshop. This set up is a one-time thing! You will only have to do this once per computer. We'll walk through this together. 
+
+1. Create **Github** account at <http://github.com>, if you don't already have one. For username, I recommend all lower-case letters, short as you can. I recommend using your *.edu email*, since you can request free private repositories via [GitHub Education](https://education.github.com/) discount.
+
+1. Configure **git** with global commands, which means it will apply 'globally' to all files on your computer, rather than to a specific folder. Open the Git Bash program (Windows) or the Terminal (Mac) and type the following:
+
+        # display your version of git
+        git --version
+        
+        # replace USER with your Github user account
+        git config –-global user.name USER
+        
+        # replace NAME@EMAIL.EDU with the email you used to register with Github
+        git config –-global user.email NAME@EMAIL.EDU
+        
+        # list your config to confirm user.* variables set
+        git config --list
+
+Not only have you just set up git as a one-time-only thing, you have just used the command line. We don't have time to learn much of the command line today, but you just successfully used it following explicit instructions, which is huge! There are great resources for learning the command line, check out [this tutorial from SWC at UCSB](http://remi-daigle.github.io/2016-04-15-UCSB/shell/). 
 
 
 ## Create a repository on Github.com

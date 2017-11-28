@@ -1,9 +1,4 @@
----
-output:
-  pdf_document: default
-  html_document: default
----
-# Wrangling (`dplyr`) {#dplyr} 
+# Data Wrangling: `dplyr` {#dplyr} 
 
 ```{r wrangling1, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)

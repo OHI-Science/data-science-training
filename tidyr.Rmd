@@ -1,4 +1,4 @@
-# Wrangling (`tidyr`) {#tidyr} 
+# Data Wrangling: `tidyr` {#tidyr} 
 
 ```{r wrangling ops, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)

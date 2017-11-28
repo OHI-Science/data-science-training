@@ -30,7 +30,7 @@ Suggested breakdown for a 2-day workshop:
 |break      |  | |
 |11-12:30   | [RStudio + GitHub + RMarkdown](#github) | [Programming](#programming) |
 |lunch      |  ||
-|13:30-15:00 |  [Visualization: `ggplot2`](#viz) | [Collaborating with GitHub](#collaborating) |
+|13:30-15:00 |  [Visualization: `ggplot2`](#ggplot2) | [Collaborating with GitHub](#collaborating) |
 |break      |  |  |
 |15:30-17:00 |  [Data Wrangling: `dplyr`)](#dplyr) | TBD... |
 

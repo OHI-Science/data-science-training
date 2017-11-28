@@ -33,3 +33,4 @@ vignettes/*.pdf
 *.knit.md
 .Rproj.user
 _bookdown_files
+data-science-training_files
