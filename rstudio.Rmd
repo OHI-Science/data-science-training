@@ -1,4 +1,4 @@
-# R + RStudio {#rstudio}
+# R & RStudio, Rmarkdown {#rstudio}
 
 
 ```{r setup, include = FALSE, cache = FALSE}
