@@ -7,7 +7,7 @@ library(htmltools)
 
 ## Overview
 
-Now you have some experience wrangling and working with tidy data. But we all know that not all data that you have are tidy. So how do we make data more tidy? With `tidyr`. 
+Now you have some experience wrangling and working with tidy data. But we all know that not all data that you have are tidy. So how do we make data more tidy? With the `tidyr` package. 
 
 **Objectives**
 
@@ -27,25 +27,32 @@ These materials borrow heavily from:
 
 ## `tidyr` basics
 
-Often, data must be reshaped for it to become tidy data. What does that mean? There are four main verbs we'll use, which are essentially pairs of opposites:
+Remember, from the **`dplyr`** section, that tidy data means all rows are an observation and all columns are variables.
+![](img/tidy_data.png)
 
-- turn columns into rows (`gather()`),
-- turn rows into columns (`spread()`),
-- turn a character column into multiple columns (`separate()`),
-- turn multiple character columns into a single column (`unite()`)
+It's important to recognize what *shape* your data is in, and work towards tidying it up.
 
-![](img/rstudio-cheatsheet-spread-gather-sep-unite.png)
+Let's take a look at some examples.
 
-<br>
+Data in the *wide* format each row is often a site/subject/patient and you have multiple observation variables containing the same type of data. These can be either repeated observations over time, or observation of multiple variables (or a mix of both). Data input may be simpler or some other applications may prefer the *wide* format. However, many of `R`'s functions have been designed assuming you have *long* format data. 
 
-You use `spread()` and `gather()` to transform or reshape data between *wide* to *long* formats. *long* format is the tidy data we are after, where:
+```{r wide_data_ex}
+AirPassengers
+```
+
+*long* format is the tidy data we are after, where:
 
  - each column is a variable
  - each row is an observation
 
 In the *long* format, you usually have 1 column for the observed variable and the other columns are ID variables.
 
-For the *wide* format each row is often a site/subject/patient and you have multiple observation variables containing the same type of data. These can be either repeated observations over time, or observation of multiple variables (or a mix of both). Data input may be simpler or some other applications may prefer the 'wide' format. However, many of `R`'s functions have been designed assuming you have 'long' format data. 
+```{r long_data_ex}
+diamonds
+economics
+```
+
+<br> 
 
 These data formats mainly affect readability. For humans, the wide format is often more intuitive since we can often see more of the data on the screen due to it's shape. However, the long format is more machine readable and is closer to the formatting of databases. The ID variables in our dataframes are similar to the fields in a database and observed variables are like the database values.
 
@@ -59,6 +66,15 @@ Sometimes, as with the gapminder dataset, we have multiple types of observed dat
 It's pretty common to have data in this intermediate format in most cases despite not having ALL observations in 1 column, since all 3 observation variables have different units. But we can play with switching it to long format and wide to show what that means (i.e. long would be 4 ID variables and 1 observation variable).
 
 **Note:** Generally, mathematical operations are better in long format, although some plotting functions actually work better with wide format.
+
+Often, data must be reshaped for it to become tidy data. What does that mean? There are four main verbs we'll use, which are essentially pairs of opposites:
+
+- turn columns into rows (`gather()`),
+- turn rows into columns (`spread()`),
+- turn a character column into multiple columns (`separate()`),
+- turn multiple character columns into a single column (`unite()`)
+
+![](img/rstudio-cheatsheet-spread-gather-sep-unite.png)
 
 ### Setup
 
@@ -84,7 +100,7 @@ library(tidyverse) # install.packages("tidyverse")
 ```
 
 
-## Explore gapminder data — wide format.
+## Explore gapminder dataset.
 
 Yesterday we started off with the gapminder data in a format that was already tidy. But what if it weren't? Let's look at a different version of those data. 
 
@@ -100,6 +116,7 @@ Have a look at the data. You can see there are a lot more columns than the versi
 
 But we want it to be in a tidy way so that we can work with it more easily. So here we go. 
 
+You use `spread()` and `gather()` to transform or reshape data between *wide* to *long* formats.
 
 ## `gather()` data from wide to long format
 
@@ -217,13 +234,13 @@ tail(gap_long)
 ```
 Excellent. This is long format: every row is a unique observation. Yay!
 
-### Your turn
-
-1. Using `gap_long`, calculate the mean life expectancy, population, and gdpPercap for each continent. **Hint:** use the `dplyr::group_by()` and `dplyr::summarize()` functions 
-
-2. What other helper functions can you use with `dplyr::select()`? Would any be useful in our example above? Why or why not?
-
-3. Knit the R Markdown file and sync to Github (pull, stage, commit, push)
+> ### Exercise
+>
+> 1. Using `gap_long`, calculate the mean life expectancy, population, and gdpPercap for each continent. **Hint:** use the `dplyr::group_by()` and `dplyr::summarize()` functions 
+>
+> 2. What other helper functions can you use with `dplyr::select()`? Would any be useful in our example above? Why or why not?
+>
+> 3. Knit the R Markdown file and sync to Github (pull, stage, commit, push)
 
 ```{r, eval=FALSE}
 # solution (no peeking!)
@@ -232,7 +249,9 @@ gap_long %>%
     summarize(means = mean(obs_values))
 ```
 
-## `spread()` data from long to intermediate format
+## `spread()` 
+
+The function `spread()` is used to transform data from long to intermediate format
 
 Alright! Now just to double-check our work, let's use the opposite of `gather()` to spread our observation variables back to the original format with the aptly named `spread()`. You pass `spread()` the key and value pair, which is now `obs_type` and `obs_values`.
 
@@ -316,11 +335,12 @@ str(gapminder)
 
 (In the past, mine has shown a slight difference because one is a data.frame and one is a tbl_df, which is similar to a data.frame. We won't get into this difference now, I'm feeling good about these data sets! We've gone from the longest format back to the intermediate and we didn't introduce any errors in our code.)
 
-## Your turn
-
-1. Convert "gap_long" all the way back to gap_wide. Hint: you'll need to create appropriate labels for all our new variables (time*metric combinations) with the opposite of separate: `tidyr::unite()`. 
-
-2. Knit the R Markdown file and sync to Github (pull, stage, commit, push)
+> ### Exercise
+>
+>1. Convert "gap_long" all the way back to gap_wide. Hint: you'll need to create appropriate labels for all our new variables (time*metric combinations) with the opposite of separate: `tidyr::unite()`. 
+>
+>2. Knit the R Markdown file and sync to Github (pull, stage, commit, push)
+>
 
 ### Answer (no peeking)
 ```{r, eval=FALSE}
