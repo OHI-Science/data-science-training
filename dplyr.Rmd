@@ -284,7 +284,7 @@ Never fear, you can still specify other arguments to this function! To see the f
 gapminder %>% head(3)
 ```
 
-**I've advised you to think "gets" whenever you see the assignment operator, `<-`. Similary, you should think "and then" whenever you see the pipe operator, `%>%`.**
+**I've advised you to think "gets" whenever you see the assignment operator, `<-`. Similarly, you should think "and then" whenever you see the pipe operator, `%>%`.**
 
 You are probably not impressed yet, but the magic will soon happen.
 
@@ -483,7 +483,7 @@ library(tidyverse) ## install.packages('tidyverse')
 gapminder <- readr::read_csv('https://raw.githubusercontent.com/jules32/2017-11-30-MBARI/gh-pages/data/gapminder.csv') 
 
 ## summarize
-max_gdp <- gapminder %>% 
+gap_max_gdp <- gapminder %>% 
   dplyr::select(-continent, -lifeExp) %>% # or select(country, year, pop, gdpPercap)
   dplyr::group_by(country) %>%
   dplyr::mutate(gdp = pop * gdpPercap) %>%
@@ -499,25 +499,19 @@ Let's compare with some base R code to accomplish the same things. Base R requir
 
 If we don't write anything after the comma, that means "all columns". And if we don't write anything before the comma, that means "all rows". 
 
-Also, the `$` operator is how you access specific columns of your dataframe. You can also add new columns like we do with `mex$gdp`. 
+Also, the `$` operator is how you access specific columns of your dataframe. You can also add new columns like we will do with `mex$gdp` below. 
 
-Here we will just calculate the max for one country, Mexico. Tomorrow we will learn how to do it for all the countries, like we did with `dplyr::group_by()`.
+Instead of calculating the max for each country like we did with `dplyr` above, here we will just calculate the max for one country, Mexico. Tomorrow we will learn how to do it for all the countries, like we did with `dplyr::group_by()`.
 
 ```{r, eval = FALSE}
 ## gapminder-wrangle.R --- baseR
 ## J. Lowndes lowndes@nceas.ucsb.edu
 
-## Note the stringAsFactors = FALSE variable to avoid factors!
+
 gapminder <- read.csv('https://raw.githubusercontent.com/jules32/2017-11-30-MBARI/gh-pages/data/gapminder.csv', stringsAsFactors = FALSE) 
-
-## subsetting columns. Compare to `dplyr::select()`
-x1  <- gapminder[ , c('country', 'year', 'pop', 'gdpPercap') ]
-
-## subsetting rows. Compare to `dplyr::filter()`
-mex <- x1[x1$country == "Mexico", ]
-
-## adding new columns. Compare to `dplyr::mutate()`. 
-mex$gdp <- mex$pop * mex$gdpPercap
+x1  <- gapminder[ , c('country', 'year', 'pop', 'gdpPercap') ]# subset columns
+mex <- x1[x1$country == "Mexico", ] # subset rows
+mex$gdp <- mex$pop * mex$gdpPercap # add new columns
 mex$max_gdp <- max(mex$gdp)
 ```
 

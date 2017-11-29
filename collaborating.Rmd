@@ -43,15 +43,68 @@ Opening this Project in a new Session opens up a new world of awesomeness from R
 
 ![](img/Rproj_screenshot.jpg)
 
-## Rmd analysis together
+## Collaborative analysis
 
-- Rmd analysis
+Now that you both have the same repo cloned to your computers, let's start collaborating. We'll be playing around with the starwars dataset, so let's get setup a bit. 
+
+1. Person 1: update the README to say something about you two, the authors.
+1. Person 2: create an RMarkdown file, add something about the authors, and knit it. 
+1. Both of you: sync to GitHub.com (pull, stage, commit, push). 
+1. Both of you: once you've both synced (talk to each other about it!), pull again. You should see each others' work on your computer.
+1. Person 1: in the RMarkdown file, add a bit of the plan. We'll be exploring the `starwars` dataset. 
+1. Person 2: in the README, add a bit of the plan. 
+1. Both of you: sync
+
+## Explore on GitHub.com
+
+Now, let's look at the repo again on GitHub.com. You'll see those new files appear, and the commit history has increased.
+
+### Commit History
+
+You'll see that the number of commits for the repo has increased, let's have a look. You can see the history of both of you. 
+
+### Blame
+
+Now let's look at a single file, starting with the README file. We've explored the "Raw" and "History" options in the top-right of the file, but we haven't really explored the "Blame" option. Let's look now. Blame shows you line-by-line who authored the most recent version of the file you see. This is super useful if you're trying to understand logic; you know who to ask for questions or attribute credit.
+
+### Issues
+
+Now let's have a look at issues. This is a way you can communicate to others about plans for the repo, questions, etc. Note that issues are public if the repository is public.
+
+![](img/github-issues.png)
+
+Let's create a new issue with the title "NYC flights". 
+
+In the text box, let's write a note to our collaborator. You can use Markdown in this text box, which means all of your header and bullet formatting will come through. You can also select these options by clicking them just above the text box. 
+
+Let's write something here. I'm going to write: 
+
+```
+Hi @jafflerbach! 
+
+# first priority
+
+- explore NYC flights
+- plot interesting things
+```
+
+Note that I have my collaborator's GitHub name with a `@` symbol. This is going to email her directly so that she sees this issue. I can click the "Preview" button at the top left of the text box to see how this will look rendered in Markdown. It looks good! 
+
+Now let's click submit new issue. 
+
+On the right side, there are a bunch of options for categorizing and organizing your issues. You and your collaborator may want to make some labels and timelines, depending on the project. 
+
+Another feature about issues is whether you want any notifications to this repository. Click where it says "Unwatch" up at the top. You'll see three options: "Not watching", "Watching", and "Ignoring". By default, you are watching these issues because you are a collaborator to the repository. But if you stop being a big contributor to this project, you may want to switch to "Not watching". Or, you may want to ask an outside person to watch the issues. Or you may want to watch another repo yourself!
+
+![](img/github-collab.png)
 
 
-<!---
-### RStudio projects (.Rproj)
+## Your turn
 
-Follow the steps for cloning that we did before, but when you get to a critical point, click open in another project
+For the rest of this lesson, you're going to be working with your collaborator, syncing to GitHub often and practicing what we've learned so far. We will get started 
 
-TODO: RStudio project! Yes, you can use these without Git, but you probably never will, so that's why we're learning it together.
---->
+Here's what we'll be doing (from [R for Data Science's Transform Chapter](http://r4ds.had.co.nz/transform.html)):
+
+**Data**: You will be exploring a dataset on flights departing New York City in 2013. These data are actually in a package called `nycflights13`, so we can load them the way we would any other package. 
+
+

@@ -21,7 +21,7 @@ We'll be talking about :
 
 Everyone in this workshop is coming from a different place with different experiences and expectations. But everyone will learn something new here, because there is so much innovation in the data science world. Even instructors and helpers learn something new every time, from each other and from your questions. You are all welcome here and encouraged to help each other. 
 
-Here are some important themes throughout: 
+Here are some important themes throughout (these are joke book covers): 
 
 ![](img/practical_dev_both.png)
 

@@ -15,7 +15,7 @@ Ultimately, with our analysis, we want to plot...
 - for loops
 - joining data
 - if statements
-
+<!---
 - make sure your loop worked like you wanted
 - if statements (conditionals) 
     - write message() to yourself
@@ -23,7 +23,7 @@ Ultimately, with our analysis, we want to plot...
 - importing and writing data
     - write a local copy of gapminder data to data/ folder
     - installing packages from github
-
+--->
 **Resources**
 
 
@@ -64,7 +64,7 @@ Let's start off with a few comments so that we know what it is for, and save it:
 ```
 ## gapminder-analysis.R
 ## analysis with gapminder data
-## J Lowndes lowndes@nceas.uscb.edu
+## J Lowndes lowndes@nceas.ucsb.edu
 ```
 
 We'll be working with the gapminder data again so let's read it in here: 
@@ -90,7 +90,7 @@ Remember, like in R Markdown, hitting return does not execute this command. To e
 
 ## Automation with for loops
 
-Our plan is to plot gdpPercap for each country. This means that we want to do the same operation (plotting gdpPercap) on a bunch of different things (countries). Yesterday we learned the dplyr's `group_by()` function, and this is super powerful to automate through groups. But there are things that `group_by()` can't do, like plotting. So we will use a for loop.
+Our plan is to plot gdpPercap for each country. This means that we want to do the same operation (plotting gdpPercap) on a bunch of different things (countries). Yesterday we learned the dplyr's `group_by()` function, and this is super powerful to automate through groups. But there are things that you may not want to do with `group_by()`, like plotting. So we will use a for loop.
 
 Let's start off with what this would look like for just one country. I'm going to demonstrate with Afghanistan:
 

@@ -25,7 +25,7 @@
 <meta name="author" content="The Ocean Health Index Team">
 
 
-<meta name="date" content="2017-11-28">
+<meta name="date" content="2017-11-29">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -267,7 +267,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.2" data-path="collaborating.html"><a href="collaborating.html#create-gh-pages-repo"><i class="fa fa-check"></i><b>9.2</b> create gh-pages repo</a></li>
 <li class="chapter" data-level="9.3" data-path="collaborating.html"><a href="collaborating.html#give-your-collaborator-administration-priviledges"><i class="fa fa-check"></i><b>9.3</b> give your collaborator administration priviledges</a></li>
 <li class="chapter" data-level="9.4" data-path="collaborating.html"><a href="collaborating.html#clone-to-a-new-rproject"><i class="fa fa-check"></i><b>9.4</b> Clone to a new Rproject</a></li>
-<li class="chapter" data-level="9.5" data-path="collaborating.html"><a href="collaborating.html#rmd-analysis-together"><i class="fa fa-check"></i><b>9.5</b> Rmd analysis together</a></li>
+<li class="chapter" data-level="9.5" data-path="collaborating.html"><a href="collaborating.html#collaborative-analysis"><i class="fa fa-check"></i><b>9.5</b> Collaborative analysis</a></li>
+<li class="chapter" data-level="9.6" data-path="collaborating.html"><a href="collaborating.html#explore-on-github.com"><i class="fa fa-check"></i><b>9.6</b> Explore on GitHub.com</a><ul>
+<li class="chapter" data-level="9.6.1" data-path="collaborating.html"><a href="collaborating.html#commit-history"><i class="fa fa-check"></i><b>9.6.1</b> Commit History</a></li>
+<li class="chapter" data-level="9.6.2" data-path="collaborating.html"><a href="collaborating.html#blame"><i class="fa fa-check"></i><b>9.6.2</b> Blame</a></li>
+<li class="chapter" data-level="9.6.3" data-path="collaborating.html"><a href="collaborating.html#issues"><i class="fa fa-check"></i><b>9.6.3</b> Issues</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="collaborating.html"><a href="collaborating.html#your-turn-12"><i class="fa fa-check"></i><b>9.7</b> Your turn</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
@@ -487,7 +493,7 @@ x2$pop - x1$pop
 <p>This is equivalent to <code>head(gapminder)</code>. This pipe operator takes the thing on the left-hand-side and <strong>pipes</strong> it into the function call on the right-hand-side – literally, drops it in as the first argument.</p>
 <p>Never fear, you can still specify other arguments to this function! To see the first 3 rows of Gapminder, we could say <code>head(gapminder, 3)</code> or this:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gapminder <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>(<span class="dv">3</span>)</code></pre></div>
-<p><strong>I’ve advised you to think “gets” whenever you see the assignment operator, <code>&lt;-</code>. Similary, you should think “and then” whenever you see the pipe operator, <code>%&gt;%</code>.</strong></p>
+<p><strong>I’ve advised you to think “gets” whenever you see the assignment operator, <code>&lt;-</code>. Similarly, you should think “and then” whenever you see the pipe operator, <code>%&gt;%</code>.</strong></p>
 <p>You are probably not impressed yet, but the magic will soon happen.</p>
 <p>Fun break: check out <a href="https://twitter.com/backerman150/status/926479565869993984">this gif about %&gt;% from Twitter</a>.</p>
 </div>
@@ -635,7 +641,7 @@ gapminder <span class="op">%&gt;%</span>
 gapminder &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/jules32/2017-11-30-MBARI/gh-pages/data/gapminder.csv&#39;</span>) 
 
 ## summarize
-max_gdp &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span><span class="st"> </span>
+gap_max_gdp &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(<span class="op">-</span>continent, <span class="op">-</span>lifeExp) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># or select(country, year, pop, gdpPercap)</span>
 <span class="st">  </span>dplyr<span class="op">::</span><span class="kw">group_by</span>(country) <span class="op">%&gt;%</span>
 <span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">gdp =</span> pop <span class="op">*</span><span class="st"> </span>gdpPercap) <span class="op">%&gt;%</span>
@@ -646,22 +652,16 @@ max_gdp &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span><s
 <h3><span class="header-section-number">6.13.1</span> Compare to base R</h3>
 <p>Let’s compare with some base R code to accomplish the same things. Base R requires subsetting with the <code>[rows, columns]</code> notation. This notation is something you’ll see a lot in base R. the brackets <code>[ ]</code> allow you to extract parts of an object. Within the brackets, the comma separates rows from columns.</p>
 <p>If we don’t write anything after the comma, that means “all columns”. And if we don’t write anything before the comma, that means “all rows”.</p>
-<p>Also, the <code>$</code> operator is how you access specific columns of your dataframe. You can also add new columns like we do with <code>mex$gdp</code>.</p>
-<p>Here we will just calculate the max for one country, Mexico. Tomorrow we will learn how to do it for all the countries, like we did with <code>dplyr::group_by()</code>.</p>
+<p>Also, the <code>$</code> operator is how you access specific columns of your dataframe. You can also add new columns like we will do with <code>mex$gdp</code> below.</p>
+<p>Instead of calculating the max for each country like we did with <code>dplyr</code> above, here we will just calculate the max for one country, Mexico. Tomorrow we will learn how to do it for all the countries, like we did with <code>dplyr::group_by()</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## gapminder-wrangle.R --- baseR
 ## J. Lowndes lowndes@nceas.ucsb.edu
 
-## Note the stringAsFactors = FALSE variable to avoid factors!
+
 gapminder &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/jules32/2017-11-30-MBARI/gh-pages/data/gapminder.csv&#39;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>) 
-
-## subsetting columns. Compare to `dplyr::select()`
-x1  &lt;-<span class="st"> </span>gapminder[ , <span class="kw">c</span>(<span class="st">&#39;country&#39;</span>, <span class="st">&#39;year&#39;</span>, <span class="st">&#39;pop&#39;</span>, <span class="st">&#39;gdpPercap&#39;</span>) ]
-
-## subsetting rows. Compare to `dplyr::filter()`
-mex &lt;-<span class="st"> </span>x1[x1<span class="op">$</span>country <span class="op">==</span><span class="st"> &quot;Mexico&quot;</span>, ]
-
-## adding new columns. Compare to `dplyr::mutate()`. 
-mex<span class="op">$</span>gdp &lt;-<span class="st"> </span>mex<span class="op">$</span>pop <span class="op">*</span><span class="st"> </span>mex<span class="op">$</span>gdpPercap
+x1  &lt;-<span class="st"> </span>gapminder[ , <span class="kw">c</span>(<span class="st">&#39;country&#39;</span>, <span class="st">&#39;year&#39;</span>, <span class="st">&#39;pop&#39;</span>, <span class="st">&#39;gdpPercap&#39;</span>) ]<span class="co"># subset columns</span>
+mex &lt;-<span class="st"> </span>x1[x1<span class="op">$</span>country <span class="op">==</span><span class="st"> &quot;Mexico&quot;</span>, ] <span class="co"># subset rows</span>
+mex<span class="op">$</span>gdp &lt;-<span class="st"> </span>mex<span class="op">$</span>pop <span class="op">*</span><span class="st"> </span>mex<span class="op">$</span>gdpPercap <span class="co"># add new columns</span>
 mex<span class="op">$</span>max_gdp &lt;-<span class="st"> </span><span class="kw">max</span>(mex<span class="op">$</span>gdp)</code></pre></div>
 <p>Note too that the chain operator <code>%&gt;%</code> that we used with the <code>tidyverse</code> lets us get away from the temporary variable x1.</p>
 <!---https://twitter.com/bencapistrant/status/932646247101534209--->

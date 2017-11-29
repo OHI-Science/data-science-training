@@ -25,7 +25,7 @@
 <meta name="author" content="The Ocean Health Index Team">
 
 
-<meta name="date" content="2017-11-28">
+<meta name="date" content="2017-11-29">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -267,7 +267,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.2" data-path="collaborating.html"><a href="collaborating.html#create-gh-pages-repo"><i class="fa fa-check"></i><b>9.2</b> create gh-pages repo</a></li>
 <li class="chapter" data-level="9.3" data-path="collaborating.html"><a href="collaborating.html#give-your-collaborator-administration-priviledges"><i class="fa fa-check"></i><b>9.3</b> give your collaborator administration priviledges</a></li>
 <li class="chapter" data-level="9.4" data-path="collaborating.html"><a href="collaborating.html#clone-to-a-new-rproject"><i class="fa fa-check"></i><b>9.4</b> Clone to a new Rproject</a></li>
-<li class="chapter" data-level="9.5" data-path="collaborating.html"><a href="collaborating.html#rmd-analysis-together"><i class="fa fa-check"></i><b>9.5</b> Rmd analysis together</a></li>
+<li class="chapter" data-level="9.5" data-path="collaborating.html"><a href="collaborating.html#collaborative-analysis"><i class="fa fa-check"></i><b>9.5</b> Collaborative analysis</a></li>
+<li class="chapter" data-level="9.6" data-path="collaborating.html"><a href="collaborating.html#explore-on-github.com"><i class="fa fa-check"></i><b>9.6</b> Explore on GitHub.com</a><ul>
+<li class="chapter" data-level="9.6.1" data-path="collaborating.html"><a href="collaborating.html#commit-history"><i class="fa fa-check"></i><b>9.6.1</b> Commit History</a></li>
+<li class="chapter" data-level="9.6.2" data-path="collaborating.html"><a href="collaborating.html#blame"><i class="fa fa-check"></i><b>9.6.2</b> Blame</a></li>
+<li class="chapter" data-level="9.6.3" data-path="collaborating.html"><a href="collaborating.html#issues"><i class="fa fa-check"></i><b>9.6.3</b> Issues</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="collaborating.html"><a href="collaborating.html#your-turn-12"><i class="fa fa-check"></i><b>9.7</b> Your turn</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
@@ -335,18 +341,61 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 </div>
 </div>
-<div id="rmd-analysis-together" class="section level2">
-<h2><span class="header-section-number">9.5</span> Rmd analysis together</h2>
-<ul>
-<li>Rmd analysis</li>
-</ul>
-<!---
-### RStudio projects (.Rproj)
+<div id="collaborative-analysis" class="section level2">
+<h2><span class="header-section-number">9.5</span> Collaborative analysis</h2>
+<p>Now that you both have the same repo cloned to your computers, let’s start collaborating. We’ll be playing around with the starwars dataset, so let’s get setup a bit.</p>
+<ol style="list-style-type: decimal">
+<li>Person 1: update the README to say something about you two, the authors.</li>
+<li>Person 2: create an RMarkdown file, add something about the authors, and knit it.</li>
+<li>Both of you: sync to GitHub.com (pull, stage, commit, push).</li>
+<li>Both of you: once you’ve both synced (talk to each other about it!), pull again. You should see each others’ work on your computer.</li>
+<li>Person 1: in the RMarkdown file, add a bit of the plan. We’ll be exploring the <code>starwars</code> dataset.</li>
+<li>Person 2: in the README, add a bit of the plan.</li>
+<li>Both of you: sync</li>
+</ol>
+</div>
+<div id="explore-on-github.com" class="section level2">
+<h2><span class="header-section-number">9.6</span> Explore on GitHub.com</h2>
+<p>Now, let’s look at the repo again on GitHub.com. You’ll see those new files appear, and the commit history has increased.</p>
+<div id="commit-history" class="section level3">
+<h3><span class="header-section-number">9.6.1</span> Commit History</h3>
+<p>You’ll see that the number of commits for the repo has increased, let’s have a look. You can see the history of both of you.</p>
+</div>
+<div id="blame" class="section level3">
+<h3><span class="header-section-number">9.6.2</span> Blame</h3>
+<p>Now let’s look at a single file, starting with the README file. We’ve explored the “Raw” and “History” options in the top-right of the file, but we haven’t really explored the “Blame” option. Let’s look now. Blame shows you line-by-line who authored the most recent version of the file you see. This is super useful if you’re trying to understand logic; you know who to ask for questions or attribute credit.</p>
+</div>
+<div id="issues" class="section level3">
+<h3><span class="header-section-number">9.6.3</span> Issues</h3>
+<p>Now let’s have a look at issues. This is a way you can communicate to others about plans for the repo, questions, etc. Note that issues are public if the repository is public.</p>
+<div class="figure">
+<img src="img/github-issues.png" />
 
-Follow the steps for cloning that we did before, but when you get to a critical point, click open in another project
+</div>
+<p>Let’s create a new issue with the title “NYC flights”.</p>
+<p>In the text box, let’s write a note to our collaborator. You can use Markdown in this text box, which means all of your header and bullet formatting will come through. You can also select these options by clicking them just above the text box.</p>
+<p>Let’s write something here. I’m going to write:</p>
+<pre><code>Hi @jafflerbach! 
 
-TODO: RStudio project! Yes, you can use these without Git, but you probably never will, so that's why we're learning it together.
---->
+# first priority
+
+- explore NYC flights
+- plot interesting things</code></pre>
+<p>Note that I have my collaborator’s GitHub name with a <code>@</code> symbol. This is going to email her directly so that she sees this issue. I can click the “Preview” button at the top left of the text box to see how this will look rendered in Markdown. It looks good!</p>
+<p>Now let’s click submit new issue.</p>
+<p>On the right side, there are a bunch of options for categorizing and organizing your issues. You and your collaborator may want to make some labels and timelines, depending on the project.</p>
+<p>Another feature about issues is whether you want any notifications to this repository. Click where it says “Unwatch” up at the top. You’ll see three options: “Not watching”, “Watching”, and “Ignoring”. By default, you are watching these issues because you are a collaborator to the repository. But if you stop being a big contributor to this project, you may want to switch to “Not watching”. Or, you may want to ask an outside person to watch the issues. Or you may want to watch another repo yourself!</p>
+<div class="figure">
+<img src="img/github-collab.png" />
+
+</div>
+</div>
+</div>
+<div id="your-turn-12" class="section level2">
+<h2><span class="header-section-number">9.7</span> Your turn</h2>
+<p>For the rest of this lesson, you’re going to be working with your collaborator, syncing to GitHub often and practicing what we’ve learned so far. We will get started</p>
+<p>Here’s what we’ll be doing (from <a href="http://r4ds.had.co.nz/transform.html">R for Data Science’s Transform Chapter</a>):</p>
+<p><strong>Data</strong>: You will be exploring a dataset on flights departing New York City in 2013. These data are actually in a package called <code>nycflights13</code>, so we can load them the way we would any other package.</p>
 
 </div>
 </div>

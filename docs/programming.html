@@ -25,7 +25,7 @@
 <meta name="author" content="The Ocean Health Index Team">
 
 
-<meta name="date" content="2017-11-28">
+<meta name="date" content="2017-11-29">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -267,7 +267,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.2" data-path="collaborating.html"><a href="collaborating.html#create-gh-pages-repo"><i class="fa fa-check"></i><b>9.2</b> create gh-pages repo</a></li>
 <li class="chapter" data-level="9.3" data-path="collaborating.html"><a href="collaborating.html#give-your-collaborator-administration-priviledges"><i class="fa fa-check"></i><b>9.3</b> give your collaborator administration priviledges</a></li>
 <li class="chapter" data-level="9.4" data-path="collaborating.html"><a href="collaborating.html#clone-to-a-new-rproject"><i class="fa fa-check"></i><b>9.4</b> Clone to a new Rproject</a></li>
-<li class="chapter" data-level="9.5" data-path="collaborating.html"><a href="collaborating.html#rmd-analysis-together"><i class="fa fa-check"></i><b>9.5</b> Rmd analysis together</a></li>
+<li class="chapter" data-level="9.5" data-path="collaborating.html"><a href="collaborating.html#collaborative-analysis"><i class="fa fa-check"></i><b>9.5</b> Collaborative analysis</a></li>
+<li class="chapter" data-level="9.6" data-path="collaborating.html"><a href="collaborating.html#explore-on-github.com"><i class="fa fa-check"></i><b>9.6</b> Explore on GitHub.com</a><ul>
+<li class="chapter" data-level="9.6.1" data-path="collaborating.html"><a href="collaborating.html#commit-history"><i class="fa fa-check"></i><b>9.6.1</b> Commit History</a></li>
+<li class="chapter" data-level="9.6.2" data-path="collaborating.html"><a href="collaborating.html#blame"><i class="fa fa-check"></i><b>9.6.2</b> Blame</a></li>
+<li class="chapter" data-level="9.6.3" data-path="collaborating.html"><a href="collaborating.html#issues"><i class="fa fa-check"></i><b>9.6.3</b> Issues</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="collaborating.html"><a href="collaborating.html#your-turn-12"><i class="fa fa-check"></i><b>9.7</b> Your turn</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
@@ -302,20 +308,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>create an R script</li>
 <li>for loops</li>
 <li>joining data</li>
-<li><p>if statements</p></li>
-<li>make sure your loop worked like you wanted</li>
-<li>if statements (conditionals)
-<ul>
-<li>write message() to yourself</li>
-<li>list.files()</li>
-</ul></li>
-<li>importing and writing data
-<ul>
-<li>write a local copy of gapminder data to data/ folder</li>
-<li>installing packages from github</li>
-</ul></li>
+<li>if statements <!---
+- make sure your loop worked like you wanted
+- if statements (conditionals) 
+    - write message() to yourself
+    - list.files()
+- importing and writing data
+    - write a local copy of gapminder data to data/ folder
+    - installing packages from github
+---> <strong>Resources</strong></li>
 </ul>
-<p><strong>Resources</strong></p>
 <!--- Would love to include:
 
 When trying to see if a number or text is equal to some *single* value, use `==`. To check it against *multiple* values, use `%in%`. mine’s "%!in%" <- Negate("%in%")
@@ -347,7 +349,7 @@ get file extensions https://stat.ethz.ch/R-manual/R-devel/library/tools/html/fil
 <p>Let’s start off with a few comments so that we know what it is for, and save it:</p>
 <pre><code>## gapminder-analysis.R
 ## analysis with gapminder data
-## J Lowndes lowndes@nceas.uscb.edu</code></pre>
+## J Lowndes lowndes@nceas.ucsb.edu</code></pre>
 <p>We’ll be working with the gapminder data again so let’s read it in here:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## load libraries
 <span class="kw">library</span>(tidyverse)
@@ -372,7 +374,7 @@ gapminder &lt;-<span class="st"> </span>readr<span class="op">::</span><span cla
 </div>
 <div id="automation-with-for-loops" class="section level2">
 <h2><span class="header-section-number">8.5</span> Automation with for loops</h2>
-<p>Our plan is to plot gdpPercap for each country. This means that we want to do the same operation (plotting gdpPercap) on a bunch of different things (countries). Yesterday we learned the dplyr’s <code>group_by()</code> function, and this is super powerful to automate through groups. But there are things that <code>group_by()</code> can’t do, like plotting. So we will use a for loop.</p>
+<p>Our plan is to plot gdpPercap for each country. This means that we want to do the same operation (plotting gdpPercap) on a bunch of different things (countries). Yesterday we learned the dplyr’s <code>group_by()</code> function, and this is super powerful to automate through groups. But there are things that you may not want to do with <code>group_by()</code>, like plotting. So we will use a for loop.</p>
 <p>Let’s start off with what this would look like for just one country. I’m going to demonstrate with Afghanistan:</p>
 <!---TODO
 For the figures, we want it to label the currency, which we have in another data file (=join). And, we'll want to add Westeros to the dataframe (=rbind) and create that figure too. 
