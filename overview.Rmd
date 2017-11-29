@@ -38,7 +38,7 @@ We will be focusing on:
 
 - **Tidy**: `tidyr` to organize rows of data into unique values
 - **Transform**: `dplyr` to manipulate/wrangle data based on subsetting by rows or columns, sorting and joining
-- **Visualise**: 
+- **Visualize**: 
     - `ggplot2` static plots, using grammar of graphics principles
 - **Communicate**
     - online website with _Github Pages_
@@ -51,7 +51,7 @@ We'll be using the [gapminder dataset](http://www.gapminder.org/world), which re
 
 [Gapminder Motion Chart<br\>![](https://github.com/remi-daigle/2016-04-15-UCSB/raw/gh-pages/viz/img/gapminder-world_motion-chart.png)](http://www.gapminder.org/world)
 
-While these data are not specifically oriented around conservation or the environment, it is a fantastically rich data set with many parallels to data you may have and wrangling you will need to do. There are various indicators, across multiple study sites, and over many years.
+While these data are not specifically oriented around conservation or the environment, it is a fantastically rich data set with many parallels to data you may have and wrangling you will need to do. We learn through metaphor, and there are various indicators, across multiple study sites, and over many years. 
 
 ## By the end of the course...
 
