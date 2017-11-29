@@ -2,6 +2,7 @@
 
 ```{r wrangling ops, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+options(scipen = 999, digits = 3) #restrict scientific notation and long decimals
 library(htmltools)
 ```
 
@@ -44,7 +45,7 @@ Data wrangling with `tidyr`, which is part of the tidyverse. We are going to tid
 
 First load `tidyr` in an R chunk. You already have installed the tidyverse, so you should be able to just load it like this (using the comment so you can run `install.packages("tidyverse")` easily if need be):
 
-```{r, message=FALSE}
+```{r, message=FALSE, warning=F}
 library(tidyverse) # install.packages("tidyverse")
 ```
 
@@ -60,6 +61,8 @@ Let's take a look at some examples.
 
 Data in the *wide* format each row is often a site/subject/patient and you have multiple observation variables containing the same type of data. These can be either repeated observations over time, or observation of multiple variables (or a mix of both). Data input may be simpler or some other applications may prefer the *wide* format. However, many of `R`'s functions have been designed assuming you have *long* format data. 
 
+A simple example of data in a *wide* format is the `AirPassengers` dataset which provides information on monthly airline passenger numbers from 1949-1960. You'll notice that each row is a single year and the columns are each month Jan - Dec. 
+
 ```{r wide_data_ex}
 AirPassengers
 ```
@@ -69,25 +72,15 @@ AirPassengers
  - each column is a variable
  - each row is an observation
 
-In the *long* format, you usually have 1 column for the observed variable and the other columns are ID variables.
+In the *long* format, you usually have 1 column for the observed variable and the other columns are ID variables. The `diamonds` dataset is an example of a *long* dataset with each row representing a single diamond and each column representing a variable of diamonds such as `cut` and `clarity`.
 
 ```{r long_data_ex}
 diamonds
-economics
 ```
 
 <br> 
 
-These data formats mainly affect readability. For humans, the wide format is often more intuitive since we can often see more of the data on the screen due to it's shape. However, the long format is more machine readable and is closer to the formatting of databases. The ID variables in our dataframes are similar to the fields in a database and observed variables are like the database values.
-
-> Question: Is gapminder a purely long, purely wide, or some intermediate format?
-
-Sometimes, as with the gapminder dataset, we have multiple types of observed data. It is somewhere in between the purely 'long' and 'wide' data formats: 
-
-- 3 "ID variables" (`continent`, `country`, `year`) 
-- 3 "Observation variables" (`pop`,`lifeExp`,`gdpPercap`). 
-
-It's pretty common to have data in this intermediate format in most cases despite not having ALL observations in 1 column, since all 3 observation variables have different units. But we can play with switching it to long format and wide to show what that means (i.e. long would be 4 ID variables and 1 observation variable).
+These different data formats mainly affect readability. For humans, the wide format is often more intuitive since we can often see more of the data on the screen due to it's shape. However, the long format is more machine readable and is closer to the formatting of databases. The ID variables in our dataframes are similar to the fields in a database and observed variables are like the database values.
 
 **Note:** Generally, mathematical operations are better in long format, although some plotting functions actually work better with wide format.
 
@@ -105,15 +98,30 @@ Often, data must be reshaped for it to become tidy data. What does that mean? Th
 
 Yesterday we started off with the gapminder data in a format that was already tidy. But what if it weren't? Let's look at a different version of those data. 
 
+
 The data are on GitHub. Navigate there by going to: 
 
 github.com > ohi-science > data-science-training > data > gapminder_wide.csv
 
 or by copy-pasting this in the browser: `https://github.com/OHI-Science/data-science-training/blob/master/data/gapminder_wide.csv`
 
-Have a look at the data. You can see there are a lot more columns than the version we looked at before. This format is pretty common, because it can be a lot more intuitive to *enter* data in this way.
+Have a look at the data. 
+
+> Question: Is gapminder a purely long, purely wide, or some intermediate format?
+
+You can see there are a lot more columns than the version we looked at before. This format is pretty common, because it can be a lot more intuitive to *enter* data in this way.
 
 ![](img/gapminder_wide_gh.png)
+
+<br>
+
+Sometimes, as with the gapminder dataset, we have multiple types of observed data. It is somewhere in between the purely 'long' and 'wide' data formats: 
+
+- 3 "ID variables" (`continent`, `country`, `year`) 
+- 3 "Observation variables" (`pop`,`lifeExp`,`gdpPercap`). 
+
+It's pretty common to have data in this intermediate format in most cases despite not having ALL observations in 1 column, since all 3 observation variables have different units. But we can play with switching it to long format and wide to show what that means (i.e. long would be 4 ID variables and 1 observation variable).
+
 
 But we want it to be in a tidy way so that we can work with it more easily. So here we go. 
 
@@ -122,6 +130,8 @@ You use `spread()` and `gather()` to transform or reshape data between *wide* to
 ## `gather()` data from wide to long format
 
 `r img(src='img/rstudio-cheatsheet-reshaping-data-gather.png', width=500)` 
+
+<br>
 
 Read in the data from GitHub. Remember, you need to click on the 'Raw' button first so you can read it directly. Let's also read in the gapminder data from yesterday so that we can use it to compare later on. 
 
@@ -142,7 +152,7 @@ str(gap_wide)
 
 While wide format is nice for data entry, it's not nice for calculations. Some of the columns are a mix of variable (e.g. "gdpPercap") and data ("1952").  What if you were asked for the mean population after 1990 in Algeria? Possible, but ugly. But we know it doesn't need to be so ugly. Let's tidy it back to the format we've been using. 
 
-> Question: let's talk this through together. If we're trying to turn the `gap_wide` format into `gapminder` format, what structure does it have that we like? And that we want to change?
+> Question: let's talk this through together. If we're trying to turn the `gap_wide` format into `gapminder` format, what structure does it have that we like? And what do we want to change?
 
 - We like the continent and country columns. We won't want to change those. 
 - For long format, we'd want just 1 column identifying the variable name (`tidyr` calls this a **'key'**), and 1 column for the data (`tidyr` calls this the '**value'**).
@@ -158,7 +168,7 @@ Let's have a look at `gather()`'s help:
 
 > Question: What is our **key-value pair**? 
 
-We need to name two new variables in the key-value pair, one for the key, one for the value. It can be hard to wrap your mind around this, so let's give it a try. Let's name them `obstype_year` and `obs_value`.  
+We need to name two new variables in the key-value pair, one for the key, one for the value. It can be hard to wrap your mind around this, so let's give it a try. Let's name them `obstype_year` and `obs_values`.  
 
 Here's the start of what we'll do: 
 ```{r, eval=FALSE}
@@ -167,7 +177,8 @@ gap_long <- gap_wide %>%
          value = obs_values)
 ```
 
-We got a warning message. This means that `gather()` worked, but maybe not how we wanted it to to. 
+<!--- I (Jamie) did not get a warning message--->
+We got a warning message. This means that `gather()` worked, but maybe not how we wanted it to. 
 
 Although we were already planning to inspect our work, let's definitely do it now:
 
@@ -177,11 +188,13 @@ head(gap_long)
 tail(gap_long)
 ```
 
-So we have successfully reshaped our dataframe, but really not how we wanted. Very important to check, and listen to that warning message--dropping attributes seems very suspicious. 
+We have reshaped our dataframe but this new format isn't necessarily what we wanted. It's important to check, and listen to that warning message--dropping attributes seems very suspicious. 
+
+<!---again, I did not get a warning message ^ so please double check---> 
 
 What went wrong? Notice that it didn't know that we wanted to keep `continent` and `country` untouched; we need to give it more information about which columns we want reshaped. We can do this in several ways.
 
-A good way: identify the columns by name. Listing them out by explicit name can be a good approach if there are a few. But there's a lot here: over 30. But I'm not going to list them out here, and way too much potential for error if you tried gdpPercap_1952, gdpPercap_1957, gdpPercap_1962... But we could use some of `dplyr`'s awesome helper functions — because we expect that there is a better way to do this!
+One way is to identify the columns by name. Listing them explicitly can be a good approach if there are just a few. But in our case we have 30 columns. I'm not going to list them out here since there is way too much potential for error if I tried to list `gdpPercap_1952`, `gdpPercap_1957`, `gdpPercap_1962` and so on. But we could use some of `dplyr`'s awesome helper functions — because we expect that there is a better way to do this!
 
 ```{r, eval=FALSE}
 gap_long <- gap_wide %>% 
@@ -225,8 +238,10 @@ gap_long <- gap_wide %>%
          -continent, -country) %>%
   separate(obstype_year,
            into = c('obs_type','year'),
-           sep="_")
-```
+           sep = "_",
+           convert = T) #this ensures that the year column is an integer rather than a character
+``` 
+
 No warning messages...still we inspect:
 ```{r, eval=FALSE}
 str(gap_long)
@@ -248,6 +263,31 @@ Excellent. This is long format: every row is a unique observation. Yay!
 gap_long %>% 
   group_by(continent, obs_type) %>%
     summarize(means = mean(obs_values))
+
+```
+## Plot long format data
+
+The long format is the preferred format for plotting with `ggplot2`. Let's look at an example by plotting just Canada's life expectency.
+
+```{r}
+canada_df <- gap_long %>%
+  filter(obs_type == "lifeExp",
+         country == "Canada")
+
+ggplot(canada_df, aes(x = year, y = obs_values)) +
+  geom_line()
+```
+
+We can also look at all countries in the Americas:
+
+```{r}
+life_df <- gap_long %>%
+  filter(obs_type == "lifeExp",
+         continent == "Americas")
+
+ggplot(life_df, aes(x = year, y = obs_values, color = country)) +
+  geom_line()
+
 ```
 
 ## `spread()` 
