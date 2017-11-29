@@ -6,24 +6,22 @@ The collaborative power of GitHub and RStudio is really game changing. So far we
 
 We are going to teach you the simplest way to collaborate with someone, which is for both of you to have administration privileges. GitHub is built for software developer teams, and there is a lot of features that we as scientists won't use immediately. 
 
-We will do this all with a partner, and you'll work pretty independently, with us providing help as you go. 
+We will do this all with a partner, and we'll walk through some things all together, and then give you a chance to work with your collaborator on your own. 
 
 **Objectives**
 
 - create a new repo and give permission to a collaborator
 - open as a new RStudio project!
-- collaborate with a partner, explore github.com blame, history
-- practice more ggplot2 collab
-
-1. add their neighbor as a collaborator to their repo
-1. practice more; make changes to their repo, and to their neighbor's. 
+- collaborate with a partner 
+- explore github.com blame, history, issues
 
 **Resources**
 
+- [R for Data Science's Transform Chapter](http://r4ds.had.co.nz/transform.html)
 
 ## Create gh-pages repo 
 
-You'll be working with the person sitting next to you here. On their computer, create a repository with a gh-pages branch. A reminder from Chapter \@ref(github): [Create a repository on Github.com]
+Team up with a partner sitting next to you. One of you will create a repository with a gh-pages branch from their computer. A reminder from Chapter \@ref(github): [Create a repository on Github.com]. 
 
 ## Give your collaborator administration priviledges
 
@@ -38,9 +36,9 @@ Your collaborator then needs to check their email and accept as a collaborator. 
 Once your collaborator accepts, you can both clone the repository to your local computer. We'll do this through RStudio like we did before (see Chapter \@ref(github): [Clone your repository using RStudio]), but with a final additional step before hitting "Create Project": select "Open in a new Session".
 
 ![](img/github_clone_newproject.png)
-
+<br>
 Opening this Project in a new Session opens up a new world of awesomeness from RStudio. Having different RStudio project sessions allows you to keep your work separate and organized. So you can collaborate with your collaborator on this repository while also working on your other repository from this morning. I tend to have a lot of projects going at one time:
-
+<br>
 ![](img/Rproj_screenshot.jpg)
 
 ## Collaborative analysis
@@ -51,7 +49,7 @@ Now that you both have the same repo cloned to your computers, let's start colla
 1. Person 2: create an RMarkdown file, add something about the authors, and knit it. 
 1. Both of you: sync to GitHub.com (pull, stage, commit, push). 
 1. Both of you: once you've both synced (talk to each other about it!), pull again. You should see each others' work on your computer.
-1. Person 1: in the RMarkdown file, add a bit of the plan. We'll be exploring the `nycflights13` dataset. 
+1. Person 1: in the RMarkdown file, add a bit of the plan. We'll be exploring the `nycflights13` dataset. This is data on flights departing New York City in 2013.
 1. Person 2: in the README, add a bit of the plan. 
 1. Both of you: sync
 
@@ -77,7 +75,7 @@ Let's create a new issue with the title "NYC flights".
 
 In the text box, let's write a note to our collaborator. You can use Markdown in this text box, which means all of your header and bullet formatting will come through. You can also select these options by clicking them just above the text box. 
 
-Let's write something here. I'm going to write: 
+Let's have one of you write something here. I'm going to write: 
 
 ```
 Hi @jafflerbach! 
@@ -98,10 +96,11 @@ Another feature about issues is whether you want any notifications to this repos
 
 ![](img/github-collab.png)
 
+Let's have Person 2 respond to the issue affirming the plan.
 
 ## NYC flights exploration
 
-For the rest of this lesson, you're going to be working with your collaborator, syncing to GitHub often and practicing what we've learned so far. We will get started together and then you and your collaborator will work on your own.
+Let's continue this workflow with your collaborator, syncing to GitHub often and practicing what we've learned so far. We will get started together and then you and your collaborator will work on your own.
 
 Here's what we'll be doing (from [R for Data Science's Transform Chapter](http://r4ds.had.co.nz/transform.html)):
 
@@ -170,6 +169,8 @@ Whenever you start using complicated, multipart expressions in `filter()`, consi
 OK: Person 2, sync this to GitHub, and Person 1 will pull so that we all have the most current information. 
 
 With your partner, do the following tasks. Each of you should work on one task at a time. Since we're working closely on the same document, talk to each other and have one person create a heading and a R chunk, and then sync; the other person can then create a heading and R chunk and sync, and then you can both work safely. 
+
+Remember to make your commit messages useful!
 
 As you work, you may get merge conflicts. This is part of collaborating in GitHub; we will walk through and help you with these and also teach the whole group. 
 
