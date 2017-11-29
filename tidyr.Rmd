@@ -72,10 +72,10 @@ AirPassengers
  - each column is a variable
  - each row is an observation
 
-In the *long* format, you usually have 1 column for the observed variable and the other columns are ID variables. The `diamonds` dataset is an example of a *long* dataset with each row representing a single diamond and each column representing a variable of diamonds such as `cut` and `clarity`.
+In the *long* format, you usually have 1 column for the observed variable and the other columns are ID variables. The `mpg` dataset is an example of a *long* dataset with each row representing a single car and each column representing a variable of that car such as `manufacturer` and `year`.
 
 ```{r long_data_ex}
-diamonds
+mpg
 ```
 
 <br> 
