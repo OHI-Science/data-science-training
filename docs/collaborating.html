@@ -222,11 +222,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6.14" data-path="dplyr.html"><a href="dplyr.html#key-points"><i class="fa fa-check"></i><b>6.14</b> Key Points</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>7</b> Data Wrangling: <code>tidyr</code></a><ul>
-<li class="chapter" data-level="7.1" data-path="tidyr.html"><a href="tidyr.html#overview-2"><i class="fa fa-check"></i><b>7.1</b> Overview</a></li>
-<li class="chapter" data-level="7.2" data-path="tidyr.html"><a href="tidyr.html#tidyr-basics"><i class="fa fa-check"></i><b>7.2</b> <code>tidyr</code> basics</a><ul>
-<li class="chapter" data-level="7.2.1" data-path="tidyr.html"><a href="tidyr.html#setup-1"><i class="fa fa-check"></i><b>7.2.1</b> Setup</a></li>
-<li class="chapter" data-level="7.2.2" data-path="tidyr.html"><a href="tidyr.html#load-tidyverse-which-has-tidyr-inside"><i class="fa fa-check"></i><b>7.2.2</b> load <code>tidyverse</code> (which has <code>tidyr</code> inside)</a></li>
+<li class="chapter" data-level="7.1" data-path="tidyr.html"><a href="tidyr.html#overview-2"><i class="fa fa-check"></i><b>7.1</b> Overview</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="tidyr.html"><a href="tidyr.html#setup-1"><i class="fa fa-check"></i><b>7.1.1</b> Setup</a></li>
+<li class="chapter" data-level="7.1.2" data-path="tidyr.html"><a href="tidyr.html#load-tidyverse-which-has-tidyr-inside"><i class="fa fa-check"></i><b>7.1.2</b> load <code>tidyverse</code> (which has <code>tidyr</code> inside)</a></li>
 </ul></li>
+<li class="chapter" data-level="7.2" data-path="tidyr.html"><a href="tidyr.html#tidyr-basics"><i class="fa fa-check"></i><b>7.2</b> <code>tidyr</code> basics</a></li>
 <li class="chapter" data-level="7.3" data-path="tidyr.html"><a href="tidyr.html#explore-gapminder-dataset."><i class="fa fa-check"></i><b>7.3</b> Explore gapminder dataset.</a></li>
 <li class="chapter" data-level="7.4" data-path="tidyr.html"><a href="tidyr.html#gather-data-from-wide-to-long-format"><i class="fa fa-check"></i><b>7.4</b> <code>gather()</code> data from wide to long format</a></li>
 <li class="chapter" data-level="7.5" data-path="tidyr.html"><a href="tidyr.html#spread"><i class="fa fa-check"></i><b>7.5</b> <code>spread()</code></a><ul>
@@ -307,23 +307,22 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">9.1</span> Overview</h2>
 <p>The collaborative power of GitHub and RStudio is really game changing. So far we’ve been collaborating with our most important collaborator: ourselves. But, we are lucky that in science we have so many other collaborators, so let’s learn how to use GitHub with one of them.</p>
 <p>We are going to teach you the simplest way to collaborate with someone, which is for both of you to have administration privileges. GitHub is built for software developer teams, and there is a lot of features that we as scientists won’t use immediately.</p>
-<p>We will do this all with a partner, and you’ll work pretty independently, with us providing help as you go.</p>
+<p>We will do this all with a partner, and we’ll walk through some things all together, and then give you a chance to work with your collaborator on your own.</p>
 <p><strong>Objectives</strong></p>
 <ul>
 <li>create a new repo and give permission to a collaborator</li>
 <li>open as a new RStudio project!</li>
-<li>collaborate with a partner, explore github.com blame, history</li>
-<li>practice more ggplot2 collab</li>
+<li>collaborate with a partner</li>
+<li>explore github.com blame, history, issues</li>
 </ul>
-<ol style="list-style-type: decimal">
-<li>add their neighbor as a collaborator to their repo</li>
-<li>practice more; make changes to their repo, and to their neighbor’s.</li>
-</ol>
 <p><strong>Resources</strong></p>
+<ul>
+<li><a href="http://r4ds.had.co.nz/transform.html">R for Data Science’s Transform Chapter</a></li>
+</ul>
 </div>
 <div id="create-gh-pages-repo" class="section level2">
 <h2><span class="header-section-number">9.2</span> Create gh-pages repo</h2>
-<p>You’ll be working with the person sitting next to you here. On their computer, create a repository with a gh-pages branch. A reminder from Chapter <a href="github.html#github">4</a>: <a href="github.html#create-a-repository-on-github.com">Create a repository on Github.com</a></p>
+<p>Team up with a partner sitting next to you. One of you will create a repository with a gh-pages branch from their computer. A reminder from Chapter <a href="github.html#github">4</a>: <a href="github.html#create-a-repository-on-github.com">Create a repository on Github.com</a>.</p>
 </div>
 <div id="give-your-collaborator-administration-priviledges" class="section level2">
 <h2><span class="header-section-number">9.3</span> Give your collaborator administration priviledges</h2>
@@ -337,15 +336,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="clone-to-a-new-rproject" class="section level2">
 <h2><span class="header-section-number">9.4</span> Clone to a new Rproject</h2>
 <p>Once your collaborator accepts, you can both clone the repository to your local computer. We’ll do this through RStudio like we did before (see Chapter <a href="github.html#github">4</a>: <a href="github.html#clone-your-repository-using-rstudio">Clone your repository using RStudio</a>), but with a final additional step before hitting “Create Project”: select “Open in a new Session”.</p>
-<div class="figure">
-<img src="img/github_clone_newproject.png" />
-
-</div>
-<p>Opening this Project in a new Session opens up a new world of awesomeness from RStudio. Having different RStudio project sessions allows you to keep your work separate and organized. So you can collaborate with your collaborator on this repository while also working on your other repository from this morning. I tend to have a lot of projects going at one time:</p>
-<div class="figure">
-<img src="img/Rproj_screenshot.jpg" />
-
-</div>
+<p><img src="img/github_clone_newproject.png" /> <br> Opening this Project in a new Session opens up a new world of awesomeness from RStudio. Having different RStudio project sessions allows you to keep your work separate and organized. So you can collaborate with your collaborator on this repository while also working on your other repository from this morning. I tend to have a lot of projects going at one time: <br> <img src="img/Rproj_screenshot.jpg" /></p>
 </div>
 <div id="collaborative-analysis" class="section level2">
 <h2><span class="header-section-number">9.5</span> Collaborative analysis</h2>
@@ -355,7 +346,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>Person 2: create an RMarkdown file, add something about the authors, and knit it.</li>
 <li>Both of you: sync to GitHub.com (pull, stage, commit, push).</li>
 <li>Both of you: once you’ve both synced (talk to each other about it!), pull again. You should see each others’ work on your computer.</li>
-<li>Person 1: in the RMarkdown file, add a bit of the plan. We’ll be exploring the <code>nycflights13</code> dataset.</li>
+<li>Person 1: in the RMarkdown file, add a bit of the plan. We’ll be exploring the <code>nycflights13</code> dataset. This is data on flights departing New York City in 2013.</li>
 <li>Person 2: in the README, add a bit of the plan.</li>
 <li>Both of you: sync</li>
 </ol>
@@ -380,7 +371,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <p>Let’s create a new issue with the title “NYC flights”.</p>
 <p>In the text box, let’s write a note to our collaborator. You can use Markdown in this text box, which means all of your header and bullet formatting will come through. You can also select these options by clicking them just above the text box.</p>
-<p>Let’s write something here. I’m going to write:</p>
+<p>Let’s have one of you write something here. I’m going to write:</p>
 <pre><code>Hi @jafflerbach! 
 
 # first priority
@@ -395,11 +386,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <img src="img/github-collab.png" />
 
 </div>
+<p>Let’s have Person 2 respond to the issue affirming the plan.</p>
 </div>
 </div>
 <div id="nyc-flights-exploration" class="section level2">
 <h2><span class="header-section-number">9.7</span> NYC flights exploration</h2>
-<p>For the rest of this lesson, you’re going to be working with your collaborator, syncing to GitHub often and practicing what we’ve learned so far. We will get started together and then you and your collaborator will work on your own.</p>
+<p>Let’s continue this workflow with your collaborator, syncing to GitHub often and practicing what we’ve learned so far. We will get started together and then you and your collaborator will work on your own.</p>
 <p>Here’s what we’ll be doing (from <a href="http://r4ds.had.co.nz/transform.html">R for Data Science’s Transform Chapter</a>):</p>
 <p><strong>Data</strong>: You will be exploring a dataset on flights departing New York City in 2013. These data are actually in a package called <code>nycflights13</code>, so we can load them the way we would any other package.</p>
 <p>Let’s have Person 1 write this in the RMarkdown document (Person 2 just listen for a moment; we will sync this to you in a moment).</p>
@@ -472,6 +464,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">9.8</span> Your turn</h2>
 <p>OK: Person 2, sync this to GitHub, and Person 1 will pull so that we all have the most current information.</p>
 <p>With your partner, do the following tasks. Each of you should work on one task at a time. Since we’re working closely on the same document, talk to each other and have one person create a heading and a R chunk, and then sync; the other person can then create a heading and R chunk and sync, and then you can both work safely.</p>
+<p>Remember to make your commit messages useful!</p>
 <p>As you work, you may get merge conflicts. This is part of collaborating in GitHub; we will walk through and help you with these and also teach the whole group.</p>
 <div id="use-logicals" class="section level3">
 <h3><span class="header-section-number">9.8.1</span> Use logicals</h3>
