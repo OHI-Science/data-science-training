@@ -264,8 +264,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="9" data-path="collaborating.html"><a href="collaborating.html"><i class="fa fa-check"></i><b>9</b> Collaborating with GitHub</a><ul>
 <li class="chapter" data-level="9.1" data-path="collaborating.html"><a href="collaborating.html#overview-3"><i class="fa fa-check"></i><b>9.1</b> Overview</a></li>
-<li class="chapter" data-level="9.2" data-path="collaborating.html"><a href="collaborating.html#create-gh-pages-repo"><i class="fa fa-check"></i><b>9.2</b> create gh-pages repo</a></li>
-<li class="chapter" data-level="9.3" data-path="collaborating.html"><a href="collaborating.html#give-your-collaborator-administration-priviledges"><i class="fa fa-check"></i><b>9.3</b> give your collaborator administration priviledges</a></li>
+<li class="chapter" data-level="9.2" data-path="collaborating.html"><a href="collaborating.html#create-gh-pages-repo"><i class="fa fa-check"></i><b>9.2</b> Create gh-pages repo</a></li>
+<li class="chapter" data-level="9.3" data-path="collaborating.html"><a href="collaborating.html#give-your-collaborator-administration-priviledges"><i class="fa fa-check"></i><b>9.3</b> Give your collaborator administration priviledges</a></li>
 <li class="chapter" data-level="9.4" data-path="collaborating.html"><a href="collaborating.html#clone-to-a-new-rproject"><i class="fa fa-check"></i><b>9.4</b> Clone to a new Rproject</a></li>
 <li class="chapter" data-level="9.5" data-path="collaborating.html"><a href="collaborating.html#collaborative-analysis"><i class="fa fa-check"></i><b>9.5</b> Collaborative analysis</a></li>
 <li class="chapter" data-level="9.6" data-path="collaborating.html"><a href="collaborating.html#explore-on-github.com"><i class="fa fa-check"></i><b>9.6</b> Explore on GitHub.com</a><ul>
@@ -273,7 +273,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.6.2" data-path="collaborating.html"><a href="collaborating.html#blame"><i class="fa fa-check"></i><b>9.6.2</b> Blame</a></li>
 <li class="chapter" data-level="9.6.3" data-path="collaborating.html"><a href="collaborating.html#issues"><i class="fa fa-check"></i><b>9.6.3</b> Issues</a></li>
 </ul></li>
-<li class="chapter" data-level="9.7" data-path="collaborating.html"><a href="collaborating.html#your-turn-12"><i class="fa fa-check"></i><b>9.7</b> Your turn</a></li>
+<li class="chapter" data-level="9.7" data-path="collaborating.html"><a href="collaborating.html#nyc-flights-exploration"><i class="fa fa-check"></i><b>9.7</b> NYC flights exploration</a><ul>
+<li class="chapter" data-level="9.7.1" data-path="collaborating.html"><a href="collaborating.html#logical-operators"><i class="fa fa-check"></i><b>9.7.1</b> Logical operators</a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="collaborating.html"><a href="collaborating.html#your-turn-12"><i class="fa fa-check"></i><b>9.8</b> Your turn</a><ul>
+<li class="chapter" data-level="9.8.1" data-path="collaborating.html"><a href="collaborating.html#use-logicals"><i class="fa fa-check"></i><b>9.8.1</b> Use logicals</a></li>
+<li class="chapter" data-level="9.8.2" data-path="collaborating.html"><a href="collaborating.html#missing-values"><i class="fa fa-check"></i><b>9.8.2</b> Missing values</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
@@ -316,11 +322,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><strong>Resources</strong></p>
 </div>
 <div id="create-gh-pages-repo" class="section level2">
-<h2><span class="header-section-number">9.2</span> create gh-pages repo</h2>
+<h2><span class="header-section-number">9.2</span> Create gh-pages repo</h2>
 <p>You’ll be working with the person sitting next to you here. On their computer, create a repository with a gh-pages branch. A reminder from Chapter <a href="github.html#github">4</a>: <a href="github.html#create-a-repository-on-github.com">Create a repository on Github.com</a></p>
 </div>
 <div id="give-your-collaborator-administration-priviledges" class="section level2">
-<h2><span class="header-section-number">9.3</span> give your collaborator administration priviledges</h2>
+<h2><span class="header-section-number">9.3</span> Give your collaborator administration priviledges</h2>
 <p>Now, go into Settings &gt; Collaborators &gt; enter your collaborator’s username.</p>
 <p>Your collaborator then needs to check their email and accept as a collaborator. Notice that your collborator has “Push access to the repository” (highlighted below):</p>
 <div class="figure">
@@ -343,13 +349,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="collaborative-analysis" class="section level2">
 <h2><span class="header-section-number">9.5</span> Collaborative analysis</h2>
-<p>Now that you both have the same repo cloned to your computers, let’s start collaborating. We’ll be playing around with the starwars dataset, so let’s get setup a bit.</p>
+<p>Now that you both have the same repo cloned to your computers, let’s start collaborating. We’ll be playing around with airline flights data, so let’s get setup a bit.</p>
 <ol style="list-style-type: decimal">
 <li>Person 1: update the README to say something about you two, the authors.</li>
 <li>Person 2: create an RMarkdown file, add something about the authors, and knit it.</li>
 <li>Both of you: sync to GitHub.com (pull, stage, commit, push).</li>
 <li>Both of you: once you’ve both synced (talk to each other about it!), pull again. You should see each others’ work on your computer.</li>
-<li>Person 1: in the RMarkdown file, add a bit of the plan. We’ll be exploring the <code>starwars</code> dataset.</li>
+<li>Person 1: in the RMarkdown file, add a bit of the plan. We’ll be exploring the <code>nycflights13</code> dataset.</li>
 <li>Person 2: in the README, add a bit of the plan.</li>
 <li>Both of you: sync</li>
 </ol>
@@ -391,12 +397,133 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 </div>
 </div>
-<div id="your-turn-12" class="section level2">
-<h2><span class="header-section-number">9.7</span> Your turn</h2>
-<p>For the rest of this lesson, you’re going to be working with your collaborator, syncing to GitHub often and practicing what we’ve learned so far. We will get started</p>
+<div id="nyc-flights-exploration" class="section level2">
+<h2><span class="header-section-number">9.7</span> NYC flights exploration</h2>
+<p>For the rest of this lesson, you’re going to be working with your collaborator, syncing to GitHub often and practicing what we’ve learned so far. We will get started together and then you and your collaborator will work on your own.</p>
 <p>Here’s what we’ll be doing (from <a href="http://r4ds.had.co.nz/transform.html">R for Data Science’s Transform Chapter</a>):</p>
 <p><strong>Data</strong>: You will be exploring a dataset on flights departing New York City in 2013. These data are actually in a package called <code>nycflights13</code>, so we can load them the way we would any other package.</p>
+<p>Let’s have Person 1 write this in the RMarkdown document (Person 2 just listen for a moment; we will sync this to you in a moment).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(nycflights13) <span class="co"># install.packages(&#39;nycflights13&#39;)</span>
+<span class="kw">library</span>(tidyverse)</code></pre></div>
+<p>This data frame contains all 336,776 flights that departed from New York City in 2013. The data comes from the US <a href="http://www.transtats.bts.gov/DatabaseInfo.asp?DB_ID=120&amp;Link=0">Bureau of Transportation Statistics</a>, and is documented in <code>?flights</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">flights</code></pre></div>
+<pre><code>## # A tibble: 336,776 x 19
+##     year month   day dep_time sched_dep_time dep_delay arr_time
+##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;
+##  1  2013     1     1      517            515         2      830
+##  2  2013     1     1      533            529         4      850
+##  3  2013     1     1      542            540         2      923
+##  4  2013     1     1      544            545        -1     1004
+##  5  2013     1     1      554            600        -6      812
+##  6  2013     1     1      554            558        -4      740
+##  7  2013     1     1      555            600        -5      913
+##  8  2013     1     1      557            600        -3      709
+##  9  2013     1     1      557            600        -3      838
+## 10  2013     1     1      558            600        -2      753
+## # ... with 336,766 more rows, and 12 more variables: sched_arr_time &lt;int&gt;,
+## #   arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;,
+## #   origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;,
+## #   minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
+<p>Let’s select all flights on January 1st with:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">filter</span>(flights, month <span class="op">==</span><span class="st"> </span><span class="dv">1</span>, day <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)</code></pre></div>
+<pre><code>## # A tibble: 842 x 19
+##     year month   day dep_time sched_dep_time dep_delay arr_time
+##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;
+##  1  2013     1     1      517            515         2      830
+##  2  2013     1     1      533            529         4      850
+##  3  2013     1     1      542            540         2      923
+##  4  2013     1     1      544            545        -1     1004
+##  5  2013     1     1      554            600        -6      812
+##  6  2013     1     1      554            558        -4      740
+##  7  2013     1     1      555            600        -5      913
+##  8  2013     1     1      557            600        -3      709
+##  9  2013     1     1      557            600        -3      838
+## 10  2013     1     1      558            600        -2      753
+## # ... with 832 more rows, and 12 more variables: sched_arr_time &lt;int&gt;,
+## #   arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;,
+## #   origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;,
+## #   minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
+<p>To use filtering effectively, you have to know how to select the observations that you want using the comparison operators. R provides the standard suite: <code>&gt;</code>, <code>&gt;=</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>!=</code> (not equal), and <code>==</code> (equal). We learned these operations yesterday. But there are a few others to learn as well.</p>
+<div id="sync" class="section level4">
+<h4><span class="header-section-number">9.7.0.1</span> Sync</h4>
+<p>Sync this RMarkdown back to GitHub so that your collaborator has access to all these notes. Person 2 should then pull and will continue with the following notes:</p>
+</div>
+<div id="logical-operators" class="section level3">
+<h3><span class="header-section-number">9.7.1</span> Logical operators</h3>
+<p>Multiple arguments to <code>filter()</code> are combined with “and”: every expression must be true in order for a row to be included in the output. For other types of combinations, you’ll need to use Boolean operators yourself:</p>
+<ul>
+<li><code>&amp;</code> is “and”</li>
+<li><code>|</code> is “or”</li>
+<li><code>!</code> is “not”</li>
+</ul>
+<p>Let’s have a look:</p>
+<p>The following code finds all flights that departed in November or December:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">filter</span>(flights, month <span class="op">==</span><span class="st"> </span><span class="dv">11</span> <span class="op">|</span><span class="st"> </span>month <span class="op">==</span><span class="st"> </span><span class="dv">12</span>)</code></pre></div>
+<p>The order of operations doesn’t work like English. You can’t write <code>filter(flights, month == 11 | 12)</code>, which you might literally translate into “finds all flights that departed in November or December”. Instead it finds all months that equal <code>11 | 12</code>, an expression that evaluates to <code>TRUE</code>. In a numeric context (like here), <code>TRUE</code> becomes one, so this finds all flights in January, not November or December. This is quite confusing!</p>
+<p>A useful short-hand for this problem is <code>x %in% y</code>. This will select every row where <code>x</code> is one of the values in <code>y</code>. We could use it to rewrite the code above:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nov_dec &lt;-<span class="st"> </span><span class="kw">filter</span>(flights, month <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">11</span>, <span class="dv">12</span>))</code></pre></div>
+<p>Sometimes you can simplify complicated subsetting by remembering De Morgan’s law: <code>!(x &amp; y)</code> is the same as <code>!x | !y</code>, and <code>!(x | y)</code> is the same as <code>!x &amp; !y</code>. For example, if you wanted to find flights that weren’t delayed (on arrival or departure) by more than two hours, you could use either of the following two filters:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">filter</span>(flights, <span class="op">!</span>(arr_delay <span class="op">&gt;</span><span class="st"> </span><span class="dv">120</span> <span class="op">|</span><span class="st"> </span>dep_delay <span class="op">&gt;</span><span class="st"> </span><span class="dv">120</span>))
+<span class="kw">filter</span>(flights, arr_delay <span class="op">&lt;=</span><span class="st"> </span><span class="dv">120</span>, dep_delay <span class="op">&lt;=</span><span class="st"> </span><span class="dv">120</span>)</code></pre></div>
+<p>Whenever you start using complicated, multipart expressions in <code>filter()</code>, consider making them explicit variables instead. That makes it much easier to check your work.</p>
+</div>
+</div>
+<div id="your-turn-12" class="section level2">
+<h2><span class="header-section-number">9.8</span> Your turn</h2>
+<p>OK: Person 2, sync this to GitHub, and Person 1 will pull so that we all have the most current information.</p>
+<p>With your partner, do the following tasks. Each of you should work on one task at a time. Since we’re working closely on the same document, talk to each other and have one person create a heading and a R chunk, and then sync; the other person can then create a heading and R chunk and sync, and then you can both work safely.</p>
+<p>As you work, you may get merge conflicts. This is part of collaborating in GitHub; we will walk through and help you with these and also teach the whole group.</p>
+<div id="use-logicals" class="section level3">
+<h3><span class="header-section-number">9.8.1</span> Use logicals</h3>
+<ol style="list-style-type: decimal">
+<li><p>Find all flights that:</p>
+<ol style="list-style-type: decimal">
+<li>Had an arrival delay of two or more hours</li>
+<li>Flew to Houston (<code>IAH</code> or <code>HOU</code>)</li>
+<li>Were operated by United, American, or Delta</li>
+<li>Departed in summer (July, August, and September)</li>
+<li>Arrived more than two hours late, but didn’t leave late</li>
+<li>Were delayed by at least an hour, but made up over 30 minutes in flight</li>
+<li>Departed between midnight and 6am (inclusive)</li>
+</ol></li>
+<li><p>Another useful dplyr filtering helper is <code>between()</code>. What does it do? Can you use it to simplify the code needed to answer the previous challenges?</p></li>
+</ol>
+</div>
+<div id="missing-values" class="section level3">
+<h3><span class="header-section-number">9.8.2</span> Missing values</h3>
+<p>To answer these questions: read some background below.</p>
+<ol style="list-style-type: decimal">
+<li><p>How many flights have a missing <code>dep_time</code>? What other variables are missing? What might these rows represent?</p></li>
+<li><p>Why is <code>NA ^ 0</code> not missing? Why is <code>NA | TRUE</code> not missing? Why is <code>FALSE &amp; NA</code> not missing? Can you figure out the general rule? (<code>NA * 0</code> is a tricky counterexample!)</p></li>
+</ol>
+<p>One important feature of R that can make comparison tricky are missing values, or <code>NA</code>s (“not availables”). <code>NA</code> represents an unknown value so missing values are “contagious”: almost any operation involving an unknown value will also be unknown.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="ot">NA</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">10</span> <span class="op">==</span><span class="st"> </span><span class="ot">NA</span></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="ot">NA</span> <span class="op">+</span><span class="st"> </span><span class="dv">10</span></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="ot">NA</span> <span class="op">/</span><span class="st"> </span><span class="dv">2</span></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<p>The most confusing result is this one:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="ot">NA</span> <span class="op">==</span><span class="st"> </span><span class="ot">NA</span></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<p>It’s easiest to understand why this is true with a bit more context:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Let x be Mary&#39;s age. We don&#39;t know how old she is.</span>
+x &lt;-<span class="st"> </span><span class="ot">NA</span>
 
+<span class="co"># Let y be John&#39;s age. We don&#39;t know how old he is.</span>
+y &lt;-<span class="st"> </span><span class="ot">NA</span>
+
+<span class="co"># Are John and Mary the same age?</span>
+x <span class="op">==</span><span class="st"> </span>y</code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># We don&#39;t know!</span></code></pre></div>
+<p>If you want to determine if a value is missing, use <code>is.na()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.na</span>(x)</code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+
+</div>
 </div>
 </div>
 <script src="lib/js/jquery.min.js"></script>
