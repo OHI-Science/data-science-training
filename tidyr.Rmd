@@ -269,7 +269,7 @@ gap_long %>%
 
 The long format is the preferred format for plotting with `ggplot2`. Let's look at an example by plotting just Canada's life expectency.
 
-```{r}
+```{r, eval=F}
 canada_df <- gap_long %>%
   filter(obs_type == "lifeExp",
          country == "Canada")
@@ -280,7 +280,7 @@ ggplot(canada_df, aes(x = year, y = obs_values)) +
 
 We can also look at all countries in the Americas:
 
-```{r}
+```{r,eval=F}
 life_df <- gap_long %>%
   filter(obs_type == "lifeExp",
          continent == "Americas")
@@ -315,9 +315,10 @@ names(gapminder)
 
 Now we've got an intermediate dataframe `gap_normal` with the same dimensions as the original `gapminder`, but the order of the variables is different. Let's fix that before checking if they are `all.equal()`.
 
-### Your turn
-
-Reorder the columns in "gap_normal" to match "gapminder". 
+> ### Exercise
+>
+> Reorder the columns in "gap_normal" to match "gapminder". 
+>
 
 #### Answer (no peeking!)
 ```{r, eval=FALSE}
@@ -331,38 +332,6 @@ gap_normal <- gap_normal[,names(gapminder)]
 
 Now let's check if they are all.equal (`?all.equal`) is a handy test
 ```{r, eval=FALSE}
-all.equal(gap_normal, gapminder)
-```
-
-Hmm. Our `all.equal()` test didn't pass. Let's try to figure out why:
-
-```{r, eval=FALSE}
-head(gap_normal)
-head(gapminder)
-```
-
-Ah, they are ordered differently. We're almost there, the original was ordered by `country`, `continent`, then `year`.
-
-```{r, eval=FALSE}
-gap_normal <- gap_normal %>% 
-  arrange(country, continent, year)
-
-all.equal(gap_normal, gapminder)
-```
-
-Better...
-
-```{r, eval=FALSE}
-str(gap_normal)
-str(gapminder)
-```
-
-Mine currently shows that the in gapminder, "year" is an integer (int), but in gap_normal, "year" is a character. So let's change that and see if that helps: 
-
-```{r, eval=FALSE}
-gap_normal <- gap_normal %>%
-  mutate(year = as.integer(year))
-
 all.equal(gap_normal, gapminder)
 ```
 
@@ -395,7 +364,7 @@ gap_wide_new <- gap_long %>%
 str(gap_wide_new)
 ```
 
-### clean up and save your .Rmd 
+## clean up and save your .Rmd 
 
 Spend some time cleaning up and saving `gapminder-wrangle.Rmd`
 Restart R. In RStudio, use *Session > Restart R*. Otherwise, quit R with `q()` and re-launch it.
