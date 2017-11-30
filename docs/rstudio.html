@@ -25,7 +25,7 @@
 <meta name="author" content="The Ocean Health Index Team">
 
 
-<meta name="date" content="2017-11-29">
+<meta name="date" content="2017-11-30">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -447,17 +447,31 @@ Add more practice
 </div>
 <div id="r-functions-help-pages" class="section level2">
 <h2><span class="header-section-number">3.4</span> R functions, help pages</h2>
-<p>R has a mind-blowing collection of built-in functions that are used with the same syntax: function name with parentheses around what the function needs in order to do what it was built to do. When you type a function like this, we say we are “calling the function”. <code>verb(noun = something, adjective = something, etc)</code>. This example is from <a href="http://r4ds.had.co.nz/pipes">R for Data Science</a> using a children’s poem called <a href="https://en.wikipedia.org/wiki/Little_Bunny_Foo_Foo">Little Bunny Foo Foo</a>.</p>
-<p>We can call a function without passing it anything (nothing inside the closed parentheses), and assign it to a variable called <code>foo_foo</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## foo_foo &lt;- little_bunny()</code></pre></div>
-<p>And since <code>foo_foo</code> is an object, you can pass it to other functions:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## hop(foo_foo, through = forest) 
+<p>R has a mind-blowing collection of built-in functions that are used with the same syntax: function name with parentheses around what the function needs in order to do what it was built to do. When you type a function like this, we say we are “calling the function”. <code>function_name(argument1 = value1, argument2 = value2, ...)</code>.</p>
+<!---This example is from [R for Data Science](http://r4ds.had.co.nz/pipes) using a children's poem called [Little Bunny Foo Foo](https://en.wikipedia.org/wiki/Little_Bunny_Foo_Foo).
+
+We can call a function without passing it anything (nothing inside the closed parentheses), and assign it to a variable called `foo_foo`.
+
+```r
+## foo_foo <- little_bunny()
+```
+
+And since `foo_foo` is an object, you can pass it to other functions:
+
+```r
+## hop(foo_foo, through = forest) 
 ## scoop(foo_foo, up = field_mice) 
-## bop(foo_foo, on = head)</code></pre></div>
-<p>What would happen if I tried to run one of those lines above? I would get an error because they aren’t real functions, and R tells me so:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">foo_foo &lt;-<span class="st"> </span><span class="kw">little_bunny</span>()
-<span class="co"># Error in little_bunny() : could not find function &quot;little_bunny&quot;</span></code></pre></div>
-<p>And that’s great, this error message is helpful: R doesn’t know what the <code>little_bunny</code> function is, and to be honest, neither do we. We didn’t expect that it would know what to do. OK, so now let’s look at a real function.</p>
+## bop(foo_foo, on = head)
+```
+
+What would happen if I tried to run one of those lines above? I would get an error because they aren't real functions, and R tells me so: 
+
+```r
+foo_foo <- little_bunny()
+# Error in little_bunny() : could not find function "little_bunny"
+```
+And that's great, this error message is helpful: R doesn't know what the `little_bunny` function is, and to be honest, neither do we. We didn't expect that it would know what to do. OK, so now let's look at a real function.
+--->
 <p>Let’s try using <code>seq()</code> which makes regular sequences of numbers and, while we’re at it, demo more helpful features of RStudio.</p>
 <p>Type <code>se</code> and hit TAB. A pop up shows you possible completions. Specify <code>seq()</code> by typing more to disambiguate or using the up/down arrows to select. Notice the floating tool-tip-type help that pops up, reminding you of a function’s arguments. If you want even more help, press F1 as directed to get the full documentation in the help tab of the lower right pane.</p>
 <p>Type the arguments <code>1, 10</code> and hit return.</p>
@@ -466,11 +480,6 @@ Add more practice
 <p>We could probably infer that the <code>seq()</code> function makes a sequence, but let’s learn for sure. Type (and you can autocomplete) and let’s explore the help page:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?seq 
 <span class="kw">help</span>(seq) <span class="co"># same as ?seq</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">10</span>) <span class="co"># same as seq(1, 10); R assumes by position</span></code></pre></div>
-<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">10</span>, <span class="dt">by =</span> <span class="dv">2</span>)</code></pre></div>
-<pre><code>## [1] 1 3 5 7 9</code></pre>
-<p>The above also demonstrates something about how R resolves function arguments. You can always specify in <code>name = value</code> form. But if you do not, R attempts to resolve by position. So above, it is assumed that we want a sequence <code>from = 1</code> that goes <code>to = 10</code>. Since we didn’t specify step size, the default value of <code>by</code> in the function definition is used, which ends up being 1 in this case. For functions I call often, I might use this resolve by position for the first argument or maybe the first two. After that, I always use <code>name = value</code>.</p>
 <p>The help page tells the name of the package in the top left, and broken down into sections:</p>
 <ul>
 <li>Description: An extended description of what the function does.</li>
@@ -481,7 +490,12 @@ Add more practice
 <li>See Also: Any related functions you might find useful.</li>
 <li>Examples: Some examples for how to use the function.</li>
 </ul>
-<p>The examples can be copy-pasted into the console for you to understand what’s going on. Remember we were talking about expecting there to be a function for something you want to do? Let’s try it.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">10</span>) <span class="co"># same as seq(1, 10); R assumes by position</span></code></pre></div>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">10</span>, <span class="dt">by =</span> <span class="dv">2</span>)</code></pre></div>
+<pre><code>## [1] 1 3 5 7 9</code></pre>
+<p>The above also demonstrates something about how R resolves function arguments. You can always specify in <code>name = value</code> form. But if you do not, R attempts to resolve by position. So above, it is assumed that we want a sequence <code>from = 1</code> that goes <code>to = 10</code>. Since we didn’t specify step size, the default value of <code>by</code> in the function definition is used, which ends up being 1 in this case. For functions I call often, I might use this resolve by position for the first argument or maybe the first two. After that, I always use <code>name = value</code>.</p>
+<p>The examples from the help pages can be copy-pasted into the console for you to understand what’s going on. Remember we were talking about expecting there to be a function for something you want to do? Let’s try it.</p>
 <div id="your-turn" class="section level3">
 <h3><span class="header-section-number">3.4.1</span> Your turn</h3>
 <blockquote>
@@ -489,9 +503,9 @@ Add more practice
 </blockquote>
 <p>And there’s also help for when you only sort of remember the function name: double-questionmark:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">??install </code></pre></div>
-<p>As we saw with creating the <code>foo_foo</code> variable above, not all functions have (or require) arguments:</p>
+<p>Not all functions have (or require) arguments:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">date</span>()</code></pre></div>
-<pre><code>## [1] &quot;Wed Nov 29 21:26:03 2017&quot;</code></pre>
+<pre><code>## [1] &quot;Thu Nov 30 05:23:59 2017&quot;</code></pre>
 </div>
 </div>
 <div id="clearing-the-environment" class="section level2">
@@ -538,7 +552,7 @@ Add more practice
 <img src="img/rmarkdown.png" />
 
 </div>
-<p>Let’s go ahead and “Knit HTML”.</p>
+<p>Let’s go ahead and “Knit HTML” by clicking the blue yarn at the top of the RMarkdown file.</p>
 <div class="figure">
 <img src="img/rmarkdown_side_by_side.png" />
 
