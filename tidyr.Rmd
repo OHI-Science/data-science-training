@@ -275,9 +275,6 @@ gap_long <- gap_wide %>%
          value = obs_values)
 ```
 
-<!--- I (Jamie) did not get a warning message--->
-We got a warning message. This means that `gather()` worked, but maybe not how we wanted it to. 
-
 Although we were already planning to inspect our work, let's definitely do it now:
 
 ```{r, eval=FALSE}
@@ -286,13 +283,11 @@ head(gap_long)
 tail(gap_long)
 ```
 
-We have reshaped our dataframe but this new format isn't necessarily what we wanted. It's important to check, and listen to that warning message--dropping attributes seems very suspicious. 
-
-<!---again, I did not get a warning message ^ so please double check---> 
+We have reshaped our dataframe but this new format isn't necessarily what we wanted.
 
 What went wrong? Notice that it didn't know that we wanted to keep `continent` and `country` untouched; we need to give it more information about which columns we want reshaped. We can do this in several ways.
 
-One way is to identify the columns by name. Listing them explicitly can be a good approach if there are just a few. But in our case we have 30 columns. I'm not going to list them out here since there is way too much potential for error if I tried to list `gdpPercap_1952`, `gdpPercap_1957`, `gdpPercap_1962` and so on. But we could use some of `dplyr`'s awesome helper functions — because we expect that there is a better way to do this!
+One way is to identify the columns is by name. Listing them explicitly can be a good approach if there are just a few. But in our case we have 30 columns. I'm not going to list them out here since there is way too much potential for error if I tried to list `gdpPercap_1952`, `gdpPercap_1957`, `gdpPercap_1962` and so on. But we could use some of `dplyr`'s awesome helper functions — because we expect that there is a better way to do this!
 
 ```{r, eval=FALSE}
 gap_long <- gap_wide %>% 
@@ -300,7 +295,7 @@ gap_long <- gap_wide %>%
          value = obs_values,
          dplyr::starts_with('pop'),
          dplyr::starts_with('lifeExp'),
-         dplyr::starts_with('gdpPercap'))
+         dplyr::starts_with('gdpPercap'))  #here i'm listing all the columns to use in gather
 
 str(gap_long)
 head(gap_long)
@@ -348,21 +343,6 @@ tail(gap_long)
 ```
 Excellent. This is long format: every row is a unique observation. Yay!
 
-> ### Exercise
->
-> 1. Using `gap_long`, calculate the mean life expectancy, population, and gdpPercap for each continent. **Hint:** use the `dplyr::group_by()` and `dplyr::summarize()` functions 
->
-> 2. What other helper functions can you use with `dplyr::select()`? Would any be useful in our example above? Why or why not?
->
-> 3. Knit the R Markdown file and sync to Github (pull, stage, commit, push)
-
-```{r, eval=FALSE}
-# solution (no peeking!)
-gap_long %>% 
-  group_by(continent, obs_type) %>%
-    summarize(means = mean(obs_values))
-
-```
 ## Plot long format data
 
 The long format is the preferred format for plotting with `ggplot2`. Let's look at an example by plotting just Canada's life expectency.
@@ -388,6 +368,43 @@ ggplot(life_df, aes(x = year, y = obs_values, color = country)) +
 
 ```
 
+> ### Exercise
+>
+> 1. Using `gap_long`, calculate and plot the the mean life expectancy for each continent over time from 1982 to 2007. Give your plot a title and assign x and y labels. **Hint:** use the `dplyr::group_by()` and `dplyr::summarize()` functions. 
+>
+> **STOP: Knit the R Markdown file and sync to Github (pull, stage, commit, push)**
+>
+
+```{r, eval=FALSE}
+# solution (no peeking!)
+gap_long %>% 
+  group_by(continent, obs_type) %>%
+    summarize(means = mean(obs_values))
+
+cont <- gap_long %>% 
+  filter(obs_type == "lifeExp", 
+         year > 1980) %>% 
+  group_by(continent, year) %>% 
+  summarize(mean_le = mean(obs_values))
+
+ggplot(data = cont, aes(x = year, y = mean_le, color = continent)) + 
+  geom_line() +
+  labs(title = "Mean life expectancy",
+       x = "Year",
+       y = "Age (years)") 
+
+## Additional customization
+ggplot(data = cont, aes(x = year, y = mean_le, color = continent)) + 
+  geom_line() +
+  labs(title = "Mean life expectancy",
+       x = "Year",
+       y = "Age (years)",
+       color = "Continent") +
+  theme_classic() +
+  scale_fill_brewer(palette = "Blues")  
+```
+
+
 ## `spread()` 
 
 The function `spread()` is used to transform data from long to intermediate format
@@ -411,37 +428,7 @@ names(gap_normal)
 names(gapminder)
 ```
 
-Now we've got an intermediate dataframe `gap_normal` with the same dimensions as the original `gapminder`, but the order of the variables is different. Let's fix that before checking if they are `all.equal()`.
-
-> ### Exercise
->
-> Reorder the columns in "gap_normal" to match "gapminder". 
->
-
-#### Answer (no peeking!)
-```{r, eval=FALSE}
-# one way with dplyr and %>%
-gap_normal <- gap_normal %>%
-  select(country, continent, year, lifeExp, pop, gdpPercap)
-
-# another way with base R
-gap_normal <- gap_normal[,names(gapminder)]
-```
-
-Now let's check if they are all.equal (`?all.equal`) is a handy test
-```{r, eval=FALSE}
-all.equal(gap_normal, gapminder)
-```
-
-Hooray!
-
-```{r, eval=FALSE}
-str(gap_normal)
-str(gapminder)
-```
-
-
-(In the past, mine has shown a slight difference because one is a data.frame and one is a tbl_df, which is similar to a data.frame. We won't get into this difference now, I'm feeling good about these data sets! We've gone from the longest format back to the intermediate and we didn't introduce any errors in our code.)
+Now we've got an intermediate dataframe `gap_normal` with the same dimensions as the original `gapminder`.
 
 > ### Exercise
 >
