@@ -69,9 +69,42 @@ These are all "mutating joins" because they add another column to what had been 
 - `semi_join` keeps only the observations that are in both tables
 - `anti_join` keeps only the observations that are NOT in both tables.
 
-Let's play with these a bit: 
+Let's play with [these](http://edgar.jrc.ec.europa.eu/news_docs/CO2_1970-2014_dataset_of_CO2_report_2015.xls) CO2 emmissions data just to illustrate:
 
-[source](http://edgar.jrc.ec.europa.eu/news_docs/CO2_1970-2014_dataset_of_CO2_report_2015.xls)
+```{r, eval=FALSE}
+
+## read in the data. (same URL as yesterday, just with co2.csv instead of gapminder.csv)
+co2 <- read_csv("https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/co2.csv")
+
+## explore
+co2 %>% head()
+co2 %>% dim() # 220
+
+## new variable to 
+gap_2007 <- gapminder %>%
+  filter(year == 2007)
+gap_2007 %>% dim() # 142  
+
+## left join gap_2007 to co2
+g <- left_join(gap_2007, co2, by = "country")
+
+
+y <- intersect(gap_2007 %>% select(country), 
+          co2 %>% select(country))
+
+keep <- left_join(x, y)
+
+g <- left_join(gap_2007, keep, by = "country") 
+g %>% dim() #142
+g %>% summary()
+
+h <- right_join(gap_2007, keep, by = "country")
+h %>% dim() # 220
+h %>% summary()
+
+
+```
+
 
 
 
