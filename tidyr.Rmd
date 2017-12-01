@@ -500,7 +500,8 @@ Jarrett points out that *Agarum* is not listed for the year 2000. Does this mean
 We can use the `complete()` function to make our dataset more complete.
 
 ```{r, eval=F}
-kelpdf %>% complete(Year, Taxon)
+kelpdf %>% 
+  complete(Year, Taxon)
 ```
 
 This gives us an NA for *Agarum* in 2000, but we want it to be a 0 instead. We can use the `fill` argument to assign the fill value.
