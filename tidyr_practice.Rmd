@@ -1,0 +1,107 @@
+---
+title: "TidyR"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+```
+
+## Example datasets
+
+```{r}
+AirPassengers
+```
+
+```{r read_in_data}
+
+gap_wide <- readr::read_csv('https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder_wide.csv')
+
+## yesterdays data format
+gapminder <- readr::read_csv('https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder.csv')
+
+head(gap_wide)
+head(gapminder)
+```
+
+## `gather()`
+
+Use gather to turn `gap_wide` into a long format dataset
+
+```{r}
+
+head(gap_wide)
+
+gap_long <- gap_wide %>%
+  gather(key = obstype_year,
+         value = obs_values)
+
+head(gap_long)
+```
+
+```{r}
+gap_long <- gap_wide %>%
+  gather(key = obstype_year,
+         value = obs_values,
+         dplyr::starts_with("pop"),
+         dplyr::starts_with("lifeExp"),
+         dplyr::starts_with("gdpPercap")) 
+
+## The :: indicates that starts_with comes from the dplyr package
+
+head(gap_long)
+```
+
+## keep columns with `-` in gather()
+```{r}
+gap_long <- gap_wide %>%
+  gather(key = obstype_year,
+         value = obs_values,
+         -continent, - country)
+head(gap_long)
+```
+
+## separate out the year
+```{r}
+gap_long <- gap_wide %>%
+  gather(key = obstype_year,
+         value = obs_values,
+         -continent, - country) %>%
+  separate(obstype_year,
+           into = c("obs_type", "year"),
+           sep = "_",
+           convert = T)
+
+head(gap_long)
+```
+
+## plot long format data
+
+```{r}
+life_df <- gap_long %>%
+  filter(obs_type == "lifeExp",
+         continent == "Americas")
+
+head(life_df)
+
+ggplot(data = life_df, aes(x = year, y = obs_values, color = country)) +
+  geom_line()
+```
+
+
+```{r}
+meanLE_DF <- gap_long %>% 
+  filter(obs_type =="lifeExp",
+         year >= 1982,
+         year <= 2007) %>% 
+  group_by(continent, year) %>% 
+  summarize(mean = mean(obs_values))
+
+ggplot(data = meanLE_DF, aes(x=year,y=mean,color=continent)) +
+  geom_line() +
+  labs(title = "Life E")
+
+```
+
+
+
