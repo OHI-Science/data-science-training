@@ -41,6 +41,43 @@ I'm going to write this in my R Markdown file:
 Data wrangling with `tidyr`, which is part of the tidyverse. We are going to tidy some data!
 ```
 
+## Finishing up dplyr
+
+## Joining datasets 
+
+Sometimes you have data coming from different places or in different files, and you want to put them together so you can analyze them. In the tidyverse, this is called "joining".
+
+From the RStudio cheatsheet:
+
+![](img/rstudio-cheatsheet-combine.png)
+
+### Your turn 
+
+With a partner, look at RStudio's Data Wrangling Cheatsheet and explore the different ways that you could join data. Which way do you think would work here?
+
+![](img/rstudio-cheatsheet-combine-options.png)
+
+We are going to `left_join()` the gapminder data with the estimated data. Left joining the gapminder data will keep all the information in gapminder, but with additional information from the estimated data. So gapminder doesn't lose any rows. 
+
+Let's have a look:
+```{r}
+## to check:
+str(gapminder) # 1704 observations of 6 variables
+
+gapminder_est <- gapminder %>%
+  left_join(countries_estimated, 
+            by = "country")
+
+str(gapminder_est) #1704 obs. of  7 variables
+head(gapminder_est, 20)
+```
+
+So `left_join()`ing added a 7th column to our data, and if we have a look at it (`head()`), you can see that the yes's and no's from the estimated data have been repeated. 
+
+Great! Now we are going to continue with our analysis. We want to label our plots  differently if they are based on estimated data. This means that when we go through our for loop, we want to conditionally plot them. 
+
+
+
 ### load `tidyverse` (which has `tidyr` inside)
 
 First load `tidyr` in an R chunk. You already have installed the tidyverse, so you should be able to just load it like this (using the comment so you can run `install.packages("tidyverse")` easily if need be):
