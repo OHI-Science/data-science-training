@@ -485,64 +485,6 @@ for( cntry in country_list ){ # (cntry = country_list[1])
 
 So now we have a working for loop with conditional if/else statements that we could build from. 
 
-## Joining datasets 
-
-Let's say that our colleague just sent us another file that identifies when the data we're using was estimated versus measured (I'm making this up). Let's read in the file our colleague sent us: 
-
-```{r, message=FALSE}
-## read in our colleague's data to join
-countries_estimated <- gapminder <- readr::read_csv('https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/countries_estimated.csv')
-```
-
-```{r, eval=FALSE}
-## have a look
-head(countries_estimated)
-summary(countries_estimated)
-str(countries_estimated)
-```
-
-(If you're interested, here is the code that I used to create this fake dataset:)
-
-```{r fake data, eval=FALSE}
-x <- countries_list %>% 
-  mutate(estimated = runif(length(country), 0, 1)) %>%
-  mutate(estimated = round(estimated))
-
-x$estimated[x$estimated == 0] = "no"
-x$estimated[x$estimated == 1] = "yes"
-readr::write_csv(x, 'data/countries_estimated.csv')
-```
-
-So, what can we see about these data. It looks like there are 142 countries represented, just like our gapminder data. There is only one entry (row) for each country. And we want to somehow join this data with the data we have from gapminder. 
-
-We want to do this: 
-
-![](img/rstudio-cheatsheet-combine.png)
-
-### Your turn 
-
-With a partner, look at RStudio's Data Wrangling Cheatsheet and explore the different ways that you could join data. Which way do you think would work here?
-
-![](img/rstudio-cheatsheet-combine-options.png)
-
-We are going to `left_join()` the gapminder data with the estimated data. Left joining the gapminder data will keep all the information in gapminder, but with additional information from the estimated data. So gapminder doesn't lose any rows. 
-
-Let's have a look:
-```{r}
-## to check:
-str(gapminder) # 1704 observations of 6 variables
-
-gapminder_est <- gapminder %>%
-  left_join(countries_estimated, 
-            by = "country")
-
-str(gapminder_est) #1704 obs. of  7 variables
-head(gapminder_est, 20)
-```
-
-So `left_join()`ing added a 7th column to our data, and if we have a look at it (`head()`), you can see that the yes's and no's from the estimated data have been repeated. 
-
-Great! Now we are going to continue with our analysis. We want to label our plots  differently if they are based on estimated data. This means that when we go through our for loop, we want to conditionally plot them. 
 
 ## More R!
 
