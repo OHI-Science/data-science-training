@@ -145,7 +145,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.2.1" data-path="github.html"><a href="github.html#what-are-git-and-github"><i class="fa fa-check"></i><b>4.2.1</b> What are Git and Github?</a></li>
 <li class="chapter" data-level="4.2.2" data-path="github.html"><a href="github.html#some-github-terminology"><i class="fa fa-check"></i><b>4.2.2</b> Some Github terminology</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="github.html"><a href="github.html#setup-git-github"><i class="fa fa-check"></i><b>4.3</b> Setup Git &amp; GitHub</a></li>
+<li class="chapter" data-level="4.3" data-path="github.html"><a href="github.html#setup-git-github"><i class="fa fa-check"></i><b>4.3</b> Setup Git &amp; GitHub</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="github.html"><a href="github.html#troubleshooting-1"><i class="fa fa-check"></i><b>4.3.1</b> Troubleshooting</a></li>
+</ul></li>
 <li class="chapter" data-level="4.4" data-path="github.html"><a href="github.html#create-a-repository-on-github.com"><i class="fa fa-check"></i><b>4.4</b> Create a repository on Github.com</a></li>
 <li class="chapter" data-level="4.5" data-path="github.html"><a href="github.html#clone-your-repository-using-rstudio"><i class="fa fa-check"></i><b>4.5</b> Clone your repository using RStudio</a></li>
 <li class="chapter" data-level="4.6" data-path="github.html"><a href="github.html#inspect-your-repository"><i class="fa fa-check"></i><b>4.6</b> Inspect your repository</a></li>
@@ -165,7 +167,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.10.1" data-path="github.html"><a href="github.html#your-turn-4"><i class="fa fa-check"></i><b>4.10.1</b> Your turn</a></li>
 </ul></li>
 <li class="chapter" data-level="4.11" data-path="github.html"><a href="github.html#committing---how-often-tracking-changes-in-your-files"><i class="fa fa-check"></i><b>4.11</b> Committing - how often? Tracking changes in your files</a></li>
-<li class="chapter" data-level="4.12" data-path="github.html"><a href="github.html#troubleshooting-1"><i class="fa fa-check"></i><b>4.12</b> Troubleshooting</a></li>
+<li class="chapter" data-level="4.12" data-path="github.html"><a href="github.html#troubleshooting-2"><i class="fa fa-check"></i><b>4.12</b> Troubleshooting</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>5</b> Visualizing: <code>ggplot2</code></a><ul>
 <li class="chapter" data-level="5.1" data-path="ggplot2.html"><a href="ggplot2.html#objectives-resources"><i class="fa fa-check"></i><b>5.1</b> Objectives &amp; Resources</a><ul>
@@ -391,6 +393,23 @@ git config –-global user.email NAME@EMAIL.EDU
 git config --list</code></pre></li>
 </ol>
 <p>Not only have you just set up git as a one-time-only thing, you have just used the command line. We don’t have time to learn much of the command line today, but you just successfully used it following explicit instructions, which is huge! There are great resources for learning the command line, check out <a href="http://remi-daigle.github.io/2016-04-15-UCSB/shell/">this tutorial from SWC at UCSB</a>.</p>
+<div id="troubleshooting-1" class="section level3">
+<h3><span class="header-section-number">4.3.1</span> Troubleshooting</h3>
+<p>If you have problems setting up git, please see the <a href="http://happygitwithr.com/troubleshooting.html">Troubleshooting section</a> in Jenny Bryan’s amazing <a href="http://happygitwithr.com">HappyGitWithR</a>.</p>
+<div id="newish-error-on-a-mac" class="section level4">
+<h4><span class="header-section-number">4.3.1.1</span> New(ish) Error on a Mac</h4>
+<p>We’ve also seen the following errors from RStudio:</p>
+<pre><code>error key does not contain a section --global terminal</code></pre>
+<p>and</p>
+<pre><code>fatal: not in a git directory</code></pre>
+<p>To solve this, go to Terminal and type: <code>which git</code> Look at the filepath that is returned. Does it say anything to do with Apple? If yes, then the <a href="https://git-scm.com/downloads">Git you downloaded</a> isn’t installed, please install. If no, then proceed below:</p>
+<p>In RStudio, navigate to: Tools &gt; Global Options &gt; Git/SVN.</p>
+<p>Does the “Git executable” filepath match what the url in Terminal says? If not, click the browse button and navigate there.<br />
+<em>Note</em>: even though I navigated to /usr/local/bin/git, it is showing up as it does in the image below because /usr/local/bin/git was an alias on my computer. That is fine. Click OK.</p>
+<p>Quit RStudio. Then relaunch RStudio. Try syncing or cloning, and if that works and then you don’t need to worry about typing into the Terminal, you’re all done!</p>
+<p>Also: which git</p>
+</div>
+</div>
 </div>
 <div id="create-a-repository-on-github.com" class="section level2">
 <h2><span class="header-section-number">4.4</span> Create a repository on Github.com</h2>
@@ -575,7 +594,7 @@ We are going use &quot;gapminder&quot; data to learn `dplyr`. It&#39;s going to 
 <p>You can click on the commits to see how the files changed from the previous commit: <br /> <br /></p>
 <p><img src="img/commit_compare_3.png" /> <br /> <br /></p>
 </div>
-<div id="troubleshooting-1" class="section level2">
+<div id="troubleshooting-2" class="section level2">
 <h2><span class="header-section-number">4.12</span> Troubleshooting</h2>
 <p>If you have problems, we’ll help you out using Jenny Bryan’s <a href="http://happygitwithr.com">HappyGitWithR</a>, particularly the sections on <a href="http://happygitwithr.com/rstudio-see-git.html">Detect Git from RStudio</a> and <a href="http://happygitwithr.com/troubleshooting.html">RStudio, Git, GitHub Hell (troubleshooting)</a>.</p>
 

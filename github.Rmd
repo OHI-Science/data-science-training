@@ -110,6 +110,37 @@ We're going to switch gears from R for a moment and set up Git and GitHub, which
 
 Not only have you just set up git as a one-time-only thing, you have just used the command line. We don't have time to learn much of the command line today, but you just successfully used it following explicit instructions, which is huge! There are great resources for learning the command line, check out [this tutorial from SWC at UCSB](http://remi-daigle.github.io/2016-04-15-UCSB/shell/). 
 
+### Troubleshooting
+
+If you have problems setting up git, please see the [Troubleshooting section](http://happygitwithr.com/troubleshooting.html) in Jenny Bryan's amazing [HappyGitWithR](http://happygitwithr.com). 
+
+#### New(ish) Error on a Mac
+We've also seen the following errors from RStudio: 
+
+```
+error key does not contain a section --global terminal
+```
+and
+```
+fatal: not in a git directory
+```
+
+To solve this, go to Terminal and type:
+    ```
+which git
+```
+Look at the filepath that is returned. Does it say anything to do with Apple? If yes, then the [Git you downloaded](https://git-scm.com/downloads) isn't installed, please install. If no, then proceed below:
+
+In RStudio, navigate to: Tools > Global Options > Git/SVN. 
+
+Does the “Git executable”  filepath match what the url in Terminal says? If not, click the browse button and navigate there.   
+*Note*: even though I navigated to /usr/local/bin/git, it is showing up as it does in the image below because /usr/local/bin/git was an alias on my computer. That is fine. Click OK.
+
+Quit RStudio. Then relaunch RStudio. Try syncing or cloning, and if that works and then you don’t need to worry about typing into the Terminal, you’re all done!
+
+
+
+Also: which git
 
 ## Create a repository on Github.com
 
