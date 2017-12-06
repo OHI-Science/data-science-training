@@ -25,7 +25,7 @@
 <meta name="author" content="The Ocean Health Index Team">
 
 
-<meta name="date" content="2017-12-01">
+<meta name="date" content="2017-12-06">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -722,7 +722,8 @@ gap_wide_new &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</spa
 kelpdf</code></pre></div>
 <p>Jarrett points out that <em>Agarum</em> is not listed for the year 2000. Does this mean it wasn’t observed (Abundance = 0) or that it wasn’t recorded (Abundance = NA)? Only the person who recorded the data knows, but let’s assume that the this means the Abundance was 0 for that year.</p>
 <p>We can use the <code>complete()</code> function to make our dataset more complete.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">kelpdf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">complete</span>(Year, Taxon)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">kelpdf <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">complete</span>(Year, Taxon)</code></pre></div>
 <p>This gives us an NA for <em>Agarum</em> in 2000, but we want it to be a 0 instead. We can use the <code>fill</code> argument to assign the fill value.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">kelpdf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">complete</span>(Year, Taxon, <span class="dt">fill =</span> <span class="kw">list</span>(<span class="dt">Abundance =</span> <span class="dv">0</span>))</code></pre></div>
 <p>Now we have what we want. Let’s assume that all years between 1999 and 2004 that aren’t listed should actually be assigned a value of 0. We can use the <code>full_seq()</code> function from <code>tidyr</code> to fill out our dataset with all years 1999-2004 and assign Abundance values of 0 to those years &amp; species for which there was no observation.</p>

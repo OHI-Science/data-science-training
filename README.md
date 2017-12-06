@@ -1,6 +1,6 @@
 ## Collaborative. Reproducible. Science.
 
-These materials are available as a book at http://ohi-science.org/data-science-training/
+These materials are available as a book at http://ohi-science.org/data-science-training/. (Alternative [link](https://rawgit.com/OHI-Science/data-science-training/master/docs/index.html).
 
 Please clone or download https://github.com/OHI-Science/data-science-training to accompany this training.
 
