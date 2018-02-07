@@ -243,7 +243,7 @@ So really. Make sure that you have an all-lowercase folder called `github` in yo
 <br />
 <br />
 
-**Step 5**: Paste it in the Repository URL field, and type tab to autofill the Project Directory name. Make sure you keep the Project Directory Name THE SAME as the repository name from the URL.
+**Step 5**: Paste it in the Repository URL field, and type **tab** to autofill the Project Directory name. Make sure you keep the Project Directory Name **THE SAME** as the repository name from the URL.
 
 Save it in your github folder (click on Browse) to do this. 
 

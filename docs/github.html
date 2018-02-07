@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Introduction to Open Data Science</title>
   <meta name="description" content="This is official open data science training for the Ocean Health Index.">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
 
   <meta property="og:title" content="Introduction to Open Data Science" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="The Ocean Health Index Team">
 
 
-<meta name="date" content="2017-12-06">
+<meta name="date" content="2018-02-07">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -402,12 +402,31 @@ git config --list</code></pre></li>
 <pre><code>error key does not contain a section --global terminal</code></pre>
 <p>and</p>
 <pre><code>fatal: not in a git directory</code></pre>
-<p>To solve this, go to Terminal and type: <code>which git</code> Look at the filepath that is returned. Does it say anything to do with Apple? If yes, then the <a href="https://git-scm.com/downloads">Git you downloaded</a> isn’t installed, please install. If no, then proceed below:</p>
+<p>To solve this, go to the Terminal and type: <code>which git</code></p>
+<div class="figure">
+<img src="img/git_whichgit.png" />
+
+</div>
+<p>Look at the filepath that is returned. Does it say anything to do with Apple?</p>
+<p>-&gt; If yes, then the <a href="https://git-scm.com/downloads">Git you downloaded</a> isn’t installed, please redownload if necessary, and follow instructions to install.</p>
+<p>-&gt; If no, (in the example image, the filepath does not say anything with Apple) then proceed below:</p>
 <p>In RStudio, navigate to: Tools &gt; Global Options &gt; Git/SVN.</p>
-<p>Does the “Git executable” filepath match what the url in Terminal says? If not, click the browse button and navigate there.<br />
-<em>Note</em>: even though I navigated to /usr/local/bin/git, it is showing up as it does in the image below because /usr/local/bin/git was an alias on my computer. That is fine. Click OK.</p>
-<p>Quit RStudio. Then relaunch RStudio. Try syncing or cloning, and if that works and then you don’t need to worry about typing into the Terminal, you’re all done!</p>
-<p>Also: which git</p>
+<div class="figure">
+<img src="img/git_options.png" />
+
+</div>
+<p>Does the <strong>“Git executable”</strong> filepath match what the url in Terminal says?</p>
+<div class="figure">
+<img src="img/git_options_filepath.png" />
+
+</div>
+<p>If not, click the browse button and navigate there.</p>
+<blockquote>
+<p><em>Note</em>: on my laptop, even though I navigated to /usr/local/bin/git, it then automatically redirect because /usr/local/bin/git was an alias on my computer. That is fine. Click OK.</p>
+</blockquote>
+<p>Quit RStudio.</p>
+<p>Then relaunch RStudio.</p>
+<p>Try syncing or cloning, and if that works and then you don’t need to worry about typing into the Terminal, you’re all done!</p>
 </div>
 </div>
 </div>
@@ -449,7 +468,7 @@ git config --list</code></pre></li>
 <p><strong>Step 4</strong>: Select Git</p>
 <p><br /> <br /></p>
 <p><img src="img/new_project_3.png" /> <br /> <br /></p>
-<p><strong>Step 5</strong>: Paste it in the Repository URL field, and type tab to autofill the Project Directory name. Make sure you keep the Project Directory Name THE SAME as the repository name from the URL.</p>
+<p><strong>Step 5</strong>: Paste it in the Repository URL field, and type <strong>tab</strong> to autofill the Project Directory name. Make sure you keep the Project Directory Name <strong>THE SAME</strong> as the repository name from the URL.</p>
 <p>Save it in your github folder (click on Browse) to do this.</p>
 <p><br /> <br /></p>
 <div class="figure">
@@ -620,7 +639,7 @@ We are going use &quot;gapminder&quot; data to learn `dplyr`. It&#39;s going to 
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-gitbook.require(["gitbook"], function(gitbook) {
+require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,
