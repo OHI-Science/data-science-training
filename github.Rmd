@@ -130,7 +130,7 @@ To solve this, go to the Terminal and type:
 which git
 ```
 
-![](img/git_whichgit.png)
+<img src="img/git_whichgit.png" width="250px">
 
   
 Look at the filepath that is returned. Does it say anything to do with Apple?
@@ -141,11 +141,17 @@ Look at the filepath that is returned. Does it say anything to do with Apple?
 
 In RStudio, navigate to: Tools > Global Options > Git/SVN. 
 
-![](img/git_options.png)
+<img src="img/git_options.png" width="250px">
+
+
+<br>
 
 Does the **“Git executable”** filepath match what the url in Terminal says? 
 
-![](img/git_options_filepath.png)
+<br>
+
+<img src="img/git_options_filepath.png" width="500px">
+
 
 If not, click the browse button and navigate there.   
 
@@ -464,6 +470,8 @@ You can click on the commits to see how the files changed from the previous comm
 
 
 
-## Troubleshooting
+## Happy Git with R
 
-If you have problems, we'll help you out using Jenny Bryan's [HappyGitWithR](http://happygitwithr.com), particularly the sections on [Detect Git from RStudio](http://happygitwithr.com/rstudio-see-git.html) and [RStudio, Git, GitHub Hell (troubleshooting)](http://happygitwithr.com/troubleshooting.html). 
+If you have problems, we'll help you out using Jenny Bryan's [HappyGitWithR](http://happygitwithr.com), particularly the sections on [Detect Git from RStudio](http://happygitwithr.com/rstudio-see-git.html) and [RStudio, Git, GitHub Hell (troubleshooting)](http://happygitwithr.com/troubleshooting.html). So as we are coming around, have a look at it and see if you can help troubleshoot too!
+
+

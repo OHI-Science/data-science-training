@@ -167,7 +167,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.10.1" data-path="github.html"><a href="github.html#your-turn-4"><i class="fa fa-check"></i><b>4.10.1</b> Your turn</a></li>
 </ul></li>
 <li class="chapter" data-level="4.11" data-path="github.html"><a href="github.html#committing---how-often-tracking-changes-in-your-files"><i class="fa fa-check"></i><b>4.11</b> Committing - how often? Tracking changes in your files</a></li>
-<li class="chapter" data-level="4.12" data-path="github.html"><a href="github.html#troubleshooting-2"><i class="fa fa-check"></i><b>4.12</b> Troubleshooting</a></li>
+<li class="chapter" data-level="4.12" data-path="github.html"><a href="github.html#happy-git-with-r"><i class="fa fa-check"></i><b>4.12</b> Happy Git with R</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>5</b> Visualizing: <code>ggplot2</code></a><ul>
 <li class="chapter" data-level="5.1" data-path="ggplot2.html"><a href="ggplot2.html#objectives-resources"><i class="fa fa-check"></i><b>5.1</b> Objectives &amp; Resources</a><ul>
@@ -403,23 +403,16 @@ git config --list</code></pre></li>
 <p>and</p>
 <pre><code>fatal: not in a git directory</code></pre>
 <p>To solve this, go to the Terminal and type: <code>which git</code></p>
-<div class="figure">
-<img src="img/git_whichgit.png" />
-
-</div>
+<p><img src="img/git_whichgit.png" width="250px"></p>
 <p>Look at the filepath that is returned. Does it say anything to do with Apple?</p>
 <p>-&gt; If yes, then the <a href="https://git-scm.com/downloads">Git you downloaded</a> isn’t installed, please redownload if necessary, and follow instructions to install.</p>
 <p>-&gt; If no, (in the example image, the filepath does not say anything with Apple) then proceed below:</p>
 <p>In RStudio, navigate to: Tools &gt; Global Options &gt; Git/SVN.</p>
-<div class="figure">
-<img src="img/git_options.png" />
-
-</div>
+<p><img src="img/git_options.png" width="250px"></p>
+<p><br></p>
 <p>Does the <strong>“Git executable”</strong> filepath match what the url in Terminal says?</p>
-<div class="figure">
-<img src="img/git_options_filepath.png" />
-
-</div>
+<p><br></p>
+<p><img src="img/git_options_filepath.png" width="500px"></p>
 <p>If not, click the browse button and navigate there.</p>
 <blockquote>
 <p><em>Note</em>: on my laptop, even though I navigated to /usr/local/bin/git, it then automatically redirect because /usr/local/bin/git was an alias on my computer. That is fine. Click OK.</p>
@@ -613,9 +606,9 @@ We are going use &quot;gapminder&quot; data to learn `dplyr`. It&#39;s going to 
 <p>You can click on the commits to see how the files changed from the previous commit: <br /> <br /></p>
 <p><img src="img/commit_compare_3.png" /> <br /> <br /></p>
 </div>
-<div id="troubleshooting-2" class="section level2">
-<h2><span class="header-section-number">4.12</span> Troubleshooting</h2>
-<p>If you have problems, we’ll help you out using Jenny Bryan’s <a href="http://happygitwithr.com">HappyGitWithR</a>, particularly the sections on <a href="http://happygitwithr.com/rstudio-see-git.html">Detect Git from RStudio</a> and <a href="http://happygitwithr.com/troubleshooting.html">RStudio, Git, GitHub Hell (troubleshooting)</a>.</p>
+<div id="happy-git-with-r" class="section level2">
+<h2><span class="header-section-number">4.12</span> Happy Git with R</h2>
+<p>If you have problems, we’ll help you out using Jenny Bryan’s <a href="http://happygitwithr.com">HappyGitWithR</a>, particularly the sections on <a href="http://happygitwithr.com/rstudio-see-git.html">Detect Git from RStudio</a> and <a href="http://happygitwithr.com/troubleshooting.html">RStudio, Git, GitHub Hell (troubleshooting)</a>. So as we are coming around, have a look at it and see if you can help troubleshoot too!</p>
 
 </div>
 </div>
