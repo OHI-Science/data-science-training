@@ -125,22 +125,38 @@ and
 fatal: not in a git directory
 ```
 
-To solve this, go to Terminal and type:
+To solve this, go to the Terminal and type:
     ```
 which git
 ```
-Look at the filepath that is returned. Does it say anything to do with Apple? If yes, then the [Git you downloaded](https://git-scm.com/downloads) isn't installed, please install. If no, then proceed below:
+
+![](img/git_whichgit.png)
+
+  
+Look at the filepath that is returned. Does it say anything to do with Apple?
+
+-> If yes, then the [Git you downloaded](https://git-scm.com/downloads) isn't installed, please redownload if necessary, and follow instructions to install.  
+
+-> If no, (in the example image, the filepath does not say anything with Apple) then proceed below:
 
 In RStudio, navigate to: Tools > Global Options > Git/SVN. 
 
-Does the “Git executable”  filepath match what the url in Terminal says? If not, click the browse button and navigate there.   
-*Note*: even though I navigated to /usr/local/bin/git, it is showing up as it does in the image below because /usr/local/bin/git was an alias on my computer. That is fine. Click OK.
+![](img/git_options.png)
 
-Quit RStudio. Then relaunch RStudio. Try syncing or cloning, and if that works and then you don’t need to worry about typing into the Terminal, you’re all done!
+Does the **“Git executable”** filepath match what the url in Terminal says? 
 
+![](img/git_options_filepath.png)
 
+If not, click the browse button and navigate there.   
 
-Also: which git
+>*Note*: on my laptop, even though I navigated to /usr/local/bin/git, it then automatically redirect because /usr/local/bin/git was an alias on my computer. That is fine. Click OK.
+
+Quit RStudio.   
+
+Then relaunch RStudio.  
+
+Try syncing or cloning, and if that works and then you don’t need to worry about typing into the Terminal, you’re all done!
+
 
 ## Create a repository on Github.com
 
