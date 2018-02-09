@@ -91,7 +91,7 @@ In my head I hear, e.g., "x gets 12".
 
 All R statements where you create objects -- "assignments" -- have this form: `objectName <- value`.  
 
-I'll write it in the command line with a hashtag `#`, which is the way R comments so it won't be evaluated. 
+I'll write it in the console with a hashtag `#`, which is the way R comments so it won't be evaluated. 
 ```{r eval = FALSE}
 ## objectName <- value
 
@@ -316,9 +316,9 @@ or click the broom in RStudio's Environment pane.
 
 Now we are going to also introduce RMarkdown. This is really key for collaborative research, so we're going to get started with it early and then use it for the rest of the day. 
 
-An Rmarkdown file will allow us to weave markdown text with chunks of R code to be evaluated and output content like tables and plots.
+An RMarkdown file will allow us to weave markdown text with chunks of R code to be evaluated and output content like tables and plots.
 
-File -> New File -> Rmarkdown... -> Document of output format HTML, OK.
+File -> New File -> RMarkdown... -> Document of output format HTML, OK.
 
 `r img(src='img/rstudio_new-rmd-doc-html.png', width=300)`
 
@@ -332,8 +332,11 @@ Let's have a look at this file — it's not blank; there is some initial text is
 
 ![](img/rmarkdown.png)
 
+<br>
 
 Let's go ahead and "Knit HTML" by clicking the blue yarn at the top of the RMarkdown file. 
+
+<br>
 
 ![](img/rmarkdown_side_by_side.png)
 
@@ -356,11 +359,7 @@ Notice the syntax for:
 - **headers** get rendered at multiple levels: `#`, `##`
 - **bold**: `**word**`
 
-There are some good [cheatsheets](https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet) to get you started, and here is one built into RStudio:
-<br />
-<br />
-
-![](img/md_cheatsheet.png)
+There are some good [cheatsheets](https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet) to get you started, and here is one built into RStudio: Go to Help > Markdown Quick Reference
 <br />
 <br />
 

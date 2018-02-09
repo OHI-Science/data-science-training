@@ -2,13 +2,13 @@
 
 Welcome. 
 
-This is a 2-day training workshop to learn R, RStudio, Git, and GitHub, and it's going to be fun and empowering. You will learn a reproducible workflow that can be used in analyses of all kinds, including Ocean Health Index assessments. This is really powerful, cool stuff, and not just for data: I made and published this book using those four tools and workflow.
+In this training you will learn R, RStudio, Git, and GitHub. It's going to be fun and empowering. You will learn a reproducible workflow that can be used in research and analyses of all kinds, including Ocean Health Index assessments. This is really powerful, cool stuff, and not just for data: I made and published this book using those four tools and workflow.
 
 We will practice learning three main things all at the same time: coding with best practices (R/RStudio), collaborative version control (Git/GitHub), and communication/publishing (RMarkdown/GitHub). This training will teach these all together to reinforce skills and best practices, and get you comfortable with a workflow that you can use in your own projects. 
 
 ## What to expect
 
-This is going to be a fun workshop. 
+This is going to be fun. 
 
 The plan is to expose you to a lot of great tools that you can have confidence using in your research. You'll be working hands-on and doing the same things on your own computer as we do live on up on the screen. We're going to go through a lot in these two days and it's less important that you remember it all. More imporatantly, you'll have experience with it and confidence that you can do it. The main thing to take away is that there *are* good ways to approach your analyses; we will teach you to expect that so you can find what you need and use it! And, you can use these materials as a reference as you go forward with your analyses. 
 
@@ -41,21 +41,23 @@ We will be focusing on:
 - **Visualize**: 
     - `ggplot2` static plots, using grammar of graphics principles
 - **Communicate**
-    - online website with _Github Pages_
-    - version with _git_
-    - dynamic documents with _Rmarkdown_
+    - dynamic documents with *R Markdown*
+    
     
 ## Gapminder data
+
+One of the most important things we hope you learn from this book is how to think about data separately from your own research context. Said in another way, you'll learn to distinguish your data questions from your research questions. Here, we are focusing on data questions, and we will use data that is not specific to your research. We learn through metaphor, and you will likely see parallels to your own data, which will ultimately help you in your research.
+
 
 We'll be using the [gapminder dataset](http://www.gapminder.org/world), which represents the health and wealth of nations. It was pioneered by [Hans Rosling](https://www.ted.com/speakers/hans_rosling), who is famous for describing the prosperity of nations over time through famines, wars and other historic events with this beautiful data visualization in his [2006 TED Talk: The best stats you've ever seen](https://www.ted.com/talks/hans_rosling_shows_the_best_stats_you_ve_ever_seen): 
 
 [Gapminder Motion Chart<br\>![](https://github.com/remi-daigle/2016-04-15-UCSB/raw/gh-pages/viz/img/gapminder-world_motion-chart.png)](http://www.gapminder.org/world)
 
-While these data are not specifically oriented around conservation or the environment, it is a fantastically rich data set with many parallels to data you may have and wrangling you will need to do. We learn through metaphor, and there are various indicators, across multiple study sites, and over many years. 
+While these data are not specifically oriented around your research, it is a fantastically rich data set with many parallels to data you may have and wrangling you will need to do. There are there are various indicators that are tracked across multiple study sites over many years.
 
 ## By the end of the course...
 
-By the end of the course you'll wrangle the gapminder data, make your own graphics that you'll publish on a webpage you've built with GitHub and RMarkdown. Woop!
+By the end of the course, you'll wrangle the gapminder data, and make your own graphics that you'll publish on a webpage you've built with GitHub and RMarkdown. Woop!
 
 I made this training book with GitHub and RStudio's RMarkdown, which is what we'll be learning in the workshop.
 

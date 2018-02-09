@@ -25,7 +25,7 @@
 <meta name="author" content="The Ocean Health Index Team">
 
 
-<meta name="date" content="2017-12-06">
+<meta name="date" content="2018-02-08">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -375,7 +375,7 @@ x</code></pre></div>
 <pre><code>## [1] 12</code></pre>
 <p>In my head I hear, e.g., “x gets 12”.</p>
 <p>All R statements where you create objects – “assignments” – have this form: <code>objectName &lt;- value</code>.</p>
-<p>I’ll write it in the command line with a hashtag <code>#</code>, which is the way R comments so it won’t be evaluated.</p>
+<p>I’ll write it in the console with a hashtag <code>#</code>, which is the way R comments so it won’t be evaluated.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## objectName &lt;- value
 
 ## This is also how you write notes in your code to explain what you are doing.</code></pre></div>
@@ -507,7 +507,7 @@ And that's great, this error message is helpful: R doesn't know what the `little
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">??install </code></pre></div>
 <p>Not all functions have (or require) arguments:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">date</span>()</code></pre></div>
-<pre><code>## [1] &quot;Wed Dec  6 10:17:18 2017&quot;</code></pre>
+<pre><code>## [1] &quot;Thu Feb  8 21:30:18 2018&quot;</code></pre>
 </div>
 </div>
 <div id="clearing-the-environment" class="section level2">
@@ -541,8 +541,8 @@ And that's great, this error message is helpful: R doesn't know what the `little
 <div id="rmarkdown" class="section level2">
 <h2><span class="header-section-number">3.6</span> RMarkdown</h2>
 <p>Now we are going to also introduce RMarkdown. This is really key for collaborative research, so we’re going to get started with it early and then use it for the rest of the day.</p>
-<p>An Rmarkdown file will allow us to weave markdown text with chunks of R code to be evaluated and output content like tables and plots.</p>
-<p>File -&gt; New File -&gt; Rmarkdown… -&gt; Document of output format HTML, OK.</p>
+<p>An RMarkdown file will allow us to weave markdown text with chunks of R code to be evaluated and output content like tables and plots.</p>
+<p>File -&gt; New File -&gt; RMarkdown… -&gt; Document of output format HTML, OK.</p>
 <img src="img/rstudio_new-rmd-doc-html.png" width="300"/>
 <p>You can give it a Title like “My Project”. Then click OK.</p>
 <p>OK, first off: by opening a file, we are seeing the 4th pane of the RStudio console, which is essentially a text editor. This lets us organize our files within RStudio instead of having a bunch of different windows open.</p>
@@ -554,7 +554,9 @@ And that's great, this error message is helpful: R doesn't know what the `little
 <img src="img/rmarkdown.png" />
 
 </div>
+<p><br></p>
 <p>Let’s go ahead and “Knit HTML” by clicking the blue yarn at the top of the RMarkdown file.</p>
+<p><br></p>
 <div class="figure">
 <img src="img/rmarkdown_side_by_side.png" />
 
@@ -571,8 +573,7 @@ And that's great, this error message is helpful: R doesn't know what the `little
 <li><strong>headers</strong> get rendered at multiple levels: <code>#</code>, <code>##</code></li>
 <li><strong>bold</strong>: <code>**word**</code></li>
 </ul>
-<p>There are some good <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet">cheatsheets</a> to get you started, and here is one built into RStudio: <br /> <br /></p>
-<p><img src="img/md_cheatsheet.png" /> <br /> <br /></p>
+<p>There are some good <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet">cheatsheets</a> to get you started, and here is one built into RStudio: Go to Help &gt; Markdown Quick Reference <br /> <br /></p>
 <p><strong>Important</strong>: note that the hashtag <code>#</code> is used differently in Markdown and in R:</p>
 <ul>
 <li>in R, a hashtag indicates a comment that will not be evaluated. You can use as many as you want: <code>#</code> is equivalent to <code>######</code>. It’s just a matter of style. I use two <code>##</code> to indicate a comment so that it’s clearer what is a comment versus what I don’t want to run at the moment.</li>
