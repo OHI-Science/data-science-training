@@ -25,7 +25,7 @@
 <meta name="author" content="The Ocean Health Index Team">
 
 
-<meta name="date" content="2018-02-08">
+<meta name="date" content="2018-02-09">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -167,7 +167,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.10.1" data-path="github.html"><a href="github.html#your-turn-4"><i class="fa fa-check"></i><b>4.10.1</b> Your turn</a></li>
 </ul></li>
 <li class="chapter" data-level="4.11" data-path="github.html"><a href="github.html#committing---how-often-tracking-changes-in-your-files"><i class="fa fa-check"></i><b>4.11</b> Committing - how often? Tracking changes in your files</a></li>
-<li class="chapter" data-level="4.12" data-path="github.html"><a href="github.html#troubleshooting-2"><i class="fa fa-check"></i><b>4.12</b> Troubleshooting</a></li>
+<li class="chapter" data-level="4.12" data-path="github.html"><a href="github.html#happy-git-with-r"><i class="fa fa-check"></i><b>4.12</b> Happy Git with R</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>5</b> Visualizing: <code>ggplot2</code></a><ul>
 <li class="chapter" data-level="5.1" data-path="ggplot2.html"><a href="ggplot2.html#objectives-resources"><i class="fa fa-check"></i><b>5.1</b> Objectives &amp; Resources</a><ul>
@@ -316,7 +316,7 @@ Philosophy: gh repo and Rproject
 <div id="objectives" class="section level3">
 <h3><span class="header-section-number">4.1.1</span> Objectives</h3>
 <p>Today, we’ll interface with GitHub from our local computers using RStudio. There are many other ways to interact with GitHub, including GitHub’s Desktop App or the command line (<a href="http://stat545.com/git02_git-clients.html">here is Jenny Bryan’s list of git clients</a>), but today we are going to work from RStudio. You have the largest suite of options if you interface through the command line, but the most common things you’ll do can be done through one of these other applications (i.e. RStudio and the GitHub Desktop App).</p>
-<p>Here’s what we’ll do (we already set up git on our local computer in the previous section):</p>
+<p>Here’s what we’ll do after we set up git on your computers:</p>
 <ol style="list-style-type: decimal">
 <li>create a repository on Github.com</li>
 <li>clone locally using RStudio</li>
@@ -402,12 +402,24 @@ git config --list</code></pre></li>
 <pre><code>error key does not contain a section --global terminal</code></pre>
 <p>and</p>
 <pre><code>fatal: not in a git directory</code></pre>
-<p>To solve this, go to Terminal and type: <code>which git</code> Look at the filepath that is returned. Does it say anything to do with Apple? If yes, then the <a href="https://git-scm.com/downloads">Git you downloaded</a> isn’t installed, please install. If no, then proceed below:</p>
+<p>To solve this, go to the Terminal and type: <code>which git</code></p>
+<p><img src="img/git_whichgit.png" width="250px"></p>
+<p>Look at the filepath that is returned. Does it say anything to do with Apple?</p>
+<p>-&gt; If yes, then the <a href="https://git-scm.com/downloads">Git you downloaded</a> isn’t installed, please redownload if necessary, and follow instructions to install.</p>
+<p>-&gt; If no, (in the example image, the filepath does not say anything with Apple) then proceed below:</p>
 <p>In RStudio, navigate to: Tools &gt; Global Options &gt; Git/SVN.</p>
-<p>Does the “Git executable” filepath match what the url in Terminal says? If not, click the browse button and navigate there.<br />
-<em>Note</em>: even though I navigated to /usr/local/bin/git, it is showing up as it does in the image below because /usr/local/bin/git was an alias on my computer. That is fine. Click OK.</p>
-<p>Quit RStudio. Then relaunch RStudio. Try syncing or cloning, and if that works and then you don’t need to worry about typing into the Terminal, you’re all done!</p>
-<p>Also: which git</p>
+<p><img src="img/git_options.png" width="250px"></p>
+<p><br></p>
+<p>Does the <strong>“Git executable”</strong> filepath match what the url in Terminal says?</p>
+<p><br></p>
+<p><img src="img/git_options_filepath.png" width="500px"></p>
+<p>If not, click the browse button and navigate there.</p>
+<blockquote>
+<p><em>Note</em>: on my laptop, even though I navigated to /usr/local/bin/git, it then automatically redirect because /usr/local/bin/git was an alias on my computer. That is fine. Click OK.</p>
+</blockquote>
+<p>Quit RStudio.</p>
+<p>Then relaunch RStudio.</p>
+<p>Try syncing or cloning, and if that works and then you don’t need to worry about typing into the Terminal, you’re all done!</p>
 </div>
 </div>
 </div>
@@ -449,7 +461,7 @@ git config --list</code></pre></li>
 <p><strong>Step 4</strong>: Select Git</p>
 <p><br /> <br /></p>
 <p><img src="img/new_project_3.png" /> <br /> <br /></p>
-<p><strong>Step 5</strong>: Paste it in the Repository URL field, and type tab to autofill the Project Directory name. Make sure you keep the Project Directory Name THE SAME as the repository name from the URL.</p>
+<p><strong>Step 5</strong>: Paste it in the Repository URL field, and type <strong>tab</strong> to autofill the Project Directory name. Make sure you keep the Project Directory Name <strong>THE SAME</strong> as the repository name from the URL.</p>
 <p>Save it in your github folder (click on Browse) to do this.</p>
 <p><br /> <br /></p>
 <div class="figure">
@@ -594,9 +606,9 @@ We are going use &quot;gapminder&quot; data to learn `dplyr`. It&#39;s going to 
 <p>You can click on the commits to see how the files changed from the previous commit: <br /> <br /></p>
 <p><img src="img/commit_compare_3.png" /> <br /> <br /></p>
 </div>
-<div id="troubleshooting-2" class="section level2">
-<h2><span class="header-section-number">4.12</span> Troubleshooting</h2>
-<p>If you have problems, we’ll help you out using Jenny Bryan’s <a href="http://happygitwithr.com">HappyGitWithR</a>, particularly the sections on <a href="http://happygitwithr.com/rstudio-see-git.html">Detect Git from RStudio</a> and <a href="http://happygitwithr.com/troubleshooting.html">RStudio, Git, GitHub Hell (troubleshooting)</a>.</p>
+<div id="happy-git-with-r" class="section level2">
+<h2><span class="header-section-number">4.12</span> Happy Git with R</h2>
+<p>If you have problems, we’ll help you out using Jenny Bryan’s <a href="http://happygitwithr.com">HappyGitWithR</a>, particularly the sections on <a href="http://happygitwithr.com/rstudio-see-git.html">Detect Git from RStudio</a> and <a href="http://happygitwithr.com/troubleshooting.html">RStudio, Git, GitHub Hell (troubleshooting)</a>. So as we are coming around, have a look at it and see if you can help troubleshoot too!</p>
 
 </div>
 </div>

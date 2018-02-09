@@ -19,7 +19,7 @@ git will track and version your files, GitHub stores this online and enables you
 
 Today, we'll interface with GitHub from our local computers using RStudio. There are many other ways to interact with GitHub, including GitHub's Desktop App or the command line ([here is Jenny Bryan's list of git clients](http://stat545.com/git02_git-clients.html)), but today we are going to work from RStudio. You have the largest suite of options if you interface through the command line, but the most common things you'll do can be done through one of these other applications (i.e. RStudio and the GitHub Desktop App).
 
-Here's what we'll do (we already set up git on our local computer in the previous section): 
+Here's what we'll do after we set up git on your computers: 
 
 1. create a repository on Github.com
 1. clone locally using RStudio 
