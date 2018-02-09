@@ -125,22 +125,44 @@ and
 fatal: not in a git directory
 ```
 
-To solve this, go to Terminal and type:
+To solve this, go to the Terminal and type:
     ```
 which git
 ```
-Look at the filepath that is returned. Does it say anything to do with Apple? If yes, then the [Git you downloaded](https://git-scm.com/downloads) isn't installed, please install. If no, then proceed below:
+
+<img src="img/git_whichgit.png" width="250px">
+
+  
+Look at the filepath that is returned. Does it say anything to do with Apple?
+
+-> If yes, then the [Git you downloaded](https://git-scm.com/downloads) isn't installed, please redownload if necessary, and follow instructions to install.  
+
+-> If no, (in the example image, the filepath does not say anything with Apple) then proceed below:
 
 In RStudio, navigate to: Tools > Global Options > Git/SVN. 
 
-Does the “Git executable”  filepath match what the url in Terminal says? If not, click the browse button and navigate there.   
-*Note*: even though I navigated to /usr/local/bin/git, it is showing up as it does in the image below because /usr/local/bin/git was an alias on my computer. That is fine. Click OK.
-
-Quit RStudio. Then relaunch RStudio. Try syncing or cloning, and if that works and then you don’t need to worry about typing into the Terminal, you’re all done!
+<img src="img/git_options.png" width="250px">
 
 
+<br>
 
-Also: which git
+Does the **“Git executable”** filepath match what the url in Terminal says? 
+
+<br>
+
+<img src="img/git_options_filepath.png" width="500px">
+
+
+If not, click the browse button and navigate there.   
+
+>*Note*: on my laptop, even though I navigated to /usr/local/bin/git, it then automatically redirect because /usr/local/bin/git was an alias on my computer. That is fine. Click OK.
+
+Quit RStudio.   
+
+Then relaunch RStudio.  
+
+Try syncing or cloning, and if that works and then you don’t need to worry about typing into the Terminal, you’re all done!
+
 
 ## Create a repository on Github.com
 
@@ -227,7 +249,7 @@ So really. Make sure that you have an all-lowercase folder called `github` in yo
 <br />
 <br />
 
-**Step 5**: Paste it in the Repository URL field, and type tab to autofill the Project Directory name. Make sure you keep the Project Directory Name THE SAME as the repository name from the URL.
+**Step 5**: Paste it in the Repository URL field, and type **tab** to autofill the Project Directory name. Make sure you keep the Project Directory Name **THE SAME** as the repository name from the URL.
 
 Save it in your github folder (click on Browse) to do this. 
 
@@ -448,6 +470,8 @@ You can click on the commits to see how the files changed from the previous comm
 
 
 
-## Troubleshooting
+## Happy Git with R
 
-If you have problems, we'll help you out using Jenny Bryan's [HappyGitWithR](http://happygitwithr.com), particularly the sections on [Detect Git from RStudio](http://happygitwithr.com/rstudio-see-git.html) and [RStudio, Git, GitHub Hell (troubleshooting)](http://happygitwithr.com/troubleshooting.html). 
+If you have problems, we'll help you out using Jenny Bryan's [HappyGitWithR](http://happygitwithr.com), particularly the sections on [Detect Git from RStudio](http://happygitwithr.com/rstudio-see-git.html) and [RStudio, Git, GitHub Hell (troubleshooting)](http://happygitwithr.com/troubleshooting.html). So as we are coming around, have a look at it and see if you can help troubleshoot too!
+
+
