@@ -27,25 +27,29 @@ Team up with a partner sitting next to you. Partner 1 will create a new reposito
 
 ## Create a gh-pages branch
 
-We aren't going to talk about branches very much, but they are a powerful feature of git/GitHub. I think of it as creating a copy of your work that becomes a parallel universe that you can work in safely because it's not affecting your work. By default, you begin with one branch called 'master'. When you create new branches, you can call them whatever you want. However, if you call one `gh-pages` (all lowercase, with a - and no spaces), this will let you create a website. So let's do this together: 
+We aren't going to talk about branches very much, but they are a powerful feature of git/GitHub. I think of it as creating a copy of your work that becomes a parallel universe that you can modify safely because it's not affecting your original work. By default, when you create a new repo you begin with one branch, and it is named `master`. When you create new branches, you can name them whatever you want. However, if you name one `gh-pages` (all lowercase, with a `-` and no spaces), this will let you create a website. That's our plan, so let's create a `gh-pages` branch together: 
 
 On the homepage for your repo on GitHub.com, click the button that says "Branch:master". Here, you can switch to another branch (right now there aren't any), or create one by typing a new name. 
 
-<img src="img/github-branch.png" width="250px">
+<img src="img/github-branch.png" width="350px">
+
+<br>
 
 Let's type `gh-pages`. 
 
-<img src="img/github_create-branch_gh-pages.png" width="250px"> 
+<br>
+
+<img src="img/github_create-branch_gh-pages.png" width="350px"> 
 
 Let's also change `gh-pages` to the default branch and delete the master branch: this will be a one-time-only thing that we do here: 
 
 First click to control branches:
 
-<img src="img/github_branch2.png" width="250px"> 
+<img src="img/github-branch2.png" width="350px"> 
 
 And then click to change the default branch to `gh-pages`. I like to then delete the `master` branch when it has the little red trash can next to it. It will make you confirm that you really want to delete it, which I do!
 
-<img src="img/github-change-branch.png" width="250px"> 
+<img src="img/github-change-branch.png" width="450px"> 
 
 
 ## Give your collaborator administration priviledges
