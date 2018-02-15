@@ -2,32 +2,54 @@
 
 ## Overview
 
-The collaborative power of GitHub and RStudio is really game changing. So far we've been collaborating with our most important collaborator: ourselves. But, we are lucky that in science we have so many other collaborators, so let's learn how to use GitHub with one of them. 
+The collaborative power of GitHub and RStudio is really game changing. So far we've been collaborating with our most important collaborator: ourselves. But, we are lucky that in science we have so many other collaborators, so let's learn how to use GitHub with them! 
 
-We are going to teach you the simplest way to collaborate with someone, which is for both of you to have administration privileges. GitHub is built for software developer teams, and there is a lot of features that we as scientists won't use immediately. 
+We are going to teach you the simplest way to collaborate with someone, which is for both of you to have privileges to edit and add files to a repository. GitHub is built for software developer teams, and there is a lot of features that limit who can directly edit files, but we don't need to start there. 
 
 We will do this all with a partner, and we'll walk through some things all together, and then give you a chance to work with your collaborator on your own. 
 
 **Objectives**
+
+We are going to create a website with a collaborator!
 
 - create a new repo and give permission to a collaborator
 - open as a new RStudio project!
 - collaborate with a partner 
 - explore github.com blame, history, issues
 
-**Resources**
+<!---**Resources**--->
 
-- [R for Data Science's Transform Chapter](http://r4ds.had.co.nz/transform.html)
 
-## Create gh-pages repo 
 
-Team up with a partner sitting next to you. One of you will create a repository with a gh-pages branch from their computer. A reminder from Chapter \@ref(github): [Create a repository on Github.com]. 
+## Create repo 
+
+Team up with a partner sitting next to you. Partner 1 will create a new repository. We will do this in the same way that we did in Chapter \@ref(github): [Create a repository on Github.com]. 
+
+## Create a gh-pages branch
+
+We aren't going to talk about branches very much, but they are a powerful feature of git/GitHub. I think of it as creating a copy of your work that becomes a parallel universe that you can work in safely because it's not affecting your work. By default, you begin with one branch called 'master'. When you create new branches, you can call them whatever you want. However, if you call one `gh-pages` (all lowercase, with a - and no spaces), this will let you create a website. So let's do this together: 
+
+On the homepage for your repo on GitHub.com, click the button that says "Branch:master". Here, you can switch to another branch (right now there aren't any), or create one by typing a new name. So type `gh-pages`. 
+
+![](img/github-branch.png)
+
+![](img/github_create-branch_gh-pages.png)
+
+Let's also change `gh-pages` to the default branch and delete the master branch: this will be a one-time-only thing that we do here: 
+
+First click to control branches:
+
+![](img/github-branch2.png)
+
+And then click to change the default branch to `gh-pages`. I like to then delete the `master` branch when it has the little red trash can next to it. It will make you confirm that you really want to delete it, which I do!
+
+![](img/github-change-branch.png)
 
 ## Give your collaborator administration priviledges
 
 Now, go into Settings > Collaborators > enter your collaborator's username. 
 
-Your collaborator then needs to check their email and accept as a collaborator. Notice that your collborator has "Push access to the repository" (highlighted below):
+Your collaborator then needs to check their email and accept as a collaborator. Notice that your collaborator has "Push access to the repository" (highlighted below):
 
 ![](img/github_collab.png) 
 
