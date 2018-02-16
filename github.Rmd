@@ -288,6 +288,9 @@ Notice a few things in our repo here:
 
 ![](img/RStudio_IDE_git.png)
 
+<br>
+
+When you first clone a repo through RStudio, RStudio will add an `.Rproj` file to your repo. And if you didn't add a `.gitignore` file when you originally created the repo on GitHub.com, RStudio will also add this for you. These will show up with little yellow `?` icons in your git tab. This is GitHub's way of saying: "I am responsible for tracking everything that happens in this repo, but I haven't seen these files yet. Do you want me to track them too?" (We'll see that when you click the box to stage them, they will turn into `A`s because they have been added to the repo. 
 
 
 ## Add files to our local repo
@@ -304,7 +307,7 @@ And, I typically create the following:
 * R scripts
 * etc.
 
-I'm going to copy-paste a small from my desktop into the folder.
+I'm going to go to the Finder (Windows Explorer on a PC) and copy a file into my repository from there. And then I'm going to go back to RStudio -- it shows up in the git tab! So the repository is being tracked, no matter how you make changes to it (changes do not have to be done only through RStudio). 
 
 To make changes to the repository, you will work from your computer ("local Github").
 
@@ -437,6 +440,8 @@ Now, hitting return does not execute this command; remember, it's just a text fi
 Add a few more commands to your file from this morning. Execute them by trying the three ways above.
 
 Then, sync your file to GitHub.
+
+What if a file doesn't show up in the Git tab and you expect that it should? Check to make sure you've saved the file. If the filename is red with an asterix, there have been changes since it was saved. Remember to save before syncing to GitHub!
 
 
 ## Committing - how often? Tracking changes in your files
