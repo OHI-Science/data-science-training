@@ -1,0 +1,74 @@
+---
+title: "ggplot2 training"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+
+install.packages("tidyverse")
+library(tidyverse)
+```
+
+#mpg dataset
+
+```{r}
+
+mpg
+
+```
+
+
+```{r}
+ggplot(data = mpg)
+```
+
+
+```{r}
+ggplot(data = mpg, aes(x = displ, y = hwy)) +
+  geom_point()
+```
+
+```{r}
+#assign this plot to a variable
+car_plot <- ggplot(data = mpg, aes(x = displ, y = hwy))
+
+# build off of car_plot
+car_plot +
+  geom_point()
+```
+
+
+```{r}
+ggplot(data = mpg, aes(x = displ, y = hwy)) +
+  geom_point(alpha = 0.4)
+```
+
+Coloring points in the plot based on class of car (e.g. sub or compact)
+```{r}
+ggplot(data = mpg) +
+  geom_point(aes(x = displ, y = hwy, color = class))
+```
+
+
+```{r}
+ggplot(data = mpg) +
+  geom_point(aes(x = cty, y = hwy, size = class, color = fl))
+```
+
+```{r}
+ggplot(data = mpg) +
+  geom_point(aes(x = displ, y = hwy), alpha = 0.4, color = "blue")
+```
+
+
+```{r}
+ggplot(data = mpg) +
+  geom_point(aes(x = displ, y = hwy, shape = cty))
+```
+
+```{r}
+ggplot(data = mpg) +
+  geom_point(aes(x = displ, y = hwy, colour = displ < 5))
+```
+
+
