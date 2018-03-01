@@ -8,19 +8,21 @@ library(htmltools)
 > Data scientists, according to interviews and expert estimates, spend from 50 percent to 80 percent of their time mired in the mundane labor of collecting and preparing data, before it can be explored for useful information. - [NYTimes (2014)](http://www.nytimes.com/2014/08/18/technology/for-big-data-scientists-hurdle-to-insights-is-janitor-work.html)
 
 
-## Overview of `dplyr` 
+## Objectives and Resources
+
+What are some common things you like to do with your data? Maybe remove rows or columns, do calcuations and maybe add new columns? This is called **data wrangling**. It's not data management or data manipulation: you **keep the raw data raw** and do these things programatically in R with the tidyverse.
 
 We are going to introduce you to data wrangling in R first with the tidyverse. The tidyverse is a new suite of packages that match a philosophy of data science developed by Hadley Wickham and the RStudio team. I find it to be a more straight-forward way to learn R. We will also show you by comparison what code will look like in "Base R", which means, in R without any additional packages (like the "tidyverse" package)  installed. I like David Robinson's blog post on the topic of [teaching the tidyverse first](http://varianceexplained.org/r/teach-hard-way).
 
 For some things, base-R is more straight forward, and we'll show you that too. Whenever we use a function that is from the tidyverse, we will prefix it so you'll know for sure. 
 
-**Objectives**
+### Objectives
 
 - learn about tidy data
 - learn `dplyr` with `gapminder` data
 - practice RStudio-GitHub workflow
 
-**Resources**
+### Resources 
 
 Today's materials are again borrowing from some excellent sources, including:
 
@@ -31,15 +33,6 @@ Today's materials are again borrowing from some excellent sources, including:
 - [RStudio's data wrangling cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf) 
 - [RStudio's data wrangling webinar](https://www.rstudio.com/resources/webinars/data-wrangling-with-r-and-rstudio/) 
 
-## Prerequisites 
-
-**R Skill Level**: Beginner - you've got basics of R down and are ready to wrangle your data.
-
-We will use the `dplyr` package, which will have been installed with:
-
-```r
-install.packages('tidyverse')
-```
 
 ## Tidy Data
 
@@ -86,6 +79,8 @@ This is becoming standard practice for how to load a library in a file, and if y
 
 
 ## Explore the gapminder data.frame
+
+Yesterday we explored the mpg data.frame visually. Today, we'll explore a dataset by the numbers. 
 
 We will work with some of the data from the [Gapminder project](http://www.gapminder.org). 
 
@@ -157,9 +152,13 @@ We can combine using `c()` to reverse-engineer `dim()`! Just a side-note here, b
 c(nrow(gapminder), ncol(gapminder)) # ?c combines values into a vector or list. 
 ```
 
-A statistical overview can be obtained with `summary()`
+A statistical overview can be obtained with `summary()`, or with `skimr::skim()`
 ```{r summary, eval=FALSE}
 summary(gapminder)
+
+library(skimr) # install.packages('skimr')
+skim(gapminder)
+
 ```
 
 ### Look at the variables inside a data.frame
@@ -256,6 +255,7 @@ Then, sync to Github.com (pull, stage, commit, push).
 ```{r, eval=FALSE}
 x <- filter(gapminder, country == "Sweden")  
 mean(x$lifeExp)  
+
 ```
 
 <!---Don't use this one for now because gets off track for %>%
@@ -266,9 +266,39 @@ x2$pop - x1$pop
 ##  1906415
 --->
 
+## `select()` subsets data column-wise (variables)
+
+We use `select()` to subset the data on variables or columns. 
+
+Visually, we are doing this (thanks RStudio for your [cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)): 
+
+![](img/rstudio-cheatsheet-select.png)
+
+Here's a conventional call. Again, see that we can select multiple columns just with a comma, after we specify the data frame (gapminder). 
+
+```{r, eval=FALSE}
+select(gapminder, year, lifeExp) 
+```
+
+We can also use - to deselect columns
+
+```{r, eval=FALSE}
+select(gapminder, -continent, -lifeExp) # you can use - to deselect columns
+```
+
+## Use `select()` and `filter()` together
+
+Let's filter for Cambodia and remove the continent and lifeExp columns. We'll save this as a variable. Actually, as two temporary variables, and naming them and keeping track of them can get kind of cumbersome.
+
+```{r, eval=FALSE}
+gap_cambodia  <- filter(gapminder, country == "Cambodia")
+gap_cambodia2 <- select(gap_cambodia, -continent, -lifeExp) 
+```
+
+
 ## Meet the new pipe `%>%` operator
 
-Before we go any further, we should exploit the new pipe operator that `dplyr` imports from the [`magrittr`](https://github.com/smbache/magrittr) package by Stefan Bache. **This is going to change your data analytical life**. You no longer need to enact multi-operation commands by nesting them inside each other. And we won't need to make temporary variables like we did in the Sweden example above. This new syntax leads to code that is much easier to write and to read: it actually tells the story of your analysis.
+Before we go any further, we should exploit the new pipe operator that `dplyr` imports from the [`magrittr`](https://github.com/smbache/magrittr) package by Stefan Bache. **This is going to change your life**. You no longer need to enact multi-operation commands by nesting them inside each other. And we won't need to make temporary variables like we did in the Cambodia example above. This new syntax leads to code that is much easier to write and to read: it actually tells the story of your analysis.
 
 Here's what it looks like: `%>%`. The RStudio keyboard shortcut: Ctrl + Shift + M (Windows), Cmd + Shift + M (Mac).
 
@@ -286,58 +316,54 @@ gapminder %>% head(3)
 
 **I've advised you to think "gets" whenever you see the assignment operator, `<-`. Similarly, you should think "and then" whenever you see the pipe operator, `%>%`.**
 
-You are probably not impressed yet, but the magic will soon happen.
+One of the most awesome things about this is that you START with the data before you say what you're doing to DO to it. So above: "take the gapminder data, and then give me the head".
 
+This means that instead of this:
+
+```{r, eval=FALSE}
+
+## instead of this...
+gap_cambodia  <- filter(gapminder, country == "Cambodia")
+gap_cambodia2 <- select(gap_cambodia, -continent, -lifeExp) 
+
+## ...we can do this
+gap_cambodia  <- gapminder %>% filter(country == "Cambodia")
+gap_cambodia2 <- gap_cambodia %>% select(-continent, -lifeExp) 
+```
+
+So you can see that we'll start with gapminder in the first example line, and then gap_cambodia in the second. This makes it a bit easier to see what data we are starting with and what we are doing to it.
+
+...But, we still have those temporary variables so we're not truly that better off. But get ready to be majorly impressed:  
+
+<!---
 Fun break: check out [this gif about %>% from Twitter](https://twitter.com/backerman150/status/926479565869993984).
-
-## `select()` subsets data column-wise (variables)
-
-Back to `dplyr` ...
-
-Use `select()` to subset the data on variables or columns. 
-
-Visually, we are doing this (thanks RStudio for your [cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)): 
-
-![](img/rstudio-cheatsheet-select.png)
-
-Here's a conventional call. Again, see that we can select multiple columns just with a comma, after we specify the data frame (gapminder). 
-
-```{r, eval=FALSE}
-select(gapminder, year, lifeExp) 
-```
-
-But using what we just learned, with a pipe, we can do this:
-```{r, eval=FALSE}
-gapminder %>% select(year, lifeExp)
-```
-
-Let's write it again but using multiple lines so it's nicer to read. And let's add a second pipe operator to pipe through `head`:
-```{r, eval=FALSE}
-gapminder %>%
-  select(year, lifeExp) %>%
-  head(4)
-```
-Think: "Take `gapminder`, then select the variables year and lifeExp, then show the first 4 rows."
-
-Being able to read a story out of code like this is really game-changing. 
+--->
 
 ### Revel in the convenience
 
-Let's take the gapminder data and filter for the country Cambodia, and select 4 of the columns: country, year, pop, gdpPercap. 
+We can use the pipe to chain those two operations together:
 
 ```{r, eval=FALSE}
-gapminder %>%
-  filter(country == "Cambodia") %>%
-  select(country, year, pop, gdpPercap) 
+gap_cambodia  <- gapminder %>% filter(country == "Cambodia") %>%
+  select(-continent, -lifeExp) 
 ```
 
-But entering each column by hand can be tedious, especially since there are fewer columns we *don't* want. So instead, we can do:
+What's happening here? In the second line, we were able to delete `gap_cambodia2 <- gap_cambodia`, and put the pipe operator above. This is possible since we wanted to operate on the `gap_cambodi`a data anyways. And we weren't truly excited about having a second variable named `gap_cambodia2` anyways, so we can get rid of it. This is huge, because most of your data wrangling will have many more than 2 steps, and we don't want a `gap_cambodia14`!
+
+Let's write it again but using multiple lines so it's nicer to read. 
 
 ```{r, eval=FALSE}
-gapminder %>%
+gap_cambodia  <- gapminder %>% 
   filter(country == "Cambodia") %>%
-  select(-continent, -lifeExp) # you can use - to deselect columns
+  select(-continent, -lifeExp) 
 ```
+Amazing. I can actually read this like a story and there aren't temporary variables that get super confusing. In my head: 
+
+>"Take the `gapminder` data, and then  
+filter for Cambodia, and then  
+deselect the variables continent and lifeExp."
+
+Being able to read a story out of code like this is really game-changing. We'll continue using this syntax as we learn the other dplyr verbs. 
 
 ## `mutate()` adds new variables
 
@@ -528,6 +554,8 @@ Get your RMarkdown file cleaned up and sync it for the last time today!
 
 ## Joining datasets 
 
+We've learned a ton in this session and we may not get to this right now. If we don't have time, we'll start here before getting into the next chapter: `tidyr)
+
 Sometimes you have data coming from different places or in different files, and you want to put them together so you can analyze them. This is called relational data, because it has some kind of relationship. In the tidyverse, combining data that has a relationship is called "joining". 
 
 From the [RStudio cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf) (note: this is an earlier version of the cheatsheet but I like the graphics):
@@ -593,4 +621,22 @@ That's all we're going to talk about today with joining, but there are more ways
 
 - Data manipulation functions in `dplyr` allow you to `filter()` by rows and `select()` by columns, create new columns with `mutate()`, and `group_by()` unique column values to apply `summarize()` for new columns that define aggregate values across groupings.
 - The "then" operator `%>%` allows you to chain successive operations without needing to define intermediary variables for creating the most parsimonious, easily read analysis.
+
+## Troubleshooting. 
+
+### Error: unexpected SPECIAL in "  %>%"
+If you get this error, it is probably because you have a line that starts with a pipe. The pipe should be at the end of the previous line, not the start of the current line. 
+
+Yes: 
+```{r, eval=FALSE}
+gap_cambodia  <- gapminder %>% filter(country == "Cambodia") %>%
+  select(-continent, -lifeExp)
+```
+
+No:
+```{r, eval=FALSE}
+gap_cambodia  <- gapminder %>% filter(country == "Cambodia") 
+  %>% select(-continent, -lifeExp)
+# Error: unexpected SPECIAL in "  %>%"
+```
 
