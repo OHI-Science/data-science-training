@@ -8,7 +8,7 @@ library(htmltools)
 > Data scientists, according to interviews and expert estimates, spend from 50 percent to 80 percent of their time mired in the mundane labor of collecting and preparing data, before it can be explored for useful information. - [NYTimes (2014)](http://www.nytimes.com/2014/08/18/technology/for-big-data-scientists-hurdle-to-insights-is-janitor-work.html)
 
 
-## Overview of `dplyr` {.objectives}
+## Overview of `dplyr` 
 
 We are going to introduce you to data wrangling in R first with the tidyverse. The tidyverse is a new suite of packages that match a philosophy of data science developed by Hadley Wickham and the RStudio team. I find it to be a more straight-forward way to learn R. We will also show you by comparison what code will look like in "Base R", which means, in R without any additional packages (like the "tidyverse" package)  installed. I like David Robinson's blog post on the topic of [teaching the tidyverse first](http://varianceexplained.org/r/teach-hard-way).
 
@@ -31,7 +31,7 @@ Today's materials are again borrowing from some excellent sources, including:
 - [RStudio's data wrangling cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf) 
 - [RStudio's data wrangling webinar](https://www.rstudio.com/resources/webinars/data-wrangling-with-r-and-rstudio/) 
 
-## Prerequisites {.prereq}
+## Prerequisites 
 
 **R Skill Level**: Beginner - you've got basics of R down and are ready to wrangle your data.
 
@@ -245,13 +245,13 @@ filter(gapminder, country == "Mexico", year == 2002)
 ```
 
 
-## Your turn {.challenge}
+## Your turn 
 
 What is the mean life expectancy of Sweden? Hint: do this in 2 steps by assigning a variable and then using the `mean()` function.
 
 Then, sync to Github.com (pull, stage, commit, push).
 
-### Answer {.solution} 
+### Answer 
 
 ```{r, eval=FALSE}
 x <- filter(gapminder, country == "Sweden")  
@@ -363,13 +363,13 @@ gapminder %>%
   mutate(gdp = pop * gdpPercap)
 ```
 
-### Your turn {.challenge}
+### Your turn 
 
 Find the maximum gdpPercap of Egypt and Vietnam Create a new column. 
 
 Then, sync to Github.com (pull, stage, commit, push).
 
-#### Answer {.solution}
+#### Answer 
 ```{r, eval=FALSE}
 gapminder %>%
   select(-continent, -lifeExp) %>% # not super necessary but to simplify
@@ -519,14 +519,14 @@ Note too that the chain operator `%>%` that we used with the `tidyverse` lets us
 
 <!---https://twitter.com/bencapistrant/status/932646247101534209--->
 
-### Your Turn {.challenge}
+### Your Turn 
 
 Get your RMarkdown file cleaned up and sync it for the last time today!
 
-#### Answers {.solution} 
+#### Answers 
 ...
 
-## Key Points {.keypoints}
+## Key Points
 
 - Data manipulation functions in `dplyr` allow you to `filter()` by rows and `select()` by columns, create new columns with `mutate()`, and `group_by()` unique column values to apply `summarize()` for new columns that define aggregate values across groupings.
 - The "then" operator `%>%` allows you to chain successive operations without needing to define intermediary variables for creating the most parsimonious, easily read analysis.
