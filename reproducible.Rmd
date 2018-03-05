@@ -1,0 +1,30 @@
+# Reproducible science {#reproducible} 
+
+```{r wrangling1, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(htmltools)
+```
+
+This is a new chapter and is under development. 
+
+
+## Objectives and Resources
+
+To teach good practices for reproducible science.
+
+<!---
+### Objectives
+
+
+### Resources 
+--->
+
+## Naming files
+
+Now is a good interlude to talk about naming things. 
+
+We are going to take five minutes to talk through [Jenny Bryan's three principles for naming files](https://speakerdeck.com/jennybc/how-to-name-files):
+
+1. machine readable
+1. human readable
+1. play well with default ordering
