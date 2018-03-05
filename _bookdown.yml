@@ -15,3 +15,5 @@ rmd_files: [
   "reproducible.Rmd"]
 delete_merged_file: true
 output_dir: "docs"
+exclude:
+- training-overview.Rmd
