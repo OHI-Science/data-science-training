@@ -384,8 +384,8 @@ ggplot(data = mpg, aes(x = displ, y = hwy)) +
 Next, let's take a look at a bar chart. Bar charts seem simple, but they are interesting because they reveal something subtle about plots. Consider a basic bar chart, as drawn with `geom_bar()`. The following chart displays the total number of cars in the `mpg` dataset, grouped by `fl` (fuel type).
 
 ```{r}
-ggplot(data = mpg) + 
-  geom_bar(aes(x = fl))
+ggplot(data = mpg, aes(x = fl)) + 
+  geom_bar()
 ```
 
 On the x-axis, the chart displays `fl`, a variable from `mpg`. On the y-axis, it displays count, but count is not a variable in `mpg`! Where does count come from? Many graphs, like scatterplots, plot the raw values of your dataset. Other graphs, like bar charts, calculate new values to plot:
@@ -411,15 +411,15 @@ ggplot2 provides over 20 stats for you to use. Each stat is a function, so you c
 There's one more piece of magic associated with bar charts. You can colour a bar chart using either the `color` aesthetic, or, more usefully, `fill`:
 
 ```{r}
-ggplot(data = mpg) + 
-  geom_bar(aes(x = fl, fill = fl))
+ggplot(data = mpg, aes(x = fl, fill = fl)) + 
+  geom_bar()
 ```
 
 This isn't particularly useful since both the geom and the color are displaying the same information. Instead, map the fill aesthetic to another variable, like `class`: the bars are automatically stacked. Each colored rectangle represents a combination of `fl` and `class`.
 
 ```{r}
-ggplot(data = mpg) + 
-  geom_bar(aes(x = fl, fill = class))
+ggplot(data = mpg, aes(x = fl, fill = class)) + 
+  geom_bar()
 ```
 
 The stacking is performed automatically by the __position adjustment__ specified by the `position` argument. If you don't want a stacked bar chart, you can use `"dodge"` or `"fill"`.
@@ -429,16 +429,16 @@ The stacking is performed automatically by the __position adjustment__ specified
     groups.
 
 ```{r}
-    ggplot(data = mpg) + 
-      geom_bar(aes(x = fl, fill = class), position = "fill")
+    ggplot(data = mpg, aes(x = fl, fill = class)) + 
+      geom_bar(position = "fill")
 ```
 
 *   `position = "dodge"` places overlapping objects directly _beside_ one 
     another. This makes it easier to compare individual values.
 
 ```{r}
-    ggplot(data = mpg) + 
-      geom_bar(aes(x = fl, fill = class), position = "dodge") 
+    ggplot(data = mpg, aes(x = fl, fill = class)) + 
+      geom_bar(position = "dodge") 
 ```
 
 
