@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Introduction to Open Data Science</title>
   <meta name="description" content="This is official open data science training for the Ocean Health Index.">
-  <meta name="generator" content="bookdown 0.6 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
 
   <meta property="og:title" content="Introduction to Open Data Science" />
   <meta property="og:type" content="book" />
@@ -393,19 +393,19 @@ There are three families of verbs designed to work with relational data:
 <p>In the <em>long</em> format, you usually have 1 column for the observed variable and the other columns are ID variables. The <code>mpg</code> dataset is an example of a <em>long</em> dataset with each row representing a single car and each column representing a variable of that car such as <code>manufacturer</code> and <code>year</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mpg</code></pre></div>
 <pre><code>## # A tibble: 234 x 11
-##    manufacturer model    displ  year   cyl trans   drv     cty   hwy fl   
-##    &lt;chr&gt;        &lt;chr&gt;    &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;   &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;
-##  1 audi         a4        1.80  1999     4 auto(l… f        18    29 p    
-##  2 audi         a4        1.80  1999     4 manual… f        21    29 p    
-##  3 audi         a4        2.00  2008     4 manual… f        20    31 p    
-##  4 audi         a4        2.00  2008     4 auto(a… f        21    30 p    
-##  5 audi         a4        2.80  1999     6 auto(l… f        16    26 p    
-##  6 audi         a4        2.80  1999     6 manual… f        18    26 p    
-##  7 audi         a4        3.10  2008     6 auto(a… f        18    27 p    
-##  8 audi         a4 quat…  1.80  1999     4 manual… 4        18    26 p    
-##  9 audi         a4 quat…  1.80  1999     4 auto(l… 4        16    25 p    
-## 10 audi         a4 quat…  2.00  2008     4 manual… 4        20    28 p    
-## # ... with 224 more rows, and 1 more variable: class &lt;chr&gt;</code></pre>
+##    manufacturer      model displ  year   cyl      trans   drv   cty   hwy
+##           &lt;chr&gt;      &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt;      &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt;
+##  1         audi         a4   1.8  1999     4   auto(l5)     f    18    29
+##  2         audi         a4   1.8  1999     4 manual(m5)     f    21    29
+##  3         audi         a4   2.0  2008     4 manual(m6)     f    20    31
+##  4         audi         a4   2.0  2008     4   auto(av)     f    21    30
+##  5         audi         a4   2.8  1999     6   auto(l5)     f    16    26
+##  6         audi         a4   2.8  1999     6 manual(m5)     f    18    26
+##  7         audi         a4   3.1  2008     6   auto(av)     f    18    27
+##  8         audi a4 quattro   1.8  1999     4 manual(m5)     4    18    26
+##  9         audi a4 quattro   1.8  1999     4   auto(l5)     4    16    25
+## 10         audi a4 quattro   2.0  2008     4 manual(m6)     4    20    28
+## # ... with 224 more rows, and 2 more variables: fl &lt;chr&gt;, class &lt;chr&gt;</code></pre>
 <p><br></p>
 <p>These different data formats mainly affect readability. For humans, the wide format is often more intuitive since we can often see more of the data on the screen due to it’s shape. However, the long format is more machine readable and is closer to the formatting of databases. The ID variables in our dataframes are similar to the fields in a database and observed variables are like the database values.</p>
 <p><strong>Note:</strong> Generally, mathematical operations are better in long format, although some plotting functions actually work better with wide format.</p>

@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Introduction to Open Data Science</title>
   <meta name="description" content="This is official open data science training for the Ocean Health Index.">
-  <meta name="generator" content="bookdown 0.6 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
 
   <meta property="og:title" content="Introduction to Open Data Science" />
   <meta property="og:type" content="book" />
@@ -654,6 +654,10 @@ country_list &lt;-<span class="st"> </span><span class="kw">unique</span>(gap_eu
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dir.create</span>(<span class="st">&quot;figures&quot;</span>) 
 <span class="kw">dir.create</span>(<span class="st">&quot;figures/Europe&quot;</span>) 
 
+
+est &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;data/countries_estimated.csv&#39;</span>)
+gapminder_est &lt;-<span class="st"> </span><span class="kw">left_join</span>(gapminder, est)
+
 ## create a list of countries
 gap_europe &lt;-<span class="st"> </span>gapminder_est <span class="op">%&gt;%</span><span class="st"> </span>## use instead of gapminder
 <span class="st">  </span><span class="kw">filter</span>(continent <span class="op">==</span><span class="st"> &quot;Europe&quot;</span>) <span class="op">%&gt;%</span>
@@ -688,7 +692,7 @@ country_list &lt;-<span class="st"> </span><span class="kw">unique</span>(gap_eu
          <span class="dt">plot =</span> my_plot)
   
 } </code></pre></div>
-<p>OK so this is working as we expect! But an if/else statement could make us extra sure that everything is working appropriately.</p>
+<p>OK so this is working as we expect! Note that we do not need an <code>else</code> statement above, because we only want to do something (add a subtitle) if one condition is met. But what if we want to add a different subtitle based on another condition, say where the data are reported, to be extra explicit about it?</p>
 </div>
 <div id="executable-ifelse-statement" class="section level3">
 <h3><span class="header-section-number">8.5.3</span> Executable if/else statement</h3>
@@ -726,6 +730,9 @@ country_list &lt;-<span class="st"> </span><span class="kw">unique</span>(gap_eu
 <span class="st">      </span><span class="kw">labs</span>(<span class="dt">subtitle =</span> <span class="st">&quot;Estimated data&quot;</span>)
   } <span class="cf">else</span> {
     
+    my_plot &lt;-<span class="st"> </span>my_plot <span class="op">+</span>
+<span class="st">      </span><span class="kw">labs</span>(<span class="dt">subtitle =</span> <span class="st">&quot;Reported data&quot;</span>)
+    
     <span class="kw">print</span>(<span class="kw">paste</span>(cntry, <span class="st">&quot;data are reported&quot;</span>))
     
   }
@@ -733,7 +740,22 @@ country_list &lt;-<span class="st"> </span><span class="kw">unique</span>(gap_eu
          <span class="dt">plot =</span> my_plot)
   
 } </code></pre></div>
-<p>So now we have a working for loop with conditional if/else statements that we could build from.</p>
+<p>Note that this works because we know there are only two conditions, <code>Estimated == yes</code> and <code>Estimated == no</code>. In the first <code>if</code> statement we asked for estimated data, and the <code>else</code> condition gives us everything else (which we know is reported). We can be explicit about setting these conditions in the <code>else</code> clause by instead using an <code>else if</code> statement. Below is how you would construct this in your for loop, similar to above:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  <span class="cf">if</span> (<span class="kw">any</span>(gap_to_plot<span class="op">$</span>estimated <span class="op">==</span><span class="st"> &quot;yes&quot;</span>)) { <span class="co"># any() will return a single TRUE or FALSE</span>
+    
+    <span class="kw">print</span>(<span class="kw">paste</span>(cntry, <span class="st">&quot;data are estimated&quot;</span>))
+    
+    my_plot &lt;-<span class="st"> </span>my_plot <span class="op">+</span>
+<span class="st">      </span><span class="kw">labs</span>(<span class="dt">subtitle =</span> <span class="st">&quot;Estimated data&quot;</span>)
+  } <span class="cf">else</span> <span class="cf">if</span> (<span class="kw">any</span>(gap_to_plot<span class="op">$</span>estimated <span class="op">==</span><span class="st"> &quot;no&quot;</span>)){
+    
+    my_plot &lt;-<span class="st"> </span>my_plot <span class="op">+</span>
+<span class="st">      </span><span class="kw">labs</span>(<span class="dt">subtitle =</span> <span class="st">&quot;Reported data&quot;</span>)
+    
+    <span class="kw">print</span>(<span class="kw">paste</span>(cntry, <span class="st">&quot;data are reported&quot;</span>))
+    
+  }</code></pre></div>
+<p>This construction is necessary if you have more than two conditions to test for.</p>
 </div>
 </div>
 <div id="more-r" class="section level2">
