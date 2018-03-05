@@ -397,6 +397,10 @@ This worked, but we got a warning message with the if statement. This is because
 dir.create("figures") 
 dir.create("figures/Europe") 
 
+
+est <- read_csv('data/countries_estimated.csv')
+gapminder_est <- left_join(gapminder, est)
+
 ## create a list of countries
 gap_europe <- gapminder_est %>% ## use instead of gapminder
   filter(continent == "Europe") %>%
@@ -433,7 +437,7 @@ for( cntry in country_list ){ # (cntry = country_list[1])
 } 
 ```
 
-OK so this is working as we expect! But an if/else statement could make us extra sure that everything is working appropriately.
+OK so this is working as we expect! Note that we do not need an `else` statement above, because we only want to do something (add a subtitle) if one condition is met. But what if we want to add a different subtitle based on another condition, say where the data are reported, to be extra explicit about it?
 
 ### Executable if/else statement
 
@@ -472,6 +476,9 @@ for( cntry in country_list ){ # (cntry = country_list[1])
       labs(subtitle = "Estimated data")
   } else {
     
+    my_plot <- my_plot +
+      labs(subtitle = "Reported data")
+    
     print(paste(cntry, "data are reported"))
     
   }
@@ -481,7 +488,26 @@ for( cntry in country_list ){ # (cntry = country_list[1])
 } 
 ```
 
-So now we have a working for loop with conditional if/else statements that we could build from. 
+Note that this works because we know there are only two conditions, `Estimated == yes` and `Estimated == no`. In the first `if` statement we asked for estimated data, and the `else` condition gives us everything else (which we know is reported). We can be explicit about setting these conditions in the `else` clause by instead using an `else if` statement. Below is how you would construct this in your for loop, similar to above:
+
+```{r, eval == F}
+  if (any(gap_to_plot$estimated == "yes")) { # any() will return a single TRUE or FALSE
+    
+    print(paste(cntry, "data are estimated"))
+    
+    my_plot <- my_plot +
+      labs(subtitle = "Estimated data")
+  } else if (any(gap_to_plot$estimated == "no")){
+    
+    my_plot <- my_plot +
+      labs(subtitle = "Reported data")
+    
+    print(paste(cntry, "data are reported"))
+    
+  }
+```
+
+This construction is necessary if you have more than two conditions to test for.
 
 
 ## More R!
