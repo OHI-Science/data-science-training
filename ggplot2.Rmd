@@ -24,7 +24,7 @@ library(htmltools)
 
 Here are some additional resources for data visualization in R:  
 
-- [ggplot2-cheatsheet-2.0.pdf](../cheatsheets/ggplot2-cheatsheet-2.0.pdf)  
+- [ggplot2-cheatsheet-2.1.pdf](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf)  
 - [Interactive Plots and Maps - Environmental Informatics](http://ucsb-bren.github.io/env-info/wk06_widgets.html)  
 - [Graphs with ggplot2 - Cookbook for R](http://www.cookbook-r.com/Graphs/#graphs-with-ggplot2)  
 - [ggplot2 Essentials - STHDA](http://www.sthda.com/english/wiki/ggplot2-essentials)  
@@ -171,7 +171,7 @@ ggplot(data = mpg, aes(x = displ, y = hwy)) +
     geom_point(alpha = 0.4)
 ```
 
-Or to color each species in the plot differently:
+Or to color each class of car in the plot differently:
 
 ```{r color-by-species, purl=FALSE}
 ggplot(data = mpg, aes(x = displ, y = hwy)) +
@@ -227,8 +227,8 @@ ggplot(data = mpg, aes(x = displ, y = hwy)) +
 ```
 >    
 >   
->  2. Plot `hwy` vs `displ` and have the point color to indicate `cty` mpg.
->  3. Now instead of color, use shape to indicate `cty` mpg. Why are these two aesthetics behaving differently?
+>  2. Plot highway mpg (`hwy`) vs engine size (`displ`) and have the point color to indicate the city mpg (`cty`).
+>  3. Now instead of color, use shape to indicate city mpg (`cty`). Why are these two aesthetics behaving differently?
 >  4. What happens if you map an aesthetic to something other than a variable 
     name, like `aes(colour = displ < 5)`?  
     
@@ -248,7 +248,7 @@ ggplot(data = mpg, aes(x = displ, y = hwy, color = cty < 20)) +
 
 ## Faceting
 
-ggplot has a special technique called *faceting* that allows the user to split one plot into multiple plots based on a factor included in the dataset. We will use it to make a time series plot for each car manufacturer:
+ggplot has a special technique called *faceting* that allows the user to split one plot into multiple plots based on a factor included in the dataset. We will use it to make a plot of the highway miles (`hwy`) a car gets by its engine size (`displ`) for each car manufacturer:
 
 ```{r first-facet, purl=FALSE}
 ggplot(data = mpg, aes(x = displ, y = hwy)) +
@@ -290,7 +290,7 @@ The [ggthemes](https://cran.r-project.org/web/packages/ggthemes/vignettes/ggthem
 
 ## Geometric objects (geoms)
 
-A __geom__ is the geometrical object that a plot uses to represent data. People often describe plots by the type of geom that the plot uses. For example, bar charts use bar geoms, line charts use line geoms, boxplots use boxplot geoms, and so on. Scatterplots break the trend; they use the point geom. You can use different geoms to plot the same data. To change the geom in your plot, change the geom function that you add to `ggplot()`. Let's look at the number of cars in each driving class (`drv`).
+A __geom__ is the geometrical object that a plot uses to represent data. People often describe plots by the type of geom that the plot uses. For example, bar charts use bar geoms, line charts use line geoms, boxplots use boxplot geoms, and so on. Scatterplots break the trend; they use the point geom. You can use different geoms to plot the same data. To change the geom in your plot, change the geom function that you add to `ggplot()`. Let's look at a few ways of viewing the distribution of highway mpg (`hwy`) for each driving class (`drv`).
 
 ```{r}
 ggplot(mpg, aes(x = drv, y = hwy)) + 
@@ -303,7 +303,7 @@ ggplot(mpg, aes(x = drv, y = hwy)) +
   geom_violin()
 ```
 
-To plot a smoothed mean from the data above, use `geom_smooth`.
+`geom_smooth` allows you to view a smoothed mean of data. Here we look at the smooth mean of the highway mpg (`hwy`) by engine size (`displ`).
 
 ```{r}
 ggplot(data = mpg) + 
