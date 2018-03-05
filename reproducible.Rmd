@@ -1,6 +1,6 @@
 # Reproducible science {#reproducible} 
 
-```{r wrangling1, include=FALSE}
+```{r, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(htmltools)
 ```

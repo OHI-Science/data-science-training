@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Introduction to Open Data Science</title>
   <meta name="description" content="This is official open data science training for the Ocean Health Index.">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.6 and GitBook 2.6.7">
 
   <meta property="og:title" content="Introduction to Open Data Science" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="The Ocean Health Index Team">
 
 
-<meta name="date" content="2018-03-01">
+<meta name="date" content="2018-03-05">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -226,6 +226,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="6.14" data-path="dplyr.html"><a href="dplyr.html#joining-datasets"><i class="fa fa-check"></i><b>6.14</b> Joining datasets</a></li>
 <li class="chapter" data-level="6.15" data-path="dplyr.html"><a href="dplyr.html#key-points"><i class="fa fa-check"></i><b>6.15</b> Key Points</a></li>
+<li class="chapter" data-level="6.16" data-path="dplyr.html"><a href="dplyr.html#troubleshooting."><i class="fa fa-check"></i><b>6.16</b> Troubleshooting.</a><ul>
+<li class="chapter" data-level="6.16.1" data-path="dplyr.html"><a href="dplyr.html#error-unexpected-special-in"><i class="fa fa-check"></i><b>6.16.1</b> Error: unexpected SPECIAL in &quot; %&gt;%&quot;</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>7</b> Data Wrangling: <code>tidyr</code></a><ul>
 <li class="chapter" data-level="7.1" data-path="tidyr.html"><a href="tidyr.html#overview-2"><i class="fa fa-check"></i><b>7.1</b> Overview</a><ul>
@@ -246,25 +249,26 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="8" data-path="programming.html"><a href="programming.html"><i class="fa fa-check"></i><b>8</b> Programming in R</a><ul>
 <li class="chapter" data-level="8.1" data-path="programming.html"><a href="programming.html#objectives-and-resources-1"><i class="fa fa-check"></i><b>8.1</b> Objectives and Resources</a></li>
-<li class="chapter" data-level="8.2" data-path="programming.html"><a href="programming.html#naming-files"><i class="fa fa-check"></i><b>8.2</b> Naming files</a></li>
-<li class="chapter" data-level="8.3" data-path="programming.html"><a href="programming.html#analysis-plan"><i class="fa fa-check"></i><b>8.3</b> Analysis plan</a></li>
-<li class="chapter" data-level="8.4" data-path="programming.html"><a href="programming.html#create-an-r-script"><i class="fa fa-check"></i><b>8.4</b> Create an R script</a></li>
-<li class="chapter" data-level="8.5" data-path="programming.html"><a href="programming.html#automation-with-for-loops"><i class="fa fa-check"></i><b>8.5</b> Automation with for loops</a><ul>
-<li class="chapter" data-level="8.5.1" data-path="programming.html"><a href="programming.html#for-loop-basic-structure"><i class="fa fa-check"></i><b>8.5.1</b> For loop basic structure</a></li>
-<li class="chapter" data-level="8.5.2" data-path="programming.html"><a href="programming.html#executable-for-loop"><i class="fa fa-check"></i><b>8.5.2</b> Executable for loop!</a></li>
-<li class="chapter" data-level="8.5.3" data-path="programming.html"><a href="programming.html#clean-up-our-repo"><i class="fa fa-check"></i><b>8.5.3</b> Clean up our repo</a></li>
-<li class="chapter" data-level="8.5.4" data-path="programming.html"><a href="programming.html#your-turn-9"><i class="fa fa-check"></i><b>8.5.4</b> Your turn</a></li>
+<li class="chapter" data-level="8.2" data-path="programming.html"><a href="programming.html#analysis-plan"><i class="fa fa-check"></i><b>8.2</b> Analysis plan</a></li>
+<li class="chapter" data-level="8.3" data-path="programming.html"><a href="programming.html#create-an-r-script"><i class="fa fa-check"></i><b>8.3</b> Create an R script</a></li>
+<li class="chapter" data-level="8.4" data-path="programming.html"><a href="programming.html#automation-with-for-loops"><i class="fa fa-check"></i><b>8.4</b> Automation with for loops</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="programming.html"><a href="programming.html#thinking-ahead-cleaning-up-our-code"><i class="fa fa-check"></i><b>8.4.1</b> Thinking ahead: cleaning up our code</a></li>
+<li class="chapter" data-level="8.4.2" data-path="programming.html"><a href="programming.html#for-loop-basic-structure"><i class="fa fa-check"></i><b>8.4.2</b> For loop basic structure</a></li>
+<li class="chapter" data-level="8.4.3" data-path="programming.html"><a href="programming.html#executable-for-loop"><i class="fa fa-check"></i><b>8.4.3</b> Executable for loop!</a></li>
+<li class="chapter" data-level="8.4.4" data-path="programming.html"><a href="programming.html#clean-up-our-repo"><i class="fa fa-check"></i><b>8.4.4</b> Clean up our repo</a></li>
+<li class="chapter" data-level="8.4.5" data-path="programming.html"><a href="programming.html#your-turn-9"><i class="fa fa-check"></i><b>8.4.5</b> Your turn</a></li>
 </ul></li>
-<li class="chapter" data-level="8.6" data-path="programming.html"><a href="programming.html#conditional-statements-with-if-and-else"><i class="fa fa-check"></i><b>8.6</b> Conditional statements with <code>if</code> and <code>else</code></a><ul>
-<li class="chapter" data-level="8.6.1" data-path="programming.html"><a href="programming.html#if-statement-basic-structure"><i class="fa fa-check"></i><b>8.6.1</b> if statement basic structure</a></li>
-<li class="chapter" data-level="8.6.2" data-path="programming.html"><a href="programming.html#executable-ifelse-statement"><i class="fa fa-check"></i><b>8.6.2</b> Executable if/else statement</a></li>
+<li class="chapter" data-level="8.5" data-path="programming.html"><a href="programming.html#conditional-statements-with-if-and-else"><i class="fa fa-check"></i><b>8.5</b> Conditional statements with <code>if</code> and <code>else</code></a><ul>
+<li class="chapter" data-level="8.5.1" data-path="programming.html"><a href="programming.html#if-statement-basic-structure"><i class="fa fa-check"></i><b>8.5.1</b> if statement basic structure</a></li>
+<li class="chapter" data-level="8.5.2" data-path="programming.html"><a href="programming.html#executable-if-statement"><i class="fa fa-check"></i><b>8.5.2</b> Executable if statement</a></li>
+<li class="chapter" data-level="8.5.3" data-path="programming.html"><a href="programming.html#executable-ifelse-statement"><i class="fa fa-check"></i><b>8.5.3</b> Executable if/else statement</a></li>
 </ul></li>
-<li class="chapter" data-level="8.7" data-path="programming.html"><a href="programming.html#more-r"><i class="fa fa-check"></i><b>8.7</b> More R!</a><ul>
-<li class="chapter" data-level="8.7.1" data-path="programming.html"><a href="programming.html#importing-and-installing"><i class="fa fa-check"></i><b>8.7.1</b> Importing and Installing</a></li>
-<li class="chapter" data-level="8.7.2" data-path="programming.html"><a href="programming.html#organization-and-workflows"><i class="fa fa-check"></i><b>8.7.2</b> Organization and workflows</a></li>
-<li class="chapter" data-level="8.7.3" data-path="programming.html"><a href="programming.html#getting-help"><i class="fa fa-check"></i><b>8.7.3</b> Getting help</a></li>
+<li class="chapter" data-level="8.6" data-path="programming.html"><a href="programming.html#more-r"><i class="fa fa-check"></i><b>8.6</b> More R!</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="programming.html"><a href="programming.html#importing-and-installing"><i class="fa fa-check"></i><b>8.6.1</b> Importing and Installing</a></li>
+<li class="chapter" data-level="8.6.2" data-path="programming.html"><a href="programming.html#organization-and-workflows"><i class="fa fa-check"></i><b>8.6.2</b> Organization and workflows</a></li>
+<li class="chapter" data-level="8.6.3" data-path="programming.html"><a href="programming.html#getting-help"><i class="fa fa-check"></i><b>8.6.3</b> Getting help</a></li>
 </ul></li>
-<li class="chapter" data-level="8.8" data-path="programming.html"><a href="programming.html#ideas-for-extended-analysis-2"><i class="fa fa-check"></i><b>8.8</b> Ideas for Extended Analysis 2</a></li>
+<li class="chapter" data-level="8.7" data-path="programming.html"><a href="programming.html#ideas-for-extended-analysis-2"><i class="fa fa-check"></i><b>8.7</b> Ideas for Extended Analysis 2</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="collaborating.html"><a href="collaborating.html"><i class="fa fa-check"></i><b>9</b> Collaborating with GitHub</a><ul>
 <li class="chapter" data-level="9.1" data-path="collaborating.html"><a href="collaborating.html#overview-3"><i class="fa fa-check"></i><b>9.1</b> Overview</a></li>
@@ -291,6 +295,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.14.2" data-path="collaborating.html"><a href="collaborating.html#missing-values"><i class="fa fa-check"></i><b>9.14.2</b> Missing values</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="10" data-path="reproducible.html"><a href="reproducible.html"><i class="fa fa-check"></i><b>10</b> Reproducible science</a><ul>
+<li class="chapter" data-level="10.1" data-path="reproducible.html"><a href="reproducible.html#objectives-and-resources-2"><i class="fa fa-check"></i><b>10.1</b> Objectives and Resources</a></li>
+<li class="chapter" data-level="10.2" data-path="reproducible.html"><a href="reproducible.html#naming-files"><i class="fa fa-check"></i><b>10.2</b> Naming files</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
 
@@ -314,7 +322,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="header">
 <h1 class="title">Introduction to Open Data Science</h1>
 <h4 class="author"><em>The Ocean Health Index Team</em></h4>
-<h4 class="date"><em>2018-03-01</em></h4>
+<h4 class="date"><em>2018-03-05</em></h4>
 </div>
 <div id="welcome" class="section level1">
 <h1><span class="header-section-number">Chapter 1</span> Welcome</h1>

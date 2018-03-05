@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Introduction to Open Data Science</title>
   <meta name="description" content="This is official open data science training for the Ocean Health Index.">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.6 and GitBook 2.6.7">
 
   <meta property="og:title" content="Introduction to Open Data Science" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="The Ocean Health Index Team">
 
 
-<meta name="date" content="2018-03-01">
+<meta name="date" content="2018-03-05">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,7 +33,7 @@
   
   
 <link rel="prev" href="programming.html">
-
+<link rel="next" href="reproducible.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -226,6 +226,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="6.14" data-path="dplyr.html"><a href="dplyr.html#joining-datasets"><i class="fa fa-check"></i><b>6.14</b> Joining datasets</a></li>
 <li class="chapter" data-level="6.15" data-path="dplyr.html"><a href="dplyr.html#key-points"><i class="fa fa-check"></i><b>6.15</b> Key Points</a></li>
+<li class="chapter" data-level="6.16" data-path="dplyr.html"><a href="dplyr.html#troubleshooting."><i class="fa fa-check"></i><b>6.16</b> Troubleshooting.</a><ul>
+<li class="chapter" data-level="6.16.1" data-path="dplyr.html"><a href="dplyr.html#error-unexpected-special-in"><i class="fa fa-check"></i><b>6.16.1</b> Error: unexpected SPECIAL in &quot; %&gt;%&quot;</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>7</b> Data Wrangling: <code>tidyr</code></a><ul>
 <li class="chapter" data-level="7.1" data-path="tidyr.html"><a href="tidyr.html#overview-2"><i class="fa fa-check"></i><b>7.1</b> Overview</a><ul>
@@ -246,25 +249,26 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="8" data-path="programming.html"><a href="programming.html"><i class="fa fa-check"></i><b>8</b> Programming in R</a><ul>
 <li class="chapter" data-level="8.1" data-path="programming.html"><a href="programming.html#objectives-and-resources-1"><i class="fa fa-check"></i><b>8.1</b> Objectives and Resources</a></li>
-<li class="chapter" data-level="8.2" data-path="programming.html"><a href="programming.html#naming-files"><i class="fa fa-check"></i><b>8.2</b> Naming files</a></li>
-<li class="chapter" data-level="8.3" data-path="programming.html"><a href="programming.html#analysis-plan"><i class="fa fa-check"></i><b>8.3</b> Analysis plan</a></li>
-<li class="chapter" data-level="8.4" data-path="programming.html"><a href="programming.html#create-an-r-script"><i class="fa fa-check"></i><b>8.4</b> Create an R script</a></li>
-<li class="chapter" data-level="8.5" data-path="programming.html"><a href="programming.html#automation-with-for-loops"><i class="fa fa-check"></i><b>8.5</b> Automation with for loops</a><ul>
-<li class="chapter" data-level="8.5.1" data-path="programming.html"><a href="programming.html#for-loop-basic-structure"><i class="fa fa-check"></i><b>8.5.1</b> For loop basic structure</a></li>
-<li class="chapter" data-level="8.5.2" data-path="programming.html"><a href="programming.html#executable-for-loop"><i class="fa fa-check"></i><b>8.5.2</b> Executable for loop!</a></li>
-<li class="chapter" data-level="8.5.3" data-path="programming.html"><a href="programming.html#clean-up-our-repo"><i class="fa fa-check"></i><b>8.5.3</b> Clean up our repo</a></li>
-<li class="chapter" data-level="8.5.4" data-path="programming.html"><a href="programming.html#your-turn-9"><i class="fa fa-check"></i><b>8.5.4</b> Your turn</a></li>
+<li class="chapter" data-level="8.2" data-path="programming.html"><a href="programming.html#analysis-plan"><i class="fa fa-check"></i><b>8.2</b> Analysis plan</a></li>
+<li class="chapter" data-level="8.3" data-path="programming.html"><a href="programming.html#create-an-r-script"><i class="fa fa-check"></i><b>8.3</b> Create an R script</a></li>
+<li class="chapter" data-level="8.4" data-path="programming.html"><a href="programming.html#automation-with-for-loops"><i class="fa fa-check"></i><b>8.4</b> Automation with for loops</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="programming.html"><a href="programming.html#thinking-ahead-cleaning-up-our-code"><i class="fa fa-check"></i><b>8.4.1</b> Thinking ahead: cleaning up our code</a></li>
+<li class="chapter" data-level="8.4.2" data-path="programming.html"><a href="programming.html#for-loop-basic-structure"><i class="fa fa-check"></i><b>8.4.2</b> For loop basic structure</a></li>
+<li class="chapter" data-level="8.4.3" data-path="programming.html"><a href="programming.html#executable-for-loop"><i class="fa fa-check"></i><b>8.4.3</b> Executable for loop!</a></li>
+<li class="chapter" data-level="8.4.4" data-path="programming.html"><a href="programming.html#clean-up-our-repo"><i class="fa fa-check"></i><b>8.4.4</b> Clean up our repo</a></li>
+<li class="chapter" data-level="8.4.5" data-path="programming.html"><a href="programming.html#your-turn-9"><i class="fa fa-check"></i><b>8.4.5</b> Your turn</a></li>
 </ul></li>
-<li class="chapter" data-level="8.6" data-path="programming.html"><a href="programming.html#conditional-statements-with-if-and-else"><i class="fa fa-check"></i><b>8.6</b> Conditional statements with <code>if</code> and <code>else</code></a><ul>
-<li class="chapter" data-level="8.6.1" data-path="programming.html"><a href="programming.html#if-statement-basic-structure"><i class="fa fa-check"></i><b>8.6.1</b> if statement basic structure</a></li>
-<li class="chapter" data-level="8.6.2" data-path="programming.html"><a href="programming.html#executable-ifelse-statement"><i class="fa fa-check"></i><b>8.6.2</b> Executable if/else statement</a></li>
+<li class="chapter" data-level="8.5" data-path="programming.html"><a href="programming.html#conditional-statements-with-if-and-else"><i class="fa fa-check"></i><b>8.5</b> Conditional statements with <code>if</code> and <code>else</code></a><ul>
+<li class="chapter" data-level="8.5.1" data-path="programming.html"><a href="programming.html#if-statement-basic-structure"><i class="fa fa-check"></i><b>8.5.1</b> if statement basic structure</a></li>
+<li class="chapter" data-level="8.5.2" data-path="programming.html"><a href="programming.html#executable-if-statement"><i class="fa fa-check"></i><b>8.5.2</b> Executable if statement</a></li>
+<li class="chapter" data-level="8.5.3" data-path="programming.html"><a href="programming.html#executable-ifelse-statement"><i class="fa fa-check"></i><b>8.5.3</b> Executable if/else statement</a></li>
 </ul></li>
-<li class="chapter" data-level="8.7" data-path="programming.html"><a href="programming.html#more-r"><i class="fa fa-check"></i><b>8.7</b> More R!</a><ul>
-<li class="chapter" data-level="8.7.1" data-path="programming.html"><a href="programming.html#importing-and-installing"><i class="fa fa-check"></i><b>8.7.1</b> Importing and Installing</a></li>
-<li class="chapter" data-level="8.7.2" data-path="programming.html"><a href="programming.html#organization-and-workflows"><i class="fa fa-check"></i><b>8.7.2</b> Organization and workflows</a></li>
-<li class="chapter" data-level="8.7.3" data-path="programming.html"><a href="programming.html#getting-help"><i class="fa fa-check"></i><b>8.7.3</b> Getting help</a></li>
+<li class="chapter" data-level="8.6" data-path="programming.html"><a href="programming.html#more-r"><i class="fa fa-check"></i><b>8.6</b> More R!</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="programming.html"><a href="programming.html#importing-and-installing"><i class="fa fa-check"></i><b>8.6.1</b> Importing and Installing</a></li>
+<li class="chapter" data-level="8.6.2" data-path="programming.html"><a href="programming.html#organization-and-workflows"><i class="fa fa-check"></i><b>8.6.2</b> Organization and workflows</a></li>
+<li class="chapter" data-level="8.6.3" data-path="programming.html"><a href="programming.html#getting-help"><i class="fa fa-check"></i><b>8.6.3</b> Getting help</a></li>
 </ul></li>
-<li class="chapter" data-level="8.8" data-path="programming.html"><a href="programming.html#ideas-for-extended-analysis-2"><i class="fa fa-check"></i><b>8.8</b> Ideas for Extended Analysis 2</a></li>
+<li class="chapter" data-level="8.7" data-path="programming.html"><a href="programming.html#ideas-for-extended-analysis-2"><i class="fa fa-check"></i><b>8.7</b> Ideas for Extended Analysis 2</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="collaborating.html"><a href="collaborating.html"><i class="fa fa-check"></i><b>9</b> Collaborating with GitHub</a><ul>
 <li class="chapter" data-level="9.1" data-path="collaborating.html"><a href="collaborating.html#overview-3"><i class="fa fa-check"></i><b>9.1</b> Overview</a></li>
@@ -290,6 +294,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.14.1" data-path="collaborating.html"><a href="collaborating.html#use-logicals"><i class="fa fa-check"></i><b>9.14.1</b> Use logicals</a></li>
 <li class="chapter" data-level="9.14.2" data-path="collaborating.html"><a href="collaborating.html#missing-values"><i class="fa fa-check"></i><b>9.14.2</b> Missing values</a></li>
 </ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="reproducible.html"><a href="reproducible.html"><i class="fa fa-check"></i><b>10</b> Reproducible science</a><ul>
+<li class="chapter" data-level="10.1" data-path="reproducible.html"><a href="reproducible.html#objectives-and-resources-2"><i class="fa fa-check"></i><b>10.1</b> Objectives and Resources</a></li>
+<li class="chapter" data-level="10.2" data-path="reproducible.html"><a href="reproducible.html#naming-files"><i class="fa fa-check"></i><b>10.2</b> Naming files</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
@@ -515,16 +523,16 @@ Julie is collaborating on this README.
 <pre><code>## # A tibble: 336,776 x 19
 ##     year month   day dep_time sched_dep_time dep_delay arr_time
 ##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;
-##  1  2013     1     1      517            515         2      830
-##  2  2013     1     1      533            529         4      850
-##  3  2013     1     1      542            540         2      923
-##  4  2013     1     1      544            545        -1     1004
-##  5  2013     1     1      554            600        -6      812
-##  6  2013     1     1      554            558        -4      740
-##  7  2013     1     1      555            600        -5      913
-##  8  2013     1     1      557            600        -3      709
-##  9  2013     1     1      557            600        -3      838
-## 10  2013     1     1      558            600        -2      753
+##  1  2013     1     1      517            515      2.00      830
+##  2  2013     1     1      533            529      4.00      850
+##  3  2013     1     1      542            540      2.00      923
+##  4  2013     1     1      544            545     -1.00     1004
+##  5  2013     1     1      554            600     -6.00      812
+##  6  2013     1     1      554            558     -4.00      740
+##  7  2013     1     1      555            600     -5.00      913
+##  8  2013     1     1      557            600     -3.00      709
+##  9  2013     1     1      557            600     -3.00      838
+## 10  2013     1     1      558            600     -2.00      753
 ## # ... with 336,766 more rows, and 12 more variables: sched_arr_time &lt;int&gt;,
 ## #   arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;,
 ## #   origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;,
@@ -534,16 +542,16 @@ Julie is collaborating on this README.
 <pre><code>## # A tibble: 842 x 19
 ##     year month   day dep_time sched_dep_time dep_delay arr_time
 ##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;
-##  1  2013     1     1      517            515         2      830
-##  2  2013     1     1      533            529         4      850
-##  3  2013     1     1      542            540         2      923
-##  4  2013     1     1      544            545        -1     1004
-##  5  2013     1     1      554            600        -6      812
-##  6  2013     1     1      554            558        -4      740
-##  7  2013     1     1      555            600        -5      913
-##  8  2013     1     1      557            600        -3      709
-##  9  2013     1     1      557            600        -3      838
-## 10  2013     1     1      558            600        -2      753
+##  1  2013     1     1      517            515      2.00      830
+##  2  2013     1     1      533            529      4.00      850
+##  3  2013     1     1      542            540      2.00      923
+##  4  2013     1     1      544            545     -1.00     1004
+##  5  2013     1     1      554            600     -6.00      812
+##  6  2013     1     1      554            558     -4.00      740
+##  7  2013     1     1      555            600     -5.00      913
+##  8  2013     1     1      557            600     -3.00      709
+##  9  2013     1     1      557            600     -3.00      838
+## 10  2013     1     1      558            600     -2.00      753
 ## # ... with 832 more rows, and 12 more variables: sched_arr_time &lt;int&gt;,
 ## #   arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;,
 ## #   origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;,
@@ -640,8 +648,8 @@ x <span class="op">==</span><span class="st"> </span>y</code></pre></div>
           </div>
         </div>
       </div>
-<a href="programming.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="programming.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="reproducible.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

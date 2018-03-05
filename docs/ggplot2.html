@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Introduction to Open Data Science</title>
   <meta name="description" content="This is official open data science training for the Ocean Health Index.">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.6 and GitBook 2.6.7">
 
   <meta property="og:title" content="Introduction to Open Data Science" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="The Ocean Health Index Team">
 
 
-<meta name="date" content="2018-03-01">
+<meta name="date" content="2018-03-05">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -226,6 +226,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="6.14" data-path="dplyr.html"><a href="dplyr.html#joining-datasets"><i class="fa fa-check"></i><b>6.14</b> Joining datasets</a></li>
 <li class="chapter" data-level="6.15" data-path="dplyr.html"><a href="dplyr.html#key-points"><i class="fa fa-check"></i><b>6.15</b> Key Points</a></li>
+<li class="chapter" data-level="6.16" data-path="dplyr.html"><a href="dplyr.html#troubleshooting."><i class="fa fa-check"></i><b>6.16</b> Troubleshooting.</a><ul>
+<li class="chapter" data-level="6.16.1" data-path="dplyr.html"><a href="dplyr.html#error-unexpected-special-in"><i class="fa fa-check"></i><b>6.16.1</b> Error: unexpected SPECIAL in &quot; %&gt;%&quot;</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>7</b> Data Wrangling: <code>tidyr</code></a><ul>
 <li class="chapter" data-level="7.1" data-path="tidyr.html"><a href="tidyr.html#overview-2"><i class="fa fa-check"></i><b>7.1</b> Overview</a><ul>
@@ -246,25 +249,26 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="8" data-path="programming.html"><a href="programming.html"><i class="fa fa-check"></i><b>8</b> Programming in R</a><ul>
 <li class="chapter" data-level="8.1" data-path="programming.html"><a href="programming.html#objectives-and-resources-1"><i class="fa fa-check"></i><b>8.1</b> Objectives and Resources</a></li>
-<li class="chapter" data-level="8.2" data-path="programming.html"><a href="programming.html#naming-files"><i class="fa fa-check"></i><b>8.2</b> Naming files</a></li>
-<li class="chapter" data-level="8.3" data-path="programming.html"><a href="programming.html#analysis-plan"><i class="fa fa-check"></i><b>8.3</b> Analysis plan</a></li>
-<li class="chapter" data-level="8.4" data-path="programming.html"><a href="programming.html#create-an-r-script"><i class="fa fa-check"></i><b>8.4</b> Create an R script</a></li>
-<li class="chapter" data-level="8.5" data-path="programming.html"><a href="programming.html#automation-with-for-loops"><i class="fa fa-check"></i><b>8.5</b> Automation with for loops</a><ul>
-<li class="chapter" data-level="8.5.1" data-path="programming.html"><a href="programming.html#for-loop-basic-structure"><i class="fa fa-check"></i><b>8.5.1</b> For loop basic structure</a></li>
-<li class="chapter" data-level="8.5.2" data-path="programming.html"><a href="programming.html#executable-for-loop"><i class="fa fa-check"></i><b>8.5.2</b> Executable for loop!</a></li>
-<li class="chapter" data-level="8.5.3" data-path="programming.html"><a href="programming.html#clean-up-our-repo"><i class="fa fa-check"></i><b>8.5.3</b> Clean up our repo</a></li>
-<li class="chapter" data-level="8.5.4" data-path="programming.html"><a href="programming.html#your-turn-9"><i class="fa fa-check"></i><b>8.5.4</b> Your turn</a></li>
+<li class="chapter" data-level="8.2" data-path="programming.html"><a href="programming.html#analysis-plan"><i class="fa fa-check"></i><b>8.2</b> Analysis plan</a></li>
+<li class="chapter" data-level="8.3" data-path="programming.html"><a href="programming.html#create-an-r-script"><i class="fa fa-check"></i><b>8.3</b> Create an R script</a></li>
+<li class="chapter" data-level="8.4" data-path="programming.html"><a href="programming.html#automation-with-for-loops"><i class="fa fa-check"></i><b>8.4</b> Automation with for loops</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="programming.html"><a href="programming.html#thinking-ahead-cleaning-up-our-code"><i class="fa fa-check"></i><b>8.4.1</b> Thinking ahead: cleaning up our code</a></li>
+<li class="chapter" data-level="8.4.2" data-path="programming.html"><a href="programming.html#for-loop-basic-structure"><i class="fa fa-check"></i><b>8.4.2</b> For loop basic structure</a></li>
+<li class="chapter" data-level="8.4.3" data-path="programming.html"><a href="programming.html#executable-for-loop"><i class="fa fa-check"></i><b>8.4.3</b> Executable for loop!</a></li>
+<li class="chapter" data-level="8.4.4" data-path="programming.html"><a href="programming.html#clean-up-our-repo"><i class="fa fa-check"></i><b>8.4.4</b> Clean up our repo</a></li>
+<li class="chapter" data-level="8.4.5" data-path="programming.html"><a href="programming.html#your-turn-9"><i class="fa fa-check"></i><b>8.4.5</b> Your turn</a></li>
 </ul></li>
-<li class="chapter" data-level="8.6" data-path="programming.html"><a href="programming.html#conditional-statements-with-if-and-else"><i class="fa fa-check"></i><b>8.6</b> Conditional statements with <code>if</code> and <code>else</code></a><ul>
-<li class="chapter" data-level="8.6.1" data-path="programming.html"><a href="programming.html#if-statement-basic-structure"><i class="fa fa-check"></i><b>8.6.1</b> if statement basic structure</a></li>
-<li class="chapter" data-level="8.6.2" data-path="programming.html"><a href="programming.html#executable-ifelse-statement"><i class="fa fa-check"></i><b>8.6.2</b> Executable if/else statement</a></li>
+<li class="chapter" data-level="8.5" data-path="programming.html"><a href="programming.html#conditional-statements-with-if-and-else"><i class="fa fa-check"></i><b>8.5</b> Conditional statements with <code>if</code> and <code>else</code></a><ul>
+<li class="chapter" data-level="8.5.1" data-path="programming.html"><a href="programming.html#if-statement-basic-structure"><i class="fa fa-check"></i><b>8.5.1</b> if statement basic structure</a></li>
+<li class="chapter" data-level="8.5.2" data-path="programming.html"><a href="programming.html#executable-if-statement"><i class="fa fa-check"></i><b>8.5.2</b> Executable if statement</a></li>
+<li class="chapter" data-level="8.5.3" data-path="programming.html"><a href="programming.html#executable-ifelse-statement"><i class="fa fa-check"></i><b>8.5.3</b> Executable if/else statement</a></li>
 </ul></li>
-<li class="chapter" data-level="8.7" data-path="programming.html"><a href="programming.html#more-r"><i class="fa fa-check"></i><b>8.7</b> More R!</a><ul>
-<li class="chapter" data-level="8.7.1" data-path="programming.html"><a href="programming.html#importing-and-installing"><i class="fa fa-check"></i><b>8.7.1</b> Importing and Installing</a></li>
-<li class="chapter" data-level="8.7.2" data-path="programming.html"><a href="programming.html#organization-and-workflows"><i class="fa fa-check"></i><b>8.7.2</b> Organization and workflows</a></li>
-<li class="chapter" data-level="8.7.3" data-path="programming.html"><a href="programming.html#getting-help"><i class="fa fa-check"></i><b>8.7.3</b> Getting help</a></li>
+<li class="chapter" data-level="8.6" data-path="programming.html"><a href="programming.html#more-r"><i class="fa fa-check"></i><b>8.6</b> More R!</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="programming.html"><a href="programming.html#importing-and-installing"><i class="fa fa-check"></i><b>8.6.1</b> Importing and Installing</a></li>
+<li class="chapter" data-level="8.6.2" data-path="programming.html"><a href="programming.html#organization-and-workflows"><i class="fa fa-check"></i><b>8.6.2</b> Organization and workflows</a></li>
+<li class="chapter" data-level="8.6.3" data-path="programming.html"><a href="programming.html#getting-help"><i class="fa fa-check"></i><b>8.6.3</b> Getting help</a></li>
 </ul></li>
-<li class="chapter" data-level="8.8" data-path="programming.html"><a href="programming.html#ideas-for-extended-analysis-2"><i class="fa fa-check"></i><b>8.8</b> Ideas for Extended Analysis 2</a></li>
+<li class="chapter" data-level="8.7" data-path="programming.html"><a href="programming.html#ideas-for-extended-analysis-2"><i class="fa fa-check"></i><b>8.7</b> Ideas for Extended Analysis 2</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="collaborating.html"><a href="collaborating.html"><i class="fa fa-check"></i><b>9</b> Collaborating with GitHub</a><ul>
 <li class="chapter" data-level="9.1" data-path="collaborating.html"><a href="collaborating.html#overview-3"><i class="fa fa-check"></i><b>9.1</b> Overview</a></li>
@@ -290,6 +294,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.14.1" data-path="collaborating.html"><a href="collaborating.html#use-logicals"><i class="fa fa-check"></i><b>9.14.1</b> Use logicals</a></li>
 <li class="chapter" data-level="9.14.2" data-path="collaborating.html"><a href="collaborating.html#missing-values"><i class="fa fa-check"></i><b>9.14.2</b> Missing values</a></li>
 </ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="reproducible.html"><a href="reproducible.html"><i class="fa fa-check"></i><b>10</b> Reproducible science</a><ul>
+<li class="chapter" data-level="10.1" data-path="reproducible.html"><a href="reproducible.html#objectives-and-resources-2"><i class="fa fa-check"></i><b>10.1</b> Objectives and Resources</a></li>
+<li class="chapter" data-level="10.2" data-path="reproducible.html"><a href="reproducible.html#naming-files"><i class="fa fa-check"></i><b>10.2</b> Naming files</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
@@ -333,7 +341,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h3><span class="header-section-number">5.1.2</span> Resources</h3>
 <p>Here are some additional resources for data visualization in R:</p>
 <ul>
-<li><a href="../cheatsheets/ggplot2-cheatsheet-2.0.pdf">ggplot2-cheatsheet-2.0.pdf</a><br />
+<li><a href="https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf">ggplot2-cheatsheet-2.1.pdf</a><br />
 </li>
 <li><a href="http://ucsb-bren.github.io/env-info/wk06_widgets.html">Interactive Plots and Maps - Environmental Informatics</a><br />
 </li>
@@ -375,19 +383,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>This data comes preloaded with the <code>tidyverse</code> so it is already loaded into R. Let’s take a look at it.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mpg</code></pre></div>
 <pre><code>## # A tibble: 234 x 11
-##    manufacturer      model displ  year   cyl      trans   drv   cty   hwy
-##           &lt;chr&gt;      &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt;      &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt;
-##  1         audi         a4   1.8  1999     4   auto(l5)     f    18    29
-##  2         audi         a4   1.8  1999     4 manual(m5)     f    21    29
-##  3         audi         a4   2.0  2008     4 manual(m6)     f    20    31
-##  4         audi         a4   2.0  2008     4   auto(av)     f    21    30
-##  5         audi         a4   2.8  1999     6   auto(l5)     f    16    26
-##  6         audi         a4   2.8  1999     6 manual(m5)     f    18    26
-##  7         audi         a4   3.1  2008     6   auto(av)     f    18    27
-##  8         audi a4 quattro   1.8  1999     4 manual(m5)     4    18    26
-##  9         audi a4 quattro   1.8  1999     4   auto(l5)     4    16    25
-## 10         audi a4 quattro   2.0  2008     4 manual(m6)     4    20    28
-## # ... with 224 more rows, and 2 more variables: fl &lt;chr&gt;, class &lt;chr&gt;</code></pre>
+##    manufacturer model    displ  year   cyl trans   drv     cty   hwy fl   
+##    &lt;chr&gt;        &lt;chr&gt;    &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;   &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;
+##  1 audi         a4        1.80  1999     4 auto(l… f        18    29 p    
+##  2 audi         a4        1.80  1999     4 manual… f        21    29 p    
+##  3 audi         a4        2.00  2008     4 manual… f        20    31 p    
+##  4 audi         a4        2.00  2008     4 auto(a… f        21    30 p    
+##  5 audi         a4        2.80  1999     6 auto(l… f        16    26 p    
+##  6 audi         a4        2.80  1999     6 manual… f        18    26 p    
+##  7 audi         a4        3.10  2008     6 auto(a… f        18    27 p    
+##  8 audi         a4 quat…  1.80  1999     4 manual… 4        18    26 p    
+##  9 audi         a4 quat…  1.80  1999     4 auto(l… 4        16    25 p    
+## 10 audi         a4 quat…  2.00  2008     4 manual… 4        20    28 p    
+## # ... with 224 more rows, and 1 more variable: class &lt;chr&gt;</code></pre>
 <p>This dataframe is already in a <em>long</em> format where all rows are an observation and all columns are variables. Among the variables in <code>mpg</code> are:</p>
 <ol style="list-style-type: decimal">
 <li><p><code>displ</code>, a car’s engine size, in litres.</p></li>
@@ -447,7 +455,7 @@ car_plot <span class="op">+</span><span class="st"> </span>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg, <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy)) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.4</span>)</code></pre></div>
 <p><img src="data-science-training_files/figure-html/adding-transparency-1.png" width="672" /></p>
-<p>Or to color each species in the plot differently:</p>
+<p>Or to color each class of car in the plot differently:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg, <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy)) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> class))</code></pre></div>
 <p><img src="data-science-training_files/figure-html/color-by-species-1.png" width="672" /></p>
@@ -485,8 +493,8 @@ car_plot <span class="op">+</span><span class="st"> </span>
 <span class="st">      </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>))</code></pre></div>
 <blockquote>
 <ol start="2" style="list-style-type: decimal">
-<li>Plot <code>hwy</code> vs <code>displ</code> and have the point color to indicate <code>cty</code> mpg.</li>
-<li>Now instead of color, use shape to indicate <code>cty</code> mpg. Why are these two aesthetics behaving differently?</li>
+<li>Plot highway mpg (<code>hwy</code>) vs engine size (<code>displ</code>) and have the point color to indicate the city mpg (<code>cty</code>).</li>
+<li>Now instead of color, use shape to indicate city mpg (<code>cty</code>). Why are these two aesthetics behaving differently?</li>
 <li>What happens if you map an aesthetic to something other than a variable name, like <code>aes(colour = displ &lt; 5)</code>?</li>
 </ol>
 </blockquote>
@@ -496,7 +504,7 @@ car_plot <span class="op">+</span><span class="st"> </span>
 </div>
 <div id="faceting" class="section level2">
 <h2><span class="header-section-number">5.6</span> Faceting</h2>
-<p>ggplot has a special technique called <em>faceting</em> that allows the user to split one plot into multiple plots based on a factor included in the dataset. We will use it to make a time series plot for each car manufacturer:</p>
+<p>ggplot has a special technique called <em>faceting</em> that allows the user to split one plot into multiple plots based on a factor included in the dataset. We will use it to make a plot of the highway miles (<code>hwy</code>) a car gets by its engine size (<code>displ</code>) for each car manufacturer:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg, <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy)) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
 <span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>manufacturer)</code></pre></div>
@@ -524,7 +532,7 @@ car_plot <span class="op">+</span><span class="st"> </span>
 </div>
 <div id="geometric-objects-geoms" class="section level2">
 <h2><span class="header-section-number">5.8</span> Geometric objects (geoms)</h2>
-<p>A <strong>geom</strong> is the geometrical object that a plot uses to represent data. People often describe plots by the type of geom that the plot uses. For example, bar charts use bar geoms, line charts use line geoms, boxplots use boxplot geoms, and so on. Scatterplots break the trend; they use the point geom. You can use different geoms to plot the same data. To change the geom in your plot, change the geom function that you add to <code>ggplot()</code>. Let’s look at the number of cars in each driving class (<code>drv</code>).</p>
+<p>A <strong>geom</strong> is the geometrical object that a plot uses to represent data. People often describe plots by the type of geom that the plot uses. For example, bar charts use bar geoms, line charts use line geoms, boxplots use boxplot geoms, and so on. Scatterplots break the trend; they use the point geom. You can use different geoms to plot the same data. To change the geom in your plot, change the geom function that you add to <code>ggplot()</code>. Let’s look at a few ways of viewing the distribution of highway mpg (<code>hwy</code>) for each driving class (<code>drv</code>).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(<span class="dt">x =</span> drv, <span class="dt">y =</span> hwy)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_jitter</span>()</code></pre></div>
 <p><img src="data-science-training_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
@@ -534,7 +542,7 @@ car_plot <span class="op">+</span><span class="st"> </span>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(<span class="dt">x =</span> drv, <span class="dt">y =</span> hwy)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_violin</span>()</code></pre></div>
 <p><img src="data-science-training_files/figure-html/unnamed-chunk-38-3.png" width="672" /></p>
-<p>To plot a smoothed mean from the data above, use <code>geom_smooth</code>.</p>
+<p><code>geom_smooth</code> allows you to view a smoothed mean of data. Here we look at the smooth mean of the highway mpg (<code>hwy</code>) by engine size (<code>displ</code>).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy))</code></pre></div>
 <p><img src="data-science-training_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
@@ -597,8 +605,8 @@ car_plot <span class="op">+</span><span class="st"> </span>
 <div id="bar-charts" class="section level2">
 <h2><span class="header-section-number">5.10</span> Bar charts</h2>
 <p>Next, let’s take a look at a bar chart. Bar charts seem simple, but they are interesting because they reveal something subtle about plots. Consider a basic bar chart, as drawn with <code>geom_bar()</code>. The following chart displays the total number of cars in the <code>mpg</code> dataset, grouped by <code>fl</code> (fuel type).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> fl))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg, <span class="kw">aes</span>(<span class="dt">x =</span> fl)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_bar</span>()</code></pre></div>
 <p><img src="data-science-training_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
 <p>On the x-axis, the chart displays <code>fl</code>, a variable from <code>mpg</code>. On the y-axis, it displays count, but count is not a variable in <code>mpg</code>! Where does count come from? Many graphs, like scatterplots, plot the raw values of your dataset. Other graphs, like bar charts, calculate new values to plot:</p>
 <ul>
@@ -612,25 +620,25 @@ car_plot <span class="op">+</span><span class="st"> </span>
 <div id="position-adjustments" class="section level3">
 <h3><span class="header-section-number">5.10.1</span> Position adjustments</h3>
 <p>There’s one more piece of magic associated with bar charts. You can colour a bar chart using either the <code>color</code> aesthetic, or, more usefully, <code>fill</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> fl, <span class="dt">fill =</span> fl))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg, <span class="kw">aes</span>(<span class="dt">x =</span> fl, <span class="dt">fill =</span> fl)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_bar</span>()</code></pre></div>
 <p><img src="data-science-training_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
 <p>This isn’t particularly useful since both the geom and the color are displaying the same information. Instead, map the fill aesthetic to another variable, like <code>class</code>: the bars are automatically stacked. Each colored rectangle represents a combination of <code>fl</code> and <code>class</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> fl, <span class="dt">fill =</span> class))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg, <span class="kw">aes</span>(<span class="dt">x =</span> fl, <span class="dt">fill =</span> class)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_bar</span>()</code></pre></div>
 <p><img src="data-science-training_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
 <p>The stacking is performed automatically by the <strong>position adjustment</strong> specified by the <code>position</code> argument. If you don’t want a stacked bar chart, you can use <code>&quot;dodge&quot;</code> or <code>&quot;fill&quot;</code>.</p>
 <ul>
 <li><code>position = &quot;fill&quot;</code> works like stacking, but makes each set of stacked bars the same height. This makes it easier to compare proportions across groups.</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">    <span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span><span class="st"> </span>
-<span class="st">      </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> fl, <span class="dt">fill =</span> class), <span class="dt">position =</span> <span class="st">&quot;fill&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">    <span class="kw">ggplot</span>(<span class="dt">data =</span> mpg, <span class="kw">aes</span>(<span class="dt">x =</span> fl, <span class="dt">fill =</span> class)) <span class="op">+</span><span class="st"> </span>
+<span class="st">      </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;fill&quot;</span>)</code></pre></div>
 <p><img src="data-science-training_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
 <ul>
 <li><code>position = &quot;dodge&quot;</code> places overlapping objects directly <em>beside</em> one another. This makes it easier to compare individual values.</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">    <span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span><span class="st"> </span>
-<span class="st">      </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> fl, <span class="dt">fill =</span> class), <span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>) </code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">    <span class="kw">ggplot</span>(<span class="dt">data =</span> mpg, <span class="kw">aes</span>(<span class="dt">x =</span> fl, <span class="dt">fill =</span> class)) <span class="op">+</span><span class="st"> </span>
+<span class="st">      </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>) </code></pre></div>
 <p><img src="data-science-training_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
 <blockquote>
 <h3 id="challenge-1"><span class="header-section-number">5.10.1</span> Challenge</h3>

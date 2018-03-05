@@ -11,6 +11,7 @@ rmd_files: [
   "dplyr.Rmd",
   "tidyr.Rmd",
   "programming.Rmd",
-  "collaborating.Rmd"]
+  "collaborating.Rmd",
+  "reproducible.Rmd"]
 delete_merged_file: true
 output_dir: "docs"
