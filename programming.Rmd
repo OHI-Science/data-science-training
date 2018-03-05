@@ -122,8 +122,9 @@ my_plot <- ggplot(data = gap_to_plot, aes(x = year, y = gdpPercap)) +
   labs(title = paste("Afghanistan", "GDP per capita", sep = " "))
 ```
 
-And as a last step, let's save this figure using `base::file.path()` (which works like paste() would if sep = "/"). 
-```{r}
+And as a last step, let's save this figure. We use `paste` here to construct the path to the file, which is in a folder that we have called "figures." We will show more about how this is useful later. 
+
+```{r, eval = F}
 ## filter the country to plot
 gap_to_plot <- gapminder %>%
   filter(country == "Afghanistan")
@@ -133,16 +134,33 @@ my_plot <- ggplot(data = gap_to_plot, aes(x = year, y = gdpPercap)) +
   geom_point() +
 ## add title and save
   labs(title = paste("Afghanistan", "GDP per capita", sep = " "))
-
-ggsave(filename = "Afghanistan_gdpPercap.png", plot = my_plot,
+ 
+  ggsave(filename = paste("figures","Afghanistan_gdpPercap.png", sep = "/"), plot = my_plot,
          width = 15, height = 10)
 ```
 
-```{r, include = FALSE}
-file.rename("Afghanistan_gdpPercap.png", "img/Afghanistan_gdpPercap.png")
+```{r, echo = F}
+#this chunk is evaluated but not shown (chunk above is shown in rendered ouput) to prevent
+#inconsistency in the "figures" path name
+
+## filter the country to plot
+gap_to_plot <- gapminder %>%
+  filter(country == "Afghanistan")
+
+## plot
+my_plot <- ggplot(data = gap_to_plot, aes(x = year, y = gdpPercap)) + 
+  geom_point() +
+## add title and save
+  labs(title = paste("Afghanistan", "GDP per capita", sep = " "))
+ 
+  ggsave(filename = file.path("img","Afghanistan_gdpPercap.png"), plot = my_plot,
+         width = 15, height = 10)
 ```
 
-OK. So we can check in our figures/folder and see the generated figure:
+
+
+
+OK. So we can check in our figures folder and see the generated figure:
 
 ![](img/Afghanistan_gdpPercap.png)
 
@@ -178,8 +196,8 @@ for( each item in set of items ){
     ## add title and save
     labs(title = paste("Afghanistan", "GDP per capita", sep = " "))
     
-  ggsave(filename = "Afghanistan_gdpPercap.png", plot = my_plot
-           width = 15, height = 10)
+  ggsave(filename = "Afghanistan_gdpPercap.png", plot = my_plot,
+         width = 15, height = 10)
 } 
 ```
 
@@ -266,7 +284,7 @@ for( cntry in country_list ){
     ## add title and save
     labs(title = paste(cntry, "GDP per capita", sep = " "))
   
-ggsave(filename = paste("figures/", cntry, "_gdpPercap.png", sep = ""), plot = my_plot,
+ggsave(filename = paste("figures/", cntry, "_gdpPercap.png", sep = "")), plot = my_plot,
            width = 15, height = 10)
 } 
 ```
@@ -315,7 +333,7 @@ for( cntry in country_list ){ # (cntry = country_list[1])
     ## add title and save
     labs(title = paste(cntry, "GDP per capita", sep = " "))
   
-ggsave(filename = paste("figures/Europe", cntry, "_gdpPercap_cummean.png", sep = ""), 
+ggsave(filename = paste("figures/Europe/", cntry, "_gdpPercap_cummean.png", sep = "")), 
        plot = my_plot, width = 15, height = 10)
 } 
 ```
@@ -386,7 +404,7 @@ for( cntry in country_list ){ # (cntry = country_list[1])
 # In if (gap_to_plot$estimated == "yes") { :
 #   the condition has length > 1 and only the first element will be used
   
-  ggsave(filename = paste("figures/Europe", cntry, "_gdpPercap_cummean.png", sep = ""), 
+  ggsave(filename = paste("figures/Europe/", cntry, "_gdpPercap_cummean.png", sep = ""), 
        plot = my_plot, width = 15, height = 10)
     
 } 
@@ -429,7 +447,7 @@ for( cntry in country_list ){ # (cntry = country_list[1])
     my_plot <- my_plot +
       labs(subtitle = "Estimated data")
   }
-  ggsave(filename = paste("figures/Europe", cntry, "_gdpPercap_cummean.png", sep = ""), 
+  ggsave(filename = paste("figures/Europe/", cntry, "_gdpPercap_cummean.png", sep = ""), 
        plot = my_plot, width = 15, height = 10)
     
 } 
@@ -477,7 +495,7 @@ for( cntry in country_list ){ # (cntry = country_list[1])
     print(paste(cntry, "data are reported"))
     
   }
-  ggsave(filename = paste("figures/Europe", cntry, "_gdpPercap_cummean.png", sep = ""), 
+  ggsave(filename = paste("figures/Europe/", cntry, "_gdpPercap_cummean.png", sep = ""), 
        plot = my_plot, width = 15, height = 10)
     
 } 
