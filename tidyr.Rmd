@@ -146,7 +146,7 @@ You use `spread()` and `gather()` to transform or reshape data between *wide* to
 
 Read in the data from GitHub. Remember, you need to click on the 'Raw' button first so you can read it directly. Let's also read in the gapminder data from yesterday so that we can use it to compare later on. 
 
-```{r, eval=FALSE}
+```{r, eval=TRUE, message=FALSE}
 ## wide format
 gap_wide <- readr::read_csv('https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder_wide.csv')
 
@@ -182,7 +182,7 @@ Let's have a look at `gather()`'s help:
 We need to name two new variables in the key-value pair, one for the key, one for the value. It can be hard to wrap your mind around this, so let's give it a try. Let's name them `obstype_year` and `obs_values`.  
 
 Here's the start of what we'll do: 
-```{r, eval=FALSE}
+```{r, eval=TRUE}
 gap_long <- gap_wide %>% 
   gather(key   = obstype_year,
          value = obs_values)
@@ -190,13 +190,13 @@ gap_long <- gap_wide %>%
 
 Although we were already planning to inspect our work, let's definitely do it now:
 
-```{r, eval=FALSE}
+```{r, eval=TRUE, message=FALSE}
 str(gap_long)
 head(gap_long)
 tail(gap_long)
 ```
 
-We have reshaped our dataframe but this new format isn't necessarily what we wanted.
+We have reshaped our dataframe but this new format isn't really what we wanted.
 
 What went wrong? Notice that it didn't know that we wanted to keep `continent` and `country` untouched; we need to give it more information about which columns we want reshaped. We can do this in several ways.
 
@@ -237,7 +237,7 @@ OK, but we're not done yet. `obstype_year` actually contains two pieces of infor
 
 `?separate` --> the main arguments are `separate(data, col, into, sep ...)`. So we need to specify which column we want separated, name the new columns that we want to create, and specify what we want it to separate by. Since the `obstype_year` variable has observation types and years separated by a `_`, we'll use that. 
 
-```{r, eval=FALSE}
+```{r, eval=TRUE, message=FALSE}
 gap_long <- gap_wide %>% 
   gather(key   = obstype_year,
          value = obs_values,
@@ -245,11 +245,11 @@ gap_long <- gap_wide %>%
   separate(obstype_year,
            into = c('obs_type','year'),
            sep = "_",
-           convert = T) #this ensures that the year column is an integer rather than a character
+           convert = TRUE) #this ensures that the year column is an integer rather than a character
 ``` 
 
 No warning messages...still we inspect:
-```{r, eval=FALSE}
+```{r, eval=TRUE}
 str(gap_long)
 head(gap_long)
 tail(gap_long)

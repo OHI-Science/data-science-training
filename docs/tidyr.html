@@ -481,10 +481,31 @@ gapminder &lt;-<span class="st"> </span>readr<span class="op">::</span><span cla
 <span class="st">  </span><span class="kw">gather</span>(<span class="dt">key   =</span> obstype_year,
          <span class="dt">value =</span> obs_values)</code></pre></div>
 <p>Although we were already planning to inspect our work, let’s definitely do it now:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(gap_long)
-<span class="kw">head</span>(gap_long)
-<span class="kw">tail</span>(gap_long)</code></pre></div>
-<p>We have reshaped our dataframe but this new format isn’t necessarily what we wanted.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(gap_long)</code></pre></div>
+<pre><code>## Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    5396 obs. of  2 variables:
+##  $ obstype_year: chr  &quot;continent&quot; &quot;continent&quot; &quot;continent&quot; &quot;continent&quot; ...
+##  $ obs_values  : chr  &quot;Africa&quot; &quot;Africa&quot; &quot;Africa&quot; &quot;Africa&quot; ...</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(gap_long)</code></pre></div>
+<pre><code>## # A tibble: 6 x 2
+##   obstype_year obs_values
+##          &lt;chr&gt;      &lt;chr&gt;
+## 1    continent     Africa
+## 2    continent     Africa
+## 3    continent     Africa
+## 4    continent     Africa
+## 5    continent     Africa
+## 6    continent     Africa</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tail</span>(gap_long)</code></pre></div>
+<pre><code>## # A tibble: 6 x 2
+##   obstype_year obs_values
+##          &lt;chr&gt;      &lt;chr&gt;
+## 1     pop_2007    9031088
+## 2     pop_2007    7554661
+## 3     pop_2007   71158647
+## 4     pop_2007   60776238
+## 5     pop_2007   20434176
+## 6     pop_2007    4115771</code></pre>
+<p>We have reshaped our dataframe but this new format isn’t really what we wanted.</p>
 <p>What went wrong? Notice that it didn’t know that we wanted to keep <code>continent</code> and <code>country</code> untouched; we need to give it more information about which columns we want reshaped. We can do this in several ways.</p>
 <p>One way is to identify the columns is by name. Listing them explicitly can be a good approach if there are just a few. But in our case we have 30 columns. I’m not going to list them out here since there is way too much potential for error if I tried to list <code>gdpPercap_1952</code>, <code>gdpPercap_1957</code>, <code>gdpPercap_1962</code> and so on. But we could use some of <code>dplyr</code>’s awesome helper functions — because we expect that there is a better way to do this!</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_long &lt;-<span class="st"> </span>gap_wide <span class="op">%&gt;%</span><span class="st"> </span>
@@ -517,11 +538,35 @@ gapminder &lt;-<span class="st"> </span>readr<span class="op">::</span><span cla
 <span class="st">  </span><span class="kw">separate</span>(obstype_year,
            <span class="dt">into =</span> <span class="kw">c</span>(<span class="st">&#39;obs_type&#39;</span>,<span class="st">&#39;year&#39;</span>),
            <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>,
-           <span class="dt">convert =</span> T) <span class="co">#this ensures that the year column is an integer rather than a character</span></code></pre></div>
+           <span class="dt">convert =</span> <span class="ot">TRUE</span>) <span class="co">#this ensures that the year column is an integer rather than a character</span></code></pre></div>
 <p>No warning messages…still we inspect:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(gap_long)
-<span class="kw">head</span>(gap_long)
-<span class="kw">tail</span>(gap_long)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(gap_long)</code></pre></div>
+<pre><code>## Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    5112 obs. of  5 variables:
+##  $ continent : chr  &quot;Africa&quot; &quot;Africa&quot; &quot;Africa&quot; &quot;Africa&quot; ...
+##  $ country   : chr  &quot;Algeria&quot; &quot;Angola&quot; &quot;Benin&quot; &quot;Botswana&quot; ...
+##  $ obs_type  : chr  &quot;gdpPercap&quot; &quot;gdpPercap&quot; &quot;gdpPercap&quot; &quot;gdpPercap&quot; ...
+##  $ year      : int  1952 1952 1952 1952 1952 1952 1952 1952 1952 1952 ...
+##  $ obs_values: num  2449 3521 1063 851 543 ...</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(gap_long)</code></pre></div>
+<pre><code>## # A tibble: 6 x 5
+##   continent      country  obs_type  year obs_values
+##       &lt;chr&gt;        &lt;chr&gt;     &lt;chr&gt; &lt;int&gt;      &lt;dbl&gt;
+## 1    Africa      Algeria gdpPercap  1952       2449
+## 2    Africa       Angola gdpPercap  1952       3521
+## 3    Africa        Benin gdpPercap  1952       1063
+## 4    Africa     Botswana gdpPercap  1952        851
+## 5    Africa Burkina Faso gdpPercap  1952        543
+## 6    Africa      Burundi gdpPercap  1952        339</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tail</span>(gap_long)</code></pre></div>
+<pre><code>## # A tibble: 6 x 5
+##   continent        country obs_type  year obs_values
+##       &lt;chr&gt;          &lt;chr&gt;    &lt;chr&gt; &lt;int&gt;      &lt;dbl&gt;
+## 1    Europe         Sweden      pop  2007    9031088
+## 2    Europe    Switzerland      pop  2007    7554661
+## 3    Europe         Turkey      pop  2007   71158647
+## 4    Europe United Kingdom      pop  2007   60776238
+## 5   Oceania      Australia      pop  2007   20434176
+## 6   Oceania    New Zealand      pop  2007    4115771</code></pre>
 <p>Excellent. This is long format: every row is a unique observation. Yay!</p>
 </div>
 <div id="plot-long-format-data" class="section level2">
