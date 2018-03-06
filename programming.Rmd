@@ -222,7 +222,7 @@ OK. So let's start with the beginning of the for loop. We want a list of countri
 ## create a list of countries
 country_list <- c("Albania", "Fiji", "Spain")
 
-for ( each cntry in country_list ) {
+for ( cntry in country_list ) {
   
   ## filter the country to plot
   gap_to_plot <- gapminder %>%

@@ -495,7 +495,7 @@ cntry &lt;-<span class="st"> &quot;Afghanistan&quot;</span>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## create a list of countries
 country_list &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Albania&quot;</span>, <span class="st">&quot;Fiji&quot;</span>, <span class="st">&quot;Spain&quot;</span>)
 
-<span class="cf">for</span> ( each cntry <span class="cf">in</span> country_list ) {
+<span class="cf">for</span> ( cntry <span class="cf">in</span> country_list ) {
   
   ## filter the country to plot
   gap_to_plot &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span>
