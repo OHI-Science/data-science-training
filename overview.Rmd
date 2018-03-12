@@ -8,7 +8,7 @@ We will practice learning three main things all at the same time: coding with be
 
 ## What to expect
 
-This is going to be fun. 
+This is going to be a fun workshop. 
 
 The plan is to expose you to a lot of great tools that you can have confidence using in your research. You'll be working hands-on and doing the same things on your own computer as we do live on up on the screen. We're going to go through a lot in these two days and it's less important that you remember it all. More imporatantly, you'll have experience with it and confidence that you can do it. The main thing to take away is that there *are* good ways to approach your analyses; we will teach you to expect that so you can find what you need and use it! And, you can use these materials as a reference as you go forward with your analyses. 
 
@@ -20,6 +20,8 @@ We'll be talking about :
 - how the #rstats community is fantastic. The tools we're using are developed by real people. They are building great stuff and helping people of all skill-levels learn how to use it. 
 
 Everyone in this workshop is coming from a different place with different experiences and expectations. But everyone will learn something new here, because there is so much innovation in the data science world. Even instructors and helpers learn something new every time, from each other and from your questions. You are all welcome here and encouraged to help each other. 
+
+Are you familiar with some of this material already? Then focus on how you might teach it to others: A big part of this is not only you learning these skills, but increasing these practices in science as a whole. 
 
 Here are some important themes throughout (these are joke book covers): 
 
