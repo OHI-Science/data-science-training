@@ -576,17 +576,17 @@ git config --list</code></pre></li>
 <p>Let’s set up this file so we can use it for the rest of the day. I’m going to delete all the text that is already there and write some new text.</p>
 <p>Here’s what I’m going to write in my R Markdown file to begin:</p>
 <pre><code>---
-title: &quot;My Project&quot;
+title: &quot;Graphics with ggplot2&quot;
 author: &quot;Julie&quot;
 date: &quot;11/21/2017&quot;
 output: html_document
 ---
 
-# Data wrangling with dplyr
+# Learning ggplot2
 
-We are going use &quot;gapminder&quot; data to learn `dplyr`. It&#39;s going to be amazing. 
+We&#39;re learning ggplot.2 It&#39;s going to be amazing. 
 </code></pre>
-<p>Now, let’s save it. I’m going to call my file <code>wrangle-dplyr.Rmd</code>.</p>
+<p>Now, let’s save it. I’m going to call my file <code>ggplot2.Rmd</code>.</p>
 <p>OK. Now let’s practice with some of those commands that we were working on this morning.</p>
 <p>Create a new chunk in your RMarkdown first in one of these ways:</p>
 <ul>
@@ -595,7 +595,7 @@ We are going use &quot;gapminder&quot; data to learn `dplyr`. It&#39;s going to 
 <li>if you haven’t deleted a chunk that came with the new file, edit that one</li>
 </ul>
 <p>Now, let’s write some R code.</p>
-<pre><code>x &lt;- seq(1:15)</code></pre>
+<pre><code>library(tidyverse) # install.packages(&#39;tidyverse&#39;)</code></pre>
 <p>Now, hitting return does not execute this command; remember, it’s just a text file. To execute it, we need to get what we typed in the the R chunk (the grey R code) down into the console. How do we do it? There are several ways (let’s do each of them):</p>
 <ol style="list-style-type: decimal">
 <li>copy-paste this line into the console.</li>
