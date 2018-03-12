@@ -428,7 +428,7 @@ str(gap_wide_new)
 
 ### `complete()`
 
-One of the coolest functions in `tidyr` is the function `complete()`. Jarrett Byrnes has written up a [great blog piece]((http://www.imachordata.com/you-complete-me/)) showcasing the utility of this function so I'm going to use that example here.
+One of the coolest functions in `tidyr` is the function `complete()`. Jarrett Byrnes has written up a [great blog piece](http://www.imachordata.com/you-complete-me/) showcasing the utility of this function so I'm going to use that example here.
 
 We'll start with an example dataframe where the data recorder enters the Abundance of two species of kelp, *Saccharina* and *Agarum* in the years 1999, 2000 and 2004.
 ```{r, eval=F}

@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Introduction to Open Data Science</title>
   <meta name="description" content="This is official open data science training for the Ocean Health Index.">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="Introduction to Open Data Science" />
   <meta property="og:type" content="book" />
@@ -393,19 +393,19 @@ There are three families of verbs designed to work with relational data:
 <p>In the <em>long</em> format, you usually have 1 column for the observed variable and the other columns are ID variables. The <code>mpg</code> dataset is an example of a <em>long</em> dataset with each row representing a single car and each column representing a variable of that car such as <code>manufacturer</code> and <code>year</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mpg</code></pre></div>
 <pre><code>## # A tibble: 234 x 11
-##    manufacturer      model displ  year   cyl      trans   drv   cty   hwy
-##           &lt;chr&gt;      &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt;      &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt;
-##  1         audi         a4   1.8  1999     4   auto(l5)     f    18    29
-##  2         audi         a4   1.8  1999     4 manual(m5)     f    21    29
-##  3         audi         a4   2.0  2008     4 manual(m6)     f    20    31
-##  4         audi         a4   2.0  2008     4   auto(av)     f    21    30
-##  5         audi         a4   2.8  1999     6   auto(l5)     f    16    26
-##  6         audi         a4   2.8  1999     6 manual(m5)     f    18    26
-##  7         audi         a4   3.1  2008     6   auto(av)     f    18    27
-##  8         audi a4 quattro   1.8  1999     4 manual(m5)     4    18    26
-##  9         audi a4 quattro   1.8  1999     4   auto(l5)     4    16    25
-## 10         audi a4 quattro   2.0  2008     4 manual(m6)     4    20    28
-## # ... with 224 more rows, and 2 more variables: fl &lt;chr&gt;, class &lt;chr&gt;</code></pre>
+##    manufacturer model    displ  year   cyl trans   drv     cty   hwy fl   
+##    &lt;chr&gt;        &lt;chr&gt;    &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;   &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;
+##  1 audi         a4        1.80  1999     4 auto(l… f        18    29 p    
+##  2 audi         a4        1.80  1999     4 manual… f        21    29 p    
+##  3 audi         a4        2.00  2008     4 manual… f        20    31 p    
+##  4 audi         a4        2.00  2008     4 auto(a… f        21    30 p    
+##  5 audi         a4        2.80  1999     6 auto(l… f        16    26 p    
+##  6 audi         a4        2.80  1999     6 manual… f        18    26 p    
+##  7 audi         a4        3.10  2008     6 auto(a… f        18    27 p    
+##  8 audi         a4 quat…  1.80  1999     4 manual… 4        18    26 p    
+##  9 audi         a4 quat…  1.80  1999     4 auto(l… 4        16    25 p    
+## 10 audi         a4 quat…  2.00  2008     4 manual… 4        20    28 p    
+## # ... with 224 more rows, and 1 more variable: class &lt;chr&gt;</code></pre>
 <p><br></p>
 <p>These different data formats mainly affect readability. For humans, the wide format is often more intuitive since we can often see more of the data on the screen due to it’s shape. However, the long format is more machine readable and is closer to the formatting of databases. The ID variables in our dataframes are similar to the fields in a database and observed variables are like the database values.</p>
 <p><strong>Note:</strong> Generally, mathematical operations are better in long format, although some plotting functions actually work better with wide format.</p>
@@ -488,23 +488,23 @@ gapminder &lt;-<span class="st"> </span>readr<span class="op">::</span><span cla
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(gap_long)</code></pre></div>
 <pre><code>## # A tibble: 6 x 2
 ##   obstype_year obs_values
-##          &lt;chr&gt;      &lt;chr&gt;
-## 1    continent     Africa
-## 2    continent     Africa
-## 3    continent     Africa
-## 4    continent     Africa
-## 5    continent     Africa
-## 6    continent     Africa</code></pre>
+##   &lt;chr&gt;        &lt;chr&gt;     
+## 1 continent    Africa    
+## 2 continent    Africa    
+## 3 continent    Africa    
+## 4 continent    Africa    
+## 5 continent    Africa    
+## 6 continent    Africa</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tail</span>(gap_long)</code></pre></div>
 <pre><code>## # A tibble: 6 x 2
 ##   obstype_year obs_values
-##          &lt;chr&gt;      &lt;chr&gt;
-## 1     pop_2007    9031088
-## 2     pop_2007    7554661
-## 3     pop_2007   71158647
-## 4     pop_2007   60776238
-## 5     pop_2007   20434176
-## 6     pop_2007    4115771</code></pre>
+##   &lt;chr&gt;        &lt;chr&gt;     
+## 1 pop_2007     9031088   
+## 2 pop_2007     7554661   
+## 3 pop_2007     71158647  
+## 4 pop_2007     60776238  
+## 5 pop_2007     20434176  
+## 6 pop_2007     4115771</code></pre>
 <p>We have reshaped our dataframe but this new format isn’t really what we wanted.</p>
 <p>What went wrong? Notice that it didn’t know that we wanted to keep <code>continent</code> and <code>country</code> untouched; we need to give it more information about which columns we want reshaped. We can do this in several ways.</p>
 <p>One way is to identify the columns is by name. Listing them explicitly can be a good approach if there are just a few. But in our case we have 30 columns. I’m not going to list them out here since there is way too much potential for error if I tried to list <code>gdpPercap_1952</code>, <code>gdpPercap_1957</code>, <code>gdpPercap_1962</code> and so on. But we could use some of <code>dplyr</code>’s awesome helper functions — because we expect that there is a better way to do this!</p>
@@ -549,24 +549,24 @@ gapminder &lt;-<span class="st"> </span>readr<span class="op">::</span><span cla
 ##  $ obs_values: num  2449 3521 1063 851 543 ...</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(gap_long)</code></pre></div>
 <pre><code>## # A tibble: 6 x 5
-##   continent      country  obs_type  year obs_values
-##       &lt;chr&gt;        &lt;chr&gt;     &lt;chr&gt; &lt;int&gt;      &lt;dbl&gt;
-## 1    Africa      Algeria gdpPercap  1952       2449
-## 2    Africa       Angola gdpPercap  1952       3521
-## 3    Africa        Benin gdpPercap  1952       1063
-## 4    Africa     Botswana gdpPercap  1952        851
-## 5    Africa Burkina Faso gdpPercap  1952        543
-## 6    Africa      Burundi gdpPercap  1952        339</code></pre>
+##   continent country      obs_type   year obs_values
+##   &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;     &lt;int&gt;      &lt;dbl&gt;
+## 1 Africa    Algeria      gdpPercap  1952      2449.
+## 2 Africa    Angola       gdpPercap  1952      3521.
+## 3 Africa    Benin        gdpPercap  1952      1063.
+## 4 Africa    Botswana     gdpPercap  1952       851.
+## 5 Africa    Burkina Faso gdpPercap  1952       543.
+## 6 Africa    Burundi      gdpPercap  1952       339.</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tail</span>(gap_long)</code></pre></div>
 <pre><code>## # A tibble: 6 x 5
-##   continent        country obs_type  year obs_values
-##       &lt;chr&gt;          &lt;chr&gt;    &lt;chr&gt; &lt;int&gt;      &lt;dbl&gt;
-## 1    Europe         Sweden      pop  2007    9031088
-## 2    Europe    Switzerland      pop  2007    7554661
-## 3    Europe         Turkey      pop  2007   71158647
-## 4    Europe United Kingdom      pop  2007   60776238
-## 5   Oceania      Australia      pop  2007   20434176
-## 6   Oceania    New Zealand      pop  2007    4115771</code></pre>
+##   continent country        obs_type  year obs_values
+##   &lt;chr&gt;     &lt;chr&gt;          &lt;chr&gt;    &lt;int&gt;      &lt;dbl&gt;
+## 1 Europe    Sweden         pop       2007   9031088.
+## 2 Europe    Switzerland    pop       2007   7554661.
+## 3 Europe    Turkey         pop       2007  71158647.
+## 4 Europe    United Kingdom pop       2007  60776238.
+## 5 Oceania   Australia      pop       2007  20434176.
+## 6 Oceania   New Zealand    pop       2007   4115771.</code></pre>
 <p>Excellent. This is long format: every row is a unique observation. Yay!</p>
 </div>
 <div id="plot-long-format-data" class="section level2">
@@ -713,7 +713,7 @@ gap_wide_new &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</spa
 <span class="kw">str</span>(gap_wide_new)</code></pre></div>
 <div id="complete" class="section level3">
 <h3><span class="header-section-number">7.7.1</span> <code>complete()</code></h3>
-<p>One of the coolest functions in <code>tidyr</code> is the function <code>complete()</code>. Jarrett Byrnes has written up a <a href="(http://www.imachordata.com/you-complete-me/)">great blog piece</a> showcasing the utility of this function so I’m going to use that example here.</p>
+<p>One of the coolest functions in <code>tidyr</code> is the function <code>complete()</code>. Jarrett Byrnes has written up a <a href="http://www.imachordata.com/you-complete-me/">great blog piece</a> showcasing the utility of this function so I’m going to use that example here.</p>
 <p>We’ll start with an example dataframe where the data recorder enters the Abundance of two species of kelp, <em>Saccharina</em> and <em>Agarum</em> in the years 1999, 2000 and 2004.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">kelpdf &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
   <span class="dt">Year =</span> <span class="kw">c</span>(<span class="dv">1999</span>, <span class="dv">2000</span>, <span class="dv">2004</span>, <span class="dv">1999</span>, <span class="dv">2004</span>),
@@ -771,10 +771,11 @@ gitbook.start({
 "facebook": true,
 "twitter": true,
 "google": false,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
