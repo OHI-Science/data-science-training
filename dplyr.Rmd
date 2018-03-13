@@ -88,23 +88,27 @@ The data are on GitHub. Navigate there by going to:
 
 github.com > ohi-science > data-science-training > data > gapminder.csv
 
-or by copy-pasting this in the browser: `https://github.com/OHI-Science/data-science-training/blob/master/data/gapminder.csv`
+or by copy-pasting url for data-view: `https://github.com/OHI-Science/data-science-training/blob/master/data/gapminder.csv`
 
-Have a look at the data. It's a .csv file, which you've probably encountered before, but GitHub has formatted it nicely so it's easy to look at. You can see that for every country and year, there are several columns with data in them. 
+This is data-view mode: just so we can have a quick look at the data. It's a .csv file, which you've probably encountered before, but GitHub has formatted it nicely so it's easy to look at. You can see that for every country and year, there are several columns with data in them. 
 
 ![](img/gapminder_gh.png)
 
 ### read data with `readr::read_csv()`
 
-We can read this data into R directly from GitHub, without downloading it. We can do that by clicking on the Raw button on the top-right of the data. This displays it as the raw csv file, without formatting. Copy the url: 
+We can read this data into R directly from GitHub, without downloading it. But we can't read this data in view-mode. We have to click on the **Raw button** on the top-right of the data. This displays it as the raw csv file, without formatting. 
 
-https://raw.githubusercontent.com/jules32/2017-11-30-MBARI/gh-pages/data/gapminder.csv
+![](img/gapminder_gh_raw.png)
+
+Copy the url for raw data: 
+
+https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder.csv
 
 Now, let's go back to RStudio. In our R Markdown, let's read this csv file and name the variable "gapminder". We will use the `read_csv()` function from the `readr` package (part of the tidyverse, so it's already installed!). 
 
 ```{r, eval=FALSE}
 ## read gapminder csv. Note the readr:: prefix identifies which package it's in
-gapminder <- readr::read_csv('https://raw.githubusercontent.com/jules32/2017-11-30-MBARI/gh-pages/data/gapminder.csv') 
+gapminder <- readr::read_csv('https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder.csv') 
 
 ```
 
@@ -506,7 +510,7 @@ We have done a pretty incredible amount of work in a few lines. Our whole analys
 library(tidyverse) ## install.packages('tidyverse')
 
 ## read in data
-gapminder <- readr::read_csv('https://raw.githubusercontent.com/jules32/2017-11-30-MBARI/gh-pages/data/gapminder.csv') 
+gapminder <- readr::read_csv('https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder.csv') 
 
 ## summarize
 gap_max_gdp <- gapminder %>% 
@@ -534,7 +538,7 @@ Instead of calculating the max for each country like we did with `dplyr` above, 
 ## J. Lowndes lowndes@nceas.ucsb.edu
 
 
-gapminder <- read.csv('https://raw.githubusercontent.com/jules32/2017-11-30-MBARI/gh-pages/data/gapminder.csv', stringsAsFactors = FALSE) 
+gapminder <- read.csv('https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder.csv', stringsAsFactors = FALSE) 
 x1  <- gapminder[ , c('country', 'year', 'pop', 'gdpPercap') ]# subset columns
 mex <- x1[x1$country == "Mexico", ] # subset rows
 mex$gdp <- mex$pop * mex$gdpPercap # add new columns
