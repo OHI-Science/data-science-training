@@ -25,7 +25,7 @@
 <meta name="author" content="The Ocean Health Index Team">
 
 
-<meta name="date" content="2018-03-12">
+<meta name="date" content="2018-03-13">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -130,6 +130,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="rstudio.html"><a href="rstudio.html#rmarkdown"><i class="fa fa-check"></i><b>3.6</b> RMarkdown</a><ul>
 <li class="chapter" data-level="3.6.1" data-path="rstudio.html"><a href="rstudio.html#your-turn-2"><i class="fa fa-check"></i><b>3.6.1</b> Your Turn</a></li>
+<li class="chapter" data-level="3.6.2" data-path="rstudio.html"><a href="rstudio.html#code-chunks"><i class="fa fa-check"></i><b>3.6.2</b> Code chunks</a></li>
+<li class="chapter" data-level="3.6.3" data-path="rstudio.html"><a href="rstudio.html#your-turn-3"><i class="fa fa-check"></i><b>3.6.3</b> Your turn</a></li>
 </ul></li>
 <li class="chapter" data-level="3.7" data-path="rstudio.html"><a href="rstudio.html#troubleshooting"><i class="fa fa-check"></i><b>3.7</b> Troubleshooting</a><ul>
 <li class="chapter" data-level="3.7.1" data-path="rstudio.html"><a href="rstudio.html#i-just-entered-a-command-and-nothings-happening"><i class="fa fa-check"></i><b>3.7.1</b> I just entered a command and nothing’s happening</a></li>
@@ -161,11 +163,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.8.4" data-path="github.html"><a href="github.html#push"><i class="fa fa-check"></i><b>4.8.4</b> Push</a></li>
 </ul></li>
 <li class="chapter" data-level="4.9" data-path="github.html"><a href="github.html#explore-remote-github"><i class="fa fa-check"></i><b>4.9</b> Explore remote Github</a><ul>
-<li class="chapter" data-level="4.9.1" data-path="github.html"><a href="github.html#your-turn-3"><i class="fa fa-check"></i><b>4.9.1</b> Your turn!</a></li>
+<li class="chapter" data-level="4.9.1" data-path="github.html"><a href="github.html#your-turn-4"><i class="fa fa-check"></i><b>4.9.1</b> Your turn!</a></li>
 </ul></li>
-<li class="chapter" data-level="4.10" data-path="github.html"><a href="github.html#create-a-new-r-markdown-file"><i class="fa fa-check"></i><b>4.10</b> Create a new R Markdown file</a><ul>
-<li class="chapter" data-level="4.10.1" data-path="github.html"><a href="github.html#your-turn-4"><i class="fa fa-check"></i><b>4.10.1</b> Your turn</a></li>
-</ul></li>
+<li class="chapter" data-level="4.10" data-path="github.html"><a href="github.html#create-a-new-r-markdown-file"><i class="fa fa-check"></i><b>4.10</b> Create a new R Markdown file</a></li>
 <li class="chapter" data-level="4.11" data-path="github.html"><a href="github.html#committing---how-often-tracking-changes-in-your-files"><i class="fa fa-check"></i><b>4.11</b> Committing - how often? Tracking changes in your files</a></li>
 <li class="chapter" data-level="4.12" data-path="github.html"><a href="github.html#happy-git-with-r"><i class="fa fa-check"></i><b>4.12</b> Happy Git with R</a></li>
 </ul></li>
@@ -522,7 +522,7 @@ And that's great, this error message is helpful: R doesn't know what the `little
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">??install </code></pre></div>
 <p>Not all functions have (or require) arguments:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">date</span>()</code></pre></div>
-<pre><code>## [1] &quot;Mon Mar 12 15:22:41 2018&quot;</code></pre>
+<pre><code>## [1] &quot;Tue Mar 13 08:21:01 2018&quot;</code></pre>
 </div>
 </div>
 <div id="clearing-the-environment" class="section level2">
@@ -601,6 +601,33 @@ And that's great, this error message is helpful: R doesn't know what the `little
 <li>In Markdown, Write some italic text, and make a numbered list. And add a few subheaders. Use the Markdown Quick Reference (in the menu bar: Help &gt; Markdown Quick Reference).</li>
 <li>Reknit your html file.</li>
 </ol>
+</div>
+<div id="code-chunks" class="section level3">
+<h3><span class="header-section-number">3.6.2</span> Code chunks</h3>
+<p>OK. Now let’s practice with some of those commands that we were working on this morning.</p>
+<p>Create a new chunk in your RMarkdown first in one of these ways:</p>
+<ul>
+<li>click “Insert &gt; R” at the top of the editor pane</li>
+<li>type by hand ```{r} ```</li>
+<li>if you haven’t deleted a chunk that came with the new file, edit that one</li>
+</ul>
+<p>Now, let’s write some R code.</p>
+<pre><code>x &lt;- seq(1:15)</code></pre>
+<p>Now, hitting return does not execute this command; remember, it’s just a text file. To execute it, we need to get what we typed in the the R chunk (the grey R code) down into the console. How do we do it? There are several ways (let’s do each of them):</p>
+<ol style="list-style-type: decimal">
+<li>copy-paste this line into the console.</li>
+<li>select the line (or simply put the cursor there), and click ‘Run’. This is available from
+<ol style="list-style-type: lower-alpha">
+<li>the bar above the file (green arrow)</li>
+<li>the menu bar: Code &gt; Run Selected Line(s)</li>
+<li>keyboard shortcut: command-return</li>
+</ol></li>
+<li>click the green arrow at the right of the code chunk</li>
+</ol>
+</div>
+<div id="your-turn-3" class="section level3">
+<h3><span class="header-section-number">3.6.3</span> Your turn</h3>
+<p>Add a few more commands to your file from this morning. Execute them by trying the three ways above. Then, save your R Markdown file.</p>
 <!--- remove this stuff and instead set up Git/GitHub.
 ## Working directory
 

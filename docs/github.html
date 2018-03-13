@@ -25,7 +25,7 @@
 <meta name="author" content="The Ocean Health Index Team">
 
 
-<meta name="date" content="2018-03-12">
+<meta name="date" content="2018-03-13">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -130,6 +130,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="rstudio.html"><a href="rstudio.html#rmarkdown"><i class="fa fa-check"></i><b>3.6</b> RMarkdown</a><ul>
 <li class="chapter" data-level="3.6.1" data-path="rstudio.html"><a href="rstudio.html#your-turn-2"><i class="fa fa-check"></i><b>3.6.1</b> Your Turn</a></li>
+<li class="chapter" data-level="3.6.2" data-path="rstudio.html"><a href="rstudio.html#code-chunks"><i class="fa fa-check"></i><b>3.6.2</b> Code chunks</a></li>
+<li class="chapter" data-level="3.6.3" data-path="rstudio.html"><a href="rstudio.html#your-turn-3"><i class="fa fa-check"></i><b>3.6.3</b> Your turn</a></li>
 </ul></li>
 <li class="chapter" data-level="3.7" data-path="rstudio.html"><a href="rstudio.html#troubleshooting"><i class="fa fa-check"></i><b>3.7</b> Troubleshooting</a><ul>
 <li class="chapter" data-level="3.7.1" data-path="rstudio.html"><a href="rstudio.html#i-just-entered-a-command-and-nothings-happening"><i class="fa fa-check"></i><b>3.7.1</b> I just entered a command and nothing’s happening</a></li>
@@ -161,11 +163,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.8.4" data-path="github.html"><a href="github.html#push"><i class="fa fa-check"></i><b>4.8.4</b> Push</a></li>
 </ul></li>
 <li class="chapter" data-level="4.9" data-path="github.html"><a href="github.html#explore-remote-github"><i class="fa fa-check"></i><b>4.9</b> Explore remote Github</a><ul>
-<li class="chapter" data-level="4.9.1" data-path="github.html"><a href="github.html#your-turn-3"><i class="fa fa-check"></i><b>4.9.1</b> Your turn!</a></li>
+<li class="chapter" data-level="4.9.1" data-path="github.html"><a href="github.html#your-turn-4"><i class="fa fa-check"></i><b>4.9.1</b> Your turn!</a></li>
 </ul></li>
-<li class="chapter" data-level="4.10" data-path="github.html"><a href="github.html#create-a-new-r-markdown-file"><i class="fa fa-check"></i><b>4.10</b> Create a new R Markdown file</a><ul>
-<li class="chapter" data-level="4.10.1" data-path="github.html"><a href="github.html#your-turn-4"><i class="fa fa-check"></i><b>4.10.1</b> Your turn</a></li>
-</ul></li>
+<li class="chapter" data-level="4.10" data-path="github.html"><a href="github.html#create-a-new-r-markdown-file"><i class="fa fa-check"></i><b>4.10</b> Create a new R Markdown file</a></li>
 <li class="chapter" data-level="4.11" data-path="github.html"><a href="github.html#committing---how-often-tracking-changes-in-your-files"><i class="fa fa-check"></i><b>4.11</b> Committing - how often? Tracking changes in your files</a></li>
 <li class="chapter" data-level="4.12" data-path="github.html"><a href="github.html#happy-git-with-r"><i class="fa fa-check"></i><b>4.12</b> Happy Git with R</a></li>
 </ul></li>
@@ -563,7 +563,7 @@ git config --list</code></pre></li>
 <p>The files you added should be on github.com: <br /></p>
 <p><img src="img/Github_remote.png" /> <br /> <br /></p>
 <p>Let’s also explore commit history, file history.</p>
-<div id="your-turn-3" class="section level3">
+<div id="your-turn-4" class="section level3">
 <h3><span class="header-section-number">4.9.1</span> Your turn!</h3>
 <p>This time let’s edit an existing file instead of adding something new. Open your README file by clicking on it in the Files pane (lower right corner). Write a few lines of text, save, and see what happens in your Git Tab. Sync it to your remote repository (Github.com).</p>
 <p>Also, go to your Finder/Windows Explorer, and copy-paste something into your local GitHub repo. Then go back to RStudio and confirm that git tracked it. Remember, git will track anything within that folder (the way Dropbox does), it’s not specific to RStudio!</p>
@@ -584,35 +584,11 @@ output: html_document
 
 # Learning ggplot2
 
-We&#39;re learning ggplot.2 It&#39;s going to be amazing. 
+We&#39;re learning ggplot2 It&#39;s going to be amazing. 
 </code></pre>
 <p>Now, let’s save it. I’m going to call my file <code>ggplot2.Rmd</code>.</p>
-<p>OK. Now let’s practice with some of those commands that we were working on this morning.</p>
-<p>Create a new chunk in your RMarkdown first in one of these ways:</p>
-<ul>
-<li>click “Insert &gt; R” at the top of the editor pane</li>
-<li>type by hand ```{r} ```</li>
-<li>if you haven’t deleted a chunk that came with the new file, edit that one</li>
-</ul>
-<p>Now, let’s write some R code.</p>
-<pre><code>library(tidyverse) # install.packages(&#39;tidyverse&#39;)</code></pre>
-<p>Now, hitting return does not execute this command; remember, it’s just a text file. To execute it, we need to get what we typed in the the R chunk (the grey R code) down into the console. How do we do it? There are several ways (let’s do each of them):</p>
-<ol style="list-style-type: decimal">
-<li>copy-paste this line into the console.</li>
-<li>select the line (or simply put the cursor there), and click ‘Run’. This is available from
-<ol style="list-style-type: lower-alpha">
-<li>the bar above the file (green arrow)</li>
-<li>the menu bar: Code &gt; Run Selected Line(s)</li>
-<li>keyboard shortcut: command-return</li>
-</ol></li>
-<li>click the green arrow at the right of the code chunk</li>
-</ol>
-<div id="your-turn-4" class="section level3">
-<h3><span class="header-section-number">4.10.1</span> Your turn</h3>
-<p>Add a few more commands to your file from this morning. Execute them by trying the three ways above.</p>
 <p>Then, sync your file to GitHub.</p>
 <p>What if a file doesn’t show up in the Git tab and you expect that it should? Check to make sure you’ve saved the file. If the filename is red with an asterix, there have been changes since it was saved. Remember to save before syncing to GitHub!</p>
-</div>
 </div>
 <div id="committing---how-often-tracking-changes-in-your-files" class="section level2">
 <h2><span class="header-section-number">4.11</span> Committing - how often? Tracking changes in your files</h2>

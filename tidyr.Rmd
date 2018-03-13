@@ -13,7 +13,6 @@ Now you have some experience wrangling and working with tidy data. But we all kn
 **Objectives**
 
 - learn `tidyr` with the `gapminder` package
-- other wrangling: joins, binding
 - practice the RStudio-GitHub workflow
 - your turn: use the data wrangling cheat sheet to explore window functions
 
