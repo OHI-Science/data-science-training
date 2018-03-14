@@ -78,7 +78,7 @@ Opening this Project in a new Session opens up a new world of awesomeness from R
 
 Have a look in your git tab. 
 
-Like we saw this morning, when you first clone a repo through RStudio, RStudio will add an `.Rproj` file to your repo. And if you didn't add a `.gitignore` file when you originally created the repo on GitHub.com, RStudio will also add this for you. So, Parter 1, let's go ahead and sync this back to GitHub.com. 
+Like we saw this morning, when you first clone a repo through RStudio, RStudio will add an `.Rproj` file to your repo. And if you didn't add a `.gitignore` file when you originally created the repo on GitHub.com, RStudio will also add this for you. So, Partner 1, let's go ahead and sync this back to GitHub.com. 
 
 Remember: 
 
@@ -129,7 +129,7 @@ I recommend pulling every time you come back to a collaborative repository. Whet
 
 ## Merge conflicts
 
-What kind of heartache are we talking about? Let's explore.
+What kind of heartache are we talking about? Let's explore. **Stop and watch me create and solve a merge conflict with my Partner 2, and then you will have time to recreate this with your partner.** 
 
 Within a file, GitHub tracks changes line-by-line. So you can also have collaborators working on different lines within the same file and GitHub will be able to weave those changes into each other -- that's it's job! It's when you have collaborators working on *the same lines within the same file* that you can have **merge conflicts**. Merge conflicts can be frustrating, but they are actually trying to help you (kind of like R's error messages). They occur when GitHub can't make a decision about what should be on a particular line and needs a human (you) to decide. And this is good -- you don't want GitHub to decide for you, it's important that you make that decision. 
 
@@ -147,7 +147,7 @@ So Partner 2 is not allowed to pull, it failed. GitHub is protecting Partner 2 b
 
 Let's follow their advice and have Partner 2 commit. Great. Now let's pull again. 
 
-Oh no!
+Still not happy!
 
 ![](img/github_mergeconflict2.png)
 
@@ -179,6 +179,11 @@ Then be sure to stage, and write a commit message. I often write "resolving merg
 
 ![](img/github_mergeconflict4.png)
 
+### Your turn
+
+Create a merge conflict with your partner, like we did in the example above. And try other ways to get and solve merge conflicts. For example, when you get the following error message, try both ways (commit or stash. Stash means copy/move it somewhere else, for example, on your Desktop temporarily).
+
+![](img/github_mergeconflict.png)
 
 ## How do you avoid merge conflicts?
 
@@ -188,12 +193,29 @@ Also, talk with your collaborators. Although our Ocean Health Index project is h
 
 But merge conflicts will occur and some of them will be heartbreaking and demoralizing. hey happen to me when I work on my work computer and laptop. So protect yourself by pulling and syncing often! 
 
-## Collaborative analysis
+## Create your collaborative website
 
-Alright! Now let's start collaborating. We'll be playing around with airline flights data, so let's get setup a bit. 
+OK. Let's have Partner 2 create a new RMarkdown file. Here's what they will do: 
+
+1. Pull!
+1. Create a new RMarkdown file **and name it `index.Rmd`**. Make sure it's all lowercase, and named `index.Rmd`. This will be the homepage for our website! 
+1. Maybe change the title of the Rmd, call it "Our website"
+1. Knit!
+1. Save and sync your .Rmd and your .html files 
+    - (pull, stage, commit, pull, push)
+1. Go to GitHub.com and go to your rendered website! Where is it? Figure out your website's url from your github repo's url. For example: 
+    - my github repo: <https://github.com/jules32/collab-research>
+    - my website url: <https://jules32.github.io/collab-research/>
+    - note that the url starts with my **username.github.io**
+    
+So cool! On websites, if something is called `index.html`, that defaults to the home page. So <https://jules32.github.io/collab-research/> is the same as <https://jules32.github.io/collab-research/index.html>. If you name your RMarkdown file `my_research.Rmd`, the url will become <https://jules32.github.io/collab-research/my_research.html>.
+
+## Your turn
+
+Here is some collaborative analysis you can do on your own. We'll be playing around with airline flights data, so let's get setup a bit. 
 
 1. Person 1: clean up the README to say something about you two, the authors.
-1. Person 2: create an RMarkdown file, add something about the authors, and knit it. 
+1. Person 2: edit the `index.Rmd` or create a new RMarkdown file: maybe add something about the authors, and knit it. 
 1. Both of you: sync to GitHub.com (pull, stage, commit, push). 
 1. Both of you: once you've both synced (talk to each other about it!), pull again. You should see each others' work on your computer.
 1. Person 1: in the RMarkdown file, add a bit of the plan. We'll be exploring the `nycflights13` dataset. This is data on flights departing New York City in 2013.
