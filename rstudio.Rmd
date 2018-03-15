@@ -121,8 +121,10 @@ Another way to inspect this variable is to begin typing `this_`...and RStudio wi
 
 One more:
 ```{r}
-science_rocks <- 100
+science_rocks <- "yes it does!"
 ```
+
+You can see that we can assign an object to be a word, not a number. In R, this is called a "string", and R knows it's a word and not a number because it has quotes `" "`. You can work with strings in your data in R pretty easily, thanks to the [`stringr`](http://stringr.tidyverse.org/) and [`tidytext`](https://github.com/juliasilge/tidytext#tidytext-text-mining-using-dplyr-ggplot2-and-other-tidy-tools) packages. We won't talk about strings very much specifically, but know that R can handle text, and it can work with text and numbers together. 
 
 Let's try to inspect:
 ```{r, eval=FALSE}
