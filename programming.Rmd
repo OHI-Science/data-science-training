@@ -342,7 +342,14 @@ if (condition is true) {
 }
 ```
 
-Let's bring this concept into our for loop for Europe that we've just done. What if we want to add the label "Estimated" to countries that were estimated? Here's what we'd do.  
+Let's bring this concept into our for loop for Europe that we've just done. What if we want to add the label "Estimated" to countries that were estimated? Here's what we'd do.
+
+First, import csv file with information on whether data was estimated or reported, and join to gapminder dataset:
+
+```{r}
+est <- readr::read_csv('https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/countries_estimated.csv')
+gapminder_est <- left_join(gapminder, est)
+```
 
 ```{r, eval=FALSE}
 dir.create("figures") 
@@ -397,9 +404,6 @@ This worked, but we got a warning message with the if statement. This is because
 dir.create("figures") 
 dir.create("figures/Europe") 
 
-
-est <- read_csv('data/countries_estimated.csv')
-gapminder_est <- left_join(gapminder, est)
 
 ## create a list of countries
 gap_europe <- gapminder_est %>% ## use instead of gapminder
