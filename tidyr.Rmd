@@ -8,7 +8,7 @@ library(htmltools)
 
 ## Overview
 
-Now you have some experience wrangling and working with tidy data. But we all know that not all data that you have are tidy. So how do we make data more tidy? With the `tidyr` package. 
+Now you have some experience working with tidy data and seeing the logic of wrangling when data are structured in a tidy way. But 'real' data often don't start off in a tidy way, and require some reshaping to become tidy. The `tidyr` package is for reshaping data. You won't use `tidyr` functions as much as you use `dplyr` functions, but it is incredibly powerful when you need it.
 
 **Objectives**
 
@@ -27,7 +27,7 @@ These materials borrow heavily from:
 
 ### Setup
 
-We'll work today in RMarkdown. You can either continue from the same RMarkdown as yesterday, or begin a new one. 
+We'll learn `tidyr` in an RMarkdown file within a GitHub repository so we can practice what we've learned so far. You can either continue from the same RMarkdown as yesterday, or begin a new one. 
 
 **Here's what to do:**
 
@@ -39,17 +39,6 @@ I'm going to write this in my R Markdown file:
 ```
 Data wrangling with `tidyr`, which is part of the tidyverse. We are going to tidy some data!
 ```
-
-<!---
-There are three families of verbs designed to work with relational data:
-
-- Mutating joins, which add new variables to one data frame from matching observations in another.
-
-- Filtering joins, which filter observations from one data frame based on whether or not they match an observation in the other table.
-
-- Set operations, which treat observations as if they were set elements.
-
---->
 
 ### load `tidyverse` (which has `tidyr` inside)
 
