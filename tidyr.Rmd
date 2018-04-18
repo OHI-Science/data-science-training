@@ -6,26 +6,94 @@ options(scipen = 999, digits = 3) #restrict scientific notation and long decimal
 library(htmltools)
 ```
 
-## Overview
+## Objectives and Resources
 
 Now you have some experience working with tidy data and seeing the logic of wrangling when data are structured in a tidy way. But 'real' data often don't start off in a tidy way, and require some reshaping to become tidy. The `tidyr` package is for reshaping data. You won't use `tidyr` functions as much as you use `dplyr` functions, but it is incredibly powerful when you need it.
 
-**Objectives**
+### Objectives
 
 - learn `tidyr` with the `gapminder` package
 - practice the RStudio-GitHub workflow
 - your turn: use the data wrangling cheat sheet to explore window functions
 
 
-**Resources**
+### Resources
 
 These materials borrow heavily from: 
 
 - [R for Data Science: Relational Data](http://r4ds.had.co.nz/relational-data)
 - [R for Data Science: Tidy Data](http://r4ds.had.co.nz/tidy-data.html#spreading-and-gathering)
 
+### Data and packages
+
+We'll use the package `tidyr` and `dplyr`, which are bundled within the `tidyverse` package. 
+
+We'll also be using the Gapminder data — please see \@ref(dplyr#data-and-packages) for more details. We will also explore several datasets that come in Base R, in the `datasets` package.
+
+
+## `tidyr` basics
+
+Remember, from the **`dplyr`** section, that tidy data means all rows are an observation and all columns are variables.
+![](img/tidy_data.png)
+
+Why is this important? Well, if your data are formatted in a standard way, you will be able to use analysis tools that operate on that standard way. Your analyses will be streamlined and you won't have to reinvent the wheel everytime you see data in a different. 
+
+Let's take a look at some examples.
+
+Data are often entered in a *wide* format where each row is often a site/subject/patient and you have multiple observation variables containing the same type of data. 
+
+An example of data in a *wide* format is the `AirPassengers` dataset which provides information on monthly airline passenger numbers from 1949-1960. You'll notice that each row is a single year and the columns are each month Jan - Dec. 
+
+```{r wide_data_ex}
+AirPassengers
+```
+
+<!---TODO: gather this (it's not a dataframe...)--->
+This format is intuitive for data entry, but less so for data analysis. If you wanted to calculate the montlhy mean, where would you put it? As another row? 
+
+Often, data must be reshaped for it to become tidy data. What does that mean? There are four main verbs we'll use, which are essentially pairs of opposites:
+
+- turn columns into rows (`gather()`),
+- turn rows into columns (`spread()`),
+- turn a character column into multiple columns (`separate()`),
+- turn multiple character columns into a single column (`unite()`)
+
+![](img/rstudio-cheatsheet-spread-gather-sep-unite.png)
+
+
+## Explore gapminder dataset.
+
+Yesterday we started off with the gapminder data in a format that was already tidy. But what if it weren't? Let's look at a different version of those data. 
+
+The data are on GitHub. Navigate there by going to: 
+
+github.com > ohi-science > data-science-training > data > gapminder_wide.csv
+
+or by copy-pasting this in the browser: `https://github.com/OHI-Science/data-science-training/blob/master/data/gapminder_wide.csv`
+
+First have a look at the data. 
+
+You can see there are a lot more columns than the version we looked at before. This format is pretty common, because it can be a lot more intuitive to *enter* data in this way.
+
+![](img/gapminder_wide_gh.png)
+
+<br>
+
+Sometimes, as with the gapminder dataset, we have multiple types of observed data. It is somewhere in between the purely 'long' and 'wide' data formats: 
+
+- 3 "ID variables" (`continent`, `country`, `year`) 
+- 3 "Observation variables" (`pop`,`lifeExp`,`gdpPercap`). 
+
+It's pretty common to have data in this format in most cases despite not having ALL observations in 1 column, since all 3 observation variables have different units. But we can play with switching it to long format and wide to show what that means (i.e. long would be 4 ID variables and 1 observation variable).
+
+
+But we want it to be in a tidy way so that we can work with it more easily. So here we go. 
+
+You use `spread()` and `gather()` to transform or reshape data between *wide* to *long* formats.
 
 ### Setup
+
+OK let's get going. 
 
 We'll learn `tidyr` in an RMarkdown file within a GitHub repository so we can practice what we've learned so far. You can either continue from the same RMarkdown as yesterday, or begin a new one. 
 
@@ -47,85 +115,6 @@ First load `tidyr` in an R chunk. You already have installed the tidyverse, so y
 ```{r, message=FALSE, warning=F}
 library(tidyverse) # install.packages("tidyverse")
 ```
-
-
-## `tidyr` basics
-
-Remember, from the **`dplyr`** section, that tidy data means all rows are an observation and all columns are variables.
-![](img/tidy_data.png)
-
-It's important to recognize what *shape* your data is in, and work towards tidying it up.
-
-Let's take a look at some examples.
-
-Data in the *wide* format each row is often a site/subject/patient and you have multiple observation variables containing the same type of data. These can be either repeated observations over time, or observation of multiple variables (or a mix of both). Data input may be simpler or some other applications may prefer the *wide* format. However, many of `R`'s functions have been designed assuming you have *long* format data. 
-
-A simple example of data in a *wide* format is the `AirPassengers` dataset which provides information on monthly airline passenger numbers from 1949-1960. You'll notice that each row is a single year and the columns are each month Jan - Dec. 
-
-```{r wide_data_ex}
-AirPassengers
-```
-
-*long* format is the tidy data we are after, where:
-
- - each column is a variable
- - each row is an observation
-
-In the *long* format, you usually have 1 column for the observed variable and the other columns are ID variables. The `mpg` dataset is an example of a *long* dataset with each row representing a single car and each column representing a variable of that car such as `manufacturer` and `year`.
-
-```{r long_data_ex}
-mpg
-```
-
-<br> 
-
-These different data formats mainly affect readability. For humans, the wide format is often more intuitive since we can often see more of the data on the screen due to it's shape. However, the long format is more machine readable and is closer to the formatting of databases. The ID variables in our dataframes are similar to the fields in a database and observed variables are like the database values.
-
-**Note:** Generally, mathematical operations are better in long format, although some plotting functions actually work better with wide format.
-
-Often, data must be reshaped for it to become tidy data. What does that mean? There are four main verbs we'll use, which are essentially pairs of opposites:
-
-- turn columns into rows (`gather()`),
-- turn rows into columns (`spread()`),
-- turn a character column into multiple columns (`separate()`),
-- turn multiple character columns into a single column (`unite()`)
-
-![](img/rstudio-cheatsheet-spread-gather-sep-unite.png)
-
-
-## Explore gapminder dataset.
-
-Yesterday we started off with the gapminder data in a format that was already tidy. But what if it weren't? Let's look at a different version of those data. 
-
-
-The data are on GitHub. Navigate there by going to: 
-
-github.com > ohi-science > data-science-training > data > gapminder_wide.csv
-
-or by copy-pasting this in the browser: `https://github.com/OHI-Science/data-science-training/blob/master/data/gapminder_wide.csv`
-
-Have a look at the data. 
-
-> Question: Is gapminder a purely long, purely wide, or some intermediate format?
-
-You can see there are a lot more columns than the version we looked at before. This format is pretty common, because it can be a lot more intuitive to *enter* data in this way.
-
-![](img/gapminder_wide_gh.png)
-
-<br>
-
-Sometimes, as with the gapminder dataset, we have multiple types of observed data. It is somewhere in between the purely 'long' and 'wide' data formats: 
-
-- 3 "ID variables" (`continent`, `country`, `year`) 
-- 3 "Observation variables" (`pop`,`lifeExp`,`gdpPercap`). 
-
-It's pretty common to have data in this intermediate format in most cases despite not having ALL observations in 1 column, since all 3 observation variables have different units. But we can play with switching it to long format and wide to show what that means (i.e. long would be 4 ID variables and 1 observation variable).
-
-
-But we want it to be in a tidy way so that we can work with it more easily. So here we go. 
-
-You use `spread()` and `gather()` to transform or reshape data between *wide* to *long* formats.
-
 ## `gather()` data from wide to long format
 
 `r img(src='img/rstudio-cheatsheet-reshaping-data-gather.png', width=500)` 
@@ -138,7 +127,7 @@ Read in the data from GitHub. Remember, you need to click on the 'Raw' button fi
 ## wide format
 gap_wide <- readr::read_csv('https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder_wide.csv')
 
-## yesterday's format (intermediate)
+## yesterday's format
 gapminder <- readr::read_csv('https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder.csv')
 ```
 
@@ -154,8 +143,8 @@ While wide format is nice for data entry, it's not nice for calculations. Some o
 > Question: let's talk this through together. If we're trying to turn the `gap_wide` format into `gapminder` format, what structure does it have that we like? And what do we want to change?
 
 - We like the continent and country columns. We won't want to change those. 
-- For long format, we'd want just 1 column identifying the variable name (`tidyr` calls this a **'key'**), and 1 column for the data (`tidyr` calls this the '**value'**).
-- For intermediate format, we'd want 3 columns for `gdpPercap`, `lifeExp`, and `pop`.
+- We want 1 column identifying the variable name (`tidyr` calls this a **'key'**), and 1 column for the data (`tidyr` calls this the '**value'**).
+- We actually want 3 different columns for variable: `gdpPercap`, `lifeExp`, and `pop`.
 - We would like year as a separate column. 
 
 Let's get it to long format. We'll have to do this in 2 steps. The first step is to take all of those column names (e.g. `lifeExp_1970`) and make them a variable in a new column, and transfer the values into another column. Let's learn by doing:
@@ -308,7 +297,7 @@ ggplot(data = cont, aes(x = year, y = mean_le, color = continent)) +
 
 ## `spread()` 
 
-The function `spread()` is used to transform data from long to intermediate format
+The function `spread()` is used to transform data from long to wide format
 
 Alright! Now just to double-check our work, let's use the opposite of `gather()` to spread our observation variables back to the original format with the aptly named `spread()`. You pass `spread()` the key and value pair, which is now `obs_type` and `obs_values`.
 
@@ -329,7 +318,7 @@ names(gap_normal)
 names(gapminder)
 ```
 
-Now we've got an intermediate dataframe `gap_normal` with the same dimensions as the original `gapminder`.
+Now we've got a dataframe `gap_normal` with the same dimensions as the original `gapminder`.
 
 > ### Exercise
 >
