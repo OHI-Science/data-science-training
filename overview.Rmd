@@ -2,7 +2,7 @@
 
 Welcome. 
 
-In this training you will learn R, RStudio, Git, and GitHub. It's going to be fun and empowering. You will learn a reproducible workflow that can be used in research and analyses of all kinds, including Ocean Health Index assessments. This is really powerful, cool stuff, and not just for data: I made and published this book using those four tools and workflow.
+In this training you will learn R, RStudio, Git, and GitHub. It's going to be fun and empowering! You will learn a reproducible workflow that can be used in research and analyses of all kinds, including Ocean Health Index assessments. This is really powerful, cool stuff, and not just for data: I made and published this book using those four tools and workflow.
 
 We will practice learning three main things all at the same time: coding with best practices (R/RStudio), collaborative version control (Git/GitHub), and communication/publishing (RMarkdown/GitHub). This training will teach these all together to reinforce skills and best practices, and get you comfortable with a workflow that you can use in your own projects. 
 
@@ -10,22 +10,24 @@ We will practice learning three main things all at the same time: coding with be
 
 This is going to be a fun workshop. 
 
-The plan is to expose you to a lot of great tools that you can have confidence using in your research. You'll be working hands-on and doing the same things on your own computer as we do live on up on the screen. We're going to go through a lot in these two days and it's less important that you remember it all. More imporatantly, you'll have experience with it and confidence that you can do it. The main thing to take away is that there *are* good ways to approach your analyses; we will teach you to expect that so you can find what you need and use it! And, you can use these materials as a reference as you go forward with your analyses. 
+The plan is to expose you to a lot of great tools that you can have confidence using in your research. You'll be working hands-on and doing the same things on your own computer as we do live on up on the screen. We're going to go through a lot in these two days and it's less important that you remember it all. More imporatantly, you'll have experience with it and confidence that you can do it. The main thing to take away is that there *are* good ways to approach your analyses; we will teach you to expect that so you can find what you need and use it! And, you can use these materials as a reference for your analyses and for talking points so you can communicate the importance of these tools to your communities!
 
-We'll be talking about : 
+You are all welcome here and encouraged to help each other. 
 
-- how to THINK about data. And not just any data; tidy data.
-- how to increase reproducibility in your science
-- how to more easily collaborate with others--including your future self!
-- how the #rstats community is fantastic. The tools we're using are developed by real people. They are building great stuff and helping people of all skill-levels learn how to use it. 
+Everyone in this workshop is coming from a different place with different experiences and expectations. But everyone will learn something new here, because there is so much innovation in the data science world. Instructors and helpers learn something new every time, from each other and from your questions. If you are already familiar with some of this material, focus on how we teach, and how you might teach it to others. A big part of this training is not only for you to learn these skills, but for you to also teach others and increase these practices in science as a whole. 
 
-Everyone in this workshop is coming from a different place with different experiences and expectations. But everyone will learn something new here, because there is so much innovation in the data science world. Even instructors and helpers learn something new every time, from each other and from your questions. You are all welcome here and encouraged to help each other. 
+## What we'll cover 
 
-Are you familiar with some of this material already? Then focus on how you might teach it to others: A big part of this is not only you learning these skills, but increasing these practices in science as a whole. 
+- how to THINK about data 
+    - how to think about data separately from your research questions
+    - how and why to tidy data and analyze tidy data, rather than making your analyses accommodate messy data
+- how to increase efficiency in your science
+    - and reproducibility
+    - and collaboration with others — expecially Future You!
+- how to learn with intention and community
+    - think ahead instead of only to get a single job done now
+    - the #rstats online community is fantastic. The tools we're using are developed by real people. Real, nice people. They are building powerful and empowering tools and are welcoming to all skill-levels
 
-Here are some important themes throughout (these are joke book covers): 
-
-![](img/practical_dev_both.png)
 
 ### Tidy data workflow
 
@@ -46,32 +48,38 @@ We will be focusing on:
     - dynamic documents with *R Markdown*
     
     
-## Gapminder data
+This is really critical. Instead of building your analyses around whatever (likely weird) format your data are in, take deliberate steps to make your data tidy. When your data are tidy, you can use a growing assortment of powerful analytical and visualization tools instead of inventing home-grown ways to accommodate your data. This will save you time since you aren't reinventing the wheel, and will make your work more clear and understandable to your collaborators (most importantly, Future You). 
 
-One of the most important things we hope you learn from this book is how to think about data separately from your own research context. Said in another way, you'll learn to distinguish your data questions from your research questions. Here, we are focusing on data questions, and we will use data that is not specific to your research. We learn through metaphor, and you will likely see parallels to your own data, which will ultimately help you in your research.
+    
+## Learning with data that are not your own
 
+One of the most important things you will learn is how to think about data separately from your own research context. Said in another way, you'll learn to distinguish your data questions from your research questions. Here, we are focusing on data questions, and we will use data that is not specific to your research.
 
-We'll be using the [gapminder dataset](http://www.gapminder.org/world), which represents the health and wealth of nations. It was pioneered by [Hans Rosling](https://www.ted.com/speakers/hans_rosling), who is famous for describing the prosperity of nations over time through famines, wars and other historic events with this beautiful data visualization in his [2006 TED Talk: The best stats you've ever seen](https://www.ted.com/talks/hans_rosling_shows_the_best_stats_you_ve_ever_seen): 
+We will be using several different data sets throughout this training, and will help you see the patterns and parallels to your own data, which will ultimately help you in your research.
 
-[Gapminder Motion Chart<br\>![](https://github.com/remi-daigle/2016-04-15-UCSB/raw/gh-pages/viz/img/gapminder-world_motion-chart.png)](http://www.gapminder.org/world)
+## Emphasizing collaboration
 
-While these data are not specifically oriented around your research, it is a fantastically rich data set with many parallels to data you may have and wrangling you will need to do. There are there are various indicators that are tracked across multiple study sites over many years.
+Collaborating efficiently has historically been really hard to do. It's only been the last 20 years or so that we've moved beyond mailing things with the postal service. Being able to email and get feedback on files through track changes was a huge step forward, but it comes with a lot of bookkeeping and reproduciblity issues (did I do my analyses with `thesis_final_final.xls` or `thesis_final_usethisone.xls`?). But now, open tools make it much easier to collaborate. 
+
+Working with collaborators in mind is critical for reproducibility. And, your most important collaborator is Future You. This training will introduce best practices using open tools, so that collaboration will become second nature to you!
 
 ## By the end of the course...
 
-By the end of the course, you'll wrangle the gapminder data, and make your own graphics that you'll publish on a webpage you've built with GitHub and RMarkdown. Woop!
+By the end of the course, you'll wrangle a few different data sets, and make your own graphics that you'll publish on webpages you've built collaboratively with GitHub and RMarkdown. Woop!
 
-I made this training book with GitHub and RStudio's RMarkdown, which is what we'll be learning in the workshop.
+Here are some important things to keep in mind as you learn (these are joke book covers): 
 
+![](img/practical_dev_both.png)
 
 ## Prerequisites
 
 Before the training, please make sure you have done the following: 
 
-1. Have up-to-date versions of `R` and RStudio and have RStudio configured with Git/GitHub 
-    - Download and install R: https://cloud.r-project.org
-    - Download and install RStudio: http://www.rstudio.com/download 
-    - Create a GitHub account: https://github.com *Note! Shorter names that kind of identify you are better, and use your work email!*
+1. Download and install **up-to-date versions** of:
+    - R: https://cloud.r-project.org
+    - RStudio: http://www.rstudio.com/download 
+    - Git: https://git-scm.com/downloads *Note: open the download and follow normal install procedures on your computer but you won't see any software installed when you're done**
+1. Create a GitHub account: https://github.com *Note! Shorter names that kind of identify you are better, and use your work email!*
 1. Get comfortable: if you're not in a physical workshop, be set up with two screens if possible. You will be following along in RStudio on your own computer while also watching a virtual training or following this tutorial on your own.
 
 <!---
@@ -130,5 +138,3 @@ This material builds from a lot of fantastic materials developed by others in th
 - [STAT 545](http://stat545.com/) by Jenny Bryan
 - [Happy Git with R](http://happygitwithr.com) by Jenny Bryan
 - [Software Carpentry](https://software-carpentry.org/lessons/) by the Carpentries
-
-
