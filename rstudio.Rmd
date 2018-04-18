@@ -8,7 +8,7 @@ library(htmltools)
 
 ## Objectives and Resources
 
-**Objectives**
+### Objectives
 
 In this lesson we will:
 
@@ -19,7 +19,7 @@ In this lesson we will:
 - explore RMarkdown
 - configure git on our computers
 
-**Resources**
+### Resources
 
 This lesson is a combination of excellent lessons by others (thank you Jenny Bryan and Data Carpentry!) that I have combined and modified for our workshop today. I definitely recommend reading through the original lessons and using them as reference:   
 
@@ -33,9 +33,9 @@ RStudio has great resources about its IDE (IDE stands for integrated development
 - [webinars](https://www.rstudio.com/resources/webinars/) 
 - [cheatsheets](https://www.rstudio.com/resources/cheatsheets/)
 
-**Data and packages**
+### Data and packages
 
-We will be using data and packages that come with the base R installation.
+We will be using data and packages that are installed with R (often called "Base R").
 
 ## Why learn R with RStudio
 
