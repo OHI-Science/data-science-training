@@ -16,7 +16,7 @@ You are all welcome here and encouraged to help each other.
 
 Everyone in this workshop is coming from a different place with different experiences and expectations. But everyone will learn something new here, because there is so much innovation in the data science world. Instructors and helpers learn something new every time, from each other and from your questions. If you are already familiar with some of this material, focus on how we teach, and how you might teach it to others. A big part of this training is not only for you to learn these skills, but for you to also teach others and increase these practices in science as a whole. 
 
-## What we'll cover 
+## What you'll learn
 
 - how to THINK about data 
     - how to think about data separately from your research questions

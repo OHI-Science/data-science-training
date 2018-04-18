@@ -8,7 +8,7 @@ library(htmltools)
 Philosophy: gh repo and Rproject
 --->
 
-## Overview
+## Objectives and Resources
 
 We will learn about version control using git and GitHub, and we will interface with this through RStudio. Why use version control? To save time when working with your most important collaborator: you. 
 
