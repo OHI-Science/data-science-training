@@ -18,7 +18,7 @@ For some things, base-R is more straight forward, and we'll show you that too. W
 
 ### Objectives
 
-- learn about tidy data
+- learn making tidy data will simplify your analyses
 - learn `dplyr` with `gapminder` data
 - practice RStudio-GitHub workflow
 
@@ -33,8 +33,24 @@ Today's materials are again borrowing from some excellent sources, including:
 - [RStudio's data wrangling cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf) 
 - [RStudio's data wrangling webinar](https://www.rstudio.com/resources/webinars/data-wrangling-with-r-and-rstudio/) 
 
+### Data and packages
+
+**Gapminder data**
+
+We'll be using [Gapminder data](http://www.gapminder.org/world), which represents the health and wealth of nations. It was pioneered by [Hans Rosling](https://www.ted.com/speakers/hans_rosling), who is famous for describing the prosperity of nations over time through famines, wars and other historic events with this beautiful data visualization in his [2006 TED Talk: The best stats you've ever seen](https://www.ted.com/talks/hans_rosling_shows_the_best_stats_you_ve_ever_seen): 
+
+[Gapminder Motion Chart<br\>![](https://github.com/remi-daigle/2016-04-15-UCSB/raw/gh-pages/viz/img/gapminder-world_motion-chart.png)](http://www.gapminder.org/world)
+
+We'll use the package `dplyr`, which is bundled within the `tidyverse` package. Please install the `tidyverse` ahead of time: 
+
+```{r, eval=FALSE}
+install.packages("tidyverse")
+```
+
 
 ## Tidy Data
+
+Let's start off discussing Tidy Data. 
 
 Hadley Wickham, RStudio's Chief Scientist, has been building R packages for data wrangling and visualization based on the idea of **tidy data**. 
 
@@ -52,10 +68,13 @@ Right now we are going to use `dplyr` to wrangle this tidyish data set (the tran
 
 ![](img/r4ds_data-science.png)
 
+<br>
+
+Conceptually, making data tidy first is really critical. Instead of building your analyses around whatever (likely weird) format your data are in, take deliberate steps to make your data tidy. When your data are tidy, you can use a growing assortment of powerful analytical and visualization tools instead of inventing home-grown ways to accommodate your data. This will save you time since you aren't reinventing the wheel, and will make your work more clear and understandable to your collaborators (most importantly, Future You). 
+
 And actually, Hadley Wickham and RStudio have created a ton of packages that help you at every step of the way here. This is from one of Hadley's recent presentations: 
 
 ![](img/tidyverse_wickham_pres.jpg)
-
 
 ### Setup
 
@@ -75,8 +94,8 @@ In your R Markdown file, let's make sure we've got our libraries loaded. Write t
 ```{r, eval=FALSE}
 library(tidyverse)     ## install.packages("tidyverse")
 ```
-This is becoming standard practice for how to load a library in a file, and if you get an error that the library doesn't exist, you can install the package easily by running the code within the comment (highlight `install.packages("tidyverse")` and run it).
 
+This is becoming standard practice for how to load a library in a file, and if you get an error that the library doesn't exist, you can install the package easily by running the code within the comment (highlight `install.packages("tidyverse")` and run it).
 
 ## Explore the gapminder data.frame
 
