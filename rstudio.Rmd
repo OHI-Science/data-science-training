@@ -6,7 +6,7 @@ knitr::opts_chunk$set(error = TRUE)
 library(htmltools)
 ```
 
-## Overview
+## Objectives and Resources
 
 **Objectives**
 
@@ -28,13 +28,14 @@ This lesson is a combination of excellent lessons by others (thank you Jenny Bry
 - [R basics, workspace and working directory, RStudio projects](http://stat545-ubc.github.io/block002_hello-r-workspace-wd-project.html)
 - [Basic care and feeding of data in R](http://stat545-ubc.github.io/block006_care-feeding-data.html)
 
-
-
 RStudio has great resources about its IDE (IDE stands for integrated development environment): 
 
 - [webinars](https://www.rstudio.com/resources/webinars/) 
 - [cheatsheets](https://www.rstudio.com/resources/cheatsheets/)
 
+**Data and packages**
+
+We will be using data and packages that come with the base R installation.
 
 ## Why learn R with RStudio
 
@@ -481,4 +482,6 @@ It may be because you didn't complete a command: is there a little `+` in your c
 
 To see if you have the most current version of RStudio, go to the Help bar > Check for Updates. If there is an update available, you'll have the option to Quit and Download, which will take you to http://www.rstudio.com/download. When you download and install, choose to replace the previous version. 
 
+## Tips
 
+<!---how to make comments --->
