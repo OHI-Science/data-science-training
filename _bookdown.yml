@@ -12,6 +12,6 @@ rmd_files: [
   "tidyr.Rmd",
   "programming.Rmd",
   "collaborating.Rmd",
-  "reproducible.Rmd"]
+  "champion.Rmd"]
 delete_merged_file: true
 output_dir: "docs"

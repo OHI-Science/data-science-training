@@ -1,10 +1,10 @@
 # Programming in R {#programming}
 
-## Objectives and Resources
+## Objectives & Resources
 
 Now we are going to build a little analysis. We will learn to automate our analyses with a for loop. We will make figures, and save them each with automated labeling. Then, we will join data from different files and conditionally label them with if/else statements.
 
-**Objectives**
+### Objectives
 
 - create an R script
 - for loops

@@ -6,7 +6,7 @@ options(scipen = 999, digits = 3) #restrict scientific notation and long decimal
 library(htmltools)
 ```
 
-## Objectives and Resources
+## Objectives & Resources
 
 Now you have some experience working with tidy data and seeing the logic of wrangling when data are structured in a tidy way. But 'real' data often don't start off in a tidy way, and require some reshaping to become tidy. The `tidyr` package is for reshaping data. You won't use `tidyr` functions as much as you use `dplyr` functions, but it is incredibly powerful when you need it.
 

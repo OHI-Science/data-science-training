@@ -1,0 +1,19 @@
+# Tips and next steps {#tips}
+
+## Objectives & Resources
+
+<!---New idea: put this at the end of relevant chapters, not in its own chapter --->
+
+There is so much that we didn't cover, here are some things that will help you carry on on your own, and with collaborators.
+
+### Objectives
+
+### Resources
+
+## R Markdown tips
+
+### Name your R chunks = table of contents
+
+RStudio has been creating a Table of Contents for you out of your Markdown headers and your R code chunks. You can see them and navigate within them by clicking on the little table of contents at the bottom of the Editor: 
+
+![]()

@@ -6,7 +6,7 @@ knitr::opts_chunk$set(error = TRUE)
 library(htmltools)
 ```
 
-## Objectives and Resources
+## Objectives & Resources
 
 ### Objectives
 
@@ -411,6 +411,11 @@ Now, hitting return does not execute this command; remember, it's just a text fi
 
 Add a few more commands to your file from this morning. Execute them by trying the three ways above. Then, save your R Markdown file. 
 
+## RMarkdown video (1-minute)
+
+Let's watch this to demonstrate all the amazing things you can now do: 
+
+[What is RMarkdown?](https://vimeo.com/178485416)
 
 <!--- remove this stuff and instead set up Git/GitHub.
 ## Working directory
