@@ -22,8 +22,11 @@ Everyone in this workshop is coming from a different place with different experi
     - how to think about data separately from your research questions
     - how and why to tidy data and analyze tidy data, rather than making your analyses accommodate messy data
 - how to increase efficiency in your science
-    - and reproducibility
-    - and collaboration with others — expecially Future You!
+    - and increase reproducibility
+    - and facilitate collaboration with others — expecially Future You!
+- how open science is a great benefit
+    - find solutions faster
+    - broaden the impact of your work
 - how to learn with intention and community
     - think ahead instead of only to get a single job done now
     - the #rstats online community is fantastic. The tools we're using are developed by real people. Real, nice people. They are building powerful and empowering tools and are welcoming to all skill-levels

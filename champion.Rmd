@@ -41,14 +41,14 @@ If there are 3 things to communicate to others after this workshop, I think they
 **3. Learn these tools with collaborators and community (redefined):** 
 
 - Your most important collaborator is Future You. 
-- Community shoula also be beyond the colleagues in your field.
+- Community should also be beyond the colleagues in your field.
 - Learn from, with, and for others. 
 
 *This helps your science:* 
 
 - If you learn to talk about your data, you'll find solutions faster. 
 - Build confidence: these skills are transferable beyond your science.
-- Be empathic and inclusive and build a network of allies 
+- Be empathetic and inclusive and build a network of allies 
 
 ## Build community
 
@@ -56,7 +56,7 @@ Join existing communities locally and online, and start local chapters with frie
 
 Some ideas: 
 
-- [Mozilla Study Groups](https://science.mozilla.org/programs/studygroups) Example: [Eco-data-science](http://eco-data-science.github.io/). Also see ([Steven et al 2018](https://www.biorxiv.org/content/early/2018/02/15/265421)) 
+- [Mozilla Study Groups](https://science.mozilla.org/programs/studygroups) Example: [Eco-data-science](http://eco-data-science.github.io/). Also see ([Steven et al. 2018](https://www.biorxiv.org/content/early/2018/02/15/265421)) 
 - [RLadies](https://rladies.org/). Example: [RLadies Santa Barbara](https://www.meetup.com/rladies-santa-barbara/)
 
 These meetups can be for skill-sharing, showcasing how people work, or building community so you can troubleshoot together. They can be an informal "hacky hour" at a cafe or pub!
