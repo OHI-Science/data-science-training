@@ -25,7 +25,7 @@
 <meta name="author" content="The Ocean Health Index Team">
 
 
-<meta name="date" content="2018-04-24">
+<meta name="date" content="2018-10-18">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -141,7 +141,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="3.7" data-path="rstudio.html"><a href="rstudio.html#rmarkdown-video-1-minute"><i class="fa fa-check"></i><b>3.7</b> RMarkdown video (1-minute)</a></li>
 <li class="chapter" data-level="3.8" data-path="rstudio.html"><a href="rstudio.html#troubleshooting"><i class="fa fa-check"></i><b>3.8</b> Troubleshooting</a><ul>
-<li class="chapter" data-level="3.8.1" data-path="rstudio.html"><a href="rstudio.html#i-just-entered-a-command-and-nothings-happening"><i class="fa fa-check"></i><b>3.8.1</b> I just entered a command and nothing’s happening</a></li>
+<li class="chapter" data-level="3.8.1" data-path="rstudio.html"><a href="rstudio.html#i-entered-a-command-and-nothings-happening"><i class="fa fa-check"></i><b>3.8.1</b> I entered a command and nothing’s happening</a></li>
 <li class="chapter" data-level="3.8.2" data-path="rstudio.html"><a href="rstudio.html#how-do-i-update-rstudio"><i class="fa fa-check"></i><b>3.8.2</b> How do I update RStudio?</a></li>
 </ul></li>
 <li class="chapter" data-level="3.9" data-path="rstudio.html"><a href="rstudio.html#tips"><i class="fa fa-check"></i><b>3.9</b> Tips</a></li>
@@ -379,7 +379,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">3.2</span> Why learn R with RStudio</h2>
 <p>You are all here today to learn how to code. Coding made me a better scientist because I was able to think more clearly about analyses, and become more efficient in doing so. Data scientists are creating tools that make coding more intuitive for new coders like us, and there is a wealth of awesome instruction and resources available to learn more and get help.</p>
 <p>Here is an analogy to start us off. <strong>If you were a pilot, R is an an airplane.</strong> You can use R to go places! With practice you’ll gain skills and confidence; you can fly further distances and get through tricky situations. You will become an awesome pilot and can fly your plane anywhere.</p>
-<p>And <strong>if R were an airplane, RStudio is the airport</strong>. RStudio provides support! Runways, communication, community, and other services, and just makes your overall life easier. So it’s not just the infrastructure (the user interface or IDE), although it is a great way to learn and interact with your variables, files, and interact directly with GitHub. It’s also data science philosophy, R packages, community, and more. So although you can fly your plane without an airport and we could learn R without RStudio, that’s not what we’re going to do.</p>
+<p>And <strong>if R were an airplane, RStudio is the airport</strong>. RStudio provides support! Runways, communication, community, and other services, and basically makes your overall life easier. So it’s not only the infrastructure (the user interface or IDE), although it is a great way to learn and interact with your variables, files, and interact directly with GitHub. It’s also data science philosophy, R packages, community, and more. So although you can fly your plane without an airport and we could learn R without RStudio, that’s not what we’re going to do.</p>
 <blockquote>
 <p>We are learning R together with RStudio and its many supporting features.</p>
 </blockquote>
@@ -407,13 +407,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul>
 <p>FYI: you can change the default location of the panes, among many other things: <a href="https://support.rstudio.com/hc/en-us/articles/200549016-Customizing-RStudio">Customizing RStudio</a>.</p>
 <p>An important first question: <strong>where are we?</strong></p>
-<p>If you’ve just opened RStudio for the first time, you’ll be in your Home directory. This is noted by the <code>~/</code> at the top of the console. You can see too that the Files pane in the lower right shows what is in the Home directory where you are. You can navigate around within that Files pane and explore, but note that you won’t change where you are: even as you click through you’ll still be Home: <code>~/</code>.</p>
+<p>If you’ve have opened RStudio for the first time, you’ll be in your Home directory. This is noted by the <code>~/</code> at the top of the console. You can see too that the Files pane in the lower right shows what is in the Home directory where you are. You can navigate around within that Files pane and explore, but note that you won’t change where you are: even as you click through you’ll still be Home: <code>~/</code>.</p>
 <div class="figure">
 <img src="img/RStudio_IDE_homedir.png" />
 
 </div>
 <p>OK let’s go into the Console, where we interact with the live R process.</p>
-<p>Make an assignment and then inspect the object you just created.</p>
+<p>Make an assignment and then inspect the object you created by typing its name on its own.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">3</span> <span class="op">*</span><span class="st"> </span><span class="dv">4</span>
 x</code></pre></div>
 <pre><code>## [1] 12</code></pre>
@@ -435,20 +435,20 @@ x</code></pre></div>
 <p>Another way to inspect this variable is to begin typing <code>this_</code>…and RStudio will automagically have suggested completions for you that you can select by hitting the tab key, then press return.</p>
 <p>One more:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">science_rocks &lt;-<span class="st"> &quot;yes it does!&quot;</span></code></pre></div>
-<p>You can see that we can assign an object to be a word, not a number. In R, this is called a “string”, and R knows it’s a word and not a number because it has quotes <code>&quot; &quot;</code>. You can work with strings in your data in R pretty easily, thanks to the <a href="http://stringr.tidyverse.org/"><code>stringr</code></a> and <a href="https://github.com/juliasilge/tidytext#tidytext-text-mining-using-dplyr-ggplot2-and-other-tidy-tools"><code>tidytext</code></a> packages. We won’t talk about strings very much specifically, but know that R can handle text, and it can work with text and numbers together.</p>
+<p>You can see that we can assign an object to be a word, not a number. In R, this is called a “string”, and R knows it’s a word and not a number because it has quotes <code>&quot; &quot;</code>. You can work with strings in your data in R pretty easily, thanks to the <a href="http://stringr.tidyverse.org/"><code>stringr</code></a> and <a href="https://github.com/juliasilge/tidytext#tidytext-text-mining-using-dplyr-ggplot2-and-other-tidy-tools"><code>tidytext</code></a> packages. We won’t talk about strings very much specifically, but know that R can handle text, and it can work with text and numbers together (this is a huge benefit of using R).</p>
 <p>Let’s try to inspect:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sciencerocks
 <span class="co"># Error: object &#39;sciencerocks&#39; not found</span></code></pre></div>
 <div id="error-messages-are-your-friends" class="section level3">
 <h3><span class="header-section-number">3.3.1</span> Error messages are your friends</h3>
 <p>Implicit contract with the computer / scripting language: Computer will do tedious computation for you. In return, you will be completely precise in your instructions. Typos matter. Case matters. Pay attention to how you type.</p>
-<p>Remember that this is a language, not unsimilar to English! There are times you aren’t understood – it’s going to happen. There are different ways this can happen. Sometimes you’ll get an error. This is like someone saying ‘What?’ or ‘Pardon’? Error messages can also be more useful, like when they say ‘I didn’t understand this specific part of what you said, I was expecting something else’. That is a great type of error message. Error messages are your friend. Google them (copy-and-paste!) to figure out what they mean.</p>
+<p>Remember that this is a language, not unsimilar to English! There are times you aren’t understood – it’s going to happen. There are different ways this can happen. Sometimes you’ll get an error. This is like someone saying ‘What?’ or ‘Pardon’? Error messages can also be more useful, like when they say ‘I didn’t understand what you said, I was expecting you to say blah’. That is a great type of error message. Error messages are your friend. Google them (copy-and-paste!) to figure out what they mean.</p>
 <img src="img/practicalDev_googleErrorMessage.jpg" width="400"/>
-<p>And also know that there are errors that can creep in more subtly, when you are giving information that is understood, but not in the way you meant. Like if I’m telling a story about tables and you’re picturing where you eat breakfast and I’m talking about data. This can leave me thinking I’ve gotten something across that the listener (or R) interpreted very differently. And as I continue telling my story you get more and more confused… So write clean code and check your work as you go to minimize these circumstances!</p>
+<p>And also know that there are errors that can creep in more subtly, when you are giving information that is understood, but not in the way you meant. Like if I am telling a story about suspenders that my British friend hears but silently interprets in a very different way (true story). This can leave me thinking I’ve gotten something across that the listener (or R) might silently interpreted very differently. And as I continue telling my story you get more and more confused… Clear communication is critical when you code: write clean, well documented code and check your work as you go to minimize these circumstances!</p>
 </div>
 <div id="logical-operators-and-expressions" class="section level3">
 <h3><span class="header-section-number">3.3.2</span> Logical operators and expressions</h3>
-<p>A moment about <strong>logical operators and expressions</strong>. We can ask questions about the objects we just made.</p>
+<p>A moment about <strong>logical operators and expressions</strong>. We can ask questions about the objects we made.</p>
 <ul>
 <li><code>==</code> means ‘is equal to’</li>
 <li><code>!=</code> means ‘is not equal to’</li>
@@ -457,11 +457,11 @@ x</code></pre></div>
 <li><code>&lt;=</code> means ` is less than or equal to’</li>
 <li><code>&gt;=</code> means ` is greater than or equal to’</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">science_rocks <span class="op">==</span><span class="st"> </span><span class="dv">2</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x <span class="op">==</span><span class="st"> </span><span class="dv">2</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">science_rocks <span class="op">&lt;=</span><span class="st"> </span><span class="dv">30</span></code></pre></div>
-<pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">science_rocks <span class="op">!=</span><span class="st"> </span><span class="dv">5</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x <span class="op">&lt;=</span><span class="st"> </span><span class="dv">30</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x <span class="op">!=</span><span class="st"> </span><span class="dv">5</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <blockquote>
 <p>Shortcuts You will make lots of assignments and the operator <code>&lt;-</code> is a pain to type. Don’t be lazy and use <code>=</code>, although it would work, because it will just sow confusion later. Instead, utilize <strong>RStudio’s keyboard shortcut: Alt + - (the minus sign)</strong>. Notice that RStudio automagically surrounds <code>&lt;-</code> with spaces, which demonstrates a useful code formatting practice. Code is miserable to read on a good day. Give your eyes a break and use spaces. RStudio offers many handy <a href="https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts">keyboard shortcuts</a>. Also, Alt+Shift+K brings up a keyboard shortcut reference card.</p>
@@ -476,17 +476,18 @@ x</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weight_kg          <span class="co"># and so does typing the name of the object</span></code></pre></div>
 <pre><code>## [1] 55</code></pre>
 <p>Now that R has <code>weight_kg</code> in memory, we can do arithmetic with it. For instance, we may want to convert this weight into pounds (weight in pounds is 2.2 times the weight in kg):</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="fl">2.2</span> <span class="op">*</span><span class="st"> </span>weight_kg</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weight_kg <span class="op">*</span><span class="st"> </span><span class="fl">2.2</span></code></pre></div>
 <pre><code>## [1] 121</code></pre>
 <p>We can also change a variable’s value by assigning it a new one:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weight_kg &lt;-<span class="st"> </span><span class="fl">57.5</span>
-<span class="fl">2.2</span> <span class="op">*</span><span class="st"> </span>weight_kg</code></pre></div>
+weight_kg <span class="op">*</span><span class="st"> </span><span class="fl">2.2</span></code></pre></div>
 <pre><code>## [1] 126.5</code></pre>
-<p>This means that assigning a value to one variable does not change the values of other variables. For example, let’s store the animal’s weight in pounds in a new variable, <code>weight_lb</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weight_lb &lt;-<span class="st"> </span><span class="fl">2.2</span> <span class="op">*</span><span class="st"> </span>weight_kg</code></pre></div>
+<p>And when we multiply it by 2.2, the outcome is based on the value currently assigned to the variable.</p>
+<p>OK, let’s store the animal’s weight in pounds in a new variable, <code>weight_lb</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weight_lb &lt;-<span class="st"> </span>weight_kg <span class="op">*</span><span class="st"> </span><span class="fl">2.2</span></code></pre></div>
 <p>and then change <code>weight_kg</code> to 100.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weight_kg &lt;-<span class="st"> </span><span class="dv">100</span></code></pre></div>
-<p>What do you think is the current content of the object <code>weight_lb</code>? 126.5 or 220? Why?</p>
+<p>What do you think is the current content of the object <code>weight_lb</code>? 126.5 or 220? Why? It’s 125.6. Why? Because assigning a value to one variable does not change the values of other variables — if you want <code>weight_kg</code> updated to reflect the new value for <code>weight_lb</code>, you will have to re-execute that code. This is why we re-comment working in scripts and documents rather than the Console, and will introduce those concepts shortly and work there for the rest of the day.</p>
 <!---TODO::
 Add more practice
 --->
@@ -494,7 +495,7 @@ Add more practice
 </div>
 <div id="r-functions-help-pages" class="section level2">
 <h2><span class="header-section-number">3.4</span> R functions, help pages</h2>
-<p>R has a mind-blowing collection of built-in functions that are used with the same syntax: function name with parentheses around what the function needs in order to do what it was built to do. When you type a function like this, we say we are “calling the function”. <code>function_name(argument1 = value1, argument2 = value2, ...)</code>.</p>
+<p>R has a mind-blowing collection of built-in functions that are used with the same syntax: function name with parentheses around what the function needs to do what it is supposed to do. <code>function_name(argument1 = value1, argument2 = value2, ...)</code>. When you see this syntax, we say we are “calling the function”.</p>
 <!---This example is from [R for Data Science](http://r4ds.had.co.nz/pipes) using a children's poem called [Little Bunny Foo Foo](https://en.wikipedia.org/wiki/Little_Bunny_Foo_Foo).
 
 We can call a function without passing it anything (nothing inside the closed parentheses), and assign it to a variable called `foo_foo`.
@@ -548,11 +549,11 @@ And that's great, this error message is helpful: R doesn't know what the `little
 <blockquote>
 <p>Exercise: Talk to your neighbor(s) and look up the help file for a function that you know or expect to exist. Here are some ideas: <code>?getwd()</code>, <code>?plot()</code>, <code>min()</code>, <code>max()</code>, <code>?mean()</code>, <code>?log()</code>).</p>
 </blockquote>
-<p>And there’s also help for when you only sort of remember the function name: double-questionmark:</p>
+<p>And there’s also help for when you only sort of remember the function name: double-question mark:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">??install </code></pre></div>
 <p>Not all functions have (or require) arguments:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">date</span>()</code></pre></div>
-<pre><code>## [1] &quot;Tue Apr 24 12:44:21 2018&quot;</code></pre>
+<pre><code>## [1] &quot;Thu Oct 18 11:46:44 2018&quot;</code></pre>
 </div>
 </div>
 <div id="clearing-the-environment" class="section level2">
@@ -576,6 +577,8 @@ And that's great, this error message is helpful: R doesn't know what the `little
 <p>To remove everything:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>())</code></pre></div>
 <p>or click the broom in RStudio’s Environment pane.</p>
+<p>For reproducibility, it is critical that you delete your objects and restart your R session frequently. You don’t want your whole analysis to only work in whatever way you’ve been working right now — you need it to work next week, after you upgrade your operating system, etc. Restarting your R session will help you identify and account for anything you need for your analysis.</p>
+<p>We will keep coming back to this theme but let’s restart our R session together: Go to the top menus: Session &gt; Restart R.</p>
 <div id="your-turn-1" class="section level3">
 <h3><span class="header-section-number">3.5.1</span> Your turn</h3>
 <blockquote>
@@ -586,6 +589,7 @@ And that's great, this error message is helpful: R doesn't know what the `little
 <div id="rmarkdown" class="section level2">
 <h2><span class="header-section-number">3.6</span> RMarkdown</h2>
 <p>Now we are going to also introduce RMarkdown. This is really key for collaborative research, so we’re going to get started with it early and then use it for the rest of the day.</p>
+<p>This is also going to introduce us to the fact that RStudio is a sophisticated text editor (among all the other awesome things). You can use it to keep your files and scripts organized within one place (the RStudio IDE) while getting support that you expect from text editors (check-spelling and color, to name a few).</p>
 <p>An RMarkdown file will allow us to weave markdown text with chunks of R code to be evaluated and output content like tables and plots.</p>
 <p>File -&gt; New File -&gt; RMarkdown… -&gt; Document of output format HTML, OK.</p>
 <img src="img/rstudio_new-rmd-doc-html.png" width="300"/>
@@ -606,12 +610,12 @@ And that's great, this error message is helpful: R doesn't know what the `little
 <img src="img/rmarkdown_side_by_side.png" />
 
 </div>
-<p>What do you notice between the two?</p>
+<p>What do you notice between the two? So much of learning to code is looking for patterns.</p>
 <p>Notice how the grey <strong>R code chunks</strong> are surrounded by 3 backticks and <code>{r LABEL}</code>. These are evaluated and return the output text in the case of <code>summary(cars)</code> and the output plot in the case of <code>plot(pressure)</code>.</p>
 <p>Notice how the code <code>plot(pressure)</code> is not shown in the HTML output because of the R code chunk option <code>echo=FALSE</code>.</p>
 <p>More details…</p>
 <p>This RMarkdown file has 2 different languages within it: <strong>R</strong> and <strong>Markdown</strong>.</p>
-<p>We don’t know that much R yet, but you can see that we are taking a summary of some data called ‘cars’, and then plotting. There’s a lot more to learn about R, and we’ll get into it for the next few days.</p>
+<p>We don’t know that much R yet, but you can see that we are taking a summary of some data called ‘cars’, and then plotting. We will focus on R for the rest of the workshop, but for the rest of this morning let’s focus on the second language.</p>
 <p>The second language is Markdown. This is a formatting language for plain text, and there are only about 15 rules to know.</p>
 <p>Notice the syntax for:</p>
 <ul>
@@ -621,9 +625,10 @@ And that's great, this error message is helpful: R doesn't know what the `little
 <p>There are some good <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet">cheatsheets</a> to get you started, and here is one built into RStudio: Go to Help &gt; Markdown Quick Reference <br /> <br /></p>
 <p><strong>Important</strong>: note that the hashtag <code>#</code> is used differently in Markdown and in R:</p>
 <ul>
-<li>in R, a hashtag indicates a comment that will not be evaluated. You can use as many as you want: <code>#</code> is equivalent to <code>######</code>. It’s just a matter of style. I use two <code>##</code> to indicate a comment so that it’s clearer what is a comment versus what I don’t want to run at the moment.</li>
+<li>in R, a hashtag indicates a comment that will not be evaluated. You can use as many as you want: <code>#</code> is equivalent to <code>######</code>. It’s a matter of style. I use two <code>##</code> to indicate a comment so that it’s clearer what is a comment versus what I don’t want to run at the moment.</li>
 <li>in Markdown, a hashtag indicates a level of a header. And the number you use matters: <code>#</code> is a “level one header”, meaning the biggest font and the top of the hierarchy. <code>###</code> is a level three header, and will show up nested below the <code>#</code> and <code>##</code> headers.</li>
 </ul>
+<p>If this seems confusing, take comfort in the fact that you are already used to using <code>#</code>s differently in real life: it can mean “number” or “pound” or topics on social media…</p>
 <p>Learn more: <a href="http://rmarkdown.rstudio.com/" class="uri">http://rmarkdown.rstudio.com/</a></p>
 <div id="your-turn-2" class="section level3">
 <h3><span class="header-section-number">3.6.1</span> Your Turn</h3>
@@ -643,7 +648,7 @@ And that's great, this error message is helpful: R doesn't know what the `little
 </ul>
 <p>Now, let’s write some R code.</p>
 <pre><code>x &lt;- seq(1:15)</code></pre>
-<p>Now, hitting return does not execute this command; remember, it’s just a text file. To execute it, we need to get what we typed in the the R chunk (the grey R code) down into the console. How do we do it? There are several ways (let’s do each of them):</p>
+<p>Now, hitting return does not execute this command; remember, it’s a text file in the text editor, it’s not associated with the R engine. To execute it, we need to get what we typed in the the R chunk (the grey R code) down into the console. How do we do it? There are several ways (let’s do each of them):</p>
 <ol style="list-style-type: decimal">
 <li>copy-paste this line into the console.</li>
 <li>select the line (or simply put the cursor there), and click ‘Run’. This is available from
@@ -721,8 +726,8 @@ Ask for help and recognize useful answers
 <div id="troubleshooting" class="section level2">
 <h2><span class="header-section-number">3.8</span> Troubleshooting</h2>
 <p>Here are some additional things we didn’t have time to discuss:</p>
-<div id="i-just-entered-a-command-and-nothings-happening" class="section level3">
-<h3><span class="header-section-number">3.8.1</span> I just entered a command and nothing’s happening</h3>
+<div id="i-entered-a-command-and-nothings-happening" class="section level3">
+<h3><span class="header-section-number">3.8.1</span> I entered a command and nothing’s happening</h3>
 <p>It may be because you didn’t complete a command: is there a little <code>+</code> in your console? R is saying that it is waiting for you to finish. In the example below, I need to close that parenthesis.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span>x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>
 <span class="op">+</span><span class="st"> </span></code></pre></div>

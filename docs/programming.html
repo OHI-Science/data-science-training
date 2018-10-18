@@ -25,7 +25,7 @@
 <meta name="author" content="The Ocean Health Index Team">
 
 
-<meta name="date" content="2018-04-24">
+<meta name="date" content="2018-10-18">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -141,7 +141,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="3.7" data-path="rstudio.html"><a href="rstudio.html#rmarkdown-video-1-minute"><i class="fa fa-check"></i><b>3.7</b> RMarkdown video (1-minute)</a></li>
 <li class="chapter" data-level="3.8" data-path="rstudio.html"><a href="rstudio.html#troubleshooting"><i class="fa fa-check"></i><b>3.8</b> Troubleshooting</a><ul>
-<li class="chapter" data-level="3.8.1" data-path="rstudio.html"><a href="rstudio.html#i-just-entered-a-command-and-nothings-happening"><i class="fa fa-check"></i><b>3.8.1</b> I just entered a command and nothing’s happening</a></li>
+<li class="chapter" data-level="3.8.1" data-path="rstudio.html"><a href="rstudio.html#i-entered-a-command-and-nothings-happening"><i class="fa fa-check"></i><b>3.8.1</b> I entered a command and nothing’s happening</a></li>
 <li class="chapter" data-level="3.8.2" data-path="rstudio.html"><a href="rstudio.html#how-do-i-update-rstudio"><i class="fa fa-check"></i><b>3.8.2</b> How do I update RStudio?</a></li>
 </ul></li>
 <li class="chapter" data-level="3.9" data-path="rstudio.html"><a href="rstudio.html#tips"><i class="fa fa-check"></i><b>3.9</b> Tips</a></li>
@@ -377,6 +377,7 @@ get file extensions https://stat.ethz.ch/R-manual/R-devel/library/tools/html/fil
 </div>
 <div id="analysis-plan" class="section level2">
 <h2><span class="header-section-number">8.2</span> Analysis plan</h2>
+<pre><code>## Error in library(gapminder): there is no package called &#39;gapminder&#39;</code></pre>
 <p>OK, here is the plan for our analysis. We want to plot the gdpPercap for each country in the gapminder data frame. So that’s 142 separate plots! We will automate this, labeling each one with its name and saving it in a folder called figures. We will learn a bunch of things as we go.</p>
 </div>
 <div id="create-an-r-script" class="section level2">
@@ -393,6 +394,7 @@ get file extensions https://stat.ethz.ch/R-manual/R-devel/library/tools/html/fil
 
 ## read in gapminder data
 gapminder &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder.csv&#39;</span>)</code></pre></div>
+<pre><code>## Error in open.connection(con, &quot;rb&quot;): Could not resolve host: raw.githubusercontent.com</code></pre>
 <p>Remember, like in R Markdown, hitting return does not execute this command. To execute it, we need to get what we typed in the script down into the console. Here is how we can do that:</p>
 <ol style="list-style-type: decimal">
 <li>copy-paste this line into the console.</li>
@@ -420,22 +422,24 @@ For the figures, we want it to label the currency, which we have in another data
 --->
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## filter the country to plot
 gap_to_plot &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">filter</span>(country <span class="op">==</span><span class="st"> &quot;Afghanistan&quot;</span>)
-
-## plot
+<span class="st">  </span><span class="kw">filter</span>(country <span class="op">==</span><span class="st"> &quot;Afghanistan&quot;</span>)</code></pre></div>
+<pre><code>## Error in eval(lhs, parent, parent): object &#39;gapminder&#39; not found</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## plot
 my_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> gap_to_plot, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> gdpPercap)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Afghanistan&quot;</span>)</code></pre></div>
+<pre><code>## Error in ggplot(data = gap_to_plot, aes(x = year, y = gdpPercap)): object &#39;gap_to_plot&#39; not found</code></pre>
 <p>Let’s actually give this a better title than just the country name. Let’s use the <code>base::paste()</code> function from to paste two strings together so that the title is more descriptive. Use <code>?paste</code> to see what the “sep” variable does.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## filter the country to plot
 gap_to_plot &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">filter</span>(country <span class="op">==</span><span class="st"> &quot;Afghanistan&quot;</span>)
-
-## plot
+<span class="st">  </span><span class="kw">filter</span>(country <span class="op">==</span><span class="st"> &quot;Afghanistan&quot;</span>)</code></pre></div>
+<pre><code>## Error in eval(lhs, parent, parent): object &#39;gapminder&#39; not found</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## plot
 my_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> gap_to_plot, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> gdpPercap)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
 <span class="st">  </span>## add title and save
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="kw">paste</span>(<span class="st">&quot;Afghanistan&quot;</span>, <span class="st">&quot;GDP per capita&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>))</code></pre></div>
+<pre><code>## Error in ggplot(data = gap_to_plot, aes(x = year, y = gdpPercap)): object &#39;gap_to_plot&#39; not found</code></pre>
 <p>And as a last step, let’s save this figure.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## filter the country to plot
 gap_to_plot &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span>
@@ -629,8 +633,10 @@ country_list &lt;-<span class="st"> </span><span class="kw">unique</span>(gap_eu
 }</code></pre></div>
 <p>Let’s bring this concept into our for loop for Europe that we’ve just done. What if we want to add the label “Estimated” to countries that were estimated? Here’s what we’d do.</p>
 <p>First, import csv file with information on whether data was estimated or reported, and join to gapminder dataset:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">est &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/countries_estimated.csv&#39;</span>)
-gapminder_est &lt;-<span class="st"> </span><span class="kw">left_join</span>(gapminder, est)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">est &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/countries_estimated.csv&#39;</span>)</code></pre></div>
+<pre><code>## Error in open.connection(con, &quot;rb&quot;): Could not resolve host: raw.githubusercontent.com</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gapminder_est &lt;-<span class="st"> </span><span class="kw">left_join</span>(gapminder, est)</code></pre></div>
+<pre><code>## Error in left_join(gapminder, est): object &#39;gapminder&#39; not found</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dir.create</span>(<span class="st">&quot;figures&quot;</span>) 
 <span class="kw">dir.create</span>(<span class="st">&quot;figures/Europe&quot;</span>) 
 
@@ -778,6 +784,7 @@ country_list &lt;-<span class="st"> </span><span class="kw">unique</span>(gap_eu
     <span class="kw">print</span>(<span class="kw">paste</span>(cntry, <span class="st">&quot;data are reported&quot;</span>))
     
   }</code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;gap_to_plot&#39; not found</code></pre>
 <p>This construction is necessary if you have more than two conditions to test for.</p>
 </div>
 </div>

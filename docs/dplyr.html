@@ -25,7 +25,7 @@
 <meta name="author" content="The Ocean Health Index Team">
 
 
-<meta name="date" content="2018-04-24">
+<meta name="date" content="2018-10-18">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -141,7 +141,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="3.7" data-path="rstudio.html"><a href="rstudio.html#rmarkdown-video-1-minute"><i class="fa fa-check"></i><b>3.7</b> RMarkdown video (1-minute)</a></li>
 <li class="chapter" data-level="3.8" data-path="rstudio.html"><a href="rstudio.html#troubleshooting"><i class="fa fa-check"></i><b>3.8</b> Troubleshooting</a><ul>
-<li class="chapter" data-level="3.8.1" data-path="rstudio.html"><a href="rstudio.html#i-just-entered-a-command-and-nothings-happening"><i class="fa fa-check"></i><b>3.8.1</b> I just entered a command and nothing’s happening</a></li>
+<li class="chapter" data-level="3.8.1" data-path="rstudio.html"><a href="rstudio.html#i-entered-a-command-and-nothings-happening"><i class="fa fa-check"></i><b>3.8.1</b> I entered a command and nothing’s happening</a></li>
 <li class="chapter" data-level="3.8.2" data-path="rstudio.html"><a href="rstudio.html#how-do-i-update-rstudio"><i class="fa fa-check"></i><b>3.8.2</b> How do I update RStudio?</a></li>
 </ul></li>
 <li class="chapter" data-level="3.9" data-path="rstudio.html"><a href="rstudio.html#tips"><i class="fa fa-check"></i><b>3.9</b> Tips</a></li>
@@ -353,8 +353,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="objectives-3" class="section level3">
 <h3><span class="header-section-number">6.1.1</span> Objectives</h3>
 <ul>
-<li>learn making tidy data will simplify your analyses</li>
-<li>learn <code>dplyr</code> with <code>gapminder</code> data</li>
+<li>discuss tidy data</li>
+<li>read data from online into R</li>
+<li>explore <code>gapminder</code> data with base-R functions</li>
+<li>wrangle <code>gapminder</code> data with <code>dplyr</code> tidyverse functions</li>
 <li>practice RStudio-GitHub workflow</li>
 </ul>
 </div>
@@ -382,7 +384,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="tidy-data" class="section level2">
 <h2><span class="header-section-number">6.2</span> Tidy Data</h2>
 <p>Let’s start off discussing Tidy Data.</p>
-<p>Hadley Wickham, RStudio’s Chief Scientist, has been building R packages for data wrangling and visualization based on the idea of <strong>tidy data</strong>.</p>
+<p>Hadley Wickham, RStudio’s Chief Scientist, and his team have been building R packages for data wrangling and visualization based on the idea of <strong>tidy data</strong>.</p>
 <p>Tidy data has a simple convention: put variables in the columns and observations in the rows.</p>
 <p><img src="img/tidy_data.png" /> </br> </br> The <code>mpg</code> dataset we were working with this morning was an example of tidy data. When data are tidy, you are set up to work with it for your analyses, plots, etc. </br> </br> <img src="img/tidy_img_mpg.png" /></p>
 <p>Right now we are going to use <code>dplyr</code> to wrangle this tidyish data set (the transform part of the cycle), and then come back to tidying messy data using <code>tidyr</code> once we’ve had some fun wrangling. These are both part of the <code>tidyverse</code> package that we’ve already installed:</p>
@@ -422,7 +424,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>The data are on GitHub. Navigate there by going to:</p>
 <p>github.com &gt; ohi-science &gt; data-science-training &gt; data &gt; gapminder.csv</p>
 <p>or by copy-pasting url for data-view: <code>https://github.com/OHI-Science/data-science-training/blob/master/data/gapminder.csv</code></p>
-<p>This is data-view mode: just so we can have a quick look at the data. It’s a .csv file, which you’ve probably encountered before, but GitHub has formatted it nicely so it’s easy to look at. You can see that for every country and year, there are several columns with data in them.</p>
+<p>This is data-view mode: so we can have a quick look at the data. It’s a .csv file, which you’ve probably encountered before, but GitHub has formatted it nicely so it’s easy to look at. You can see that for every country and year, there are several columns with data in them.</p>
 <div class="figure">
 <img src="img/gapminder_gh.png" />
 
@@ -439,6 +441,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Now, let’s go back to RStudio. In our R Markdown, let’s read this csv file and name the variable “gapminder”. We will use the <code>read_csv()</code> function from the <code>readr</code> package (part of the tidyverse, so it’s already installed!).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## read gapminder csv. Note the readr:: prefix identifies which package it&#39;s in
 gapminder &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder.csv&#39;</span>) </code></pre></div>
+<p>Note: <code>read_csv</code> works with local filepaths as well, you could use one from your computer.</p>
 <p>Let’s inspect:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## explore the gapminder dataset
 gapminder <span class="co"># this is super long! Let&#39;s inspect in different ways</span></code></pre></div>
@@ -448,7 +451,7 @@ gapminder <span class="co"># this is super long! Let&#39;s inspect in different 
 
 <span class="kw">head</span>(gapminder, <span class="dv">10</span>) <span class="co"># shows first X that you indicate</span>
 <span class="kw">tail</span>(gapminder, <span class="dv">12</span>) <span class="co"># guess what this does!</span></code></pre></div>
-<p><code>str()</code> will provide a sensible description of almost anything: when in doubt, just <code>str()</code> some of the recently created objects to get some ideas about what to do next.</p>
+<p><code>str()</code> will provide a sensible description of almost anything: when in doubt, inspect using <code>str()</code> on some of the recently created objects to get some ideas about what to do next.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(gapminder) <span class="co"># ?str - displays the structure of an object</span></code></pre></div>
 <p><code>gapminder</code> is a <code>data.frame</code>. We aren’t going to get into the other types of data receptacles today (‘arrays’, ‘matrices’), because working with data.frames is what you should primarily use. Why?</p>
 <ul>
@@ -467,7 +470,7 @@ gapminder <span class="co"># this is super long! Let&#39;s inspect in different 
 <span class="kw">dim</span>(gapminder)    <span class="co"># ?dim dimension</span>
 <span class="kw">ncol</span>(gapminder)   <span class="co"># ?ncol number of columns</span>
 <span class="kw">nrow</span>(gapminder)   <span class="co"># ?nrow number of rows</span></code></pre></div>
-<p>We can combine using <code>c()</code> to reverse-engineer <code>dim()</code>! Just a side-note here, but I wanted to introduce you to <code>c()</code>: we’ll use it later.</p>
+<p>We can combine using <code>c()</code> to reverse-engineer <code>dim()</code>! It’s a side-note here, but I wanted to introduce you to <code>c()</code>: we’ll use it later.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">c</span>(<span class="kw">nrow</span>(gapminder), <span class="kw">ncol</span>(gapminder)) <span class="co"># ?c combines values into a vector or list. </span></code></pre></div>
 <p>A statistical overview can be obtained with <code>summary()</code>, or with <code>skimr::skim()</code></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(gapminder)
@@ -477,11 +480,11 @@ gapminder <span class="co"># this is super long! Let&#39;s inspect in different 
 </div>
 <div id="look-at-the-variables-inside-a-data.frame" class="section level3">
 <h3><span class="header-section-number">6.3.2</span> Look at the variables inside a data.frame</h3>
-<p>To specify a single variable from a data.frame, use the dollar sign <code>$</code>. The <code>$</code> operator is a way to extract of replace parts of an object–check out the help menu for <code>$</code>. It’s a common operator you’ll see in R.</p>
+<p>To specify a single variable from a data.frame, use the dollar sign <code>$</code>. The <code>$</code> operator is a way to extract of replace parts of an object — check out the help menu for <code>$</code>. It’s a common operator you’ll see in R.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gapminder<span class="op">$</span>lifeExp <span class="co"># very long! hard to make sense of...</span>
 <span class="kw">head</span>(gapminder<span class="op">$</span>lifeExp) <span class="co"># can do the same tests we tried before</span>
 <span class="kw">str</span>(gapminder<span class="op">$</span>lifeExp) <span class="co"># it is a single numeric vector</span>
-<span class="kw">summary</span>(gapminder<span class="op">$</span>lifeExp) <span class="co"># same information, just formatted slightly differently</span></code></pre></div>
+<span class="kw">summary</span>(gapminder<span class="op">$</span>lifeExp) <span class="co"># same information, formatted slightly differently</span></code></pre></div>
 </div>
 </div>
 <div id="dplyr-basics" class="section level2">
@@ -518,12 +521,12 @@ gapminder <span class="co"># this is super long! Let&#39;s inspect in different 
 </div>
 <div id="filter-subsets-data-row-wise-observations." class="section level2">
 <h2><span class="header-section-number">6.5</span> <code>filter()</code> subsets data row-wise (observations).</h2>
-<p>You will want to isolate bits of your data; maybe you want to just look at a single country or a few years. R calls this subsetting.</p>
+<p>You will want to isolate bits of your data; maybe you want to only look at a single country or a few years. R calls this subsetting.</p>
 <p><code>filter()</code> is a function in <code>dplyr</code> that takes logical expressions and returns the rows for which all are <code>TRUE</code>.</p>
 <p>Visually, we are doing this (thanks RStudio for your <a href="http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">cheatsheet</a>):</p>
 <p><img src="img/rstudio-cheatsheet-filter.png" /> Remember your logical expressions from this morning? We’ll use <code>&lt;</code> and <code>==</code> here.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">filter</span>(gapminder, lifeExp <span class="op">&lt;</span><span class="st"> </span><span class="dv">29</span>)</code></pre></div>
-<p>You can say this out loud: “Filter the gapminder data for life expectancy less than 29”. Notice that when we do this, all the columns are returned, but just the rows that have the life expectancy less than 29. We’ve subsetted by row.</p>
+<p>You can say this out loud: “Filter the gapminder data for life expectancy less than 29”. Notice that when we do this, all the columns are returned, but only the rows that have the life expectancy less than 29. We’ve subsetted by row.</p>
 <p>Let’s try another: “Filter the gapminder data for the country Mexico”.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">filter</span>(gapminder, country <span class="op">==</span><span class="st"> &quot;Mexico&quot;</span>)</code></pre></div>
 <p>How about if we want two country names? We can’t use the <code>==</code> operator here, because it can only operate on one thing at a time. We will use the <code>%in%</code> operator:</p>
@@ -537,6 +540,7 @@ gapminder <span class="co"># this is super long! Let&#39;s inspect in different 
 <p>Then, sync to Github.com (pull, stage, commit, push).</p>
 <div id="answer" class="section level3">
 <h3><span class="header-section-number">6.6.1</span> Answer</h3>
+<p>This is one way to do it based on what we have learned so far:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">filter</span>(gapminder, country <span class="op">==</span><span class="st"> &quot;Sweden&quot;</span>)  
 <span class="kw">mean</span>(x<span class="op">$</span>lifeExp)  </code></pre></div>
 <!---Don't use this one for now because gets off track for %>%
@@ -556,16 +560,18 @@ x2$pop - x1$pop
 <img src="img/rstudio-cheatsheet-select.png" />
 
 </div>
-<p>Here’s a conventional call. Again, see that we can select multiple columns just with a comma, after we specify the data frame (gapminder).</p>
+<p>We can select multiple columns with a comma, after we specify the data frame (gapminder).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">select</span>(gapminder, year, lifeExp) </code></pre></div>
 <p>We can also use - to deselect columns</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">select</span>(gapminder, <span class="op">-</span>continent, <span class="op">-</span>lifeExp) <span class="co"># you can use - to deselect columns</span></code></pre></div>
 </div>
 <div id="use-select-and-filter-together" class="section level2">
 <h2><span class="header-section-number">6.8</span> Use <code>select()</code> and <code>filter()</code> together</h2>
-<p>Let’s filter for Cambodia and remove the continent and lifeExp columns. We’ll save this as a variable. Actually, as two temporary variables, and naming them and keeping track of them can get kind of cumbersome.</p>
+<p>Let’s filter for Cambodia and remove the continent and lifeExp columns. We’ll save this as a variable. Actually, as two temporary variables, which means that for the second one we need to operate on <code>gap_cambodia</code>, not <code>gapminder</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_cambodia  &lt;-<span class="st"> </span><span class="kw">filter</span>(gapminder, country <span class="op">==</span><span class="st"> &quot;Cambodia&quot;</span>)
 gap_cambodia2 &lt;-<span class="st"> </span><span class="kw">select</span>(gap_cambodia, <span class="op">-</span>continent, <span class="op">-</span>lifeExp) </code></pre></div>
+<p>We also could have called them both <code>gap_cambodia</code> and overwritten the first assignment. Either way, naming them and keeping track of them gets super cumbersome, which means more time to understand what’s going on and opportunities for confusion or error.</p>
+<p>Good thing there is an awesome alternative.</p>
 </div>
 <div id="meet-the-new-pipe-operator" class="section level2">
 <h2><span class="header-section-number">6.9</span> Meet the new pipe <code>%&gt;%</code> operator</h2>
@@ -573,11 +579,11 @@ gap_cambodia2 &lt;-<span class="st"> </span><span class="kw">select</span>(gap_c
 <p>Here’s what it looks like: <code>%&gt;%</code>. The RStudio keyboard shortcut: Ctrl + Shift + M (Windows), Cmd + Shift + M (Mac).</p>
 <p>Let’s demo then I’ll explain:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gapminder <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>()</code></pre></div>
-<p>This is equivalent to <code>head(gapminder)</code>. This pipe operator takes the thing on the left-hand-side and <strong>pipes</strong> it into the function call on the right-hand-side – literally, drops it in as the first argument.</p>
+<p>This is equivalent to <code>head(gapminder)</code>. This pipe operator takes the thing on the left-hand-side and <strong>pipes</strong> it into the function call on the right-hand-side. It literally drops it in as the first argument.</p>
 <p>Never fear, you can still specify other arguments to this function! To see the first 3 rows of Gapminder, we could say <code>head(gapminder, 3)</code> or this:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gapminder <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>(<span class="dv">3</span>)</code></pre></div>
 <p><strong>I’ve advised you to think “gets” whenever you see the assignment operator, <code>&lt;-</code>. Similarly, you should think “and then” whenever you see the pipe operator, <code>%&gt;%</code>.</strong></p>
-<p>One of the most awesome things about this is that you START with the data before you say what you’re doing to DO to it. So above: “take the gapminder data, and then give me the head”.</p>
+<p>One of the most awesome things about this is that you START with the data before you say what you’re doing to DO to it. So above: “take the gapminder data, and then give me the first three entries”.</p>
 <p>This means that instead of this:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## instead of this...
 gap_cambodia  &lt;-<span class="st"> </span><span class="kw">filter</span>(gapminder, country <span class="op">==</span><span class="st"> &quot;Cambodia&quot;</span>)
@@ -596,14 +602,14 @@ Fun break: check out [this gif about %>% from Twitter](https://twitter.com/backe
 <p>We can use the pipe to chain those two operations together:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_cambodia  &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(country <span class="op">==</span><span class="st"> &quot;Cambodia&quot;</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>continent, <span class="op">-</span>lifeExp) </code></pre></div>
-<p>What’s happening here? In the second line, we were able to delete <code>gap_cambodia2 &lt;- gap_cambodia</code>, and put the pipe operator above. This is possible since we wanted to operate on the <code>gap_cambodi</code>a data anyways. And we weren’t truly excited about having a second variable named <code>gap_cambodia2</code> anyways, so we can get rid of it. This is huge, because most of your data wrangling will have many more than 2 steps, and we don’t want a <code>gap_cambodia14</code>!</p>
+<p>What’s happening here? In the second line, we were able to delete <code>gap_cambodia2 &lt;- gap_cambodia</code>, and put the pipe operator above. This is possible since we wanted to operate on the <code>gap_cambodia</code> data anyways. And we weren’t truly excited about having a second variable named <code>gap_cambodia2</code> anyways, so we can get rid of it. This is huge, because most of your data wrangling will have many more than 2 steps, and we don’t want a <code>gap_cambodia14</code>!</p>
 <p>Let’s write it again but using multiple lines so it’s nicer to read.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_cambodia  &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">filter</span>(country <span class="op">==</span><span class="st"> &quot;Cambodia&quot;</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>continent, <span class="op">-</span>lifeExp) </code></pre></div>
 <p>Amazing. I can actually read this like a story and there aren’t temporary variables that get super confusing. In my head:</p>
 <blockquote>
-<p>“Take the <code>gapminder</code> data, and then<br />
+<p>“start with the <code>gapminder</code> data, and then<br />
 filter for Cambodia, and then<br />
 deselect the variables continent and lifeExp.”</p>
 </blockquote>
@@ -643,8 +649,8 @@ gapminder <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">filter</span>(country <span class="op">==</span><span class="st"> &quot;Vietnam&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">gdp     =</span> pop <span class="op">*</span><span class="st"> </span>gdpPercap,
          <span class="dt">max_gdp =</span> <span class="kw">max</span>(gdp))</code></pre></div>
-<p>With the things we know so far, the answers you have are maybe a bit limiting. First, We had to act on Egypt and Vietnam separately, and repeat the same code. Copy-pasting like this is also super error prone.</p>
-<p>And second, this <code>max_gdpPercap</code> column is pretty redundant, because it’s a repeated value a ton of times. Sometimes this is exactly what you want! You are now set up nicely to maybe take a proportion of gdpPercap/max_gdpPercap for each year or something. But maybe you just wanted that max_gdpPercap for something else. Let’s keep going…</p>
+<p>With the things we know so far, the answers you have are maybe a bit limiting. First, we had to act on Egypt and Vietnam separately, and repeat the same code. Copy-pasting like this is also super error prone.</p>
+<p>And second, this <code>max_gdpPercap</code> column is pretty redundant, because it’s a repeated value a ton of times. Sometimes this is exactly what you want! You are now set up nicely to maybe take a proportion of gdpPercap/max_gdpPercap for each year or something. But maybe you only wanted that <code>max_gdpPercap</code> for something else. Let’s keep going…</p>
 </div>
 </div>
 </div>
@@ -679,7 +685,7 @@ gapminder <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">gdp =</span> pop <span class="op">*</span><span class="st"> </span>gdpPercap) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">summarize</span>(<span class="dt">max_gdp =</span> <span class="kw">max</span>(gdp)) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">ungroup</span>()</code></pre></div>
-<p>How cool is that! <code>summarize()</code> will actually only keep the columns that are grouped_by or summarized. So if we wanted to keep other columns, we’d have to do it another way (we’ll get into it tomorrow).</p>
+<p>How cool is that! <code>summarize()</code> will actually only keep the columns that are grouped_by or summarized. So if we wanted to keep other columns, we’d have to do have a few more steps (we’ll get into it tomorrow).</p>
 </div>
 </div>
 <div id="arrange-orders-columns" class="section level2">
@@ -729,13 +735,13 @@ gap_max_gdp &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</spa
 <span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">gdp =</span> pop <span class="op">*</span><span class="st"> </span>gdpPercap) <span class="op">%&gt;%</span>
 <span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarize</span>(<span class="dt">max_gdp =</span> <span class="kw">max</span>(gdp)) <span class="op">%&gt;%</span>
 <span class="st">  </span>dplyr<span class="op">::</span><span class="kw">ungroup</span>() </code></pre></div>
-<p>I actually am borrowing this “All together now” from Tony Fischetti’s blog post <a href="http://www.statsblogs.com/2014/02/10/how-dplyr-replaced-my-most-common-r-idioms/">How dplyr replaced my most common R idioms</a>). With that as inspiration, this is how what we have just done would look like in Base R.</p>
+<p>I actually am borrowing this “All together now” from Tony Fischetti’s blog post <a href="http://www.statsblogs.com/2014/02/10/how-dplyr-replaced-my-most-common-r-idioms/">How dplyr replaced my most common R idioms</a>). With that as inspiration, this is how what we have done would look like in Base R.</p>
 <div id="compare-to-base-r" class="section level3">
 <h3><span class="header-section-number">6.13.1</span> Compare to base R</h3>
 <p>Let’s compare with some base R code to accomplish the same things. Base R requires subsetting with the <code>[rows, columns]</code> notation. This notation is something you’ll see a lot in base R. the brackets <code>[ ]</code> allow you to extract parts of an object. Within the brackets, the comma separates rows from columns.</p>
 <p>If we don’t write anything after the comma, that means “all columns”. And if we don’t write anything before the comma, that means “all rows”.</p>
 <p>Also, the <code>$</code> operator is how you access specific columns of your dataframe. You can also add new columns like we will do with <code>mex$gdp</code> below.</p>
-<p>Instead of calculating the max for each country like we did with <code>dplyr</code> above, here we will just calculate the max for one country, Mexico. Tomorrow we will learn how to do it for all the countries, like we did with <code>dplyr::group_by()</code>.</p>
+<p>Instead of calculating the max for each country like we did with <code>dplyr</code> above, here we will calculate the max for one country, Mexico. Tomorrow we will learn how to do it for all the countries, like we did with <code>dplyr::group_by()</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## gapminder-wrangle.R --- baseR
 ## J. Lowndes lowndes@nceas.ucsb.edu
 
@@ -760,19 +766,19 @@ mex<span class="op">$</span>max_gdp &lt;-<span class="st"> </span><span class="k
 <div id="joining-datasets" class="section level2">
 <h2><span class="header-section-number">6.14</span> Joining datasets</h2>
 <p>We’ve learned a ton in this session and we may not get to this right now. If we don’t have time, we’ll start here before getting into the next chapter: `tidyr)</p>
-<p>Sometimes you have data coming from different places or in different files, and you want to put them together so you can analyze them. This is called relational data, because it has some kind of relationship. In the tidyverse, combining data that has a relationship is called “joining”.</p>
+<p>Most of the time you will have data coming from different places or in different files, and you want to put them together so you can analyze them. Datasets you’ll be joining can be called relational data, because it has some kind of relationship between them that you’ll be acting upon. In the tidyverse, combining data that has a relationship is called “joining”.</p>
 <p>From the <a href="http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">RStudio cheatsheet</a> (note: this is an earlier version of the cheatsheet but I like the graphics):</p>
 <div class="figure">
 <img src="img/rstudio-cheatsheet-combine.png" />
 
 </div>
-<p>Notice how you may not have exactly the same observations in the x1 columns above. Observations A and B are the same, but notice how the table on the left has observation C, and the table on the right has observation D.</p>
+<p><br> Let’s have a look at this and pretend that the x1 column is a study site and x2 is the variables we’ve recorded (like species count) and x3 is data from an instrument (like temperature data). Notice how you may not have exactly the same observations in the two datasets: in the x1 column, observations A and B appear in both datasets, but notice how the table on the left has observation C, and the table on the right has observation D.</p>
 <p>If you wanted to combine these two tables, how would you do it? There are some decisions you’d have to make about what was important to you. The cheatsheet visualizes it for us:</p>
 <div class="figure">
 <img src="img/rstudio-cheatsheet-combine-options1.png" />
 
 </div>
-<p>We will just talk about this briefly here, but you can refer to this more as you have your own datasets that you want to join. This describes the figure above::</p>
+<p>We will only talk about this briefly here, but you can refer to this more as you have your own datasets that you want to join. This describes the figure above::</p>
 <ul>
 <li><code>left_join</code> keeps everything from the left table and matches as much as it can from the right table. In R, the first thing that you type will be the left table (because it’s on the left)</li>
 <li><code>right_join</code> keeps everything from the right table and matches as much as it can from the left table</li>
@@ -785,8 +791,8 @@ These are all "mutating joins" because they add another column to what had been 
 - `semi_join` keeps only the observations that are in both tables
 - `anti_join` keeps only the observations that are NOT in both tables.
 --->
-<p>Let’s play with <a href="http://edgar.jrc.ec.europa.eu/news_docs/CO2_1970-2014_dataset_of_CO2_report_2015.xls">these</a> CO2 emmissions data just to illustrate:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## read in the data. (same URL as yesterday, just with co2.csv instead of gapminder.csv)
+<p>Let’s play with <a href="http://edgar.jrc.ec.europa.eu/news_docs/CO2_1970-2014_dataset_of_CO2_report_2015.xls">these</a> CO2 emmissions data to illustrate:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## read in the data. (same URL as yesterday, with co2.csv instead of gapminder.csv)
 co2 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/co2.csv&quot;</span>)
 
 ## explore

@@ -18,8 +18,10 @@ For some things, base-R is more straight forward, and we'll show you that too. W
 
 ### Objectives
 
-- learn making tidy data will simplify your analyses
-- learn `dplyr` with `gapminder` data
+- discuss tidy data
+- read data from online into R
+- explore `gapminder` data with base-R functions
+- wrangle `gapminder` data with `dplyr` tidyverse functions
 - practice RStudio-GitHub workflow
 
 ### Resources 
@@ -52,7 +54,7 @@ install.packages("tidyverse")
 
 Let's start off discussing Tidy Data. 
 
-Hadley Wickham, RStudio's Chief Scientist, has been building R packages for data wrangling and visualization based on the idea of **tidy data**. 
+Hadley Wickham, RStudio's Chief Scientist, and his team have been building R packages for data wrangling and visualization based on the idea of **tidy data**. 
 
 Tidy data has a simple convention: put variables in the columns and observations in the rows.
 
@@ -109,7 +111,7 @@ github.com > ohi-science > data-science-training > data > gapminder.csv
 
 or by copy-pasting url for data-view: `https://github.com/OHI-Science/data-science-training/blob/master/data/gapminder.csv`
 
-This is data-view mode: just so we can have a quick look at the data. It's a .csv file, which you've probably encountered before, but GitHub has formatted it nicely so it's easy to look at. You can see that for every country and year, there are several columns with data in them. 
+This is data-view mode: so we can have a quick look at the data. It's a .csv file, which you've probably encountered before, but GitHub has formatted it nicely so it's easy to look at. You can see that for every country and year, there are several columns with data in them. 
 
 ![](img/gapminder_gh.png)
 
@@ -131,6 +133,8 @@ gapminder <- readr::read_csv('https://raw.githubusercontent.com/OHI-Science/data
 
 ```
 
+Note: `read_csv` works with local filepaths as well, you could use one from your computer.
+
 Let's inspect: 
 ```{r, eval=FALSE}
 ## explore the gapminder dataset
@@ -146,7 +150,7 @@ head(gapminder, 10) # shows first X that you indicate
 tail(gapminder, 12) # guess what this does!
 ```
 
-`str()` will provide a sensible description of almost anything: when in doubt, just `str()` some of the recently created objects to get some ideas about what to do next.
+`str()` will provide a sensible description of almost anything: when in doubt, inspect using `str()` on some of the recently created objects to get some ideas about what to do next.
 ```{r str, eval=FALSE}
 str(gapminder) # ?str - displays the structure of an object
 ```
@@ -170,7 +174,7 @@ ncol(gapminder)   # ?ncol number of columns
 nrow(gapminder)   # ?nrow number of rows
 ```
 
-We can combine using `c()` to reverse-engineer `dim()`! Just a side-note here, but I wanted to introduce you to `c()`: we'll use it later.
+We can combine using `c()` to reverse-engineer `dim()`! It's a side-note here, but I wanted to introduce you to `c()`: we'll use it later.
 ```{r, eval=FALSE}
 c(nrow(gapminder), ncol(gapminder)) # ?c combines values into a vector or list. 
 ```
@@ -186,13 +190,13 @@ skim(gapminder)
 
 ### Look at the variables inside a data.frame
 
-To specify a single variable from a data.frame, use the dollar sign `$`. The `$` operator is a way to extract of replace parts of an object--check out the help menu for `$`. It's a common operator you'll see in R. 
+To specify a single variable from a data.frame, use the dollar sign `$`. The `$` operator is a way to extract of replace parts of an object — check out the help menu for `$`. It's a common operator you'll see in R. 
 
 ```{r $, eval=FALSE}
 gapminder$lifeExp # very long! hard to make sense of...
 head(gapminder$lifeExp) # can do the same tests we tried before
 str(gapminder$lifeExp) # it is a single numeric vector
-summary(gapminder$lifeExp) # same information, just formatted slightly differently
+summary(gapminder$lifeExp) # same information, formatted slightly differently
 ```
 
 
@@ -233,7 +237,7 @@ Together these properties make it easy to chain together multiple simple steps t
 
 ## `filter()` subsets data row-wise (observations).
 
-You will want to isolate bits of your data; maybe you want to just look at a single country or a few years. R calls this subsetting. 
+You will want to isolate bits of your data; maybe you want to only look at a single country or a few years. R calls this subsetting. 
 
 `filter()` is a function in `dplyr` that takes logical expressions and returns the rows for which all are `TRUE`. 
 
@@ -246,7 +250,7 @@ Remember your logical expressions from this morning? We’ll use `<` and `==` he
 filter(gapminder, lifeExp < 29)
 ```
 
-You can say this out loud: "Filter the gapminder data for life expectancy less than 29". Notice that when we do this, all the columns are returned, but just the rows that have the life expectancy less than 29. We've subsetted by row.
+You can say this out loud: "Filter the gapminder data for life expectancy less than 29". Notice that when we do this, all the columns are returned, but only the rows that have the life expectancy less than 29. We've subsetted by row.
 
 Let's try another: "Filter the gapminder data for the country Mexico".
 
@@ -275,6 +279,8 @@ Then, sync to Github.com (pull, stage, commit, push).
 
 ### Answer 
 
+This is one way to do it based on what we have learned so far:
+
 ```{r, eval=FALSE}
 x <- filter(gapminder, country == "Sweden")  
 mean(x$lifeExp)  
@@ -297,7 +303,7 @@ Visually, we are doing this (thanks RStudio for your [cheatsheet](http://www.rst
 
 ![](img/rstudio-cheatsheet-select.png)
 
-Here's a conventional call. Again, see that we can select multiple columns just with a comma, after we specify the data frame (gapminder). 
+We can select multiple columns with a comma, after we specify the data frame (gapminder). 
 
 ```{r, eval=FALSE}
 select(gapminder, year, lifeExp) 
@@ -311,13 +317,16 @@ select(gapminder, -continent, -lifeExp) # you can use - to deselect columns
 
 ## Use `select()` and `filter()` together
 
-Let's filter for Cambodia and remove the continent and lifeExp columns. We'll save this as a variable. Actually, as two temporary variables, and naming them and keeping track of them can get kind of cumbersome.
+Let's filter for Cambodia and remove the continent and lifeExp columns. We'll save this as a variable. Actually, as two temporary variables, which means that for the second one we need to operate on `gap_cambodia`, not `gapminder`. 
 
 ```{r, eval=FALSE}
 gap_cambodia  <- filter(gapminder, country == "Cambodia")
 gap_cambodia2 <- select(gap_cambodia, -continent, -lifeExp) 
 ```
 
+We also could have called them both `gap_cambodia` and overwritten the first assignment. Either way, naming them and keeping track of them gets super cumbersome, which means more time to understand what's going on and opportunities for confusion or error.
+
+Good thing there is an awesome alternative.
 
 ## Meet the new pipe `%>%` operator
 
@@ -330,7 +339,7 @@ Let's demo then I'll explain:
 gapminder %>% head()
 ```
 
-This is equivalent to `head(gapminder)`. This pipe operator takes the thing on the left-hand-side and __pipes__ it into the function call on the right-hand-side -- literally, drops it in as the first argument.
+This is equivalent to `head(gapminder)`. This pipe operator takes the thing on the left-hand-side and __pipes__ it into the function call on the right-hand-side. It literally drops it in as the first argument.
 
 Never fear, you can still specify other arguments to this function! To see the first 3 rows of Gapminder, we could say `head(gapminder, 3)` or this:
 ```{r, eval=FALSE}
@@ -339,7 +348,7 @@ gapminder %>% head(3)
 
 **I've advised you to think "gets" whenever you see the assignment operator, `<-`. Similarly, you should think "and then" whenever you see the pipe operator, `%>%`.**
 
-One of the most awesome things about this is that you START with the data before you say what you're doing to DO to it. So above: "take the gapminder data, and then give me the head".
+One of the most awesome things about this is that you START with the data before you say what you're doing to DO to it. So above: "take the gapminder data, and then give me the first three entries".
 
 This means that instead of this:
 
@@ -371,7 +380,7 @@ gap_cambodia  <- gapminder %>% filter(country == "Cambodia") %>%
   select(-continent, -lifeExp) 
 ```
 
-What's happening here? In the second line, we were able to delete `gap_cambodia2 <- gap_cambodia`, and put the pipe operator above. This is possible since we wanted to operate on the `gap_cambodi`a data anyways. And we weren't truly excited about having a second variable named `gap_cambodia2` anyways, so we can get rid of it. This is huge, because most of your data wrangling will have many more than 2 steps, and we don't want a `gap_cambodia14`!
+What's happening here? In the second line, we were able to delete `gap_cambodia2 <- gap_cambodia`, and put the pipe operator above. This is possible since we wanted to operate on the `gap_cambodia` data anyways. And we weren't truly excited about having a second variable named `gap_cambodia2` anyways, so we can get rid of it. This is huge, because most of your data wrangling will have many more than 2 steps, and we don't want a `gap_cambodia14`!
 
 Let's write it again but using multiple lines so it's nicer to read. 
 
@@ -382,7 +391,7 @@ gap_cambodia  <- gapminder %>%
 ```
 Amazing. I can actually read this like a story and there aren't temporary variables that get super confusing. In my head: 
 
->"Take the `gapminder` data, and then  
+>"start with the `gapminder` data, and then  
 filter for Cambodia, and then  
 deselect the variables continent and lifeExp."
 
@@ -434,9 +443,9 @@ gapminder %>%
          max_gdp = max(gdp))
 ```
 
-With the things we know so far, the answers you have are maybe a bit limiting. First, We had to act on Egypt and Vietnam separately, and repeat the same code. Copy-pasting like this is also super error prone. 
+With the things we know so far, the answers you have are maybe a bit limiting. First, we had to act on Egypt and Vietnam separately, and repeat the same code. Copy-pasting like this is also super error prone. 
 
-And second, this `max_gdpPercap` column is pretty redundant, because it's a repeated value a ton of times. Sometimes this is exactly what you want! You are now set up nicely to maybe take a proportion of gdpPercap/max_gdpPercap for each year or something. But maybe you just wanted that max_gdpPercap for something else. Let's keep going...
+And second, this `max_gdpPercap` column is pretty redundant, because it's a repeated value a ton of times. Sometimes this is exactly what you want! You are now set up nicely to maybe take a proportion of gdpPercap/max_gdpPercap for each year or something. But maybe you only wanted that `max_gdpPercap` for something else. Let's keep going...
 
 ## `group_by()` operates on groups
 
@@ -484,7 +493,7 @@ gapminder %>%
   ungroup()
 ```
 
-How cool is that! `summarize()` will actually only keep the columns that are grouped_by or summarized. So if we wanted to keep other columns, we'd have to do it another way (we'll get into it tomorrow). 
+How cool is that! `summarize()` will actually only keep the columns that are grouped_by or summarized. So if we wanted to keep other columns, we'd have to do have a few more steps (we'll get into it tomorrow). 
 
 ## `arrange()` orders columns
 
@@ -540,7 +549,7 @@ gap_max_gdp <- gapminder %>%
   dplyr::ungroup() 
 ```
 
-I actually am borrowing this "All together now" from Tony Fischetti's blog post [How dplyr replaced my most common R idioms](http://www.statsblogs.com/2014/02/10/how-dplyr-replaced-my-most-common-r-idioms/)). With that as inspiration, this is how what we have just done would look like in Base R.
+I actually am borrowing this "All together now" from Tony Fischetti's blog post [How dplyr replaced my most common R idioms](http://www.statsblogs.com/2014/02/10/how-dplyr-replaced-my-most-common-r-idioms/)). With that as inspiration, this is how what we have done would look like in Base R.
 
 ### Compare to base R
 
@@ -550,7 +559,7 @@ If we don't write anything after the comma, that means "all columns". And if we 
 
 Also, the `$` operator is how you access specific columns of your dataframe. You can also add new columns like we will do with `mex$gdp` below. 
 
-Instead of calculating the max for each country like we did with `dplyr` above, here we will just calculate the max for one country, Mexico. Tomorrow we will learn how to do it for all the countries, like we did with `dplyr::group_by()`.
+Instead of calculating the max for each country like we did with `dplyr` above, here we will calculate the max for one country, Mexico. Tomorrow we will learn how to do it for all the countries, like we did with `dplyr::group_by()`.
 
 ```{r, eval = FALSE}
 ## gapminder-wrangle.R --- baseR
@@ -579,19 +588,20 @@ Get your RMarkdown file cleaned up and sync it for the last time today!
 
 We've learned a ton in this session and we may not get to this right now. If we don't have time, we'll start here before getting into the next chapter: `tidyr)
 
-Sometimes you have data coming from different places or in different files, and you want to put them together so you can analyze them. This is called relational data, because it has some kind of relationship. In the tidyverse, combining data that has a relationship is called "joining". 
+Most of the time you will have data coming from different places or in different files, and you want to put them together so you can analyze them. Datasets you'll be joining can be called relational data, because it has some kind of relationship between them that you'll be acting upon. In the tidyverse, combining data that has a relationship is called "joining". 
 
 From the [RStudio cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf) (note: this is an earlier version of the cheatsheet but I like the graphics):
 
 ![](img/rstudio-cheatsheet-combine.png)
 
-Notice how you may not have exactly the same observations in the x1 columns above. Observations A and B are the same, but notice how the table on the left has observation C, and the table on the right has observation D. 
+<br>
+Let's have a look at this and pretend that the x1 column is a study site and x2 is the variables we've recorded (like species count) and x3 is data from an instrument (like temperature data). Notice how you may not have exactly the same observations in the two datasets: in the x1 column, observations A and B appear in both datasets, but notice how the table on the left has observation C, and the table on the right has observation D. 
 
 If you wanted to combine these two tables, how would you do it? There are some decisions you'd have to make about what was important to you. The cheatsheet visualizes it for us:
 
 ![](img/rstudio-cheatsheet-combine-options1.png)
 
-We will just talk about this briefly here, but you can refer to this more as you have your own datasets that you want to join. This describes the figure above::
+We will only talk about this briefly here, but you can refer to this more as you have your own datasets that you want to join. This describes the figure above::
 
 - `left_join` keeps everything from the left table and matches as much as it can from the right table. In R, the first thing that you type will be the left table (because it's on the left)
 - `right_join` keeps everything from the right table and matches as much as it can from the left table
@@ -605,11 +615,11 @@ These are all "mutating joins" because they add another column to what had been 
 - `anti_join` keeps only the observations that are NOT in both tables.
 --->
 
-Let's play with [these](http://edgar.jrc.ec.europa.eu/news_docs/CO2_1970-2014_dataset_of_CO2_report_2015.xls) CO2 emmissions data just to illustrate:
+Let's play with [these](http://edgar.jrc.ec.europa.eu/news_docs/CO2_1970-2014_dataset_of_CO2_report_2015.xls) CO2 emmissions data to illustrate:
 
 ```{r, eval=FALSE}
 
-## read in the data. (same URL as yesterday, just with co2.csv instead of gapminder.csv)
+## read in the data. (same URL as yesterday, with co2.csv instead of gapminder.csv)
 co2 <- read_csv("https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/co2.csv")
 
 ## explore

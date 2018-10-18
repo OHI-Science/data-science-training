@@ -43,7 +43,7 @@ You are all here today to learn how to code. Coding made me a better scientist b
 
 Here is an analogy to start us off. **If you were a pilot, R is an an airplane.** You can use R to go places! With practice you'll gain skills and confidence; you can fly further distances and get through tricky situations. You will become an awesome pilot and can fly your plane anywhere. 
 
-And **if R were an airplane, RStudio is the airport**. RStudio provides support! Runways, communication, community, and other services, and just makes your overall life easier. So it's not just the infrastructure (the user interface or IDE), although it is a great way to learn and interact with your variables, files, and interact directly with GitHub. It's also data science philosophy, R packages, community, and more. So although you can fly your plane without an airport and we could learn R without RStudio, that's not what we're going to do. 
+And **if R were an airplane, RStudio is the airport**. RStudio provides support! Runways, communication, community, and other services, and basically makes your overall life easier. So it's not only the infrastructure (the user interface or IDE), although it is a great way to learn and interact with your variables, files, and interact directly with GitHub. It's also data science philosophy, R packages, community, and more. So although you can fly your plane without an airport and we could learn R without RStudio, that's not what we're going to do. 
 
 > We are learning R together with RStudio and its many supporting features. 
 
@@ -75,14 +75,14 @@ FYI: you can change the default location of the panes, among many other things: 
 
 An important first question: **where are we?** 
 
-If you've just opened RStudio for the first time, you'll be in your Home directory. This is noted by the `~/` at the top of the console. You can see too that the Files pane in the lower right shows what is in the Home directory where you are. You can navigate around within that Files pane and explore, but note that you won't change where you are: even as you click through you'll still be Home: `~/`. 
+If you've have opened RStudio for the first time, you'll be in your Home directory. This is noted by the `~/` at the top of the console. You can see too that the Files pane in the lower right shows what is in the Home directory where you are. You can navigate around within that Files pane and explore, but note that you won't change where you are: even as you click through you'll still be Home: `~/`. 
 
 ![](img/RStudio_IDE_homedir.png)
 
 
 OK let's go into the Console, where we interact with the live R process.
 
-Make an assignment and then inspect the object you just created.
+Make an assignment and then inspect the object you created by typing its name on its own.
 
 ```{r}
 x <- 3 * 4
@@ -125,7 +125,7 @@ One more:
 science_rocks <- "yes it does!"
 ```
 
-You can see that we can assign an object to be a word, not a number. In R, this is called a "string", and R knows it's a word and not a number because it has quotes `" "`. You can work with strings in your data in R pretty easily, thanks to the [`stringr`](http://stringr.tidyverse.org/) and [`tidytext`](https://github.com/juliasilge/tidytext#tidytext-text-mining-using-dplyr-ggplot2-and-other-tidy-tools) packages. We won't talk about strings very much specifically, but know that R can handle text, and it can work with text and numbers together. 
+You can see that we can assign an object to be a word, not a number. In R, this is called a "string", and R knows it's a word and not a number because it has quotes `" "`. You can work with strings in your data in R pretty easily, thanks to the [`stringr`](http://stringr.tidyverse.org/) and [`tidytext`](https://github.com/juliasilge/tidytext#tidytext-text-mining-using-dplyr-ggplot2-and-other-tidy-tools) packages. We won't talk about strings very much specifically, but know that R can handle text, and it can work with text and numbers together (this is a huge benefit of using R). 
 
 Let's try to inspect:
 ```{r, eval=FALSE}
@@ -137,15 +137,15 @@ sciencerocks
 
 Implicit contract with the computer / scripting language: Computer will do tedious computation for you. In return, you will be completely precise in your instructions. Typos matter. Case matters. Pay attention to how you type.
 
-Remember that this is a language, not unsimilar to English! There are times you aren't understood -- it's going to happen. There are different ways this can happen. Sometimes you'll get an error. This is like someone saying 'What?' or 'Pardon'? Error messages can also be more useful, like when they say 'I didn't understand this specific part of what you said, I was expecting something else'. That is a great type of error message. Error messages are your friend. Google them (copy-and-paste!) to figure out what they mean. 
+Remember that this is a language, not unsimilar to English! There are times you aren't understood -- it's going to happen. There are different ways this can happen. Sometimes you'll get an error. This is like someone saying 'What?' or 'Pardon'? Error messages can also be more useful, like when they say 'I didn't understand what you said, I was expecting you to say blah'. That is a great type of error message. Error messages are your friend. Google them (copy-and-paste!) to figure out what they mean. 
 
 `r htmltools::img(src='img/practicalDev_googleErrorMessage.jpg', width=400)`
 
-And also know that there are errors that can creep in more subtly, when you are giving information that is understood, but not in the way you meant. Like if I'm telling a story about tables and you're picturing where you eat breakfast and I'm talking about data. This can leave me thinking I've gotten something across that the listener (or R) interpreted very differently. And as I continue telling my story you get more and more confused... So write clean code and check your work as you go to minimize these circumstances!
+And also know that there are errors that can creep in more subtly, when you are giving information that is understood, but not in the way you meant. Like if I am telling a story about suspenders that my British friend hears but silently interprets in a very different way (true story). This can leave me thinking I've gotten something across that the listener (or R) might silently interpreted very differently. And as I continue telling my story you get more and more confused... Clear communication is critical when you code: write clean, well documented code and check your work as you go to minimize these circumstances!
 
 ### Logical operators and expressions
 
-A moment about **logical operators and expressions**. We can ask questions about the objects we just made. 
+A moment about **logical operators and expressions**. We can ask questions about the objects we made. 
 
 - `==` means 'is equal to'
 - `!=` means 'is not equal to'
@@ -154,9 +154,9 @@ A moment about **logical operators and expressions**. We can ask questions about
 - `<=` means ` is less than or equal to'
 - `>=` means ` is greater than or equal to'
 ```{r}
-science_rocks == 2
-science_rocks <= 30
-science_rocks != 5
+x == 2
+x <= 30
+x != 5
 ```
 
 > Shortcuts
@@ -178,22 +178,22 @@ Now that R has `weight_kg` in memory, we can do arithmetic with it. For
 instance, we may want to convert this weight into pounds (weight in pounds is 2.2 times the weight in kg):
 
 ```{r, purl=FALSE}
-2.2 * weight_kg
+weight_kg * 2.2
 ```
 
 We can also change a variable's value by assigning it a new one:
 
 ```{r, purl=FALSE}
 weight_kg <- 57.5
-2.2 * weight_kg
+weight_kg * 2.2
 ```
 
-This means that assigning a value to one variable does not change the values of
-other variables.  For example, let's store the animal's weight in pounds in a new
-variable, `weight_lb`:
+And when we multiply it by 2.2, the outcome is based on the value currently assigned to the variable.  
+
+OK, let's store the animal's weight in pounds in a new variable, `weight_lb`:
 
 ```{r, purl=FALSE}
-weight_lb <- 2.2 * weight_kg
+weight_lb <- weight_kg * 2.2
 ```
 
 and then change `weight_kg` to 100.
@@ -202,7 +202,9 @@ and then change `weight_kg` to 100.
 weight_kg <- 100
 ```
 
-What do you think is the current content of the object `weight_lb`? 126.5 or 220? Why?
+What do you think is the current content of the object `weight_lb`? 126.5 or 220? Why? 
+It's 125.6. Why? Because assigning a value to one variable does not change the values of
+other variables — if you want `weight_kg` updated to reflect the new value for `weight_lb`, you will have to re-execute that code. This is why we re-comment working in scripts and documents rather than the Console, and will introduce those concepts shortly and work there for the rest of the day.
 
 <!---TODO::
 Add more practice
@@ -210,7 +212,7 @@ Add more practice
 
 ## R functions, help pages
 
-R has a mind-blowing collection of built-in functions that are used with the same syntax: function name with parentheses around what the function needs in order to do what it was built to do. When you type a function like this, we say we are "calling the function". `function_name(argument1 = value1, argument2 = value2, ...)`. 
+R has a mind-blowing collection of built-in functions that are used with the same syntax: function name with parentheses around what the function needs to do what it is supposed to do. `function_name(argument1 = value1, argument2 = value2, ...)`. When you see this syntax, we say we are "calling the function".
 
 <!---This example is from [R for Data Science](http://r4ds.had.co.nz/pipes) using a children's poem called [Little Bunny Foo Foo](https://en.wikipedia.org/wiki/Little_Bunny_Foo_Foo).
 
@@ -274,7 +276,7 @@ The examples from the help pages can be copy-pasted into the console for you to 
 
 > Exercise: Talk to your neighbor(s) and look up the help file for a function that you know or expect to exist. Here are some ideas: `?getwd()`, `?plot()`,  `min()`, `max()`, `?mean()`, `?log()`).
 
-And there's also help for when you only sort of remember the function name: double-questionmark:
+And there's also help for when you only sort of remember the function name: double-question mark:
 ```{r, eval=F}
 ??install 
 ```
@@ -311,6 +313,10 @@ rm(list = ls())
 
 or click the broom in RStudio's Environment pane.
 
+For reproducibility, it is critical that you delete your objects and restart your R session frequently. You don't want your whole analysis to only work in whatever way you've been working right now — you need it to work next week, after you upgrade your operating system, etc. Restarting your R session will help you identify and account for anything you need for your analysis. 
+
+We will keep coming back to this theme but let's restart our R session together: Go to the top menus: Session > Restart R. 
+
 ### Your turn
 
 > Exercise: Clear your workspace, then create a few new variables. Create a variable that is the mean of a sequence of 1-20. What's a good name for your variable? Does it matter what your 'by' argument is? Why?
@@ -318,6 +324,8 @@ or click the broom in RStudio's Environment pane.
 ## RMarkdown
 
 Now we are going to also introduce RMarkdown. This is really key for collaborative research, so we're going to get started with it early and then use it for the rest of the day. 
+
+This is also going to introduce us to the fact that RStudio is a sophisticated text editor (among all the other awesome things). You can use it to keep your files and scripts organized within one place (the RStudio IDE) while getting support that you expect from text editors (check-spelling and color, to name a few).
 
 An RMarkdown file will allow us to weave markdown text with chunks of R code to be evaluated and output content like tables and plots.
 
@@ -343,7 +351,7 @@ Let's go ahead and "Knit HTML" by clicking the blue yarn at the top of the RMark
 
 ![](img/rmarkdown_side_by_side.png)
 
-What do you notice between the two? 
+What do you notice between the two? So much of learning to code is looking for patterns.
 
 Notice how the grey **R code chunks** are surrounded by 3 backticks and `{r LABEL}`. These are evaluated and return the output text in the case of `summary(cars)` and the output plot in the case of `plot(pressure)`.
 
@@ -353,7 +361,7 @@ More details...
 
 This RMarkdown file has 2 different languages within it: **R** and **Markdown**. 
 
-We don't know that much R yet, but you can see that we are taking a summary of some data called 'cars', and then plotting. There's a lot more to learn about R, and we'll get into it for the next few days. 
+We don't know that much R yet, but you can see that we are taking a summary of some data called 'cars', and then plotting. We will focus on R for the rest of the workshop, but for the rest of this morning let's focus on the second language.
 
 The second language is Markdown. This is a formatting language for plain text, and there are only about 15 rules to know. 
 
@@ -368,8 +376,10 @@ There are some good [cheatsheets](https://github.com/adam-p/markdown-here/wiki/M
 
 **Important**: note that the hashtag `#` is used differently in Markdown and in R: 
 
-- in R, a hashtag indicates a comment that will not be evaluated. You can use as many as you want: `#` is equivalent to `######`. It's just a matter of style. I use two `##` to indicate a comment so that it's clearer what is a comment versus what I don't want to run at the moment.
+- in R, a hashtag indicates a comment that will not be evaluated. You can use as many as you want: `#` is equivalent to `######`. It's a matter of style. I use two `##` to indicate a comment so that it's clearer what is a comment versus what I don't want to run at the moment.
 - in Markdown, a hashtag indicates a level of a header. And the number you use matters: `#` is a "level one header", meaning the biggest font and the top of the hierarchy. `###` is a level three header, and will show up nested below the `#` and `##` headers.
+
+If this seems confusing, take comfort in the fact that you are already used to using `#`s differently in real life: it can mean "number" or "pound" or topics on social media...
 
 Learn more: http://rmarkdown.rstudio.com/
 
@@ -398,7 +408,7 @@ Now, let's write some R code.
 x <- seq(1:15)
 ```
 
-Now, hitting return does not execute this command; remember, it's just a text file. To execute it, we need to get what we typed in the the R chunk (the grey R code) down into the console. How do we do it? There are several ways (let's do each of them):
+Now, hitting return does not execute this command; remember, it's a text file in the text editor, it's not associated with the R engine. To execute it, we need to get what we typed in the the R chunk (the grey R code) down into the console. How do we do it? There are several ways (let's do each of them):
 
 1. copy-paste this line into the console.
 1. select the line (or simply put the cursor there), and click 'Run'. This is available from 
@@ -473,7 +483,7 @@ Ask for help and recognize useful answers
 
 Here are some additional things we didn't have time to discuss:
 
-### I just entered a command and nothing's happening
+### I entered a command and nothing's happening
 
 It may be because you didn't complete a command: is there a little `+` in your console? R is saying that it is waiting for you to finish. In the example below, I need to close that parenthesis.
 
