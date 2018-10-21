@@ -25,7 +25,7 @@
 <meta name="author" content="The Ocean Health Index Team">
 
 
-<meta name="date" content="2018-10-18">
+<meta name="date" content="2018-10-21">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -291,7 +291,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="9.2" data-path="collaborating.html"><a href="collaborating.html#create-repo-partner-1"><i class="fa fa-check"></i><b>9.2</b> Create repo (Partner 1)</a></li>
 <li class="chapter" data-level="9.3" data-path="collaborating.html"><a href="collaborating.html#create-a-gh-pages-branch-partner-1"><i class="fa fa-check"></i><b>9.3</b> Create a gh-pages branch (Partner 1)</a></li>
-<li class="chapter" data-level="9.4" data-path="collaborating.html"><a href="collaborating.html#give-your-collaborator-administration-priviledges-partner-1-and-2"><i class="fa fa-check"></i><b>9.4</b> Give your collaborator administration priviledges (Partner 1 and 2)</a></li>
+<li class="chapter" data-level="9.4" data-path="collaborating.html"><a href="collaborating.html#give-your-collaborator-administration-privileges-partner-1-and-2"><i class="fa fa-check"></i><b>9.4</b> Give your collaborator administration privileges (Partner 1 and 2)</a></li>
 <li class="chapter" data-level="9.5" data-path="collaborating.html"><a href="collaborating.html#clone-to-a-new-rproject-partner-1"><i class="fa fa-check"></i><b>9.5</b> Clone to a new Rproject (Partner 1)</a></li>
 <li class="chapter" data-level="9.6" data-path="collaborating.html"><a href="collaborating.html#clone-to-a-new-rproject-partner-2"><i class="fa fa-check"></i><b>9.6</b> Clone to a new Rproject (Partner 2)</a></li>
 <li class="chapter" data-level="9.7" data-path="collaborating.html"><a href="collaborating.html#edit-a-file-and-sync-partner-2"><i class="fa fa-check"></i><b>9.7</b> Edit a file and sync (Partner 2)</a></li>
@@ -344,7 +344,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1><span class="header-section-number">Chapter 9</span> Collaborating with GitHub</h1>
 <div id="objectives-resources-5" class="section level2">
 <h2><span class="header-section-number">9.1</span> Objectives &amp; Resources</h2>
-<p>The collaborative power of GitHub and RStudio is really game changing. So far we’ve been collaborating with our most important collaborator: ourselves. But, we are lucky that in science we have so many other collaborators, so let’s learn how to use GitHub with them!</p>
+<p>The collaborative power of GitHub and RStudio is really game changing. So far we’ve been collaborating with our most important collaborator: ourselves. But, we are lucky that in science we have so many other collaborators, so let’s learn how to accelerate our collaborations with them through GitHub!</p>
 <p>We are going to teach you the simplest way to collaborate with someone, which is for both of you to have privileges to edit and add files to a repository. GitHub is built for software developer teams, and there is a lot of features that limit who can directly edit files, but we don’t need to start there.</p>
 <p>We will do this all with a partner, and we’ll walk through some things all together, and then give you a chance to work with your collaborator on your own.</p>
 <div id="objectives-6" class="section level3">
@@ -365,8 +365,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="create-a-gh-pages-branch-partner-1" class="section level2">
 <h2><span class="header-section-number">9.3</span> Create a gh-pages branch (Partner 1)</h2>
-<p>We aren’t going to talk about branches very much, but they are a powerful feature of git/GitHub. I think of it as creating a copy of your work that becomes a parallel universe that you can modify safely because it’s not affecting your original work. By default, when you create a new repo you begin with one branch, and it is named <code>master</code>. When you create new branches, you can name them whatever you want. However, if you name one <code>gh-pages</code> (all lowercase, with a <code>-</code> and no spaces), this will let you create a website. And that’s our plan. So, Partner 1, do this to create a <code>gh-pages</code> branch:</p>
-<p>On the homepage for your repo on GitHub.com, click the button that says “Branch:master”. Here, you can switch to another branch (right now there aren’t any), or create one by typing a new name.</p>
+<p>We aren’t going to talk about branches very much, but they are a powerful feature of git/GitHub. I think of it as creating a copy of your work that becomes a parallel universe that you can modify safely because it’s not affecting your original work. And then you can choose to merge the universes back together if and when you want. By default, when you create a new repo you begin with one branch, and it is named <code>master</code>. When you create new branches, you can name them whatever you want. However, if you name one <code>gh-pages</code> (all lowercase, with a <code>-</code> and no spaces), this will let you create a website. And that’s our plan. So, Partner 1, do this to create a <code>gh-pages</code> branch:</p>
+<p>On the homepage for your repo on GitHub.com, click the button that says “Branch:master”. Here, you can switch to another branch (right now there aren’t any others besides <code>master</code>), or create one by typing a new name.</p>
 <p><img src="img/github-branch.png" width="350px"></p>
 <p><br></p>
 <p>Let’s type <code>gh-pages</code>.</p>
@@ -378,8 +378,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>And then click to change the default branch to <code>gh-pages</code>. I like to then delete the <code>master</code> branch when it has the little red trash can next to it. It will make you confirm that you really want to delete it, which I do!</p>
 <p><img src="img/github-change-branch.png" width="450px"></p>
 </div>
-<div id="give-your-collaborator-administration-priviledges-partner-1-and-2" class="section level2">
-<h2><span class="header-section-number">9.4</span> Give your collaborator administration priviledges (Partner 1 and 2)</h2>
+<div id="give-your-collaborator-administration-privileges-partner-1-and-2" class="section level2">
+<h2><span class="header-section-number">9.4</span> Give your collaborator administration privileges (Partner 1 and 2)</h2>
 <p>Now, Partner 1, go into Settings &gt; Collaborators &gt; enter Partner 2’s (your collaborator’s) username.</p>
 <p>Partner 2 then needs to check their email and accept as a collaborator. Notice that your collaborator has “Push access to the repository” (highlighted below):</p>
 <div class="figure">
@@ -392,7 +392,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Now let’s have Partner 1 clone the repository to their local computer. We’ll do this through RStudio like we did before (see Chapter <a href="github.html#github">4</a>: <a href="github.html#clone-your-repository-using-rstudio">Clone your repository using RStudio</a>), but with a final additional step before hitting “Create Project”: select “Open in a new Session”.</p>
 <p><br></p>
 <p><img src="img/github_clone_newproject.png" width="450px"></p>
-<p><br> <br> Opening this Project in a new Session opens up a new world of awesomeness from RStudio. Having different RStudio project sessions allows you to keep your work separate and organized. So you can collaborate with this collaborator on this repository while also working on your other repository from this morning. I tend to have a lot of projects going at one time: <br> <img src="img/Rproj_screenshot.jpg" /></p>
+<p><br> <br> Opening this Project in a new Session opens up a new world of awesomeness from RStudio. Having different RStudio project sessions allows you to keep your work separate and organized. So you can collaborate with this collaborator on this repository while also working on your other repository from this morning. I tend to have a lot of projects going at one time:</p>
+<p><br></p>
+<div class="figure">
+<img src="img/Rproj_screenshot.jpg" />
+
+</div>
 <p><br></p>
 <p>Have a look in your git tab.</p>
 <p>Like we saw this morning, when you first clone a repo through RStudio, RStudio will add an <code>.Rproj</code> file to your repo. And if you didn’t add a <code>.gitignore</code> file when you originally created the repo on GitHub.com, RStudio will also add this for you. So, Partner 1, let’s go ahead and sync this back to GitHub.com.</p>
@@ -406,7 +411,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="clone-to-a-new-rproject-partner-2" class="section level2">
 <h2><span class="header-section-number">9.6</span> Clone to a new Rproject (Partner 2)</h2>
-<p>Now it’s Partner 2’s turn! Partner 2, clone this repository. When you clone it, RStudio should not create any new files since the <code>.Rproj</code> and <code>.gitignore</code> files already exist.</p>
+<p>Now it’s Partner 2’s turn! Partner 2, clone this repository following the same steps that Partner 1 just did. When you clone it, RStudio should not create any new files — why? Partner 1 already created and pushed eht the <code>.Rproj</code> and <code>.gitignore</code> files so they already exist in the repo.</p>
 </div>
 <div id="edit-a-file-and-sync-partner-2" class="section level2">
 <h2><span class="header-section-number">9.7</span> Edit a file and sync (Partner 2)</h2>
@@ -437,23 +442,24 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="merge-conflicts" class="section level2">
 <h2><span class="header-section-number">9.9</span> Merge conflicts</h2>
-<p>What kind of heartache are we talking about? Let’s explore. <strong>Stop and watch me create and solve a merge conflict with my Partner 2, and then you will have time to recreate this with your partner.</strong></p>
+<p>What kind of heartache are we talking about? Let’s explore. <strong>Stop and watch me create and solve a merge conflict with my Partner 2, and then you will have time to recreate this with your partner.</strong> Here’s what I am going to do:</p>
 <p>Within a file, GitHub tracks changes line-by-line. So you can also have collaborators working on different lines within the same file and GitHub will be able to weave those changes into each other – that’s it’s job! It’s when you have collaborators working on <em>the same lines within the same file</em> that you can have <strong>merge conflicts</strong>. Merge conflicts can be frustrating, but they are actually trying to help you (kind of like R’s error messages). They occur when GitHub can’t make a decision about what should be on a particular line and needs a human (you) to decide. And this is good – you don’t want GitHub to decide for you, it’s important that you make that decision.</p>
 <p>So let’s test this. Let’s have both Partners 1 and 2 go to RStudio and pull so you have the most recent versions of all your files. Now, Partners 1 and 2, both go to the README, and on Line 7, write something, anything. I’m not going to give any examples because I want both Partners to write something different. And be sure to save the README.</p>
-<p>OK. Now, let’s have Partner 1 sync: pull, stage, commit, push. Great.</p>
-<p>Now, when Partner 1 is done, let’s have Partner 2 try.</p>
-<p>Partner 2: pull —- Error! Merge conflict!</p>
+<p>OK. Now, let’s have Partner 2 sync: pull, stage, commit, push. Great.</p>
+<p>Now, when Partner 2 is done, let’s have Partner 1 (me) try.</p>
+<p>Partner 1: pull —- Error! Merge conflict!</p>
 <div class="figure">
 <img src="img/github_mergeconflict.png" />
 
 </div>
-<p>So Partner 2 is not allowed to pull, it failed. GitHub is protecting Partner 2 because if they did pull, their work would be overwritten by whatever Partner 1 had written. So GitHub is going to make you decide. GitHub says, either commit this work first, or “stash it” (I interpret that as saving a copy of the README in another folder somewhere outside of this GitHub repository).</p>
-<p>Let’s follow their advice and have Partner 2 commit. Great. Now let’s pull again.</p>
+<p>So Partner 1 is not allowed to pull, it failed. GitHub is protecting Partner 1 because if they did successfully pull, their work would be overwritten by whatever Partner 2 had written. So GitHub is going to make a human (Partner 1 in this case) decide. GitHub says, either commit this work first, or “stash it” (I interpret that as saving a copy of the README in another folder somewhere outside of this GitHub repository).</p>
+<p>Let’s follow their advice and have Partner 1 commit. Great. Now let’s pull again.</p>
 <p>Still not happy!</p>
 <div class="figure">
 <img src="img/github_mergeconflict2.png" />
 
 </div>
+<p><br></p>
 <p>OK, actually, we’re just moving along this same problem that we know that we’ve created: Both Partner 1 and 2 have both added new information to the same line. You can see that the pop-up box is saying that there is a CONFLICT and the merge has not happened. OK. We can close that window and inspect.</p>
 <p>Notice that in the git tab, there are orange <code>U</code>s; this means that there is an unresolved conflict, and it is not staged with a check anymore because modifications have occurred to the file since it has been staged.</p>
 <p>Let’s look at the README file itself. We got a preview in the diff pane that there is some new text going on in our README file:</p>
@@ -488,7 +494,7 @@ Julie is collaborating on this README.
 <h2><span class="header-section-number">9.10</span> How do you avoid merge conflicts?</h2>
 <p>I’d say pull often, commit and sync often.</p>
 <p>Also, talk with your collaborators. Although our Ocean Health Index project is highly collaborative, we are actually rarely working on the exact same file at any given time. And if we are, we are also on Slack, Gchat, or sitting next to the person.</p>
-<p>But merge conflicts will occur and some of them will be heartbreaking and demoralizing. hey happen to me when I work on my work computer and laptop. So protect yourself by pulling and syncing often!</p>
+<p>But merge conflicts will occur and some of them will be heartbreaking and demoralizing. They happen to me when I collaborate with myself between my work computer and laptop. So protect yourself by pulling and syncing often!</p>
 </div>
 <div id="create-your-collaborative-website" class="section level2">
 <h2><span class="header-section-number">9.11</span> Create your collaborative website</h2>
@@ -496,7 +502,7 @@ Julie is collaborating on this README.
 <ol style="list-style-type: decimal">
 <li>Pull!</li>
 <li>Create a new RMarkdown file <strong>and name it <code>index.Rmd</code></strong>. Make sure it’s all lowercase, and named <code>index.Rmd</code>. This will be the homepage for our website!</li>
-<li>Maybe change the title of the Rmd, call it “Our website”</li>
+<li>Maybe change the title inside the Rmd, call it “Our website”</li>
 <li>Knit!</li>
 <li>Save and sync your .Rmd and your .html files
 <ul>

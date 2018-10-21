@@ -2,7 +2,7 @@
 
 ## Objectives & Resources
 
-The collaborative power of GitHub and RStudio is really game changing. So far we've been collaborating with our most important collaborator: ourselves. But, we are lucky that in science we have so many other collaborators, so let's learn how to use GitHub with them! 
+The collaborative power of GitHub and RStudio is really game changing. So far we've been collaborating with our most important collaborator: ourselves. But, we are lucky that in science we have so many other collaborators, so let's learn how to accelerate our collaborations with them through GitHub! 
 
 We are going to teach you the simplest way to collaborate with someone, which is for both of you to have privileges to edit and add files to a repository. GitHub is built for software developer teams, and there is a lot of features that limit who can directly edit files, but we don't need to start there. 
 
@@ -27,9 +27,9 @@ Team up with a partner sitting next to you. Partner 1 will create a new reposito
 
 ## Create a gh-pages branch (Partner 1)
 
-We aren't going to talk about branches very much, but they are a powerful feature of git/GitHub. I think of it as creating a copy of your work that becomes a parallel universe that you can modify safely because it's not affecting your original work. By default, when you create a new repo you begin with one branch, and it is named `master`. When you create new branches, you can name them whatever you want. However, if you name one `gh-pages` (all lowercase, with a `-` and no spaces), this will let you create a website. And that's our plan. So, Partner 1, do this to create a `gh-pages` branch: 
+We aren't going to talk about branches very much, but they are a powerful feature of git/GitHub. I think of it as creating a copy of your work that becomes a parallel universe that you can modify safely because it's not affecting your original work. And then you can choose to merge the universes back together if and when you want. By default, when you create a new repo you begin with one branch, and it is named `master`. When you create new branches, you can name them whatever you want. However, if you name one `gh-pages` (all lowercase, with a `-` and no spaces), this will let you create a website. And that's our plan. So, Partner 1, do this to create a `gh-pages` branch: 
 
-On the homepage for your repo on GitHub.com, click the button that says "Branch:master". Here, you can switch to another branch (right now there aren't any), or create one by typing a new name. 
+On the homepage for your repo on GitHub.com, click the button that says "Branch:master". Here, you can switch to another branch (right now there aren't any others besides `master`), or create one by typing a new name. 
 
 <img src="img/github-branch.png" width="350px">
 
@@ -52,7 +52,7 @@ And then click to change the default branch to `gh-pages`. I like to then delete
 <img src="img/github-change-branch.png" width="450px"> 
 
 
-## Give your collaborator administration priviledges  (Partner 1 and 2)
+## Give your collaborator administration privileges (Partner 1 and 2)
 
 Now, Partner 1, go into Settings > Collaborators > enter Partner 2's (your collaborator's) username. 
 
@@ -71,7 +71,9 @@ Now let's have Partner 1 clone the repository to their local computer. We'll do 
 <br>
 <br>
 Opening this Project in a new Session opens up a new world of awesomeness from RStudio. Having different RStudio project sessions allows you to keep your work separate and organized. So you can collaborate with this collaborator on this repository while also working on your other repository from this morning. I tend to have a lot of projects going at one time:
+
 <br>
+
 ![](img/Rproj_screenshot.jpg)
 
 <br>
@@ -90,7 +92,7 @@ Let's confirm that this was synced by looking at GitHub.com again. You may have 
 
 ## Clone to a new Rproject  (Partner 2)
 
-Now it's Partner 2's turn! Partner 2, clone this repository. When you clone it, RStudio should not create any new files since the `.Rproj` and `.gitignore` files already exist.  
+Now it's Partner 2's turn! Partner 2, clone this repository following the same steps that Partner 1 just did. When you clone it, RStudio should not create any new files — why? Partner 1 already created and pushed eht the `.Rproj` and `.gitignore` files so they already exist in the repo.  
 
 ## Edit a file and sync (Partner 2)
 
@@ -129,27 +131,29 @@ I recommend pulling every time you come back to a collaborative repository. Whet
 
 ## Merge conflicts
 
-What kind of heartache are we talking about? Let's explore. **Stop and watch me create and solve a merge conflict with my Partner 2, and then you will have time to recreate this with your partner.** 
+What kind of heartache are we talking about? Let's explore. **Stop and watch me create and solve a merge conflict with my Partner 2, and then you will have time to recreate this with your partner.** Here's what I am going to do:
 
 Within a file, GitHub tracks changes line-by-line. So you can also have collaborators working on different lines within the same file and GitHub will be able to weave those changes into each other -- that's it's job! It's when you have collaborators working on *the same lines within the same file* that you can have **merge conflicts**. Merge conflicts can be frustrating, but they are actually trying to help you (kind of like R's error messages). They occur when GitHub can't make a decision about what should be on a particular line and needs a human (you) to decide. And this is good -- you don't want GitHub to decide for you, it's important that you make that decision. 
 
 So let's test this. Let's have both Partners 1 and 2 go to RStudio and pull so you have the most recent versions of all your files. Now, Partners 1 and 2, both go to the README, and on Line 7, write something, anything. I'm not going to give any examples because I want both Partners to write something different. And be sure to save the README. 
 
-OK. Now, let's have Partner 1 sync: pull, stage, commit, push. Great. 
+OK. Now, let's have Partner 2 sync: pull, stage, commit, push. Great. 
 
-Now, when Partner 1 is done, let's have Partner 2 try. 
+Now, when Partner 2 is done, let's have Partner 1 (me) try. 
 
-Partner 2: pull ---- Error! Merge conflict!
+Partner 1: pull ---- Error! Merge conflict!
 
 ![](img/github_mergeconflict.png)
 
-So Partner 2 is not allowed to pull, it failed. GitHub is protecting Partner 2 because if they did pull, their work would be overwritten by whatever Partner 1 had written. So GitHub is going to make you decide. GitHub says, either commit this work first, or "stash it" (I interpret that as saving a copy of the README in another folder somewhere outside of this GitHub repository). 
+So Partner 1 is not allowed to pull, it failed. GitHub is protecting Partner 1 because if they did successfully pull, their work would be overwritten by whatever Partner 2 had written. So GitHub is going to make a human (Partner 1 in this case) decide. GitHub says, either commit this work first, or "stash it" (I interpret that as saving a copy of the README in another folder somewhere outside of this GitHub repository). 
 
-Let's follow their advice and have Partner 2 commit. Great. Now let's pull again. 
+Let's follow their advice and have Partner 1 commit. Great. Now let's pull again. 
 
 Still not happy!
 
 ![](img/github_mergeconflict2.png)
+
+<br>
 
 OK, actually, we're just moving along this same problem that we know that we've created: Both Partner 1 and 2 have both added new information to the same line. You can see that the pop-up box is saying that there is a CONFLICT and the merge has not happened. OK. We can close that window and inspect. 
 
@@ -191,7 +195,7 @@ I'd say pull often, commit and sync often.
 
 Also, talk with your collaborators. Although our Ocean Health Index project is highly collaborative, we are actually rarely working on the exact same file at any given time. And if we are, we are also on Slack, Gchat, or sitting next to the person. 
 
-But merge conflicts will occur and some of them will be heartbreaking and demoralizing. hey happen to me when I work on my work computer and laptop. So protect yourself by pulling and syncing often! 
+But merge conflicts will occur and some of them will be heartbreaking and demoralizing. They happen to me when I collaborate with myself between my work computer and laptop. So protect yourself by pulling and syncing often! 
 
 ## Create your collaborative website
 
@@ -199,7 +203,7 @@ OK. Let's have Partner 2 create a new RMarkdown file. Here's what they will do:
 
 1. Pull!
 1. Create a new RMarkdown file **and name it `index.Rmd`**. Make sure it's all lowercase, and named `index.Rmd`. This will be the homepage for our website! 
-1. Maybe change the title of the Rmd, call it "Our website"
+1. Maybe change the title inside the Rmd, call it "Our website"
 1. Knit!
 1. Save and sync your .Rmd and your .html files 
     - (pull, stage, commit, pull, push)

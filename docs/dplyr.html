@@ -25,7 +25,7 @@
 <meta name="author" content="The Ocean Health Index Team">
 
 
-<meta name="date" content="2018-10-18">
+<meta name="date" content="2018-10-21">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -291,7 +291,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="9.2" data-path="collaborating.html"><a href="collaborating.html#create-repo-partner-1"><i class="fa fa-check"></i><b>9.2</b> Create repo (Partner 1)</a></li>
 <li class="chapter" data-level="9.3" data-path="collaborating.html"><a href="collaborating.html#create-a-gh-pages-branch-partner-1"><i class="fa fa-check"></i><b>9.3</b> Create a gh-pages branch (Partner 1)</a></li>
-<li class="chapter" data-level="9.4" data-path="collaborating.html"><a href="collaborating.html#give-your-collaborator-administration-priviledges-partner-1-and-2"><i class="fa fa-check"></i><b>9.4</b> Give your collaborator administration priviledges (Partner 1 and 2)</a></li>
+<li class="chapter" data-level="9.4" data-path="collaborating.html"><a href="collaborating.html#give-your-collaborator-administration-privileges-partner-1-and-2"><i class="fa fa-check"></i><b>9.4</b> Give your collaborator administration privileges (Partner 1 and 2)</a></li>
 <li class="chapter" data-level="9.5" data-path="collaborating.html"><a href="collaborating.html#clone-to-a-new-rproject-partner-1"><i class="fa fa-check"></i><b>9.5</b> Clone to a new Rproject (Partner 1)</a></li>
 <li class="chapter" data-level="9.6" data-path="collaborating.html"><a href="collaborating.html#clone-to-a-new-rproject-partner-2"><i class="fa fa-check"></i><b>9.6</b> Clone to a new Rproject (Partner 2)</a></li>
 <li class="chapter" data-level="9.7" data-path="collaborating.html"><a href="collaborating.html#edit-a-file-and-sync-partner-2"><i class="fa fa-check"></i><b>9.7</b> Edit a file and sync (Partner 2)</a></li>
@@ -347,7 +347,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </blockquote>
 <div id="objectives-resources-2" class="section level2">
 <h2><span class="header-section-number">6.1</span> Objectives &amp; Resources</h2>
-<p>What are some common things you like to do with your data? Maybe remove rows or columns, do calcuations and maybe add new columns? This is called <strong>data wrangling</strong>. It’s not data management or data manipulation: you <strong>keep the raw data raw</strong> and do these things programatically in R with the tidyverse.</p>
+<p>What are some common things you like to do with your data? Maybe remove rows or columns, do calculations and maybe add new columns? This is called <strong>data wrangling</strong>. It’s not data management or data manipulation: you <strong>keep the raw data raw</strong> and do these things programatically in R with the tidyverse.</p>
 <p>We are going to introduce you to data wrangling in R first with the tidyverse. The tidyverse is a new suite of packages that match a philosophy of data science developed by Hadley Wickham and the RStudio team. I find it to be a more straight-forward way to learn R. We will also show you by comparison what code will look like in “Base R”, which means, in R without any additional packages (like the “tidyverse” package) installed. I like David Robinson’s blog post on the topic of <a href="http://varianceexplained.org/r/teach-hard-way">teaching the tidyverse first</a>.</p>
 <p>For some things, base-R is more straight forward, and we’ll show you that too. Whenever we use a function that is from the tidyverse, we will prefix it so you’ll know for sure.</p>
 <div id="objectives-3" class="section level3">
@@ -387,7 +387,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Hadley Wickham, RStudio’s Chief Scientist, and his team have been building R packages for data wrangling and visualization based on the idea of <strong>tidy data</strong>.</p>
 <p>Tidy data has a simple convention: put variables in the columns and observations in the rows.</p>
 <p><img src="img/tidy_data.png" /> </br> </br> The <code>mpg</code> dataset we were working with this morning was an example of tidy data. When data are tidy, you are set up to work with it for your analyses, plots, etc. </br> </br> <img src="img/tidy_img_mpg.png" /></p>
-<p>Right now we are going to use <code>dplyr</code> to wrangle this tidyish data set (the transform part of the cycle), and then come back to tidying messy data using <code>tidyr</code> once we’ve had some fun wrangling. These are both part of the <code>tidyverse</code> package that we’ve already installed:</p>
+<p>Right now we are going to use <code>dplyr</code> to wrangle this tidy-ish data set (the transform part of the cycle), and then come back to tidying messy data using <code>tidyr</code> once we’ve had some fun wrangling. These are both part of the <code>tidyverse</code> package that we’ve already installed:</p>
 <div class="figure">
 <img src="img/r4ds_data-science.png" />
 
@@ -765,7 +765,7 @@ mex<span class="op">$</span>max_gdp &lt;-<span class="st"> </span><span class="k
 </div>
 <div id="joining-datasets" class="section level2">
 <h2><span class="header-section-number">6.14</span> Joining datasets</h2>
-<p>We’ve learned a ton in this session and we may not get to this right now. If we don’t have time, we’ll start here before getting into the next chapter: `tidyr)</p>
+<p>We’ve learned a ton in this session and we may not get to this right now. If we don’t have time, we’ll start here before getting into the next chapter: <code>tidyr</code>).</p>
 <p>Most of the time you will have data coming from different places or in different files, and you want to put them together so you can analyze them. Datasets you’ll be joining can be called relational data, because it has some kind of relationship between them that you’ll be acting upon. In the tidyverse, combining data that has a relationship is called “joining”.</p>
 <p>From the <a href="http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">RStudio cheatsheet</a> (note: this is an earlier version of the cheatsheet but I like the graphics):</p>
 <div class="figure">
@@ -791,7 +791,7 @@ These are all "mutating joins" because they add another column to what had been 
 - `semi_join` keeps only the observations that are in both tables
 - `anti_join` keeps only the observations that are NOT in both tables.
 --->
-<p>Let’s play with <a href="http://edgar.jrc.ec.europa.eu/news_docs/CO2_1970-2014_dataset_of_CO2_report_2015.xls">these</a> CO2 emmissions data to illustrate:</p>
+<p>Let’s play with <a href="http://edgar.jrc.ec.europa.eu/news_docs/CO2_1970-2014_dataset_of_CO2_report_2015.xls">these</a> CO2 emissions data to illustrate:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## read in the data. (same URL as yesterday, with co2.csv instead of gapminder.csv)
 co2 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/co2.csv&quot;</span>)
 
