@@ -194,7 +194,7 @@ ggplot(data = se, aes(x = year, y = visitors))
 
 > ##### Answers (no peeking)
 
-```{r, echo=F, eval=T}
+```{r, echo=TRUE, eval=TRUE}
 # 1.
 ggplot(data = se) +
   geom_point(aes(x = year, y = visitors, color = park_name))
@@ -218,7 +218,7 @@ ggplot(data = se) +
 
 ## Faceting
 
-ggplot has a special technique called *faceting* that allows the user to split one plot into multiple plots based on a factor included in the dataset. We will use it to make a plot of park visitation by state:
+ggplot has a special technique called *faceting* that allows the user to split one plot into multiple plots based on data in the dataset. We will use it to make a plot of park visitation by state:
 
 ```{r first-facet, purl=FALSE}
 ggplot(data = se) +
@@ -353,7 +353,7 @@ ggplot(data = visit_16, aes(x = state, y = visitors, fill = park_name)) +
 ```
 
 
-> ### Challenge
+### Challenge
 
 > With all of this information in hand, please take another five minutes to either
 > improve one of the plots generated in this exercise or create a beautiful graph
@@ -366,6 +366,8 @@ ggplot(data = visit_16, aes(x = state, y = visitors, fill = park_name)) +
 > * Change the color palette used
 > * Use `scale_x_discrete` to change the x-axis tick labels to the full state names (Arizona, Colorado, etc.)
 > * Make a bar chart using the Massachussets dataset (`mass`) and find out how many parks of each type are in the state.
+
+##### Answers (no peeking!)
 
 ```{r}
 #how many of each types of parks are in Massachusetts?

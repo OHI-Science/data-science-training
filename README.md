@@ -23,6 +23,7 @@ This book as been used for Software Carpentry workshops and the OHI Fellows prog
 
 Prior to teaching:
 
+- open a clean RStudio session with default panes
 - github chapter: since `my-repo` has been created, consider `[placename]-repo` e.g. `whoi-repo`
 - before ggplot2 chapter: `install.packages('tidyverse')`
 
