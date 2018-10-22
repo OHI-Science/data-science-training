@@ -61,10 +61,10 @@ Tidy data has a simple convention: put variables in the columns and observations
 ![](img/tidy_data.png)
 </br>
 </br>
-The `mpg` dataset we were working with this morning was an example of tidy data. When data are tidy, you are set up to work with it for your analyses, plots, etc. 
+The national parks dataset we were working with this morning was an example of tidy data. When data are tidy, you are set up to work with it for your analyses, plots, etc. 
 </br>
 </br>
-![](img/tidy_img_mpg.png) 
+![](img/tidy_img_np.png) 
 
 Right now we are going to use `dplyr` to wrangle this tidy-ish data set (the transform part of the cycle), and then come back to tidying messy data using `tidyr` once we've had some fun wrangling. These are both part of the `tidyverse` package that we've already installed:
 
@@ -101,7 +101,7 @@ This is becoming standard practice for how to load a library in a file, and if y
 
 ## Explore the gapminder data.frame
 
-Yesterday we explored the mpg data.frame visually. Today, we'll explore a dataset by the numbers. 
+Yesterday we explored the national parks data.frame visually. Today, we'll explore a dataset by the numbers. 
 
 We will work with some of the data from the [Gapminder project](http://www.gapminder.org). 
 
