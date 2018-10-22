@@ -335,7 +335,7 @@ ggplot2 provides over 20 stats for you to use. Each stat is a function, so you c
 
 There's one more piece of magic associated with bar charts. You can colour a bar chart using either the `color` aesthetic, or, more usefully, `fill`:
 
-```{r, fig.height = 3, fig.width = 4}
+```{r}
 ggplot(data = visit_16, aes(x = state, y = visitors, fill = park_name)) + 
   geom_bar(stat = "identity")
 ```
@@ -347,7 +347,7 @@ The stacking is performed automatically by the __position adjustment__ specified
     another. This makes it easier to compare individual values.
 
 
-```{r, fig.height = 3, fig.width = 4}
+```{r}
 ggplot(data = visit_16, aes(x = state, y = visitors, fill = park_name)) + 
   geom_bar(stat = "identity", position = "dodge")
 ```
