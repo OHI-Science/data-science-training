@@ -173,7 +173,7 @@ First, go to your account on github.com and click "New repository".
 <br />
 <br />
 
-Choose a name.Call it whatever you want (the shorter the better), or follow me for convenience. I will call mine `my-repo`. 
+Choose a name. Call it whatever you want (the shorter the better), or follow me for convenience. I will call mine `my-repo`. 
 
 Also, add a description, make it public, create a README file, and create your repo!
 <br />
@@ -188,7 +188,7 @@ The *Add a license* option adds a license that describes how other people can us
 
 Check out our new repository!  
 
-Notice how the README.md file we created is automatically displayed at the bottom.
+Notice how the README.md file we created is automatically displayed at the bottom. The .md means that it is Markdown (remember how .Rmd was RMarkdown?) so the formatting we learned in the last lesson apply here.
 <br />
 <br />
 
