@@ -4,7 +4,7 @@ Why do we start with data visualization? Not only is data viz a big part of anal
 
 > "ggplot2 implements the grammar of graphics, a coherent system for describing and building graphs. With ggplot2, you can do more faster by learning one system and applying it in many places." - [R4DS](http://r4ds.had.co.nz/data-visualisation.html)
 
-This lesson borrows heavily from Hadley Wickham's [R for Data Science book](http://r4ds.had.co.nz/data-visualisation.html), and the Data Carpentry [R for Ecology curriculum](http://www.datacarpentry.org/R-ecology-lesson/).
+This lesson borrows heavily from Hadley Wickham's [R for Data Science book](http://r4ds.had.co.nz/data-visualisation.html), and an EcoDataScience lesson on Data Visualization.
 
 ```{r viz ops, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning = F, message = F)
@@ -16,7 +16,7 @@ library(htmltools)
 ### Objectives
 
 - install our first package, `ggplot2`, by installing `tidyverse`
-- learn ggplot2 with `mpg` dataframe (important to play with other data than your own, you'll learn something.)
+- learn ggplot2 with a national parks visitation dataset (important to play with other data than your own, you'll learn something.)
 - practice writing a script in RMarkdown
 - practice the rstudio-github workflow
 
@@ -59,6 +59,27 @@ What's the difference between `install.packages()` and `library()`? Why do you n
 
 You can also install packages by going to the Packages tab in the bottom right pane. You can see the packages that you have installed (listed) and loaded (checkbox). You can also install packages using the install button, or check to see if any of your installed packages have updates available (update button). You can also click on the name of the package to see all the functions inside it — this is a super helpful feature that I use all the time.
 
+## Load data
+
+Copy and paste the code chunk below and read it in to your RStudio to load the five datasets we will use in this section.
+
+```{r load_data}
+#National Parks in California
+ca <- read_csv("https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/ca.csv") 
+
+#Acadia National Park
+acadia <- read_csv("https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/acadia.csv")
+
+#Southeast US National Parks
+se <- read_csv("https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/se.csv")
+
+#2016 Visitation for all Pacific West National Parks
+visit_16 <- read_csv("https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/visit_16.csv")
+
+#All Nationally designated sites in Massachusetts
+mass <- read_csv("https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/ma.csv")
+```
+
 
 ## Plotting with **`ggplot2`**
 
@@ -74,42 +95,29 @@ ggplot graphics are built step by step by adding new elements. Adding layers in 
 
 ## Data
 
-We are going to use the `mpg` dataset which provides information on fuel economy data for 38 car models. 
-
-This data comes preloaded with the `tidyverse` so it is already loaded into R. Let's take a look at it.
+We are going to use a National Park visitation dataset (from the National Park Service at <https://irma.nps.gov/Stats/SSRSReports>). Read in the data using `read_csv` and take a look at the first few rows using `head()` or `View()`.
 
 ```{r}
-mpg
+head(ca)
 ```
 
-This dataframe is already in a *long* format where all rows are an observation and all columns are variables. Among the variables in `mpg` are:
+This dataframe is already in a *long* format where all rows are an observation and all columns are variables. Among the variables in `ca` are:
 
-1. `displ`, a car's engine size, in litres.
+1. `region`, US region where park is located.
 
-1. `hwy`, a car's fuel efficiency on the highway, in miles per gallon (mpg). 
-  A car with a low fuel efficiency consumes more fuel than a car with a high 
-  fuel efficiency when they travel the same distance. 
+2. `visitors`, the annual visitation for each `year`
 
-To learn more about `mpg`, open its help page by running `?mpg`.
-
-Now we're going to visualize the data that is held in this dataframe.
 
 To build a ggplot, we need to:
 
-- use the `ggplot()` function and bind the plot to a specific data frame using the  
-      `data` argument
+- use the `ggplot()` function and bind the plot to a specific data frame using the `data` argument
 
 ```{r, eval=FALSE, purl=FALSE}
-ggplot(data = mpg)
+ggplot(data = ca)
 ```
 
 - define aesthetics (`aes`), by selecting the variables to be plotted and the  
       variables to define the presentation such as plotting size, shape color, etc.
-
-Run this code to put `displ` on the x-axis and `hwy` on the y-axis:
-```{r, eval=FALSE, purl=FALSE}
-ggplot(data = mpg, aes(x = displ, y = hwy))
-```
 
 - add `geoms` -- graphical representation of the data in the plot (points,
       lines, bars). **`ggplot2`** offers many different geoms; we will use some 
@@ -122,22 +130,8 @@ To add a geom to the plot use `+` operator. Because we have two continuous varia
 let's use `geom_point()` first:
 
 ```{r first-ggplot, purl=FALSE}
-ggplot(data = mpg, aes(x = displ, y = hwy)) + 
-  geom_point()
-```
-
-The `+` in the **`ggplot2`** package is particularly useful because it allows you
-to modify existing `ggplot` objects. This means you can easily set up plot
-"templates" and conveniently explore different types of plots, so the above
-plot can also be generated with code like this:
-
-```{r, first-ggplot-with-plus, eval=FALSE, purl=FALSE}
-# Assign plot to a variable
-car_plot <- ggplot(data = mpg, aes(x = displ, y = hwy))
-
-# Draw the plot
-car_plot + 
-    geom_point()
+ggplot(data = ca) + 
+  geom_point(aes(x = year, y = visitors))
 ```
 
 Notes:
@@ -155,123 +149,34 @@ a layer. If, instead, the `+` sign is added in the line before the other layer,
 
 ## Building your plots iteratively
 
-Building plots with ggplot is typically an iterative process. We start by
-defining the dataset we'll use, lay the axes, and choose a geom:
+Building plots with ggplot is typically an iterative process. We start by defining the dataset we'll use, lay the axes, and choose a geom:
 
 ```{r create-ggplot-object, purl=FALSE}
-ggplot(data = mpg, aes(x = displ, y = hwy)) +
-    geom_point()
+ggplot(data = ca) +
+    geom_point(aes(x = year, y = visitors))
 ```
 
-Then, we start modifying this plot to extract more information from it. For
-instance, we can add transparency (`alpha`) to avoid overplotting:
-
-```{r adding-transparency, purl=FALSE}
-ggplot(data = mpg, aes(x = displ, y = hwy)) +
-    geom_point(alpha = 0.4)
-```
-
-Or to color each class of car in the plot differently:
+This isn't necessarily a useful way to look at the data. We can distinguish each park by added the `color` argument to the `aes`:
 
 ```{r color-by-species, purl=FALSE}
-ggplot(data = mpg, aes(x = displ, y = hwy)) +
-    geom_point(aes(color = class))
+ggplot(data = ca) +
+    geom_point(aes(x = year, y = visitors, color = park_name))
 ```
 
+## Customizing plots
 
-In the above example, we mapped `class` to the color aesthetic, but we could have mapped `class` to the shape aesthetic in the same way. In this case, the shape of each point would reveal its class affiliation.
+Take a look at the [**`ggplot2`** cheat sheet](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf), and think of ways you could improve the plot.
 
-```{r}
-ggplot(data = mpg) + 
-  geom_point(mapping = aes(x = displ, y = hwy, shape = class))
-```
+Now, let's capitalize the x and y axis labels and add a main title to the figure. I also like to remove that standard gray background using a different `theme`. Many themes come built into the `ggplot2` package. My preference is `theme_bw()` but once you start typing `theme_` a list of options will pop up. The last thing I'm going to do is remove the legend title.
 
-What happened to the SUVs? ggplot2 will only use six shapes at a time. By default, additional groups will go unplotted when you use the shape aesthetic.
-
-
-> ### Exercise
->
-> Make a scatterplot of `hwy` vs `cty` with different size points representing each car class and different colors for each fuel type.
->
-
-We get a _warning_ here, because mapping an unordered variable (`class`) to an ordered aesthetic (`size`) is not a good idea.
-
-```{r}
-ggplot(data = mpg) + 
-  geom_point(mapping = aes(x = cty, y = hwy, size = class, color = fl))
-```
-
-
-We can also add colors for all the points. Here, the color doesn't convey information about a variable, but only changes the appearance of the plot. To set an aesthetic manually, set the aesthetic by name as an argument of your geom function; i.e. it goes _outside_ of `aes()`. You'll need to pick a value that makes sense for that aesthetic:
-
-* The name of a color as a character string.
-
-* The size of a point in mm.
-
-* The shape of a point as a number.
-
-```{r adding-colors, purl=FALSE}
-ggplot(data = mpg, aes(x = displ, y = hwy)) +
-    geom_point(alpha = 0.4, color = "blue")
-```
-
-
-
-> ### Exercise
-
-> 1.  What's gone wrong with this code?
->
-```{r, eval=F}
-    ggplot(data = mpg) + 
-      geom_point(aes(x = displ, y = hwy, color = "blue"))
-```
->    
->   
->  2. Plot highway mpg (`hwy`) vs engine size (`displ`) and have the point color to indicate the city mpg (`cty`).
->  3. Now instead of color, use shape to indicate city mpg (`cty`). Why are these two aesthetics behaving differently?
->  4. What happens if you map an aesthetic to something other than a variable 
-    name, like `aes(colour = displ < 5)`?  
-    
-```{r, echo=F, eval=F}
-ggplot(data = mpg, aes(x = displ, y = hwy, color = cty)) +
-  geom_point()
-
-ggplot(data = mpg, aes(x = displ, y = hwy, shape = cty)) +
-  geom_point()
-
-ggplot(data = mpg, aes(x = displ, y = hwy, color = cty < 20)) +
-  geom_point()
-```
->
-> **STOP: commit, pull and push to github**
->
-
-## Faceting
-
-ggplot has a special technique called *faceting* that allows the user to split one plot into multiple plots based on a factor included in the dataset. We will use it to make a plot of the highway miles (`hwy`) a car gets by its engine size (`displ`) for each car manufacturer:
-
-```{r first-facet, purl=FALSE}
-ggplot(data = mpg, aes(x = displ, y = hwy)) +
-    geom_point() +
-    facet_wrap(~ manufacturer)
-```
-
-We can now make the faceted plot by splitting further by class using `color` (within a single plot):
-
-```{r facet-by-species-and-sex, purl=FALSE}
- ggplot(data = mpg, aes(x = displ, y = hwy, color = class)) +
-     geom_point() +
-     facet_wrap(~ manufacturer)
-```
-
-Usually plots with white background look more readable when printed.  We can set
-the background to white using the function `theme_bw()`.
-
-```{r facet-by-species-and-sex-white-bg, purl=FALSE}
- ggplot(data = mpg, aes(x = displ, y = hwy, color = class)) +
-     geom_point() +
-     facet_wrap(~ manufacturer) +
-     theme_bw()
+```{r customize}
+ggplot(data = ca) +
+    geom_point(aes(x = year, y = visitors, color = park_name)) +
+    labs(x = "Year",
+       y = "Visitation",
+       title = "California National Park Visitation") +
+    theme_bw() +
+    theme(legend.title=element_blank())
 ```
 
 ## **`ggplot2`** themes
@@ -280,92 +185,113 @@ In addition to `theme_bw()`, which changes the plot background to white, **`ggpl
 
 The [ggthemes](https://cran.r-project.org/web/packages/ggthemes/vignettes/ggthemes.html) package provides a wide variety of options (including an Excel 2003 theme). The [**`ggplot2`** extensions website](https://www.ggplot2-exts.org) provides a list of packages that extend the capabilities of **`ggplot2`**, including additional themes.
 
->
-> ### Exercise
->
-> Spend a couple minutes trying out your plot with different plot themes. The complete list of themes in `ggplot2` is available at <http://docs.ggplot2.org/current/ggtheme.html>. But for some more interesting themes, try installing the `ggthemes` package and using one of those themes. You can find more information on this package at <https://cran.r-project.org/web/packages/ggthemes/vignettes/ggthemes.html>
+> ### Exercise (10 min)
+
+> 1. Using the `se` dataset, make a scatterplot showing visitation to all national parks in the Southeast region with color identifying individual parks.
+> 2. Change the plot so that color indicates `state`.
+> 3. Customize by adding your own title and theme. You can also change the text sizes and angles. Try applying a 45 degree angle to the x-axis. Use your cheatsheet!
+> 4. What's going on here, why isn't the data showing up?
+```{r, eval=FALSE, purl=FALSE}
+ggplot(data = se, aes(x = year, y = visitors))
+```
+
+> ##### Answers (no peeking)
+
+```{r, echo=F, eval=T}
+# 1.
+ggplot(data = se) +
+  geom_point(aes(x = year, y = visitors, color = park_name))
+
+# 2. & 3.
+ggplot(data = se) +
+  geom_point(aes(x = year, y = visitors, color = state)) +
+  labs(x = "Year",
+       y = "Visitation",
+       title = "Southeast States National Park Visitation") +
+  theme_light() +
+  theme(legend.title = element_blank(),
+        axis.text.x = element_text(angle = 45, hjust = 1, size = 14))
+```
+
+> 4. The code is missing a geom to describe how the data should be plotted.
+> **STOP: commit, pull and push to github**
 >
 
+
+## Faceting
+
+ggplot has a special technique called *faceting* that allows the user to split one plot into multiple plots based on a factor included in the dataset. We will use it to make a plot of park visitation by state:
+
+```{r first-facet, purl=FALSE}
+ggplot(data = se) +
+    geom_point(aes(x = year, y = visitors)) +
+    facet_wrap(~ state)
+```
+
+We can now make the faceted plot by splitting further by park using `park_name` (within a single plot):
+
+```{r facet-by-state-and-park, purl=FALSE}
+ ggplot(data = se) +
+     geom_point(aes(x = year, y = visitors, color = park_name)) +
+     facet_wrap(~ state, scales = "free")
+```
 
 
 ## Geometric objects (geoms)
 
-A __geom__ is the geometrical object that a plot uses to represent data. People often describe plots by the type of geom that the plot uses. For example, bar charts use bar geoms, line charts use line geoms, boxplots use boxplot geoms, and so on. Scatterplots break the trend; they use the point geom. You can use different geoms to plot the same data. To change the geom in your plot, change the geom function that you add to `ggplot()`. Let's look at a few ways of viewing the distribution of highway mpg (`hwy`) for each driving class (`drv`).
+A __geom__ is the geometrical object that a plot uses to represent data. People often describe plots by the type of geom that the plot uses. For example, bar charts use bar geoms, line charts use line geoms, boxplots use boxplot geoms, and so on. Scatterplots break the trend; they use the point geom. You can use different geoms to plot the same data. To change the geom in your plot, change the geom function that you add to `ggplot()`. Let's look at a few ways of viewing the distribution of annual visitation (`visitors`) for each park (`park_name`).
 
 ```{r}
-ggplot(mpg, aes(x = drv, y = hwy)) + 
-  geom_jitter()
+ggplot(data = se) + 
+  geom_jitter(aes(x = park_name, y = visitors, color = park_name), 
+              width = 0.1, 
+              alpha = 0.4) +
+  coord_flip() +
+  theme(legend.position = "none", 
+        axis.text.x = element_text(angle = 45, hjust = 1))
 
-ggplot(mpg, aes(x = drv, y = hwy)) + 
+ggplot(se, aes(x = park_name, y = visitors)) + 
   geom_boxplot()
-
-ggplot(mpg, aes(x = drv, y = hwy)) + 
-  geom_violin()
 ```
 
-`geom_smooth` allows you to view a smoothed mean of data. Here we look at the smooth mean of the highway mpg (`hwy`) by engine size (`displ`).
+None of these are great for visualizing data over time. We can use `geom_line()` in the same way we used `geom_point`.
 
 ```{r}
-ggplot(data = mpg) + 
-  geom_smooth(aes(x = displ, y = hwy))
+ggplot(se, aes(x = year, y = visitors, color = park_name)) +
+   geom_point()
 ```
 
 `ggplot2` provides over 30 geoms, and extension packages provide even more (see <https://www.ggplot2-exts.org> for a sampling). The best way to get a comprehensive overview is the [ggplot2 cheatsheet](http://rstudio.com/cheatsheets). To learn more about any single geom, use help: `?geom_smooth`.
 
 To display multiple geoms in the same plot, add multiple geom functions to `ggplot()`:
 
+`geom_smooth` allows you to view a smoothed mean of data. Here we look at the smooth mean of visitation over time to Acadia National Park:
+
 ```{r}
-ggplot(data = mpg) + 
-  geom_point(aes(x = displ, y = hwy)) +
-  geom_smooth(aes(x = displ, y = hwy))
+ggplot(data = acadia) + 
+  geom_point(aes(x = year, y = visitors)) +
+  geom_line(aes(x = year, y = visitors)) +
+  geom_smooth(aes(x = year, y = visitors)) +
+  labs(title = "Acadia National Park Visitation",
+       y = "Visitation",
+       x = "Year") +
+  theme_bw()
 ```
 
-Notice that this plot contains two geoms in the same graph!
 
-This, however, introduces some duplication in our code. Imagine if you wanted to change the y-axis to display `cty` instead of `hwy`. You'd need to change the variable in two places, and you might forget to update one. You can avoid this type of repetition by passing a set of mappings to `ggplot()`. ggplot2 will treat these mappings as global mappings that apply to each geom in the graph.  In other words, this code will produce the same plot as the previous code:
-
-```{r, eval = FALSE}
-ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
-  geom_point() + 
-  geom_smooth()
-```
+Notice that this plot contains three geoms in the same graph! Each geom is using the set of mappings in the first line. ggplot2 will treat these mappings as global mappings that apply to each geom in the graph.
 
 If you place mappings in a geom function, ggplot2 will treat them as local mappings for the layer. It will use these mappings to extend or overwrite the global mappings _for that layer only_. This makes it possible to display different aesthetics in different layers.
 
 ```{r}
-ggplot(data = mpg, aes(x = displ, y = hwy)) + 
-  geom_point(aes(color = class)) + 
-  geom_smooth()
-```
-
-
-## Customization
-
-Take a look at the [**`ggplot2`** cheat sheet](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf), and think of ways you could improve the plot.
-
-Now, let's change names of axes to something more informative than 'hwy' and 'displ' and add a title to the figure:
-
-```{r number-species-year-with-right-labels, purl=FALSE}
-ggplot(data = mpg, aes(x = displ, y = hwy)) + 
-  geom_point(aes(color = class)) + 
-  geom_smooth() +
-  labs(title = "Relationship between engine size and miles per gallon (mpg)",
-         x = "Highway MPG",
-         y = "Engine displacement (liters)") +
+ggplot(data = acadia, aes(x = year, y = visitors)) + 
+  geom_point() +
+  geom_line() +
+  geom_smooth(color = "red") +
+  labs(title = "Acadia National Park Visitation",
+       y = "Visitation",
+       x = "Year") +
   theme_bw()
-```
-
-The axes have more informative names, but their readability can be improved by increasing the font size:
-
-```{r number-species-year-with-right-labels-xfont-size, purl=FALSE}
-ggplot(data = mpg, aes(x = displ, y = hwy)) + 
-  geom_point(aes(color = class)) + 
-  geom_smooth() +
-  labs(title = "Relationship between engine size and mpg",
-         x = "Highway MPG",
-         y = "Engine displacement (liters)") +
-  theme_bw() +
-  theme(text=element_text(size = 16))
 ```
 
 > ### Challenge
@@ -374,21 +300,21 @@ ggplot(data = mpg, aes(x = displ, y = hwy)) +
 
 > Here are some ideas:
 
-> * See if you can change the thickness of the lines.
+> * See if you can change the thickness of the lines or line type (e.g. dashed line).
 > * Can you find a way to change the name of the legend? What about its labels?
 > * Try using a different color palette (see http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/).
 
 
 ## Bar charts
 
-Next, let's take a look at a bar chart. Bar charts seem simple, but they are interesting because they reveal something subtle about plots. Consider a basic bar chart, as drawn with `geom_bar()`. The following chart displays the total number of cars in the `mpg` dataset, grouped by `fl` (fuel type).
+Next, let's take a look at a bar chart. Bar charts seem simple, but they are interesting because they reveal something subtle about plots. Consider a basic bar chart, as drawn with `geom_bar()`. The following chart displays the total number of parks in each state within the Pacific West region.
 
 ```{r}
-ggplot(data = mpg, aes(x = fl)) + 
+ggplot(data = visit_16, aes(x = state)) + 
   geom_bar()
 ```
 
-On the x-axis, the chart displays `fl`, a variable from `mpg`. On the y-axis, it displays count, but count is not a variable in `mpg`! Where does count come from? Many graphs, like scatterplots, plot the raw values of your dataset. Other graphs, like bar charts, calculate new values to plot:
+On the x-axis, the chart displays `state`, a variable from `visit_16`. On the y-axis, it displays count, but count is not a variable in `visit_16`! Where does count come from? Many graphs, like scatterplots, plot the raw values of your dataset. Other graphs, like bar charts, calculate new values to plot:
 
 * bar charts, histograms, and frequency polygons bin your data 
   and then plot bin counts, the number of points that fall in each bin.
@@ -411,34 +337,20 @@ ggplot2 provides over 20 stats for you to use. Each stat is a function, so you c
 There's one more piece of magic associated with bar charts. You can colour a bar chart using either the `color` aesthetic, or, more usefully, `fill`:
 
 ```{r}
-ggplot(data = mpg, aes(x = fl, fill = fl)) + 
-  geom_bar()
+ggplot(data = visit_16, aes(x = state, y = visitors, fill = park_name)) + 
+  geom_bar(stat = "identity")
 ```
 
-This isn't particularly useful since both the geom and the color are displaying the same information. Instead, map the fill aesthetic to another variable, like `class`: the bars are automatically stacked. Each colored rectangle represents a combination of `fl` and `class`.
+The stacking is performed automatically by the __position adjustment__ specified by the `position` argument. If you don't want a stacked bar chart, you can use `"dodge"`.
 
-```{r}
-ggplot(data = mpg, aes(x = fl, fill = class)) + 
-  geom_bar()
-```
-
-The stacking is performed automatically by the __position adjustment__ specified by the `position` argument. If you don't want a stacked bar chart, you can use `"dodge"` or `"fill"`.
-    
-*   `position = "fill"` works like stacking, but makes each set of stacked bars
-    the same height. This makes it easier to compare proportions across 
-    groups.
-
-```{r}
-    ggplot(data = mpg, aes(x = fl, fill = class)) + 
-      geom_bar(position = "fill")
-```
 
 *   `position = "dodge"` places overlapping objects directly _beside_ one 
     another. This makes it easier to compare individual values.
 
+
 ```{r}
-    ggplot(data = mpg, aes(x = fl, fill = class)) + 
-      geom_bar(position = "dodge") 
+ggplot(data = visit_16, aes(x = state, y = visitors, fill = park_name)) + 
+  geom_bar(stat = "identity", position = "dodge")
 ```
 
 
@@ -451,15 +363,18 @@ The stacking is performed automatically by the __position adjustment__ specified
 
 > Here are some ideas:
 
-> * Plot different variables using `geom_bar()`. For what variables is this geom useful?
 > * Flip the x and y axes.
-> * Use `scale_x_discrete` to change the x-axis tick labels to "CNG", "Diesel", "Ethanol", "Premium", and "Regular"
+> * Change the color palette used
+> * Use `scale_x_discrete` to change the x-axis tick labels to the full state names (Arizona, Colorado, etc.)
+> * Make a bar chart using the Massachussets dataset (`mass`) and find out how many parks of each type are in the state.
 
 ```{r}
-ggplot(data = mpg) + 
-      geom_bar(aes(x = fl, fill = class), position = "dodge") +
-   scale_x_discrete(labels=c("CNG", "Diesel", "Ethanol", "Premium", "Regular")) +
-  xlab("Fuel type")
+#how many of each types of parks are in Massachusetts?
+ggplot(data = mass) + 
+      geom_bar(aes(x = type, fill = park_name)) +
+  labs(x = "",
+       y = "")+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 7))
 ```
 
 ## Arranging and exporting plots
@@ -469,18 +384,60 @@ After creating your plot, you can save it to a file in your favorite format. The
 Instead, use the `ggsave()` function, which allows you easily change the dimension and resolution of your plot by adjusting the appropriate arguments (`width`, `height` and `dpi`):
 
 ```{r ggsave-example, eval=FALSE, purl=FALSE}
-my_plot <- ggplot(data = mpg, aes(x = displ, y = hwy)) + 
-  geom_point(aes(color = class)) + 
-  geom_smooth() +
-  labs(title = "Relationship between engine size and mpg",
-       x = "Highway MPG",
-       y = "Engine displacement (liters)") +
-  theme_bw() +
-  theme(text=element_text(size = 16))
+my_plot <- ggplot(data = mass) + 
+      geom_bar(aes(x = type, fill = park_name)) +
+  labs(x = "",
+       y = "")+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 7))
 
 ggsave("name_of_file.png", my_plot, width = 15, height = 10)
 ```
 
 Note: The parameters `width` and `height` also determine the font size in the saved plot.
 
+## Bonus
+
+So as you can see, `ggplot2` is a fantastic package for visualizing data. But there are some additional packages that let you make plots interactive. `plotly`, `gganimate`.
+
+```{r}
+
+#install.packages("plotly")
+library(plotly)
+
+ggplotly(my_plot)
+```
+
+```{r}
+
+acad_vis <- ggplot(data = acadia, aes(x = year, y = visitors)) + 
+  geom_point() +
+  geom_line() +
+  geom_smooth(color = "red") +
+  labs(title = "Acadia National Park Visitation",
+       y = "Visitation",
+       x = "Year") +
+  theme_bw()
+
+ggplotly(acad_vis)
+
+```
+
+
 ## Save and push to GitHub
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
