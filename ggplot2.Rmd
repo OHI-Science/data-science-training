@@ -258,7 +258,7 @@ None of these are great for visualizing data over time. We can use `geom_line()`
 
 ```{r}
 ggplot(se, aes(x = year, y = visitors, color = park_name)) +
-   geom_point()
+   geom_line()
 ```
 
 `ggplot2` provides over 30 geoms, and extension packages provide even more (see <https://www.ggplot2-exts.org> for a sampling). The best way to get a comprehensive overview is the [ggplot2 cheatsheet](http://rstudio.com/cheatsheets). To learn more about any single geom, use help: `?geom_smooth`.
@@ -400,7 +400,6 @@ Note: The parameters `width` and `height` also determine the font size in the sa
 So as you can see, `ggplot2` is a fantastic package for visualizing data. But there are some additional packages that let you make plots interactive. `plotly`, `gganimate`.
 
 ```{r}
-
 #install.packages("plotly")
 library(plotly)
 
