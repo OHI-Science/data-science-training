@@ -394,6 +394,8 @@ Use the Markdown Quick Reference (in the menu bar: Help > Markdown Quick Referen
 
 OK. Now let's practice with some of those commands that we were working on this morning.
 
+<!---TODO TEACH THIS--->
+
 Create a new chunk in your RMarkdown first in one of these ways: 
 
 - click "Insert > R" at the top of the editor pane
