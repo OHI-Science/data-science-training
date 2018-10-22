@@ -409,8 +409,7 @@ se &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="s
 visit_<span class="dv">16</span> &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/visit_16.csv&quot;</span>)
 
 <span class="co">#All Nationally designated sites in Massachusetts</span>
-mass &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/ma.csv&quot;</span>)</code></pre></div>
-<pre><code>## Error in open.connection(con, &quot;rb&quot;): HTTP error 404.</code></pre>
+mass &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/mass.csv&quot;</span>)</code></pre></div>
 </div>
 <div id="plotting-with-ggplot2" class="section level2">
 <h2><span class="header-section-number">5.4</span> Plotting with <strong><code>ggplot2</code></strong></h2>
@@ -443,8 +442,6 @@ mass &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class=
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ca)</code></pre></div>
 <ul>
-<li><p>define aesthetics (<code>aes</code>), by selecting the variables to be plotted and the<br />
-variables to define the presentation such as plotting size, shape color, etc.</p></li>
 <li>add <code>geoms</code> – graphical representation of the data in the plot (points, lines, bars). <strong><code>ggplot2</code></strong> offers many different geoms; we will use some common ones today, including:
 <ul>
 <li><code>geom_point()</code> for scatter plots, dot plots, etc.</li>
@@ -453,7 +450,7 @@ variables to define the presentation such as plotting size, shape color, etc.</p
 </ul></li>
 </ul>
 <p>To add a geom to the plot use <code>+</code> operator. Because we have two continuous variables,<br />
-let’s use <code>geom_point()</code> first:</p>
+let’s use <code>geom_point()</code> first and then assign x and y aesthetics (<code>aes</code>):</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ca) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors))</code></pre></div>
 <p><img src="data-science-training_files/figure-html/first-ggplot-1.png" width="672" /></p>
@@ -503,7 +500,7 @@ let’s use <code>geom_point()</code> first:</p>
 <li>Using the <code>se</code> dataset, make a scatterplot showing visitation to all national parks in the Southeast region with color identifying individual parks.</li>
 <li>Change the plot so that color indicates <code>state</code>.</li>
 <li>Customize by adding your own title and theme. You can also change the text sizes and angles. Try applying a 45 degree angle to the x-axis. Use your cheatsheet!</li>
-<li>What’s going on here, why isn’t the data showing up?</li>
+<li>In the code below, why isn’t the data showing up?</li>
 </ol>
 </blockquote>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> se, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors))</code></pre></div>
@@ -513,8 +510,11 @@ let’s use <code>geom_point()</code> first:</p>
 <p><img src="data-science-training_files/figure-html/unnamed-chunk-34-1.png" width="672" /><img src="data-science-training_files/figure-html/unnamed-chunk-34-2.png" width="672" /></p>
 <blockquote>
 <ol start="4" style="list-style-type: decimal">
-<li>The code is missing a geom to describe how the data should be plotted. <strong>STOP: commit, pull and push to github</strong></li>
+<li>The code is missing a geom to describe how the data should be plotted.</li>
 </ol>
+</blockquote>
+<blockquote>
+<p><strong>STOP: commit, pull and push to github</strong></p>
 </blockquote>
 </div>
 <div id="faceting" class="section level2">
@@ -538,11 +538,11 @@ let’s use <code>geom_point()</code> first:</p>
               <span class="dt">width =</span> <span class="fl">0.1</span>, 
               <span class="dt">alpha =</span> <span class="fl">0.4</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">coord_flip</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>, 
-        <span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>))</code></pre></div>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>) </code></pre></div>
 <p><img src="data-science-training_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(se, <span class="kw">aes</span>(<span class="dt">x =</span> park_name, <span class="dt">y =</span> visitors)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre></div>
+<span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>))</code></pre></div>
 <p><img src="data-science-training_files/figure-html/unnamed-chunk-35-2.png" width="672" /></p>
 <p>None of these are great for visualizing data over time. We can use <code>geom_line()</code> in the same way we used <code>geom_point</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(se, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors, <span class="dt">color =</span> park_name)) <span class="op">+</span>
@@ -608,14 +608,14 @@ let’s use <code>geom_point()</code> first:</p>
 <p>There’s one more piece of magic associated with bar charts. You can colour a bar chart using either the <code>color</code> aesthetic, or, more usefully, <code>fill</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> visit_<span class="dv">16</span>, <span class="kw">aes</span>(<span class="dt">x =</span> state, <span class="dt">y =</span> visitors, <span class="dt">fill =</span> park_name)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)</code></pre></div>
-<p><img src="data-science-training_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
+<p><img src="data-science-training_files/figure-html/unnamed-chunk-40-1.png" width="384" /></p>
 <p>The stacking is performed automatically by the <strong>position adjustment</strong> specified by the <code>position</code> argument. If you don’t want a stacked bar chart, you can use <code>&quot;dodge&quot;</code>.</p>
 <ul>
 <li><code>position = &quot;dodge&quot;</code> places overlapping objects directly <em>beside</em> one another. This makes it easier to compare individual values.</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> visit_<span class="dv">16</span>, <span class="kw">aes</span>(<span class="dt">x =</span> state, <span class="dt">y =</span> visitors, <span class="dt">fill =</span> park_name)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>)</code></pre></div>
-<p><img src="data-science-training_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
+<p><img src="data-science-training_files/figure-html/unnamed-chunk-41-1.png" width="384" /></p>
 <blockquote>
 <h3 id="challenge-1"><span class="header-section-number">5.11.1</span> Challenge</h3>
 </blockquote>
@@ -639,7 +639,7 @@ let’s use <code>geom_point()</code> first:</p>
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;&quot;</span>,
        <span class="dt">y =</span> <span class="st">&quot;&quot;</span>)<span class="op">+</span>
 <span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">size =</span> <span class="dv">7</span>))</code></pre></div>
-<pre><code>## Error in ggplot(data = mass): object &#39;mass&#39; not found</code></pre>
+<p><img src="data-science-training_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
 </div>
 </div>
 <div id="arranging-and-exporting-plots" class="section level2">
