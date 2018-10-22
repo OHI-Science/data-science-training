@@ -77,7 +77,7 @@ se <- read_csv("https://raw.githubusercontent.com/OHI-Science/data-science-train
 visit_16 <- read_csv("https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/visit_16.csv")
 
 #All Nationally designated sites in Massachusetts
-mass <- read_csv("https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/ma.csv")
+mass <- read_csv("https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/mass.csv")
 ```
 
 
@@ -116,9 +116,6 @@ To build a ggplot, we need to:
 ggplot(data = ca)
 ```
 
-- define aesthetics (`aes`), by selecting the variables to be plotted and the  
-      variables to define the presentation such as plotting size, shape color, etc.
-
 - add `geoms` -- graphical representation of the data in the plot (points,
       lines, bars). **`ggplot2`** offers many different geoms; we will use some 
       common ones today, including:
@@ -127,7 +124,7 @@ ggplot(data = ca)
       * `geom_line()` for trend lines, time-series, etc.  
 
 To add a geom to the plot use `+` operator. Because we have two continuous variables,  
-let's use `geom_point()` first:
+let's use `geom_point()` first and then assign x and y aesthetics (`aes`):
 
 ```{r first-ggplot, purl=FALSE}
 ggplot(data = ca) + 
@@ -247,11 +244,12 @@ ggplot(data = se) +
               width = 0.1, 
               alpha = 0.4) +
   coord_flip() +
-  theme(legend.position = "none", 
-        axis.text.x = element_text(angle = 45, hjust = 1))
-
+  theme(legend.position = "none") 
+        
 ggplot(se, aes(x = park_name, y = visitors)) + 
-  geom_boxplot()
+  geom_boxplot() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
 ```
 
 None of these are great for visualizing data over time. We can use `geom_line()` in the same way we used `geom_point`.
@@ -336,7 +334,7 @@ ggplot2 provides over 20 stats for you to use. Each stat is a function, so you c
 
 There's one more piece of magic associated with bar charts. You can colour a bar chart using either the `color` aesthetic, or, more usefully, `fill`:
 
-```{r}
+```{r, fig.height = 3, fig.width = 4}
 ggplot(data = visit_16, aes(x = state, y = visitors, fill = park_name)) + 
   geom_bar(stat = "identity")
 ```
@@ -348,7 +346,7 @@ The stacking is performed automatically by the __position adjustment__ specified
     another. This makes it easier to compare individual values.
 
 
-```{r}
+```{r, fig.height = 3, fig.width = 4}
 ggplot(data = visit_16, aes(x = state, y = visitors, fill = park_name)) + 
   geom_bar(stat = "identity", position = "dodge")
 ```
