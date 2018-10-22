@@ -46,7 +46,7 @@ We are going to be using the package `ggplot2`, which is actually bundled into a
 install.packages("tidyverse") ## do this once only to install the package on your computer.
 ```
 
-```{r}
+```{r, messages = FALSE}
 library(tidyverse) ## do this every time you restart R and need it 
 ```
 
@@ -190,7 +190,7 @@ The [ggthemes](https://cran.r-project.org/web/packages/ggthemes/vignettes/ggthem
 > 1. Using the `se` dataset, make a scatterplot showing visitation to all national parks in the Southeast region with color identifying individual parks.
 > 2. Change the plot so that color indicates `state`.
 > 3. Customize by adding your own title and theme. You can also change the text sizes and angles. Try applying a 45 degree angle to the x-axis. Use your cheatsheet!
-> 4. What's going on here, why isn't the data showing up?
+> 4. In the code below, why isn't the data showing up?
 ```{r, eval=FALSE, purl=FALSE}
 ggplot(data = se, aes(x = year, y = visitors))
 ```
@@ -214,6 +214,7 @@ ggplot(data = se) +
 ```
 
 > 4. The code is missing a geom to describe how the data should be plotted.
+
 > **STOP: commit, pull and push to github**
 >
 
