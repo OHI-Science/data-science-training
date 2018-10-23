@@ -25,7 +25,7 @@
 <meta name="author" content="The Ocean Health Index Team">
 
 
-<meta name="date" content="2018-10-22">
+<meta name="date" content="2018-10-23">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -374,13 +374,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="data-and-packages-2" class="section level3">
 <h3><span class="header-section-number">7.1.3</span> Data and packages</h3>
 <p>We’ll use the package <code>tidyr</code> and <code>dplyr</code>, which are bundled within the <code>tidyverse</code> package.</p>
-<p>We’ll also be using the Gapminder data — please see @ref(dplyr#data-and-packages) for more details. We will also explore several datasets that come in Base R, in the <code>datasets</code> package.</p>
+<p>We’ll also be using the Gapminder data we used when learning <code>dplyr</code>. We will also explore several datasets that come in Base R, in the <code>datasets</code> package.</p>
 </div>
 </div>
 <div id="tidyr-basics" class="section level2">
 <h2><span class="header-section-number">7.2</span> <code>tidyr</code> basics</h2>
 <p>Remember, from the <strong><code>dplyr</code></strong> section, that tidy data means all rows are an observation and all columns are variables. <img src="img/tidy_data.png" /></p>
-<p>Why is this important? Well, if your data are formatted in a standard way, you will be able to use analysis tools that operate on that standard way. Your analyses will be streamlined and you won’t have to reinvent the wheel everytime you see data in a different.</p>
+<p>Why is this important? Well, if your data are formatted in a standard way, you will be able to use analysis tools that operate on that standard way. Your analyses will be streamlined and you won’t have to reinvent the wheel every time you see data in a different.</p>
 <p>Let’s take a look at some examples.</p>
 <p>Data are often entered in a <em>wide</em> format where each row is often a site/subject/patient and you have multiple observation variables containing the same type of data.</p>
 <p>An example of data in a <em>wide</em> format is the <code>AirPassengers</code> dataset which provides information on monthly airline passenger numbers from 1949-1960. You’ll notice that each row is a single year and the columns are each month Jan - Dec.</p>
@@ -399,7 +399,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## 1959 360 342 406 396 420 472 548 559 463 407 362 405
 ## 1960 417 391 419 461 472 535 622 606 508 461 390 432</code></pre>
 <!---TODO: gather this (it's not a dataframe...)--->
-<p>This format is intuitive for data entry, but less so for data analysis. If you wanted to calculate the montlhy mean, where would you put it? As another row?</p>
+<p>This format is intuitive for data entry, but less so for data analysis. If you wanted to calculate the monthly mean, where would you put it? As another row?</p>
 <p>Often, data must be reshaped for it to become tidy data. What does that mean? There are four main verbs we’ll use, which are essentially pairs of opposites:</p>
 <ul>
 <li>turn columns into rows (<code>gather()</code>),</li>
@@ -576,7 +576,7 @@ gapminder &lt;-<span class="st"> </span>readr<span class="op">::</span><span cla
 </div>
 <div id="plot-long-format-data" class="section level2">
 <h2><span class="header-section-number">7.5</span> Plot long format data</h2>
-<p>The long format is the preferred format for plotting with <code>ggplot2</code>. Let’s look at an example by plotting just Canada’s life expectency.</p>
+<p>The long format is the preferred format for plotting with <code>ggplot2</code>. Let’s look at an example by plotting just Canada’s life expectancy.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">canada_df &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">filter</span>(obs_type <span class="op">==</span><span class="st"> &quot;lifeExp&quot;</span>,
          country <span class="op">==</span><span class="st"> &quot;Canada&quot;</span>)

@@ -28,7 +28,7 @@ These materials borrow heavily from:
 
 We'll use the package `tidyr` and `dplyr`, which are bundled within the `tidyverse` package. 
 
-We'll also be using the Gapminder data — please see \@ref(dplyr#data-and-packages) for more details. We will also explore several datasets that come in Base R, in the `datasets` package.
+We'll also be using the Gapminder data we used when learning `dplyr`. We will also explore several datasets that come in Base R, in the `datasets` package.
 
 
 ## `tidyr` basics
@@ -36,7 +36,7 @@ We'll also be using the Gapminder data — please see \@ref(dplyr#data-and-packa
 Remember, from the **`dplyr`** section, that tidy data means all rows are an observation and all columns are variables.
 ![](img/tidy_data.png)
 
-Why is this important? Well, if your data are formatted in a standard way, you will be able to use analysis tools that operate on that standard way. Your analyses will be streamlined and you won't have to reinvent the wheel everytime you see data in a different. 
+Why is this important? Well, if your data are formatted in a standard way, you will be able to use analysis tools that operate on that standard way. Your analyses will be streamlined and you won't have to reinvent the wheel every time you see data in a different. 
 
 Let's take a look at some examples.
 
@@ -49,7 +49,7 @@ AirPassengers
 ```
 
 <!---TODO: gather this (it's not a dataframe...)--->
-This format is intuitive for data entry, but less so for data analysis. If you wanted to calculate the montlhy mean, where would you put it? As another row? 
+This format is intuitive for data entry, but less so for data analysis. If you wanted to calculate the monthly mean, where would you put it? As another row? 
 
 Often, data must be reshaped for it to become tidy data. What does that mean? There are four main verbs we'll use, which are essentially pairs of opposites:
 
@@ -235,7 +235,7 @@ Excellent. This is long format: every row is a unique observation. Yay!
 
 ## Plot long format data
 
-The long format is the preferred format for plotting with `ggplot2`. Let's look at an example by plotting just Canada's life expectency.
+The long format is the preferred format for plotting with `ggplot2`. Let's look at an example by plotting just Canada's life expectancy.
 
 ```{r, eval=F}
 canada_df <- gap_long %>%

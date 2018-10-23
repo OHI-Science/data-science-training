@@ -423,7 +423,7 @@ gapminder %>%
 
 ### Your turn 
 
-Find the maximum gdpPercap of Egypt and Vietnam Create a new column. 
+Find the maximum gdpPercap of Egypt and the maximum gdpPercap of Vietnam. Create a new column with `mutate()`. Hint: use `max()`
 
 Then, sync to Github.com (pull, stage, commit, push).
 
