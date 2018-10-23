@@ -598,24 +598,20 @@ gapminder &lt;-<span class="st"> </span>readr<span class="op">::</span><span cla
 <p><strong>STOP: Knit the R Markdown file and sync to Github (pull, stage, commit, push)</strong></p>
 </blockquote>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># solution (no peeking!)</span>
-gap_long <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">group_by</span>(continent, obs_type) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">summarize</span>(<span class="dt">means =</span> <span class="kw">mean</span>(obs_values))
-
-cont &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span><span class="st"> </span>
+continents &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">filter</span>(obs_type <span class="op">==</span><span class="st"> &quot;lifeExp&quot;</span>, 
          year <span class="op">&gt;</span><span class="st"> </span><span class="dv">1980</span>) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">group_by</span>(continent, year) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean_le =</span> <span class="kw">mean</span>(obs_values))
 
-<span class="kw">ggplot</span>(<span class="dt">data =</span> cont, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> mean_le, <span class="dt">color =</span> continent)) <span class="op">+</span><span class="st"> </span>
+<span class="kw">ggplot</span>(<span class="dt">data =</span> continents, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> mean_le, <span class="dt">color =</span> continent)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Mean life expectancy&quot;</span>,
        <span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>,
        <span class="dt">y =</span> <span class="st">&quot;Age (years)&quot;</span>) 
 
 ## Additional customization
-<span class="kw">ggplot</span>(<span class="dt">data =</span> cont, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> mean_le, <span class="dt">color =</span> continent)) <span class="op">+</span><span class="st"> </span>
+<span class="kw">ggplot</span>(<span class="dt">data =</span> continents, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> mean_le, <span class="dt">color =</span> continent)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Mean life expectancy&quot;</span>,
        <span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>,

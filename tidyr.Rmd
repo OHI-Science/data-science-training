@@ -267,24 +267,20 @@ ggplot(life_df, aes(x = year, y = obs_values, color = country)) +
 
 ```{r, eval=FALSE}
 # solution (no peeking!)
-gap_long %>% 
-  group_by(continent, obs_type) %>%
-    summarize(means = mean(obs_values))
-
-cont <- gap_long %>% 
+continents <- gap_long %>% 
   filter(obs_type == "lifeExp", 
          year > 1980) %>% 
   group_by(continent, year) %>% 
   summarize(mean_le = mean(obs_values))
 
-ggplot(data = cont, aes(x = year, y = mean_le, color = continent)) + 
+ggplot(data = continents, aes(x = year, y = mean_le, color = continent)) + 
   geom_line() +
   labs(title = "Mean life expectancy",
        x = "Year",
        y = "Age (years)") 
 
 ## Additional customization
-ggplot(data = cont, aes(x = year, y = mean_le, color = continent)) + 
+ggplot(data = continents, aes(x = year, y = mean_le, color = continent)) + 
   geom_line() +
   labs(title = "Mean life expectancy",
        x = "Year",
