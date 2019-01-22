@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Introduction to Open Data Science</title>
+  <title>Chapter 7 Data Wrangling: tidyr | Introduction to Open Data Science</title>
   <meta name="description" content="This is official open data science training for the Ocean Health Index.">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Introduction to Open Data Science" />
+  <meta property="og:title" content="Chapter 7 Data Wrangling: tidyr | Introduction to Open Data Science />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="ohi-science/data-science-training" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Introduction to Open Data Science" />
+  <meta name="twitter:title" content="Chapter 7 Data Wrangling: tidyr | Introduction to Open Data Science />
   
   <meta name="twitter:description" content="This is official open data science training for the Ocean Health Index." />
   
@@ -25,7 +25,7 @@
 <meta name="author" content="The Ocean Health Index Team">
 
 
-<meta name="date" content="2018-10-23">
+<meta name="date" content="2019-01-22">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -36,6 +36,7 @@
 <link rel="next" href="programming.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -593,7 +594,7 @@ gapminder &lt;-<span class="st"> </span>readr<span class="op">::</span><span cla
 <blockquote>
 <h3 id="exercise"><span class="header-section-number">7.5</span> Exercise</h3>
 <ol style="list-style-type: decimal">
-<li>Using <code>gap_long</code>, calculate and plot the the mean life expectancy for each continent over time from 1982 to 2007. Give your plot a title and assign x and y labels. <strong>Hint:</strong> use the <code>dplyr::group_by()</code> and <code>dplyr::summarize()</code> functions.</li>
+<li>Using <code>gap_long</code>, calculate and plot the the mean life expectancy for each continent over time from 1982 to 2007. Give your plot a title and assign x and y labels. <strong>Hint:</strong> do this in two steps. First, do the logic and calculations using <code>dplyr::group_by()</code> and <code>dplyr::summarize()</code>. Second, plot using <code>ggplot()</code>.</li>
 </ol>
 <p><strong>STOP: Knit the R Markdown file and sync to Github (pull, stage, commit, push)</strong></p>
 </blockquote>
@@ -602,7 +603,8 @@ continents &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">filter</span>(obs_type <span class="op">==</span><span class="st"> &quot;lifeExp&quot;</span>, 
          year <span class="op">&gt;</span><span class="st"> </span><span class="dv">1980</span>) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">group_by</span>(continent, year) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean_le =</span> <span class="kw">mean</span>(obs_values))
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean_le =</span> <span class="kw">mean</span>(obs_values)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ungroup</span>()
 
 <span class="kw">ggplot</span>(<span class="dt">data =</span> continents, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> mean_le, <span class="dt">color =</span> continent)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span>
@@ -639,7 +641,7 @@ continents &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span>
 <blockquote>
 <h3 id="exercise-1"><span class="header-section-number">7.6</span> Exercise</h3>
 <ol style="list-style-type: decimal">
-<li><p>Convert “gap_long” all the way back to gap_wide. Hint: you’ll need to create appropriate labels for all our new variables (time*metric combinations) with the opposite of separate: <code>tidyr::unite()</code>.</p></li>
+<li><p>Convert <code>gap_long</code> all the way back to <code>gap_wide</code>. Hint: Do this in 2 steps. First, create appropriate labels for all our new variables (variable_year combinations) with the opposite of separate: <code>tidyr::unite()</code>. Second, <code>spread()</code> that variable_year column into wider format.</p></li>
 <li><p>Knit the R Markdown file and sync to Github (pull, stage, commit, push)</p></li>
 </ol>
 </blockquote>
@@ -774,7 +776,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -786,6 +788,10 @@ gitbook.start({
 "edit": {
 "link": "https://github.com/OHI-Science/data-science-training/edit/master/tidyr.Rmd",
 "text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
 },
 "download": ["data-science-training.pdf"],
 "toc": {

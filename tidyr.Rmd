@@ -260,7 +260,7 @@ ggplot(life_df, aes(x = year, y = obs_values, color = country)) +
 
 > ### Exercise
 >
-> 1. Using `gap_long`, calculate and plot the the mean life expectancy for each continent over time from 1982 to 2007. Give your plot a title and assign x and y labels. **Hint:** use the `dplyr::group_by()` and `dplyr::summarize()` functions. 
+> 1. Using `gap_long`, calculate and plot the the mean life expectancy for each continent over time from 1982 to 2007. Give your plot a title and assign x and y labels. **Hint:** do this in two steps. First, do the logic and calculations using `dplyr::group_by()` and `dplyr::summarize()`. Second, plot using `ggplot()`.
 >
 > **STOP: Knit the R Markdown file and sync to Github (pull, stage, commit, push)**
 >
@@ -271,7 +271,8 @@ continents <- gap_long %>%
   filter(obs_type == "lifeExp", 
          year > 1980) %>% 
   group_by(continent, year) %>% 
-  summarize(mean_le = mean(obs_values))
+  summarize(mean_le = mean(obs_values)) %>%
+  ungroup()
 
 ggplot(data = continents, aes(x = year, y = mean_le, color = continent)) + 
   geom_line() +
@@ -318,7 +319,7 @@ Now we've got a dataframe `gap_normal` with the same dimensions as the original 
 
 > ### Exercise
 >
->1. Convert "gap_long" all the way back to gap_wide. Hint: you'll need to create appropriate labels for all our new variables (time*metric combinations) with the opposite of separate: `tidyr::unite()`. 
+>1. Convert `gap_long` all the way back to `gap_wide`. Hint: Do this in 2 steps. First, create appropriate labels for all our new variables (variable_year combinations) with the opposite of separate: `tidyr::unite()`. Second, `spread()` that variable_year column into wider format.
 >
 >2. Knit the R Markdown file and sync to Github (pull, stage, commit, push)
 >

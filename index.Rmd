@@ -32,3 +32,20 @@ Suggested breakdown for a 2-day workshop:
 |break      |  |  |
 |15:30-17:00 |  [Data Wrangling: `dplyr`](#dplyr) | Practice, [Be a champion for open data science](#champion) |
 
+----
+
+This book has been used in the following:
+
+[**Software Carpentry** — 2-day workshop at the Woods Hole Oceanographic Institution (WHOI) *2018-10-22*](https://jules32.github.io/2018-10-22-WHOI/overview) 
+
+[**Data integration and team science** — 4 day workshop at NCEAS, California, USA *2018-03-12*](https://nceas.github.io/crescynt-training/data-integration)
+
+[**Data Carpentry** — 2-day workshop at the University of California Merced *2017-08-17*](https://snacktavish.github.io/2017-08-17-Yosemite/overview/) 
+
+[**Software Carpentry** — 2-day workshop at the Monterey Bay Aquarium Research Institute (MBARI) *2017-11-30*](https://jules32.github.io/2017-11-30-MBARI/overview) 
+
+[**Software Carpentry: Reproducible Science with RStudio and GitHub**  —  2-day workshop at Oxford University *2016-07-12*](http://jules32.github.io/2016-07-12-Oxford/overview/)
+
+[**Software Carpentry**  —  2-day workshop at UC Santa Barbara *2016-04-15*](http://remi-daigle.github.io/2016-04-15-UCSB/overview/)
+
+
