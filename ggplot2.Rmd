@@ -384,7 +384,7 @@ After creating your plot, you can save it to a file in your favorite format. The
 
 Instead, use the `ggsave()` function, which allows you easily change the dimension and resolution of your plot by adjusting the appropriate arguments (`width`, `height` and `dpi`):
 
-```{r ggsave-example, eval=FALSE, purl=FALSE}
+```{r ggsave-example, purl=FALSE}
 my_plot <- ggplot(data = mass) + 
       geom_bar(aes(x = type, fill = park_name)) +
   labs(x = "",
