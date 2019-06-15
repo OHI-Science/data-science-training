@@ -1,18 +1,31 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # Visualizing: `ggplot2` {#ggplot2}
 
 Visualizing data is the best way to understand, check, and describe data.  
+
+
+```{r viz ops, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = F, message = F)
+library(htmltools)
+```
+
 
 ## Why ggplot2?
 
 This tutorial focuses exclusively on data visualization using ggplot2 because this package:
 
 * provides a coherent language for visualizing data (vs. the original 'plot' function, which developed in an ad-hoc way)
-* makes many tasks easier, such as: visualizing a third (z) variable; saving a plot; automating plotting and formatting tasks
-* creates beautiful plots and is flexible
+* makes many tasks easier, such as: visualizing a third (z) variable; saving figures; automating plotting and formatting tasks
+* creates beautiful figures and is flexible
+
 
 ## Additional resources for data visualization in R:  
 
-These resources have helped us in our quest to use ggplot2 and improve our data visualization skills: 
+The goal of this tutorial is to introduce you to the basics of ggplot2 so you can start using to to make figures. I focus only on the techniques I use most often.  As such, we will barely be scratching the surface of what ggplot2 can do and we will be skipping a lot of functionality (e.g., faceting).  But there are many resources that will help you learn more.   
 
 - [ggplot2-cheatsheet-2.1.pdf](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf)  
 - [Interactive Plots and Maps - Environmental Informatics](http://ucsb-bren.github.io/env-info/wk06_widgets.html)  
@@ -32,330 +45,458 @@ These resources have helped us in our quest to use ggplot2 and improve our data 
 * [rvisualization.com](http://rvisualization.com/r-scripts/) has some really nice examples!
 
 
-## Objectives & Resources
-
-### Objectives
+## Objectives
 
 - install the `ggplot2` package by installing `tidyverse`
 - learn ggplot2 with a dataset describing global ocean health
 - practice writing a script in RMarkdown
 - practice the rstudio-github workflow
 
-### Resources
-
-
-
-```{r viz ops, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, warning = F, message = F)
-library(htmltools)
-```
-
-
-```{r dataprepare, include=FALSE, echo=FALSE}
-
-library(dplyr)
-library(here)
-
-OHI_score <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/yearly_results/global2017/Results/data/scores_eez2017.csv") %>%
-  select(rgn_id = region_id, region_name, OHI_score=Index) %>%
-  filter(rgn_id != 0) 
-
-OHI_trend <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/yearly_results/global2017/Results/data/trends_2017.csv") %>%
-  select(rgn_id = region_id, OHI_trend=Index) %>%
-  filter(rgn_id != 0) 
-
-hdi <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohiprep/master/globalprep/supplementary_information/v2017/HDI_data.csv") %>%
-  select(rgn_id, HDI=X2015)
-
-# coastal population
-pop <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohiprep/master/globalprep/mar_prs_population/v2017/output/mar_pop_25mi.csv") %>%
-  filter(year == 2017) %>%
-  select(rgn_id, coastal_pop = popsum) %>%
-  mutate(log_coastal_pop = log(coastal_pop + 1))
-
-## chi data
-chi <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohiprep/master/globalprep/supplementary_information/v2016/CHI_data.csv") %>%
-  filter(sp_type == "eez") %>%
-  select(rgn_id, cumulative_human_impact=mean)
-
-## UN georegion
-georegion <- read.csv("https://raw.githubusercontent.com/OHI-Science/ohiprep/master/globalprep/spatial/v2017/output/georegion_labels.csv") %>%
-  select(rgn_id, georegion_one = r1_label, geogregion_two = r2_label)
-
-data <- OHI_score %>%
-  left_join(OHI_trend, by="rgn_id") %>%
-  left_join(pop, by="rgn_id") %>%
-  left_join(chi, by="rgn_id") %>%
-  left_join(hdi, by="rgn_id") %>%
-  left_join(georegion, by="rgn_id") %>%
-  select(-rgn_id, country=region_name)
-
-write.csv(data, "data/OHI_global_data.csv", row.names=FALSE)
-```
-
-
 
 ## Install our first package: `tidyverse`
 
-Packages are bundles of functions, along with help pages and other goodies that make them easier for others to use, (ie. vignettes). 
+Packages are bundles of functions, along with help pages and other goodies that make them easier for others to use (e.g., vignettes). 
 
-So far we've been using packages that are already included in *base R*. These can be considered *out-of-the-box* packages and include things such as `sum` and `mean`. You can also download and install packages created by the vast and growing R user community. The most traditional place to download packages is from [CRAN, the Comprehensive R Archive Network](https://cran.r-project.org/). This is where you went to download R originally, and will go again to look for updates. You can also install packages directly from GitHub, which we'll do tomorrow.
+So far we've been using functions from *base R*, such as `sum` and `mean`. But, one of the amazing things about R is that a vast user community is always creating new functions and packages that expand R's capabilities. The traditional place to download packages is from [CRAN, the Comprehensive R Archive Network](https://cran.r-project.org/), which is where you downloaded R. You can also install packages from GitHub, which we'll do tomorrow.
 
-You don't need to go to CRAN's website to install packages, we can do it from within R with the command `install.packages("package-name-in-quotes")`.
+You don't need to go to CRAN's website to install packages, this can be accomplished within R using the command `install.packages("package-name-in-quotes")`.
 
-We are going to be using the package `ggplot2`, which is actually bundled into a huge package called `tidyverse`. We will install `tidyverse` now, and use a few functions from the packages within. Also, check out [tidyverse.org/](https://www.tidyverse.org).
+For this tutorial we will use the `ggplot2` package, which is bundled with a composite-package called `tidyverse`. Check out [tidyverse.org/](https://www.tidyverse.org) for more information.
+
+We will download and install `tidyverse` like this: 
 
 ```{r, eval=FALSE, messages=FALSE}
 ## from CRAN:
 install.packages("tidyverse") ## do this once only to install the package on your computer.
 ```
 
+When you do this, you will see some messages describing which packages were installed with `tidyverse`. Note messages about name conflicts are also returned. This is not a problem, this is just letting you know that we'll be using two functions from dplyr instead of from the built-in stats package. 
+
+We have downloaded the tidyverse package but is not yet loaded in the current R workspace.  We will use the `library()` function to load tidyverse: 
+
 ```{r, messages = FALSE}
 library(tidyverse) ## do this every time you restart R and need it 
 ```
 
-When you do this, it will tell you which packages are inside of `tidyverse` that have also been installed. Note that there are a few name conflicts; it is alerting you that we'll be using two functions from dplyr instead of the built-in stats package.
 
-What's the difference between `install.packages()` and `library()`? Why do you need both? Here's an analogy: 
+You can also control your packages in the Packages tab in the bottom right pane of RStudio. Here, you can see which packages are installed (listed) and loaded (checkbox). You can also install packages using the install button, or check to see if any of your installed packages have updates available (update button). You can also click on the name of the package to see all the functions inside it — this is a super helpful feature that I use all the time.
 
-- `install.packages()` is setting up electricity for your house. Just need to do this once (let's ignore monthly bills). 
-- `library()` is turning on the lights. You only turn them on when you need them, otherwise it wouldn't be efficient. And when you quit R, it turns the lights off, but the electricity lines are still there. So when you come back, you'll have to turn them on again with `library()`, but you already have your electricity set up.
+## Load and explore data
 
-You can also install packages by going to the Packages tab in the bottom right pane. You can see the packages that you have installed (listed) and loaded (checkbox). You can also install packages using the install button, or check to see if any of your installed packages have updates available (update button). You can also click on the name of the package to see all the functions inside it — this is a super helpful feature that I use all the time.
+We will load the dataset that we will be using for this tutorial into our workspace directly from GitHub.com (I always find this GitHub functionality so cool!).  
 
-## Load data
-
-Copy and paste the code chunk below and read it in to your RStudio to load the five datasets we will use in this section.
 
 ```{r load_data}
-#National Parks in California
-ca <- read_csv("https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/ca.csv") 
 
-#Acadia National Park
-acadia <- read_csv("https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/acadia.csv")
+ohi_data <- read_csv("https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/OHI_global_data.csv")
 
-#Southeast US National Parks
-se <- read_csv("https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/se.csv")
+# ohi_data <- read_csv(here("data/OHI_global_data.csv")) #TODO
 
-#2016 Visitation for all Pacific West National Parks
-visit_16 <- read_csv("https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/visit_16.csv")
-
-#All Nationally designated sites in Massachusetts
-mass <- read_csv("https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/mass.csv")
 ```
+
+These data are from the global Ocean Health Index which assesses the condition of marine resources for 220 countries or territories (TODO: add website here).  
+
+The variables in this dataset are:
+
+variable  | description  | data type | examples
+--------- | ------------- | --------------------------- | --------------------------
+country   | OHI region name for country or territorial regions with marine coastline | character | Jarvis Island, Italy
+OHI_score | Ocean Health Index scores describing condition of marine resources based on the 2017 global assessment | numeric | values can range from 0-100, with 100 being the best possible score
+OHI_trend  | average annual change in OHI scores from 2012 to 2017 | numeric | values range from -3.9 to 1.86, with positive values indicating improving scores
+coastal_pop | human population within 25 miles of coast | numeric | values range from 0 to >317 million
+log_coastal_pop | log(coastal_pop + 1) | numeric | values range from 0 to ~20
+cumulative_human_impact | average cumulative impact of human stressors (e.g., SST, shipping, pollution) on marine ecosystems within the country's marine boundaries | numeric | values range from 1.419 to 6.762, with larger values indicating higher impact
+HDI | Human Development Index scores, which measure average achievement in key dimensions of human development: a long and healthy life, being knowledgeable and have a decent standard of living. (http://hdr.undp.org/en/content/human-development-index-hdi) | numeric | values are rescaled to be between 0 to 1, with higher scores indicating better human development
+georegion_one | lower resolution UN georegion designations based on georegional and social similarities | character | Africa, Americas, Asia
+georegion_two | higher resolution UN georegion designations based on georegional and social similariies | character | Australia and New Zealand, Eastern Asia, Caribbean
+
+Let's quickly explore these data, shall we:
+
+```{r load_data}
+
+head(ohi_data)
+summary(ohi_data)
+table(ohi_data$georegion_one)
+table(ohi_data$georegion_two)
+
+```
+
 
 
 ## Plotting with **`ggplot2`**
 
-**`ggplot2`** is a plotting package that makes it simple to create complex plots from data in a data frame. It provides a more programmatic interface for specifying what variables to plot, how they are displayed, and general visual properties. Therefore, we only need minimal changes if the underlying data change or if we decide to change from a bar plot to a scatterplot. This helps in creating publication quality plots with minimal amounts of adjustments and tweaking.
+Plots are created using a step-wise approach that allows for extensive flexibility and customization of plots.  *Start with the simplest version of your plot and build onto it.*
 
-ggplot likes data in the 'long' format: i.e., a column for every dimension, and a row for every observation. Well structured data will save you lots of time when making figures with ggplot.
+In this next section we will walk through the steps needed to build a plot in ggplot2.
 
-ggplot graphics are built step by step by adding new elements. Adding layers in this fashion allows for extensive flexibility and customization of plots.
+### Step 1: Identify the dataframe
 
-<br>
-![](img/rstudio-cheatsheet-ggplot.png)
-<br>
+ggplot2 requires the data to be in a dataframe to plot.  The first step is to use the `ggplot()` function to identify the dataframe with the data you want to plot. 
 
-## Data
+At this point, we will also assign the x and y axis variables within the aes function (this stands for aesthetics, and we will discuss this more after we have a plot to work with).
 
-We are going to use a National Park visitation dataset (from the National Park Service at <https://irma.nps.gov/Stats/SSRSReports>). Read in the data using `read_csv` and take a look at the first few rows using `head()` or `View()`.
-
-```{r}
-head(ca)
-```
-
-This dataframe is already in a *long* format where all rows are an observation and all columns are variables. Among the variables in `ca` are:
-
-1. `region`, US region where park is located.
-
-2. `visitors`, the annual visitation for each `year`
-
-
-To build a ggplot, we need to:
-
-- use the `ggplot()` function and bind the plot to a specific data frame using the `data` argument
+[NOTE: This was confusing for me for a long time because this step doesn't actually make the plot!]
 
 ```{r, eval=FALSE, purl=FALSE}
-ggplot(data = ca)
+
+ggplot(data = ohi_data, aes(x = OHI_score, y = HDI))
+
 ```
 
-- add `geoms` -- graphical representation of the data in the plot (points,
-      lines, bars). **`ggplot2`** offers many different geoms; we will use some 
-      common ones today, including:
-      * `geom_point()` for scatter plots, dot plots, etc.
-      * `geom_bar()` for bar charts
-      * `geom_line()` for trend lines, time-series, etc.  
+### Step 2: Identify the style of plot you want to create (i.e., the geom)
 
-To add a geom to the plot use `+` operator. Because we have two continuous variables,  
-let's use `geom_point()` first and then assign x and y aesthetics (`aes`):
+Next, we will actually create the plot by adding a geom function using the `+` operator. 
+
+A __geom__ is the geometrical object that a plot uses to represent data. For example, bar charts use bar geoms, line charts use line geoms, boxplots use boxplot geoms, and so on. You can use different geoms to plot the same data. To change the geom in your plot, change the geom function that you add to `ggplot()`. 
+
+`ggplot2` provides over 30 geoms, and extension packages provide even more (see <https://www.ggplot2-exts.org> for a sampling). The best way to get a comprehensive overview is the [ggplot2 cheatsheet](http://rstudio.com/cheatsheets). To learn more about any single geom, use help: `?geom_smooth`.
+
+
+Here are the ones I use most often:
+
+TODO
+
+
+We will start by creating a scatterplot to compare ohi scores among regions, using the `geom_point` function.
 
 ```{r first-ggplot, purl=FALSE}
-ggplot(data = ca) + 
-  geom_point(aes(x = year, y = visitors))
+
+ggplot(data = ohi_data, aes(x = georegion_one, y =OHI_score)) + 
+  geom_point()
+
 ```
 
-Notes:
 
-- Anything you put in the `ggplot()` function can be seen by any geom layers
-  that you add (i.e., these are universal plot settings). This includes the x and
-  y axis you set up in `aes()`.
+Yay! A plot!
+
+We can make different plots using different geoms.  
+
+We will use the same data to make a jitter plot using geom_jitter, which is nearly the same as a scatter plot but it adds some random variation in the x-axis:
+```{r first-ggplot, purl=FALSE}
+
+ggplot(data = ohi_data, aes(x = georegion_one, y =OHI_score)) + 
+  geom_jitter()
+
+```
+
+
+
+The following bar plot uses geom_bar to describe the number of countries in each UN category:
+```{r barplot2, purl=FALSE}
+
+ggplot(data = ohi_data, aes(x = georegion_one)) + 
+  geom_bar() 
+
+```
+
+
+A histogram using geom_histogram:
+```{r histogram, purl=FALSE}
+
+ggplot(data = ohi_data, aes(x = HDI)) + 
+  geom_histogram() 
+
+```
+
+
+Multiple geoms can be layered onto a single figure.  And, geoms can be created using either the same or different dataframes, To demonstrate this we will use a secondary dataset that describes the mean OHI score for each UN georegion. We will create a bar plot of the means for each region and then overlay the point data. 
+
+```{r first-ggplot, purl=FALSE}
+
+#TODO: update link
+ohi_summary <- read_csv(here("data/OHI_scores_georegion_summary.csv"))
+
+ggplot(data = ohi_summary, aes(x = georegion_one, y = OHI_score)) + 
+  geom_bar(stat="identity") +
+  geom_jitter(data=ohi_data, aes(x=georegion_one, y=OHI_score))
+
+
+```
+
+If you place aes mappings in a geom function, ggplot2 will treat them as local mappings for the layer. It will use these mappings to extend or overwrite the global mappings _for that layer only_. This makes it possible to display different aesthetics in different layers.
+
+
+*What is this aes business?*
+
+The arguments within aes() link variables in the dataframe to some aspect of plot appearance.  As we have discussed, x and y describe the axes, but other arguments can be added to describe a z variable (e.g. size or color or shape of points).  Here are some examples of aes arguments:
+
+TODO.
+
+This is very powerful! Let's explore:   
+
+```{r first-ggplot, purl=FALSE}
+
+# Changing size or color of points based on a 3rd variable
+ggplot(data = ohi_data, aes(x = OHI_score, y = HDI, size = coastal_pop)) + 
+  geom_point()
+
+ggplot(data = ohi_data, aes(x = OHI_score, y = HDI, color = coastal_pop)) + 
+  geom_point()
+
+# What happens when we change color based on a third variable that is categorical?
+ggplot(data = ohi_data, aes(x = OHI_score, y = HDI, color = georegion_one)) + 
+  geom_point()
+
+# changing shape of points
+ggplot(data = ohi_data, aes(x = OHI_score, y = HDI, shape = georegion_one)) + 
+  geom_point()
+
+# Adding labels
+
+  # This doesn't add the labels like it seems like it should:
+ggplot(data = ohi_data, aes(x = OHI_score, y = HDI, label=country)) + 
+  geom_point(aes(x = OHI_score, y = HDI)) 
+
+  # To do this we have to add a geom_text function
+ggplot(data = ohi_data, aes(x = OHI_score, y = HDI, label=country)) + 
+  geom_point(aes(x = OHI_score, y = HDI)) +
+  geom_text()
+
+
+```
+
+
+*A few notes:*
+
+- Everything in the `ggplot()` function is seen by subsequent geom layers
+ (i.e., these are universal plot settings). This includes the x and
+  y axis assignments in `aes()`.
 - You can also specify aesthetics for a given geom independently of the
-  aesthetics defined globally in the `ggplot()` function.
+  aesthetics defined globally in the `ggplot()`. If aes arguments are added, they will override global aes   
+  arguments.
 - The `+` sign used to add layers must be placed at the end of each line containing
-a layer. If, instead, the `+` sign is added in the line before the other layer,
-**`ggplot2`** will not add the new layer and will return an error message.
+  a layer. If, instead, the `+` sign is added in the line before the other layer,
+  **`ggplot2`** will not add the new layer and will return an error message.
 
 > **STOP: let's Commit, Pull and Push to GitHub**
 
-## Building your plots iteratively
+> **And discuss the following quick questions** 
 
-Building plots with ggplot is typically an iterative process. We start by defining the dataset we'll use, lay the axes, and choose a geom:
+>  1. In the code below, why isn't the data showing up?
 
-```{r create-ggplot-object, purl=FALSE}
-ggplot(data = ca) +
-    geom_point(aes(x = year, y = visitors))
-```
-
-This isn't necessarily a useful way to look at the data. We can distinguish each park by added the `color` argument to the `aes`:
-
-```{r color-by-species, purl=FALSE}
-ggplot(data = ca) +
-    geom_point(aes(x = year, y = visitors, color = park_name))
-```
-
-## Customizing plots
-
-Take a look at the [**`ggplot2`** cheat sheet](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf), and think of ways you could improve the plot.
-
-Now, let's capitalize the x and y axis labels and add a main title to the figure. I also like to remove that standard gray background using a different `theme`. Many themes come built into the `ggplot2` package. My preference is `theme_bw()` but once you start typing `theme_` a list of options will pop up. The last thing I'm going to do is remove the legend title.
-
-```{r customize}
-ggplot(data = ca) +
-    geom_point(aes(x = year, y = visitors, color = park_name)) +
-    labs(x = "Year",
-       y = "Visitation",
-       title = "California National Park Visitation") +
-    theme_bw() +
-    theme(legend.title=element_blank())
-```
-
-## **`ggplot2`** themes
-
-In addition to `theme_bw()`, which changes the plot background to white, **`ggplot2`** comes with several other themes which can be useful to quickly change the look of your visualization.
-
-The [ggthemes](https://cran.r-project.org/web/packages/ggthemes/vignettes/ggthemes.html) package provides a wide variety of options (including an Excel 2003 theme). The [**`ggplot2`** extensions website](https://www.ggplot2-exts.org) provides a list of packages that extend the capabilities of **`ggplot2`**, including additional themes.
-
-> ### Exercise (10 min)
-
-> 1. Using the `se` dataset, make a scatterplot showing visitation to all national parks in the Southeast region with color identifying individual parks.
-> 2. Change the plot so that color indicates `state`.
-> 3. Customize by adding your own title and theme. You can also change the text sizes and angles. Try applying a 45 degree angle to the x-axis. Use your cheatsheet!
-> 4. In the code below, why isn't the data showing up?
 ```{r, eval=FALSE, purl=FALSE}
-ggplot(data = se, aes(x = year, y = visitors))
+
+ggplot(data = ohi_data, aes(y = OHI_score, x = HDI, color=georegion_one))
+
 ```
+
+> 2. Are these two approaches the same?
+
+```{r, eval=FALSE, purl=FALSE}
+
+ggplot(data = ohi_data, aes(y=OHI_score, x = HDI, color=georegion_one)) +
+  geom_point()
+  
+ggplot(data = ohi_data) +
+  geom_point(aes(y = OHI_score, x = HDI, color=georegion_one))  
+
+```
+
+> Answers
+> 1. The code is missing a geom to describe how the data should be plotted.
+> 2. These two approaches result in the same plot here, but there could be downstream effects as more geoms are added.
+
+
+### Step 3: Customize your plot
+
+So far, the plots we have created are fairly ugly and hard to read. We will now improve our basic plots using a stepwise approach.  
+
+
+#### Themes
+I do not like the default ggplot2 figures because I find them too busy.  This is easy to fix using themes to quickly alter the appearance of your plots. Many themes come built into the `ggplot2` package, one that I like better is `theme_bw()`.  Once you start typing `theme_` a list of options will pop up.  
+
+```{r themes}
+
+ggplot(data = ohi_data, aes(x = OHI_score, y = HDI)) + 
+  geom_point() + 
+  theme_bw()
+
+
+```
+
+
+The [ggthemes](https://cran.r-project.org/web/packages/ggthemes/vignettes/ggthemes.html) package provides many additional themes (including an Excel 2003 theme). The [**`ggplot2`** extensions website](https://www.ggplot2-exts.org) provides a list of packages that extend the capabilities of **`ggplot2`**, including additional themes.
+
+I often create my own themes to make figures that work well in publications or presentations. This also gives my figures a consistent look (without having to remember from figure to figure the size of labels, etc.). I have found that storing my themes on Github works well. Here is an example of a theme I created named "scatterTheme":
+
+```{r my theme}
+
+source('https://raw.githubusercontent.com/OHI-Science/ohiprep/master/src/R/scatterTheme.txt')       
+
+ggplot(data = ohi_data, aes(x = OHI_score, y = HDI)) + 
+  geom_point() + 
+  scatterTheme
+
+```
+
+
+
+#### Labels: axis, plot, legend
+One of the first things you will often want to do is alter titles, axes labels, figure legend labels, etc. This involves manipulating the theme function and can quickly get complicated, and I typically have to Google the specifics or refer to a [cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf), despite using ggplot2 for years and years and years.  
+
+But, it is easy enough to alter axes, plot, and legend labels:  
+```{r labels}
+
+ggplot(data = ohi_data, aes(y = OHI_score, x = HDI, color=georegion_one)) + 
+  geom_point() + 
+    labs(y = "OHI score, 2017",
+       x = "Human Development Index",
+       title = "Countries with high Human Development have more sustainable oceans") +
+    scale_fill_discrete(guide_legend(title = "Georegion")) +  # TODO
+     theme_bw()
+
+```
+
+
+> ### We interupt this section on customizing your plot for an Excercise (10 min)
+
+> 1. Make a histogram of the OHI_score variable and color by the georegion_one variable.
+> 2. Instead of colorcoding by georegion, let's say you want all the bars to be light gray.  This would require adding the argument `fill = "lightgray"`.  Where is the best place to add this in your code to get this to work?
+> 3. Play with some themes and Customize the title and axes labels. Try changing the text sizes and angles (refer to the [cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf)). 
 
 > ##### Answers (no peeking)
 
 ```{r, echo=TRUE, eval=TRUE}
-# 1.
-ggplot(data = se) +
-  geom_point(aes(x = year, y = visitors, color = park_name))
+# 1. This one is tricky because the color aesthetic only does the outline of the bars.
+# If you got that far, you were halfway there.  
+# You will need to use the fill argument to color shapes 
 
-# 2. & 3.
-ggplot(data = se) +
-  geom_point(aes(x = year, y = visitors, color = state)) +
-  labs(x = "Year",
-       y = "Visitation",
-       title = "Southeast States National Park Visitation") +
+my_plot <- ggplot(data = ohi_data, aes(x=OHI_score, fill=georegion_one)) +
+  geom_histogram()  
+my_plot
+
+
+# 2. This was something that confused me for a while.  My instinct was to add it to the aes function....BUT NO!!!
+# The arguments in aes should correspond to a column in the dataframe.  The best place for this argument is in 
+# the geom function (and not in an aes function)
+ggplot(data = ohi_data, aes(x=OHI_score)) +
+  geom_histogram(fill="lightgray")  
+
+
+# 3.
+my_plot +    # the plot created in question 1 continued...
+  labs(x = "OHI score",
+       y = "Number of countries",
+       title = "Distriubution of OHI scores") +
   theme_light() +
   theme(legend.title = element_blank(),
-        axis.text.x = element_text(angle = 45, hjust = 1, size = 14))
+        axis.text.x = element_text(angle = 45, hjust = 1, size = 14),
+        axis.text.y = element_text(size = 14),
+        axis.title = element_text(size = 16)
+        )
+
 ```
 
-> 4. The code is missing a geom to describe how the data should be plotted.
 
 > **STOP: commit, pull and push to github**
 >
+> ### We will now continue with customizing your plot.....
 
+#### Global changes to plot
 
-## Faceting
+It is easy to make global changes to your plot's appearance (these go outside the aes function).  Here are some options:
 
-ggplot has a special technique called *faceting* that allows the user to split one plot into multiple plots based on data in the dataset. We will use it to make a plot of park visitation by state:
+* *color* color of lines/points
+* *fill*  color within polygons
+* *label* if points are a character
+* *linetype* type of line
+* *shape* style of point
+* *alpha* transparency (0-1)
+* *size* size of shape
 
-```{r first-facet, purl=FALSE}
-ggplot(data = se) +
-    geom_point(aes(x = year, y = visitors)) +
-    facet_wrap(~ state)
-```
+With this information, we can improve the appearance of one of our previous figures:
 
-We can now make the faceted plot by splitting further by park using `park_name` (within a single plot):
+```{r fig_improve}
 
-```{r facet-by-state-and-park, purl=FALSE}
- ggplot(data = se) +
-     geom_point(aes(x = year, y = visitors, color = park_name)) +
-     facet_wrap(~ state, scales = "free")
-```
-
-
-## Geometric objects (geoms)
-
-A __geom__ is the geometrical object that a plot uses to represent data. People often describe plots by the type of geom that the plot uses. For example, bar charts use bar geoms, line charts use line geoms, boxplots use boxplot geoms, and so on. Scatterplots break the trend; they use the point geom. You can use different geoms to plot the same data. To change the geom in your plot, change the geom function that you add to `ggplot()`. Let's look at a few ways of viewing the distribution of annual visitation (`visitors`) for each park (`park_name`).
-
-```{r}
-ggplot(data = se) + 
-  geom_jitter(aes(x = park_name, y = visitors, color = park_name), 
-              width = 0.1, 
-              alpha = 0.4) +
-  coord_flip() +
-  theme(legend.position = "none") 
-        
-ggplot(se, aes(x = park_name, y = visitors)) + 
-  geom_boxplot() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
-
-```
-
-None of these are great for visualizing data over time. We can use `geom_line()` in the same way we used `geom_point`.
-
-```{r}
-ggplot(se, aes(x = year, y = visitors, color = park_name)) +
-   geom_line()
-```
-
-`ggplot2` provides over 30 geoms, and extension packages provide even more (see <https://www.ggplot2-exts.org> for a sampling). The best way to get a comprehensive overview is the [ggplot2 cheatsheet](http://rstudio.com/cheatsheets). To learn more about any single geom, use help: `?geom_smooth`.
-
-To display multiple geoms in the same plot, add multiple geom functions to `ggplot()`:
-
-`geom_smooth` allows you to view a smoothed mean of data. Here we look at the smooth mean of visitation over time to Acadia National Park:
-
-```{r}
-ggplot(data = acadia) + 
-  geom_point(aes(x = year, y = visitors)) +
-  geom_line(aes(x = year, y = visitors)) +
-  geom_smooth(aes(x = year, y = visitors)) +
-  labs(title = "Acadia National Park Visitation",
-       y = "Visitation",
-       x = "Year") +
+ggplot(data = ohi_summary, aes(x = georegion_one, y = OHI_score)) + 
+  geom_bar(stat="identity", fill = "lightgray") +
+  geom_jitter(data=ohi_data, aes(x=georegion_one, y=OHI_score), color="red", size=3, alpha=0.3) +
   theme_bw()
+
 ```
 
 
-Notice that this plot contains three geoms in the same graph! Each geom is using the set of mappings in the first line. ggplot2 will treat these mappings as global mappings that apply to each geom in the graph.
+#### Color
+One of the more challenging aspects of creating a good plot is selecting colors.  We are here to help!
 
-If you place mappings in a geom function, ggplot2 will treat them as local mappings for the layer. It will use these mappings to extend or overwrite the global mappings _for that layer only_. This makes it possible to display different aesthetics in different layers.
+*Hint 1* 
+Unless you are doing something very simple (e.g. 1-3 colors), I recommend using established color palettes.  There are a many color palette packages (here is a good resource: ), but one of the best known is RColorBrewer(TODO: Link).
 
-```{r}
-ggplot(data = acadia, aes(x = year, y = visitors)) + 
-  geom_point() +
-  geom_line() +
-  geom_smooth(color = "red") +
-  labs(title = "Acadia National Park Visitation",
-       y = "Visitation",
-       x = "Year") +
-  theme_bw()
+We will explore using one of the palettes from RColorBrewer.
+
+```{r colorbrewer}
+
+# Install the package (only needs to be done once) and load:
+install.packages("RColorBrewer")
+library(RColorBrewer)
+
+# When working with color palettes, I also like some of the functionality offered by the colorspace package
+install.packages("colorspace")
+library(colorspace)
+
+# To see the available palettes:
+display.brewer.all()
+
+# To select a palette
+my_palette <- brewer.pal(n=9, "YlOrRd")
+
 ```
+
+*Hint 2* 
+R uses hexidecimal to represent colors. Hexadecimal is a base-16 number system used to describe color.  Red, green, and blue are each represented by two characters (#rrggbb).  Each character has 16 possible symbols:  0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F 
+
+“00” can be interpreted as 0.0 and “FF” as 1.0
+i.e., red= #FF0000 , black=#000000, white = #FFFFFF
+
+Two additional characters (with the same scale) can be added to the end to describe transparency (#rrggbbaa)
+
+In practice your RColorBrewer palette looks like this:
+
+```{r hexidecimal}
+
+my_palette
+
+```
+
+I always use hexidecimal format for colors in R because it is the most direct approach.
+
+
+*Hint 3* 
+The function you will want to use to specify color in ggplot2 depends on whether the variable you are mapping the color to is discrete/categorical or continuous.  There are a LOT of options in ggplot2, but these are the approaches I have settled on because they are the most flexible:
+
+TODO: add table
+
+In the following case we map color to a continuous variable, so we will use:
+
+```{r palette_cont}
+
+ggplot(data = ohi_data, aes(x = OHI_score, y = OHI_trend, color = HDI)) + 
+  geom_point(size =3) +
+  scale_colour_gradientn(colors = my_palette)
+  
+```
+
+If we are mapping color to a discrete variable:
+```{r palette_discrete}
+
+# lets use a discrete color scale
+my_palette <- brewer.pal(n=12, "Set3")
+
+ggplot(data = ohi_data, aes(x = OHI_score, y = HDI, color = georegion_one)) + 
+  geom_point(size = 3) +
+  scale_color_manual(values = my_palette)
+# Note the first 7 of the 12 colors are used in the plot
+
+```
+
+The scale_color_manual function also has a lot of great arguments that allow you to control which colors are associated with each factor level, the names used in the legend, and other controls. 
+
+*Hint 4* 
+If the "color" functions aren't working, try the "fill" version.
+
+See below for more tools I use for dealing with color.
+
+
 
 > ### Challenge
 
@@ -487,12 +628,23 @@ ggplotly(acad_vis)
 ```
 
 
+
+
+## Extra color stuff
+Sometimes I want to modify a color palette.  For example, I might want to eliminate one of the colors, or extend one side a gradient to better match the data.  Here are some of the tools I use to do this.
+
+It can be handy to see how hex codes translate into color.  There is a handy colorspace function for this:
+```{r color}
+
+my_palette <- brewer.pal(n=12, "Set3")
+
+swatchplot(my_palette)
+
+```
+
+
+
 ## Save and push to GitHub
-
-
-
-
-
 
 
 

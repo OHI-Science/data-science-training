@@ -1,4 +1,4 @@
-"country","OHI_score","OHI_trend","coastal_pop","log_coastal_pop","cumulative_human_impact","HDI","georegion_one","geogregion_two"
+"country","OHI_score","OHI_trend","coastal_pop","log_coastal_pop","cumulative_human_impact","HDI","georegion_one","georegion_two"
 "South Georgia and the South Sandwich Islands",91.98,1.67,0,0,2.81775211960146,NA,"Southern Islands","Southern Islands"
 "Crozet Islands",88.08,0.81,0,0,1.92344356750979,NA,"Southern Islands","Southern Islands"
 "Howland Island and Baker Island",87.69,0.08,0,0,2.97303745814288,NA,"Oceania","Micronesia"
