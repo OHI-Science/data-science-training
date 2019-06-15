@@ -27,8 +27,7 @@ This tutorial focuses exclusively on data visualization using ggplot2 because th
 
 The goal of this tutorial is to introduce you to the basics of ggplot2 so you can start using to to make figures. I focus only on the techniques I use most often.  As such, we will barely be scratching the surface of what ggplot2 can do and we will be skipping a lot of functionality (e.g., faceting).  But there are many resources that will help you learn more.   
 
-- [ggplot2-cheatsheet-2.1.pdf](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf)  
-- [Interactive Plots and Maps - Environmental Informatics](http://ucsb-bren.github.io/env-info/wk06_widgets.html)  
+- [cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf)- [Interactive Plots and Maps - Environmental Informatics](http://ucsb-bren.github.io/env-info/wk06_widgets.html)  
 - [Graphs with ggplot2 - Cookbook for R](http://www.cookbook-r.com/Graphs/#graphs-with-ggplot2)  
 - [ggplot2 Essentials - STHDA](http://www.sthda.com/english/wiki/ggplot2-essentials)  
 - ["Why I use ggplot2" - David Robinson Blog Post](http://varianceexplained.org/r/why-I-use-ggplot2/)
@@ -107,10 +106,10 @@ coastal_pop | human population within 25 miles of coast | numeric | values range
 log_coastal_pop | log(coastal_pop + 1) | numeric | values range from 0 to ~20
 cumulative_human_impact | average cumulative impact of human stressors (e.g., SST, shipping, pollution) on marine ecosystems within the country's marine boundaries | numeric | values range from 1.419 to 6.762, with larger values indicating higher impact
 HDI | Human Development Index scores, which measure average achievement in key dimensions of human development: a long and healthy life, being knowledgeable and have a decent standard of living. (http://hdr.undp.org/en/content/human-development-index-hdi) | numeric | values are rescaled to be between 0 to 1, with higher scores indicating better human development
-georegion_one | lower resolution UN georegion designations based on georegional and social similarities | character | Africa, Americas, Asia
-georegion_two | higher resolution UN georegion designations based on georegional and social similariies | character | Australia and New Zealand, Eastern Asia, Caribbean
+georegion_one | lowerer resolution UN georegion designations based on georegional and social similarities | character | Africa, Americas, Asia
+georegion_two | higher resolution UN georegion designations based on georegional and social similarities | character | Australia and New Zealand, Eastern Asia, Caribbean
 
-Let's quickly explore these data, shall we:
+Let's explore these data, shall we:
 
 ```{r load_data}
 
@@ -125,17 +124,19 @@ table(ohi_data$georegion_two)
 
 ## Plotting with **`ggplot2`**
 
-Plots are created using a step-wise approach that allows for extensive flexibility and customization of plots.  *Start with the simplest version of your plot and build onto it.*
+Plots are created using a step-wise approach that allows for extensive flexibility and customization of plots.  
+
+*HINT: Start with the simplest version of your plot and build onto it.*
 
 In this next section we will walk through the steps needed to build a plot in ggplot2.
 
 ### Step 1: Identify the dataframe
 
-ggplot2 requires the data to be in a dataframe to plot.  The first step is to use the `ggplot()` function to identify the dataframe with the data you want to plot. 
+ggplot2 requires the data to be in a dataframe format.  The first step is to use the `ggplot()` function to identify the dataframe with the data you want to plot. 
 
-At this point, we will also assign the x and y axis variables within the aes function (this stands for aesthetics, and we will discuss this more after we have a plot to work with).
+At this point, we will also assign the x and y axis variables within the aes function (this stands for aesthetics, and we will discuss this concept after we have a plot to work with).
 
-[NOTE: This was confusing for me for a long time because this step doesn't actually make the plot!]
+[NOTE: This step was confusing for me for a long time because it doesn't actually make the plot!]
 
 ```{r, eval=FALSE, purl=FALSE}
 
@@ -146,18 +147,14 @@ ggplot(data = ohi_data, aes(x = OHI_score, y = HDI))
 ### Step 2: Identify the style of plot you want to create (i.e., the geom)
 
 Next, we will actually create the plot by adding a geom function using the `+` operator. 
+A __geom__ is the geometrical object that a plot uses to represent data. For example, bar charts use bar geoms, line charts use line geoms, boxplots use boxplot geoms, and so on. 
 
-A __geom__ is the geometrical object that a plot uses to represent data. For example, bar charts use bar geoms, line charts use line geoms, boxplots use boxplot geoms, and so on. You can use different geoms to plot the same data. To change the geom in your plot, change the geom function that you add to `ggplot()`. 
+You can use different geoms to plot the same data. To change the type of plot, change the geom function that you add to `ggplot()`. 
 
-`ggplot2` provides over 30 geoms, and extension packages provide even more (see <https://www.ggplot2-exts.org> for a sampling). The best way to get a comprehensive overview is the [ggplot2 cheatsheet](http://rstudio.com/cheatsheets). To learn more about any single geom, use help: `?geom_smooth`.
-
-
-Here are the ones I use most often:
-
-TODO
+`ggplot2` provides over 30 geoms, which are described in the official ggplot2 [cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf). To learn more about any single geom, use help: `?geom_smooth`. Extension packages provide even more geoms (see <https://www.ggplot2-exts.org> for a sampling). 
 
 
-We will start by creating a scatterplot to compare ohi scores among regions, using the `geom_point` function.
+We will start by creating a scatterplot of ohi scores within UN georegions by adding the `geom_point` function.
 
 ```{r first-ggplot, purl=FALSE}
 
@@ -169,17 +166,17 @@ ggplot(data = ohi_data, aes(x = georegion_one, y =OHI_score)) +
 
 Yay! A plot!
 
-We can make different plots using different geoms.  
+Next we will replace geom_point() with geom_jitter() to create a style of plot with the same data. geom_jitter, which is nearly the same as a scatter plot but it adds some random variation in the x-axis to separate points:
 
-We will use the same data to make a jitter plot using geom_jitter, which is nearly the same as a scatter plot but it adds some random variation in the x-axis:
 ```{r first-ggplot, purl=FALSE}
 
 ggplot(data = ohi_data, aes(x = georegion_one, y =OHI_score)) + 
-  geom_jitter()
+  geom_jitter(width=0.2) # the width argument describes how much scatter to add
 
 ```
 
 
+Now we will work on some other geoms.
 
 The following bar plot uses geom_bar to describe the number of countries in each UN category:
 ```{r barplot2, purl=FALSE}
@@ -199,7 +196,7 @@ ggplot(data = ohi_data, aes(x = HDI)) +
 ```
 
 
-Multiple geoms can be layered onto a single figure.  And, geoms can be created using either the same or different dataframes, To demonstrate this we will use a secondary dataset that describes the mean OHI score for each UN georegion. We will create a bar plot of the means for each region and then overlay the point data. 
+A figure can be created by layering multiple geoms.  Geom layers can be added using either the same or different dataframes. To demonstrate this we will use a secondary dataset with the mean OHI score for each UN georegion. We will create a bar plot of the means for each region and then overlay the point data. 
 
 ```{r first-ggplot, purl=FALSE}
 
@@ -213,6 +210,7 @@ ggplot(data = ohi_summary, aes(x = georegion_one, y = OHI_score)) +
 
 ```
 
+In the above example we 
 If you place aes mappings in a geom function, ggplot2 will treat them as local mappings for the layer. It will use these mappings to extend or overwrite the global mappings _for that layer only_. This makes it possible to display different aesthetics in different layers.
 
 
