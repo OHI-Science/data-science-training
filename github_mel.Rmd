@@ -38,7 +38,7 @@ Git and GitHub are two distinct programs,  but I think of them as a bundle becau
 
 
 
-## Why should scientists use GitHub and Rstudio?
+## Why should scientists use GitHub?
 
 1. Ends (or, nearly ends) the horror of keeping track of versions.
   Basically, we get away from this: 
@@ -345,9 +345,9 @@ We can use the Git tab of RStudio to monitor changes to files in the local repos
 
 ![](img/modified.png)
 
-For example, if I copy a file into the repository folder on my computer, we will see the file in the Git tab beside a green box with an "A"!
+We will demonstrate this by copying a file into the repository folder on my computer.  This file will be added to the Git tab beside a green box with an "A"!
 
-This is also cool because it demonstrates how the repository is being tracked, even when changes aren't made through RStudio.
+From this, you can see how the repository is being tracked, even when changes aren't made through RStudio.
 
 We can also make changes through RStudio!
 
