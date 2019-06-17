@@ -268,20 +268,20 @@ date()
 
 ## Packages
 
-So far we've been using functions from base R, such as sum and mean. But, one of the amazing things about R is that a vast user community is always creating new functions and packages that expand R's capabilities. In R, the fundamental unit of shareable code is the package. A package bundles together code, data, documentation, and tests, and is easy to share with others. They increase the power of R by improving existing base R functionalities, or by adding new ones. 
+So far we've been using a couple functions from base R, such as `seq()` and `date()`. But, one of the amazing things about R is that a vast user community is always creating new functions and packages that expand R's capabilities. In R, the fundamental unit of shareable code is the package. A package bundles together code, data, documentation, and tests, and is easy to share with others. They increase the power of R by improving existing base R functionalities, or by adding new ones. 
 
-The traditional place to download packages is from CRAN, the Comprehensive R Archive Network, which is where you downloaded R. You can also install packages from GitHub, which we'll do tomorrow.
+The traditional place to download packages is from CRAN, the [Comprehensive R Archive Network](https://cran.r-project.org/), which is where you downloaded R. You can also install packages from GitHub, which we'll do tomorrow.
 
-You don't need to go to CRAN's website to install packages, this can be accomplished within R using the command install.packages("package-name-in-quotes").Let's install a small, fun package `praise`. You need to use quotes around the package name.:
+You don't need to go to CRAN's website to install packages, this can be accomplished within R using the command `install.packages("package-name-in-quotes")`. Let's install a small, fun package `praise`. You need to use quotes around the package name.:
 
 ```
 install.packages("praise")
 ```
 
-Now we've installed the package, but we need to tell R that we are going to use the functions within the `praise` package. We do this by using the function `library()`. 
+Now we've installed the package, but we need to tell R that we are going to use the functions within the `praise` package. We do this by using the function `library()`.
 
-**What’s the difference between a package and a library?**
-Speaking about the `library()` function, sometimes there is a confusion between a package and a library, and you can find people calling “libraries” to packages.
+**What’s the difference between a package and a library?**  
+Sometimes there is a confusion between a package and a library, and you can find people calling “libraries” to packages.
 
 Please don’t get confused: `library()` is the command used to load a package, and it refers to the place where the package is contained, usually a folder on your computer, while a package is the collection of functions bundled conveniently.
 
