@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 R &amp; RStudio, RMarkdown | Introduction to Open Data Science</title>
   <meta name="description" content="This is official open data science training for the Ocean Health Index." />
-  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 R &amp; RStudio, RMarkdown | Introduction to Open Data Science" />
   <meta property="og:type" content="book" />
@@ -47,13 +47,6 @@
 
 
 
-<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.0/plotly.js"></script>
-<script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.46.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.46.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -74,7 +67,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(title);
+  { content: attr(data-line-number);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -120,9 +113,9 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="lib\css\bootstrap.min.css" type="text/css" />
-<link rel="stylesheet" href="lib\css\style.css" type="text/css" />
-<link rel="stylesheet" href="lib\css\lesson.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/style.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/lesson.css" type="text/css" />
 </head>
 
 <body>
@@ -164,20 +157,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4" data-path="rstudio.html"><a href="rstudio.html#r-functions-help-pages"><i class="fa fa-check"></i><b>3.4</b> R functions, help pages</a><ul>
 <li class="chapter" data-level="3.4.1" data-path="rstudio.html"><a href="rstudio.html#your-turn"><i class="fa fa-check"></i><b>3.4.1</b> Your turn</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="rstudio.html"><a href="rstudio.html#clearing-the-environment"><i class="fa fa-check"></i><b>3.5</b> Clearing the environment</a><ul>
-<li class="chapter" data-level="3.5.1" data-path="rstudio.html"><a href="rstudio.html#your-turn-1"><i class="fa fa-check"></i><b>3.5.1</b> Your turn</a></li>
+<li class="chapter" data-level="3.5" data-path="rstudio.html"><a href="rstudio.html#packages"><i class="fa fa-check"></i><b>3.5</b> Packages</a></li>
+<li class="chapter" data-level="3.6" data-path="rstudio.html"><a href="rstudio.html#clearing-the-environment"><i class="fa fa-check"></i><b>3.6</b> Clearing the environment</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="rstudio.html"><a href="rstudio.html#your-turn-1"><i class="fa fa-check"></i><b>3.6.1</b> Your turn</a></li>
 </ul></li>
-<li class="chapter" data-level="3.6" data-path="rstudio.html"><a href="rstudio.html#rmarkdown"><i class="fa fa-check"></i><b>3.6</b> RMarkdown</a><ul>
-<li class="chapter" data-level="3.6.1" data-path="rstudio.html"><a href="rstudio.html#your-turn-2"><i class="fa fa-check"></i><b>3.6.1</b> Your Turn</a></li>
-<li class="chapter" data-level="3.6.2" data-path="rstudio.html"><a href="rstudio.html#code-chunks"><i class="fa fa-check"></i><b>3.6.2</b> Code chunks</a></li>
-<li class="chapter" data-level="3.6.3" data-path="rstudio.html"><a href="rstudio.html#your-turn-3"><i class="fa fa-check"></i><b>3.6.3</b> Your turn</a></li>
+<li class="chapter" data-level="3.7" data-path="rstudio.html"><a href="rstudio.html#rmarkdown"><i class="fa fa-check"></i><b>3.7</b> RMarkdown</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="rstudio.html"><a href="rstudio.html#your-turn-2"><i class="fa fa-check"></i><b>3.7.1</b> Your Turn</a></li>
+<li class="chapter" data-level="3.7.2" data-path="rstudio.html"><a href="rstudio.html#code-chunks"><i class="fa fa-check"></i><b>3.7.2</b> Code chunks</a></li>
+<li class="chapter" data-level="3.7.3" data-path="rstudio.html"><a href="rstudio.html#your-turn-3"><i class="fa fa-check"></i><b>3.7.3</b> Your turn</a></li>
 </ul></li>
-<li class="chapter" data-level="3.7" data-path="rstudio.html"><a href="rstudio.html#rmarkdown-video-1-minute"><i class="fa fa-check"></i><b>3.7</b> RMarkdown video (1-minute)</a></li>
-<li class="chapter" data-level="3.8" data-path="rstudio.html"><a href="rstudio.html#troubleshooting"><i class="fa fa-check"></i><b>3.8</b> Troubleshooting</a><ul>
-<li class="chapter" data-level="3.8.1" data-path="rstudio.html"><a href="rstudio.html#i-entered-a-command-and-nothings-happening"><i class="fa fa-check"></i><b>3.8.1</b> I entered a command and nothing’s happening</a></li>
-<li class="chapter" data-level="3.8.2" data-path="rstudio.html"><a href="rstudio.html#how-do-i-update-rstudio"><i class="fa fa-check"></i><b>3.8.2</b> How do I update RStudio?</a></li>
+<li class="chapter" data-level="3.8" data-path="rstudio.html"><a href="rstudio.html#rmarkdown-video-1-minute"><i class="fa fa-check"></i><b>3.8</b> RMarkdown video (1-minute)</a></li>
+<li class="chapter" data-level="3.9" data-path="rstudio.html"><a href="rstudio.html#troubleshooting"><i class="fa fa-check"></i><b>3.9</b> Troubleshooting</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="rstudio.html"><a href="rstudio.html#i-entered-a-command-and-nothings-happening"><i class="fa fa-check"></i><b>3.9.1</b> I entered a command and nothing’s happening</a></li>
+<li class="chapter" data-level="3.9.2" data-path="rstudio.html"><a href="rstudio.html#how-do-i-update-rstudio"><i class="fa fa-check"></i><b>3.9.2</b> How do I update RStudio?</a></li>
 </ul></li>
-<li class="chapter" data-level="3.9" data-path="rstudio.html"><a href="rstudio.html#tips"><i class="fa fa-check"></i><b>3.9</b> Tips</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>4</b> GitHub</a><ul>
 <li class="chapter" data-level="4.1" data-path="github.html"><a href="github.html#objectives-1"><i class="fa fa-check"></i><b>4.1</b> Objectives</a></li>
@@ -253,7 +246,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.14" data-path="dplyr.html"><a href="dplyr.html#joining-datasets"><i class="fa fa-check"></i><b>6.14</b> Joining datasets</a></li>
 <li class="chapter" data-level="6.15" data-path="dplyr.html"><a href="dplyr.html#key-points"><i class="fa fa-check"></i><b>6.15</b> Key Points</a></li>
 <li class="chapter" data-level="6.16" data-path="dplyr.html"><a href="dplyr.html#troubleshooting."><i class="fa fa-check"></i><b>6.16</b> Troubleshooting.</a><ul>
-<li class="chapter" data-level="6.16.1" data-path="dplyr.html"><a href="dplyr.html#error-unexpected-special-in"><i class="fa fa-check"></i><b>6.16.1</b> Error: unexpected SPECIAL in " %&gt;%"</a></li>
+<li class="chapter" data-level="6.16.1" data-path="dplyr.html"><a href="dplyr.html#error-unexpected-special-in"><i class="fa fa-check"></i><b>6.16.1</b> Error: unexpected SPECIAL in &quot; %&gt;%&quot;</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>7</b> Data Wrangling: <code>tidyr</code></a><ul>
@@ -402,12 +395,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </blockquote>
 <p>Something else to start us off is to mention that you are learning a new language here. It’s an ongoing process, it takes time, you’ll make mistakes, it can be frustrating, but it will be overwhelmingly awesome in the long run. We all speak at least one language; it’s a similar process, really. And no matter how fluent you are, you’ll always be learning, you’ll be trying things in new contexts, learning words that mean the same as others, etc, just like everybody else. And just like any form of communication, there will be miscommunications that can be frustrating, but hands down we are all better off because of it.</p>
 <p>While language is a familiar concept, programming languages are in a different context from spoken languages, but you will get to know this context with time. For example: you have a concept that there is a first meal of the day, and there is a name for that: in English it’s “breakfast”. So if you’re learning Spanish, you could expect there is a word for this concept of a first meal. (And you’d be right: ‘desayuno’). <strong>We will get you to expect that programming languages also have words (called functions in R) for concepts as well</strong>. You’ll soon expect that there is a way to order values numerically. Or alphabetically. Or search for patterns in text. Or calculate the median. Or reorganize columns to rows. Or subset exactly what you want. We will get you increase your expectations and learn to ask and find what you’re looking for.</p>
-<!---TODO:
-- airport
-- debugging
-- packages
-- community
---->
 </div>
 <div id="r-at-the-console-rstudio-goodies" class="section level2">
 <h2><span class="header-section-number">3.3</span> R at the console, RStudio goodies</h2>
@@ -446,7 +433,7 @@ x</code></pre>
 <p>Another way to inspect this variable is to begin typing <code>this_</code>…and RStudio will automagically have suggested completions for you that you can select by hitting the tab key, then press return.</p>
 <p>One more:</p>
 <pre class="sourceCode r"><code class="sourceCode r">science_rocks &lt;-<span class="st"> &quot;yes it does!&quot;</span></code></pre>
-<p>You can see that we can assign an object to be a word, not a number. In R, this is called a “string”, and R knows it’s a word and not a number because it has quotes <code>" "</code>. You can work with strings in your data in R pretty easily, thanks to the <a href="http://stringr.tidyverse.org/"><code>stringr</code></a> and <a href="https://github.com/juliasilge/tidytext#tidytext-text-mining-using-dplyr-ggplot2-and-other-tidy-tools"><code>tidytext</code></a> packages. We won’t talk about strings very much specifically, but know that R can handle text, and it can work with text and numbers together (this is a huge benefit of using R).</p>
+<p>You can see that we can assign an object to be a word, not a number. In R, this is called a “string”, and R knows it’s a word and not a number because it has quotes <code>&quot; &quot;</code>. You can work with strings in your data in R pretty easily, thanks to the <a href="http://stringr.tidyverse.org/"><code>stringr</code></a> and <a href="https://github.com/juliasilge/tidytext#tidytext-text-mining-using-dplyr-ggplot2-and-other-tidy-tools"><code>tidytext</code></a> packages. We won’t talk about strings very much specifically, but know that R can handle text, and it can work with text and numbers together (this is a huge benefit of using R).</p>
 <p>Let’s try to inspect:</p>
 <pre class="sourceCode r"><code class="sourceCode r">sciencerocks
 <span class="co"># Error: object &#39;sciencerocks&#39; not found</span></code></pre>
@@ -505,6 +492,12 @@ weight_kg <span class="op">*</span><span class="st"> </span><span class="fl">2.2
 <p>What do you think is the current content of the object <code>weight_lb</code>? 126.5 or 220? Why?
 It’s 125.6. Why? Because assigning a value to one variable does not change the values of
 other variables — if you want <code>weight_kg</code> updated to reflect the new value for <code>weight_lb</code>, you will have to re-execute that code. This is why we re-comment working in scripts and documents rather than the Console, and will introduce those concepts shortly and work there for the rest of the day.</p>
+<p>We can create a vector of multiple values using <code>c()</code>.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">c</span>(weight_lb, weight_kg)</code></pre>
+<pre><code>## [1] 126.5 100.0</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Jamie&quot;</span>, <span class="st">&quot;Melanie&quot;</span>, <span class="st">&quot;Julie&quot;</span>)
+names</code></pre>
+<pre><code>## [1] &quot;Jamie&quot;   &quot;Melanie&quot; &quot;Julie&quot;</code></pre>
 <!---TODO::
 Add more practice
 --->
@@ -513,30 +506,6 @@ Add more practice
 <div id="r-functions-help-pages" class="section level2">
 <h2><span class="header-section-number">3.4</span> R functions, help pages</h2>
 <p>R has a mind-blowing collection of built-in functions that are used with the same syntax: function name with parentheses around what the function needs to do what it is supposed to do. <code>function_name(argument1 = value1, argument2 = value2, ...)</code>. When you see this syntax, we say we are “calling the function”.</p>
-<!---This example is from [R for Data Science](http://r4ds.had.co.nz/pipes) using a children's poem called [Little Bunny Foo Foo](https://en.wikipedia.org/wiki/Little_Bunny_Foo_Foo).
-
-We can call a function without passing it anything (nothing inside the closed parentheses), and assign it to a variable called `foo_foo`.
-
-```r
-## foo_foo <- little_bunny()
-```
-
-And since `foo_foo` is an object, you can pass it to other functions:
-
-```r
-## hop(foo_foo, through = forest) 
-## scoop(foo_foo, up = field_mice) 
-## bop(foo_foo, on = head)
-```
-
-What would happen if I tried to run one of those lines above? I would get an error because they aren't real functions, and R tells me so: 
-
-```r
-foo_foo <- little_bunny()
-# Error in little_bunny() : could not find function "little_bunny"
-```
-And that's great, this error message is helpful: R doesn't know what the `little_bunny` function is, and to be honest, neither do we. We didn't expect that it would know what to do. OK, so now let's look at a real function.
---->
 <p>Let’s try using <code>seq()</code> which makes regular sequences of numbers and, while we’re at it, demo more helpful features of RStudio.</p>
 <p>Type <code>se</code> and hit TAB. A pop up shows you possible completions. Specify <code>seq()</code> by typing more to disambiguate or using the up/down arrows to select. Notice the floating tool-tip-type help that pops up, reminding you of a function’s arguments. If you want even more help, press F1 as directed to get the full documentation in the help tab of the lower right pane.</p>
 <p>Type the arguments <code>1, 10</code> and hit return.</p>
@@ -571,22 +540,41 @@ argument or maybe the first two. After that, I always use <code>name = value</co
 <pre class="sourceCode r"><code class="sourceCode r">??install </code></pre>
 <p>Not all functions have (or require) arguments:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">date</span>()</code></pre>
+<<<<<<< HEAD
 <pre><code>## [1] &quot;Mon Jun 17 03:05:38 2019&quot;</code></pre>
+=======
+<pre><code>## [1] &quot;Mon Jun 17 19:38:03 2019&quot;</code></pre>
 </div>
+>>>>>>> 1d4ed1746077ad9175f1938b8ced91762ff49e34
+</div>
+<div id="packages" class="section level2">
+<h2><span class="header-section-number">3.5</span> Packages</h2>
+<p>So far we’ve been using functions from base R, such as sum and mean. But, one of the amazing things about R is that a vast user community is always creating new functions and packages that expand R’s capabilities. In R, the fundamental unit of shareable code is the package. A package bundles together code, data, documentation, and tests, and is easy to share with others. They increase the power of R by improving existing base R functionalities, or by adding new ones.</p>
+<p>The traditional place to download packages is from CRAN, the Comprehensive R Archive Network, which is where you downloaded R. You can also install packages from GitHub, which we’ll do tomorrow.</p>
+<p>You don’t need to go to CRAN’s website to install packages, this can be accomplished within R using the command install.packages(“package-name-in-quotes”).Let’s install a small, fun package <code>praise</code>. You need to use quotes around the package name.:</p>
+<pre><code>install.packages(&quot;praise&quot;)</code></pre>
+<p>Now we’ve installed the package, but we need to tell R that we are going to use the functions within the <code>praise</code> package. We do this by using the function <code>library()</code>.</p>
+<p><strong>What’s the difference between a package and a library?</strong>
+Speaking about the <code>library()</code> function, sometimes there is a confusion between a package and a library, and you can find people calling “libraries” to packages.</p>
+<p>Please don’t get confused: <code>library()</code> is the command used to load a package, and it refers to the place where the package is contained, usually a folder on your computer, while a package is the collection of functions bundled conveniently.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(praise)</code></pre>
+<p>Now that we’ve loaded the <code>praise</code> package, we can use the single function in the package, <code>praise()</code>, which returns a randomized praise to make you feel better.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">praise</span>()</code></pre>
+<pre><code>## [1] &quot;You are slick!&quot;</code></pre>
 </div>
 <div id="clearing-the-environment" class="section level2">
-<h2><span class="header-section-number">3.5</span> Clearing the environment</h2>
+<h2><span class="header-section-number">3.6</span> Clearing the environment</h2>
 <p>Now look at the objects in your environment (workspace) – in the upper right pane. The workspace is where user-defined objects accumulate.</p>
 <p><img src="img/RStudio_IDE_env.png" /></p>
 <p>You can also get a listing of these objects with a few different R commands:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">objects</span>()</code></pre>
-<pre><code>## [1] &quot;science_rocks&quot;              &quot;this_is_a_really_long_name&quot;
-## [3] &quot;weight_kg&quot;                  &quot;weight_lb&quot;                 
-## [5] &quot;x&quot;</code></pre>
+<pre><code>## [1] &quot;names&quot;                      &quot;science_rocks&quot;             
+## [3] &quot;this_is_a_really_long_name&quot; &quot;weight_kg&quot;                 
+## [5] &quot;weight_lb&quot;                  &quot;x&quot;</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ls</span>()</code></pre>
-<pre><code>## [1] &quot;science_rocks&quot;              &quot;this_is_a_really_long_name&quot;
-## [3] &quot;weight_kg&quot;                  &quot;weight_lb&quot;                 
-## [5] &quot;x&quot;</code></pre>
+<pre><code>## [1] &quot;names&quot;                      &quot;science_rocks&quot;             
+## [3] &quot;this_is_a_really_long_name&quot; &quot;weight_kg&quot;                 
+## [5] &quot;weight_lb&quot;                  &quot;x&quot;</code></pre>
 <p>If you want to remove the object named <code>weight_kg</code>, you can do this:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(weight_kg)</code></pre>
 <p>To remove everything:</p>
@@ -595,14 +583,14 @@ argument or maybe the first two. After that, I always use <code>name = value</co
 <p>For reproducibility, it is critical that you delete your objects and restart your R session frequently. You don’t want your whole analysis to only work in whatever way you’ve been working right now — you need it to work next week, after you upgrade your operating system, etc. Restarting your R session will help you identify and account for anything you need for your analysis.</p>
 <p>We will keep coming back to this theme but let’s restart our R session together: Go to the top menus: Session &gt; Restart R.</p>
 <div id="your-turn-1" class="section level3">
-<h3><span class="header-section-number">3.5.1</span> Your turn</h3>
+<h3><span class="header-section-number">3.6.1</span> Your turn</h3>
 <blockquote>
 <p>Exercise: Clear your workspace, then create a few new variables. Create a variable that is the mean of a sequence of 1-20. What’s a good name for your variable? Does it matter what your ‘by’ argument is? Why?</p>
 </blockquote>
 </div>
 </div>
 <div id="rmarkdown" class="section level2">
-<h2><span class="header-section-number">3.6</span> RMarkdown</h2>
+<h2><span class="header-section-number">3.7</span> RMarkdown</h2>
 <p>Now we are going to also introduce RMarkdown. This is really key for collaborative research, so we’re going to get started with it early and then use it for the rest of the day.</p>
 <p>This is also going to introduce us to the fact that RStudio is a sophisticated text editor (among all the other awesome things). You can use it to keep your files and scripts organized within one place (the RStudio IDE) while getting support that you expect from text editors (check-spelling and color, to name a few).</p>
 <p>An RMarkdown file will allow us to weave markdown text with chunks of R code to be evaluated and output content like tables and plots.</p>
@@ -622,7 +610,7 @@ argument or maybe the first two. After that, I always use <code>name = value</co
 <p>What do you notice between the two? So much of learning to code is looking for patterns.</p>
 <p>Notice how the grey <strong>R code chunks</strong> are surrounded by 3 backticks and <code>{r LABEL}</code>. These are evaluated and return the output text in the case of <code>summary(cars)</code> and the output plot in the case of <code>plot(pressure)</code>.</p>
 <p>Notice how the code <code>plot(pressure)</code> is not shown in the HTML output because of the R code chunk option <code>echo=FALSE</code>.</p>
-<p>More details…</p>
+<p>The hashtag (#) at lines 12 and 22 cause the following text to be displayed larger and in bold.</p>
 <p>This RMarkdown file has 2 different languages within it: <strong>R</strong> and <strong>Markdown</strong>.</p>
 <p>We don’t know that much R yet, but you can see that we are taking a summary of some data called ‘cars’, and then plotting. We will focus on R for the rest of the workshop, but for the rest of this morning let’s focus on the second language.</p>
 <p>The second language is Markdown. This is a formatting language for plain text, and there are only about 15 rules to know.</p>
@@ -639,20 +627,19 @@ argument or maybe the first two. After that, I always use <code>name = value</co
 <li>in R, a hashtag indicates a comment that will not be evaluated. You can use as many as you want: <code>#</code> is equivalent to <code>######</code>. It’s a matter of style. I use two <code>##</code> to indicate a comment so that it’s clearer what is a comment versus what I don’t want to run at the moment.</li>
 <li>in Markdown, a hashtag indicates a level of a header. And the number you use matters: <code>#</code> is a “level one header”, meaning the biggest font and the top of the hierarchy. <code>###</code> is a level three header, and will show up nested below the <code>#</code> and <code>##</code> headers.</li>
 </ul>
-<p>If this seems confusing, take comfort in the fact that you are already used to using <code>#</code>s differently in real life: it can mean “number” or “pound” or topics on social media…</p>
+<p>If this seems confusing, take comfort in the fact that you are already used to using <code>#</code>s differently in real life: it can mean “number” or “pound” or hashtags on social media.</p>
 <p>Learn more: <a href="http://rmarkdown.rstudio.com/" class="uri">http://rmarkdown.rstudio.com/</a></p>
 <div id="your-turn-2" class="section level3">
-<h3><span class="header-section-number">3.6.1</span> Your Turn</h3>
+<h3><span class="header-section-number">3.7.1</span> Your Turn</h3>
 <ol style="list-style-type: decimal">
-<li>In Markdown, Write some italic text, and make a numbered list. And add a few subheaders.
+<li>In Markdown write some italic text, make a numbered list, and add a few subheaders.
 Use the Markdown Quick Reference (in the menu bar: Help &gt; Markdown Quick Reference).</li>
 <li>Reknit your html file.</li>
 </ol>
 </div>
 <div id="code-chunks" class="section level3">
-<h3><span class="header-section-number">3.6.2</span> Code chunks</h3>
+<h3><span class="header-section-number">3.7.2</span> Code chunks</h3>
 <p>OK. Now let’s practice with some of those commands that we were working on this morning.</p>
-<!---TODO TEACH THIS--->
 <p>Create a new chunk in your RMarkdown first in one of these ways:</p>
 <ul>
 <li>click “Insert &gt; R” at the top of the editor pane</li>
@@ -676,86 +663,29 @@ Use the Markdown Quick Reference (in the menu bar: Help &gt; Markdown Quick Refe
 </ol>
 </div>
 <div id="your-turn-3" class="section level3">
-<h3><span class="header-section-number">3.6.3</span> Your turn</h3>
+<h3><span class="header-section-number">3.7.3</span> Your turn</h3>
 <p>Add a few more commands to your file from this morning. Execute them by trying the three ways above. Then, save your R Markdown file.</p>
 </div>
 </div>
 <div id="rmarkdown-video-1-minute" class="section level2">
-<h2><span class="header-section-number">3.7</span> RMarkdown video (1-minute)</h2>
+<h2><span class="header-section-number">3.8</span> RMarkdown video (1-minute)</h2>
 <p>Let’s watch this to demonstrate all the amazing things you can now do:</p>
 <p><a href="https://vimeo.com/178485416">What is RMarkdown?</a></p>
-<!--- remove this stuff and instead set up Git/GitHub.
-## Working directory
-
-Any process running on your computer has a notion of its "working directory". In R, this is where R will look, by default, for files you ask it to load. It is also where, by default, any files you write to disk will go. You have a sense of this because whenever you go to save a Word doc or download, it asks where. You often have to navigate to put it exactly where you want it. There are a few ways to check your working directory in RStudio.
-
-You can explicitly check your working directory with:
-
-```r
-getwd()
-```
-It is also displayed at the top of the RStudio console.
-
-As a beginning R user, it's OK let your home directory or any other weird directory on your computer be R's working directory. _Very soon_, I urge you to evolve to the next level, where you organize your analytical projects into directories and, when working on Project A, set R's working directory to Project A's directory.
-
-You can set R's working directory at the command line like so. You could also do this in a script.
-
-
-```r
-setwd("~/myCoolProject")
-```
-
-But there's a better way. A way that also puts you on the path to managing your R work like an expert.
-
-## RStudio projects
-
-Keeping all the files associated with a project organized together -- input data, R scripts, analytical results, figures -- is such a wise and common practice that RStudio has built-in support for this via its _projects_. More here: [Using Projects](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects).
-
-Let's make one to use for the rest of today. 
-
-> Do this: File > New Project ... New Directory > Empty Project. The directory name you choose here will be the project name. Call it whatever you want (or follow me for convenience).
-
-I created a directory and, therefore RStudio project, called `data-carpentry` in a folder called `tmp` in my home directory, FYI.
-What do you notice about your RStudio pane? Look in the right corner--'data-carpentry'.
-
-Now check that the "home" directory for your project is the working directory of our current R process:
-
-
-```r
-getwd()
-# "/Users/julialowndes/tmp/data-carpentry" 
-```
-
-**About paths**: The above is the absolute path: it starts at the `/Users` root and is specific to my computer (`julialowndes`) and where I saved it. So if I did an analysis with this filepath, it wouldn't work on your computer before you altered the filepath. 
-
-But with an RStudio project, your paths within this project can be relative, which means they *start* in the `data-carpentry` folder, wherever it is. So we can just use filepaths within our project from a relative place, and it can work on your computer or mine, without worrying about the absolute paths. (Analogy: I can give you directions from this building to the pub, since we're all here in this shared space already. I can't give you all directions from your home to this building and then the pub, because you all live in different places. But I can give directions relative to this building). 
-
-
-
-### You try
-Ask for help and recognize useful answers
- TODO 
-
---->
 </div>
 <div id="troubleshooting" class="section level2">
-<h2><span class="header-section-number">3.8</span> Troubleshooting</h2>
+<h2><span class="header-section-number">3.9</span> Troubleshooting</h2>
 <p>Here are some additional things we didn’t have time to discuss:</p>
 <div id="i-entered-a-command-and-nothings-happening" class="section level3">
-<h3><span class="header-section-number">3.8.1</span> I entered a command and nothing’s happening</h3>
+<h3><span class="header-section-number">3.9.1</span> I entered a command and nothing’s happening</h3>
 <p>It may be because you didn’t complete a command: is there a little <code>+</code> in your console? R is saying that it is waiting for you to finish. In the example below, I need to close that parenthesis.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span>x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>
 <span class="op">+</span><span class="st"> </span></code></pre>
 </div>
 <div id="how-do-i-update-rstudio" class="section level3">
-<h3><span class="header-section-number">3.8.2</span> How do I update RStudio?</h3>
+<h3><span class="header-section-number">3.9.2</span> How do I update RStudio?</h3>
 <p>To see if you have the most current version of RStudio, go to the Help bar &gt; Check for Updates. If there is an update available, you’ll have the option to Quit and Download, which will take you to <a href="http://www.rstudio.com/download" class="uri">http://www.rstudio.com/download</a>. When you download and install, choose to replace the previous version.</p>
-</div>
-</div>
-<div id="tips" class="section level2">
-<h2><span class="header-section-number">3.9</span> Tips</h2>
-<!---how to make comments --->
 
+</div>
 </div>
 </div>
 <script src="lib/js/jquery.min.js"></script>

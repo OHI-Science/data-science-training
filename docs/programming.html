@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 8 Programming in R | Introduction to Open Data Science</title>
   <meta name="description" content="This is official open data science training for the Ocean Health Index." />
-  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 8 Programming in R | Introduction to Open Data Science" />
   <meta property="og:type" content="book" />
@@ -47,13 +47,6 @@
 
 
 
-<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.0/plotly.js"></script>
-<script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.46.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.46.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -74,7 +67,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(title);
+  { content: attr(data-line-number);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -120,9 +113,9 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="lib\css\bootstrap.min.css" type="text/css" />
-<link rel="stylesheet" href="lib\css\style.css" type="text/css" />
-<link rel="stylesheet" href="lib\css\lesson.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/style.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/lesson.css" type="text/css" />
 </head>
 
 <body>
@@ -164,20 +157,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4" data-path="rstudio.html"><a href="rstudio.html#r-functions-help-pages"><i class="fa fa-check"></i><b>3.4</b> R functions, help pages</a><ul>
 <li class="chapter" data-level="3.4.1" data-path="rstudio.html"><a href="rstudio.html#your-turn"><i class="fa fa-check"></i><b>3.4.1</b> Your turn</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="rstudio.html"><a href="rstudio.html#clearing-the-environment"><i class="fa fa-check"></i><b>3.5</b> Clearing the environment</a><ul>
-<li class="chapter" data-level="3.5.1" data-path="rstudio.html"><a href="rstudio.html#your-turn-1"><i class="fa fa-check"></i><b>3.5.1</b> Your turn</a></li>
+<li class="chapter" data-level="3.5" data-path="rstudio.html"><a href="rstudio.html#packages"><i class="fa fa-check"></i><b>3.5</b> Packages</a></li>
+<li class="chapter" data-level="3.6" data-path="rstudio.html"><a href="rstudio.html#clearing-the-environment"><i class="fa fa-check"></i><b>3.6</b> Clearing the environment</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="rstudio.html"><a href="rstudio.html#your-turn-1"><i class="fa fa-check"></i><b>3.6.1</b> Your turn</a></li>
 </ul></li>
-<li class="chapter" data-level="3.6" data-path="rstudio.html"><a href="rstudio.html#rmarkdown"><i class="fa fa-check"></i><b>3.6</b> RMarkdown</a><ul>
-<li class="chapter" data-level="3.6.1" data-path="rstudio.html"><a href="rstudio.html#your-turn-2"><i class="fa fa-check"></i><b>3.6.1</b> Your Turn</a></li>
-<li class="chapter" data-level="3.6.2" data-path="rstudio.html"><a href="rstudio.html#code-chunks"><i class="fa fa-check"></i><b>3.6.2</b> Code chunks</a></li>
-<li class="chapter" data-level="3.6.3" data-path="rstudio.html"><a href="rstudio.html#your-turn-3"><i class="fa fa-check"></i><b>3.6.3</b> Your turn</a></li>
+<li class="chapter" data-level="3.7" data-path="rstudio.html"><a href="rstudio.html#rmarkdown"><i class="fa fa-check"></i><b>3.7</b> RMarkdown</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="rstudio.html"><a href="rstudio.html#your-turn-2"><i class="fa fa-check"></i><b>3.7.1</b> Your Turn</a></li>
+<li class="chapter" data-level="3.7.2" data-path="rstudio.html"><a href="rstudio.html#code-chunks"><i class="fa fa-check"></i><b>3.7.2</b> Code chunks</a></li>
+<li class="chapter" data-level="3.7.3" data-path="rstudio.html"><a href="rstudio.html#your-turn-3"><i class="fa fa-check"></i><b>3.7.3</b> Your turn</a></li>
 </ul></li>
-<li class="chapter" data-level="3.7" data-path="rstudio.html"><a href="rstudio.html#rmarkdown-video-1-minute"><i class="fa fa-check"></i><b>3.7</b> RMarkdown video (1-minute)</a></li>
-<li class="chapter" data-level="3.8" data-path="rstudio.html"><a href="rstudio.html#troubleshooting"><i class="fa fa-check"></i><b>3.8</b> Troubleshooting</a><ul>
-<li class="chapter" data-level="3.8.1" data-path="rstudio.html"><a href="rstudio.html#i-entered-a-command-and-nothings-happening"><i class="fa fa-check"></i><b>3.8.1</b> I entered a command and nothing’s happening</a></li>
-<li class="chapter" data-level="3.8.2" data-path="rstudio.html"><a href="rstudio.html#how-do-i-update-rstudio"><i class="fa fa-check"></i><b>3.8.2</b> How do I update RStudio?</a></li>
+<li class="chapter" data-level="3.8" data-path="rstudio.html"><a href="rstudio.html#rmarkdown-video-1-minute"><i class="fa fa-check"></i><b>3.8</b> RMarkdown video (1-minute)</a></li>
+<li class="chapter" data-level="3.9" data-path="rstudio.html"><a href="rstudio.html#troubleshooting"><i class="fa fa-check"></i><b>3.9</b> Troubleshooting</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="rstudio.html"><a href="rstudio.html#i-entered-a-command-and-nothings-happening"><i class="fa fa-check"></i><b>3.9.1</b> I entered a command and nothing’s happening</a></li>
+<li class="chapter" data-level="3.9.2" data-path="rstudio.html"><a href="rstudio.html#how-do-i-update-rstudio"><i class="fa fa-check"></i><b>3.9.2</b> How do I update RStudio?</a></li>
 </ul></li>
-<li class="chapter" data-level="3.9" data-path="rstudio.html"><a href="rstudio.html#tips"><i class="fa fa-check"></i><b>3.9</b> Tips</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>4</b> GitHub</a><ul>
 <li class="chapter" data-level="4.1" data-path="github.html"><a href="github.html#objectives-1"><i class="fa fa-check"></i><b>4.1</b> Objectives</a></li>
@@ -253,7 +246,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.14" data-path="dplyr.html"><a href="dplyr.html#joining-datasets"><i class="fa fa-check"></i><b>6.14</b> Joining datasets</a></li>
 <li class="chapter" data-level="6.15" data-path="dplyr.html"><a href="dplyr.html#key-points"><i class="fa fa-check"></i><b>6.15</b> Key Points</a></li>
 <li class="chapter" data-level="6.16" data-path="dplyr.html"><a href="dplyr.html#troubleshooting."><i class="fa fa-check"></i><b>6.16</b> Troubleshooting.</a><ul>
-<li class="chapter" data-level="6.16.1" data-path="dplyr.html"><a href="dplyr.html#error-unexpected-special-in"><i class="fa fa-check"></i><b>6.16.1</b> Error: unexpected SPECIAL in " %&gt;%"</a></li>
+<li class="chapter" data-level="6.16.1" data-path="dplyr.html"><a href="dplyr.html#error-unexpected-special-in"><i class="fa fa-check"></i><b>6.16.1</b> Error: unexpected SPECIAL in &quot; %&gt;%&quot;</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>7</b> Data Wrangling: <code>tidyr</code></a><ul>
@@ -394,7 +387,6 @@ get file extensions https://stat.ethz.ch/R-manual/R-devel/library/tools/html/fil
 </div>
 <div id="analysis-plan" class="section level2">
 <h2><span class="header-section-number">8.2</span> Analysis plan</h2>
-<pre><code>## Error in library(gapminder): there is no package called &#39;gapminder&#39;</code></pre>
 <p>OK, here is the plan for our analysis. We want to plot the gdpPercap for each country in the gapminder data frame. So that’s 142 separate plots! We will automate this, labeling each one with its name and saving it in a folder called figures. We will learn a bunch of things as we go.</p>
 </div>
 <div id="create-an-r-script" class="section level2">
@@ -474,7 +466,7 @@ my_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class
 <p>Instead of having “Afghanistan” written 3 times, let’s instead create an object that we will assign to “Afghanistan”. We won’t name our object “country” because that’s a column header with gapminder, and will just confuse us. Let’s make it distinctive: let’s write cntry (country without vowels):</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co">## create country variable</span>
 cntry &lt;-<span class="st"> &quot;Afghanistan&quot;</span></code></pre>
-<p>Now, we can replace each <code>"Afghanistan"</code> with our variable <code>cntry</code>. We will have to introduce a <code>paste</code> statement here too, and we want to separate by nothing (<code>""</code>). Note: there are many ways to create the filename, and we are doing it this way for a specific reason right now.</p>
+<p>Now, we can replace each <code>&quot;Afghanistan&quot;</code> with our variable <code>cntry</code>. We will have to introduce a <code>paste</code> statement here too, and we want to separate by nothing (<code>&quot;&quot;</code>). Note: there are many ways to create the filename, and we are doing it this way for a specific reason right now.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co">## create country variable</span>
 cntry &lt;-<span class="st"> &quot;Afghanistan&quot;</span>
 
@@ -800,7 +792,7 @@ country_list &lt;-<span class="st"> </span><span class="kw">unique</span>(gap_eu
 <div id="importing-and-installing" class="section level3">
 <h3><span class="header-section-number">8.6.1</span> Importing and Installing</h3>
 <p>Here are some really helpful packages for you to work with:</p>
-<p>Remember you’ll use <code>install.packages("package-name-in-quotes")</code> to install from CRAN.</p>
+<p>Remember you’ll use <code>install.packages(&quot;package-name-in-quotes&quot;)</code> to install from CRAN.</p>
 <ul>
 <li><code>readr</code> to read in .csv files</li>
 <li><code>readxl</code> to read in Excel files</li>

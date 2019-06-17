@@ -51,13 +51,6 @@ Something else to start us off is to mention that you are learning a new languag
 
 While language is a familiar concept, programming languages are in a different context from spoken languages, but you will get to know this context with time. For example: you have a concept that there is a first meal of the day, and there is a name for that: in English it's "breakfast". So if you're learning Spanish, you could expect there is a word for this concept of a first meal. (And you'd be right: 'desayuno'). **We will get you to expect that programming languages also have words (called functions in R) for concepts as well**. You'll soon expect that there is a way to order values numerically. Or alphabetically. Or search for patterns in text. Or calculate the median. Or reorganize columns to rows. Or subset exactly what you want. We will get you increase your expectations and learn to ask and find what you're looking for.
 
-<!---TODO:
-- airport
-- debugging
-- packages
-- community
---->
-
 ## R at the console, RStudio goodies
 
 Launch RStudio/R.
@@ -206,6 +199,14 @@ What do you think is the current content of the object `weight_lb`? 126.5 or 220
 It's 125.6. Why? Because assigning a value to one variable does not change the values of
 other variables — if you want `weight_kg` updated to reflect the new value for `weight_lb`, you will have to re-execute that code. This is why we re-comment working in scripts and documents rather than the Console, and will introduce those concepts shortly and work there for the rest of the day.
 
+We can create a vector of multiple values using `c()`.
+```{r}
+c(weight_lb, weight_kg)
+
+names <- c("Jamie", "Melanie", "Julie")
+names
+```
+
 <!---TODO::
 Add more practice
 --->
@@ -213,28 +214,6 @@ Add more practice
 ## R functions, help pages
 
 R has a mind-blowing collection of built-in functions that are used with the same syntax: function name with parentheses around what the function needs to do what it is supposed to do. `function_name(argument1 = value1, argument2 = value2, ...)`. When you see this syntax, we say we are "calling the function".
-
-<!---This example is from [R for Data Science](http://r4ds.had.co.nz/pipes) using a children's poem called [Little Bunny Foo Foo](https://en.wikipedia.org/wiki/Little_Bunny_Foo_Foo).
-
-We can call a function without passing it anything (nothing inside the closed parentheses), and assign it to a variable called `foo_foo`.
-```{r eval = FALSE, tidy = FALSE}
-## foo_foo <- little_bunny()
-```
-
-And since `foo_foo` is an object, you can pass it to other functions:
-```{r eval = FALSE, tidy = FALSE}
-## hop(foo_foo, through = forest) 
-## scoop(foo_foo, up = field_mice) 
-## bop(foo_foo, on = head)
-```
-
-What would happen if I tried to run one of those lines above? I would get an error because they aren't real functions, and R tells me so: 
-```{r eval = FALSE, tidy = FALSE}
-foo_foo <- little_bunny()
-# Error in little_bunny() : could not find function "little_bunny"
-```
-And that's great, this error message is helpful: R doesn't know what the `little_bunny` function is, and to be honest, neither do we. We didn't expect that it would know what to do. OK, so now let's look at a real function.
---->
 
 Let's try using `seq()` which makes regular sequences of numbers and, while we're at it, demo more helpful features of RStudio.
 
@@ -286,6 +265,36 @@ Not all functions have (or require) arguments:
 ```{r}
 date()
 ```
+
+## Packages
+
+So far we've been using a couple functions from base R, such as `seq()` and `date()`. But, one of the amazing things about R is that a vast user community is always creating new functions and packages that expand R's capabilities. In R, the fundamental unit of shareable code is the package. A package bundles together code, data, documentation, and tests, and is easy to share with others. They increase the power of R by improving existing base R functionalities, or by adding new ones. 
+
+The traditional place to download packages is from CRAN, the [Comprehensive R Archive Network](https://cran.r-project.org/), which is where you downloaded R. You can also install packages from GitHub, which we'll do tomorrow.
+
+You don't need to go to CRAN's website to install packages, this can be accomplished within R using the command `install.packages("package-name-in-quotes")`. Let's install a small, fun package `praise`. You need to use quotes around the package name.:
+
+```
+install.packages("praise")
+```
+
+Now we've installed the package, but we need to tell R that we are going to use the functions within the `praise` package. We do this by using the function `library()`.
+
+**What’s the difference between a package and a library?**  
+Sometimes there is a confusion between a package and a library, and you can find people calling “libraries” to packages.
+
+Please don’t get confused: `library()` is the command used to load a package, and it refers to the place where the package is contained, usually a folder on your computer, while a package is the collection of functions bundled conveniently.
+
+```{r}
+library(praise)
+```
+
+Now that we've loaded the `praise` package, we can use the single function in the package, `praise()`, which returns a randomized praise to make you feel better.
+
+```{r}
+praise()
+```
+
 
 ## Clearing the environment
 Now look at the objects in your environment (workspace) -- in the upper right pane. The workspace is where user-defined objects accumulate. 
@@ -355,9 +364,9 @@ What do you notice between the two? So much of learning to code is looking for p
 
 Notice how the grey **R code chunks** are surrounded by 3 backticks and `{r LABEL}`. These are evaluated and return the output text in the case of `summary(cars)` and the output plot in the case of `plot(pressure)`.
 
-Notice how the code `plot(pressure)` is not shown in the HTML output because of the R code chunk option `echo=FALSE`.
+Notice how the code `plot(pressure)` is not shown in the HTML output because of the R code chunk option `echo=FALSE`. 
 
-More details...
+The hashtag (#) at lines 12 and 22 cause the following text to be displayed larger and in bold. 
 
 This RMarkdown file has 2 different languages within it: **R** and **Markdown**. 
 
@@ -379,13 +388,13 @@ There are some good [cheatsheets](https://github.com/adam-p/markdown-here/wiki/M
 - in R, a hashtag indicates a comment that will not be evaluated. You can use as many as you want: `#` is equivalent to `######`. It's a matter of style. I use two `##` to indicate a comment so that it's clearer what is a comment versus what I don't want to run at the moment.
 - in Markdown, a hashtag indicates a level of a header. And the number you use matters: `#` is a "level one header", meaning the biggest font and the top of the hierarchy. `###` is a level three header, and will show up nested below the `#` and `##` headers.
 
-If this seems confusing, take comfort in the fact that you are already used to using `#`s differently in real life: it can mean "number" or "pound" or topics on social media...
+If this seems confusing, take comfort in the fact that you are already used to using `#`s differently in real life: it can mean "number" or "pound" or hashtags on social media.
 
 Learn more: http://rmarkdown.rstudio.com/
 
 ### Your Turn
 
-1. In Markdown, Write some italic text, and make a numbered list. And add a few subheaders.
+1. In Markdown write some italic text, make a numbered list, and add a few subheaders.
 Use the Markdown Quick Reference (in the menu bar: Help > Markdown Quick Reference). 
 1. Reknit your html file. 
 
@@ -393,8 +402,6 @@ Use the Markdown Quick Reference (in the menu bar: Help > Markdown Quick Referen
 ### Code chunks
 
 OK. Now let's practice with some of those commands that we were working on this morning.
-
-<!---TODO TEACH THIS--->
 
 Create a new chunk in your RMarkdown first in one of these ways: 
 
@@ -429,58 +436,6 @@ Let's watch this to demonstrate all the amazing things you can now do:
 
 [What is RMarkdown?](https://vimeo.com/178485416)
 
-<!--- remove this stuff and instead set up Git/GitHub.
-## Working directory
-
-Any process running on your computer has a notion of its "working directory". In R, this is where R will look, by default, for files you ask it to load. It is also where, by default, any files you write to disk will go. You have a sense of this because whenever you go to save a Word doc or download, it asks where. You often have to navigate to put it exactly where you want it. There are a few ways to check your working directory in RStudio.
-
-You can explicitly check your working directory with:
-```{r, eval=FALSE}
-getwd()
-```
-It is also displayed at the top of the RStudio console.
-
-As a beginning R user, it's OK let your home directory or any other weird directory on your computer be R's working directory. _Very soon_, I urge you to evolve to the next level, where you organize your analytical projects into directories and, when working on Project A, set R's working directory to Project A's directory.
-
-You can set R's working directory at the command line like so. You could also do this in a script.
-
-```{r eval = FALSE}
-setwd("~/myCoolProject")
-```
-
-But there's a better way. A way that also puts you on the path to managing your R work like an expert.
-
-## RStudio projects
-
-Keeping all the files associated with a project organized together -- input data, R scripts, analytical results, figures -- is such a wise and common practice that RStudio has built-in support for this via its _projects_. More here: [Using Projects](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects).
-
-Let's make one to use for the rest of today. 
-
-> Do this: File > New Project ... New Directory > Empty Project. The directory name you choose here will be the project name. Call it whatever you want (or follow me for convenience).
-
-I created a directory and, therefore RStudio project, called `data-carpentry` in a folder called `tmp` in my home directory, FYI.
-What do you notice about your RStudio pane? Look in the right corner--'data-carpentry'.
-
-Now check that the "home" directory for your project is the working directory of our current R process:
-
-```{r eval=FALSE}
-getwd()
-# "/Users/julialowndes/tmp/data-carpentry" 
-```
-
-**About paths**: The above is the absolute path: it starts at the `/Users` root and is specific to my computer (`julialowndes`) and where I saved it. So if I did an analysis with this filepath, it wouldn't work on your computer before you altered the filepath. 
-
-But with an RStudio project, your paths within this project can be relative, which means they *start* in the `data-carpentry` folder, wherever it is. So we can just use filepaths within our project from a relative place, and it can work on your computer or mine, without worrying about the absolute paths. (Analogy: I can give you directions from this building to the pub, since we're all here in this shared space already. I can't give you all directions from your home to this building and then the pub, because you all live in different places. But I can give directions relative to this building). 
-
-
-
-### You try
-Ask for help and recognize useful answers
- TODO 
-
---->
-
-
 ## Troubleshooting
 
 Here are some additional things we didn't have time to discuss:
@@ -498,7 +453,3 @@ It may be because you didn't complete a command: is there a little `+` in your c
 ### How do I update RStudio?
 
 To see if you have the most current version of RStudio, go to the Help bar > Check for Updates. If there is an update available, you'll have the option to Quit and Download, which will take you to http://www.rstudio.com/download. When you download and install, choose to replace the previous version. 
-
-## Tips
-
-<!---how to make comments --->
