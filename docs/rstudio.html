@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 R &amp; RStudio, RMarkdown | Introduction to Open Data Science</title>
   <meta name="description" content="This is official open data science training for the Ocean Health Index." />
-  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 R &amp; RStudio, RMarkdown | Introduction to Open Data Science" />
   <meta property="og:type" content="book" />
@@ -47,6 +47,13 @@
 
 
 
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.46.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.46.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -67,7 +74,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -113,9 +120,9 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="lib/css/bootstrap.min.css" type="text/css" />
-<link rel="stylesheet" href="lib/css/style.css" type="text/css" />
-<link rel="stylesheet" href="lib/css/lesson.css" type="text/css" />
+<link rel="stylesheet" href="lib\css\bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="lib\css\style.css" type="text/css" />
+<link rel="stylesheet" href="lib\css\lesson.css" type="text/css" />
 </head>
 
 <body>
@@ -246,7 +253,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.14" data-path="dplyr.html"><a href="dplyr.html#joining-datasets"><i class="fa fa-check"></i><b>6.14</b> Joining datasets</a></li>
 <li class="chapter" data-level="6.15" data-path="dplyr.html"><a href="dplyr.html#key-points"><i class="fa fa-check"></i><b>6.15</b> Key Points</a></li>
 <li class="chapter" data-level="6.16" data-path="dplyr.html"><a href="dplyr.html#troubleshooting."><i class="fa fa-check"></i><b>6.16</b> Troubleshooting.</a><ul>
-<li class="chapter" data-level="6.16.1" data-path="dplyr.html"><a href="dplyr.html#error-unexpected-special-in"><i class="fa fa-check"></i><b>6.16.1</b> Error: unexpected SPECIAL in &quot; %&gt;%&quot;</a></li>
+<li class="chapter" data-level="6.16.1" data-path="dplyr.html"><a href="dplyr.html#error-unexpected-special-in"><i class="fa fa-check"></i><b>6.16.1</b> Error: unexpected SPECIAL in " %&gt;%"</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>7</b> Data Wrangling: <code>tidyr</code></a><ul>
@@ -433,7 +440,7 @@ x</code></pre>
 <p>Another way to inspect this variable is to begin typing <code>this_</code>…and RStudio will automagically have suggested completions for you that you can select by hitting the tab key, then press return.</p>
 <p>One more:</p>
 <pre class="sourceCode r"><code class="sourceCode r">science_rocks &lt;-<span class="st"> &quot;yes it does!&quot;</span></code></pre>
-<p>You can see that we can assign an object to be a word, not a number. In R, this is called a “string”, and R knows it’s a word and not a number because it has quotes <code>&quot; &quot;</code>. You can work with strings in your data in R pretty easily, thanks to the <a href="http://stringr.tidyverse.org/"><code>stringr</code></a> and <a href="https://github.com/juliasilge/tidytext#tidytext-text-mining-using-dplyr-ggplot2-and-other-tidy-tools"><code>tidytext</code></a> packages. We won’t talk about strings very much specifically, but know that R can handle text, and it can work with text and numbers together (this is a huge benefit of using R).</p>
+<p>You can see that we can assign an object to be a word, not a number. In R, this is called a “string”, and R knows it’s a word and not a number because it has quotes <code>" "</code>. You can work with strings in your data in R pretty easily, thanks to the <a href="http://stringr.tidyverse.org/"><code>stringr</code></a> and <a href="https://github.com/juliasilge/tidytext#tidytext-text-mining-using-dplyr-ggplot2-and-other-tidy-tools"><code>tidytext</code></a> packages. We won’t talk about strings very much specifically, but know that R can handle text, and it can work with text and numbers together (this is a huge benefit of using R).</p>
 <p>Let’s try to inspect:</p>
 <pre class="sourceCode r"><code class="sourceCode r">sciencerocks
 <span class="co"># Error: object &#39;sciencerocks&#39; not found</span></code></pre>
@@ -540,27 +547,24 @@ argument or maybe the first two. After that, I always use <code>name = value</co
 <pre class="sourceCode r"><code class="sourceCode r">??install </code></pre>
 <p>Not all functions have (or require) arguments:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">date</span>()</code></pre>
-<<<<<<< HEAD
-<pre><code>## [1] &quot;Mon Jun 17 03:05:38 2019&quot;</code></pre>
-=======
-<pre><code>## [1] &quot;Mon Jun 17 19:38:03 2019&quot;</code></pre>
+<pre><code>## [1] &quot;Mon Jun 17 12:21:38 2019&quot;</code></pre>
 </div>
->>>>>>> 1d4ed1746077ad9175f1938b8ced91762ff49e34
 </div>
 <div id="packages" class="section level2">
 <h2><span class="header-section-number">3.5</span> Packages</h2>
-<p>So far we’ve been using functions from base R, such as sum and mean. But, one of the amazing things about R is that a vast user community is always creating new functions and packages that expand R’s capabilities. In R, the fundamental unit of shareable code is the package. A package bundles together code, data, documentation, and tests, and is easy to share with others. They increase the power of R by improving existing base R functionalities, or by adding new ones.</p>
-<p>The traditional place to download packages is from CRAN, the Comprehensive R Archive Network, which is where you downloaded R. You can also install packages from GitHub, which we’ll do tomorrow.</p>
-<p>You don’t need to go to CRAN’s website to install packages, this can be accomplished within R using the command install.packages(“package-name-in-quotes”).Let’s install a small, fun package <code>praise</code>. You need to use quotes around the package name.:</p>
+<p>So far we’ve been using a couple functions from base R, such as <code>seq()</code> and <code>date()</code>. But, one of the amazing things about R is that a vast user community is always creating new functions and packages that expand R’s capabilities. In R, the fundamental unit of shareable code is the package. A package bundles together code, data, documentation, and tests, and is easy to share with others. They increase the power of R by improving existing base R functionalities, or by adding new ones.</p>
+<p>The traditional place to download packages is from CRAN, the <a href="https://cran.r-project.org/">Comprehensive R Archive Network</a>, which is where you downloaded R. You can also install packages from GitHub, which we’ll do tomorrow.</p>
+<p>You don’t need to go to CRAN’s website to install packages, this can be accomplished within R using the command <code>install.packages("package-name-in-quotes")</code>. Let’s install a small, fun package <code>praise</code>. You need to use quotes around the package name.:</p>
 <pre><code>install.packages(&quot;praise&quot;)</code></pre>
 <p>Now we’ve installed the package, but we need to tell R that we are going to use the functions within the <code>praise</code> package. We do this by using the function <code>library()</code>.</p>
-<p><strong>What’s the difference between a package and a library?</strong>
-Speaking about the <code>library()</code> function, sometimes there is a confusion between a package and a library, and you can find people calling “libraries” to packages.</p>
+<p><strong>What’s the difference between a package and a library?</strong><br />
+Sometimes there is a confusion between a package and a library, and you can find people calling “libraries” to packages.</p>
 <p>Please don’t get confused: <code>library()</code> is the command used to load a package, and it refers to the place where the package is contained, usually a folder on your computer, while a package is the collection of functions bundled conveniently.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(praise)</code></pre>
+<pre><code>## Error in library(praise): there is no package called &#39;praise&#39;</code></pre>
 <p>Now that we’ve loaded the <code>praise</code> package, we can use the single function in the package, <code>praise()</code>, which returns a randomized praise to make you feel better.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">praise</span>()</code></pre>
-<pre><code>## [1] &quot;You are slick!&quot;</code></pre>
+<pre><code>## Error in praise(): could not find function &quot;praise&quot;</code></pre>
 </div>
 <div id="clearing-the-environment" class="section level2">
 <h2><span class="header-section-number">3.6</span> Clearing the environment</h2>

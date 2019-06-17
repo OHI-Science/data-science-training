@@ -34,8 +34,6 @@ Git and GitHub are two distinct programs,  but I think of them as a bundle becau
 - **Github** is a website for storing your git versioned files remotely. It has many nice features to be able visualize differences between [images](https://help.github.com/articles/rendering-and-diffing-images/), [rendering](https://help.github.com/articles/mapping-geojson-files-on-github/) & [diffing](https://github.com/blog/1772-diffable-more-customizable-maps) map data files, [render text data files](https://help.github.com/articles/rendering-csv-and-tsv-data/), and [track changes in text](https://help.github.com/articles/rendering-differences-in-prose-documents/).
 
 
-> NOTE: If you are a student you can get the micro account which includes 5 private repositories for free (normally a $7/month value).  You can sign up for the student account [here](https://education.github.com/pack).  Instructors can also request a free organization [account, "Request a discount"](https://education.github.com/).
-
 
 
 ## Why should scientists use GitHub?
@@ -104,6 +102,9 @@ After we set up git on your computers, we'll explore the full GitHub process:
 ### Setup Git & GitHub
 
 The GitHub setup is a one-time thing! You will only have to do this once per computer. We'll walk through this together. 
+
+> NOTE: If you are a student you can get the micro account which includes 5 private repositories for free (normally a $7/month value).  You can sign up for the student account [here](https://education.github.com/pack).  Instructors can also request a free organization [account, "Request a discount"](https://education.github.com/).
+
 
 1.  Download and install Git (https://git-scm.com/downloads)
 

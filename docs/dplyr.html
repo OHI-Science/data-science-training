@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 6 Data Wrangling: dplyr | Introduction to Open Data Science</title>
   <meta name="description" content="This is official open data science training for the Ocean Health Index." />
-  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 6 Data Wrangling: dplyr | Introduction to Open Data Science" />
   <meta property="og:type" content="book" />
@@ -47,6 +47,13 @@
 
 
 
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.46.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.46.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -67,7 +74,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -113,9 +120,9 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="lib/css/bootstrap.min.css" type="text/css" />
-<link rel="stylesheet" href="lib/css/style.css" type="text/css" />
-<link rel="stylesheet" href="lib/css/lesson.css" type="text/css" />
+<link rel="stylesheet" href="lib\css\bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="lib\css\style.css" type="text/css" />
+<link rel="stylesheet" href="lib\css\lesson.css" type="text/css" />
 </head>
 
 <body>
@@ -246,7 +253,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.14" data-path="dplyr.html"><a href="dplyr.html#joining-datasets"><i class="fa fa-check"></i><b>6.14</b> Joining datasets</a></li>
 <li class="chapter" data-level="6.15" data-path="dplyr.html"><a href="dplyr.html#key-points"><i class="fa fa-check"></i><b>6.15</b> Key Points</a></li>
 <li class="chapter" data-level="6.16" data-path="dplyr.html"><a href="dplyr.html#troubleshooting."><i class="fa fa-check"></i><b>6.16</b> Troubleshooting.</a><ul>
-<li class="chapter" data-level="6.16.1" data-path="dplyr.html"><a href="dplyr.html#error-unexpected-special-in"><i class="fa fa-check"></i><b>6.16.1</b> Error: unexpected SPECIAL in &quot; %&gt;%&quot;</a></li>
+<li class="chapter" data-level="6.16.1" data-path="dplyr.html"><a href="dplyr.html#error-unexpected-special-in"><i class="fa fa-check"></i><b>6.16.1</b> Error: unexpected SPECIAL in " %&gt;%"</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>7</b> Data Wrangling: <code>tidyr</code></a><ul>
@@ -424,7 +431,7 @@ The national parks dataset we were working with this morning was an example of t
 <h3><span class="header-section-number">6.2.2</span> load <code>tidyverse</code> (which has <code>dplyr</code> inside)</h3>
 <p>In your R Markdown file, let’s make sure we’ve got our libraries loaded. Write the following:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)     <span class="co">## install.packages(&quot;tidyverse&quot;)</span></code></pre>
-<p>This is becoming standard practice for how to load a library in a file, and if you get an error that the library doesn’t exist, you can install the package easily by running the code within the comment (highlight <code>install.packages(&quot;tidyverse&quot;)</code> and run it).</p>
+<p>This is becoming standard practice for how to load a library in a file, and if you get an error that the library doesn’t exist, you can install the package easily by running the code within the comment (highlight <code>install.packages("tidyverse")</code> and run it).</p>
 </div>
 </div>
 <div id="explore-the-gapminder-data.frame" class="section level2">
@@ -815,7 +822,7 @@ rj <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">View<
 <div id="troubleshooting." class="section level2">
 <h2><span class="header-section-number">6.16</span> Troubleshooting.</h2>
 <div id="error-unexpected-special-in" class="section level3">
-<h3><span class="header-section-number">6.16.1</span> Error: unexpected SPECIAL in &quot; %&gt;%&quot;</h3>
+<h3><span class="header-section-number">6.16.1</span> Error: unexpected SPECIAL in " %&gt;%"</h3>
 <p>If you get this error, it is probably because you have a line that starts with a pipe. The pipe should be at the end of the previous line, not the start of the current line.</p>
 <p>Yes:</p>
 <pre class="sourceCode r"><code class="sourceCode r">gap_cambodia  &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(country <span class="op">==</span><span class="st"> &quot;Cambodia&quot;</span>) <span class="op">%&gt;%</span>
