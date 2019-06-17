@@ -36,6 +36,8 @@ Suggested breakdown for a 2-day workshop:
 
 This book has been used in the following:
 
+[**Open Data Science Training** — 2 day workshop at the University of Queensland, Australia *2019-06-18*](http://ohi-science.org/uq-training/)
+
 [**Software Carpentry** — 2-day workshop at the Woods Hole Oceanographic Institution (WHOI) *2018-10-22*](https://jules32.github.io/2018-10-22-WHOI/overview) 
 
 [**Data integration and team science** — 4 day workshop at NCEAS, California, USA *2018-03-12*](https://nceas.github.io/crescynt-training/data-integration)
