@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 GitHub | Introduction to Open Data Science</title>
   <meta name="description" content="This is official open data science training for the Ocean Health Index." />
-  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 GitHub | Introduction to Open Data Science" />
   <meta property="og:type" content="book" />
@@ -47,6 +47,13 @@
 
 
 
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.46.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.46.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -67,7 +74,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -113,9 +120,9 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="lib/css/bootstrap.min.css" type="text/css" />
-<link rel="stylesheet" href="lib/css/style.css" type="text/css" />
-<link rel="stylesheet" href="lib/css/lesson.css" type="text/css" />
+<link rel="stylesheet" href="lib\css\bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="lib\css\style.css" type="text/css" />
+<link rel="stylesheet" href="lib\css\lesson.css" type="text/css" />
 </head>
 
 <body>
@@ -175,7 +182,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>4</b> GitHub</a><ul>
 <li class="chapter" data-level="4.1" data-path="github.html"><a href="github.html#objectives-1"><i class="fa fa-check"></i><b>4.1</b> Objectives</a></li>
 <li class="chapter" data-level="4.2" data-path="github.html"><a href="github.html#what-are-git-and-github"><i class="fa fa-check"></i><b>4.2</b> What are Git and Github?</a></li>
-<li class="chapter" data-level="4.3" data-path="github.html"><a href="github.html#why-should-scientists-use-github-and-rstudio"><i class="fa fa-check"></i><b>4.3</b> Why should scientists use GitHub and Rstudio?</a></li>
+<li class="chapter" data-level="4.3" data-path="github.html"><a href="github.html#why-should-scientists-use-github"><i class="fa fa-check"></i><b>4.3</b> Why should scientists use GitHub?</a></li>
 <li class="chapter" data-level="4.4" data-path="github.html"><a href="github.html#resources-1"><i class="fa fa-check"></i><b>4.4</b> Resources</a></li>
 <li class="chapter" data-level="4.5" data-path="github.html"><a href="github.html#lets-get-started"><i class="fa fa-check"></i><b>4.5</b> Let’s get started</a><ul>
 <li class="chapter" data-level="4.5.1" data-path="github.html"><a href="github.html#some-github-terminology"><i class="fa fa-check"></i><b>4.5.1</b> Some Github terminology</a></li>
@@ -246,7 +253,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.14" data-path="dplyr.html"><a href="dplyr.html#joining-datasets"><i class="fa fa-check"></i><b>6.14</b> Joining datasets</a></li>
 <li class="chapter" data-level="6.15" data-path="dplyr.html"><a href="dplyr.html#key-points"><i class="fa fa-check"></i><b>6.15</b> Key Points</a></li>
 <li class="chapter" data-level="6.16" data-path="dplyr.html"><a href="dplyr.html#troubleshooting."><i class="fa fa-check"></i><b>6.16</b> Troubleshooting.</a><ul>
-<li class="chapter" data-level="6.16.1" data-path="dplyr.html"><a href="dplyr.html#error-unexpected-special-in"><i class="fa fa-check"></i><b>6.16.1</b> Error: unexpected SPECIAL in &quot; %&gt;%&quot;</a></li>
+<li class="chapter" data-level="6.16.1" data-path="dplyr.html"><a href="dplyr.html#error-unexpected-special-in"><i class="fa fa-check"></i><b>6.16.1</b> Error: unexpected SPECIAL in " %&gt;%"</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>7</b> Data Wrangling: <code>tidyr</code></a><ul>
@@ -376,8 +383,8 @@ Philosophy: gh repo and Rproject
 <p>NOTE: If you are a student you can get the micro account which includes 5 private repositories for free (normally a $7/month value). You can sign up for the student account <a href="https://education.github.com/pack">here</a>. Instructors can also request a free organization <a href="https://education.github.com/">account, “Request a discount”</a>.</p>
 </blockquote>
 </div>
-<div id="why-should-scientists-use-github-and-rstudio" class="section level2">
-<h2><span class="header-section-number">4.3</span> Why should scientists use GitHub and Rstudio?</h2>
+<div id="why-should-scientists-use-github" class="section level2">
+<h2><span class="header-section-number">4.3</span> Why should scientists use GitHub?</h2>
 <ol style="list-style-type: decimal">
 <li>Ends (or, nearly ends) the horror of keeping track of versions.
 Basically, we get away from this:
@@ -517,7 +524,7 @@ We’ve also seen the following errors from RStudio:</p>
 <p>Notice how the README.md file we created is automatically displayed at the bottom. The .md means that it is Markdown (remember how .Rmd was RMarkdown?) so the formatting we learned in the last lesson apply here.
 <br />
 <br /></p>
-<p><img src="img/New_repository.png" />
+<p><img src="img/new_repository.png" />
 <br />
 <br /></p>
 <p><strong>From here, you will work locally (on your computer).</strong></p>
@@ -602,8 +609,8 @@ when we cloned this from RStudio, it created an RStudio project, which you can t
 </ul>
 <p>We can use the Git tab of RStudio to monitor changes to files in the local repository. When files change, RStudio uses the following codes to describe how the files have been modified:</p>
 <p><img src="img/modified.png" /></p>
-<p>For example, if I copy a file into the repository folder on my computer, we will see the file in the Git tab beside a green box with an “A”!</p>
-<p>This is also cool because it demonstrates how the repository is being tracked, even when changes aren’t made through RStudio.</p>
+<p>We will demonstrate this by copying a file into the repository folder on my computer. This file will be added to the Git tab beside a green box with an “A”!</p>
+<p>From this, you can see how the repository is being tracked, even when changes aren’t made through RStudio.</p>
 <p>We can also make changes through RStudio!</p>
 </div>
 <div id="committing-your-changes-and-syncing-with-github.com" class="section level3">
