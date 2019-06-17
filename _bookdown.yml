@@ -7,7 +7,7 @@ rmd_files: [
   "overview.Rmd",
   "rstudio.Rmd", ## http://socviz.co/
   "github.Rmd",
-  "ggplot2.Rmd",
+  "ggplot2_mel.Rmd",
   "dplyr.Rmd",
   "tidyr.Rmd",
   "programming.Rmd",

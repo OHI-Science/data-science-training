@@ -94,7 +94,19 @@ We're going to switch gears from R for a moment and set up Git and GitHub, which
 
 1. Create **Github** account at <http://github.com>, if you don't already have one. For username, I recommend all lower-case letters, short as you can. I recommend using your *.edu email*, since you can request free private repositories via [GitHub Education](https://education.github.com/) discount.
 
-1. Configure **git** with global commands, which means it will apply 'globally' to all files on your computer, rather than to a specific folder. Open the Git Bash program (Windows) or the Terminal (Mac) and type the following:
+1. You will use the `usethis` package to configure **git** with global commands, which means it will apply 'globally' to all files on your computer, rather than to a specific folder. 
+
+```{r use this}
+
+install.packages("usethis")
+library(usethis)
+
+use_git_config(user.name = "Melsteroni", user.email = "Melsteroni@example.org")
+
+```
+
+
+*BACKUP PLAN* If `usethis` fails, the following is the classic approach to configuring **git**.  Open the Git Bash program (Windows) or the Terminal (Mac) and type the following:
 
         # display your version of git
         git --version

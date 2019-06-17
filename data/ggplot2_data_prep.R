@@ -47,6 +47,7 @@ ohi_data <- read_csv(here("data/OHI_global_data.csv"))
 
 ohi_summary <- ohi_data %>%
   group_by(georegion_one) %>%
-  summarize(OHI_score = mean(OHI_score))
+  summarize(OHI_score_average = mean(OHI_score)) %>%
+  select(georegions=georegion_one, OHI_score_average)
 
 write_csv(ohi_summary, here("data/OHI_scores_georegion_summary.csv"))

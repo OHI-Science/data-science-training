@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 5 Visualizing: ggplot2 | Introduction to Open Data Science</title>
-  <meta name="description" content="This is official open data science training for the Ocean Health Index.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="This is official open data science training for the Ocean Health Index." />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Visualizing: ggplot2 | Introduction to Open Data Science />
+  <meta property="og:title" content="Chapter 5 Visualizing: ggplot2 | Introduction to Open Data Science" />
   <meta property="og:type" content="book" />
   
   
@@ -17,19 +16,19 @@
   <meta name="github-repo" content="ohi-science/data-science-training" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Visualizing: ggplot2 | Introduction to Open Data Science />
+  <meta name="twitter:title" content="Chapter 5 Visualizing: ggplot2 | Introduction to Open Data Science" />
   
   <meta name="twitter:description" content="This is official open data science training for the Ocean Health Index." />
   
 
-<meta name="author" content="The Ocean Health Index Team">
+<meta name="author" content="The Ocean Health Index Team" />
 
 
-<meta name="date" content="2019-02-25">
+<meta name="date" content="2019-06-16" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="github.html">
@@ -49,55 +48,81 @@
 
 
 <script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.8.0/plotly.js"></script>
+<script src="libs/plotly-binding-4.9.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.39.2/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.39.2/plotly-latest.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.46.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.46.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="lib/css/bootstrap.min.css" type="text/css" />
-<link rel="stylesheet" href="lib/css/style.css" type="text/css" />
-<link rel="stylesheet" href="lib/css/lesson.css" type="text/css" />
+<link rel="stylesheet" href="lib\css\bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="lib\css\style.css" type="text/css" />
+<link rel="stylesheet" href="lib\css\lesson.css" type="text/css" />
 </head>
 
 <body>
@@ -186,31 +211,25 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.12" data-path="github.html"><a href="github.html#happy-git-with-r"><i class="fa fa-check"></i><b>4.12</b> Happy Git with R</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>5</b> Visualizing: <code>ggplot2</code></a><ul>
-<li class="chapter" data-level="5.1" data-path="ggplot2.html"><a href="ggplot2.html#objectives-resources-1"><i class="fa fa-check"></i><b>5.1</b> Objectives &amp; Resources</a><ul>
-<li class="chapter" data-level="5.1.1" data-path="ggplot2.html"><a href="ggplot2.html#objectives-2"><i class="fa fa-check"></i><b>5.1.1</b> Objectives</a></li>
-<li class="chapter" data-level="5.1.2" data-path="ggplot2.html"><a href="ggplot2.html#resources-2"><i class="fa fa-check"></i><b>5.1.2</b> Resources</a></li>
+<li class="chapter" data-level="5.1" data-path="ggplot2.html"><a href="ggplot2.html#why-ggplot2"><i class="fa fa-check"></i><b>5.1</b> Why ggplot2?</a></li>
+<li class="chapter" data-level="5.2" data-path="ggplot2.html"><a href="ggplot2.html#additional-resources-for-data-visualization-in-r"><i class="fa fa-check"></i><b>5.2</b> Additional resources for data visualization in R</a></li>
+<li class="chapter" data-level="5.3" data-path="ggplot2.html"><a href="ggplot2.html#objectives-2"><i class="fa fa-check"></i><b>5.3</b> Objectives</a></li>
+<li class="chapter" data-level="5.4" data-path="ggplot2.html"><a href="ggplot2.html#install-and-load-tidyverse"><i class="fa fa-check"></i><b>5.4</b> Install and load: <code>tidyverse</code></a></li>
+<li class="chapter" data-level="5.5" data-path="ggplot2.html"><a href="ggplot2.html#load-and-explore-data"><i class="fa fa-check"></i><b>5.5</b> Load and explore data</a></li>
+<li class="chapter" data-level="5.6" data-path="ggplot2.html"><a href="ggplot2.html#plotting-with-ggplot2"><i class="fa fa-check"></i><b>5.6</b> Plotting with <strong><code>ggplot2</code></strong></a><ul>
+<li class="chapter" data-level="5.6.1" data-path="ggplot2.html"><a href="ggplot2.html#step-1-identify-the-dataframe"><i class="fa fa-check"></i><b>5.6.1</b> Step 1: Identify the dataframe</a></li>
+<li class="chapter" data-level="5.6.2" data-path="ggplot2.html"><a href="ggplot2.html#step-2-identify-the-style-of-plot-you-want-to-create-i.e.-the-geom"><i class="fa fa-check"></i><b>5.6.2</b> Step 2: Identify the style of plot you want to create (i.e., the geom)</a></li>
+<li class="chapter" data-level="5.6.3" data-path="ggplot2.html"><a href="ggplot2.html#step-3-customize-your-plot"><i class="fa fa-check"></i><b>5.6.3</b> Step 3: Customize your plot</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="ggplot2.html"><a href="ggplot2.html#install-our-first-package-tidyverse"><i class="fa fa-check"></i><b>5.2</b> Install our first package: <code>tidyverse</code></a></li>
-<li class="chapter" data-level="5.3" data-path="ggplot2.html"><a href="ggplot2.html#load-data"><i class="fa fa-check"></i><b>5.3</b> Load data</a></li>
-<li class="chapter" data-level="5.4" data-path="ggplot2.html"><a href="ggplot2.html#plotting-with-ggplot2"><i class="fa fa-check"></i><b>5.4</b> Plotting with <strong><code>ggplot2</code></strong></a></li>
-<li class="chapter" data-level="5.5" data-path="ggplot2.html"><a href="ggplot2.html#data"><i class="fa fa-check"></i><b>5.5</b> Data</a></li>
-<li class="chapter" data-level="5.6" data-path="ggplot2.html"><a href="ggplot2.html#building-your-plots-iteratively"><i class="fa fa-check"></i><b>5.6</b> Building your plots iteratively</a></li>
-<li class="chapter" data-level="5.7" data-path="ggplot2.html"><a href="ggplot2.html#customizing-plots"><i class="fa fa-check"></i><b>5.7</b> Customizing plots</a></li>
-<li class="chapter" data-level="5.8" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-themes"><i class="fa fa-check"></i><b>5.8</b> <strong><code>ggplot2</code></strong> themes</a></li>
-<li class="chapter" data-level="5.9" data-path="ggplot2.html"><a href="ggplot2.html#faceting"><i class="fa fa-check"></i><b>5.9</b> Faceting</a></li>
-<li class="chapter" data-level="5.10" data-path="ggplot2.html"><a href="ggplot2.html#geometric-objects-geoms"><i class="fa fa-check"></i><b>5.10</b> Geometric objects (geoms)</a></li>
-<li class="chapter" data-level="5.11" data-path="ggplot2.html"><a href="ggplot2.html#bar-charts"><i class="fa fa-check"></i><b>5.11</b> Bar charts</a><ul>
-<li class="chapter" data-level="5.11.1" data-path="ggplot2.html"><a href="ggplot2.html#position-adjustments"><i class="fa fa-check"></i><b>5.11.1</b> Position adjustments</a></li>
-<li class="chapter" data-level="5.11.2" data-path="ggplot2.html"><a href="ggplot2.html#challenge-1"><i class="fa fa-check"></i><b>5.11.2</b> Challenge</a></li>
-</ul></li>
-<li class="chapter" data-level="5.12" data-path="ggplot2.html"><a href="ggplot2.html#arranging-and-exporting-plots"><i class="fa fa-check"></i><b>5.12</b> Arranging and exporting plots</a></li>
-<li class="chapter" data-level="5.13" data-path="ggplot2.html"><a href="ggplot2.html#bonus"><i class="fa fa-check"></i><b>5.13</b> Bonus</a></li>
-<li class="chapter" data-level="5.14" data-path="ggplot2.html"><a href="ggplot2.html#save-and-push-to-github"><i class="fa fa-check"></i><b>5.14</b> Save and push to GitHub</a></li>
+<li class="chapter" data-level="5.7" data-path="ggplot2.html"><a href="ggplot2.html#saving-plots"><i class="fa fa-check"></i><b>5.7</b> Saving plots</a></li>
+<li class="chapter" data-level="5.8" data-path="ggplot2.html"><a href="ggplot2.html#arranging-plots"><i class="fa fa-check"></i><b>5.8</b> Arranging plots</a></li>
+<li class="chapter" data-level="5.9" data-path="ggplot2.html"><a href="ggplot2.html#interactive-plots"><i class="fa fa-check"></i><b>5.9</b> Interactive plots</a></li>
+<li class="chapter" data-level="5.10" data-path="ggplot2.html"><a href="ggplot2.html#save-and-push-to-github"><i class="fa fa-check"></i><b>5.10</b> Save and push to GitHub</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>6</b> Data Wrangling: <code>dplyr</code></a><ul>
-<li class="chapter" data-level="6.1" data-path="dplyr.html"><a href="dplyr.html#objectives-resources-2"><i class="fa fa-check"></i><b>6.1</b> Objectives &amp; Resources</a><ul>
+<li class="chapter" data-level="6.1" data-path="dplyr.html"><a href="dplyr.html#objectives-resources-1"><i class="fa fa-check"></i><b>6.1</b> Objectives &amp; Resources</a><ul>
 <li class="chapter" data-level="6.1.1" data-path="dplyr.html"><a href="dplyr.html#objectives-3"><i class="fa fa-check"></i><b>6.1.1</b> Objectives</a></li>
-<li class="chapter" data-level="6.1.2" data-path="dplyr.html"><a href="dplyr.html#resources-3"><i class="fa fa-check"></i><b>6.1.2</b> Resources</a></li>
+<li class="chapter" data-level="6.1.2" data-path="dplyr.html"><a href="dplyr.html#resources-2"><i class="fa fa-check"></i><b>6.1.2</b> Resources</a></li>
 <li class="chapter" data-level="6.1.3" data-path="dplyr.html"><a href="dplyr.html#data-and-packages-1"><i class="fa fa-check"></i><b>6.1.3</b> Data and packages</a></li>
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="dplyr.html"><a href="dplyr.html#tidy-data"><i class="fa fa-check"></i><b>6.2</b> Tidy Data</a><ul>
@@ -247,13 +266,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6.14" data-path="dplyr.html"><a href="dplyr.html#joining-datasets"><i class="fa fa-check"></i><b>6.14</b> Joining datasets</a></li>
 <li class="chapter" data-level="6.15" data-path="dplyr.html"><a href="dplyr.html#key-points"><i class="fa fa-check"></i><b>6.15</b> Key Points</a></li>
 <li class="chapter" data-level="6.16" data-path="dplyr.html"><a href="dplyr.html#troubleshooting."><i class="fa fa-check"></i><b>6.16</b> Troubleshooting.</a><ul>
-<li class="chapter" data-level="6.16.1" data-path="dplyr.html"><a href="dplyr.html#error-unexpected-special-in"><i class="fa fa-check"></i><b>6.16.1</b> Error: unexpected SPECIAL in &quot; %&gt;%&quot;</a></li>
+<li class="chapter" data-level="6.16.1" data-path="dplyr.html"><a href="dplyr.html#error-unexpected-special-in"><i class="fa fa-check"></i><b>6.16.1</b> Error: unexpected SPECIAL in " %&gt;%"</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>7</b> Data Wrangling: <code>tidyr</code></a><ul>
-<li class="chapter" data-level="7.1" data-path="tidyr.html"><a href="tidyr.html#objectives-resources-3"><i class="fa fa-check"></i><b>7.1</b> Objectives &amp; Resources</a><ul>
+<li class="chapter" data-level="7.1" data-path="tidyr.html"><a href="tidyr.html#objectives-resources-2"><i class="fa fa-check"></i><b>7.1</b> Objectives &amp; Resources</a><ul>
 <li class="chapter" data-level="7.1.1" data-path="tidyr.html"><a href="tidyr.html#objectives-4"><i class="fa fa-check"></i><b>7.1.1</b> Objectives</a></li>
-<li class="chapter" data-level="7.1.2" data-path="tidyr.html"><a href="tidyr.html#resources-4"><i class="fa fa-check"></i><b>7.1.2</b> Resources</a></li>
+<li class="chapter" data-level="7.1.2" data-path="tidyr.html"><a href="tidyr.html#resources-3"><i class="fa fa-check"></i><b>7.1.2</b> Resources</a></li>
 <li class="chapter" data-level="7.1.3" data-path="tidyr.html"><a href="tidyr.html#data-and-packages-2"><i class="fa fa-check"></i><b>7.1.3</b> Data and packages</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="tidyr.html"><a href="tidyr.html#tidyr-basics"><i class="fa fa-check"></i><b>7.2</b> <code>tidyr</code> basics</a></li>
@@ -272,7 +291,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="7.8" data-path="tidyr.html"><a href="tidyr.html#other-links"><i class="fa fa-check"></i><b>7.8</b> Other links</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="programming.html"><a href="programming.html"><i class="fa fa-check"></i><b>8</b> Programming in R</a><ul>
-<li class="chapter" data-level="8.1" data-path="programming.html"><a href="programming.html#objectives-resources-4"><i class="fa fa-check"></i><b>8.1</b> Objectives &amp; Resources</a><ul>
+<li class="chapter" data-level="8.1" data-path="programming.html"><a href="programming.html#objectives-resources-3"><i class="fa fa-check"></i><b>8.1</b> Objectives &amp; Resources</a><ul>
 <li class="chapter" data-level="8.1.1" data-path="programming.html"><a href="programming.html#objectives-5"><i class="fa fa-check"></i><b>8.1.1</b> Objectives</a></li>
 </ul></li>
 <li class="chapter" data-level="8.2" data-path="programming.html"><a href="programming.html#analysis-plan"><i class="fa fa-check"></i><b>8.2</b> Analysis plan</a></li>
@@ -297,7 +316,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.7" data-path="programming.html"><a href="programming.html#ideas-for-extended-analysis-2"><i class="fa fa-check"></i><b>8.7</b> Ideas for Extended Analysis 2</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="collaborating.html"><a href="collaborating.html"><i class="fa fa-check"></i><b>9</b> Collaborating with GitHub</a><ul>
-<li class="chapter" data-level="9.1" data-path="collaborating.html"><a href="collaborating.html#objectives-resources-5"><i class="fa fa-check"></i><b>9.1</b> Objectives &amp; Resources</a><ul>
+<li class="chapter" data-level="9.1" data-path="collaborating.html"><a href="collaborating.html#objectives-resources-4"><i class="fa fa-check"></i><b>9.1</b> Objectives &amp; Resources</a><ul>
 <li class="chapter" data-level="9.1.1" data-path="collaborating.html"><a href="collaborating.html#objectives-6"><i class="fa fa-check"></i><b>9.1.1</b> Objectives</a></li>
 </ul></li>
 <li class="chapter" data-level="9.2" data-path="collaborating.html"><a href="collaborating.html#create-repo-partner-1"><i class="fa fa-check"></i><b>9.2</b> Create repo (Partner 1)</a></li>
@@ -353,357 +372,557 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="ggplot2" class="section level1">
 <h1><span class="header-section-number">Chapter 5</span> Visualizing: <code>ggplot2</code></h1>
-<p>Why do we start with data visualization? Not only is data viz a big part of analysis, it’s a way to SEE your progress as you learn to code.</p>
-<blockquote>
-<p>“ggplot2 implements the grammar of graphics, a coherent system for describing and building graphs. With ggplot2, you can do more faster by learning one system and applying it in many places.” - <a href="http://r4ds.had.co.nz/data-visualisation.html">R4DS</a></p>
-</blockquote>
-<p>This lesson borrows heavily from Hadley Wickham’s <a href="http://r4ds.had.co.nz/data-visualisation.html">R for Data Science book</a>, and an EcoDataScience lesson on Data Visualization.</p>
-<div id="objectives-resources-1" class="section level2">
-<h2><span class="header-section-number">5.1</span> Objectives &amp; Resources</h2>
-<div id="objectives-2" class="section level3">
-<h3><span class="header-section-number">5.1.1</span> Objectives</h3>
+<div id="why-ggplot2" class="section level2">
+<h2><span class="header-section-number">5.1</span> Why ggplot2?</h2>
+<p>This tutorial focuses exclusively on data visualization using ggplot2 because this package:</p>
 <ul>
-<li>install our first package, <code>ggplot2</code>, by installing <code>tidyverse</code></li>
-<li>learn ggplot2 with a national parks visitation dataset (important to play with other data than your own, you’ll learn something.)</li>
+<li>provides a coherent language for visualizing data (vs. the original ‘plot’ function, which developed in an ad-hoc way)</li>
+<li>makes many tasks easier, such as: visualizing a third (z) variable; saving figures; automating plotting and formatting tasks</li>
+<li>creates beautiful figures and is flexible</li>
+</ul>
+<p>You should really use ggplot2 for nearly all data visualization!</p>
+</div>
+<div id="additional-resources-for-data-visualization-in-r" class="section level2">
+<h2><span class="header-section-number">5.2</span> Additional resources for data visualization in R</h2>
+<p>The goal of this tutorial is to introduce you to the basics of ggplot2. I focus only on the features I use most often. We will barely scratch the surface of ggplot2’s functionality. But there are many resources that will help you learn more. Here are some of the ones I use:</p>
+<ul>
+<li>The official ggplot2 <a href="https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf">cheatsheet</a> is amazing!</li>
+<li>Winston Chang’s book converted me from someone who was slightly confused by ggplot2 to a superuser….so I can’t recommend it enough! And, the <a href="http://www.cookbook-r.com/Graphs/#graphs-with-ggplot2">associated website</a> is great too.</li>
+</ul>
+<p><br></p>
+<p><img src="img/ChangBook.png" /></p>
+<p><br></p>
+<ul>
+<li>Hadley Wickham’s <a href="http://r4ds.had.co.nz/data-visualisation.html">R for Data Science book</a>, which is inspiration for much of this tutorial.</li>
+</ul>
+</div>
+<div id="objectives-2" class="section level2">
+<h2><span class="header-section-number">5.3</span> Objectives</h2>
+<ul>
+<li>install the <code>ggplot2</code> package by installing <code>tidyverse</code></li>
+<li>learn basics of ggplot2 with a dataset describing global ocean health</li>
 <li>practice writing a script in RMarkdown</li>
 <li>practice the rstudio-github workflow</li>
 </ul>
 </div>
-<div id="resources-2" class="section level3">
-<h3><span class="header-section-number">5.1.2</span> Resources</h3>
-<p>Here are some additional resources for data visualization in R:</p>
-<ul>
-<li><a href="https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf">ggplot2-cheatsheet-2.1.pdf</a><br />
-</li>
-<li><a href="http://ucsb-bren.github.io/env-info/wk06_widgets.html">Interactive Plots and Maps - Environmental Informatics</a><br />
-</li>
-<li><a href="http://www.cookbook-r.com/Graphs/#graphs-with-ggplot2">Graphs with ggplot2 - Cookbook for R</a><br />
-</li>
-<li><a href="http://www.sthda.com/english/wiki/ggplot2-essentials">ggplot2 Essentials - STHDA</a><br />
-</li>
-<li><a href="http://varianceexplained.org/r/why-I-use-ggplot2/">“Why I use ggplot2” - David Robinson Blog Post</a></li>
-</ul>
+<div id="install-and-load-tidyverse" class="section level2">
+<h2><span class="header-section-number">5.4</span> Install and load: <code>tidyverse</code></h2>
+<p>We will use the <code>ggplot2</code> package, which is bundled with a composite-package called <code>tidyverse</code>. Check out <a href="https://www.tidyverse.org">tidyverse.org/</a> for more information.</p>
+<p>We will download and install <code>tidyverse</code>:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## from CRAN:</span>
+<span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>) <span class="co">## do this once only to install the package on your computer.</span></code></pre>
+<p>You will see some messages describing which packages were installed with <code>tidyverse</code>. Messages about name conflicts are also returned. This is not a problem its just an alert that two functions from dplyr will replace functions in the built-in stats package with the same name.</p>
+<p>We have downloaded the tidyverse package but it is not yet loaded in the R workspace. We will use the <code>library()</code> function to load tidyverse:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse) <span class="co">## do this every time you restart R and need it </span></code></pre>
 </div>
-</div>
-<div id="install-our-first-package-tidyverse" class="section level2">
-<h2><span class="header-section-number">5.2</span> Install our first package: <code>tidyverse</code></h2>
-<p>Packages are bundles of functions, along with help pages and other goodies that make them easier for others to use, (ie. vignettes).</p>
-<p>So far we’ve been using packages that are already included in <em>base R</em>. These can be considered <em>out-of-the-box</em> packages and include things such as <code>sum</code> and <code>mean</code>. You can also download and install packages created by the vast and growing R user community. The most traditional place to download packages is from <a href="https://cran.r-project.org/">CRAN, the Comprehensive R Archive Network</a>. This is where you went to download R originally, and will go again to look for updates. You can also install packages directly from GitHub, which we’ll do tomorrow.</p>
-<p>You don’t need to go to CRAN’s website to install packages, we can do it from within R with the command <code>install.packages(&quot;package-name-in-quotes&quot;)</code>.</p>
-<p>We are going to be using the package <code>ggplot2</code>, which is actually bundled into a huge package called <code>tidyverse</code>. We will install <code>tidyverse</code> now, and use a few functions from the packages within. Also, check out <a href="https://www.tidyverse.org">tidyverse.org/</a>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## from CRAN:
-<span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>) ## do this once only to install the package on your computer.</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse) ## do this every time you restart R and need it </code></pre></div>
-<p>When you do this, it will tell you which packages are inside of <code>tidyverse</code> that have also been installed. Note that there are a few name conflicts; it is alerting you that we’ll be using two functions from dplyr instead of the built-in stats package.</p>
-<p>What’s the difference between <code>install.packages()</code> and <code>library()</code>? Why do you need both? Here’s an analogy:</p>
-<ul>
-<li><code>install.packages()</code> is setting up electricity for your house. Just need to do this once (let’s ignore monthly bills).</li>
-<li><code>library()</code> is turning on the lights. You only turn them on when you need them, otherwise it wouldn’t be efficient. And when you quit R, it turns the lights off, but the electricity lines are still there. So when you come back, you’ll have to turn them on again with <code>library()</code>, but you already have your electricity set up.</li>
-</ul>
-<p>You can also install packages by going to the Packages tab in the bottom right pane. You can see the packages that you have installed (listed) and loaded (checkbox). You can also install packages using the install button, or check to see if any of your installed packages have updates available (update button). You can also click on the name of the package to see all the functions inside it — this is a super helpful feature that I use all the time.</p>
-</div>
-<div id="load-data" class="section level2">
-<h2><span class="header-section-number">5.3</span> Load data</h2>
-<p>Copy and paste the code chunk below and read it in to your RStudio to load the five datasets we will use in this section.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#National Parks in California</span>
-ca &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/ca.csv&quot;</span>) 
-
-<span class="co">#Acadia National Park</span>
-acadia &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/acadia.csv&quot;</span>)
-
-<span class="co">#Southeast US National Parks</span>
-se &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/se.csv&quot;</span>)
-
-<span class="co">#2016 Visitation for all Pacific West National Parks</span>
-visit_<span class="dv">16</span> &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/visit_16.csv&quot;</span>)
-
-<span class="co">#All Nationally designated sites in Massachusetts</span>
-mass &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/mass.csv&quot;</span>)</code></pre></div>
+<div id="load-and-explore-data" class="section level2">
+<h2><span class="header-section-number">5.5</span> Load and explore data</h2>
+<p>We will load the dataset we will be using for this tutorial into our workspace directly from GitHub.com (I always find this GitHub functionality so cool!).</p>
+<pre class="sourceCode r"><code class="sourceCode r">ohi_data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/OHI_global_data.csv&quot;</span>)</code></pre>
+<p>These data are from the global <a href="http://ohi-science.org/ohi-global/">Ocean Health Index</a> which assesses the condition of marine resources for 220 countries or territories.</p>
+<p>The dataset includes:</p>
+<table>
+<colgroup>
+<col width="3%" />
+<col width="43%" />
+<col width="3%" />
+<col width="49%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>variable</th>
+<th>description</th>
+<th>data type</th>
+<th>examples</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>country</td>
+<td>OHI region name for country or territorial regions with marine coastline</td>
+<td>character</td>
+<td>Jarvis Island, Italy</td>
+</tr>
+<tr class="even">
+<td>OHI_score</td>
+<td>Ocean Health Index scores describing condition of marine resources based on the 2017 global assessment</td>
+<td>numeric</td>
+<td>values can range from 0-100, with 100 being the best possible score</td>
+</tr>
+<tr class="odd">
+<td>OHI_trend</td>
+<td>average annual change in OHI scores from 2012 to 2017</td>
+<td>numeric</td>
+<td>values range from -3.9 to 1.86, with positive values indicating improving scores</td>
+</tr>
+<tr class="even">
+<td>coastal_pop</td>
+<td>human population within 25 miles of coast</td>
+<td>numeric</td>
+<td>values range from 0 to &gt;317 million</td>
+</tr>
+<tr class="odd">
+<td>log_coastal_pop</td>
+<td>log(coastal_pop + 1)</td>
+<td>numeric</td>
+<td>values range from 0 to ~20</td>
+</tr>
+<tr class="even">
+<td>cumulative_human_impact</td>
+<td>average cumulative impact of human stressors (e.g., SST, shipping, pollution) on marine ecosystems within the country’s marine boundaries</td>
+<td>numeric</td>
+<td>values range from 1.419 to 6.762, with larger values indicating higher impact</td>
+</tr>
+<tr class="odd">
+<td>HDI</td>
+<td><a href="http://hdr.undp.org/en/content/human-development-index-hdi">Human Development Index</a> scores, which measure average achievement in key dimensions of human development: a long and healthy life, being knowledgeable and have a decent standard of living.</td>
+<td>numeric</td>
+<td>values are rescaled to be between 0 to 1, with higher scores indicating better human development</td>
+</tr>
+<tr class="even">
+<td>georegion_one</td>
+<td>lower resolution UN georegion designations based on georegional and social similarities</td>
+<td>character</td>
+<td>Africa, Americas, Asia</td>
+</tr>
+<tr class="odd">
+<td>georegion_two</td>
+<td>higher resolution UN georegion designations based on georegional and social similarities</td>
+<td>character</td>
+<td>Australia and New Zealand, Eastern Asia, Caribbean</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>Let’s explore these data, shall we:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(ohi_data)</code></pre>
+<pre><code>## # A tibble: 6 x 9
+##   country OHI_score OHI_trend coastal_pop log_coastal_pop cumulative_huma~
+##   &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;           &lt;dbl&gt;            &lt;dbl&gt;
+## 1 South ~      92.0      1.67           0               0             2.82
+## 2 Crozet~      88.1      0.81           0               0             1.92
+## 3 Howlan~      87.7      0.08           0               0             2.97
+## 4 Heard ~      87.4      0.46           0               0             2.78
+## 5 Kergue~      87.3      0.72           0               0             2.02
+## 6 Jarvis~      83.9     -0.25           0               0             1.85
+## # ... with 3 more variables: HDI &lt;dbl&gt;, georegion_one &lt;chr&gt;,
+## #   georegion_two &lt;chr&gt;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(ohi_data)</code></pre>
+<pre><code>##    country            OHI_score       OHI_trend        coastal_pop       
+##  Length:221         Min.   :41.83   Min.   :-3.9900   Min.   :        0  
+##  Class :character   1st Qu.:61.62   1st Qu.:-0.5600   1st Qu.:   106224  
+##  Mode  :character   Median :67.82   Median :-0.1800   Median :  1066507  
+##                     Mean   :66.87   Mean   :-0.2261   Mean   : 11471246  
+##                     3rd Qu.:72.21   3rd Qu.: 0.1900   3rd Qu.:  7081969  
+##                     Max.   :91.98   Max.   : 1.8600   Max.   :317149893  
+##                                                                          
+##  log_coastal_pop cumulative_human_impact      HDI        
+##  Min.   : 0.00   Min.   :1.419           Min.   :0.4140  
+##  1st Qu.:11.57   1st Qu.:3.553           1st Qu.:0.5970  
+##  Median :13.88   Median :3.896           Median :0.7400  
+##  Mean   :12.64   Mean   :3.861           Mean   :0.7159  
+##  3rd Qu.:15.77   3rd Qu.:4.351           3rd Qu.:0.8270  
+##  Max.   :19.57   Max.   :6.762           Max.   :0.9490  
+##                                          NA&#39;s   :76      
+##  georegion_one      georegion_two     
+##  Length:221         Length:221        
+##  Class :character   Class :character  
+##  Mode  :character   Mode  :character  
+##                                       
+##                                       
+##                                       
+## </code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(ohi_data<span class="op">$</span>georegion_one)</code></pre>
+<pre><code>## 
+##                          Africa                        Americas 
+##                              46                               3 
+##                            Asia                          Europe 
+##                              40                              43 
+## Latin America and the Caribbean                         Oceania 
+##                              48                              34 
+##                Southern Islands 
+##                               7</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(ohi_data<span class="op">$</span>georegion_two)</code></pre>
+<pre><code>## 
+## Australia and New Zealand                 Caribbean 
+##                         6                        28 
+##           Central America            Eastern Africa 
+##                         9                        17 
+##              Eastern Asia            Eastern Europe 
+##                         6                         5 
+##                 Melanesia                Micronesia 
+##                         5                        13 
+##             Middle Africa           Northern Africa 
+##                         7                         7 
+##          Northern America           Northern Europe 
+##                         3                        19 
+##                 Polynesia        South-Eastern Asia 
+##                        10                        12 
+##             South America           Southern Africa 
+##                        11                         2 
+##             Southern Asia           Southern Europe 
+##                         7                        14 
+##          Southern Islands            Western Africa 
+##                         7                        13 
+##              Western Asia            Western Europe 
+##                        15                         5</code></pre>
 </div>
 <div id="plotting-with-ggplot2" class="section level2">
-<h2><span class="header-section-number">5.4</span> Plotting with <strong><code>ggplot2</code></strong></h2>
-<p><strong><code>ggplot2</code></strong> is a plotting package that makes it simple to create complex plots from data in a data frame. It provides a more programmatic interface for specifying what variables to plot, how they are displayed, and general visual properties. Therefore, we only need minimal changes if the underlying data change or if we decide to change from a bar plot to a scatterplot. This helps in creating publication quality plots with minimal amounts of adjustments and tweaking.</p>
-<p>ggplot likes data in the ‘long’ format: i.e., a column for every dimension, and a row for every observation. Well structured data will save you lots of time when making figures with ggplot.</p>
-<p>ggplot graphics are built step by step by adding new elements. Adding layers in this fashion allows for extensive flexibility and customization of plots.</p>
-<p><br> <img src="img/rstudio-cheatsheet-ggplot.png" /> <br></p>
+<h2><span class="header-section-number">5.6</span> Plotting with <strong><code>ggplot2</code></strong></h2>
+<p>Plots are created using a step-wise approach that is flexible and easily customized. We will walk through the steps needed to build a plot in ggplot2.</p>
+<p><em>HINT: Start with the simplest version of your plot and build onto it.</em></p>
+<div id="step-1-identify-the-dataframe" class="section level3">
+<h3><span class="header-section-number">5.6.1</span> Step 1: Identify the dataframe</h3>
+<p>ggplot2 requires the data to be in a dataframe format. The first step is to use the <code>ggplot()</code> function to identify the dataframe with the data you want to plot.</p>
+<p>At this point, we will also assign the x and y axis variables within the aes function (this stands for aesthetics, and we will discuss this concept after we have a plot to work with).</p>
+<p>[NOTE: This step was confusing for me for a long time because it doesn’t actually make the plot!]</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> OHI_score, <span class="dt">y =</span> HDI))</code></pre>
 </div>
-<div id="data" class="section level2">
-<h2><span class="header-section-number">5.5</span> Data</h2>
-<p>We are going to use a National Park visitation dataset (from the National Park Service at <a href="https://irma.nps.gov/Stats/SSRSReports" class="uri">https://irma.nps.gov/Stats/SSRSReports</a>). Read in the data using <code>read_csv</code> and take a look at the first few rows using <code>head()</code> or <code>View()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(ca)</code></pre></div>
-<pre><code>## # A tibble: 6 x 7
-##   region state code  park_name                   type        visitors  year
-##   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;                       &lt;chr&gt;          &lt;int&gt; &lt;int&gt;
-## 1 PW     CA    CHIS  Channel Islands National P… National P…     1200  1963
-## 2 PW     CA    CHIS  Channel Islands National P… National P…     1500  1964
-## 3 PW     CA    CHIS  Channel Islands National P… National P…     1600  1965
-## 4 PW     CA    CHIS  Channel Islands National P… National P…      300  1966
-## 5 PW     CA    CHIS  Channel Islands National P… National P…    15700  1967
-## 6 PW     CA    CHIS  Channel Islands National P… National P…    31000  1968</code></pre>
-<p>This dataframe is already in a <em>long</em> format where all rows are an observation and all columns are variables. Among the variables in <code>ca</code> are:</p>
-<ol style="list-style-type: decimal">
-<li><p><code>region</code>, US region where park is located.</p></li>
-<li><p><code>visitors</code>, the annual visitation for each <code>year</code></p></li>
-</ol>
-<p>To build a ggplot, we need to:</p>
-<ul>
-<li>use the <code>ggplot()</code> function and bind the plot to a specific data frame using the <code>data</code> argument</li>
-</ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ca)</code></pre></div>
-<ul>
-<li>add <code>geoms</code> – graphical representation of the data in the plot (points, lines, bars). <strong><code>ggplot2</code></strong> offers many different geoms; we will use some common ones today, including:
-<ul>
-<li><code>geom_point()</code> for scatter plots, dot plots, etc.</li>
-<li><code>geom_bar()</code> for bar charts</li>
-<li><code>geom_line()</code> for trend lines, time-series, etc.</li>
-</ul></li>
-</ul>
-<p>To add a geom to the plot use <code>+</code> operator. Because we have two continuous variables,<br />
-let’s use <code>geom_point()</code> first and then assign x and y aesthetics (<code>aes</code>):</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ca) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors))</code></pre></div>
+<div id="step-2-identify-the-style-of-plot-you-want-to-create-i.e.-the-geom" class="section level3">
+<h3><span class="header-section-number">5.6.2</span> Step 2: Identify the style of plot you want to create (i.e., the geom)</h3>
+<p>Next, we will actually create the plot by adding a geom function using the <code>+</code> operator.
+A <strong>geom</strong> is the geometrical object that a plot uses to represent data. For example, bar charts use bar geoms, line charts use line geoms, boxplots use boxplot geoms, and so on.</p>
+<p>You can use different geoms to plot the same data. To change the type of plot, change the geom function that you add to <code>ggplot()</code>.</p>
+<p><code>ggplot2</code> provides over 30 geoms, which are described in the official ggplot2 <a href="https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf">cheatsheet</a>. To learn more about any single geom, use help: <code>?geom_smooth</code>. Extension packages provide even more geoms (see <a href="https://www.ggplot2-exts.org" class="uri">https://www.ggplot2-exts.org</a> for a sampling).</p>
+<p>We will start by creating a scatterplot of ohi scores within UN georegions by adding the <code>geom_point</code> function.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> georegion_one, <span class="dt">y =</span>OHI_score)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
 <p><img src="data-science-training_files/figure-html/first-ggplot-1.png" width="672" /></p>
-<p>Notes:</p>
-<ul>
-<li>Anything you put in the <code>ggplot()</code> function can be seen by any geom layers that you add (i.e., these are universal plot settings). This includes the x and y axis you set up in <code>aes()</code>.</li>
-<li>You can also specify aesthetics for a given geom independently of the aesthetics defined globally in the <code>ggplot()</code> function.</li>
-<li>The <code>+</code> sign used to add layers must be placed at the end of each line containing a layer. If, instead, the <code>+</code> sign is added in the line before the other layer, <strong><code>ggplot2</code></strong> will not add the new layer and will return an error message.</li>
-</ul>
+<p>Yay! A plot!</p>
+<p>Next we will replace geom_point() with geom_jitter() to create a style of plot with the same data. geom_jitter is similar to geom_point, but it adds random variation to values along the x-axis to separate points:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> georegion_one, <span class="dt">y =</span>OHI_score)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width=</span><span class="fl">0.2</span>) <span class="co"># the width argument describes how much scatter to add</span></code></pre>
+<p><img src="data-science-training_files/figure-html/second-ggplot-1.png" width="672" />
+<br></p>
+<p>Now we will explore other geoms.</p>
+<p>The following bar plot uses geom_bar to describe the number of countries in each UN category:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> georegion_one)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_bar</span>() </code></pre>
+<p><img src="data-science-training_files/figure-html/barplot2-1.png" width="672" />
+<br></p>
+<p>A histogram using geom_histogram:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> HDI)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_histogram</span>() </code></pre>
+<p><img src="data-science-training_files/figure-html/histogram-1.png" width="672" />
+<br></p>
+<p>Multiple geoms can be layered on the same plot. Geom layers can be added using either the same or different dataframes. To demonstrate this we will use a secondary dataset with the mean OHI score for each UN georegion. We will create a bar plot of the means for each region and then overlay the point data.</p>
+<pre class="sourceCode r"><code class="sourceCode r">ohi_summary &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/OHI_scores_georegion_summary.csv&quot;</span>)
+
+ohi_summary</code></pre>
+<pre><code>## # A tibble: 7 x 2
+##   georegions                      OHI_score_average
+##   &lt;chr&gt;                                       &lt;dbl&gt;
+## 1 Africa                                       59.7
+## 2 Americas                                     68.3
+## 3 Asia                                         63.9
+## 4 Europe                                       68.5
+## 5 Latin America and the Caribbean              67.0
+## 6 Oceania                                      75.0
+## 7 Southern Islands                             80.1</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_summary, <span class="kw">aes</span>(<span class="dt">x =</span> georegions, <span class="dt">y =</span> OHI_score_average)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">data=</span>ohi_data, <span class="kw">aes</span>(<span class="dt">x=</span>georegion_one, <span class="dt">y=</span>OHI_score))</code></pre>
+<p><img src="data-science-training_files/figure-html/third-ggplot-1.png" width="672" />
+<br></p>
+<p>In the above example, the global mappings are designated by: <code>ggplot(data = ohi_summary, aes(x = georegions, y = OHI_score_average))</code>. These are then overwritten by the local mappings designated in the geom_jitter layer. The global designations will apply to subsequent layers, unless otherwise changed. This makes it possible to display different aesthetics and data in different layers.</p>
+<p><br>
+<br></p>
+<hr />
 <blockquote>
-<p><strong>STOP: let’s Commit, Pull and Push to GitHub</strong></p>
+<p><strong>STOP: let’s Commit, Pull and Push to GitHub</strong>
+<strong>And discuss the following</strong></p>
 </blockquote>
-</div>
-<div id="building-your-plots-iteratively" class="section level2">
-<h2><span class="header-section-number">5.6</span> Building your plots iteratively</h2>
-<p>Building plots with ggplot is typically an iterative process. We start by defining the dataset we’ll use, lay the axes, and choose a geom:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ca) <span class="op">+</span>
-<span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors))</code></pre></div>
-<p><img src="data-science-training_files/figure-html/create-ggplot-object-1.png" width="672" /></p>
-<p>This isn’t necessarily a useful way to look at the data. We can distinguish each park by added the <code>color</code> argument to the <code>aes</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ca) <span class="op">+</span>
-<span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors, <span class="dt">color =</span> park_name))</code></pre></div>
-<p><img src="data-science-training_files/figure-html/color-by-species-1.png" width="672" /></p>
-</div>
-<div id="customizing-plots" class="section level2">
-<h2><span class="header-section-number">5.7</span> Customizing plots</h2>
-<p>Take a look at the <a href="https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf"><strong><code>ggplot2</code></strong> cheat sheet</a>, and think of ways you could improve the plot.</p>
-<p>Now, let’s capitalize the x and y axis labels and add a main title to the figure. I also like to remove that standard gray background using a different <code>theme</code>. Many themes come built into the <code>ggplot2</code> package. My preference is <code>theme_bw()</code> but once you start typing <code>theme_</code> a list of options will pop up. The last thing I’m going to do is remove the legend title.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ca) <span class="op">+</span>
-<span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors, <span class="dt">color =</span> park_name)) <span class="op">+</span>
-<span class="st">    </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>,
-       <span class="dt">y =</span> <span class="st">&quot;Visitation&quot;</span>,
-       <span class="dt">title =</span> <span class="st">&quot;California National Park Visitation&quot;</span>) <span class="op">+</span>
-<span class="st">    </span><span class="kw">theme_bw</span>() <span class="op">+</span>
-<span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</code></pre></div>
-<p><img src="data-science-training_files/figure-html/customize-1.png" width="672" /></p>
-</div>
-<div id="ggplot2-themes" class="section level2">
-<h2><span class="header-section-number">5.8</span> <strong><code>ggplot2</code></strong> themes</h2>
-<p>In addition to <code>theme_bw()</code>, which changes the plot background to white, <strong><code>ggplot2</code></strong> comes with several other themes which can be useful to quickly change the look of your visualization.</p>
-<p>The <a href="https://cran.r-project.org/web/packages/ggthemes/vignettes/ggthemes.html">ggthemes</a> package provides a wide variety of options (including an Excel 2003 theme). The <a href="https://www.ggplot2-exts.org"><strong><code>ggplot2</code></strong> extensions website</a> provides a list of packages that extend the capabilities of <strong><code>ggplot2</code></strong>, including additional themes.</p>
-<blockquote>
-<h3 id="exercise-10-min"><span class="header-section-number">5.8</span> Exercise (10 min)</h3>
-</blockquote>
-<blockquote>
 <ol style="list-style-type: decimal">
-<li>Using the <code>se</code> dataset, make a scatterplot showing visitation to all national parks in the Southeast region with color identifying individual parks.</li>
-<li>Change the plot so that color indicates <code>state</code>.</li>
-<li>Customize by adding your own title and theme. You can also change the text sizes and angles. Try applying a 45 degree angle to the x-axis. Use your cheatsheet!</li>
 <li>In the code below, why isn’t the data showing up?</li>
 </ol>
-</blockquote>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> se, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors))</code></pre></div>
-<blockquote>
-<h5 id="answers-no-peeking"><span class="header-section-number">5.8</span> Answers (no peeking)</h5>
-</blockquote>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 1.</span>
-<span class="kw">ggplot</span>(<span class="dt">data =</span> se) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors, <span class="dt">color =</span> park_name))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">y =</span> OHI_score, <span class="dt">x =</span> HDI, <span class="dt">color=</span>georegion_one))</code></pre>
+<p><br></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Are these two approaches the same?</li>
+</ol>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">y=</span>OHI_score, <span class="dt">x =</span> HDI, <span class="dt">color=</span>georegion_one)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()
+  
+<span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y =</span> OHI_score, <span class="dt">x =</span> HDI, <span class="dt">color=</span>georegion_one))  </code></pre>
+<p><br></p>
+<p><strong>Answers</strong></p>
+<ol style="list-style-type: decimal">
+<li>The code is missing a geom to describe how the data should be plotted.</li>
+<li>These two approaches result in the same plot here, but there could be downstream effects as more layers are added.</li>
+</ol>
+<hr />
+<p><br>
+<br></p>
+<p><strong>More about the aes function</strong></p>
+<p>The arguments within <code>aes()</code> link variables in the dataframe to some aspect of plot appearance. As we have discussed, x and y describe the axes, but other arguments can be added to describe a z variable (e.g. size or color or shape of points). Here are some examples of aes arguments:</p>
+<ul>
+<li><em>color</em> color of lines/points</li>
+<li><em>fill</em> color within polygons</li>
+<li><em>label</em> name</li>
+<li><em>linetype</em> type of line</li>
+<li><em>shape</em> style of point</li>
+<li><em>alpha</em> transparency (0-1)</li>
+<li><em>size</em> size of shape</li>
+</ul>
+<p>This is very powerful! Let’s explore.</p>
+<p>Changing the point size:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> OHI_score, <span class="dt">y =</span> HDI, <span class="dt">size =</span> coastal_pop)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
+<p><img src="data-science-training_files/figure-html/aes-size-1.png" width="672" /></p>
+<p><br></p>
+<p>Changing the color: continuous variable</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> OHI_score, <span class="dt">y =</span> HDI, <span class="dt">color =</span> coastal_pop)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
+<p><img src="data-science-training_files/figure-html/aes-color-1.png" width="672" /></p>
+<p><br></p>
+<p>Changing the color: discrete variable</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> OHI_score, <span class="dt">y =</span> HDI, <span class="dt">color =</span> georegion_one)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
+<p><img src="data-science-training_files/figure-html/aes-color_discrete-1.png" width="672" />
+<br></p>
+<p>Changing shape of points</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> OHI_score, <span class="dt">y =</span> HDI, <span class="dt">shape =</span> georegion_one)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
+<p><img src="data-science-training_files/figure-html/aes_shape-1.png" width="672" />
+<br></p>
+<p>Adding labels</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#This doesn&#39;t add the labels like it seems like it should:</span>
+<span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> OHI_score, <span class="dt">y =</span> HDI, <span class="dt">label=</span>country)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> OHI_score, <span class="dt">y =</span> HDI)) </code></pre>
 <p><img src="data-science-training_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 2. &amp; 3.</span>
-<span class="kw">ggplot</span>(<span class="dt">data =</span> se) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors, <span class="dt">color =</span> state)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>,
-       <span class="dt">y =</span> <span class="st">&quot;Visitation&quot;</span>,
-       <span class="dt">title =</span> <span class="st">&quot;Southeast States National Park Visitation&quot;</span>) <span class="op">+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># To do this we have to add a geom_text function</span>
+<span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> OHI_score, <span class="dt">y =</span> HDI, <span class="dt">label=</span>country)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> OHI_score, <span class="dt">y =</span> HDI)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_text</span>()</code></pre>
+<p><img src="data-science-training_files/figure-html/unnamed-chunk-34-2.png" width="672" /></p>
+</div>
+<div id="step-3-customize-your-plot" class="section level3">
+<h3><span class="header-section-number">5.6.3</span> Step 3: Customize your plot</h3>
+<p>So far, the plots we have created are fairly ugly and hard to read. We will now improve these basic plots using a stepwise approach.</p>
+<div id="themes" class="section level4">
+<h4><span class="header-section-number">5.6.3.1</span> Themes</h4>
+<p>I do not like the default ggplot2 figures because I find them too busy. A quick way to improve plot appearance is to use themes. Many themes are built into the <code>ggplot2</code> package. For example, <code>theme_bw()</code> removes the gray background. Once you start typing <code>theme_</code> a list of options will pop up.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> OHI_score, <span class="dt">y =</span> HDI)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">theme_bw</span>()</code></pre>
+<p><img src="data-science-training_files/figure-html/themes-1.png" width="672" /></p>
+<p><br></p>
+<p>The <a href="https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/">ggthemes</a> package provides many additional themes (including a Tufte theme..which is very clean and data oriented). The <a href="https://www.ggplot2-exts.org"><strong><code>ggplot2</code></strong> extensions website</a> provides a list of packages that extend the capabilities of <strong><code>ggplot2</code></strong>, including additional themes.</p>
+<p>I often create my own themes to make figures that work well in publications or presentations. This also gives my figures a consistent look (without having to remember from figure to figure the size of labels, etc.). I have found that storing my themes on Github works well. Here is an example of a theme I created named “scatterTheme”:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&#39;https://raw.githubusercontent.com/OHI-Science/ohiprep/master/src/R/scatterTheme.txt&#39;</span>)       
+
+<span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> OHI_score, <span class="dt">y =</span> HDI)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span>scatterTheme</code></pre>
+<p><img src="data-science-training_files/figure-html/my%20theme-1.png" width="672" /></p>
+</div>
+<div id="labels-axis-plot-legend" class="section level4">
+<h4><span class="header-section-number">5.6.3.2</span> Labels: axis, plot, legend</h4>
+<p>One of the first things you will often want to do is alter labels for: titles, axes, figure legends, etc. These modifications involve manipulating the theme function and can quickly get complicated, and I typically have to Google the specifics or refer to a <a href="https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf">cheatsheet</a>, despite using ggplot2 for years and years and years.</p>
+<p>But, some key changes are easy to make using the labs function:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">y =</span> OHI_score, <span class="dt">x =</span> HDI, <span class="dt">color=</span>georegion_one)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">&quot;OHI score, 2017&quot;</span>,
+       <span class="dt">x =</span> <span class="st">&quot;Human Development Index&quot;</span>,
+       <span class="dt">title =</span> <span class="st">&quot;Countries with high human development have more sustainable oceans&quot;</span>,
+      <span class="dt">color =</span> <span class="st">&quot;Georegion&quot;</span>) <span class="op">+</span><span class="st">  </span><span class="co"># if color doesn&#39;t work, use &quot;fill&quot;</span>
+<span class="st">     </span><span class="kw">theme_bw</span>()</code></pre>
+<p><img src="data-science-training_files/figure-html/labels-1.png" width="672" /></p>
+<p><br>
+<br></p>
+<hr />
+<blockquote>
+<p><strong>We interrupt this section on customizing your plot for an exercise (5 min)</strong></p>
+</blockquote>
+<ol style="list-style-type: decimal">
+<li>Make a histogram of the OHI_score variable and color by the georegion_one variable.</li>
+<li>How would you make all the bars on your histogram light gray? Hint: use argument <code>fill = "lightgray"</code>. Where is the best place to add this in your code to get this to work?</li>
+<li>Play with some themes and customizing title and axes labels. Try changing the text sizes and angles (refer to the <a href="https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf">cheatsheet</a>).</li>
+</ol>
+<p><br></p>
+<p><strong>Answers (no peeking)</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 1. This one is tricky because the color aesthetic only does the outline of the bars.</span>
+<span class="co"># If you got that far, you were halfway there.  </span>
+<span class="co"># You will need to use the fill argument to color shapes </span>
+
+my_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x=</span>OHI_score, <span class="dt">fill=</span>georegion_one)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>()  
+my_plot
+
+
+<span class="co"># 2. This was something that confused me for a while.  My instinct was to add it to the aes function....BUT NO!!!</span>
+<span class="co"># The arguments in aes should correspond to a column in the dataframe.  The best place for this argument is in </span>
+<span class="co"># the geom function (and not in an aes function)</span>
+<span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x=</span>OHI_score)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">fill=</span><span class="st">&quot;lightgray&quot;</span>)  
+
+
+<span class="co"># 3.</span>
+my_plot <span class="op">+</span><span class="st">    </span><span class="co"># the plot created in question 1 continued...</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;OHI score&quot;</span>,
+       <span class="dt">y =</span> <span class="st">&quot;Number of countries&quot;</span>,
+       <span class="dt">title =</span> <span class="st">&quot;Distribution of OHI scores&quot;</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">theme_light</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.title =</span> <span class="kw">element_blank</span>(),
-        <span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">size =</span> <span class="dv">14</span>))</code></pre></div>
-<p><img src="data-science-training_files/figure-html/unnamed-chunk-34-2.png" width="672" /></p>
-<blockquote>
-<ol start="4" style="list-style-type: decimal">
-<li>The code is missing a geom to describe how the data should be plotted.</li>
-</ol>
-</blockquote>
-<blockquote>
+        <span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">size =</span> <span class="dv">14</span>),
+        <span class="dt">axis.text.y =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">14</span>),
+        <span class="dt">axis.title =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">16</span>)
+        )</code></pre>
 <p><strong>STOP: commit, pull and push to github</strong></p>
-</blockquote>
+<p><strong>We will now continue with customizing your plot…..</strong></p>
+<hr />
+<p><br></p>
 </div>
-<div id="faceting" class="section level2">
-<h2><span class="header-section-number">5.9</span> Faceting</h2>
-<p>ggplot has a special technique called <em>faceting</em> that allows the user to split one plot into multiple plots based on data in the dataset. We will use it to make a plot of park visitation by state:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> se) <span class="op">+</span>
-<span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors)) <span class="op">+</span>
-<span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>state)</code></pre></div>
-<p><img src="data-science-training_files/figure-html/first-facet-1.png" width="672" /></p>
-<p>We can now make the faceted plot by splitting further by park using <code>park_name</code> (within a single plot):</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">ggplot</span>(<span class="dt">data =</span> se) <span class="op">+</span>
-<span class="st">     </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors, <span class="dt">color =</span> park_name)) <span class="op">+</span>
-<span class="st">     </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>state, <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>)</code></pre></div>
-<p><img src="data-science-training_files/figure-html/facet-by-state-and-park-1.png" width="672" /></p>
-</div>
-<div id="geometric-objects-geoms" class="section level2">
-<h2><span class="header-section-number">5.10</span> Geometric objects (geoms)</h2>
-<p>A <strong>geom</strong> is the geometrical object that a plot uses to represent data. People often describe plots by the type of geom that the plot uses. For example, bar charts use bar geoms, line charts use line geoms, boxplots use boxplot geoms, and so on. Scatterplots break the trend; they use the point geom. You can use different geoms to plot the same data. To change the geom in your plot, change the geom function that you add to <code>ggplot()</code>. Let’s look at a few ways of viewing the distribution of annual visitation (<code>visitors</code>) for each park (<code>park_name</code>).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> se) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="kw">aes</span>(<span class="dt">x =</span> park_name, <span class="dt">y =</span> visitors, <span class="dt">color =</span> park_name), 
-              <span class="dt">width =</span> <span class="fl">0.1</span>, 
-              <span class="dt">alpha =</span> <span class="fl">0.4</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">coord_flip</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>) </code></pre></div>
-<p><img src="data-science-training_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(se, <span class="kw">aes</span>(<span class="dt">x =</span> park_name, <span class="dt">y =</span> visitors)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>))</code></pre></div>
-<p><img src="data-science-training_files/figure-html/unnamed-chunk-35-2.png" width="672" /></p>
-<p>None of these are great for visualizing data over time. We can use <code>geom_line()</code> in the same way we used <code>geom_point</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(se, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors, <span class="dt">color =</span> park_name)) <span class="op">+</span>
-<span class="st">   </span><span class="kw">geom_line</span>()</code></pre></div>
-<p><img src="data-science-training_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
-<p><code>ggplot2</code> provides over 30 geoms, and extension packages provide even more (see <a href="https://www.ggplot2-exts.org" class="uri">https://www.ggplot2-exts.org</a> for a sampling). The best way to get a comprehensive overview is the <a href="http://rstudio.com/cheatsheets">ggplot2 cheatsheet</a>. To learn more about any single geom, use help: <code>?geom_smooth</code>.</p>
-<p>To display multiple geoms in the same plot, add multiple geom functions to <code>ggplot()</code>:</p>
-<p><code>geom_smooth</code> allows you to view a smoothed mean of data. Here we look at the smooth mean of visitation over time to Acadia National Park:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> acadia) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Acadia National Park Visitation&quot;</span>,
-       <span class="dt">y =</span> <span class="st">&quot;Visitation&quot;</span>,
-       <span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">theme_bw</span>()</code></pre></div>
-<p><img src="data-science-training_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
-<p>Notice that this plot contains three geoms in the same graph! Each geom is using the set of mappings in the first line. ggplot2 will treat these mappings as global mappings that apply to each geom in the graph.</p>
-<p>If you place mappings in a geom function, ggplot2 will treat them as local mappings for the layer. It will use these mappings to extend or overwrite the global mappings <em>for that layer only</em>. This makes it possible to display different aesthetics in different layers.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> acadia, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Acadia National Park Visitation&quot;</span>,
-       <span class="dt">y =</span> <span class="st">&quot;Visitation&quot;</span>,
-       <span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">theme_bw</span>()</code></pre></div>
-<p><img src="data-science-training_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
-<blockquote>
-<h3 id="challenge"><span class="header-section-number">5.10</span> Challenge</h3>
-</blockquote>
-<blockquote>
-<p>With all of this information in hand, please take another five minutes to either improve one of the plots generated in this exercise or create a beautiful graph of your own. Use the RStudio <a href="https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf"><strong><code>ggplot2</code></strong> cheat sheet</a> for inspiration.</p>
-</blockquote>
-<blockquote>
-<p>Here are some ideas:</p>
-</blockquote>
-<blockquote>
+<div id="global-changes-to-plot-attributes" class="section level4">
+<h4><span class="header-section-number">5.6.3.3</span> Global changes to plot attributes</h4>
+<p>It is easy to make global changes to your plot’s appearance (these go outside the aes function). Here are some options:</p>
 <ul>
-<li>See if you can change the thickness of the lines or line type (e.g. dashed line).</li>
-<li>Can you find a way to change the name of the legend? What about its labels?</li>
-<li>Try using a different color palette (see <a href="http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/" class="uri">http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/</a>).</li>
+<li><em>color</em> color of lines/points</li>
+<li><em>fill</em> color within polygons</li>
+<li><em>label</em> if points are a character</li>
+<li><em>linetype</em> type of line</li>
+<li><em>shape</em> style of point</li>
+<li><em>alpha</em> transparency (0-1)</li>
+<li><em>size</em> size of shape</li>
 </ul>
-</blockquote>
+<p>Here are the R shapes with their reference numbers:</p>
+<p><img src="img/shapes.png" /></p>
+<p><br></p>
+<p>Here are the R line types with their reference numbers:</p>
+<p><img src="img/lines.png" /></p>
+<p><br></p>
+<p>With this information, we can improve the appearance of one of our previous figures:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_summary, <span class="kw">aes</span>(<span class="dt">x =</span> georegions, <span class="dt">y =</span> OHI_score_average)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;lightgray&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">data=</span>ohi_data, <span class="kw">aes</span>(<span class="dt">x=</span>georegion_one, <span class="dt">y=</span>OHI_score), <span class="dt">color=</span><span class="st">&quot;red&quot;</span>, <span class="dt">size=</span><span class="dv">3</span>, <span class="dt">alpha=</span><span class="fl">0.3</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_bw</span>()</code></pre>
+<p><img src="data-science-training_files/figure-html/fig_improve-1.png" width="672" /></p>
 </div>
-<div id="bar-charts" class="section level2">
-<h2><span class="header-section-number">5.11</span> Bar charts</h2>
-<p>Next, let’s take a look at a bar chart. Bar charts seem simple, but they are interesting because they reveal something subtle about plots. Consider a basic bar chart, as drawn with <code>geom_bar()</code>. The following chart displays the total number of parks in each state within the Pacific West region.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> visit_<span class="dv">16</span>, <span class="kw">aes</span>(<span class="dt">x =</span> state)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_bar</span>()</code></pre></div>
-<p><img src="data-science-training_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
-<p>On the x-axis, the chart displays <code>state</code>, a variable from <code>visit_16</code>. On the y-axis, it displays count, but count is not a variable in <code>visit_16</code>! Where does count come from? Many graphs, like scatterplots, plot the raw values of your dataset. Other graphs, like bar charts, calculate new values to plot:</p>
-<ul>
-<li><p>bar charts, histograms, and frequency polygons bin your data and then plot bin counts, the number of points that fall in each bin.</p></li>
-<li><p>smoothers fit a model to your data and then plot predictions from the model.</p></li>
-<li><p>boxplots compute a robust summary of the distribution and then display a specially formatted box.</p></li>
-</ul>
-<p>The algorithm used to calculate new values for a graph is called a <strong>stat</strong>, short for statistical transformation.</p>
-<p>You can learn which stat a geom uses by inspecting the default value for the <code>stat</code> argument. For example, <code>?geom_bar</code> shows that the default value for <code>stat</code> is “count”, which means that <code>geom_bar()</code> uses <code>stat_count()</code>. <code>stat_count()</code> is documented on the same page as <code>geom_bar()</code>, and if you scroll down you can find a section called “Computed variables”. That describes how it computes two new variables: <code>count</code> and <code>prop</code>.</p>
-<p>ggplot2 provides over 20 stats for you to use. Each stat is a function, so you can get help in the usual way, e.g. <code>?stat_bin</code>. To see a complete list of stats, try the ggplot2 cheatsheet.</p>
-<div id="position-adjustments" class="section level3">
-<h3><span class="header-section-number">5.11.1</span> Position adjustments</h3>
-<p>There’s one more piece of magic associated with bar charts. You can colour a bar chart using either the <code>color</code> aesthetic, or, more usefully, <code>fill</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> visit_<span class="dv">16</span>, <span class="kw">aes</span>(<span class="dt">x =</span> state, <span class="dt">y =</span> visitors, <span class="dt">fill =</span> park_name)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)</code></pre></div>
-<p><img src="data-science-training_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
-<p>The stacking is performed automatically by the <strong>position adjustment</strong> specified by the <code>position</code> argument. If you don’t want a stacked bar chart, you can use <code>&quot;dodge&quot;</code>.</p>
-<ul>
-<li><code>position = &quot;dodge&quot;</code> places overlapping objects directly <em>beside</em> one another. This makes it easier to compare individual values.</li>
-</ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> visit_<span class="dv">16</span>, <span class="kw">aes</span>(<span class="dt">x =</span> state, <span class="dt">y =</span> visitors, <span class="dt">fill =</span> park_name)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>)</code></pre></div>
-<p><img src="data-science-training_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
-</div>
-<div id="challenge-1" class="section level3">
-<h3><span class="header-section-number">5.11.2</span> Challenge</h3>
-<blockquote>
-<p>With all of this information in hand, please take another five minutes to either improve one of the plots generated in this exercise or create a beautiful graph of your own. Use the RStudio <a href="https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf"><strong><code>ggplot2</code></strong> cheat sheet</a> for inspiration. Remember to use the help documentation (e.g. <code>?geom_bar</code>)</p>
-</blockquote>
-<blockquote>
-<p>Here are some ideas:</p>
-</blockquote>
-<blockquote>
-<ul>
-<li>Flip the x and y axes.</li>
-<li>Change the color palette used</li>
-<li>Use <code>scale_x_discrete</code> to change the x-axis tick labels to the full state names (Arizona, Colorado, etc.)</li>
-<li>Make a bar chart using the Massachussets dataset (<code>mass</code>) and find out how many parks of each type are in the state.</li>
-</ul>
-</blockquote>
-<div id="answers-no-peeking-1" class="section level5">
-<h5><span class="header-section-number">5.11.2.0.1</span> Answers (no peeking!)</h5>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#how many of each types of parks are in Massachusetts?</span>
-<span class="kw">ggplot</span>(<span class="dt">data =</span> mass) <span class="op">+</span><span class="st"> </span>
-<span class="st">      </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> type, <span class="dt">fill =</span> park_name)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;&quot;</span>,
-       <span class="dt">y =</span> <span class="st">&quot;&quot;</span>)<span class="op">+</span>
-<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">size =</span> <span class="dv">7</span>))</code></pre></div>
-<p><img src="data-science-training_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
-</div>
-</div>
-</div>
-<div id="arranging-and-exporting-plots" class="section level2">
-<h2><span class="header-section-number">5.12</span> Arranging and exporting plots</h2>
-<p>After creating your plot, you can save it to a file in your favorite format. The Export tab in the <strong>Plot</strong> pane in RStudio will save your plots at low resolution, which will not be accepted by many journals and will not scale well for posters.</p>
-<p>Instead, use the <code>ggsave()</code> function, which allows you easily change the dimension and resolution of your plot by adjusting the appropriate arguments (<code>width</code>, <code>height</code> and <code>dpi</code>):</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> mass) <span class="op">+</span><span class="st"> </span>
-<span class="st">      </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> type, <span class="dt">fill =</span> park_name)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;&quot;</span>,
-       <span class="dt">y =</span> <span class="st">&quot;&quot;</span>)<span class="op">+</span>
-<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">size =</span> <span class="dv">7</span>))
+<div id="color" class="section level4">
+<h4><span class="header-section-number">5.6.3.4</span> Color</h4>
+<p>One of the more challenging aspects of creating a good plot is selecting colors. We are here to help!</p>
+<p><strong>Hint 1</strong>
+Unless you are doing something very simple (e.g. 1-3 colors), I recommend using established color palettes. There are many color palette packages (here is a good resource: <a href="https://github.com/EmilHvitfeldt/r-color-palettes" class="uri">https://github.com/EmilHvitfeldt/r-color-palettes</a>), but one of the best known is <a href="http://colorbrewer2.org/#type=sequential&amp;scheme=BuGn&amp;n=3">RColorBrewer</a>.</p>
+<p>Here we will explore using the RColorBrewer palettes.</p>
+<p>Install the RColorBrewer and colorspace packages (only needs to be done once). Both RColorBrewer and colorspace have nice palettes and colorspace has additional functions for dealing with color.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;RColorBrewer&quot;</span>)
+<span class="kw">install.packages</span>(<span class="st">&quot;colorspace&quot;</span>)</code></pre>
+<p>Load packages into working space:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;RColorBrewer&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;colorspace&quot;</span>)</code></pre>
+<p>To see the available palettes in RColorBrewer:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">display.brewer.all</span>()</code></pre>
+<p><img src="data-science-training_files/figure-html/colorbrewer2-1.png" width="672" /></p>
+<p>To select a palette:</p>
+<pre class="sourceCode r"><code class="sourceCode r">my_palette &lt;-<span class="st"> </span><span class="kw">brewer.pal</span>(<span class="dt">n=</span><span class="dv">9</span>, <span class="st">&quot;YlOrRd&quot;</span>)</code></pre>
+<p><strong>Hint 2</strong>
+R uses hexidecimal to represent colors. Hexadecimal is a base-16 number system used to describe color. Red, green, and blue are each represented by two characters (#rrggbb). Each character has 16 possible symbols: 0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F</p>
+<p>“00” can be interpreted as 0.0 and “FF” as 1.0, i.e., red= #FF0000 , black=#000000, white = #FFFFFF</p>
+<p>Two additional characters (with the same scale) can be added to the end to describe transparency (#rrggbbaa)</p>
+<p>A color palette is actually just a simple vector of hexidecimal values:</p>
+<pre class="sourceCode r"><code class="sourceCode r">my_palette</code></pre>
+<pre><code>## [1] &quot;#FFFFCC&quot; &quot;#FFEDA0&quot; &quot;#FED976&quot; &quot;#FEB24C&quot; &quot;#FD8D3C&quot; &quot;#FC4E2A&quot; &quot;#E31A1C&quot;
+## [8] &quot;#BD0026&quot; &quot;#800026&quot;</code></pre>
+<p>I always use hexidecimal format for colors in R because it is the most direct approach.
+<br></p>
+<p><strong>Hint 3</strong>
+The function you will want to use to specify color in ggplot2 depends on whether the color is mapped to a discrete/categorical data variable, or a continuous variable. There are a LOT of options in ggplot2, but these are the approaches I have settled on because they are the most flexible:</p>
+<p><img src="img/color_R_ggplot_functions.png" /></p>
+<p><br></p>
+<p>In the following case we map color to a continuous variable, so we will use the scale_color_gradientn function with the palette we selected above:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> OHI_score, <span class="dt">y =</span> OHI_trend, <span class="dt">color =</span> HDI)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size =</span><span class="dv">3</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_colour_gradientn</span>(<span class="dt">colors =</span> my_palette)</code></pre>
+<p><img src="data-science-training_files/figure-html/palette_cont-1.png" width="672" /></p>
+<p><br></p>
+<p>This function takes a vector of colors and interpolates between the colors to get a gradient.</p>
+<p>If we are mapping color to a discrete variable, we will use the scale_color_manual function:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># lets use a discrete color scale</span>
+my_palette &lt;-<span class="st"> </span><span class="kw">brewer.pal</span>(<span class="dt">n=</span><span class="dv">12</span>, <span class="st">&quot;Set3&quot;</span>)
 
-<span class="kw">ggsave</span>(<span class="st">&quot;name_of_file.png&quot;</span>, my_plot, <span class="dt">width =</span> <span class="dv">15</span>, <span class="dt">height =</span> <span class="dv">10</span>)</code></pre></div>
-<p>Note: The parameters <code>width</code> and <code>height</code> also determine the font size in the saved plot.</p>
+<span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> OHI_score, <span class="dt">y =</span> HDI, <span class="dt">color =</span> georegion_one)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">3</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_color_manual</span>(<span class="dt">values =</span> my_palette)</code></pre>
+<p><img src="data-science-training_files/figure-html/palette_discrete-1.png" width="672" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Note the first 7 of the 12 colors are used in the plot</span></code></pre>
+<p>The scale_color_manual function also has a lot of great arguments that allow you to control which colors are associated with each factor level, the names used in the legend, and other controls.</p>
+<p><strong>Hint 4</strong>
+If the “color” functions aren’t working, try the “fill” version of the function.</p>
+<p><br></p>
+<hr />
+<blockquote>
+<p><strong>Challenge</strong></p>
+</blockquote>
+<p>With all of this information in hand, please take a few minutes to create a plot using the fake dataset we will create below (or one of the other datasets we have worked with).</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># making a fake dataframe</span>
+fake_data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">animal =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;cat&quot;</span>, <span class="st">&quot;dog&quot;</span>, <span class="st">&quot;hamster&quot;</span>), <span class="dt">each=</span><span class="dv">10</span>),
+                        <span class="dt">year =</span> <span class="dv">2011</span><span class="op">:</span><span class="dv">2020</span>,
+                        <span class="dt">values =</span> <span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dt">n=</span><span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">1</span>) <span class="op">*</span><span class="st"> </span><span class="kw">seq</span>(<span class="fl">0.1</span>, <span class="fl">0.5</span>, <span class="dt">length.out=</span><span class="dv">10</span>),
+                                   <span class="kw">rnorm</span>(<span class="dt">n=</span><span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">1</span>) <span class="op">*</span><span class="st"> </span><span class="kw">seq</span>(<span class="fl">0.1</span>, <span class="fl">0.5</span>, <span class="dt">length.out=</span><span class="dv">10</span>),
+                                   <span class="kw">rnorm</span>(<span class="dt">n=</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">1</span>) <span class="op">*</span><span class="st"> </span><span class="kw">seq</span>(<span class="fl">0.1</span>, <span class="fl">0.5</span>, <span class="dt">length.out=</span><span class="dv">10</span>)))
+
+<span class="co">## Add your code to create a plot:</span></code></pre>
+<p><strong>Answers (no peeking!)</strong></p>
+<p>Here is one approach, but there is a lot more to do to make this really nice!</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggthemes)
+
+<span class="kw">ggplot</span>(<span class="dt">data =</span> fake_data, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">as.factor</span>(year), <span class="dt">y =</span> values, <span class="dt">group=</span>animal, <span class="dt">color=</span>animal)) <span class="op">+</span><span class="st"> </span>
+<span class="st">      </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">3</span>) <span class="op">+</span>
+<span class="st">      </span><span class="kw">geom_line</span>(<span class="dt">size=</span><span class="dv">2</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">      </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;year&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span>
+<span class="st">      </span><span class="kw">theme_tufte</span>()</code></pre>
+<hr />
+<p><br></p>
 </div>
-<div id="bonus" class="section level2">
-<h2><span class="header-section-number">5.13</span> Bonus</h2>
-<p>So as you can see, <code>ggplot2</code> is a fantastic package for visualizing data. But there are some additional packages that let you make plots interactive. <code>plotly</code>, <code>gganimate</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#install.packages(&quot;plotly&quot;)</span>
-<span class="kw">library</span>(plotly)
+</div>
+</div>
+<div id="saving-plots" class="section level2">
+<h2><span class="header-section-number">5.7</span> Saving plots</h2>
+<p>After creating your plot, use the <code>ggsave()</code> function to save your plot. This function allows you easily change the dimension, resolution, and format of your plot:</p>
+<pre class="sourceCode r"><code class="sourceCode r">my_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> fake_data, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">as.factor</span>(year), <span class="dt">y =</span> values, <span class="dt">group=</span>animal, <span class="dt">color=</span>animal)) <span class="op">+</span><span class="st"> </span>
+<span class="st">      </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">3</span>) <span class="op">+</span>
+<span class="st">      </span><span class="kw">geom_line</span>(<span class="dt">size=</span><span class="dv">2</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">      </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;year&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span>
+<span class="st">      </span><span class="kw">theme_tufte</span>()
 
-<span class="kw">ggplotly</span>(my_plot)</code></pre></div>
-<div id="htmlwidget-512b61cc848a02fae63b" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-512b61cc848a02fae63b">{"x":{"data":[{"orientation":"v","width":0.9,"base":4,"x":[2],"y":[1],"text":"type: National Historical Park<br />park_name: Adams National Historical Park<br />count: 1","type":"bar","marker":{"autocolorscale":false,"color":"rgba(248,118,109,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Adams National Historical Park","legendgroup":"Adams National Historical Park","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":6,"x":[1],"y":[1],"text":"type: National Historic Site<br />park_name: Boston African American National Historic Site<br />count: 1","type":"bar","marker":{"autocolorscale":false,"color":"rgba(225,138,0,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Boston African American National Historic Site","legendgroup":"Boston African American National Historic Site","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":3,"x":[2],"y":[1],"text":"type: National Historical Park<br />park_name: Boston National Historical Park<br />count: 1","type":"bar","marker":{"autocolorscale":false,"color":"rgba(190,156,0,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Boston National Historical Park","legendgroup":"Boston National Historical Park","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[3],"y":[1],"text":"type: National Seashore<br />park_name: Cape Cod National Seashore<br />count: 1","type":"bar","marker":{"autocolorscale":false,"color":"rgba(140,171,0,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Cape Cod National Seashore","legendgroup":"Cape Cod National Seashore","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":5,"x":[1],"y":[1],"text":"type: National Historic Site<br />park_name: Frederick Law Olmsted National Historic Site<br />count: 1","type":"bar","marker":{"autocolorscale":false,"color":"rgba(36,183,0,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Frederick Law Olmsted National Historic Site","legendgroup":"Frederick Law Olmsted National Historic Site","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":4,"x":[1],"y":[1],"text":"type: National Historic Site<br />park_name: John Fitzgerald Kennedy National Historic Site<br />count: 1","type":"bar","marker":{"autocolorscale":false,"color":"rgba(0,190,112,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"John Fitzgerald Kennedy National Historic Site","legendgroup":"John Fitzgerald Kennedy National Historic Site","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":3,"x":[1],"y":[1],"text":"type: National Historic Site<br />park_name: Longfellow House-Washington's Headquarters National Historic Site<br />count: 1","type":"bar","marker":{"autocolorscale":false,"color":"rgba(0,193,171,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Longfellow House-Washington's Headquarters National Historic Site","legendgroup":"Longfellow House-Washington's Headquarters National Historic Site","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":2,"x":[2],"y":[1],"text":"type: National Historical Park<br />park_name: Lowell National Historical Park<br />count: 1","type":"bar","marker":{"autocolorscale":false,"color":"rgba(0,187,218,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Lowell National Historical Park","legendgroup":"Lowell National Historical Park","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":1,"x":[2],"y":[1],"text":"type: National Historical Park<br />park_name: Minute Man National Historical Park<br />count: 1","type":"bar","marker":{"autocolorscale":false,"color":"rgba(0,172,252,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Minute Man National Historical Park","legendgroup":"Minute Man National Historical Park","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[2],"y":[1],"text":"type: National Historical Park<br />park_name: New Bedford Whaling National Historical Park<br />count: 1","type":"bar","marker":{"autocolorscale":false,"color":"rgba(139,147,255,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"New Bedford Whaling National Historical Park","legendgroup":"New Bedford Whaling National Historical Park","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":2,"x":[1],"y":[1],"text":"type: National Historic Site<br />park_name: Salem Maritime National Historic Site<br />count: 1","type":"bar","marker":{"autocolorscale":false,"color":"rgba(213,117,254,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Salem Maritime National Historic Site","legendgroup":"Salem Maritime National Historic Site","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":1,"x":[1],"y":[1],"text":"type: National Historic Site<br />park_name: Saugus Iron Works National Historic Site<br />count: 1","type":"bar","marker":{"autocolorscale":false,"color":"rgba(249,98,221,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Saugus Iron Works National Historic Site","legendgroup":"Saugus Iron Works National Historic Site","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[1],"y":[1],"text":"type: National Historic Site<br />park_name: Springfield Armory National Historic Site<br />count: 1","type":"bar","marker":{"autocolorscale":false,"color":"rgba(255,101,172,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Springfield Armory National Historic Site","legendgroup":"Springfield Armory National Historic Site","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":26.2283105022831,"r":7.30593607305936,"b":72.7007068674813,"l":16.8036529680365},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.4,3.6],"tickmode":"array","ticktext":["National Historic Site","National Historical Park","National Seashore"],"tickvals":[1,2,3],"categoryorder":"array","categoryarray":["National Historic Site","National Historical Park","National Seashore"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":9.29846409298464},"tickangle":-45,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":"","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.35,7.35],"tickmode":"array","ticktext":["0","2","4","6"],"tickvals":[0,2,4,6],"categoryorder":"array","categoryarray":["0","2","4","6"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":"","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895},"y":0.913385826771654},"annotations":[{"text":"park_name","x":1.02,"y":1,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"left","yanchor":"bottom","legendTitle":true}],"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"source":"A","attrs":{"7bf419b4f01":{"x":{},"fill":{},"type":"bar"}},"cur_data":"7bf419b4f01","visdat":{"7bf419b4f01":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":[]}</script>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">acad_vis &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> acadia, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Acadia National Park Visitation&quot;</span>,
-       <span class="dt">y =</span> <span class="st">&quot;Visitation&quot;</span>,
-       <span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">theme_bw</span>()
+<span class="kw">ggsave</span>(<span class="st">&quot;name_of_file.png&quot;</span>, my_plot, <span class="dt">width =</span> <span class="dv">15</span>, <span class="dt">height =</span> <span class="dv">10</span>, <span class="dt">dpi=</span><span class="dv">300</span>)</code></pre>
+<p><br>
+Note: The parameters <code>width</code> and <code>height</code> also determine the font size in the saved plot.</p>
+</div>
+<div id="arranging-plots" class="section level2">
+<h2><span class="header-section-number">5.8</span> Arranging plots</h2>
+<p>I am a huge fan of cowplots for making multiplot figures. Here is a nice <a href="https://cran.r-project.org/web/packages/cowplot/vignettes/introduction.html">introduction</a>.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;cowplot&quot;</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(cowplot)
 
-<span class="kw">ggplotly</span>(acad_vis)</code></pre></div>
-<div id="htmlwidget-57a9a3c1f2d094d2aea5" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-57a9a3c1f2d094d2aea5">{"x":{"data":[{"x":[1919,1920,1921,1922,1923,1924,1925,1926,1927,1928,1929,1930,1931,1932,1933,1934,1935,1936,1937,1938,1939,1940,1941,1942,1943,1944,1945,1946,1947,1948,1949,1950,1951,1952,1953,1954,1955,1956,1957,1958,1959,1960,1961,1962,1963,1964,1965,1966,1967,1968,1969,1970,1971,1972,1973,1974,1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,1987,1988,1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016],"y":[64000,66500,69836,73779,64200,71758,73673,101256,123699,134897,149554,154734,162238,237596,262712,275956,316114,340393,383036,394319,396468,382084,409961,36544,8246,12916,20200,382390,434069,420846,438584,485220,518556,549075,556195,553800,655000,735500,858900,816500,755900,1638200,1574600,1601500,1864800,2011600,1733600,2158400,2102000,2303300,2489800,2776300,2101100,2285881,2394000,2335800,2380500,2353300,2734600,2684933,2787366,2779666,2997972,3572114,4124639,3734763,3745570,3929054,4288154,4502283,5440952,2339591,2475857,2382113,2656034,2710749,2845378,2704831,2760306,2594497,2602227,2469238,2516551,2558572,2431062,2207847,2051484,2083588,2202228,2075857,2227698,2504208,2374645,2431052,2254922,2563129,2811184,3303393],"text":["year: 1919<br />visitors:   64000","year: 1920<br />visitors:   66500","year: 1921<br />visitors:   69836","year: 1922<br />visitors:   73779","year: 1923<br />visitors:   64200","year: 1924<br />visitors:   71758","year: 1925<br />visitors:   73673","year: 1926<br />visitors:  101256","year: 1927<br />visitors:  123699","year: 1928<br />visitors:  134897","year: 1929<br />visitors:  149554","year: 1930<br />visitors:  154734","year: 1931<br />visitors:  162238","year: 1932<br />visitors:  237596","year: 1933<br />visitors:  262712","year: 1934<br />visitors:  275956","year: 1935<br />visitors:  316114","year: 1936<br />visitors:  340393","year: 1937<br />visitors:  383036","year: 1938<br />visitors:  394319","year: 1939<br />visitors:  396468","year: 1940<br />visitors:  382084","year: 1941<br />visitors:  409961","year: 1942<br />visitors:   36544","year: 1943<br />visitors:    8246","year: 1944<br />visitors:   12916","year: 1945<br />visitors:   20200","year: 1946<br />visitors:  382390","year: 1947<br />visitors:  434069","year: 1948<br />visitors:  420846","year: 1949<br />visitors:  438584","year: 1950<br />visitors:  485220","year: 1951<br />visitors:  518556","year: 1952<br />visitors:  549075","year: 1953<br />visitors:  556195","year: 1954<br />visitors:  553800","year: 1955<br />visitors:  655000","year: 1956<br />visitors:  735500","year: 1957<br />visitors:  858900","year: 1958<br />visitors:  816500","year: 1959<br />visitors:  755900","year: 1960<br />visitors: 1638200","year: 1961<br />visitors: 1574600","year: 1962<br />visitors: 1601500","year: 1963<br />visitors: 1864800","year: 1964<br />visitors: 2011600","year: 1965<br />visitors: 1733600","year: 1966<br />visitors: 2158400","year: 1967<br />visitors: 2102000","year: 1968<br />visitors: 2303300","year: 1969<br />visitors: 2489800","year: 1970<br />visitors: 2776300","year: 1971<br />visitors: 2101100","year: 1972<br />visitors: 2285881","year: 1973<br />visitors: 2394000","year: 1974<br />visitors: 2335800","year: 1975<br />visitors: 2380500","year: 1976<br />visitors: 2353300","year: 1977<br />visitors: 2734600","year: 1978<br />visitors: 2684933","year: 1979<br />visitors: 2787366","year: 1980<br />visitors: 2779666","year: 1981<br />visitors: 2997972","year: 1982<br />visitors: 3572114","year: 1983<br />visitors: 4124639","year: 1984<br />visitors: 3734763","year: 1985<br />visitors: 3745570","year: 1986<br />visitors: 3929054","year: 1987<br />visitors: 4288154","year: 1988<br />visitors: 4502283","year: 1989<br />visitors: 5440952","year: 1990<br />visitors: 2339591","year: 1991<br />visitors: 2475857","year: 1992<br />visitors: 2382113","year: 1993<br />visitors: 2656034","year: 1994<br />visitors: 2710749","year: 1995<br />visitors: 2845378","year: 1996<br />visitors: 2704831","year: 1997<br />visitors: 2760306","year: 1998<br />visitors: 2594497","year: 1999<br />visitors: 2602227","year: 2000<br />visitors: 2469238","year: 2001<br />visitors: 2516551","year: 2002<br />visitors: 2558572","year: 2003<br />visitors: 2431062","year: 2004<br />visitors: 2207847","year: 2005<br />visitors: 2051484","year: 2006<br />visitors: 2083588","year: 2007<br />visitors: 2202228","year: 2008<br />visitors: 2075857","year: 2009<br />visitors: 2227698","year: 2010<br />visitors: 2504208","year: 2011<br />visitors: 2374645","year: 2012<br />visitors: 2431052","year: 2013<br />visitors: 2254922","year: 2014<br />visitors: 2563129","year: 2015<br />visitors: 2811184","year: 2016<br />visitors: 3303393"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(0,0,0,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)","dash":"solid"},"frame":null},{"x":[1919,1920.22784810127,1921.45569620253,1922.6835443038,1923.91139240506,1925.13924050633,1926.36708860759,1927.59493670886,1928.82278481013,1930.05063291139,1931.27848101266,1932.50632911392,1933.73417721519,1934.96202531646,1936.18987341772,1937.41772151899,1938.64556962025,1939.87341772152,1941.10126582278,1942.32911392405,1943.55696202532,1944.78481012658,1946.01265822785,1947.24050632911,1948.46835443038,1949.69620253165,1950.92405063291,1952.15189873418,1953.37974683544,1954.60759493671,1955.83544303797,1957.06329113924,1958.29113924051,1959.51898734177,1960.74683544304,1961.9746835443,1963.20253164557,1964.43037974684,1965.6582278481,1966.88607594937,1968.11392405063,1969.3417721519,1970.56962025316,1971.79746835443,1973.0253164557,1974.25316455696,1975.48101265823,1976.70886075949,1977.93670886076,1979.16455696203,1980.39240506329,1981.62025316456,1982.84810126582,1984.07594936709,1985.30379746835,1986.53164556962,1987.75949367089,1988.98734177215,1990.21518987342,1991.44303797468,1992.67088607595,1993.89873417722,1995.12658227848,1996.35443037975,1997.58227848101,1998.81012658228,2000.03797468354,2001.26582278481,2002.49367088608,2003.72151898734,2004.94936708861,2006.17721518987,2007.40506329114,2008.63291139241,2009.86075949367,2011.08860759494,2012.3164556962,2013.54430379747,2014.77215189873,2016],"y":[221684.323858604,190366.537467081,162820.291399671,139051.137823219,119064.628904559,102866.316810536,90461.7537079907,81856.4917637643,77056.0831446979,76066.0800176322,78898.2852466167,85708.8325284809,96527.2797757006,111305.157248147,129993.99520569,152545.323908196,178910.673615546,209041.574587605,242889.557084244,280406.151365335,321509.41126418,365965.026452631,413831.116661587,465222.498244391,520253.987554386,579040.400944915,641696.554769309,708337.265380934,779077.349133121,854031.622379214,936409.562802844,1034264.39689695,1144940.75050314,1265040.72406067,1391166.41800877,1519919.93278666,1647903.36883358,1771718.82658873,1887968.4064914,1993254.20898079,2096444.18853076,2211283.20900885,2334058.19954682,2460927.15478974,2588048.06938278,2711578.937971,2827677.75519953,2932502.51571345,3022211.21415788,3092961.8451779,3141462.59288489,3173287.92391199,3192453.77596741,3200930.69746792,3200689.23683032,3193699.94247139,3181933.36280792,3167360.04625668,3151950.54123447,3137675.39615807,3124967.86574683,3107400.92311685,3084199.69552127,3055588.96511514,3021793.51405349,2983038.12449136,2939547.57858379,2891546.65848582,2839260.14635249,2782912.82433884,2722673.89602728,2658473.38545903,2590211.21105573,2517789.30556495,2441109.60173424,2360074.03231112,2274584.53004315,2184543.02767788,2089851.45796284,1990411.75364557],"text":["year: 1919.000<br />visitors:  221684.32","year: 1920.228<br />visitors:  190366.54","year: 1921.456<br />visitors:  162820.29","year: 1922.684<br />visitors:  139051.14","year: 1923.911<br />visitors:  119064.63","year: 1925.139<br />visitors:  102866.32","year: 1926.367<br />visitors:   90461.75","year: 1927.595<br />visitors:   81856.49","year: 1928.823<br />visitors:   77056.08","year: 1930.051<br />visitors:   76066.08","year: 1931.278<br />visitors:   78898.29","year: 1932.506<br />visitors:   85708.83","year: 1933.734<br />visitors:   96527.28","year: 1934.962<br />visitors:  111305.16","year: 1936.190<br />visitors:  129994.00","year: 1937.418<br />visitors:  152545.32","year: 1938.646<br />visitors:  178910.67","year: 1939.873<br />visitors:  209041.57","year: 1941.101<br />visitors:  242889.56","year: 1942.329<br />visitors:  280406.15","year: 1943.557<br />visitors:  321509.41","year: 1944.785<br />visitors:  365965.03","year: 1946.013<br />visitors:  413831.12","year: 1947.241<br />visitors:  465222.50","year: 1948.468<br />visitors:  520253.99","year: 1949.696<br />visitors:  579040.40","year: 1950.924<br />visitors:  641696.55","year: 1952.152<br />visitors:  708337.27","year: 1953.380<br />visitors:  779077.35","year: 1954.608<br />visitors:  854031.62","year: 1955.835<br />visitors:  936409.56","year: 1957.063<br />visitors: 1034264.40","year: 1958.291<br />visitors: 1144940.75","year: 1959.519<br />visitors: 1265040.72","year: 1960.747<br />visitors: 1391166.42","year: 1961.975<br />visitors: 1519919.93","year: 1963.203<br />visitors: 1647903.37","year: 1964.430<br />visitors: 1771718.83","year: 1965.658<br />visitors: 1887968.41","year: 1966.886<br />visitors: 1993254.21","year: 1968.114<br />visitors: 2096444.19","year: 1969.342<br />visitors: 2211283.21","year: 1970.570<br />visitors: 2334058.20","year: 1971.797<br />visitors: 2460927.15","year: 1973.025<br />visitors: 2588048.07","year: 1974.253<br />visitors: 2711578.94","year: 1975.481<br />visitors: 2827677.76","year: 1976.709<br />visitors: 2932502.52","year: 1977.937<br />visitors: 3022211.21","year: 1979.165<br />visitors: 3092961.85","year: 1980.392<br />visitors: 3141462.59","year: 1981.620<br />visitors: 3173287.92","year: 1982.848<br />visitors: 3192453.78","year: 1984.076<br />visitors: 3200930.70","year: 1985.304<br />visitors: 3200689.24","year: 1986.532<br />visitors: 3193699.94","year: 1987.759<br />visitors: 3181933.36","year: 1988.987<br />visitors: 3167360.05","year: 1990.215<br />visitors: 3151950.54","year: 1991.443<br />visitors: 3137675.40","year: 1992.671<br />visitors: 3124967.87","year: 1993.899<br />visitors: 3107400.92","year: 1995.127<br />visitors: 3084199.70","year: 1996.354<br />visitors: 3055588.97","year: 1997.582<br />visitors: 3021793.51","year: 1998.810<br />visitors: 2983038.12","year: 2000.038<br />visitors: 2939547.58","year: 2001.266<br />visitors: 2891546.66","year: 2002.494<br />visitors: 2839260.15","year: 2003.722<br />visitors: 2782912.82","year: 2004.949<br />visitors: 2722673.90","year: 2006.177<br />visitors: 2658473.39","year: 2007.405<br />visitors: 2590211.21","year: 2008.633<br />visitors: 2517789.31","year: 2009.861<br />visitors: 2441109.60","year: 2011.089<br />visitors: 2360074.03","year: 2012.316<br />visitors: 2274584.53","year: 2013.544<br />visitors: 2184543.03","year: 2014.772<br />visitors: 2089851.46","year: 2016.000<br />visitors: 1990411.75"],"type":"scatter","mode":"lines","name":"fitted values","line":{"width":3.77952755905512,"color":"rgba(255,0,0,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1919,1920.22784810127,1921.45569620253,1922.6835443038,1923.91139240506,1925.13924050633,1926.36708860759,1927.59493670886,1928.82278481013,1930.05063291139,1931.27848101266,1932.50632911392,1933.73417721519,1934.96202531646,1936.18987341772,1937.41772151899,1938.64556962025,1939.87341772152,1941.10126582278,1942.32911392405,1943.55696202532,1944.78481012658,1946.01265822785,1947.24050632911,1948.46835443038,1949.69620253165,1950.92405063291,1952.15189873418,1953.37974683544,1954.60759493671,1955.83544303797,1957.06329113924,1958.29113924051,1959.51898734177,1960.74683544304,1961.9746835443,1963.20253164557,1964.43037974684,1965.6582278481,1966.88607594937,1968.11392405063,1969.3417721519,1970.56962025316,1971.79746835443,1973.0253164557,1974.25316455696,1975.48101265823,1976.70886075949,1977.93670886076,1979.16455696203,1980.39240506329,1981.62025316456,1982.84810126582,1984.07594936709,1985.30379746835,1986.53164556962,1987.75949367089,1988.98734177215,1990.21518987342,1991.44303797468,1992.67088607595,1993.89873417722,1995.12658227848,1996.35443037975,1997.58227848101,1998.81012658228,2000.03797468354,2001.26582278481,2002.49367088608,2003.72151898734,2004.94936708861,2006.17721518987,2007.40506329114,2008.63291139241,2009.86075949367,2011.08860759494,2012.3164556962,2013.54430379747,2014.77215189873,2016,2016,2016,2014.77215189873,2013.54430379747,2012.3164556962,2011.08860759494,2009.86075949367,2008.63291139241,2007.40506329114,2006.17721518987,2004.94936708861,2003.72151898734,2002.49367088608,2001.26582278481,2000.03797468354,1998.81012658228,1997.58227848101,1996.35443037975,1995.12658227848,1993.89873417722,1992.67088607595,1991.44303797468,1990.21518987342,1988.98734177215,1987.75949367089,1986.53164556962,1985.30379746835,1984.07594936709,1982.84810126582,1981.62025316456,1980.39240506329,1979.16455696203,1977.93670886076,1976.70886075949,1975.48101265823,1974.25316455696,1973.0253164557,1971.79746835443,1970.56962025316,1969.3417721519,1968.11392405063,1966.88607594937,1965.6582278481,1964.43037974684,1963.20253164557,1961.9746835443,1960.74683544304,1959.51898734177,1958.29113924051,1957.06329113924,1955.83544303797,1954.60759493671,1953.37974683544,1952.15189873418,1950.92405063291,1949.69620253165,1948.46835443038,1947.24050632911,1946.01265822785,1944.78481012658,1943.55696202532,1942.32911392405,1941.10126582278,1939.87341772152,1938.64556962025,1937.41772151899,1936.18987341772,1934.96202531646,1933.73417721519,1932.50632911392,1931.27848101266,1930.05063291139,1928.82278481013,1927.59493670886,1926.36708860759,1925.13924050633,1923.91139240506,1922.6835443038,1921.45569620253,1920.22784810127,1919,1919],"y":[-133814.853204457,-136274.98875279,-136983.651496373,-136060.283883646,-133630.229882427,-129817.69827688,-124733.708264513,-118458.238640453,-111017.642111397,-102361.48244169,-92338.8021543236,-80533.3158073583,-66609.4000105261,-50305.2707394685,-31362.7636192007,-9541.76509675969,15370.2369096368,43553.6635796221,75156.2487610892,110294.698617404,149114.294970717,192016.750568075,238836.70891984,289242.208458337,342973.860657725,399953.596714468,460343.441098936,524548.799201713,593171.918187826,666930.822537901,749820.53947602,850160.176443077,964086.612412308,1086956.27827897,1214408.1026316,1342596.53572988,1468313.73696853,1588936.52643161,1702227.44419636,1806080.06438135,1910262.48687556,2027891.73692637,2154109.95794122,2283956.20208238,2412695.28912462,2536010.98317241,2650124.10041558,2751776.18789255,2838087.67150524,2906358.24851319,2954361.79304358,2987382.4929667,3008665.30978819,3019577.58379755,3021602.43259988,3016419.81557473,3005953.07302187,2992365.63851494,2978002.26534992,2965280.27986461,2954856.4129989,2939667.6147937,2918711.78451329,2892048.52840923,2859706.42504853,2821681.36566647,2777937.15059618,2728409.9786996,2673017.99801666,2611675.7369379,2544246.33356796,2470399.66020293,2389896.48065152,2302593.84359245,2208425.58664682,2107379.17352413,1999473.10833628,1884739.08478184,1763209.93174297,1634912.5765825,1634912.5765825,2345910.93070863,2416492.98418271,2484346.97057393,2549695.95175001,2612768.89109811,2673793.61682165,2732984.76753746,2790525.94145995,2846547.11071512,2901101.4584866,2954149.91173978,3005502.29468833,3054683.33827205,3101158.00657141,3144394.88331625,3183880.60305844,3219129.40182105,3249687.60652926,3275134.23144001,3295079.31849476,3310070.51245153,3325898.81711903,3342354.45399843,3357913.65259397,3370980.06936805,3379776.04106077,3382283.81113829,3376242.24214663,3359193.35485729,3328563.3927262,3279565.44184262,3206334.75681051,3113228.84353435,3005231.40998347,2887146.89276959,2763400.84964093,2637898.10749711,2514006.44115242,2394674.68109133,2282625.89018597,2180428.35358024,2073709.36878644,1954501.12674586,1827493.00069864,1697243.32984344,1567924.73338595,1443125.16984238,1325794.88859397,1218368.61735083,1122998.58612967,1041132.42222053,964982.780078416,892125.731560155,823049.668439682,758127.205175363,697534.114451047,641202.788030444,588825.524403333,539913.302337186,493904.527557643,450517.604113266,410622.865407399,374529.485595588,342451.110321455,314632.412913153,291350.75403058,272915.585235762,259663.959561927,251950.98086432,250135.372647557,254493.642476955,265129.808400793,282171.222167982,305657.215680495,335550.331897952,371759.487691546,414162.559530084,462624.234295714,517008.063686951,577183.500921666,-133814.853204457],"text":["year: 1919.000<br />visitors:  221684.32","year: 1920.228<br />visitors:  190366.54","year: 1921.456<br />visitors:  162820.29","year: 1922.684<br />visitors:  139051.14","year: 1923.911<br />visitors:  119064.63","year: 1925.139<br />visitors:  102866.32","year: 1926.367<br />visitors:   90461.75","year: 1927.595<br />visitors:   81856.49","year: 1928.823<br />visitors:   77056.08","year: 1930.051<br />visitors:   76066.08","year: 1931.278<br />visitors:   78898.29","year: 1932.506<br />visitors:   85708.83","year: 1933.734<br />visitors:   96527.28","year: 1934.962<br />visitors:  111305.16","year: 1936.190<br />visitors:  129994.00","year: 1937.418<br />visitors:  152545.32","year: 1938.646<br />visitors:  178910.67","year: 1939.873<br />visitors:  209041.57","year: 1941.101<br />visitors:  242889.56","year: 1942.329<br />visitors:  280406.15","year: 1943.557<br />visitors:  321509.41","year: 1944.785<br />visitors:  365965.03","year: 1946.013<br />visitors:  413831.12","year: 1947.241<br />visitors:  465222.50","year: 1948.468<br />visitors:  520253.99","year: 1949.696<br />visitors:  579040.40","year: 1950.924<br />visitors:  641696.55","year: 1952.152<br />visitors:  708337.27","year: 1953.380<br />visitors:  779077.35","year: 1954.608<br />visitors:  854031.62","year: 1955.835<br />visitors:  936409.56","year: 1957.063<br />visitors: 1034264.40","year: 1958.291<br />visitors: 1144940.75","year: 1959.519<br />visitors: 1265040.72","year: 1960.747<br />visitors: 1391166.42","year: 1961.975<br />visitors: 1519919.93","year: 1963.203<br />visitors: 1647903.37","year: 1964.430<br />visitors: 1771718.83","year: 1965.658<br />visitors: 1887968.41","year: 1966.886<br />visitors: 1993254.21","year: 1968.114<br />visitors: 2096444.19","year: 1969.342<br />visitors: 2211283.21","year: 1970.570<br />visitors: 2334058.20","year: 1971.797<br />visitors: 2460927.15","year: 1973.025<br />visitors: 2588048.07","year: 1974.253<br />visitors: 2711578.94","year: 1975.481<br />visitors: 2827677.76","year: 1976.709<br />visitors: 2932502.52","year: 1977.937<br />visitors: 3022211.21","year: 1979.165<br />visitors: 3092961.85","year: 1980.392<br />visitors: 3141462.59","year: 1981.620<br />visitors: 3173287.92","year: 1982.848<br />visitors: 3192453.78","year: 1984.076<br />visitors: 3200930.70","year: 1985.304<br />visitors: 3200689.24","year: 1986.532<br />visitors: 3193699.94","year: 1987.759<br />visitors: 3181933.36","year: 1988.987<br />visitors: 3167360.05","year: 1990.215<br />visitors: 3151950.54","year: 1991.443<br />visitors: 3137675.40","year: 1992.671<br />visitors: 3124967.87","year: 1993.899<br />visitors: 3107400.92","year: 1995.127<br />visitors: 3084199.70","year: 1996.354<br />visitors: 3055588.97","year: 1997.582<br />visitors: 3021793.51","year: 1998.810<br />visitors: 2983038.12","year: 2000.038<br />visitors: 2939547.58","year: 2001.266<br />visitors: 2891546.66","year: 2002.494<br />visitors: 2839260.15","year: 2003.722<br />visitors: 2782912.82","year: 2004.949<br />visitors: 2722673.90","year: 2006.177<br />visitors: 2658473.39","year: 2007.405<br />visitors: 2590211.21","year: 2008.633<br />visitors: 2517789.31","year: 2009.861<br />visitors: 2441109.60","year: 2011.089<br />visitors: 2360074.03","year: 2012.316<br />visitors: 2274584.53","year: 2013.544<br />visitors: 2184543.03","year: 2014.772<br />visitors: 2089851.46","year: 2016.000<br />visitors: 1990411.75","year: 2016.000<br />visitors: 1990411.75","year: 2016.000<br />visitors: 1990411.75","year: 2014.772<br />visitors: 2089851.46","year: 2013.544<br />visitors: 2184543.03","year: 2012.316<br />visitors: 2274584.53","year: 2011.089<br />visitors: 2360074.03","year: 2009.861<br />visitors: 2441109.60","year: 2008.633<br />visitors: 2517789.31","year: 2007.405<br />visitors: 2590211.21","year: 2006.177<br />visitors: 2658473.39","year: 2004.949<br />visitors: 2722673.90","year: 2003.722<br />visitors: 2782912.82","year: 2002.494<br />visitors: 2839260.15","year: 2001.266<br />visitors: 2891546.66","year: 2000.038<br />visitors: 2939547.58","year: 1998.810<br />visitors: 2983038.12","year: 1997.582<br />visitors: 3021793.51","year: 1996.354<br />visitors: 3055588.97","year: 1995.127<br />visitors: 3084199.70","year: 1993.899<br />visitors: 3107400.92","year: 1992.671<br />visitors: 3124967.87","year: 1991.443<br />visitors: 3137675.40","year: 1990.215<br />visitors: 3151950.54","year: 1988.987<br />visitors: 3167360.05","year: 1987.759<br />visitors: 3181933.36","year: 1986.532<br />visitors: 3193699.94","year: 1985.304<br />visitors: 3200689.24","year: 1984.076<br />visitors: 3200930.70","year: 1982.848<br />visitors: 3192453.78","year: 1981.620<br />visitors: 3173287.92","year: 1980.392<br />visitors: 3141462.59","year: 1979.165<br />visitors: 3092961.85","year: 1977.937<br />visitors: 3022211.21","year: 1976.709<br />visitors: 2932502.52","year: 1975.481<br />visitors: 2827677.76","year: 1974.253<br />visitors: 2711578.94","year: 1973.025<br />visitors: 2588048.07","year: 1971.797<br />visitors: 2460927.15","year: 1970.570<br />visitors: 2334058.20","year: 1969.342<br />visitors: 2211283.21","year: 1968.114<br />visitors: 2096444.19","year: 1966.886<br />visitors: 1993254.21","year: 1965.658<br />visitors: 1887968.41","year: 1964.430<br />visitors: 1771718.83","year: 1963.203<br />visitors: 1647903.37","year: 1961.975<br />visitors: 1519919.93","year: 1960.747<br />visitors: 1391166.42","year: 1959.519<br />visitors: 1265040.72","year: 1958.291<br />visitors: 1144940.75","year: 1957.063<br />visitors: 1034264.40","year: 1955.835<br />visitors:  936409.56","year: 1954.608<br />visitors:  854031.62","year: 1953.380<br />visitors:  779077.35","year: 1952.152<br />visitors:  708337.27","year: 1950.924<br />visitors:  641696.55","year: 1949.696<br />visitors:  579040.40","year: 1948.468<br />visitors:  520253.99","year: 1947.241<br />visitors:  465222.50","year: 1946.013<br />visitors:  413831.12","year: 1944.785<br />visitors:  365965.03","year: 1943.557<br />visitors:  321509.41","year: 1942.329<br />visitors:  280406.15","year: 1941.101<br />visitors:  242889.56","year: 1939.873<br />visitors:  209041.57","year: 1938.646<br />visitors:  178910.67","year: 1937.418<br />visitors:  152545.32","year: 1936.190<br />visitors:  129994.00","year: 1934.962<br />visitors:  111305.16","year: 1933.734<br />visitors:   96527.28","year: 1932.506<br />visitors:   85708.83","year: 1931.278<br />visitors:   78898.29","year: 1930.051<br />visitors:   76066.08","year: 1928.823<br />visitors:   77056.08","year: 1927.595<br />visitors:   81856.49","year: 1926.367<br />visitors:   90461.75","year: 1925.139<br />visitors:  102866.32","year: 1923.911<br />visitors:  119064.63","year: 1922.684<br />visitors:  139051.14","year: 1921.456<br />visitors:  162820.29","year: 1920.228<br />visitors:  190366.54","year: 1919.000<br />visitors:  221684.32","year: 1919.000<br />visitors:  221684.32"],"type":"scatter","mode":"lines","line":{"width":3.77952755905512,"color":"rgba(255,0,0,0.4)","dash":"solid"},"fill":"toself","fillcolor":"rgba(153,153,153,0.4)","hoveron":"points","hoverinfo":"x+y","showlegend":false,"xaxis":"x","yaxis":"y","frame":null}],"layout":{"margin":{"t":43.7625570776256,"r":7.30593607305936,"b":40.1826484018265,"l":54.7945205479452},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"title":"Acadia National Park Visitation","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":17.5342465753425},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[1914.15,2020.85],"tickmode":"array","ticktext":["1920","1940","1960","1980","2000","2020"],"tickvals":[1920,1940,1960,1980,2000,2020],"categoryorder":"array","categoryarray":["1920","1940","1960","1980","2000","2020"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":"Year","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-415880.434071192,5719848.78257482],"tickmode":"array","ticktext":["0e+00","2e+06","4e+06"],"tickvals":[0,2000000,4000000],"categoryorder":"array","categoryarray":["0e+00","2e+06","4e+06"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":"Visitation","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(51,51,51,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"source":"A","attrs":{"7bf47e1739ca":{"x":{},"y":{},"type":"scatter"},"7bf426d33d72":{"x":{},"y":{}},"7bf476671b47":{"x":{},"y":{}}},"cur_data":"7bf47e1739ca","visdat":{"7bf47e1739ca":["function (y) ","x"],"7bf426d33d72":["function (y) ","x"],"7bf476671b47":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":[]}</script>
+score_vs_trend &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data=</span>ohi_data, <span class="kw">aes</span>(<span class="dt">x=</span>OHI_score, <span class="dt">y=</span>OHI_trend)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size=</span><span class="dv">3</span>, <span class="dt">alpha=</span><span class="fl">0.4</span>)
+
+score_vs_trend  <span class="co"># notice that the default theme has been changed....I really like this theme!</span></code></pre>
+<p><img src="data-science-training_files/figure-html/cowplot-1.png" width="672" /></p>
+<pre class="sourceCode r"><code class="sourceCode r">score_vs_HDI &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data=</span>ohi_data, <span class="kw">aes</span>(<span class="dt">x=</span>OHI_score, <span class="dt">y=</span>HDI)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size=</span><span class="dv">3</span>, <span class="dt">alpha=</span><span class="fl">0.4</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>()
+
+<span class="kw">plot_grid</span>(score_vs_trend, score_vs_HDI, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>))</code></pre>
+<p><img src="data-science-training_files/figure-html/cowplot-2.png" width="672" /></p>
+</div>
+<div id="interactive-plots" class="section level2">
+<h2><span class="header-section-number">5.9</span> Interactive plots</h2>
+<p>So as you can see, <code>ggplot2</code> is a fantastic package for visualizing data. But there are some additional packages that let you make plots interactive. <code>plotly</code>, <code>gganimate</code>. I use plotly all the time to check my data!</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;plotly&quot;</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(plotly)
+
+score_vs_HDI &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data=</span>ohi_data, <span class="kw">aes</span>(<span class="dt">x=</span>OHI_score, <span class="dt">y=</span>HDI, <span class="dt">text=</span><span class="kw">paste0</span>(<span class="st">&quot;Country: &quot;</span>, country))) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size=</span><span class="dv">3</span>, <span class="dt">alpha=</span><span class="fl">0.4</span>)
+
+<span class="kw">ggplotly</span>(score_vs_HDI)</code></pre>
+<div id="htmlwidget-1bd7f178c80988bc6915" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1bd7f178c80988bc6915">{"x":{"data":[{"x":[91.98,88.08,87.69,87.35,87.32,83.9,83.82,83.2,82.74,82.7,82.3,81.8,81.6,80.67,80.47,80.37,80.36,80.07,79.44,79.07,78.46,78.41,77.9,77.71,77.14,77.11,76.62,76.55,76.4,75.95,75.89,75.77,75.41,75.29,75.26,74.98,74.89,74.68,74.33,74.25,74.23,74.19,73.88,73.69,73.62,73.45,73.01,72.97,72.96,72.95,72.94,72.92,72.52,72.49,72.34,72.21,72.19,72,71.81,71.69,71.64,71.63,71.46,71.43,71.41,71.4,71.38,71.38,71.26,71.11,71.07,70.95,70.93,70.91,70.77,70.73,70.71,70.71,70.7,70.53,70.48,70.48,70.47,70.45,70.4,70.33,70.32,70.3,70.23,70,69.97,69.95,69.67,69.66,68.88,68.83,68.79,68.78,68.76,68.73,68.52,68.45,68.33,68.28,68.26,68.24,68.23,68.05,68,67.89,67.82,67.81,67.68,67.62,67.38,67.23,67.23,66.79,66.77,66.68,66.59,66.5,66.38,66.37,66.12,66.07,65.94,65.8,65.74,65.61,65.35,65.28,65.19,65.17,64.92,64.6,64.36,64.35,64.25,64.05,63.96,63.93,63.76,63.57,63.47,63.42,63.32,63.3,63.26,63.07,63.07,63.07,63.02,62.9,62.78,62.72,62.52,62.51,62.44,62.44,62.28,62.25,61.78,61.77,61.7,61.62,61.33,61.28,61.11,61.02,60.98,60.92,60.71,60.65,60.63,60.62,60.24,60.07,59.83,59.65,59.46,59.05,58.95,58.93,58.47,58.04,58.03,57.57,57.26,57.12,57.09,56.66,55.83,55.3,55.24,54.83,54.48,54.27,54.11,54.05,53.25,53.02,52.41,52.37,51.59,51.47,50.84,50.75,50.59,49.89,49.49,48.88,48.83,48.74,48.48,47.79,46.79,46.31,46.1,43.55,41.83],"y":[null,null,null,null,null,null,null,null,null,null,null,null,0.926,null,null,null,null,0.786,0.856,null,null,0.939,null,0.887,null,null,0.915,0.84,null,0.782,null,0.792,null,0.597,0.725,0.949,null,0.827,0.895,0.901,null,0.925,0.83,0.666,null,null,null,null,null,0.896,0.704,null,0.804,null,null,null,0.91,null,0.924,0.865,null,0.856,0.903,0.701,null,0.78,0.722,null,0.847,0.721,null,0.855,null,0.74,0.736,null,null,null,0.843,null,null,0.739,null,null,0.515,0.796,null,null,0.897,null,null,0.774,0.531,0.8,0.913,null,null,null,0.579,0.638,null,0.866,0.89,0.769,0.923,0.473,0.92,0.92,0.788,0.691,0.625,0.588,0.418,null,null,0.648,null,null,0.781,null,null,0.706,0.827,0.762,0.754,0.452,null,null,0.884,0.647,null,0.789,0.847,null,0.556,0.624,0.765,0.579,0.563,0.788,0.848,null,null,0.689,0.766,0.865,0.775,0.899,0.683,0.482,0.802,0.638,null,0.776,null,null,0.64,0.518,0.738,0.917,0.725,0.64,0.512,0.742,0.682,0.516,0.74,0.555,null,0.795,0.697,0.606,0.794,0.743,0.487,null,0.727,null,0.921,0.735,0.767,0.498,0.925,0.73,0.754,0.574,0.764,0.824,0.856,0.485,0.493,0.767,0.722,0.649,0.795,0.527,0.513,0.807,0.592,0.536,0.533,0.68,0.49,0.745,0.726,0.55,null,0.427,null,0.494,0.592,0.424,0.75,0.763,0.42,0.645,0.414,0.435,0.42,0.716,0.474],"text":["OHI_score: 91.98<br />HDI:    NA<br />Country: South Georgia and the South Sandwich Islands","OHI_score: 88.08<br />HDI:    NA<br />Country: Crozet Islands","OHI_score: 87.69<br />HDI:    NA<br />Country: Howland Island and Baker Island","OHI_score: 87.35<br />HDI:    NA<br />Country: Heard and McDonald Islands","OHI_score: 87.32<br />HDI:    NA<br />Country: Kerguelen Islands","OHI_score: 83.90<br />HDI:    NA<br />Country: Jarvis Island","OHI_score: 83.82<br />HDI:    NA<br />Country: Macquarie Island","OHI_score: 83.20<br />HDI:    NA<br />Country: Northern Saint-Martin","OHI_score: 82.74<br />HDI:    NA<br />Country: Phoenix Islands (Kiribati)","OHI_score: 82.70<br />HDI:    NA<br />Country: Christmas Island","OHI_score: 82.30<br />HDI:    NA<br />Country: Palmyra Atoll","OHI_score: 81.80<br />HDI:    NA<br />Country: New Caledonia","OHI_score: 81.60<br />HDI: 0.926<br />Country: Germany","OHI_score: 80.67<br />HDI:    NA<br />Country: Aruba","OHI_score: 80.47<br />HDI:    NA<br />Country: Cocos Islands","OHI_score: 80.37<br />HDI:    NA<br />Country: Norfolk Island","OHI_score: 80.36<br />HDI:    NA<br />Country: Madeira","OHI_score: 80.07<br />HDI: 0.786<br />Country: Antigua and Barbuda","OHI_score: 79.44<br />HDI: 0.856<br />Country: Malta","OHI_score: 79.07<br />HDI:    NA<br />Country: American Samoa","OHI_score: 78.46<br />HDI:    NA<br />Country: French Polynesia","OHI_score: 78.41<br />HDI: 0.939<br />Country: Australia","OHI_score: 77.90<br />HDI:    NA<br />Country: Pitcairn","OHI_score: 77.71<br />HDI: 0.887<br />Country: Italy","OHI_score: 77.14<br />HDI:    NA<br />Country: Curacao","OHI_score: 77.11<br />HDI:    NA<br />Country: Cayman Islands","OHI_score: 76.62<br />HDI: 0.915<br />Country: New Zealand","OHI_score: 76.55<br />HDI: 0.840<br />Country: United Arab Emirates","OHI_score: 76.40<br />HDI:    NA<br />Country: Azores","OHI_score: 75.95<br />HDI: 0.782<br />Country: Seychelles","OHI_score: 75.89<br />HDI:    NA<br />Country: Wallis and Futuna","OHI_score: 75.77<br />HDI: 0.792<br />Country: Bahamas","OHI_score: 75.41<br />HDI:    NA<br />Country: Tuvalu","OHI_score: 75.29<br />HDI: 0.597<br />Country: Vanuatu","OHI_score: 75.26<br />HDI: 0.725<br />Country: Suriname","OHI_score: 74.98<br />HDI: 0.949<br />Country: Norway","OHI_score: 74.89<br />HDI:    NA<br />Country: Clipperton Island","OHI_score: 74.68<br />HDI: 0.827<br />Country: Croatia","OHI_score: 74.33<br />HDI: 0.895<br />Country: Finland","OHI_score: 74.25<br />HDI: 0.901<br />Country: South Korea","OHI_score: 74.23<br />HDI:    NA<br />Country: Ile Europa","OHI_score: 74.19<br />HDI: 0.925<br />Country: Denmark","OHI_score: 73.88<br />HDI: 0.830<br />Country: Latvia","OHI_score: 73.69<br />HDI: 0.666<br />Country: South Africa","OHI_score: 73.62<br />HDI:    NA<br />Country: Sint Maarten","OHI_score: 73.45<br />HDI:    NA<br />Country: Saba","OHI_score: 73.01<br />HDI:    NA<br />Country: Line Islands (Kiribati)","OHI_score: 72.97<br />HDI:    NA<br />Country: Prince Edward Islands","OHI_score: 72.96<br />HDI:    NA<br />Country: Greenland","OHI_score: 72.95<br />HDI: 0.896<br />Country: Belgium","OHI_score: 72.94<br />HDI: 0.704<br />Country: Samoa","OHI_score: 72.92<br />HDI:    NA<br />Country: Marshall Islands","OHI_score: 72.52<br />HDI: 0.804<br />Country: Russia","OHI_score: 72.49<br />HDI:    NA<br />Country: Northern Mariana Islands and Guam","OHI_score: 72.34<br />HDI:    NA<br />Country: Glorioso Islands","OHI_score: 72.21<br />HDI:    NA<br />Country: Bonaire","OHI_score: 72.19<br />HDI: 0.910<br />Country: United Kingdom","OHI_score: 72.00<br />HDI:    NA<br />Country: Montserrat","OHI_score: 71.81<br />HDI: 0.924<br />Country: Netherlands","OHI_score: 71.69<br />HDI: 0.865<br />Country: Estonia","OHI_score: 71.64<br />HDI:    NA<br />Country: Guadeloupe and Martinique","OHI_score: 71.63<br />HDI: 0.856<br />Country: Qatar","OHI_score: 71.46<br />HDI: 0.903<br />Country: Japan","OHI_score: 71.43<br />HDI: 0.701<br />Country: Maldives","OHI_score: 71.41<br />HDI:    NA<br />Country: Ascension","OHI_score: 71.40<br />HDI: 0.780<br />Country: Trinidad and Tobago","OHI_score: 71.38<br />HDI: 0.722<br />Country: Dominican Republic","OHI_score: 71.38<br />HDI:    NA<br />Country: French Guiana","OHI_score: 71.26<br />HDI: 0.847<br />Country: Chile","OHI_score: 71.11<br />HDI: 0.721<br />Country: Tonga","OHI_score: 71.07<br />HDI:    NA<br />Country: Tokelau","OHI_score: 70.95<br />HDI: 0.855<br />Country: Poland","OHI_score: 70.93<br />HDI:    NA<br />Country: Johnston Atoll","OHI_score: 70.91<br />HDI: 0.740<br />Country: Thailand","OHI_score: 70.77<br />HDI: 0.736<br />Country: Fiji","OHI_score: 70.73<br />HDI:    NA<br />Country: Nauru","OHI_score: 70.71<br />HDI:    NA<br />Country: Wake Island","OHI_score: 70.71<br />HDI:    NA<br />Country: British Indian Ocean Territory","OHI_score: 70.70<br />HDI: 0.843<br />Country: Portugal","OHI_score: 70.53<br />HDI:    NA<br />Country: British Virgin Islands","OHI_score: 70.48<br />HDI:    NA<br />Country: Gibraltar","OHI_score: 70.48<br />HDI: 0.739<br />Country: Ecuador","OHI_score: 70.47<br />HDI:    NA<br />Country: Turks and Caicos Islands","OHI_score: 70.45<br />HDI:    NA<br />Country: Amsterdam Island and Saint Paul Island","OHI_score: 70.40<br />HDI: 0.515<br />Country: Solomon Islands","OHI_score: 70.33<br />HDI: 0.796<br />Country: Oman","OHI_score: 70.32<br />HDI:    NA<br />Country: Tristan da Cunha","OHI_score: 70.30<br />HDI:    NA<br />Country: Puerto Rico and Virgin Islands of the United States","OHI_score: 70.23<br />HDI: 0.897<br />Country: France","OHI_score: 70.00<br />HDI:    NA<br />Country: Sint Eustatius","OHI_score: 69.97<br />HDI:    NA<br />Country: Juan de Nova Island","OHI_score: 69.95<br />HDI: 0.774<br />Country: Iran","OHI_score: 69.67<br />HDI: 0.531<br />Country: Tanzania","OHI_score: 69.66<br />HDI: 0.800<br />Country: Kuwait","OHI_score: 68.88<br />HDI: 0.913<br />Country: Sweden","OHI_score: 68.83<br />HDI:    NA<br />Country: Ile Tromelin","OHI_score: 68.79<br />HDI:    NA<br />Country: Bermuda","OHI_score: 68.78<br />HDI:    NA<br />Country: Anguilla","OHI_score: 68.76<br />HDI: 0.579<br />Country: Bangladesh","OHI_score: 68.73<br />HDI: 0.638<br />Country: Micronesia","OHI_score: 68.52<br />HDI:    NA<br />Country: Saint Pierre and Miquelon","OHI_score: 68.45<br />HDI: 0.866<br />Country: Greece","OHI_score: 68.33<br />HDI: 0.890<br />Country: Slovenia","OHI_score: 68.28<br />HDI: 0.769<br />Country: Georgia","OHI_score: 68.26<br />HDI: 0.923<br />Country: Ireland","OHI_score: 68.24<br />HDI: 0.473<br />Country: Djibouti","OHI_score: 68.23<br />HDI: 0.920<br />Country: Canada","OHI_score: 68.05<br />HDI: 0.920<br />Country: United States","OHI_score: 68.00<br />HDI: 0.788<br />Country: Palau","OHI_score: 67.89<br />HDI: 0.691<br />Country: Egypt","OHI_score: 67.82<br />HDI: 0.625<br />Country: Honduras","OHI_score: 67.81<br />HDI: 0.588<br />Country: Gilbert Islands (Kiribati)","OHI_score: 67.68<br />HDI: 0.418<br />Country: Mozambique","OHI_score: 67.62<br />HDI:    NA<br />Country: Jersey","OHI_score: 67.38<br />HDI:    NA<br />Country: Mayotte","OHI_score: 67.23<br />HDI: 0.648<br />Country: Cape Verde","OHI_score: 67.23<br />HDI:    NA<br />Country: Niue","OHI_score: 66.79<br />HDI:    NA<br />Country: Jan Mayen","OHI_score: 66.77<br />HDI: 0.781<br />Country: Mauritius","OHI_score: 66.68<br />HDI:    NA<br />Country: Taiwan","OHI_score: 66.59<br />HDI:    NA<br />Country: Andaman and Nicobar","OHI_score: 66.50<br />HDI: 0.706<br />Country: Belize","OHI_score: 66.38<br />HDI: 0.827<br />Country: Argentina","OHI_score: 66.37<br />HDI: 0.762<br />Country: Mexico","OHI_score: 66.12<br />HDI: 0.754<br />Country: Brazil","OHI_score: 66.07<br />HDI: 0.452<br />Country: Gambia","OHI_score: 65.94<br />HDI:    NA<br />Country: Bassas da India","OHI_score: 65.80<br />HDI:    NA<br />Country: Canary Islands","OHI_score: 65.74<br />HDI: 0.884<br />Country: Spain","OHI_score: 65.61<br />HDI: 0.647<br />Country: Morocco","OHI_score: 65.35<br />HDI:    NA<br />Country: Cook Islands","OHI_score: 65.28<br />HDI: 0.789<br />Country: Malaysia","OHI_score: 65.19<br />HDI: 0.847<br />Country: Saudi Arabia","OHI_score: 65.17<br />HDI:    NA<br />Country: Falkland Islands","OHI_score: 64.92<br />HDI: 0.556<br />Country: Myanmar","OHI_score: 64.60<br />HDI: 0.624<br />Country: India","OHI_score: 64.36<br />HDI: 0.765<br />Country: Saint Kitts and Nevis","OHI_score: 64.35<br />HDI: 0.579<br />Country: Ghana","OHI_score: 64.25<br />HDI: 0.563<br />Country: Cambodia","OHI_score: 64.05<br />HDI: 0.788<br />Country: Panama","OHI_score: 63.96<br />HDI: 0.848<br />Country: Lithuania","OHI_score: 63.93<br />HDI:    NA<br />Country: Monaco","OHI_score: 63.76<br />HDI:    NA<br />Country: R_union","OHI_score: 63.57<br />HDI: 0.689<br />Country: Indonesia","OHI_score: 63.47<br />HDI: 0.766<br />Country: Sri Lanka","OHI_score: 63.42<br />HDI: 0.865<br />Country: Brunei","OHI_score: 63.32<br />HDI: 0.775<br />Country: Cuba","OHI_score: 63.30<br />HDI: 0.899<br />Country: Israel","OHI_score: 63.26<br />HDI: 0.683<br />Country: Vietnam","OHI_score: 63.07<br />HDI: 0.482<br />Country: Yemen","OHI_score: 63.07<br />HDI: 0.802<br />Country: Romania","OHI_score: 63.07<br />HDI: 0.638<br />Country: Guyana","OHI_score: 63.02<br />HDI:    NA<br />Country: Oecussi Ambeno","OHI_score: 62.90<br />HDI: 0.776<br />Country: Costa Rica","OHI_score: 62.78<br />HDI:    NA<br />Country: Bouvet Island","OHI_score: 62.72<br />HDI:    NA<br />Country: Guernsey","OHI_score: 62.52<br />HDI: 0.640<br />Country: Namibia","OHI_score: 62.51<br />HDI: 0.518<br />Country: Cameroon","OHI_score: 62.44<br />HDI: 0.738<br />Country: China","OHI_score: 62.44<br />HDI: 0.917<br />Country: China","OHI_score: 62.28<br />HDI: 0.725<br />Country: Tunisia","OHI_score: 62.25<br />HDI: 0.640<br />Country: Guatemala","OHI_score: 61.78<br />HDI: 0.512<br />Country: Madagascar","OHI_score: 61.77<br />HDI: 0.742<br />Country: Jordan","OHI_score: 61.70<br />HDI: 0.682<br />Country: Philippines","OHI_score: 61.62<br />HDI: 0.516<br />Country: Papua New Guinea","OHI_score: 61.33<br />HDI: 0.740<br />Country: Peru","OHI_score: 61.28<br />HDI: 0.555<br />Country: Kenya","OHI_score: 61.11<br />HDI:    NA<br />Country: Western Sahara","OHI_score: 61.02<br />HDI: 0.795<br />Country: Uruguay","OHI_score: 60.98<br />HDI: 0.697<br />Country: Gabon","OHI_score: 60.92<br />HDI: 0.606<br />Country: East Timor","OHI_score: 60.71<br />HDI: 0.794<br />Country: Bulgaria","OHI_score: 60.65<br />HDI: 0.743<br />Country: Ukraine","OHI_score: 60.63<br />HDI: 0.487<br />Country: Togo","OHI_score: 60.62<br />HDI:    NA<br />Country: Saint Helena","OHI_score: 60.24<br />HDI: 0.727<br />Country: Colombia","OHI_score: 60.07<br />HDI:    NA<br />Country: Faeroe Islands","OHI_score: 59.83<br />HDI: 0.921<br />Country: Iceland","OHI_score: 59.65<br />HDI: 0.735<br />Country: Saint Lucia","OHI_score: 59.46<br />HDI: 0.767<br />Country: Venezuela","OHI_score: 59.05<br />HDI: 0.498<br />Country: Comoro Islands","OHI_score: 58.95<br />HDI: 0.925<br />Country: Singapore","OHI_score: 58.93<br />HDI: 0.730<br />Country: Jamaica","OHI_score: 58.47<br />HDI: 0.754<br />Country: Grenada","OHI_score: 58.04<br />HDI: 0.574<br />Country: Sao Tome and Principe","OHI_score: 58.03<br />HDI: 0.764<br />Country: Albania","OHI_score: 57.57<br />HDI: 0.824<br />Country: Bahrain","OHI_score: 57.26<br />HDI: 0.856<br />Country: Cyprus","OHI_score: 57.12<br />HDI: 0.485<br />Country: Benin","OHI_score: 57.09<br />HDI: 0.493<br />Country: Haiti","OHI_score: 56.66<br />HDI: 0.767<br />Country: Turkey","OHI_score: 55.83<br />HDI: 0.722<br />Country: Saint Vincent and the Grenadines","OHI_score: 55.30<br />HDI: 0.649<br />Country: Iraq","OHI_score: 55.24<br />HDI: 0.795<br />Country: Barbados","OHI_score: 54.83<br />HDI: 0.527<br />Country: Nigeria","OHI_score: 54.48<br />HDI: 0.513<br />Country: Mauritania","OHI_score: 54.27<br />HDI: 0.807<br />Country: Montenegro","OHI_score: 54.11<br />HDI: 0.592<br />Country: Equatorial Guinea","OHI_score: 54.05<br />HDI: 0.536<br />Country: Syria","OHI_score: 53.25<br />HDI: 0.533<br />Country: Angola","OHI_score: 53.02<br />HDI: 0.680<br />Country: El Salvador","OHI_score: 52.41<br />HDI: 0.490<br />Country: Sudan","OHI_score: 52.37<br />HDI: 0.745<br />Country: Algeria","OHI_score: 51.59<br />HDI: 0.726<br />Country: Dominica","OHI_score: 51.47<br />HDI: 0.550<br />Country: Pakistan","OHI_score: 50.84<br />HDI:    NA<br />Country: North Korea","OHI_score: 50.75<br />HDI: 0.427<br />Country: Liberia","OHI_score: 50.59<br />HDI:    NA<br />Country: Somalia","OHI_score: 49.89<br />HDI: 0.494<br />Country: Senegal","OHI_score: 49.49<br />HDI: 0.592<br />Country: Republique du Congo","OHI_score: 48.88<br />HDI: 0.424<br />Country: Guinea Bissau","OHI_score: 48.83<br />HDI: 0.750<br />Country: Bosnia and Herzegovina","OHI_score: 48.74<br />HDI: 0.763<br />Country: Lebanon","OHI_score: 48.48<br />HDI: 0.420<br />Country: Eritrea","OHI_score: 47.79<br />HDI: 0.645<br />Country: Nicaragua","OHI_score: 46.79<br />HDI: 0.414<br />Country: Guinea","OHI_score: 46.31<br />HDI: 0.435<br />Country: Democratic Republic of the Congo","OHI_score: 46.10<br />HDI: 0.420<br />Country: Sierra Leone","OHI_score: 43.55<br />HDI: 0.716<br />Country: Libya","OHI_score: 41.83<br />HDI: 0.474<br />Country: Ivory Coast"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,0,0,1)","opacity":0.4,"size":11.3385826771654,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":29.0178497301785,"r":9.29846409298464,"b":52.2015774180158,"l":56.4509755085098},"font":{"color":"rgba(0,0,0,1)","family":"","size":18.5969281859693},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[39.3225,94.4875],"tickmode":"array","ticktext":["40","50","60","70","80","90"],"tickvals":[40,50,60,70,80,90],"categoryorder":"array","categoryarray":["40","50","60","70","80","90"],"nticks":null,"ticks":"outside","tickcolor":"rgba(0,0,0,1)","ticklen":4.64923204649232,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(0,0,0,1)","family":"","size":15.9375674553757},"tickangle":-0,"showline":true,"linecolor":"rgba(0,0,0,1)","linewidth":0.66417600664176,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"OHI_score","font":{"color":"rgba(0,0,0,1)","family":"","size":18.5969281859693}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.38725,0.97575],"tickmode":"array","ticktext":["0.4","0.6","0.8"],"tickvals":[0.4,0.6,0.8],"categoryorder":"array","categoryarray":["0.4","0.6","0.8"],"nticks":null,"ticks":"outside","tickcolor":"rgba(0,0,0,1)","ticklen":4.64923204649232,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(0,0,0,1)","family":"","size":15.9375674553757},"tickangle":-0,"showline":true,"linecolor":"rgba(0,0,0,1)","linewidth":0.66417600664176,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"x","title":{"text":"HDI","font":{"color":"rgba(0,0,0,1)","family":"","size":18.5969281859693}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":15.9375674553757}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"25f84fcf40e5":{"x":{},"y":{},"text":{},"type":"scatter"}},"cur_data":"25f84fcf40e5","visdat":{"25f84fcf40e5":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="save-and-push-to-github" class="section level2">
-<h2><span class="header-section-number">5.14</span> Save and push to GitHub</h2>
+<h2><span class="header-section-number">5.10</span> Save and push to GitHub</h2>
 
 </div>
 </div>
@@ -746,7 +965,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/OHI-Science/data-science-training/edit/master/ggplot2.Rmd",
+"link": "https://github.com/OHI-Science/data-science-training/edit/master/ggplot2_mel.Rmd",
 "text": "Edit"
 },
 "history": {
