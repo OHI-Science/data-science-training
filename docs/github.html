@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 GitHub | Introduction to Open Data Science</title>
   <meta name="description" content="This is official open data science training for the Ocean Health Index." />
-  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 GitHub | Introduction to Open Data Science" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="The Ocean Health Index Team" />
 
 
-<meta name="date" content="2019-06-17" />
+<meta name="date" content="2019-06-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -47,13 +47,6 @@
 
 
 
-<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.0/plotly.js"></script>
-<script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.46.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.46.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -74,7 +67,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(title);
+  { content: attr(data-line-number);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -120,9 +113,9 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="lib\css\bootstrap.min.css" type="text/css" />
-<link rel="stylesheet" href="lib\css\style.css" type="text/css" />
-<link rel="stylesheet" href="lib\css\lesson.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/style.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/lesson.css" type="text/css" />
 </head>
 
 <body>
@@ -161,22 +154,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3.1" data-path="rstudio.html"><a href="rstudio.html#error-messages-are-your-friends"><i class="fa fa-check"></i><b>3.3.1</b> Error messages are your friends</a></li>
 <li class="chapter" data-level="3.3.2" data-path="rstudio.html"><a href="rstudio.html#logical-operators-and-expressions"><i class="fa fa-check"></i><b>3.3.2</b> Logical operators and expressions</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="rstudio.html"><a href="rstudio.html#r-functions-help-pages"><i class="fa fa-check"></i><b>3.4</b> R functions, help pages</a><ul>
-<li class="chapter" data-level="3.4.1" data-path="rstudio.html"><a href="rstudio.html#your-turn"><i class="fa fa-check"></i><b>3.4.1</b> Your turn</a></li>
+<li class="chapter" data-level="3.4" data-path="rstudio.html"><a href="rstudio.html#your-turn"><i class="fa fa-check"></i><b>3.4</b> Your Turn</a></li>
+<li class="chapter" data-level="3.5" data-path="rstudio.html"><a href="rstudio.html#r-functions-help-pages"><i class="fa fa-check"></i><b>3.5</b> R functions, help pages</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="rstudio.html"><a href="rstudio.html#your-turn-1"><i class="fa fa-check"></i><b>3.5.1</b> Your turn</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="rstudio.html"><a href="rstudio.html#packages"><i class="fa fa-check"></i><b>3.5</b> Packages</a></li>
-<li class="chapter" data-level="3.6" data-path="rstudio.html"><a href="rstudio.html#clearing-the-environment"><i class="fa fa-check"></i><b>3.6</b> Clearing the environment</a><ul>
-<li class="chapter" data-level="3.6.1" data-path="rstudio.html"><a href="rstudio.html#your-turn-1"><i class="fa fa-check"></i><b>3.6.1</b> Your turn</a></li>
+<li class="chapter" data-level="3.6" data-path="rstudio.html"><a href="rstudio.html#packages"><i class="fa fa-check"></i><b>3.6</b> Packages</a></li>
+<li class="chapter" data-level="3.7" data-path="rstudio.html"><a href="rstudio.html#clearing-the-environment"><i class="fa fa-check"></i><b>3.7</b> Clearing the environment</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="rstudio.html"><a href="rstudio.html#your-turn-2"><i class="fa fa-check"></i><b>3.7.1</b> Your turn</a></li>
 </ul></li>
-<li class="chapter" data-level="3.7" data-path="rstudio.html"><a href="rstudio.html#rmarkdown"><i class="fa fa-check"></i><b>3.7</b> RMarkdown</a><ul>
-<li class="chapter" data-level="3.7.1" data-path="rstudio.html"><a href="rstudio.html#your-turn-2"><i class="fa fa-check"></i><b>3.7.1</b> Your Turn</a></li>
-<li class="chapter" data-level="3.7.2" data-path="rstudio.html"><a href="rstudio.html#code-chunks"><i class="fa fa-check"></i><b>3.7.2</b> Code chunks</a></li>
-<li class="chapter" data-level="3.7.3" data-path="rstudio.html"><a href="rstudio.html#your-turn-3"><i class="fa fa-check"></i><b>3.7.3</b> Your turn</a></li>
+<li class="chapter" data-level="3.8" data-path="rstudio.html"><a href="rstudio.html#rmarkdown"><i class="fa fa-check"></i><b>3.8</b> RMarkdown</a><ul>
+<li class="chapter" data-level="3.8.1" data-path="rstudio.html"><a href="rstudio.html#your-turn-3"><i class="fa fa-check"></i><b>3.8.1</b> Your Turn</a></li>
+<li class="chapter" data-level="3.8.2" data-path="rstudio.html"><a href="rstudio.html#code-chunks"><i class="fa fa-check"></i><b>3.8.2</b> Code chunks</a></li>
+<li class="chapter" data-level="3.8.3" data-path="rstudio.html"><a href="rstudio.html#your-turn-4"><i class="fa fa-check"></i><b>3.8.3</b> Your turn</a></li>
 </ul></li>
-<li class="chapter" data-level="3.8" data-path="rstudio.html"><a href="rstudio.html#rmarkdown-video-1-minute"><i class="fa fa-check"></i><b>3.8</b> RMarkdown video (1-minute)</a></li>
-<li class="chapter" data-level="3.9" data-path="rstudio.html"><a href="rstudio.html#troubleshooting"><i class="fa fa-check"></i><b>3.9</b> Troubleshooting</a><ul>
-<li class="chapter" data-level="3.9.1" data-path="rstudio.html"><a href="rstudio.html#i-entered-a-command-and-nothings-happening"><i class="fa fa-check"></i><b>3.9.1</b> I entered a command and nothing’s happening</a></li>
-<li class="chapter" data-level="3.9.2" data-path="rstudio.html"><a href="rstudio.html#how-do-i-update-rstudio"><i class="fa fa-check"></i><b>3.9.2</b> How do I update RStudio?</a></li>
+<li class="chapter" data-level="3.9" data-path="rstudio.html"><a href="rstudio.html#rmarkdown-video-1-minute"><i class="fa fa-check"></i><b>3.9</b> RMarkdown video (1-minute)</a></li>
+<li class="chapter" data-level="3.10" data-path="rstudio.html"><a href="rstudio.html#troubleshooting"><i class="fa fa-check"></i><b>3.10</b> Troubleshooting</a><ul>
+<li class="chapter" data-level="3.10.1" data-path="rstudio.html"><a href="rstudio.html#i-entered-a-command-and-nothings-happening"><i class="fa fa-check"></i><b>3.10.1</b> I entered a command and nothing’s happening</a></li>
+<li class="chapter" data-level="3.10.2" data-path="rstudio.html"><a href="rstudio.html#how-do-i-update-rstudio"><i class="fa fa-check"></i><b>3.10.2</b> How do I update RStudio?</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>4</b> GitHub</a><ul>
@@ -229,7 +223,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="dplyr.html"><a href="dplyr.html#dplyr-basics"><i class="fa fa-check"></i><b>6.4</b> <code>dplyr</code> basics</a></li>
 <li class="chapter" data-level="6.5" data-path="dplyr.html"><a href="dplyr.html#filter-subsets-data-row-wise-observations."><i class="fa fa-check"></i><b>6.5</b> <code>filter()</code> subsets data row-wise (observations).</a></li>
-<li class="chapter" data-level="6.6" data-path="dplyr.html"><a href="dplyr.html#your-turn-4"><i class="fa fa-check"></i><b>6.6</b> Your turn</a><ul>
+<li class="chapter" data-level="6.6" data-path="dplyr.html"><a href="dplyr.html#your-turn-5"><i class="fa fa-check"></i><b>6.6</b> Your turn</a><ul>
 <li class="chapter" data-level="6.6.1" data-path="dplyr.html"><a href="dplyr.html#answer"><i class="fa fa-check"></i><b>6.6.1</b> Answer</a></li>
 </ul></li>
 <li class="chapter" data-level="6.7" data-path="dplyr.html"><a href="dplyr.html#select-subsets-data-column-wise-variables"><i class="fa fa-check"></i><b>6.7</b> <code>select()</code> subsets data column-wise (variables)</a></li>
@@ -238,22 +232,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.9.1" data-path="dplyr.html"><a href="dplyr.html#revel-in-the-convenience"><i class="fa fa-check"></i><b>6.9.1</b> Revel in the convenience</a></li>
 </ul></li>
 <li class="chapter" data-level="6.10" data-path="dplyr.html"><a href="dplyr.html#mutate-adds-new-variables"><i class="fa fa-check"></i><b>6.10</b> <code>mutate()</code> adds new variables</a><ul>
-<li class="chapter" data-level="6.10.1" data-path="dplyr.html"><a href="dplyr.html#your-turn-5"><i class="fa fa-check"></i><b>6.10.1</b> Your turn</a></li>
+<li class="chapter" data-level="6.10.1" data-path="dplyr.html"><a href="dplyr.html#your-turn-6"><i class="fa fa-check"></i><b>6.10.1</b> Your turn</a></li>
 </ul></li>
 <li class="chapter" data-level="6.11" data-path="dplyr.html"><a href="dplyr.html#group_by-operates-on-groups"><i class="fa fa-check"></i><b>6.11</b> <code>group_by()</code> operates on groups</a><ul>
 <li class="chapter" data-level="6.11.1" data-path="dplyr.html"><a href="dplyr.html#summarize-with-group_by"><i class="fa fa-check"></i><b>6.11.1</b> <code>summarize()</code> with <code>group_by()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="6.12" data-path="dplyr.html"><a href="dplyr.html#arrange-orders-columns"><i class="fa fa-check"></i><b>6.12</b> <code>arrange()</code> orders columns</a><ul>
-<li class="chapter" data-level="6.12.1" data-path="dplyr.html"><a href="dplyr.html#your-turn-6"><i class="fa fa-check"></i><b>6.12.1</b> Your turn</a></li>
+<li class="chapter" data-level="6.12.1" data-path="dplyr.html"><a href="dplyr.html#your-turn-7"><i class="fa fa-check"></i><b>6.12.1</b> Your turn</a></li>
 </ul></li>
 <li class="chapter" data-level="6.13" data-path="dplyr.html"><a href="dplyr.html#all-together-now"><i class="fa fa-check"></i><b>6.13</b> All together now</a><ul>
 <li class="chapter" data-level="6.13.1" data-path="dplyr.html"><a href="dplyr.html#compare-to-base-r"><i class="fa fa-check"></i><b>6.13.1</b> Compare to base R</a></li>
-<li class="chapter" data-level="6.13.2" data-path="dplyr.html"><a href="dplyr.html#your-turn-7"><i class="fa fa-check"></i><b>6.13.2</b> Your Turn</a></li>
+<li class="chapter" data-level="6.13.2" data-path="dplyr.html"><a href="dplyr.html#your-turn-8"><i class="fa fa-check"></i><b>6.13.2</b> Your Turn</a></li>
 </ul></li>
 <li class="chapter" data-level="6.14" data-path="dplyr.html"><a href="dplyr.html#joining-datasets"><i class="fa fa-check"></i><b>6.14</b> Joining datasets</a></li>
 <li class="chapter" data-level="6.15" data-path="dplyr.html"><a href="dplyr.html#key-points"><i class="fa fa-check"></i><b>6.15</b> Key Points</a></li>
 <li class="chapter" data-level="6.16" data-path="dplyr.html"><a href="dplyr.html#troubleshooting."><i class="fa fa-check"></i><b>6.16</b> Troubleshooting.</a><ul>
-<li class="chapter" data-level="6.16.1" data-path="dplyr.html"><a href="dplyr.html#error-unexpected-special-in"><i class="fa fa-check"></i><b>6.16.1</b> Error: unexpected SPECIAL in " %&gt;%"</a></li>
+<li class="chapter" data-level="6.16.1" data-path="dplyr.html"><a href="dplyr.html#error-unexpected-special-in"><i class="fa fa-check"></i><b>6.16.1</b> Error: unexpected SPECIAL in &quot; %&gt;%&quot;</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>7</b> Data Wrangling: <code>tidyr</code></a><ul>
@@ -288,7 +282,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.4.2" data-path="programming.html"><a href="programming.html#for-loop-basic-structure"><i class="fa fa-check"></i><b>8.4.2</b> For loop basic structure</a></li>
 <li class="chapter" data-level="8.4.3" data-path="programming.html"><a href="programming.html#executable-for-loop"><i class="fa fa-check"></i><b>8.4.3</b> Executable for loop!</a></li>
 <li class="chapter" data-level="8.4.4" data-path="programming.html"><a href="programming.html#clean-up-our-repo"><i class="fa fa-check"></i><b>8.4.4</b> Clean up our repo</a></li>
-<li class="chapter" data-level="8.4.5" data-path="programming.html"><a href="programming.html#your-turn-8"><i class="fa fa-check"></i><b>8.4.5</b> Your turn</a></li>
+<li class="chapter" data-level="8.4.5" data-path="programming.html"><a href="programming.html#your-turn-9"><i class="fa fa-check"></i><b>8.4.5</b> Your turn</a></li>
 </ul></li>
 <li class="chapter" data-level="8.5" data-path="programming.html"><a href="programming.html#conditional-statements-with-if-and-else"><i class="fa fa-check"></i><b>8.5</b> Conditional statements with <code>if</code> and <code>else</code></a><ul>
 <li class="chapter" data-level="8.5.1" data-path="programming.html"><a href="programming.html#if-statement-basic-structure"><i class="fa fa-check"></i><b>8.5.1</b> if statement basic structure</a></li>
@@ -314,11 +308,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.7" data-path="collaborating.html"><a href="collaborating.html#edit-a-file-and-sync-partner-2"><i class="fa fa-check"></i><b>9.7</b> Edit a file and sync (Partner 2)</a></li>
 <li class="chapter" data-level="9.8" data-path="collaborating.html"><a href="collaborating.html#state-of-the-repository"><i class="fa fa-check"></i><b>9.8</b> State of the Repository</a></li>
 <li class="chapter" data-level="9.9" data-path="collaborating.html"><a href="collaborating.html#merge-conflicts"><i class="fa fa-check"></i><b>9.9</b> Merge conflicts</a><ul>
-<li class="chapter" data-level="9.9.1" data-path="collaborating.html"><a href="collaborating.html#your-turn-9"><i class="fa fa-check"></i><b>9.9.1</b> Your turn</a></li>
+<li class="chapter" data-level="9.9.1" data-path="collaborating.html"><a href="collaborating.html#your-turn-10"><i class="fa fa-check"></i><b>9.9.1</b> Your turn</a></li>
 </ul></li>
 <li class="chapter" data-level="9.10" data-path="collaborating.html"><a href="collaborating.html#how-do-you-avoid-merge-conflicts"><i class="fa fa-check"></i><b>9.10</b> How do you avoid merge conflicts?</a></li>
 <li class="chapter" data-level="9.11" data-path="collaborating.html"><a href="collaborating.html#create-your-collaborative-website"><i class="fa fa-check"></i><b>9.11</b> Create your collaborative website</a></li>
-<li class="chapter" data-level="9.12" data-path="collaborating.html"><a href="collaborating.html#your-turn-10"><i class="fa fa-check"></i><b>9.12</b> Your turn</a></li>
+<li class="chapter" data-level="9.12" data-path="collaborating.html"><a href="collaborating.html#your-turn-11"><i class="fa fa-check"></i><b>9.12</b> Your turn</a></li>
 <li class="chapter" data-level="9.13" data-path="collaborating.html"><a href="collaborating.html#explore-on-github.com"><i class="fa fa-check"></i><b>9.13</b> Explore on GitHub.com</a><ul>
 <li class="chapter" data-level="9.13.1" data-path="collaborating.html"><a href="collaborating.html#commit-history"><i class="fa fa-check"></i><b>9.13.1</b> Commit History</a></li>
 <li class="chapter" data-level="9.13.2" data-path="collaborating.html"><a href="collaborating.html#blame"><i class="fa fa-check"></i><b>9.13.2</b> Blame</a></li>
@@ -327,7 +321,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.14" data-path="collaborating.html"><a href="collaborating.html#nyc-flights-exploration"><i class="fa fa-check"></i><b>9.14</b> NYC flights exploration</a><ul>
 <li class="chapter" data-level="9.14.1" data-path="collaborating.html"><a href="collaborating.html#logical-operators"><i class="fa fa-check"></i><b>9.14.1</b> Logical operators</a></li>
 </ul></li>
-<li class="chapter" data-level="9.15" data-path="collaborating.html"><a href="collaborating.html#your-turn-11"><i class="fa fa-check"></i><b>9.15</b> Your turn</a><ul>
+<li class="chapter" data-level="9.15" data-path="collaborating.html"><a href="collaborating.html#your-turn-12"><i class="fa fa-check"></i><b>9.15</b> Your turn</a><ul>
 <li class="chapter" data-level="9.15.1" data-path="collaborating.html"><a href="collaborating.html#use-logicals"><i class="fa fa-check"></i><b>9.15.1</b> Use logicals</a></li>
 <li class="chapter" data-level="9.15.2" data-path="collaborating.html"><a href="collaborating.html#missing-values"><i class="fa fa-check"></i><b>9.15.2</b> Missing values</a></li>
 </ul></li>
@@ -379,9 +373,6 @@ Philosophy: gh repo and Rproject
 <li><p><strong>Git</strong> is a version control system that lets you track changes to files over time.</p></li>
 <li><p><strong>Github</strong> is a website for storing your git versioned files remotely. It has many nice features to be able visualize differences between <a href="https://help.github.com/articles/rendering-and-diffing-images/">images</a>, <a href="https://help.github.com/articles/mapping-geojson-files-on-github/">rendering</a> &amp; <a href="https://github.com/blog/1772-diffable-more-customizable-maps">diffing</a> map data files, <a href="https://help.github.com/articles/rendering-csv-and-tsv-data/">render text data files</a>, and <a href="https://help.github.com/articles/rendering-differences-in-prose-documents/">track changes in text</a>.</p></li>
 </ul>
-<blockquote>
-<p>NOTE: If you are a student you can get the micro account which includes 5 private repositories for free (normally a $7/month value). You can sign up for the student account <a href="https://education.github.com/pack">here</a>. Instructors can also request a free organization <a href="https://education.github.com/">account, “Request a discount”</a>.</p>
-</blockquote>
 </div>
 <div id="why-should-scientists-use-github" class="section level2">
 <h2><span class="header-section-number">4.3</span> Why should scientists use GitHub?</h2>
@@ -446,6 +437,9 @@ When you open your repository, you only see the most recent version. But, it eas
 <div id="setup-git-github" class="section level3">
 <h3><span class="header-section-number">4.5.2</span> Setup Git &amp; GitHub</h3>
 <p>The GitHub setup is a one-time thing! You will only have to do this once per computer. We’ll walk through this together.</p>
+<blockquote>
+<p>NOTE: If you are a student you can get the micro account which includes 5 private repositories for free (normally a $7/month value). You can sign up for the student account <a href="https://education.github.com/pack">here</a>. Instructors can also request a free organization <a href="https://education.github.com/">account, “Request a discount”</a>.</p>
+</blockquote>
 <ol style="list-style-type: decimal">
 <li><p>Download and install Git (<a href="https://git-scm.com/downloads" class="uri">https://git-scm.com/downloads</a>)</p></li>
 <li><p>Create a <strong>Github</strong> account at <a href="http://github.com" class="uri">http://github.com</a>, if you don’t already have one. For a username, I recommend all lower-case letters, short as you can. I recommend using your <em>.edu email</em>, since you can request free private repositories via <a href="https://education.github.com/">GitHub Education</a> discount.</p></li>
@@ -524,7 +518,7 @@ We’ve also seen the following errors from RStudio:</p>
 <p>Notice how the README.md file we created is automatically displayed at the bottom. The .md means that it is Markdown (remember how .Rmd was RMarkdown?) so the formatting we learned in the last lesson apply here.
 <br />
 <br /></p>
-<p><img src="img/new_repository.png" />
+<p><img src="img/New_repository.png" />
 <br />
 <br /></p>
 <p><strong>From here, you will work locally (on your computer).</strong></p>
