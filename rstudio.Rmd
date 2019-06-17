@@ -17,7 +17,6 @@ In this lesson we will:
 - be introduced to built-in R functions
 - learn to use the help pages
 - explore RMarkdown
-- configure git on our computers
 
 ### Resources
 
@@ -41,9 +40,9 @@ We will be using data and packages that are installed with R (often called "Base
 
 You are all here today to learn how to code. Coding made me a better scientist because I was able to think more clearly about analyses, and become more efficient in doing so. Data scientists are creating tools that make coding more intuitive for new coders like us, and there is a wealth of awesome instruction and resources available to learn more and get help.
 
-Here is an analogy to start us off. **If you were a pilot, R is an an airplane.** You can use R to go places! With practice you'll gain skills and confidence; you can fly further distances and get through tricky situations. You will become an awesome pilot and can fly your plane anywhere. 
+Here is an analogy to start us off. **Think of yourself as a pilot, and R is your airplane.** You can use R to go places! With practice you'll gain skills and confidence; you can fly further distances and get through tricky situations. You will become an awesome pilot and can fly your plane anywhere. 
 
-And **if R were an airplane, RStudio is the airport**. RStudio provides support! Runways, communication, community, and other services, and basically makes your overall life easier. So it's not only the infrastructure (the user interface or IDE), although it is a great way to learn and interact with your variables, files, and interact directly with GitHub. It's also data science philosophy, R packages, community, and more. So although you can fly your plane without an airport and we could learn R without RStudio, that's not what we're going to do. 
+And **if R were an airplane, RStudio is the airport**. RStudio provides support! Runways, communication, community, and other services that makes your life as a pilot much easier. So it's not only the infrastructure (the user interface or IDE), although it is a great way to learn and interact with your variables, files, and interact directly with GitHub. It's also a data science philosophy, R packages, community, and more. So although you can fly your plane without an airport and we could learn R without RStudio, that's not what we're going to do. 
 
 > We are learning R together with RStudio and its many supporting features. 
 
@@ -207,9 +206,24 @@ names <- c("Jamie", "Melanie", "Julie")
 names
 ```
 
-<!---TODO::
-Add more practice
---->
+## Your Turn
+
+> **Exercise**
+> 1. Create a vector that contains the different weights of four fish (you pick the object name!):  
+> - one fish: 12 kg  
+> - two fish: 34 kg  
+> - red fish: 20 kg   
+> - blue fish: 6.6 kg  
+> 2. Convert the vector of kilos to pounds (hint: 1 kg = 2.2 pounds)  
+> 3. Calculate the total weight 
+
+
+```{r}
+fish_weights <- c(12, 34, 20, 6.6)
+fish_weights_lb <- fish_weights * 2.2
+
+sum(fish_weights_lb) #we haven't gone over functions like `sum()` yet but this is covered in the next section
+```
 
 ## R functions, help pages
 
@@ -394,9 +408,9 @@ Learn more: http://rmarkdown.rstudio.com/
 
 ### Your Turn
 
-1. In Markdown write some italic text, make a numbered list, and add a few subheaders.
-Use the Markdown Quick Reference (in the menu bar: Help > Markdown Quick Reference). 
-1. Reknit your html file. 
+> 1. In Markdown write some italic text, make a numbered list, and add a few subheaders.
+ Use the Markdown Quick Reference (in the menu bar: Help > Markdown Quick Reference). 
+ 1. Reknit your html file. 
 
 
 ### Code chunks
@@ -428,7 +442,7 @@ Now, hitting return does not execute this command; remember, it's a text file in
 
 ### Your turn
 
-Add a few more commands to your file from this morning. Execute them by trying the three ways above. Then, save your R Markdown file. 
+> Add a few more commands to your file from this morning. Execute them by trying the three ways above. Then, save your R Markdown file. 
 
 ## RMarkdown video (1-minute)
 
