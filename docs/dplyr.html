@@ -536,7 +536,8 @@ Remember your logical expressions? We’ll use <code>&lt;</code> and <code>==</c
 <div id="your-turn-5" class="section level2">
 <h2><span class="header-section-number">6.6</span> Your turn</h2>
 <blockquote>
-<p>What was the average life expectency in Brazil between 1987 and 2007? Hint: do this in 2 steps by assigning a variable and then using the <code>mean()</code> function.</p>
+<p>What was the average life expectency in Brazil between 1987 and 2007?<br />
+Hint: do this in 2 steps by assigning a variable and then using the <code>mean()</code> function.</p>
 <p>Then, sync to Github.com (pull, stage, commit, push).</p>
 </blockquote>
 <div id="answer" class="section level3">
@@ -573,7 +574,7 @@ gap_cambodia2 &lt;-<span class="st"> </span><span class="kw">select</span>(gap_c
 </div>
 <div id="meet-the-new-pipe-operator" class="section level2">
 <h2><span class="header-section-number">6.9</span> Meet the new pipe <code>%&gt;%</code> operator</h2>
-<p>Before we go any further, we should exploit the new pipe operator that <code>dplyr</code> imports from the <a href="https://github.com/smbache/magrittr"><code>magrittr</code></a> package by Stefan Bache. <strong>This is going to change your life</strong>. You no longer need to enact multi-operation commands by nesting them inside each other. And we won’t need to make temporary variables like we did in the Cambodia example above. This new syntax leads to code that is much easier to write and to read: it actually tells the story of your analysis.</p>
+<p>Before we go any further, we should explore the new pipe operator that <code>dplyr</code> imports from the <a href="https://github.com/smbache/magrittr"><code>magrittr</code></a> package by Stefan Bache. <strong>This is going to change your life</strong>. You no longer need to enact multi-operation commands by nesting them inside each other. And we won’t need to make temporary variables like we did in the Cambodia example above. This new syntax leads to code that is much easier to write and to read: it actually tells the story of your analysis.</p>
 <p>Here’s what it looks like: <code>%&gt;%</code>. The RStudio keyboard shortcut: Ctrl + Shift + M (Windows), Cmd + Shift + M (Mac).</p>
 <p>Let’s demo then I’ll explain:</p>
 <pre class="sourceCode r"><code class="sourceCode r">gapminder <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>()</code></pre>
@@ -699,7 +700,7 @@ Here we go:</p>
 </blockquote>
 <div id="answer-no-peeking" class="section level4">
 <h4><span class="header-section-number">6.12.2.1</span> Answer (no peeking!)</h4>
-<pre class="sourceCode r"><code class="sourceCode r">gapminder <span class="op">%&gt;%</span>
+<pre class="sourceCode r"><code class="sourceCode r">asia_life_exp &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">filter</span>(continent <span class="op">==</span><span class="st"> &#39;Asia&#39;</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">group_by</span>(country) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">filter</span>(lifeExp <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(lifeExp)) <span class="op">%&gt;%</span>
@@ -721,7 +722,7 @@ Here we go:</p>
 gapminder &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder.csv&#39;</span>) 
 
 <span class="co">## summarize</span>
-gap_max_gdp &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span><span class="st"> </span>
+gap_max_life_exp &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(<span class="op">-</span>continent, <span class="op">-</span>lifeExp) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># or select(country, year, pop, gdpPercap)</span>
 <span class="st">  </span>dplyr<span class="op">::</span><span class="kw">group_by</span>(country) <span class="op">%&gt;%</span>
 <span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">gdp =</span> pop <span class="op">*</span><span class="st"> </span>gdpPercap) <span class="op">%&gt;%</span>
@@ -778,7 +779,7 @@ These are all "mutating joins" because they add another column to what had been 
 - `semi_join` keeps only the observations that are in both tables
 - `anti_join` keeps only the observations that are NOT in both tables.
 --->
-<p>Let’s play with <a href="http://edgar.jrc.ec.europa.eu/news_docs/CO2_1970-2014_dataset_of_CO2_report_2015.xls">these</a> CO2 emissions data to illustrate:</p>
+<p>Let’s play with <a href="https://github.com/OHI-Science/data-science-training/blob/master/data/co2.csv">these</a> CO2 emissions data to illustrate:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co">## read in the data. (same URL as yesterday, with co2.csv instead of gapminder.csv)</span>
 co2 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/co2.csv&quot;</span>)
 
