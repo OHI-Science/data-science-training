@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 9 Collaborating with GitHub | Introduction to Open Data Science</title>
   <meta name="description" content="This is official open data science training for the Ocean Health Index." />
-  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 9 Collaborating with GitHub | Introduction to Open Data Science" />
   <meta property="og:type" content="book" />
@@ -47,6 +47,13 @@
 
 
 
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.46.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.46.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -67,7 +74,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -113,9 +120,9 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="lib/css/bootstrap.min.css" type="text/css" />
-<link rel="stylesheet" href="lib/css/style.css" type="text/css" />
-<link rel="stylesheet" href="lib/css/lesson.css" type="text/css" />
+<link rel="stylesheet" href="lib\css\bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="lib\css\style.css" type="text/css" />
+<link rel="stylesheet" href="lib\css\lesson.css" type="text/css" />
 </head>
 
 <body>
@@ -195,17 +202,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.1" data-path="ggplot2.html"><a href="ggplot2.html#why-ggplot2"><i class="fa fa-check"></i><b>5.1</b> Why ggplot2?</a></li>
 <li class="chapter" data-level="5.2" data-path="ggplot2.html"><a href="ggplot2.html#additional-resources-for-data-visualization-in-r"><i class="fa fa-check"></i><b>5.2</b> Additional resources for data visualization in R</a></li>
 <li class="chapter" data-level="5.3" data-path="ggplot2.html"><a href="ggplot2.html#objectives-2"><i class="fa fa-check"></i><b>5.3</b> Objectives</a></li>
-<li class="chapter" data-level="5.4" data-path="ggplot2.html"><a href="ggplot2.html#install-and-load-tidyverse"><i class="fa fa-check"></i><b>5.4</b> Install and load: <code>tidyverse</code></a></li>
-<li class="chapter" data-level="5.5" data-path="ggplot2.html"><a href="ggplot2.html#load-and-explore-data"><i class="fa fa-check"></i><b>5.5</b> Load and explore data</a></li>
-<li class="chapter" data-level="5.6" data-path="ggplot2.html"><a href="ggplot2.html#plotting-with-ggplot2"><i class="fa fa-check"></i><b>5.6</b> Plotting with <strong><code>ggplot2</code></strong></a><ul>
-<li class="chapter" data-level="5.6.1" data-path="ggplot2.html"><a href="ggplot2.html#step-1-identify-the-dataframe"><i class="fa fa-check"></i><b>5.6.1</b> Step 1: Identify the dataframe</a></li>
-<li class="chapter" data-level="5.6.2" data-path="ggplot2.html"><a href="ggplot2.html#step-2-identify-the-style-of-plot-you-want-to-create-i.e.-the-geom"><i class="fa fa-check"></i><b>5.6.2</b> Step 2: Identify the style of plot you want to create (i.e., the geom)</a></li>
-<li class="chapter" data-level="5.6.3" data-path="ggplot2.html"><a href="ggplot2.html#step-3-customize-your-plot"><i class="fa fa-check"></i><b>5.6.3</b> Step 3: Customize your plot</a></li>
+<li class="chapter" data-level="5.4" data-path="ggplot2.html"><a href="ggplot2.html#install-tidyverse-tidyverse"><i class="fa fa-check"></i><b>5.4</b> Install tidyverse: <code>tidyverse</code></a></li>
+<li class="chapter" data-level="5.5" data-path="ggplot2.html"><a href="ggplot2.html#create-an-rmarkdown-file-to-work-from"><i class="fa fa-check"></i><b>5.5</b> Create an RMarkdown file to work from</a></li>
+<li class="chapter" data-level="5.6" data-path="ggplot2.html"><a href="ggplot2.html#load-the-tidverse"><i class="fa fa-check"></i><b>5.6</b> Load the tidverse</a></li>
+<li class="chapter" data-level="5.7" data-path="ggplot2.html"><a href="ggplot2.html#load-and-explore-data"><i class="fa fa-check"></i><b>5.7</b> Load and explore data</a></li>
+<li class="chapter" data-level="5.8" data-path="ggplot2.html"><a href="ggplot2.html#plotting-with-ggplot2"><i class="fa fa-check"></i><b>5.8</b> Plotting with <strong><code>ggplot2</code></strong></a><ul>
+<li class="chapter" data-level="5.8.1" data-path="ggplot2.html"><a href="ggplot2.html#step-1-identify-the-dataframe"><i class="fa fa-check"></i><b>5.8.1</b> Step 1: Identify the dataframe</a></li>
+<li class="chapter" data-level="5.8.2" data-path="ggplot2.html"><a href="ggplot2.html#step-2-identify-the-style-of-plot-you-want-to-create-i.e.-the-geom"><i class="fa fa-check"></i><b>5.8.2</b> Step 2: Identify the style of plot you want to create (i.e., the geom)</a></li>
+<li class="chapter" data-level="5.8.3" data-path="ggplot2.html"><a href="ggplot2.html#step-3-customize-your-plot"><i class="fa fa-check"></i><b>5.8.3</b> Step 3: Customize your plot</a></li>
 </ul></li>
-<li class="chapter" data-level="5.7" data-path="ggplot2.html"><a href="ggplot2.html#saving-plots"><i class="fa fa-check"></i><b>5.7</b> Saving plots</a></li>
-<li class="chapter" data-level="5.8" data-path="ggplot2.html"><a href="ggplot2.html#arranging-plots"><i class="fa fa-check"></i><b>5.8</b> Arranging plots</a></li>
-<li class="chapter" data-level="5.9" data-path="ggplot2.html"><a href="ggplot2.html#interactive-plots"><i class="fa fa-check"></i><b>5.9</b> Interactive plots</a></li>
-<li class="chapter" data-level="5.10" data-path="ggplot2.html"><a href="ggplot2.html#save-and-push-to-github"><i class="fa fa-check"></i><b>5.10</b> Save and push to GitHub</a></li>
+<li class="chapter" data-level="5.9" data-path="ggplot2.html"><a href="ggplot2.html#saving-plots"><i class="fa fa-check"></i><b>5.9</b> Saving plots</a></li>
+<li class="chapter" data-level="5.10" data-path="ggplot2.html"><a href="ggplot2.html#arranging-plots"><i class="fa fa-check"></i><b>5.10</b> Arranging plots</a></li>
+<li class="chapter" data-level="5.11" data-path="ggplot2.html"><a href="ggplot2.html#interactive-plots"><i class="fa fa-check"></i><b>5.11</b> Interactive plots</a></li>
+<li class="chapter" data-level="5.12" data-path="ggplot2.html"><a href="ggplot2.html#save-and-push-to-github"><i class="fa fa-check"></i><b>5.12</b> Save and push to GitHub</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>6</b> Data Wrangling: <code>dplyr</code></a><ul>
 <li class="chapter" data-level="6.1" data-path="dplyr.html"><a href="dplyr.html#objectives-resources-1"><i class="fa fa-check"></i><b>6.1</b> Objectives &amp; Resources</a><ul>
@@ -239,15 +248,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6.12" data-path="dplyr.html"><a href="dplyr.html#arrange-orders-columns"><i class="fa fa-check"></i><b>6.12</b> <code>arrange()</code> orders columns</a><ul>
 <li class="chapter" data-level="6.12.1" data-path="dplyr.html"><a href="dplyr.html#your-turn-7"><i class="fa fa-check"></i><b>6.12.1</b> Your turn</a></li>
+<li class="chapter" data-level="6.12.2" data-path="dplyr.html"><a href="dplyr.html#your-turn-8"><i class="fa fa-check"></i><b>6.12.2</b> Your turn</a></li>
 </ul></li>
 <li class="chapter" data-level="6.13" data-path="dplyr.html"><a href="dplyr.html#all-together-now"><i class="fa fa-check"></i><b>6.13</b> All together now</a><ul>
 <li class="chapter" data-level="6.13.1" data-path="dplyr.html"><a href="dplyr.html#compare-to-base-r"><i class="fa fa-check"></i><b>6.13.1</b> Compare to base R</a></li>
-<li class="chapter" data-level="6.13.2" data-path="dplyr.html"><a href="dplyr.html#your-turn-8"><i class="fa fa-check"></i><b>6.13.2</b> Your Turn</a></li>
+<li class="chapter" data-level="6.13.2" data-path="dplyr.html"><a href="dplyr.html#your-turn-9"><i class="fa fa-check"></i><b>6.13.2</b> Your Turn</a></li>
 </ul></li>
 <li class="chapter" data-level="6.14" data-path="dplyr.html"><a href="dplyr.html#joining-datasets"><i class="fa fa-check"></i><b>6.14</b> Joining datasets</a></li>
 <li class="chapter" data-level="6.15" data-path="dplyr.html"><a href="dplyr.html#key-points"><i class="fa fa-check"></i><b>6.15</b> Key Points</a></li>
 <li class="chapter" data-level="6.16" data-path="dplyr.html"><a href="dplyr.html#troubleshooting."><i class="fa fa-check"></i><b>6.16</b> Troubleshooting.</a><ul>
-<li class="chapter" data-level="6.16.1" data-path="dplyr.html"><a href="dplyr.html#error-unexpected-special-in"><i class="fa fa-check"></i><b>6.16.1</b> Error: unexpected SPECIAL in &quot; %&gt;%&quot;</a></li>
+<li class="chapter" data-level="6.16.1" data-path="dplyr.html"><a href="dplyr.html#error-unexpected-special-in"><i class="fa fa-check"></i><b>6.16.1</b> Error: unexpected SPECIAL in " %&gt;%"</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>7</b> Data Wrangling: <code>tidyr</code></a><ul>
@@ -282,7 +292,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.4.2" data-path="programming.html"><a href="programming.html#for-loop-basic-structure"><i class="fa fa-check"></i><b>8.4.2</b> For loop basic structure</a></li>
 <li class="chapter" data-level="8.4.3" data-path="programming.html"><a href="programming.html#executable-for-loop"><i class="fa fa-check"></i><b>8.4.3</b> Executable for loop!</a></li>
 <li class="chapter" data-level="8.4.4" data-path="programming.html"><a href="programming.html#clean-up-our-repo"><i class="fa fa-check"></i><b>8.4.4</b> Clean up our repo</a></li>
-<li class="chapter" data-level="8.4.5" data-path="programming.html"><a href="programming.html#your-turn-9"><i class="fa fa-check"></i><b>8.4.5</b> Your turn</a></li>
+<li class="chapter" data-level="8.4.5" data-path="programming.html"><a href="programming.html#your-turn-10"><i class="fa fa-check"></i><b>8.4.5</b> Your turn</a></li>
 </ul></li>
 <li class="chapter" data-level="8.5" data-path="programming.html"><a href="programming.html#conditional-statements-with-if-and-else"><i class="fa fa-check"></i><b>8.5</b> Conditional statements with <code>if</code> and <code>else</code></a><ul>
 <li class="chapter" data-level="8.5.1" data-path="programming.html"><a href="programming.html#if-statement-basic-structure"><i class="fa fa-check"></i><b>8.5.1</b> if statement basic structure</a></li>
@@ -308,11 +318,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.7" data-path="collaborating.html"><a href="collaborating.html#edit-a-file-and-sync-partner-2"><i class="fa fa-check"></i><b>9.7</b> Edit a file and sync (Partner 2)</a></li>
 <li class="chapter" data-level="9.8" data-path="collaborating.html"><a href="collaborating.html#state-of-the-repository"><i class="fa fa-check"></i><b>9.8</b> State of the Repository</a></li>
 <li class="chapter" data-level="9.9" data-path="collaborating.html"><a href="collaborating.html#merge-conflicts"><i class="fa fa-check"></i><b>9.9</b> Merge conflicts</a><ul>
-<li class="chapter" data-level="9.9.1" data-path="collaborating.html"><a href="collaborating.html#your-turn-10"><i class="fa fa-check"></i><b>9.9.1</b> Your turn</a></li>
+<li class="chapter" data-level="9.9.1" data-path="collaborating.html"><a href="collaborating.html#your-turn-11"><i class="fa fa-check"></i><b>9.9.1</b> Your turn</a></li>
 </ul></li>
 <li class="chapter" data-level="9.10" data-path="collaborating.html"><a href="collaborating.html#how-do-you-avoid-merge-conflicts"><i class="fa fa-check"></i><b>9.10</b> How do you avoid merge conflicts?</a></li>
 <li class="chapter" data-level="9.11" data-path="collaborating.html"><a href="collaborating.html#create-your-collaborative-website"><i class="fa fa-check"></i><b>9.11</b> Create your collaborative website</a></li>
-<li class="chapter" data-level="9.12" data-path="collaborating.html"><a href="collaborating.html#your-turn-11"><i class="fa fa-check"></i><b>9.12</b> Your turn</a></li>
+<li class="chapter" data-level="9.12" data-path="collaborating.html"><a href="collaborating.html#your-turn-12"><i class="fa fa-check"></i><b>9.12</b> Your turn</a></li>
 <li class="chapter" data-level="9.13" data-path="collaborating.html"><a href="collaborating.html#explore-on-github.com"><i class="fa fa-check"></i><b>9.13</b> Explore on GitHub.com</a><ul>
 <li class="chapter" data-level="9.13.1" data-path="collaborating.html"><a href="collaborating.html#commit-history"><i class="fa fa-check"></i><b>9.13.1</b> Commit History</a></li>
 <li class="chapter" data-level="9.13.2" data-path="collaborating.html"><a href="collaborating.html#blame"><i class="fa fa-check"></i><b>9.13.2</b> Blame</a></li>
@@ -321,7 +331,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.14" data-path="collaborating.html"><a href="collaborating.html#nyc-flights-exploration"><i class="fa fa-check"></i><b>9.14</b> NYC flights exploration</a><ul>
 <li class="chapter" data-level="9.14.1" data-path="collaborating.html"><a href="collaborating.html#logical-operators"><i class="fa fa-check"></i><b>9.14.1</b> Logical operators</a></li>
 </ul></li>
-<li class="chapter" data-level="9.15" data-path="collaborating.html"><a href="collaborating.html#your-turn-12"><i class="fa fa-check"></i><b>9.15</b> Your turn</a><ul>
+<li class="chapter" data-level="9.15" data-path="collaborating.html"><a href="collaborating.html#your-turn-13"><i class="fa fa-check"></i><b>9.15</b> Your turn</a><ul>
 <li class="chapter" data-level="9.15.1" data-path="collaborating.html"><a href="collaborating.html#use-logicals"><i class="fa fa-check"></i><b>9.15.1</b> Use logicals</a></li>
 <li class="chapter" data-level="9.15.2" data-path="collaborating.html"><a href="collaborating.html#missing-values"><i class="fa fa-check"></i><b>9.15.2</b> Missing values</a></li>
 </ul></li>
@@ -470,7 +480,7 @@ Julie is collaborating on this README.
 <p><br></p>
 <p>Then be sure to stage, and write a commit message. I often write “resolving merge conflict” or something so I know what I was up to. When I stage the file, notice how now my edits look like a simple line replacement (compare with the image above before it was re-staged):</p>
 <p><img src="img/github_mergeconflict4.png" /></p>
-<div id="your-turn-10" class="section level3">
+<div id="your-turn-11" class="section level3">
 <h3><span class="header-section-number">9.9.1</span> Your turn</h3>
 <p>Create a merge conflict with your partner, like we did in the example above. And try other ways to get and solve merge conflicts. For example, when you get the following error message, try both ways (commit or stash. Stash means copy/move it somewhere else, for example, on your Desktop temporarily).</p>
 <p><img src="img/github_mergeconflict.png" /></p>
@@ -503,7 +513,7 @@ Julie is collaborating on this README.
 </ol>
 <p>So cool! On websites, if something is called <code>index.html</code>, that defaults to the home page. So <a href="https://jules32.github.io/collab-research/" class="uri">https://jules32.github.io/collab-research/</a> is the same as <a href="https://jules32.github.io/collab-research/index.html" class="uri">https://jules32.github.io/collab-research/index.html</a>. If you name your RMarkdown file <code>my_research.Rmd</code>, the url will become <a href="https://jules32.github.io/collab-research/my_research.html" class="uri">https://jules32.github.io/collab-research/my_research.html</a>.</p>
 </div>
-<div id="your-turn-11" class="section level2">
+<div id="your-turn-12" class="section level2">
 <h2><span class="header-section-number">9.12</span> Your turn</h2>
 <p>Here is some collaborative analysis you can do on your own. We’ll be playing around with airline flights data, so let’s get setup a bit.</p>
 <ol style="list-style-type: decimal">
@@ -571,7 +581,7 @@ Julie is collaborating on this README.
 ##  8  2013     1     1      557            600        -3      709
 ##  9  2013     1     1      557            600        -3      838
 ## 10  2013     1     1      558            600        -2      753
-## # … with 336,766 more rows, and 12 more variables: sched_arr_time &lt;int&gt;,
+## # ... with 336,766 more rows, and 12 more variables: sched_arr_time &lt;int&gt;,
 ## #   arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;,
 ## #   origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;,
 ## #   minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
@@ -590,7 +600,7 @@ Julie is collaborating on this README.
 ##  8  2013     1     1      557            600        -3      709
 ##  9  2013     1     1      557            600        -3      838
 ## 10  2013     1     1      558            600        -2      753
-## # … with 832 more rows, and 12 more variables: sched_arr_time &lt;int&gt;,
+## # ... with 832 more rows, and 12 more variables: sched_arr_time &lt;int&gt;,
 ## #   arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;,
 ## #   origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;,
 ## #   minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
@@ -619,7 +629,7 @@ Julie is collaborating on this README.
 <p>Whenever you start using complicated, multipart expressions in <code>filter()</code>, consider making them explicit variables instead. That makes it much easier to check your work.</p>
 </div>
 </div>
-<div id="your-turn-12" class="section level2">
+<div id="your-turn-13" class="section level2">
 <h2><span class="header-section-number">9.15</span> Your turn</h2>
 <p>OK: Person 2, sync this to GitHub, and Person 1 will pull so that we all have the most current information.</p>
 <p>With your partner, do the following tasks. Each of you should work on one task at a time. Since we’re working closely on the same document, talk to each other and have one person create a heading and a R chunk, and then sync; the other person can then create a heading and R chunk and sync, and then you can both work safely.</p>

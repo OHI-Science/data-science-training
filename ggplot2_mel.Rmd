@@ -47,7 +47,7 @@ The goal of this tutorial is to introduce you to the basics of ggplot2. I focus 
 - practice the rstudio-github workflow
 
 
-## Install and load: `tidyverse`
+## Install tidyverse: `tidyverse`
 
 We will use the `ggplot2` package, which is bundled with a composite-package called `tidyverse`. Check out [tidyverse.org/](https://www.tidyverse.org) for more information.
 
@@ -60,7 +60,43 @@ install.packages("tidyverse") ## do this once only to install the package on you
 
 You will see some messages describing which packages were installed with `tidyverse`. Messages about name conflicts are also returned. This is not a problem its just an alert that two functions from dplyr will replace functions in the built-in stats package with the same name. 
 
-We have downloaded the tidyverse package but it is not yet loaded in the R workspace.  We will use the `library()` function to load tidyverse: 
+## Create an RMarkdown file to work from
+
+---
+
+**To do:**
+**Create a new R Markdown file**
+
+We will create the RMarkdown file you will be working from.  You can write notes to yourself in Markdown and have a record of all your R code. 
+
+Go to File > New File > R Markdown ... (or click the green plus in the top left corner).
+
+Next, replace all the automatic text with the following: 
+
+
+```
+---
+title: "Graphics with ggplot2"
+author: "Julie"
+date: "11/21/2017"
+output: html_document
+---
+
+# Learning ggplot2
+
+We're learning ggplot2 It's going to be amazing. 
+
+```
+
+Now, let's save the file. I'm going to call my file `ggplot2.Rmd`.  Do a *pull*...then *stage/commit* (to save to git history)...then *push* to sync with GitHub.com.
+
+
+---
+
+
+## Load the tidverse
+
+We have downloaded the tidyverse package but it is not yet loaded in the R workspace.  We will use the `library()` function to load tidyverse.  This will be the first code chunk in your RMarkdown: 
 
 ```{r, messages = FALSE}
 library(tidyverse) ## do this every time you restart R and need it 

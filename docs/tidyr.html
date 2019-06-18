@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 7 Data Wrangling: tidyr | Introduction to Open Data Science</title>
   <meta name="description" content="This is official open data science training for the Ocean Health Index." />
-  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 7 Data Wrangling: tidyr | Introduction to Open Data Science" />
   <meta property="og:type" content="book" />
@@ -47,6 +47,13 @@
 
 
 
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.46.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.46.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -67,7 +74,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -113,9 +120,9 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="lib/css/bootstrap.min.css" type="text/css" />
-<link rel="stylesheet" href="lib/css/style.css" type="text/css" />
-<link rel="stylesheet" href="lib/css/lesson.css" type="text/css" />
+<link rel="stylesheet" href="lib\css\bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="lib\css\style.css" type="text/css" />
+<link rel="stylesheet" href="lib\css\lesson.css" type="text/css" />
 </head>
 
 <body>
@@ -195,17 +202,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.1" data-path="ggplot2.html"><a href="ggplot2.html#why-ggplot2"><i class="fa fa-check"></i><b>5.1</b> Why ggplot2?</a></li>
 <li class="chapter" data-level="5.2" data-path="ggplot2.html"><a href="ggplot2.html#additional-resources-for-data-visualization-in-r"><i class="fa fa-check"></i><b>5.2</b> Additional resources for data visualization in R</a></li>
 <li class="chapter" data-level="5.3" data-path="ggplot2.html"><a href="ggplot2.html#objectives-2"><i class="fa fa-check"></i><b>5.3</b> Objectives</a></li>
-<li class="chapter" data-level="5.4" data-path="ggplot2.html"><a href="ggplot2.html#install-and-load-tidyverse"><i class="fa fa-check"></i><b>5.4</b> Install and load: <code>tidyverse</code></a></li>
-<li class="chapter" data-level="5.5" data-path="ggplot2.html"><a href="ggplot2.html#load-and-explore-data"><i class="fa fa-check"></i><b>5.5</b> Load and explore data</a></li>
-<li class="chapter" data-level="5.6" data-path="ggplot2.html"><a href="ggplot2.html#plotting-with-ggplot2"><i class="fa fa-check"></i><b>5.6</b> Plotting with <strong><code>ggplot2</code></strong></a><ul>
-<li class="chapter" data-level="5.6.1" data-path="ggplot2.html"><a href="ggplot2.html#step-1-identify-the-dataframe"><i class="fa fa-check"></i><b>5.6.1</b> Step 1: Identify the dataframe</a></li>
-<li class="chapter" data-level="5.6.2" data-path="ggplot2.html"><a href="ggplot2.html#step-2-identify-the-style-of-plot-you-want-to-create-i.e.-the-geom"><i class="fa fa-check"></i><b>5.6.2</b> Step 2: Identify the style of plot you want to create (i.e., the geom)</a></li>
-<li class="chapter" data-level="5.6.3" data-path="ggplot2.html"><a href="ggplot2.html#step-3-customize-your-plot"><i class="fa fa-check"></i><b>5.6.3</b> Step 3: Customize your plot</a></li>
+<li class="chapter" data-level="5.4" data-path="ggplot2.html"><a href="ggplot2.html#install-tidyverse-tidyverse"><i class="fa fa-check"></i><b>5.4</b> Install tidyverse: <code>tidyverse</code></a></li>
+<li class="chapter" data-level="5.5" data-path="ggplot2.html"><a href="ggplot2.html#create-an-rmarkdown-file-to-work-from"><i class="fa fa-check"></i><b>5.5</b> Create an RMarkdown file to work from</a></li>
+<li class="chapter" data-level="5.6" data-path="ggplot2.html"><a href="ggplot2.html#load-the-tidverse"><i class="fa fa-check"></i><b>5.6</b> Load the tidverse</a></li>
+<li class="chapter" data-level="5.7" data-path="ggplot2.html"><a href="ggplot2.html#load-and-explore-data"><i class="fa fa-check"></i><b>5.7</b> Load and explore data</a></li>
+<li class="chapter" data-level="5.8" data-path="ggplot2.html"><a href="ggplot2.html#plotting-with-ggplot2"><i class="fa fa-check"></i><b>5.8</b> Plotting with <strong><code>ggplot2</code></strong></a><ul>
+<li class="chapter" data-level="5.8.1" data-path="ggplot2.html"><a href="ggplot2.html#step-1-identify-the-dataframe"><i class="fa fa-check"></i><b>5.8.1</b> Step 1: Identify the dataframe</a></li>
+<li class="chapter" data-level="5.8.2" data-path="ggplot2.html"><a href="ggplot2.html#step-2-identify-the-style-of-plot-you-want-to-create-i.e.-the-geom"><i class="fa fa-check"></i><b>5.8.2</b> Step 2: Identify the style of plot you want to create (i.e., the geom)</a></li>
+<li class="chapter" data-level="5.8.3" data-path="ggplot2.html"><a href="ggplot2.html#step-3-customize-your-plot"><i class="fa fa-check"></i><b>5.8.3</b> Step 3: Customize your plot</a></li>
 </ul></li>
-<li class="chapter" data-level="5.7" data-path="ggplot2.html"><a href="ggplot2.html#saving-plots"><i class="fa fa-check"></i><b>5.7</b> Saving plots</a></li>
-<li class="chapter" data-level="5.8" data-path="ggplot2.html"><a href="ggplot2.html#arranging-plots"><i class="fa fa-check"></i><b>5.8</b> Arranging plots</a></li>
-<li class="chapter" data-level="5.9" data-path="ggplot2.html"><a href="ggplot2.html#interactive-plots"><i class="fa fa-check"></i><b>5.9</b> Interactive plots</a></li>
-<li class="chapter" data-level="5.10" data-path="ggplot2.html"><a href="ggplot2.html#save-and-push-to-github"><i class="fa fa-check"></i><b>5.10</b> Save and push to GitHub</a></li>
+<li class="chapter" data-level="5.9" data-path="ggplot2.html"><a href="ggplot2.html#saving-plots"><i class="fa fa-check"></i><b>5.9</b> Saving plots</a></li>
+<li class="chapter" data-level="5.10" data-path="ggplot2.html"><a href="ggplot2.html#arranging-plots"><i class="fa fa-check"></i><b>5.10</b> Arranging plots</a></li>
+<li class="chapter" data-level="5.11" data-path="ggplot2.html"><a href="ggplot2.html#interactive-plots"><i class="fa fa-check"></i><b>5.11</b> Interactive plots</a></li>
+<li class="chapter" data-level="5.12" data-path="ggplot2.html"><a href="ggplot2.html#save-and-push-to-github"><i class="fa fa-check"></i><b>5.12</b> Save and push to GitHub</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>6</b> Data Wrangling: <code>dplyr</code></a><ul>
 <li class="chapter" data-level="6.1" data-path="dplyr.html"><a href="dplyr.html#objectives-resources-1"><i class="fa fa-check"></i><b>6.1</b> Objectives &amp; Resources</a><ul>
@@ -239,15 +248,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6.12" data-path="dplyr.html"><a href="dplyr.html#arrange-orders-columns"><i class="fa fa-check"></i><b>6.12</b> <code>arrange()</code> orders columns</a><ul>
 <li class="chapter" data-level="6.12.1" data-path="dplyr.html"><a href="dplyr.html#your-turn-7"><i class="fa fa-check"></i><b>6.12.1</b> Your turn</a></li>
+<li class="chapter" data-level="6.12.2" data-path="dplyr.html"><a href="dplyr.html#your-turn-8"><i class="fa fa-check"></i><b>6.12.2</b> Your turn</a></li>
 </ul></li>
 <li class="chapter" data-level="6.13" data-path="dplyr.html"><a href="dplyr.html#all-together-now"><i class="fa fa-check"></i><b>6.13</b> All together now</a><ul>
 <li class="chapter" data-level="6.13.1" data-path="dplyr.html"><a href="dplyr.html#compare-to-base-r"><i class="fa fa-check"></i><b>6.13.1</b> Compare to base R</a></li>
-<li class="chapter" data-level="6.13.2" data-path="dplyr.html"><a href="dplyr.html#your-turn-8"><i class="fa fa-check"></i><b>6.13.2</b> Your Turn</a></li>
+<li class="chapter" data-level="6.13.2" data-path="dplyr.html"><a href="dplyr.html#your-turn-9"><i class="fa fa-check"></i><b>6.13.2</b> Your Turn</a></li>
 </ul></li>
 <li class="chapter" data-level="6.14" data-path="dplyr.html"><a href="dplyr.html#joining-datasets"><i class="fa fa-check"></i><b>6.14</b> Joining datasets</a></li>
 <li class="chapter" data-level="6.15" data-path="dplyr.html"><a href="dplyr.html#key-points"><i class="fa fa-check"></i><b>6.15</b> Key Points</a></li>
 <li class="chapter" data-level="6.16" data-path="dplyr.html"><a href="dplyr.html#troubleshooting."><i class="fa fa-check"></i><b>6.16</b> Troubleshooting.</a><ul>
-<li class="chapter" data-level="6.16.1" data-path="dplyr.html"><a href="dplyr.html#error-unexpected-special-in"><i class="fa fa-check"></i><b>6.16.1</b> Error: unexpected SPECIAL in &quot; %&gt;%&quot;</a></li>
+<li class="chapter" data-level="6.16.1" data-path="dplyr.html"><a href="dplyr.html#error-unexpected-special-in"><i class="fa fa-check"></i><b>6.16.1</b> Error: unexpected SPECIAL in " %&gt;%"</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>7</b> Data Wrangling: <code>tidyr</code></a><ul>
@@ -282,7 +292,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.4.2" data-path="programming.html"><a href="programming.html#for-loop-basic-structure"><i class="fa fa-check"></i><b>8.4.2</b> For loop basic structure</a></li>
 <li class="chapter" data-level="8.4.3" data-path="programming.html"><a href="programming.html#executable-for-loop"><i class="fa fa-check"></i><b>8.4.3</b> Executable for loop!</a></li>
 <li class="chapter" data-level="8.4.4" data-path="programming.html"><a href="programming.html#clean-up-our-repo"><i class="fa fa-check"></i><b>8.4.4</b> Clean up our repo</a></li>
-<li class="chapter" data-level="8.4.5" data-path="programming.html"><a href="programming.html#your-turn-9"><i class="fa fa-check"></i><b>8.4.5</b> Your turn</a></li>
+<li class="chapter" data-level="8.4.5" data-path="programming.html"><a href="programming.html#your-turn-10"><i class="fa fa-check"></i><b>8.4.5</b> Your turn</a></li>
 </ul></li>
 <li class="chapter" data-level="8.5" data-path="programming.html"><a href="programming.html#conditional-statements-with-if-and-else"><i class="fa fa-check"></i><b>8.5</b> Conditional statements with <code>if</code> and <code>else</code></a><ul>
 <li class="chapter" data-level="8.5.1" data-path="programming.html"><a href="programming.html#if-statement-basic-structure"><i class="fa fa-check"></i><b>8.5.1</b> if statement basic structure</a></li>
@@ -308,11 +318,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.7" data-path="collaborating.html"><a href="collaborating.html#edit-a-file-and-sync-partner-2"><i class="fa fa-check"></i><b>9.7</b> Edit a file and sync (Partner 2)</a></li>
 <li class="chapter" data-level="9.8" data-path="collaborating.html"><a href="collaborating.html#state-of-the-repository"><i class="fa fa-check"></i><b>9.8</b> State of the Repository</a></li>
 <li class="chapter" data-level="9.9" data-path="collaborating.html"><a href="collaborating.html#merge-conflicts"><i class="fa fa-check"></i><b>9.9</b> Merge conflicts</a><ul>
-<li class="chapter" data-level="9.9.1" data-path="collaborating.html"><a href="collaborating.html#your-turn-10"><i class="fa fa-check"></i><b>9.9.1</b> Your turn</a></li>
+<li class="chapter" data-level="9.9.1" data-path="collaborating.html"><a href="collaborating.html#your-turn-11"><i class="fa fa-check"></i><b>9.9.1</b> Your turn</a></li>
 </ul></li>
 <li class="chapter" data-level="9.10" data-path="collaborating.html"><a href="collaborating.html#how-do-you-avoid-merge-conflicts"><i class="fa fa-check"></i><b>9.10</b> How do you avoid merge conflicts?</a></li>
 <li class="chapter" data-level="9.11" data-path="collaborating.html"><a href="collaborating.html#create-your-collaborative-website"><i class="fa fa-check"></i><b>9.11</b> Create your collaborative website</a></li>
-<li class="chapter" data-level="9.12" data-path="collaborating.html"><a href="collaborating.html#your-turn-11"><i class="fa fa-check"></i><b>9.12</b> Your turn</a></li>
+<li class="chapter" data-level="9.12" data-path="collaborating.html"><a href="collaborating.html#your-turn-12"><i class="fa fa-check"></i><b>9.12</b> Your turn</a></li>
 <li class="chapter" data-level="9.13" data-path="collaborating.html"><a href="collaborating.html#explore-on-github.com"><i class="fa fa-check"></i><b>9.13</b> Explore on GitHub.com</a><ul>
 <li class="chapter" data-level="9.13.1" data-path="collaborating.html"><a href="collaborating.html#commit-history"><i class="fa fa-check"></i><b>9.13.1</b> Commit History</a></li>
 <li class="chapter" data-level="9.13.2" data-path="collaborating.html"><a href="collaborating.html#blame"><i class="fa fa-check"></i><b>9.13.2</b> Blame</a></li>
@@ -321,7 +331,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.14" data-path="collaborating.html"><a href="collaborating.html#nyc-flights-exploration"><i class="fa fa-check"></i><b>9.14</b> NYC flights exploration</a><ul>
 <li class="chapter" data-level="9.14.1" data-path="collaborating.html"><a href="collaborating.html#logical-operators"><i class="fa fa-check"></i><b>9.14.1</b> Logical operators</a></li>
 </ul></li>
-<li class="chapter" data-level="9.15" data-path="collaborating.html"><a href="collaborating.html#your-turn-12"><i class="fa fa-check"></i><b>9.15</b> Your turn</a><ul>
+<li class="chapter" data-level="9.15" data-path="collaborating.html"><a href="collaborating.html#your-turn-13"><i class="fa fa-check"></i><b>9.15</b> Your turn</a><ul>
 <li class="chapter" data-level="9.15.1" data-path="collaborating.html"><a href="collaborating.html#use-logicals"><i class="fa fa-check"></i><b>9.15.1</b> Use logicals</a></li>
 <li class="chapter" data-level="9.15.2" data-path="collaborating.html"><a href="collaborating.html#missing-values"><i class="fa fa-check"></i><b>9.15.2</b> Missing values</a></li>
 </ul></li>
@@ -385,7 +395,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Why is this important? Well, if your data are formatted in a standard way, you will be able to use analysis tools that operate on that standard way. Your analyses will be streamlined and you won’t have to reinvent the wheel every time you see data in a different.</p>
 <p>Let’s take a look at some examples.</p>
 <p>Data are often entered in a <em>wide</em> format where each row is often a site/subject/patient and you have multiple observation variables containing the same type of data.</p>
-<p>An example of data in a <em>wide</em> format is the <code>AirPassengers</code> dataset which provides information on monthly airline passenger numbers from 1949-1960. You’ll notice that each row is a single year and the columns are each month Jan - Dec.</p>
+<p>An example of data in a <em>wide</em> format is the <code>AirPassengers</code> dataset which provides information on monthly airline passenger numbers from 1949-1960. You’ll notice that each row is a single year and the columns are each month Jan - Dec. </p>
 <pre class="sourceCode r"><code class="sourceCode r">AirPassengers</code></pre>
 <pre><code>##      Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
 ## 1949 112 118 132 129 121 135 148 148 136 119 104 118
@@ -443,7 +453,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="load-tidyverse-which-has-tidyr-inside" class="section level3">
 <h3><span class="header-section-number">7.3.2</span> load <code>tidyverse</code> (which has <code>tidyr</code> inside)</h3>
-<p>First load <code>tidyr</code> in an R chunk. You already have installed the tidyverse, so you should be able to just load it like this (using the comment so you can run <code>install.packages(&quot;tidyverse&quot;)</code> easily if need be):</p>
+<p>First load <code>tidyr</code> in an R chunk. You already have installed the tidyverse, so you should be able to just load it like this (using the comment so you can run <code>install.packages("tidyverse")</code> easily if need be):</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse) <span class="co"># install.packages(&quot;tidyverse&quot;)</span></code></pre>
 </div>
 </div>
@@ -460,7 +470,7 @@ gapminder &lt;-<span class="st"> </span>readr<span class="op">::</span><span cla
 <p>Let’s have a look:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(gap_wide)
 <span class="kw">str</span>(gap_wide)</code></pre>
-<p>While wide format is nice for data entry, it’s not nice for calculations. Some of the columns are a mix of variable (e.g. “gdpPercap”) and data (“1952”). What if you were asked for the mean population after 1990 in Algeria? Possible, but ugly. But we know it doesn’t need to be so ugly. Let’s tidy it back to the format we’ve been using.</p>
+<p>While wide format is nice for data entry, it’s not nice for calculations. Some of the columns are a mix of variable (e.g. “gdpPercap”) and data (“1952”). What if you were asked for the mean population after 1990 in Algeria? Possible, but ugly. But we know it doesn’t need to be so ugly. Let’s tidy it back to the format we’ve been using.</p>
 <blockquote>
 <p>Question: let’s talk this through together. If we’re trying to turn the <code>gap_wide</code> format into <code>gapminder</code> format, what structure does it have that we like? And what do we want to change?</p>
 </blockquote>
@@ -470,7 +480,7 @@ gapminder &lt;-<span class="st"> </span>readr<span class="op">::</span><span cla
 <li>We actually want 3 different columns for variable: <code>gdpPercap</code>, <code>lifeExp</code>, and <code>pop</code>.</li>
 <li>We would like year as a separate column.</li>
 </ul>
-<p>Let’s get it to long format. We’ll have to do this in 2 steps. The first step is to take all of those column names (e.g. <code>lifeExp_1970</code>) and make them a variable in a new column, and transfer the values into another column. Let’s learn by doing:</p>
+<p>Let’s get it to long format. We’ll have to do this in 2 steps. The first step is to take all of those column names (e.g. <code>lifeExp_1970</code>) and make them a variable in a new column, and transfer the values into another column. Let’s learn by doing:</p>
 <p>Let’s have a look at <code>gather()</code>’s help:</p>
 <pre class="sourceCode r"><code class="sourceCode r">?gather</code></pre>
 <blockquote>
