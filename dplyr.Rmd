@@ -266,7 +266,8 @@ filter(gapminder, country == "Mexico", year == 2002)
 
 ## Your turn 
 
-> What was the average life expectency in Brazil between 1987 and 2007? Hint: do this in 2 steps by assigning a variable and then using the `mean()` function.
+> What was the average life expectency in Brazil between 1987 and 2007?   
+> Hint: do this in 2 steps by assigning a variable and then using the `mean()` function.
 >
 > Then, sync to Github.com (pull, stage, commit, push).
 
@@ -322,7 +323,7 @@ Good thing there is an awesome alternative.
 
 ## Meet the new pipe `%>%` operator
 
-Before we go any further, we should exploit the new pipe operator that `dplyr` imports from the [`magrittr`](https://github.com/smbache/magrittr) package by Stefan Bache. **This is going to change your life**. You no longer need to enact multi-operation commands by nesting them inside each other. And we won't need to make temporary variables like we did in the Cambodia example above. This new syntax leads to code that is much easier to write and to read: it actually tells the story of your analysis.
+Before we go any further, we should explore the new pipe operator that `dplyr` imports from the [`magrittr`](https://github.com/smbache/magrittr) package by Stefan Bache. **This is going to change your life**. You no longer need to enact multi-operation commands by nesting them inside each other. And we won't need to make temporary variables like we did in the Cambodia example above. This new syntax leads to code that is much easier to write and to read: it actually tells the story of your analysis.
 
 Here's what it looks like: `%>%`. The RStudio keyboard shortcut: Ctrl + Shift + M (Windows), Cmd + Shift + M (Mac).
 
@@ -496,7 +497,7 @@ gapminder %>%
 
 #### Answer (no peeking!)
 ```{r, eval=FALSE}
-gapminder %>%
+asia_life_exp <- gapminder %>%
   filter(continent == 'Asia') %>%
   group_by(country) %>%
   filter(lifeExp == max(lifeExp)) %>%
@@ -520,7 +521,7 @@ library(tidyverse) ## install.packages('tidyverse')
 gapminder <- readr::read_csv('https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder.csv') 
 
 ## summarize
-gap_max_gdp <- gapminder %>% 
+gap_max_life_exp <- gapminder %>% 
   dplyr::select(-continent, -lifeExp) %>% # or select(country, year, pop, gdpPercap)
   dplyr::group_by(country) %>%
   dplyr::mutate(gdp = pop * gdpPercap) %>%
@@ -594,7 +595,7 @@ These are all "mutating joins" because they add another column to what had been 
 - `anti_join` keeps only the observations that are NOT in both tables.
 --->
 
-Let's play with [these](http://edgar.jrc.ec.europa.eu/news_docs/CO2_1970-2014_dataset_of_CO2_report_2015.xls) CO2 emissions data to illustrate:
+Let's play with [these](https://github.com/OHI-Science/data-science-training/blob/master/data/co2.csv) CO2 emissions data to illustrate:
 
 ```{r, eval=FALSE}
 
