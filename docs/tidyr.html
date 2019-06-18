@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 7 Data Wrangling: tidyr | Introduction to Open Data Science</title>
   <meta name="description" content="This is official open data science training for the Ocean Health Index." />
-  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 7 Data Wrangling: tidyr | Introduction to Open Data Science" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="The Ocean Health Index Team" />
 
 
-<meta name="date" content="2019-06-18" />
+<meta name="date" content="2019-06-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -47,13 +47,6 @@
 
 
 
-<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.0/plotly.js"></script>
-<script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.46.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.46.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -74,7 +67,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(title);
+  { content: attr(data-line-number);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -120,9 +113,9 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="lib\css\bootstrap.min.css" type="text/css" />
-<link rel="stylesheet" href="lib\css\style.css" type="text/css" />
-<link rel="stylesheet" href="lib\css\lesson.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/style.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/lesson.css" type="text/css" />
 </head>
 
 <body>
@@ -257,7 +250,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.14" data-path="dplyr.html"><a href="dplyr.html#joining-datasets"><i class="fa fa-check"></i><b>6.14</b> Joining datasets</a></li>
 <li class="chapter" data-level="6.15" data-path="dplyr.html"><a href="dplyr.html#key-points"><i class="fa fa-check"></i><b>6.15</b> Key Points</a></li>
 <li class="chapter" data-level="6.16" data-path="dplyr.html"><a href="dplyr.html#troubleshooting."><i class="fa fa-check"></i><b>6.16</b> Troubleshooting.</a><ul>
-<li class="chapter" data-level="6.16.1" data-path="dplyr.html"><a href="dplyr.html#error-unexpected-special-in"><i class="fa fa-check"></i><b>6.16.1</b> Error: unexpected SPECIAL in " %&gt;%"</a></li>
+<li class="chapter" data-level="6.16.1" data-path="dplyr.html"><a href="dplyr.html#error-unexpected-special-in"><i class="fa fa-check"></i><b>6.16.1</b> Error: unexpected SPECIAL in &quot; %&gt;%&quot;</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>7</b> Data Wrangling: <code>tidyr</code></a><ul>
@@ -395,7 +388,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Why is this important? Well, if your data are formatted in a standard way, you will be able to use analysis tools that operate on that standard way. Your analyses will be streamlined and you won’t have to reinvent the wheel every time you see data in a different.</p>
 <p>Let’s take a look at some examples.</p>
 <p>Data are often entered in a <em>wide</em> format where each row is often a site/subject/patient and you have multiple observation variables containing the same type of data.</p>
-<p>An example of data in a <em>wide</em> format is the <code>AirPassengers</code> dataset which provides information on monthly airline passenger numbers from 1949-1960. You’ll notice that each row is a single year and the columns are each month Jan - Dec. </p>
+<p>An example of data in a <em>wide</em> format is the <code>AirPassengers</code> dataset which provides information on monthly airline passenger numbers from 1949-1960. You’ll notice that each row is a single year and the columns are each month Jan - Dec.</p>
 <pre class="sourceCode r"><code class="sourceCode r">AirPassengers</code></pre>
 <pre><code>##      Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
 ## 1949 112 118 132 129 121 135 148 148 136 119 104 118
@@ -453,7 +446,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="load-tidyverse-which-has-tidyr-inside" class="section level3">
 <h3><span class="header-section-number">7.3.2</span> load <code>tidyverse</code> (which has <code>tidyr</code> inside)</h3>
-<p>First load <code>tidyr</code> in an R chunk. You already have installed the tidyverse, so you should be able to just load it like this (using the comment so you can run <code>install.packages("tidyverse")</code> easily if need be):</p>
+<p>First load <code>tidyr</code> in an R chunk. You already have installed the tidyverse, so you should be able to just load it like this (using the comment so you can run <code>install.packages(&quot;tidyverse&quot;)</code> easily if need be):</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse) <span class="co"># install.packages(&quot;tidyverse&quot;)</span></code></pre>
 </div>
 </div>
@@ -470,7 +463,7 @@ gapminder &lt;-<span class="st"> </span>readr<span class="op">::</span><span cla
 <p>Let’s have a look:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(gap_wide)
 <span class="kw">str</span>(gap_wide)</code></pre>
-<p>While wide format is nice for data entry, it’s not nice for calculations. Some of the columns are a mix of variable (e.g. “gdpPercap”) and data (“1952”). What if you were asked for the mean population after 1990 in Algeria? Possible, but ugly. But we know it doesn’t need to be so ugly. Let’s tidy it back to the format we’ve been using.</p>
+<p>While wide format is nice for data entry, it’s not nice for calculations. Some of the columns are a mix of variable (e.g. “gdpPercap”) and data (“1952”). What if you were asked for the mean population after 1990 in Algeria? Possible, but ugly. But we know it doesn’t need to be so ugly. Let’s tidy it back to the format we’ve been using.</p>
 <blockquote>
 <p>Question: let’s talk this through together. If we’re trying to turn the <code>gap_wide</code> format into <code>gapminder</code> format, what structure does it have that we like? And what do we want to change?</p>
 </blockquote>
@@ -480,7 +473,7 @@ gapminder &lt;-<span class="st"> </span>readr<span class="op">::</span><span cla
 <li>We actually want 3 different columns for variable: <code>gdpPercap</code>, <code>lifeExp</code>, and <code>pop</code>.</li>
 <li>We would like year as a separate column.</li>
 </ul>
-<p>Let’s get it to long format. We’ll have to do this in 2 steps. The first step is to take all of those column names (e.g. <code>lifeExp_1970</code>) and make them a variable in a new column, and transfer the values into another column. Let’s learn by doing:</p>
+<p>Let’s get it to long format. We’ll have to do this in 2 steps. The first step is to take all of those column names (e.g. <code>lifeExp_1970</code>) and make them a variable in a new column, and transfer the values into another column. Let’s learn by doing:</p>
 <p>Let’s have a look at <code>gather()</code>’s help:</p>
 <pre class="sourceCode r"><code class="sourceCode r">?gather</code></pre>
 <blockquote>
