@@ -101,7 +101,7 @@ This is becoming standard practice for how to load a library in a file, and if y
 
 ## Explore the gapminder data.frame
 
-Yesterday we explored the national parks data.frame visually. Today, we'll explore a dataset by the numbers. 
+In the ggplot2 chapter, we explored the Ocean Health Index data visually. Today, we'll explore a different dataset by the numbers. 
 
 We will work with some of the data from the [Gapminder project](http://www.gapminder.org). 
 
@@ -418,7 +418,7 @@ gapminder %>%
 
 ## `group_by()` operates on groups
 
-What if we wanted to know the total population on each Continent in 2002? Answering this question requires a **grouping variable**.
+What if we wanted to know the total population on each continent in 2002? Answering this question requires a **grouping variable**.
 
 Visually, we are doing this (thanks RStudio for your [cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)): 
  
@@ -455,7 +455,7 @@ How cool is that! `summarize()` will actually only keep the columns that are gro
 
 We can use more than one grouping variable. Let's get total populations by **continent** and **year**.
 
-```{r}
+```{r, eval = F}
 gapminder %>%
   group_by(continent, year) %>%
   summarize(cont_pop = sum(pop))
