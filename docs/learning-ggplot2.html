@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Visualizing: ggplot2 | Introduction to Open Data Science</title>
+  <title>Chapter 6 Learning ggplot2 | Introduction to Open Data Science</title>
   <meta name="description" content="This is official open data science training for the Ocean Health Index." />
-  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Visualizing: ggplot2 | Introduction to Open Data Science" />
+  <meta property="og:title" content="Chapter 6 Learning ggplot2 | Introduction to Open Data Science" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="ohi-science/data-science-training" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Visualizing: ggplot2 | Introduction to Open Data Science" />
+  <meta name="twitter:title" content="Chapter 6 Learning ggplot2 | Introduction to Open Data Science" />
   
   <meta name="twitter:description" content="This is official open data science training for the Ocean Health Index." />
   
@@ -24,14 +24,14 @@
 <meta name="author" content="The Ocean Health Index Team" />
 
 
-<meta name="date" content="2019-06-19" />
+<meta name="date" content="2019-06-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="github.html">
+<link rel="prev" href="ggplot2.html">
 <link rel="next" href="dplyr.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -47,6 +47,13 @@
 
 
 
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.46.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.46.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -67,7 +74,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -113,9 +120,9 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="lib/css/bootstrap.min.css" type="text/css" />
-<link rel="stylesheet" href="lib/css/style.css" type="text/css" />
-<link rel="stylesheet" href="lib/css/lesson.css" type="text/css" />
+<link rel="stylesheet" href="lib\css\bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="lib\css\style.css" type="text/css" />
+<link rel="stylesheet" href="lib\css\lesson.css" type="text/css" />
 </head>
 
 <body>
@@ -197,142 +204,144 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3" data-path="ggplot2.html"><a href="ggplot2.html#objectives-2"><i class="fa fa-check"></i><b>5.3</b> Objectives</a></li>
 <li class="chapter" data-level="5.4" data-path="ggplot2.html"><a href="ggplot2.html#install-tidyverse-tidyverse"><i class="fa fa-check"></i><b>5.4</b> Install tidyverse: <code>tidyverse</code></a></li>
 <li class="chapter" data-level="5.5" data-path="ggplot2.html"><a href="ggplot2.html#create-an-rmarkdown-file-to-work-from"><i class="fa fa-check"></i><b>5.5</b> Create an RMarkdown file to work from</a></li>
-<li class="chapter" data-level="5.6" data-path="ggplot2.html"><a href="ggplot2.html#load-the-tidverse"><i class="fa fa-check"></i><b>5.6</b> Load the tidverse</a></li>
-<li class="chapter" data-level="5.7" data-path="ggplot2.html"><a href="ggplot2.html#load-and-explore-data"><i class="fa fa-check"></i><b>5.7</b> Load and explore data</a></li>
-<li class="chapter" data-level="5.8" data-path="ggplot2.html"><a href="ggplot2.html#plotting-with-ggplot2"><i class="fa fa-check"></i><b>5.8</b> Plotting with <strong><code>ggplot2</code></strong></a><ul>
-<li class="chapter" data-level="5.8.1" data-path="ggplot2.html"><a href="ggplot2.html#step-1-identify-the-dataframe"><i class="fa fa-check"></i><b>5.8.1</b> Step 1: Identify the dataframe</a></li>
-<li class="chapter" data-level="5.8.2" data-path="ggplot2.html"><a href="ggplot2.html#step-2-identify-the-style-of-plot-you-want-to-create-i.e.-the-geom"><i class="fa fa-check"></i><b>5.8.2</b> Step 2: Identify the style of plot you want to create (i.e., the geom)</a></li>
-<li class="chapter" data-level="5.8.3" data-path="ggplot2.html"><a href="ggplot2.html#step-3-customize-your-plot"><i class="fa fa-check"></i><b>5.8.3</b> Step 3: Customize your plot</a></li>
 </ul></li>
-<li class="chapter" data-level="5.9" data-path="ggplot2.html"><a href="ggplot2.html#saving-plots"><i class="fa fa-check"></i><b>5.9</b> Saving plots</a></li>
-<li class="chapter" data-level="5.10" data-path="ggplot2.html"><a href="ggplot2.html#arranging-plots"><i class="fa fa-check"></i><b>5.10</b> Arranging plots</a></li>
-<li class="chapter" data-level="5.11" data-path="ggplot2.html"><a href="ggplot2.html#interactive-plots"><i class="fa fa-check"></i><b>5.11</b> Interactive plots</a></li>
-<li class="chapter" data-level="5.12" data-path="ggplot2.html"><a href="ggplot2.html#save-and-push-to-github"><i class="fa fa-check"></i><b>5.12</b> Save and push to GitHub</a></li>
+<li class="chapter" data-level="6" data-path="learning-ggplot2.html"><a href="learning-ggplot2.html"><i class="fa fa-check"></i><b>6</b> Learning ggplot2</a><ul>
+<li class="chapter" data-level="6.1" data-path="learning-ggplot2.html"><a href="learning-ggplot2.html#load-the-tidverse"><i class="fa fa-check"></i><b>6.1</b> Load the tidverse</a></li>
+<li class="chapter" data-level="6.2" data-path="learning-ggplot2.html"><a href="learning-ggplot2.html#load-and-explore-data"><i class="fa fa-check"></i><b>6.2</b> Load and explore data</a></li>
+<li class="chapter" data-level="6.3" data-path="learning-ggplot2.html"><a href="learning-ggplot2.html#plotting-with-ggplot2"><i class="fa fa-check"></i><b>6.3</b> Plotting with <strong><code>ggplot2</code></strong></a><ul>
+<li class="chapter" data-level="6.3.1" data-path="learning-ggplot2.html"><a href="learning-ggplot2.html#step-1-identify-the-dataframe"><i class="fa fa-check"></i><b>6.3.1</b> Step 1: Identify the dataframe</a></li>
+<li class="chapter" data-level="6.3.2" data-path="learning-ggplot2.html"><a href="learning-ggplot2.html#step-2-identify-the-style-of-plot-you-want-to-create-i.e.-the-geom"><i class="fa fa-check"></i><b>6.3.2</b> Step 2: Identify the style of plot you want to create (i.e., the geom)</a></li>
+<li class="chapter" data-level="6.3.3" data-path="learning-ggplot2.html"><a href="learning-ggplot2.html#step-3-customize-your-plot"><i class="fa fa-check"></i><b>6.3.3</b> Step 3: Customize your plot</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>6</b> Data Wrangling: <code>dplyr</code></a><ul>
-<li class="chapter" data-level="6.1" data-path="dplyr.html"><a href="dplyr.html#objectives-resources-1"><i class="fa fa-check"></i><b>6.1</b> Objectives &amp; Resources</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="dplyr.html"><a href="dplyr.html#objectives-3"><i class="fa fa-check"></i><b>6.1.1</b> Objectives</a></li>
-<li class="chapter" data-level="6.1.2" data-path="dplyr.html"><a href="dplyr.html#resources-2"><i class="fa fa-check"></i><b>6.1.2</b> Resources</a></li>
-<li class="chapter" data-level="6.1.3" data-path="dplyr.html"><a href="dplyr.html#data-and-packages-1"><i class="fa fa-check"></i><b>6.1.3</b> Data and packages</a></li>
+<li class="chapter" data-level="6.4" data-path="learning-ggplot2.html"><a href="learning-ggplot2.html#saving-plots"><i class="fa fa-check"></i><b>6.4</b> Saving plots</a></li>
+<li class="chapter" data-level="6.5" data-path="learning-ggplot2.html"><a href="learning-ggplot2.html#arranging-plots"><i class="fa fa-check"></i><b>6.5</b> Arranging plots</a></li>
+<li class="chapter" data-level="6.6" data-path="learning-ggplot2.html"><a href="learning-ggplot2.html#interactive-plots"><i class="fa fa-check"></i><b>6.6</b> Interactive plots</a></li>
+<li class="chapter" data-level="6.7" data-path="learning-ggplot2.html"><a href="learning-ggplot2.html#save-and-push-to-github"><i class="fa fa-check"></i><b>6.7</b> Save and push to GitHub</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="dplyr.html"><a href="dplyr.html#tidy-data"><i class="fa fa-check"></i><b>6.2</b> Tidy Data</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="dplyr.html"><a href="dplyr.html#setup"><i class="fa fa-check"></i><b>6.2.1</b> Setup</a></li>
-<li class="chapter" data-level="6.2.2" data-path="dplyr.html"><a href="dplyr.html#load-tidyverse-which-has-dplyr-inside"><i class="fa fa-check"></i><b>6.2.2</b> load <code>tidyverse</code> (which has <code>dplyr</code> inside)</a></li>
+<li class="chapter" data-level="7" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>7</b> Data Wrangling: <code>dplyr</code></a><ul>
+<li class="chapter" data-level="7.1" data-path="dplyr.html"><a href="dplyr.html#objectives-resources-1"><i class="fa fa-check"></i><b>7.1</b> Objectives &amp; Resources</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="dplyr.html"><a href="dplyr.html#objectives-3"><i class="fa fa-check"></i><b>7.1.1</b> Objectives</a></li>
+<li class="chapter" data-level="7.1.2" data-path="dplyr.html"><a href="dplyr.html#resources-2"><i class="fa fa-check"></i><b>7.1.2</b> Resources</a></li>
+<li class="chapter" data-level="7.1.3" data-path="dplyr.html"><a href="dplyr.html#data-and-packages-1"><i class="fa fa-check"></i><b>7.1.3</b> Data and packages</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="dplyr.html"><a href="dplyr.html#explore-the-gapminder-data.frame"><i class="fa fa-check"></i><b>6.3</b> Explore the gapminder data.frame</a><ul>
-<li class="chapter" data-level="6.3.1" data-path="dplyr.html"><a href="dplyr.html#read-data-with-readrread_csv"><i class="fa fa-check"></i><b>6.3.1</b> read data with <code>readr::read_csv()</code></a></li>
-<li class="chapter" data-level="6.3.2" data-path="dplyr.html"><a href="dplyr.html#look-at-the-variables-inside-a-data.frame"><i class="fa fa-check"></i><b>6.3.2</b> Look at the variables inside a data.frame</a></li>
+<li class="chapter" data-level="7.2" data-path="dplyr.html"><a href="dplyr.html#tidy-data"><i class="fa fa-check"></i><b>7.2</b> Tidy Data</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="dplyr.html"><a href="dplyr.html#setup"><i class="fa fa-check"></i><b>7.2.1</b> Setup</a></li>
+<li class="chapter" data-level="7.2.2" data-path="dplyr.html"><a href="dplyr.html#load-tidyverse-which-has-dplyr-inside"><i class="fa fa-check"></i><b>7.2.2</b> load <code>tidyverse</code> (which has <code>dplyr</code> inside)</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="dplyr.html"><a href="dplyr.html#dplyr-basics"><i class="fa fa-check"></i><b>6.4</b> <code>dplyr</code> basics</a></li>
-<li class="chapter" data-level="6.5" data-path="dplyr.html"><a href="dplyr.html#filter-subsets-data-row-wise-observations."><i class="fa fa-check"></i><b>6.5</b> <code>filter()</code> subsets data row-wise (observations).</a></li>
-<li class="chapter" data-level="6.6" data-path="dplyr.html"><a href="dplyr.html#your-turn-5"><i class="fa fa-check"></i><b>6.6</b> Your turn</a><ul>
-<li class="chapter" data-level="6.6.1" data-path="dplyr.html"><a href="dplyr.html#answer"><i class="fa fa-check"></i><b>6.6.1</b> Answer</a></li>
+<li class="chapter" data-level="7.3" data-path="dplyr.html"><a href="dplyr.html#explore-the-gapminder-data.frame"><i class="fa fa-check"></i><b>7.3</b> Explore the gapminder data.frame</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="dplyr.html"><a href="dplyr.html#read-data-with-readrread_csv"><i class="fa fa-check"></i><b>7.3.1</b> read data with <code>readr::read_csv()</code></a></li>
+<li class="chapter" data-level="7.3.2" data-path="dplyr.html"><a href="dplyr.html#look-at-the-variables-inside-a-data.frame"><i class="fa fa-check"></i><b>7.3.2</b> Look at the variables inside a data.frame</a></li>
 </ul></li>
-<li class="chapter" data-level="6.7" data-path="dplyr.html"><a href="dplyr.html#select-subsets-data-column-wise-variables"><i class="fa fa-check"></i><b>6.7</b> <code>select()</code> subsets data column-wise (variables)</a></li>
-<li class="chapter" data-level="6.8" data-path="dplyr.html"><a href="dplyr.html#use-select-and-filter-together"><i class="fa fa-check"></i><b>6.8</b> Use <code>select()</code> and <code>filter()</code> together</a></li>
-<li class="chapter" data-level="6.9" data-path="dplyr.html"><a href="dplyr.html#meet-the-new-pipe-operator"><i class="fa fa-check"></i><b>6.9</b> Meet the new pipe <code>%&gt;%</code> operator</a><ul>
-<li class="chapter" data-level="6.9.1" data-path="dplyr.html"><a href="dplyr.html#revel-in-the-convenience"><i class="fa fa-check"></i><b>6.9.1</b> Revel in the convenience</a></li>
+<li class="chapter" data-level="7.4" data-path="dplyr.html"><a href="dplyr.html#dplyr-basics"><i class="fa fa-check"></i><b>7.4</b> <code>dplyr</code> basics</a></li>
+<li class="chapter" data-level="7.5" data-path="dplyr.html"><a href="dplyr.html#filter-subsets-data-row-wise-observations."><i class="fa fa-check"></i><b>7.5</b> <code>filter()</code> subsets data row-wise (observations).</a></li>
+<li class="chapter" data-level="7.6" data-path="dplyr.html"><a href="dplyr.html#your-turn-5"><i class="fa fa-check"></i><b>7.6</b> Your turn</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="dplyr.html"><a href="dplyr.html#answer"><i class="fa fa-check"></i><b>7.6.1</b> Answer</a></li>
 </ul></li>
-<li class="chapter" data-level="6.10" data-path="dplyr.html"><a href="dplyr.html#mutate-adds-new-variables"><i class="fa fa-check"></i><b>6.10</b> <code>mutate()</code> adds new variables</a><ul>
-<li class="chapter" data-level="6.10.1" data-path="dplyr.html"><a href="dplyr.html#your-turn-6"><i class="fa fa-check"></i><b>6.10.1</b> Your turn</a></li>
+<li class="chapter" data-level="7.7" data-path="dplyr.html"><a href="dplyr.html#select-subsets-data-column-wise-variables"><i class="fa fa-check"></i><b>7.7</b> <code>select()</code> subsets data column-wise (variables)</a></li>
+<li class="chapter" data-level="7.8" data-path="dplyr.html"><a href="dplyr.html#use-select-and-filter-together"><i class="fa fa-check"></i><b>7.8</b> Use <code>select()</code> and <code>filter()</code> together</a></li>
+<li class="chapter" data-level="7.9" data-path="dplyr.html"><a href="dplyr.html#meet-the-new-pipe-operator"><i class="fa fa-check"></i><b>7.9</b> Meet the new pipe <code>%&gt;%</code> operator</a><ul>
+<li class="chapter" data-level="7.9.1" data-path="dplyr.html"><a href="dplyr.html#revel-in-the-convenience"><i class="fa fa-check"></i><b>7.9.1</b> Revel in the convenience</a></li>
 </ul></li>
-<li class="chapter" data-level="6.11" data-path="dplyr.html"><a href="dplyr.html#group_by-operates-on-groups"><i class="fa fa-check"></i><b>6.11</b> <code>group_by()</code> operates on groups</a><ul>
-<li class="chapter" data-level="6.11.1" data-path="dplyr.html"><a href="dplyr.html#summarize-with-group_by"><i class="fa fa-check"></i><b>6.11.1</b> <code>summarize()</code> with <code>group_by()</code></a></li>
+<li class="chapter" data-level="7.10" data-path="dplyr.html"><a href="dplyr.html#mutate-adds-new-variables"><i class="fa fa-check"></i><b>7.10</b> <code>mutate()</code> adds new variables</a><ul>
+<li class="chapter" data-level="7.10.1" data-path="dplyr.html"><a href="dplyr.html#your-turn-6"><i class="fa fa-check"></i><b>7.10.1</b> Your turn</a></li>
 </ul></li>
-<li class="chapter" data-level="6.12" data-path="dplyr.html"><a href="dplyr.html#arrange-orders-columns"><i class="fa fa-check"></i><b>6.12</b> <code>arrange()</code> orders columns</a><ul>
-<li class="chapter" data-level="6.12.1" data-path="dplyr.html"><a href="dplyr.html#your-turn-7"><i class="fa fa-check"></i><b>6.12.1</b> Your turn</a></li>
-<li class="chapter" data-level="6.12.2" data-path="dplyr.html"><a href="dplyr.html#your-turn-8"><i class="fa fa-check"></i><b>6.12.2</b> Your turn</a></li>
+<li class="chapter" data-level="7.11" data-path="dplyr.html"><a href="dplyr.html#group_by-operates-on-groups"><i class="fa fa-check"></i><b>7.11</b> <code>group_by()</code> operates on groups</a><ul>
+<li class="chapter" data-level="7.11.1" data-path="dplyr.html"><a href="dplyr.html#summarize-with-group_by"><i class="fa fa-check"></i><b>7.11.1</b> <code>summarize()</code> with <code>group_by()</code></a></li>
 </ul></li>
-<li class="chapter" data-level="6.13" data-path="dplyr.html"><a href="dplyr.html#all-together-now"><i class="fa fa-check"></i><b>6.13</b> All together now</a><ul>
-<li class="chapter" data-level="6.13.1" data-path="dplyr.html"><a href="dplyr.html#compare-to-base-r"><i class="fa fa-check"></i><b>6.13.1</b> Compare to base R</a></li>
-<li class="chapter" data-level="6.13.2" data-path="dplyr.html"><a href="dplyr.html#your-turn-9"><i class="fa fa-check"></i><b>6.13.2</b> Your Turn</a></li>
+<li class="chapter" data-level="7.12" data-path="dplyr.html"><a href="dplyr.html#arrange-orders-columns"><i class="fa fa-check"></i><b>7.12</b> <code>arrange()</code> orders columns</a><ul>
+<li class="chapter" data-level="7.12.1" data-path="dplyr.html"><a href="dplyr.html#your-turn-7"><i class="fa fa-check"></i><b>7.12.1</b> Your turn</a></li>
+<li class="chapter" data-level="7.12.2" data-path="dplyr.html"><a href="dplyr.html#your-turn-8"><i class="fa fa-check"></i><b>7.12.2</b> Your turn</a></li>
 </ul></li>
-<li class="chapter" data-level="6.14" data-path="dplyr.html"><a href="dplyr.html#joining-datasets"><i class="fa fa-check"></i><b>6.14</b> Joining datasets</a></li>
-<li class="chapter" data-level="6.15" data-path="dplyr.html"><a href="dplyr.html#key-points"><i class="fa fa-check"></i><b>6.15</b> Key Points</a></li>
-<li class="chapter" data-level="6.16" data-path="dplyr.html"><a href="dplyr.html#troubleshooting."><i class="fa fa-check"></i><b>6.16</b> Troubleshooting.</a><ul>
-<li class="chapter" data-level="6.16.1" data-path="dplyr.html"><a href="dplyr.html#error-unexpected-special-in"><i class="fa fa-check"></i><b>6.16.1</b> Error: unexpected SPECIAL in &quot; %&gt;%&quot;</a></li>
+<li class="chapter" data-level="7.13" data-path="dplyr.html"><a href="dplyr.html#all-together-now"><i class="fa fa-check"></i><b>7.13</b> All together now</a><ul>
+<li class="chapter" data-level="7.13.1" data-path="dplyr.html"><a href="dplyr.html#compare-to-base-r"><i class="fa fa-check"></i><b>7.13.1</b> Compare to base R</a></li>
+<li class="chapter" data-level="7.13.2" data-path="dplyr.html"><a href="dplyr.html#your-turn-9"><i class="fa fa-check"></i><b>7.13.2</b> Your Turn</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>7</b> Data Wrangling: <code>tidyr</code></a><ul>
-<li class="chapter" data-level="7.1" data-path="tidyr.html"><a href="tidyr.html#objectives-resources-2"><i class="fa fa-check"></i><b>7.1</b> Objectives &amp; Resources</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="tidyr.html"><a href="tidyr.html#objectives-4"><i class="fa fa-check"></i><b>7.1.1</b> Objectives</a></li>
-<li class="chapter" data-level="7.1.2" data-path="tidyr.html"><a href="tidyr.html#resources-3"><i class="fa fa-check"></i><b>7.1.2</b> Resources</a></li>
-<li class="chapter" data-level="7.1.3" data-path="tidyr.html"><a href="tidyr.html#data-and-packages-2"><i class="fa fa-check"></i><b>7.1.3</b> Data and packages</a></li>
-</ul></li>
-<li class="chapter" data-level="7.2" data-path="tidyr.html"><a href="tidyr.html#tidyr-basics"><i class="fa fa-check"></i><b>7.2</b> <code>tidyr</code> basics</a></li>
-<li class="chapter" data-level="7.3" data-path="tidyr.html"><a href="tidyr.html#explore-gapminder-dataset."><i class="fa fa-check"></i><b>7.3</b> Explore gapminder dataset.</a><ul>
-<li class="chapter" data-level="7.3.1" data-path="tidyr.html"><a href="tidyr.html#setup-1"><i class="fa fa-check"></i><b>7.3.1</b> Setup</a></li>
-<li class="chapter" data-level="7.3.2" data-path="tidyr.html"><a href="tidyr.html#load-tidyverse-which-has-tidyr-inside"><i class="fa fa-check"></i><b>7.3.2</b> load <code>tidyverse</code> (which has <code>tidyr</code> inside)</a></li>
-</ul></li>
-<li class="chapter" data-level="7.4" data-path="tidyr.html"><a href="tidyr.html#gather-data-from-wide-to-long-format"><i class="fa fa-check"></i><b>7.4</b> <code>gather()</code> data from wide to long format</a></li>
-<li class="chapter" data-level="7.5" data-path="tidyr.html"><a href="tidyr.html#plot-long-format-data"><i class="fa fa-check"></i><b>7.5</b> Plot long format data</a></li>
-<li class="chapter" data-level="7.6" data-path="tidyr.html"><a href="tidyr.html#spread"><i class="fa fa-check"></i><b>7.6</b> <code>spread()</code></a><ul>
-<li class="chapter" data-level="7.6.1" data-path="tidyr.html"><a href="tidyr.html#answer-no-peeking-1"><i class="fa fa-check"></i><b>7.6.1</b> Answer (no peeking)</a></li>
-</ul></li>
-<li class="chapter" data-level="7.7" data-path="tidyr.html"><a href="tidyr.html#clean-up-and-save-your-.rmd"><i class="fa fa-check"></i><b>7.7</b> clean up and save your .Rmd</a><ul>
-<li class="chapter" data-level="7.7.1" data-path="tidyr.html"><a href="tidyr.html#complete"><i class="fa fa-check"></i><b>7.7.1</b> <code>complete()</code></a></li>
-</ul></li>
-<li class="chapter" data-level="7.8" data-path="tidyr.html"><a href="tidyr.html#other-links"><i class="fa fa-check"></i><b>7.8</b> Other links</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="programming.html"><a href="programming.html"><i class="fa fa-check"></i><b>8</b> Programming in R</a><ul>
-<li class="chapter" data-level="8.1" data-path="programming.html"><a href="programming.html#objectives-resources-3"><i class="fa fa-check"></i><b>8.1</b> Objectives &amp; Resources</a><ul>
-<li class="chapter" data-level="8.1.1" data-path="programming.html"><a href="programming.html#objectives-5"><i class="fa fa-check"></i><b>8.1.1</b> Objectives</a></li>
-</ul></li>
-<li class="chapter" data-level="8.2" data-path="programming.html"><a href="programming.html#analysis-plan"><i class="fa fa-check"></i><b>8.2</b> Analysis plan</a></li>
-<li class="chapter" data-level="8.3" data-path="programming.html"><a href="programming.html#create-an-r-script"><i class="fa fa-check"></i><b>8.3</b> Create an R script</a></li>
-<li class="chapter" data-level="8.4" data-path="programming.html"><a href="programming.html#automation-with-for-loops"><i class="fa fa-check"></i><b>8.4</b> Automation with for loops</a><ul>
-<li class="chapter" data-level="8.4.1" data-path="programming.html"><a href="programming.html#thinking-ahead-cleaning-up-our-code"><i class="fa fa-check"></i><b>8.4.1</b> Thinking ahead: cleaning up our code</a></li>
-<li class="chapter" data-level="8.4.2" data-path="programming.html"><a href="programming.html#for-loop-basic-structure"><i class="fa fa-check"></i><b>8.4.2</b> For loop basic structure</a></li>
-<li class="chapter" data-level="8.4.3" data-path="programming.html"><a href="programming.html#executable-for-loop"><i class="fa fa-check"></i><b>8.4.3</b> Executable for loop!</a></li>
-<li class="chapter" data-level="8.4.4" data-path="programming.html"><a href="programming.html#clean-up-our-repo"><i class="fa fa-check"></i><b>8.4.4</b> Clean up our repo</a></li>
-<li class="chapter" data-level="8.4.5" data-path="programming.html"><a href="programming.html#your-turn-10"><i class="fa fa-check"></i><b>8.4.5</b> Your turn</a></li>
-</ul></li>
-<li class="chapter" data-level="8.5" data-path="programming.html"><a href="programming.html#conditional-statements-with-if-and-else"><i class="fa fa-check"></i><b>8.5</b> Conditional statements with <code>if</code> and <code>else</code></a><ul>
-<li class="chapter" data-level="8.5.1" data-path="programming.html"><a href="programming.html#if-statement-basic-structure"><i class="fa fa-check"></i><b>8.5.1</b> if statement basic structure</a></li>
-<li class="chapter" data-level="8.5.2" data-path="programming.html"><a href="programming.html#executable-if-statement"><i class="fa fa-check"></i><b>8.5.2</b> Executable if statement</a></li>
-<li class="chapter" data-level="8.5.3" data-path="programming.html"><a href="programming.html#executable-ifelse-statement"><i class="fa fa-check"></i><b>8.5.3</b> Executable if/else statement</a></li>
-</ul></li>
-<li class="chapter" data-level="8.6" data-path="programming.html"><a href="programming.html#more-r"><i class="fa fa-check"></i><b>8.6</b> More R!</a><ul>
-<li class="chapter" data-level="8.6.1" data-path="programming.html"><a href="programming.html#importing-and-installing"><i class="fa fa-check"></i><b>8.6.1</b> Importing and Installing</a></li>
-<li class="chapter" data-level="8.6.2" data-path="programming.html"><a href="programming.html#organization-and-workflows"><i class="fa fa-check"></i><b>8.6.2</b> Organization and workflows</a></li>
-<li class="chapter" data-level="8.6.3" data-path="programming.html"><a href="programming.html#getting-help"><i class="fa fa-check"></i><b>8.6.3</b> Getting help</a></li>
-</ul></li>
-<li class="chapter" data-level="8.7" data-path="programming.html"><a href="programming.html#ideas-for-extended-analysis-2"><i class="fa fa-check"></i><b>8.7</b> Ideas for Extended Analysis 2</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="collaborating.html"><a href="collaborating.html"><i class="fa fa-check"></i><b>9</b> Collaborating with GitHub</a><ul>
-<li class="chapter" data-level="9.1" data-path="collaborating.html"><a href="collaborating.html#objectives-resources-4"><i class="fa fa-check"></i><b>9.1</b> Objectives &amp; Resources</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="collaborating.html"><a href="collaborating.html#objectives-6"><i class="fa fa-check"></i><b>9.1.1</b> Objectives</a></li>
-</ul></li>
-<li class="chapter" data-level="9.2" data-path="collaborating.html"><a href="collaborating.html#create-repo-partner-1"><i class="fa fa-check"></i><b>9.2</b> Create repo (Partner 1)</a></li>
-<li class="chapter" data-level="9.3" data-path="collaborating.html"><a href="collaborating.html#create-a-gh-pages-branch-partner-1"><i class="fa fa-check"></i><b>9.3</b> Create a gh-pages branch (Partner 1)</a></li>
-<li class="chapter" data-level="9.4" data-path="collaborating.html"><a href="collaborating.html#give-your-collaborator-administration-privileges-partner-1-and-2"><i class="fa fa-check"></i><b>9.4</b> Give your collaborator administration privileges (Partner 1 and 2)</a></li>
-<li class="chapter" data-level="9.5" data-path="collaborating.html"><a href="collaborating.html#clone-to-a-new-rproject-partner-1"><i class="fa fa-check"></i><b>9.5</b> Clone to a new Rproject (Partner 1)</a></li>
-<li class="chapter" data-level="9.6" data-path="collaborating.html"><a href="collaborating.html#clone-to-a-new-rproject-partner-2"><i class="fa fa-check"></i><b>9.6</b> Clone to a new Rproject (Partner 2)</a></li>
-<li class="chapter" data-level="9.7" data-path="collaborating.html"><a href="collaborating.html#edit-a-file-and-sync-partner-2"><i class="fa fa-check"></i><b>9.7</b> Edit a file and sync (Partner 2)</a></li>
-<li class="chapter" data-level="9.8" data-path="collaborating.html"><a href="collaborating.html#state-of-the-repository"><i class="fa fa-check"></i><b>9.8</b> State of the Repository</a></li>
-<li class="chapter" data-level="9.9" data-path="collaborating.html"><a href="collaborating.html#merge-conflicts"><i class="fa fa-check"></i><b>9.9</b> Merge conflicts</a><ul>
-<li class="chapter" data-level="9.9.1" data-path="collaborating.html"><a href="collaborating.html#your-turn-11"><i class="fa fa-check"></i><b>9.9.1</b> Your turn</a></li>
-</ul></li>
-<li class="chapter" data-level="9.10" data-path="collaborating.html"><a href="collaborating.html#how-do-you-avoid-merge-conflicts"><i class="fa fa-check"></i><b>9.10</b> How do you avoid merge conflicts?</a></li>
-<li class="chapter" data-level="9.11" data-path="collaborating.html"><a href="collaborating.html#create-your-collaborative-website"><i class="fa fa-check"></i><b>9.11</b> Create your collaborative website</a></li>
-<li class="chapter" data-level="9.12" data-path="collaborating.html"><a href="collaborating.html#your-turn-12"><i class="fa fa-check"></i><b>9.12</b> Your turn</a></li>
-<li class="chapter" data-level="9.13" data-path="collaborating.html"><a href="collaborating.html#explore-on-github.com"><i class="fa fa-check"></i><b>9.13</b> Explore on GitHub.com</a><ul>
-<li class="chapter" data-level="9.13.1" data-path="collaborating.html"><a href="collaborating.html#commit-history"><i class="fa fa-check"></i><b>9.13.1</b> Commit History</a></li>
-<li class="chapter" data-level="9.13.2" data-path="collaborating.html"><a href="collaborating.html#blame"><i class="fa fa-check"></i><b>9.13.2</b> Blame</a></li>
-<li class="chapter" data-level="9.13.3" data-path="collaborating.html"><a href="collaborating.html#issues"><i class="fa fa-check"></i><b>9.13.3</b> Issues</a></li>
-</ul></li>
-<li class="chapter" data-level="9.14" data-path="collaborating.html"><a href="collaborating.html#nyc-flights-exploration"><i class="fa fa-check"></i><b>9.14</b> NYC flights exploration</a><ul>
-<li class="chapter" data-level="9.14.1" data-path="collaborating.html"><a href="collaborating.html#logical-operators"><i class="fa fa-check"></i><b>9.14.1</b> Logical operators</a></li>
-</ul></li>
-<li class="chapter" data-level="9.15" data-path="collaborating.html"><a href="collaborating.html#your-turn-13"><i class="fa fa-check"></i><b>9.15</b> Your turn</a><ul>
-<li class="chapter" data-level="9.15.1" data-path="collaborating.html"><a href="collaborating.html#use-logicals"><i class="fa fa-check"></i><b>9.15.1</b> Use logicals</a></li>
-<li class="chapter" data-level="9.15.2" data-path="collaborating.html"><a href="collaborating.html#missing-values"><i class="fa fa-check"></i><b>9.15.2</b> Missing values</a></li>
+<li class="chapter" data-level="7.14" data-path="dplyr.html"><a href="dplyr.html#joining-datasets"><i class="fa fa-check"></i><b>7.14</b> Joining datasets</a></li>
+<li class="chapter" data-level="7.15" data-path="dplyr.html"><a href="dplyr.html#key-points"><i class="fa fa-check"></i><b>7.15</b> Key Points</a></li>
+<li class="chapter" data-level="7.16" data-path="dplyr.html"><a href="dplyr.html#troubleshooting."><i class="fa fa-check"></i><b>7.16</b> Troubleshooting.</a><ul>
+<li class="chapter" data-level="7.16.1" data-path="dplyr.html"><a href="dplyr.html#error-unexpected-special-in"><i class="fa fa-check"></i><b>7.16.1</b> Error: unexpected SPECIAL in " %&gt;%"</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="champion.html"><a href="champion.html"><i class="fa fa-check"></i><b>10</b> Be a champion for open science</a><ul>
-<li class="chapter" data-level="10.1" data-path="champion.html"><a href="champion.html#objectives-and-resources"><i class="fa fa-check"></i><b>10.1</b> Objectives and Resources</a></li>
-<li class="chapter" data-level="10.2" data-path="champion.html"><a href="champion.html#three-messages"><i class="fa fa-check"></i><b>10.2</b> Three messages</a></li>
-<li class="chapter" data-level="10.3" data-path="champion.html"><a href="champion.html#build-community"><i class="fa fa-check"></i><b>10.3</b> Build community</a></li>
+<li class="chapter" data-level="8" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>8</b> Data Wrangling: <code>tidyr</code></a><ul>
+<li class="chapter" data-level="8.1" data-path="tidyr.html"><a href="tidyr.html#objectives-resources-2"><i class="fa fa-check"></i><b>8.1</b> Objectives &amp; Resources</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="tidyr.html"><a href="tidyr.html#objectives-4"><i class="fa fa-check"></i><b>8.1.1</b> Objectives</a></li>
+<li class="chapter" data-level="8.1.2" data-path="tidyr.html"><a href="tidyr.html#resources-3"><i class="fa fa-check"></i><b>8.1.2</b> Resources</a></li>
+<li class="chapter" data-level="8.1.3" data-path="tidyr.html"><a href="tidyr.html#data-and-packages-2"><i class="fa fa-check"></i><b>8.1.3</b> Data and packages</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="tidyr.html"><a href="tidyr.html#tidyr-basics"><i class="fa fa-check"></i><b>8.2</b> <code>tidyr</code> basics</a></li>
+<li class="chapter" data-level="8.3" data-path="tidyr.html"><a href="tidyr.html#explore-gapminder-dataset."><i class="fa fa-check"></i><b>8.3</b> Explore gapminder dataset.</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="tidyr.html"><a href="tidyr.html#setup-1"><i class="fa fa-check"></i><b>8.3.1</b> Setup</a></li>
+<li class="chapter" data-level="8.3.2" data-path="tidyr.html"><a href="tidyr.html#load-tidyverse-which-has-tidyr-inside"><i class="fa fa-check"></i><b>8.3.2</b> load <code>tidyverse</code> (which has <code>tidyr</code> inside)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="tidyr.html"><a href="tidyr.html#gather-data-from-wide-to-long-format"><i class="fa fa-check"></i><b>8.4</b> <code>gather()</code> data from wide to long format</a></li>
+<li class="chapter" data-level="8.5" data-path="tidyr.html"><a href="tidyr.html#plot-long-format-data"><i class="fa fa-check"></i><b>8.5</b> Plot long format data</a></li>
+<li class="chapter" data-level="8.6" data-path="tidyr.html"><a href="tidyr.html#spread"><i class="fa fa-check"></i><b>8.6</b> <code>spread()</code></a><ul>
+<li class="chapter" data-level="8.6.1" data-path="tidyr.html"><a href="tidyr.html#answer-no-peeking-1"><i class="fa fa-check"></i><b>8.6.1</b> Answer (no peeking)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="tidyr.html"><a href="tidyr.html#clean-up-and-save-your-.rmd"><i class="fa fa-check"></i><b>8.7</b> clean up and save your .Rmd</a><ul>
+<li class="chapter" data-level="8.7.1" data-path="tidyr.html"><a href="tidyr.html#complete"><i class="fa fa-check"></i><b>8.7.1</b> <code>complete()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="tidyr.html"><a href="tidyr.html#other-links"><i class="fa fa-check"></i><b>8.8</b> Other links</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="programming.html"><a href="programming.html"><i class="fa fa-check"></i><b>9</b> Programming in R</a><ul>
+<li class="chapter" data-level="9.1" data-path="programming.html"><a href="programming.html#objectives-resources-3"><i class="fa fa-check"></i><b>9.1</b> Objectives &amp; Resources</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="programming.html"><a href="programming.html#objectives-5"><i class="fa fa-check"></i><b>9.1.1</b> Objectives</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="programming.html"><a href="programming.html#analysis-plan"><i class="fa fa-check"></i><b>9.2</b> Analysis plan</a></li>
+<li class="chapter" data-level="9.3" data-path="programming.html"><a href="programming.html#create-an-r-script"><i class="fa fa-check"></i><b>9.3</b> Create an R script</a></li>
+<li class="chapter" data-level="9.4" data-path="programming.html"><a href="programming.html#automation-with-for-loops"><i class="fa fa-check"></i><b>9.4</b> Automation with for loops</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="programming.html"><a href="programming.html#thinking-ahead-cleaning-up-our-code"><i class="fa fa-check"></i><b>9.4.1</b> Thinking ahead: cleaning up our code</a></li>
+<li class="chapter" data-level="9.4.2" data-path="programming.html"><a href="programming.html#for-loop-basic-structure"><i class="fa fa-check"></i><b>9.4.2</b> For loop basic structure</a></li>
+<li class="chapter" data-level="9.4.3" data-path="programming.html"><a href="programming.html#executable-for-loop"><i class="fa fa-check"></i><b>9.4.3</b> Executable for loop!</a></li>
+<li class="chapter" data-level="9.4.4" data-path="programming.html"><a href="programming.html#clean-up-our-repo"><i class="fa fa-check"></i><b>9.4.4</b> Clean up our repo</a></li>
+<li class="chapter" data-level="9.4.5" data-path="programming.html"><a href="programming.html#your-turn-10"><i class="fa fa-check"></i><b>9.4.5</b> Your turn</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="programming.html"><a href="programming.html#conditional-statements-with-if-and-else"><i class="fa fa-check"></i><b>9.5</b> Conditional statements with <code>if</code> and <code>else</code></a><ul>
+<li class="chapter" data-level="9.5.1" data-path="programming.html"><a href="programming.html#if-statement-basic-structure"><i class="fa fa-check"></i><b>9.5.1</b> if statement basic structure</a></li>
+<li class="chapter" data-level="9.5.2" data-path="programming.html"><a href="programming.html#executable-if-statement"><i class="fa fa-check"></i><b>9.5.2</b> Executable if statement</a></li>
+<li class="chapter" data-level="9.5.3" data-path="programming.html"><a href="programming.html#executable-ifelse-statement"><i class="fa fa-check"></i><b>9.5.3</b> Executable if/else statement</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="programming.html"><a href="programming.html#more-r"><i class="fa fa-check"></i><b>9.6</b> More R!</a><ul>
+<li class="chapter" data-level="9.6.1" data-path="programming.html"><a href="programming.html#importing-and-installing"><i class="fa fa-check"></i><b>9.6.1</b> Importing and Installing</a></li>
+<li class="chapter" data-level="9.6.2" data-path="programming.html"><a href="programming.html#organization-and-workflows"><i class="fa fa-check"></i><b>9.6.2</b> Organization and workflows</a></li>
+<li class="chapter" data-level="9.6.3" data-path="programming.html"><a href="programming.html#getting-help"><i class="fa fa-check"></i><b>9.6.3</b> Getting help</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="programming.html"><a href="programming.html#ideas-for-extended-analysis-2"><i class="fa fa-check"></i><b>9.7</b> Ideas for Extended Analysis 2</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="collaborating.html"><a href="collaborating.html"><i class="fa fa-check"></i><b>10</b> Collaborating with GitHub</a><ul>
+<li class="chapter" data-level="10.1" data-path="collaborating.html"><a href="collaborating.html#objectives-resources-4"><i class="fa fa-check"></i><b>10.1</b> Objectives &amp; Resources</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="collaborating.html"><a href="collaborating.html#objectives-6"><i class="fa fa-check"></i><b>10.1.1</b> Objectives</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="collaborating.html"><a href="collaborating.html#create-repo-partner-1"><i class="fa fa-check"></i><b>10.2</b> Create repo (Partner 1)</a></li>
+<li class="chapter" data-level="10.3" data-path="collaborating.html"><a href="collaborating.html#create-a-gh-pages-branch-partner-1"><i class="fa fa-check"></i><b>10.3</b> Create a gh-pages branch (Partner 1)</a></li>
+<li class="chapter" data-level="10.4" data-path="collaborating.html"><a href="collaborating.html#give-your-collaborator-administration-privileges-partner-1-and-2"><i class="fa fa-check"></i><b>10.4</b> Give your collaborator administration privileges (Partner 1 and 2)</a></li>
+<li class="chapter" data-level="10.5" data-path="collaborating.html"><a href="collaborating.html#clone-to-a-new-rproject-partner-1"><i class="fa fa-check"></i><b>10.5</b> Clone to a new Rproject (Partner 1)</a></li>
+<li class="chapter" data-level="10.6" data-path="collaborating.html"><a href="collaborating.html#clone-to-a-new-rproject-partner-2"><i class="fa fa-check"></i><b>10.6</b> Clone to a new Rproject (Partner 2)</a></li>
+<li class="chapter" data-level="10.7" data-path="collaborating.html"><a href="collaborating.html#edit-a-file-and-sync-partner-2"><i class="fa fa-check"></i><b>10.7</b> Edit a file and sync (Partner 2)</a></li>
+<li class="chapter" data-level="10.8" data-path="collaborating.html"><a href="collaborating.html#state-of-the-repository"><i class="fa fa-check"></i><b>10.8</b> State of the Repository</a></li>
+<li class="chapter" data-level="10.9" data-path="collaborating.html"><a href="collaborating.html#merge-conflicts"><i class="fa fa-check"></i><b>10.9</b> Merge conflicts</a><ul>
+<li class="chapter" data-level="10.9.1" data-path="collaborating.html"><a href="collaborating.html#your-turn-11"><i class="fa fa-check"></i><b>10.9.1</b> Your turn</a></li>
+</ul></li>
+<li class="chapter" data-level="10.10" data-path="collaborating.html"><a href="collaborating.html#how-do-you-avoid-merge-conflicts"><i class="fa fa-check"></i><b>10.10</b> How do you avoid merge conflicts?</a></li>
+<li class="chapter" data-level="10.11" data-path="collaborating.html"><a href="collaborating.html#create-your-collaborative-website"><i class="fa fa-check"></i><b>10.11</b> Create your collaborative website</a></li>
+<li class="chapter" data-level="10.12" data-path="collaborating.html"><a href="collaborating.html#your-turn-12"><i class="fa fa-check"></i><b>10.12</b> Your turn</a></li>
+<li class="chapter" data-level="10.13" data-path="collaborating.html"><a href="collaborating.html#explore-on-github.com"><i class="fa fa-check"></i><b>10.13</b> Explore on GitHub.com</a><ul>
+<li class="chapter" data-level="10.13.1" data-path="collaborating.html"><a href="collaborating.html#commit-history"><i class="fa fa-check"></i><b>10.13.1</b> Commit History</a></li>
+<li class="chapter" data-level="10.13.2" data-path="collaborating.html"><a href="collaborating.html#blame"><i class="fa fa-check"></i><b>10.13.2</b> Blame</a></li>
+<li class="chapter" data-level="10.13.3" data-path="collaborating.html"><a href="collaborating.html#issues"><i class="fa fa-check"></i><b>10.13.3</b> Issues</a></li>
+</ul></li>
+<li class="chapter" data-level="10.14" data-path="collaborating.html"><a href="collaborating.html#nyc-flights-exploration"><i class="fa fa-check"></i><b>10.14</b> NYC flights exploration</a><ul>
+<li class="chapter" data-level="10.14.1" data-path="collaborating.html"><a href="collaborating.html#logical-operators"><i class="fa fa-check"></i><b>10.14.1</b> Logical operators</a></li>
+</ul></li>
+<li class="chapter" data-level="10.15" data-path="collaborating.html"><a href="collaborating.html#your-turn-13"><i class="fa fa-check"></i><b>10.15</b> Your turn</a><ul>
+<li class="chapter" data-level="10.15.1" data-path="collaborating.html"><a href="collaborating.html#use-logicals"><i class="fa fa-check"></i><b>10.15.1</b> Use logicals</a></li>
+<li class="chapter" data-level="10.15.2" data-path="collaborating.html"><a href="collaborating.html#missing-values"><i class="fa fa-check"></i><b>10.15.2</b> Missing values</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="champion.html"><a href="champion.html"><i class="fa fa-check"></i><b>11</b> Be a champion for open science</a><ul>
+<li class="chapter" data-level="11.1" data-path="champion.html"><a href="champion.html#objectives-and-resources"><i class="fa fa-check"></i><b>11.1</b> Objectives and Resources</a></li>
+<li class="chapter" data-level="11.2" data-path="champion.html"><a href="champion.html#three-messages"><i class="fa fa-check"></i><b>11.2</b> Three messages</a></li>
+<li class="chapter" data-level="11.3" data-path="champion.html"><a href="champion.html#build-community"><i class="fa fa-check"></i><b>11.3</b> Build community</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
@@ -354,78 +363,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="ggplot2" class="section level1">
-<h1><span class="header-section-number">Chapter 5</span> Visualizing: <code>ggplot2</code></h1>
-<div id="why-ggplot2" class="section level2">
-<h2><span class="header-section-number">5.1</span> Why ggplot2?</h2>
-<p>This tutorial focuses exclusively on data visualization using ggplot2 because this package:</p>
-<ul>
-<li>provides a coherent language for visualizing data (vs. the original ‘plot’ function, which developed in an ad-hoc way)</li>
-<li>makes many tasks easier, such as: visualizing a third (z) variable; saving figures; automating plotting and formatting tasks</li>
-<li>creates beautiful figures and is flexible</li>
-</ul>
-<p>You should really use ggplot2 for nearly all data visualization!</p>
-</div>
-<div id="additional-resources-for-data-visualization-in-r" class="section level2">
-<h2><span class="header-section-number">5.2</span> Additional resources for data visualization in R</h2>
-<p>The goal of this tutorial is to introduce you to the basics of ggplot2. I focus only on the features I use most often. We will barely scratch the surface of ggplot2’s functionality. But there are many resources that will help you learn more. Here are some of the ones I use:</p>
-<ul>
-<li>The official ggplot2 <a href="https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf">cheatsheet</a> is amazing!</li>
-<li>Winston Chang’s book converted me from someone who was slightly confused by ggplot2 to a superuser….so I can’t recommend it enough! And, the <a href="http://www.cookbook-r.com/Graphs/#graphs-with-ggplot2">associated website</a> is great too.</li>
-</ul>
-<p><br></p>
-<p><img src="img/ChangBook.png" /></p>
-<p><br></p>
-<ul>
-<li>Hadley Wickham’s <a href="http://r4ds.had.co.nz/data-visualisation.html">R for Data Science book</a>, which is inspiration for much of this tutorial.</li>
-</ul>
-</div>
-<div id="objectives-2" class="section level2">
-<h2><span class="header-section-number">5.3</span> Objectives</h2>
-<ul>
-<li>install the <code>ggplot2</code> package by installing <code>tidyverse</code></li>
-<li>learn basics of ggplot2 with a dataset describing global ocean health</li>
-<li>practice writing a script in RMarkdown</li>
-<li>practice the rstudio-github workflow</li>
-</ul>
-</div>
-<div id="install-tidyverse-tidyverse" class="section level2">
-<h2><span class="header-section-number">5.4</span> Install tidyverse: <code>tidyverse</code></h2>
-<p>We will use the <code>ggplot2</code> package, which is bundled with a composite-package called <code>tidyverse</code>. Check out <a href="https://www.tidyverse.org">tidyverse.org/</a> for more information.</p>
-<p>We will download and install <code>tidyverse</code>:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## from CRAN:</span>
-<span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>) <span class="co">## do this once only to install the package on your computer.</span></code></pre>
-<p>You will see some messages describing which packages were installed with <code>tidyverse</code>. Messages about name conflicts are also returned. This is not a problem its just an alert that two functions from dplyr will replace functions in the built-in stats package with the same name.</p>
-</div>
-<div id="create-an-rmarkdown-file-to-work-from" class="section level2">
-<h2><span class="header-section-number">5.5</span> Create an RMarkdown file to work from</h2>
-<hr />
-<p><strong>To do:</strong>
-<strong>Create a new R Markdown file</strong></p>
-<p>We will create the RMarkdown file you will be working from. You can write notes to yourself in Markdown and have a record of all your R code.</p>
-<p>Go to File &gt; New File &gt; R Markdown … (or click the green plus in the top left corner).</p>
-<p>Next, replace all the automatic text with the following:</p>
-<pre><code>---
-title: &quot;Graphics with ggplot2&quot;
-author: &quot;Julie&quot;
-date: &quot;11/21/2017&quot;
-output: html_document
----
-
-# Learning ggplot2
-
-We&#39;re learning ggplot2 It&#39;s going to be amazing. 
-</code></pre>
+<div id="learning-ggplot2" class="section level1">
+<h1><span class="header-section-number">Chapter 6</span> Learning ggplot2</h1>
+<p>We’re learning ggplot2 It’s going to be amazing.</p>
+<p>```</p>
 <p>Now, let’s save the file. I’m going to call my file <code>ggplot2.Rmd</code>. Do a <em>pull</em>…then <em>stage/commit</em> (to save to git history)…then <em>push</em> to sync with GitHub.com.</p>
 <hr />
-</div>
 <div id="load-the-tidverse" class="section level2">
-<h2><span class="header-section-number">5.6</span> Load the tidverse</h2>
+<h2><span class="header-section-number">6.1</span> Load the tidverse</h2>
 <p>We have downloaded the tidyverse package but it is not yet loaded in the R workspace. We will use the <code>library()</code> function to load tidyverse. This will be the first code chunk in your RMarkdown:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse) <span class="co">## do this every time you restart R and need it </span></code></pre>
 </div>
 <div id="load-and-explore-data" class="section level2">
-<h2><span class="header-section-number">5.7</span> Load and explore data</h2>
+<h2><span class="header-section-number">6.2</span> Load and explore data</h2>
 <p>We will load the dataset we will be using for this tutorial into our workspace directly from GitHub.com (I always find this GitHub functionality so cool!).</p>
 <pre class="sourceCode r"><code class="sourceCode r">ohi_data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/OHI_global_data.csv&quot;</span>)</code></pre>
 <p>These data are from the global <a href="http://ohi-science.org/ohi-global/">Ocean Health Index</a> which assesses the condition of marine resources for 220 countries or territories.</p>
@@ -506,15 +456,15 @@ We&#39;re learning ggplot2 It&#39;s going to be amazing.
 <p>Let’s explore these data, shall we:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(ohi_data)</code></pre>
 <pre><code>## # A tibble: 6 x 9
-##   country OHI_score OHI_trend coastal_pop log_coastal_pop cumulative_huma…
+##   country OHI_score OHI_trend coastal_pop log_coastal_pop cumulative_huma~
 ##   &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;           &lt;dbl&gt;            &lt;dbl&gt;
-## 1 South …      92.0      1.67           0               0             2.82
-## 2 Crozet…      88.1      0.81           0               0             1.92
-## 3 Howlan…      87.7      0.08           0               0             2.97
-## 4 Heard …      87.4      0.46           0               0             2.78
-## 5 Kergue…      87.3      0.72           0               0             2.02
-## 6 Jarvis…      83.9     -0.25           0               0             1.85
-## # … with 3 more variables: HDI &lt;dbl&gt;, georegion_one &lt;chr&gt;,
+## 1 South ~      92.0      1.67           0               0             2.82
+## 2 Crozet~      88.1      0.81           0               0             1.92
+## 3 Howlan~      87.7      0.08           0               0             2.97
+## 4 Heard ~      87.4      0.46           0               0             2.78
+## 5 Kergue~      87.3      0.72           0               0             2.02
+## 6 Jarvis~      83.9     -0.25           0               0             1.85
+## # ... with 3 more variables: HDI &lt;dbl&gt;, georegion_one &lt;chr&gt;,
 ## #   georegion_two &lt;chr&gt;</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(ohi_data)</code></pre>
 <pre><code>##    country            OHI_score       OHI_trend        coastal_pop       
@@ -565,10 +515,10 @@ We&#39;re learning ggplot2 It&#39;s going to be amazing.
 ##                         7                         7 
 ##          Northern America           Northern Europe 
 ##                         3                        19 
-##                 Polynesia             South America 
-##                        10                        11 
-##        South-Eastern Asia           Southern Africa 
-##                        12                         2 
+##                 Polynesia        South-Eastern Asia 
+##                        10                        12 
+##             South America           Southern Africa 
+##                        11                         2 
 ##             Southern Asia           Southern Europe 
 ##                         7                        14 
 ##          Southern Islands            Western Africa 
@@ -577,18 +527,18 @@ We&#39;re learning ggplot2 It&#39;s going to be amazing.
 ##                        15                         5</code></pre>
 </div>
 <div id="plotting-with-ggplot2" class="section level2">
-<h2><span class="header-section-number">5.8</span> Plotting with <strong><code>ggplot2</code></strong></h2>
+<h2><span class="header-section-number">6.3</span> Plotting with <strong><code>ggplot2</code></strong></h2>
 <p>Plots are created using a step-wise approach that is flexible and easily customized. We will walk through the steps needed to build a plot in ggplot2.</p>
 <p><em>HINT: Start with the simplest version of your plot and build onto it.</em></p>
 <div id="step-1-identify-the-dataframe" class="section level3">
-<h3><span class="header-section-number">5.8.1</span> Step 1: Identify the dataframe</h3>
+<h3><span class="header-section-number">6.3.1</span> Step 1: Identify the dataframe</h3>
 <p>ggplot2 requires the data to be in a dataframe format. The first step is to use the <code>ggplot()</code> function to identify the dataframe with the data you want to plot.</p>
 <p>At this point, we will also assign the x and y axis variables within the aes function (this stands for aesthetics, and we will discuss this concept after we have a plot to work with).</p>
 <p>[NOTE: This step was confusing for me for a long time because it doesn’t actually make the plot!]</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> OHI_score, <span class="dt">y =</span> HDI))</code></pre>
 </div>
 <div id="step-2-identify-the-style-of-plot-you-want-to-create-i.e.-the-geom" class="section level3">
-<h3><span class="header-section-number">5.8.2</span> Step 2: Identify the style of plot you want to create (i.e., the geom)</h3>
+<h3><span class="header-section-number">6.3.2</span> Step 2: Identify the style of plot you want to create (i.e., the geom)</h3>
 <p>Next, we will actually create the plot by adding a geom function using the <code>+</code> operator.
 A <strong>geom</strong> is the geometrical object that a plot uses to represent data. For example, bar charts use bar geoms, line charts use line geoms, boxplots use boxplot geoms, and so on.</p>
 <p>You can use different geoms to plot the same data. To change the type of plot, change the geom function that you add to <code>ggplot()</code>.</p>
@@ -707,10 +657,10 @@ ohi_summary</code></pre>
 <p><img src="data-science-training_files/figure-html/unnamed-chunk-32-2.png" width="672" /></p>
 </div>
 <div id="step-3-customize-your-plot" class="section level3">
-<h3><span class="header-section-number">5.8.3</span> Step 3: Customize your plot</h3>
+<h3><span class="header-section-number">6.3.3</span> Step 3: Customize your plot</h3>
 <p>So far, the plots we have created are fairly ugly and hard to read. We will now improve these basic plots using a stepwise approach.</p>
 <div id="themes" class="section level4">
-<h4><span class="header-section-number">5.8.3.1</span> Themes</h4>
+<h4><span class="header-section-number">6.3.3.1</span> Themes</h4>
 <p>I do not like the default ggplot2 figures because I find them too busy. A quick way to improve plot appearance is to use themes. Many themes are built into the <code>ggplot2</code> package. For example, <code>theme_bw()</code> removes the gray background. Once you start typing <code>theme_</code> a list of options will pop up.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> OHI_score, <span class="dt">y =</span> HDI)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span>
@@ -727,7 +677,7 @@ ohi_summary</code></pre>
 <p><img src="data-science-training_files/figure-html/my%20theme-1.png" width="672" /></p>
 </div>
 <div id="labels-axis-plot-legend" class="section level4">
-<h4><span class="header-section-number">5.8.3.2</span> Labels: axis, plot, legend</h4>
+<h4><span class="header-section-number">6.3.3.2</span> Labels: axis, plot, legend</h4>
 <p>One of the first things you will often want to do is alter labels for: titles, axes, figure legends, etc. These modifications involve manipulating the theme function and can quickly get complicated, and I typically have to Google the specifics or refer to a <a href="https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf">cheatsheet</a>, despite using ggplot2 for years and years and years.</p>
 <p>But, some key changes are easy to make using the labs function:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">y =</span> OHI_score, <span class="dt">x =</span> HDI, <span class="dt">color=</span>georegion_one)) <span class="op">+</span><span class="st"> </span>
@@ -746,7 +696,7 @@ ohi_summary</code></pre>
 </blockquote>
 <ol style="list-style-type: decimal">
 <li>Make a histogram of the OHI_score variable and color by the georegion_one variable.</li>
-<li>How would you make all the bars on your histogram light gray? Hint: use argument <code>fill = &quot;lightgray&quot;</code>. Where is the best place to add this in your code to get this to work?</li>
+<li>How would you make all the bars on your histogram light gray? Hint: use argument <code>fill = "lightgray"</code>. Where is the best place to add this in your code to get this to work?</li>
 <li>Play with some themes and customizing title and axes labels. Try changing the text sizes and angles (refer to the <a href="https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf">cheatsheet</a>).</li>
 </ol>
 <p><br></p>
@@ -784,7 +734,7 @@ my_plot <span class="op">+</span><span class="st">    </span><span class="co"># 
 <p><br></p>
 </div>
 <div id="global-changes-to-plot-attributes" class="section level4">
-<h4><span class="header-section-number">5.8.3.3</span> Global changes to plot attributes</h4>
+<h4><span class="header-section-number">6.3.3.3</span> Global changes to plot attributes</h4>
 <p>It is easy to make global changes to your plot’s appearance (these go outside the aes function). Here are some options:</p>
 <ul>
 <li><em>color</em> color of lines/points</li>
@@ -809,7 +759,7 @@ my_plot <span class="op">+</span><span class="st">    </span><span class="co"># 
 <p><img src="data-science-training_files/figure-html/fig_improve-1.png" width="672" /></p>
 </div>
 <div id="color" class="section level4">
-<h4><span class="header-section-number">5.8.3.4</span> Color</h4>
+<h4><span class="header-section-number">6.3.3.4</span> Color</h4>
 <p>One of the more challenging aspects of creating a good plot is selecting colors. We are here to help!</p>
 <p><strong>Hint 1</strong>
 Unless you are doing something very simple (e.g. 1-3 colors), I recommend using established color palettes. There are many color palette packages (here is a good resource: <a href="https://github.com/EmilHvitfeldt/r-color-palettes" class="uri">https://github.com/EmilHvitfeldt/r-color-palettes</a>), but one of the best known is <a href="http://colorbrewer2.org/#type=sequential&amp;scheme=BuGn&amp;n=3">RColorBrewer</a>.</p>
@@ -887,7 +837,7 @@ fake_data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span
 </div>
 </div>
 <div id="saving-plots" class="section level2">
-<h2><span class="header-section-number">5.9</span> Saving plots</h2>
+<h2><span class="header-section-number">6.4</span> Saving plots</h2>
 <p>After creating your plot, use the <code>ggsave()</code> function to save your plot. This function allows you easily change the dimension, resolution, and format of your plot:</p>
 <pre class="sourceCode r"><code class="sourceCode r">my_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> fake_data, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">as.factor</span>(year), <span class="dt">y =</span> values, <span class="dt">group=</span>animal, <span class="dt">color=</span>animal)) <span class="op">+</span><span class="st"> </span>
 <span class="st">      </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">3</span>) <span class="op">+</span>
@@ -900,7 +850,7 @@ fake_data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span
 Note: The parameters <code>width</code> and <code>height</code> also determine the font size in the saved plot.</p>
 </div>
 <div id="arranging-plots" class="section level2">
-<h2><span class="header-section-number">5.10</span> Arranging plots</h2>
+<h2><span class="header-section-number">6.5</span> Arranging plots</h2>
 <p>I am a huge fan of cowplots for making multiplot figures. Here is a nice <a href="https://cran.r-project.org/web/packages/cowplot/vignettes/introduction.html">introduction</a>.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;cowplot&quot;</span>)</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(cowplot)
@@ -918,7 +868,7 @@ score_vs_trend  <span class="co"># notice that the default theme has been change
 <p><img src="data-science-training_files/figure-html/cowplot-2.png" width="672" /></p>
 </div>
 <div id="interactive-plots" class="section level2">
-<h2><span class="header-section-number">5.11</span> Interactive plots</h2>
+<h2><span class="header-section-number">6.6</span> Interactive plots</h2>
 <p>So as you can see, <code>ggplot2</code> is a fantastic package for visualizing data. But there are some additional packages that let you make plots interactive. <code>plotly</code>, <code>gganimate</code>. I use plotly all the time to check my data!</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;plotly&quot;</span>)</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(plotly)
@@ -927,15 +877,11 @@ score_vs_HDI &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span 
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size=</span><span class="dv">3</span>, <span class="dt">alpha=</span><span class="fl">0.4</span>)
 
 <span class="kw">ggplotly</span>(score_vs_HDI)</code></pre>
-<pre><code>## Error: .onLoad failed in loadNamespace() for &#39;Cairo&#39;, details:
-##   call: dyn.load(file, DLLpath = DLLpath, ...)
-##   error: unable to load shared object &#39;/Library/Frameworks/R.framework/Versions/3.5/Resources/library/Cairo/libs/Cairo.so&#39;:
-##   dlopen(/Library/Frameworks/R.framework/Versions/3.5/Resources/library/Cairo/libs/Cairo.so, 6): Library not loaded: /opt/X11/lib/libfreetype.6.dylib
-##   Referenced from: /Library/Frameworks/R.framework/Versions/3.5/Resources/library/Cairo/libs/Cairo.so
-##   Reason: image not found</code></pre>
+<div id="htmlwidget-d423ddebe5ea3cefe941" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d423ddebe5ea3cefe941">{"x":{"data":[{"x":[91.98,88.08,87.69,87.35,87.32,83.9,83.82,83.2,82.74,82.7,82.3,81.8,81.6,80.67,80.47,80.37,80.36,80.07,79.44,79.07,78.46,78.41,77.9,77.71,77.14,77.11,76.62,76.55,76.4,75.95,75.89,75.77,75.41,75.29,75.26,74.98,74.89,74.68,74.33,74.25,74.23,74.19,73.88,73.69,73.62,73.45,73.01,72.97,72.96,72.95,72.94,72.92,72.52,72.49,72.34,72.21,72.19,72,71.81,71.69,71.64,71.63,71.46,71.43,71.41,71.4,71.38,71.38,71.26,71.11,71.07,70.95,70.93,70.91,70.77,70.73,70.71,70.71,70.7,70.53,70.48,70.48,70.47,70.45,70.4,70.33,70.32,70.3,70.23,70,69.97,69.95,69.67,69.66,68.88,68.83,68.79,68.78,68.76,68.73,68.52,68.45,68.33,68.28,68.26,68.24,68.23,68.05,68,67.89,67.82,67.81,67.68,67.62,67.38,67.23,67.23,66.79,66.77,66.68,66.59,66.5,66.38,66.37,66.12,66.07,65.94,65.8,65.74,65.61,65.35,65.28,65.19,65.17,64.92,64.6,64.36,64.35,64.25,64.05,63.96,63.93,63.76,63.57,63.47,63.42,63.32,63.3,63.26,63.07,63.07,63.07,63.02,62.9,62.78,62.72,62.52,62.51,62.44,62.44,62.28,62.25,61.78,61.77,61.7,61.62,61.33,61.28,61.11,61.02,60.98,60.92,60.71,60.65,60.63,60.62,60.24,60.07,59.83,59.65,59.46,59.05,58.95,58.93,58.47,58.04,58.03,57.57,57.26,57.12,57.09,56.66,55.83,55.3,55.24,54.83,54.48,54.27,54.11,54.05,53.25,53.02,52.41,52.37,51.59,51.47,50.84,50.75,50.59,49.89,49.49,48.88,48.83,48.74,48.48,47.79,46.79,46.31,46.1,43.55,41.83],"y":[null,null,null,null,null,null,null,null,null,null,null,null,0.926,null,null,null,null,0.786,0.856,null,null,0.939,null,0.887,null,null,0.915,0.84,null,0.782,null,0.792,null,0.597,0.725,0.949,null,0.827,0.895,0.901,null,0.925,0.83,0.666,null,null,null,null,null,0.896,0.704,null,0.804,null,null,null,0.91,null,0.924,0.865,null,0.856,0.903,0.701,null,0.78,0.722,null,0.847,0.721,null,0.855,null,0.74,0.736,null,null,null,0.843,null,null,0.739,null,null,0.515,0.796,null,null,0.897,null,null,0.774,0.531,0.8,0.913,null,null,null,0.579,0.638,null,0.866,0.89,0.769,0.923,0.473,0.92,0.92,0.788,0.691,0.625,0.588,0.418,null,null,0.648,null,null,0.781,null,null,0.706,0.827,0.762,0.754,0.452,null,null,0.884,0.647,null,0.789,0.847,null,0.556,0.624,0.765,0.579,0.563,0.788,0.848,null,null,0.689,0.766,0.865,0.775,0.899,0.683,0.482,0.802,0.638,null,0.776,null,null,0.64,0.518,0.738,0.917,0.725,0.64,0.512,0.742,0.682,0.516,0.74,0.555,null,0.795,0.697,0.606,0.794,0.743,0.487,null,0.727,null,0.921,0.735,0.767,0.498,0.925,0.73,0.754,0.574,0.764,0.824,0.856,0.485,0.493,0.767,0.722,0.649,0.795,0.527,0.513,0.807,0.592,0.536,0.533,0.68,0.49,0.745,0.726,0.55,null,0.427,null,0.494,0.592,0.424,0.75,0.763,0.42,0.645,0.414,0.435,0.42,0.716,0.474],"text":["OHI_score: 91.98<br />HDI:    NA<br />Country: South Georgia and the South Sandwich Islands","OHI_score: 88.08<br />HDI:    NA<br />Country: Crozet Islands","OHI_score: 87.69<br />HDI:    NA<br />Country: Howland Island and Baker Island","OHI_score: 87.35<br />HDI:    NA<br />Country: Heard and McDonald Islands","OHI_score: 87.32<br />HDI:    NA<br />Country: Kerguelen Islands","OHI_score: 83.90<br />HDI:    NA<br />Country: Jarvis Island","OHI_score: 83.82<br />HDI:    NA<br />Country: Macquarie Island","OHI_score: 83.20<br />HDI:    NA<br />Country: Northern Saint-Martin","OHI_score: 82.74<br />HDI:    NA<br />Country: Phoenix Islands (Kiribati)","OHI_score: 82.70<br />HDI:    NA<br />Country: Christmas Island","OHI_score: 82.30<br />HDI:    NA<br />Country: Palmyra Atoll","OHI_score: 81.80<br />HDI:    NA<br />Country: New Caledonia","OHI_score: 81.60<br />HDI: 0.926<br />Country: Germany","OHI_score: 80.67<br />HDI:    NA<br />Country: Aruba","OHI_score: 80.47<br />HDI:    NA<br />Country: Cocos Islands","OHI_score: 80.37<br />HDI:    NA<br />Country: Norfolk Island","OHI_score: 80.36<br />HDI:    NA<br />Country: Madeira","OHI_score: 80.07<br />HDI: 0.786<br />Country: Antigua and Barbuda","OHI_score: 79.44<br />HDI: 0.856<br />Country: Malta","OHI_score: 79.07<br />HDI:    NA<br />Country: American Samoa","OHI_score: 78.46<br />HDI:    NA<br />Country: French Polynesia","OHI_score: 78.41<br />HDI: 0.939<br />Country: Australia","OHI_score: 77.90<br />HDI:    NA<br />Country: Pitcairn","OHI_score: 77.71<br />HDI: 0.887<br />Country: Italy","OHI_score: 77.14<br />HDI:    NA<br />Country: Curacao","OHI_score: 77.11<br />HDI:    NA<br />Country: Cayman Islands","OHI_score: 76.62<br />HDI: 0.915<br />Country: New Zealand","OHI_score: 76.55<br />HDI: 0.840<br />Country: United Arab Emirates","OHI_score: 76.40<br />HDI:    NA<br />Country: Azores","OHI_score: 75.95<br />HDI: 0.782<br />Country: Seychelles","OHI_score: 75.89<br />HDI:    NA<br />Country: Wallis and Futuna","OHI_score: 75.77<br />HDI: 0.792<br />Country: Bahamas","OHI_score: 75.41<br />HDI:    NA<br />Country: Tuvalu","OHI_score: 75.29<br />HDI: 0.597<br />Country: Vanuatu","OHI_score: 75.26<br />HDI: 0.725<br />Country: Suriname","OHI_score: 74.98<br />HDI: 0.949<br />Country: Norway","OHI_score: 74.89<br />HDI:    NA<br />Country: Clipperton Island","OHI_score: 74.68<br />HDI: 0.827<br />Country: Croatia","OHI_score: 74.33<br />HDI: 0.895<br />Country: Finland","OHI_score: 74.25<br />HDI: 0.901<br />Country: South Korea","OHI_score: 74.23<br />HDI:    NA<br />Country: Ile Europa","OHI_score: 74.19<br />HDI: 0.925<br />Country: Denmark","OHI_score: 73.88<br />HDI: 0.830<br />Country: Latvia","OHI_score: 73.69<br />HDI: 0.666<br />Country: South Africa","OHI_score: 73.62<br />HDI:    NA<br />Country: Sint Maarten","OHI_score: 73.45<br />HDI:    NA<br />Country: Saba","OHI_score: 73.01<br />HDI:    NA<br />Country: Line Islands (Kiribati)","OHI_score: 72.97<br />HDI:    NA<br />Country: Prince Edward Islands","OHI_score: 72.96<br />HDI:    NA<br />Country: Greenland","OHI_score: 72.95<br />HDI: 0.896<br />Country: Belgium","OHI_score: 72.94<br />HDI: 0.704<br />Country: Samoa","OHI_score: 72.92<br />HDI:    NA<br />Country: Marshall Islands","OHI_score: 72.52<br />HDI: 0.804<br />Country: Russia","OHI_score: 72.49<br />HDI:    NA<br />Country: Northern Mariana Islands and Guam","OHI_score: 72.34<br />HDI:    NA<br />Country: Glorioso Islands","OHI_score: 72.21<br />HDI:    NA<br />Country: Bonaire","OHI_score: 72.19<br />HDI: 0.910<br />Country: United Kingdom","OHI_score: 72.00<br />HDI:    NA<br />Country: Montserrat","OHI_score: 71.81<br />HDI: 0.924<br />Country: Netherlands","OHI_score: 71.69<br />HDI: 0.865<br />Country: Estonia","OHI_score: 71.64<br />HDI:    NA<br />Country: Guadeloupe and Martinique","OHI_score: 71.63<br />HDI: 0.856<br />Country: Qatar","OHI_score: 71.46<br />HDI: 0.903<br />Country: Japan","OHI_score: 71.43<br />HDI: 0.701<br />Country: Maldives","OHI_score: 71.41<br />HDI:    NA<br />Country: Ascension","OHI_score: 71.40<br />HDI: 0.780<br />Country: Trinidad and Tobago","OHI_score: 71.38<br />HDI: 0.722<br />Country: Dominican Republic","OHI_score: 71.38<br />HDI:    NA<br />Country: French Guiana","OHI_score: 71.26<br />HDI: 0.847<br />Country: Chile","OHI_score: 71.11<br />HDI: 0.721<br />Country: Tonga","OHI_score: 71.07<br />HDI:    NA<br />Country: Tokelau","OHI_score: 70.95<br />HDI: 0.855<br />Country: Poland","OHI_score: 70.93<br />HDI:    NA<br />Country: Johnston Atoll","OHI_score: 70.91<br />HDI: 0.740<br />Country: Thailand","OHI_score: 70.77<br />HDI: 0.736<br />Country: Fiji","OHI_score: 70.73<br />HDI:    NA<br />Country: Nauru","OHI_score: 70.71<br />HDI:    NA<br />Country: Wake Island","OHI_score: 70.71<br />HDI:    NA<br />Country: British Indian Ocean Territory","OHI_score: 70.70<br />HDI: 0.843<br />Country: Portugal","OHI_score: 70.53<br />HDI:    NA<br />Country: British Virgin Islands","OHI_score: 70.48<br />HDI:    NA<br />Country: Gibraltar","OHI_score: 70.48<br />HDI: 0.739<br />Country: Ecuador","OHI_score: 70.47<br />HDI:    NA<br />Country: Turks and Caicos Islands","OHI_score: 70.45<br />HDI:    NA<br />Country: Amsterdam Island and Saint Paul Island","OHI_score: 70.40<br />HDI: 0.515<br />Country: Solomon Islands","OHI_score: 70.33<br />HDI: 0.796<br />Country: Oman","OHI_score: 70.32<br />HDI:    NA<br />Country: Tristan da Cunha","OHI_score: 70.30<br />HDI:    NA<br />Country: Puerto Rico and Virgin Islands of the United States","OHI_score: 70.23<br />HDI: 0.897<br />Country: France","OHI_score: 70.00<br />HDI:    NA<br />Country: Sint Eustatius","OHI_score: 69.97<br />HDI:    NA<br />Country: Juan de Nova Island","OHI_score: 69.95<br />HDI: 0.774<br />Country: Iran","OHI_score: 69.67<br />HDI: 0.531<br />Country: Tanzania","OHI_score: 69.66<br />HDI: 0.800<br />Country: Kuwait","OHI_score: 68.88<br />HDI: 0.913<br />Country: Sweden","OHI_score: 68.83<br />HDI:    NA<br />Country: Ile Tromelin","OHI_score: 68.79<br />HDI:    NA<br />Country: Bermuda","OHI_score: 68.78<br />HDI:    NA<br />Country: Anguilla","OHI_score: 68.76<br />HDI: 0.579<br />Country: Bangladesh","OHI_score: 68.73<br />HDI: 0.638<br />Country: Micronesia","OHI_score: 68.52<br />HDI:    NA<br />Country: Saint Pierre and Miquelon","OHI_score: 68.45<br />HDI: 0.866<br />Country: Greece","OHI_score: 68.33<br />HDI: 0.890<br />Country: Slovenia","OHI_score: 68.28<br />HDI: 0.769<br />Country: Georgia","OHI_score: 68.26<br />HDI: 0.923<br />Country: Ireland","OHI_score: 68.24<br />HDI: 0.473<br />Country: Djibouti","OHI_score: 68.23<br />HDI: 0.920<br />Country: Canada","OHI_score: 68.05<br />HDI: 0.920<br />Country: United States","OHI_score: 68.00<br />HDI: 0.788<br />Country: Palau","OHI_score: 67.89<br />HDI: 0.691<br />Country: Egypt","OHI_score: 67.82<br />HDI: 0.625<br />Country: Honduras","OHI_score: 67.81<br />HDI: 0.588<br />Country: Gilbert Islands (Kiribati)","OHI_score: 67.68<br />HDI: 0.418<br />Country: Mozambique","OHI_score: 67.62<br />HDI:    NA<br />Country: Jersey","OHI_score: 67.38<br />HDI:    NA<br />Country: Mayotte","OHI_score: 67.23<br />HDI: 0.648<br />Country: Cape Verde","OHI_score: 67.23<br />HDI:    NA<br />Country: Niue","OHI_score: 66.79<br />HDI:    NA<br />Country: Jan Mayen","OHI_score: 66.77<br />HDI: 0.781<br />Country: Mauritius","OHI_score: 66.68<br />HDI:    NA<br />Country: Taiwan","OHI_score: 66.59<br />HDI:    NA<br />Country: Andaman and Nicobar","OHI_score: 66.50<br />HDI: 0.706<br />Country: Belize","OHI_score: 66.38<br />HDI: 0.827<br />Country: Argentina","OHI_score: 66.37<br />HDI: 0.762<br />Country: Mexico","OHI_score: 66.12<br />HDI: 0.754<br />Country: Brazil","OHI_score: 66.07<br />HDI: 0.452<br />Country: Gambia","OHI_score: 65.94<br />HDI:    NA<br />Country: Bassas da India","OHI_score: 65.80<br />HDI:    NA<br />Country: Canary Islands","OHI_score: 65.74<br />HDI: 0.884<br />Country: Spain","OHI_score: 65.61<br />HDI: 0.647<br />Country: Morocco","OHI_score: 65.35<br />HDI:    NA<br />Country: Cook Islands","OHI_score: 65.28<br />HDI: 0.789<br />Country: Malaysia","OHI_score: 65.19<br />HDI: 0.847<br />Country: Saudi Arabia","OHI_score: 65.17<br />HDI:    NA<br />Country: Falkland Islands","OHI_score: 64.92<br />HDI: 0.556<br />Country: Myanmar","OHI_score: 64.60<br />HDI: 0.624<br />Country: India","OHI_score: 64.36<br />HDI: 0.765<br />Country: Saint Kitts and Nevis","OHI_score: 64.35<br />HDI: 0.579<br />Country: Ghana","OHI_score: 64.25<br />HDI: 0.563<br />Country: Cambodia","OHI_score: 64.05<br />HDI: 0.788<br />Country: Panama","OHI_score: 63.96<br />HDI: 0.848<br />Country: Lithuania","OHI_score: 63.93<br />HDI:    NA<br />Country: Monaco","OHI_score: 63.76<br />HDI:    NA<br />Country: R_union","OHI_score: 63.57<br />HDI: 0.689<br />Country: Indonesia","OHI_score: 63.47<br />HDI: 0.766<br />Country: Sri Lanka","OHI_score: 63.42<br />HDI: 0.865<br />Country: Brunei","OHI_score: 63.32<br />HDI: 0.775<br />Country: Cuba","OHI_score: 63.30<br />HDI: 0.899<br />Country: Israel","OHI_score: 63.26<br />HDI: 0.683<br />Country: Vietnam","OHI_score: 63.07<br />HDI: 0.482<br />Country: Yemen","OHI_score: 63.07<br />HDI: 0.802<br />Country: Romania","OHI_score: 63.07<br />HDI: 0.638<br />Country: Guyana","OHI_score: 63.02<br />HDI:    NA<br />Country: Oecussi Ambeno","OHI_score: 62.90<br />HDI: 0.776<br />Country: Costa Rica","OHI_score: 62.78<br />HDI:    NA<br />Country: Bouvet Island","OHI_score: 62.72<br />HDI:    NA<br />Country: Guernsey","OHI_score: 62.52<br />HDI: 0.640<br />Country: Namibia","OHI_score: 62.51<br />HDI: 0.518<br />Country: Cameroon","OHI_score: 62.44<br />HDI: 0.738<br />Country: China","OHI_score: 62.44<br />HDI: 0.917<br />Country: China","OHI_score: 62.28<br />HDI: 0.725<br />Country: Tunisia","OHI_score: 62.25<br />HDI: 0.640<br />Country: Guatemala","OHI_score: 61.78<br />HDI: 0.512<br />Country: Madagascar","OHI_score: 61.77<br />HDI: 0.742<br />Country: Jordan","OHI_score: 61.70<br />HDI: 0.682<br />Country: Philippines","OHI_score: 61.62<br />HDI: 0.516<br />Country: Papua New Guinea","OHI_score: 61.33<br />HDI: 0.740<br />Country: Peru","OHI_score: 61.28<br />HDI: 0.555<br />Country: Kenya","OHI_score: 61.11<br />HDI:    NA<br />Country: Western Sahara","OHI_score: 61.02<br />HDI: 0.795<br />Country: Uruguay","OHI_score: 60.98<br />HDI: 0.697<br />Country: Gabon","OHI_score: 60.92<br />HDI: 0.606<br />Country: East Timor","OHI_score: 60.71<br />HDI: 0.794<br />Country: Bulgaria","OHI_score: 60.65<br />HDI: 0.743<br />Country: Ukraine","OHI_score: 60.63<br />HDI: 0.487<br />Country: Togo","OHI_score: 60.62<br />HDI:    NA<br />Country: Saint Helena","OHI_score: 60.24<br />HDI: 0.727<br />Country: Colombia","OHI_score: 60.07<br />HDI:    NA<br />Country: Faeroe Islands","OHI_score: 59.83<br />HDI: 0.921<br />Country: Iceland","OHI_score: 59.65<br />HDI: 0.735<br />Country: Saint Lucia","OHI_score: 59.46<br />HDI: 0.767<br />Country: Venezuela","OHI_score: 59.05<br />HDI: 0.498<br />Country: Comoro Islands","OHI_score: 58.95<br />HDI: 0.925<br />Country: Singapore","OHI_score: 58.93<br />HDI: 0.730<br />Country: Jamaica","OHI_score: 58.47<br />HDI: 0.754<br />Country: Grenada","OHI_score: 58.04<br />HDI: 0.574<br />Country: Sao Tome and Principe","OHI_score: 58.03<br />HDI: 0.764<br />Country: Albania","OHI_score: 57.57<br />HDI: 0.824<br />Country: Bahrain","OHI_score: 57.26<br />HDI: 0.856<br />Country: Cyprus","OHI_score: 57.12<br />HDI: 0.485<br />Country: Benin","OHI_score: 57.09<br />HDI: 0.493<br />Country: Haiti","OHI_score: 56.66<br />HDI: 0.767<br />Country: Turkey","OHI_score: 55.83<br />HDI: 0.722<br />Country: Saint Vincent and the Grenadines","OHI_score: 55.30<br />HDI: 0.649<br />Country: Iraq","OHI_score: 55.24<br />HDI: 0.795<br />Country: Barbados","OHI_score: 54.83<br />HDI: 0.527<br />Country: Nigeria","OHI_score: 54.48<br />HDI: 0.513<br />Country: Mauritania","OHI_score: 54.27<br />HDI: 0.807<br />Country: Montenegro","OHI_score: 54.11<br />HDI: 0.592<br />Country: Equatorial Guinea","OHI_score: 54.05<br />HDI: 0.536<br />Country: Syria","OHI_score: 53.25<br />HDI: 0.533<br />Country: Angola","OHI_score: 53.02<br />HDI: 0.680<br />Country: El Salvador","OHI_score: 52.41<br />HDI: 0.490<br />Country: Sudan","OHI_score: 52.37<br />HDI: 0.745<br />Country: Algeria","OHI_score: 51.59<br />HDI: 0.726<br />Country: Dominica","OHI_score: 51.47<br />HDI: 0.550<br />Country: Pakistan","OHI_score: 50.84<br />HDI:    NA<br />Country: North Korea","OHI_score: 50.75<br />HDI: 0.427<br />Country: Liberia","OHI_score: 50.59<br />HDI:    NA<br />Country: Somalia","OHI_score: 49.89<br />HDI: 0.494<br />Country: Senegal","OHI_score: 49.49<br />HDI: 0.592<br />Country: Republique du Congo","OHI_score: 48.88<br />HDI: 0.424<br />Country: Guinea Bissau","OHI_score: 48.83<br />HDI: 0.750<br />Country: Bosnia and Herzegovina","OHI_score: 48.74<br />HDI: 0.763<br />Country: Lebanon","OHI_score: 48.48<br />HDI: 0.420<br />Country: Eritrea","OHI_score: 47.79<br />HDI: 0.645<br />Country: Nicaragua","OHI_score: 46.79<br />HDI: 0.414<br />Country: Guinea","OHI_score: 46.31<br />HDI: 0.435<br />Country: Democratic Republic of the Congo","OHI_score: 46.10<br />HDI: 0.420<br />Country: Sierra Leone","OHI_score: 43.55<br />HDI: 0.716<br />Country: Libya","OHI_score: 41.83<br />HDI: 0.474<br />Country: Ivory Coast"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,0,0,1)","opacity":0.4,"size":11.3385826771654,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":29.0178497301785,"r":9.29846409298464,"b":52.2015774180158,"l":56.4509755085098},"font":{"color":"rgba(0,0,0,1)","family":"","size":18.5969281859693},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[39.3225,94.4875],"tickmode":"array","ticktext":["40","50","60","70","80","90"],"tickvals":[40,50,60,70,80,90],"categoryorder":"array","categoryarray":["40","50","60","70","80","90"],"nticks":null,"ticks":"outside","tickcolor":"rgba(0,0,0,1)","ticklen":4.64923204649232,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(0,0,0,1)","family":"","size":15.9375674553757},"tickangle":-0,"showline":true,"linecolor":"rgba(0,0,0,1)","linewidth":0.66417600664176,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"OHI_score","font":{"color":"rgba(0,0,0,1)","family":"","size":18.5969281859693}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.38725,0.97575],"tickmode":"array","ticktext":["0.4","0.6","0.8"],"tickvals":[0.4,0.6,0.8],"categoryorder":"array","categoryarray":["0.4","0.6","0.8"],"nticks":null,"ticks":"outside","tickcolor":"rgba(0,0,0,1)","ticklen":4.64923204649232,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(0,0,0,1)","family":"","size":15.9375674553757},"tickangle":-0,"showline":true,"linecolor":"rgba(0,0,0,1)","linewidth":0.66417600664176,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"x","title":{"text":"HDI","font":{"color":"rgba(0,0,0,1)","family":"","size":18.5969281859693}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":15.9375674553757}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"e1460e26bb1":{"x":{},"y":{},"text":{},"type":"scatter"}},"cur_data":"e1460e26bb1","visdat":{"e1460e26bb1":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="save-and-push-to-github" class="section level2">
-<h2><span class="header-section-number">5.12</span> Save and push to GitHub</h2>
+<h2><span class="header-section-number">6.7</span> Save and push to GitHub</h2>
 
 </div>
 </div>
@@ -947,7 +893,7 @@ score_vs_HDI &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span 
           </div>
         </div>
       </div>
-<a href="github.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ggplot2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="dplyr.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
