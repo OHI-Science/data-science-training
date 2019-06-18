@@ -12,7 +12,7 @@ library(htmltools)
 
 What are some common things you like to do with your data? Maybe remove rows or columns, do calculations and maybe add new columns? This is called **data wrangling**. It's not data management or data manipulation: you **keep the raw data raw** and do these things programatically in R with the tidyverse.
 
-We are going to introduce you to data wrangling in R first with the tidyverse. The tidyverse is a new suite of packages that match a philosophy of data science developed by Hadley Wickham and the RStudio team. I find it to be a more straight-forward way to learn R. We will also show you by comparison what code will look like in "Base R", which means, in R without any additional packages (like the "tidyverse" package)  installed. I like David Robinson's blog post on the topic of [teaching the tidyverse first](http://varianceexplained.org/r/teach-hard-way).
+We are going to introduce you to data wrangling in R first with the tidyverse. The tidyverse is a suite of packages that match a philosophy of data science developed by Hadley Wickham and the RStudio team. I find it to be a more straight-forward way to learn R. We will also show you by comparison what code will look like in "Base R", which means, in R without any additional packages (like the "tidyverse" package)  installed. I like David Robinson's blog post on the topic of [teaching the tidyverse first](http://varianceexplained.org/r/teach-hard-way).
 
 For some things, base-R is more straight forward, and we'll show you that too. Whenever we use a function that is from the tidyverse, we will prefix it so you'll know for sure. 
 
@@ -61,7 +61,7 @@ Tidy data has a simple convention: put variables in the columns and observations
 ![](img/tidy_data.png)
 </br>
 </br>
-The national parks dataset we were working with this morning was an example of tidy data. When data are tidy, you are set up to work with it for your analyses, plots, etc. 
+The Ocean Health Index dataset we were working with this morning was an example of tidy data. When data are tidy, you are set up to work with it for your analyses, plots, etc. 
 </br>
 </br>
 ![](img/tidy_img_np.png) 
@@ -130,7 +130,6 @@ Now, let's go back to RStudio. In our R Markdown, let's read this csv file and n
 ```{r, eval=FALSE}
 ## read gapminder csv. Note the readr:: prefix identifies which package it's in
 gapminder <- readr::read_csv('https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder.csv') 
-
 ```
 
 Note: `read_csv` works with local filepaths as well, you could use one from your computer.
@@ -174,18 +173,12 @@ ncol(gapminder)   # ?ncol number of columns
 nrow(gapminder)   # ?nrow number of rows
 ```
 
-We can combine using `c()` to reverse-engineer `dim()`! It's a side-note here, but I wanted to introduce you to `c()`: we'll use it later.
-```{r, eval=FALSE}
-c(nrow(gapminder), ncol(gapminder)) # ?c combines values into a vector or list. 
-```
-
 A statistical overview can be obtained with `summary()`, or with `skimr::skim()`
 ```{r summary, eval=FALSE}
 summary(gapminder)
 
 library(skimr) # install.packages('skimr')
 skim(gapminder)
-
 ```
 
 ### Look at the variables inside a data.frame
@@ -244,7 +237,7 @@ You will want to isolate bits of your data; maybe you want to only look at a sin
 Visually, we are doing this (thanks RStudio for your [cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)): 
 
 ![](img/rstudio-cheatsheet-filter.png)
-Remember your logical expressions from this morning? We’ll use `<` and `==` here.
+Remember your logical expressions? We’ll use `<` and `==` here.
 
 ```{r, eval=FALSE}
 filter(gapminder, lifeExp < 29)
@@ -273,18 +266,17 @@ filter(gapminder, country == "Mexico", year == 2002)
 
 ## Your turn 
 
-What is the mean life expectancy of Sweden? Hint: do this in 2 steps by assigning a variable and then using the `mean()` function.
-
-Then, sync to Github.com (pull, stage, commit, push).
+> What was the average life expectency in Brazil between 1987 and 2007? Hint: do this in 2 steps by assigning a variable and then using the `mean()` function.
+>
+> Then, sync to Github.com (pull, stage, commit, push).
 
 ### Answer 
 
 This is one way to do it based on what we have learned so far:
 
 ```{r, eval=FALSE}
-x <- filter(gapminder, country == "Sweden")  
+x <- filter(gapminder, country == "Brazil", year > 1986)  
 mean(x$lifeExp)  
-
 ```
 
 <!---Don't use this one for now because gets off track for %>%
@@ -306,7 +298,7 @@ Visually, we are doing this (thanks RStudio for your [cheatsheet](http://www.rst
 We can select multiple columns with a comma, after we specify the data frame (gapminder). 
 
 ```{r, eval=FALSE}
-select(gapminder, year, lifeExp) 
+select(gapminder, year, country, lifeExp) 
 ```
 
 We can also use - to deselect columns
@@ -376,24 +368,18 @@ Fun break: check out [this gif about %>% from Twitter](https://twitter.com/backe
 We can use the pipe to chain those two operations together:
 
 ```{r, eval=FALSE}
-gap_cambodia  <- gapminder %>% filter(country == "Cambodia") %>%
+gap_cambodia  <- gapminder %>% 
+  filter(country == "Cambodia") %>%
   select(-continent, -lifeExp) 
 ```
 
 What's happening here? In the second line, we were able to delete `gap_cambodia2 <- gap_cambodia`, and put the pipe operator above. This is possible since we wanted to operate on the `gap_cambodia` data anyways. And we weren't truly excited about having a second variable named `gap_cambodia2` anyways, so we can get rid of it. This is huge, because most of your data wrangling will have many more than 2 steps, and we don't want a `gap_cambodia14`!
 
-Let's write it again but using multiple lines so it's nicer to read. 
-
-```{r, eval=FALSE}
-gap_cambodia  <- gapminder %>% 
-  filter(country == "Cambodia") %>%
-  select(-continent, -lifeExp) 
-```
-Amazing. I can actually read this like a story and there aren't temporary variables that get super confusing. In my head: 
+By using multiple lines I can actually read this like a story and there aren't temporary variables that get super confusing. In my head: 
 
 >"start with the `gapminder` data, and then  
 filter for Cambodia, and then  
-deselect the variables continent and lifeExp."
+drop the variables continent and lifeExp."
 
 Being able to read a story out of code like this is really game-changing. We'll continue using this syntax as we learn the other dplyr verbs. 
 
@@ -407,14 +393,7 @@ Visually, we are doing this (thanks RStudio for your [cheatsheet](http://www.rst
 
 ![](img/rstudio-cheatsheet-mutate.png)
 
-We will name our new column index. We will name the new column 'index'; and we assign it with a single `=`. Notice that we can use the `nrow` function *within* our mutate call:
-
-```{r, eval=FALSE}
-gapminder %>% 
-  mutate(index = 1:nrow(gapminder))
-```
-
-OK, let's do another example. Imagine we wanted to recover each country's GDP. After all, the Gapminder data has a variable for population and GDP per capita. 
+Imagine we want to know each country's annual GDP. We can multiply `pop` by `gdpPercap` to create a new column named `gdp`.
 
 ```{r, eval=FALSE}
 gapminder %>%
@@ -423,58 +402,37 @@ gapminder %>%
 
 ### Your turn 
 
-Find the maximum gdpPercap of Egypt and the maximum gdpPercap of Vietnam. Create a new column with `mutate()`. Hint: use `max()`
-
-Then, sync to Github.com (pull, stage, commit, push).
+> Calculate the population in thousands for all Asian countries in the year 2007 and add it as a new column.
+>
+> Then, sync to Github.com (pull, stage, commit, push).
 
 #### Answer 
 ```{r, eval=FALSE}
 gapminder %>%
-  select(-continent, -lifeExp) %>% # not super necessary but to simplify
-  filter(country == "Egypt") %>%
-  mutate(gdp = pop * gdpPercap) %>%
-  mutate(max_gdp = max(gdp))
-
-## you can also create multiple variables within the same mutate(), and line them up so they are easier to read:
-gapminder %>%
-  select(-continent, -lifeExp) %>% # not super necessary but to simplify
-  filter(country == "Vietnam") %>% 
-  mutate(gdp     = pop * gdpPercap,
-         max_gdp = max(gdp))
+  filter(continent == "Asia",
+         year == 2007) %>%
+  mutate(pop_thousands = pop/1000) %>%
+  select(country, year, pop_thousands) #this cleans up the dataframe but isn't necessary
 ```
-
-With the things we know so far, the answers you have are maybe a bit limiting. First, we had to act on Egypt and Vietnam separately, and repeat the same code. Copy-pasting like this is also super error prone. 
-
-And second, this `max_gdpPercap` column is pretty redundant, because it's a repeated value a ton of times. Sometimes this is exactly what you want! You are now set up nicely to maybe take a proportion of gdpPercap/max_gdpPercap for each year or something. But maybe you only wanted that `max_gdpPercap` for something else. Let's keep going...
 
 ## `group_by()` operates on groups
 
-Let's tackle that first issue first. So how do we less painfully calculate the max gdpPercap for all countries? 
+What if we wanted to know the total population on each Continent in 2002? Answering this question requires a **grouping variable**.
 
 Visually, we are doing this (thanks RStudio for your [cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)): 
  
 ![](img/rstudio-cheatsheet-group_by.png)
 
-```{r, eval=FALSE}
-gapminder %>%
-  group_by(country) %>%
-  mutate(gdp     = pop * gdpPercap,
-         max_gdp = max(gdp)) %>%
-  ungroup() # if you use group_by, also use ungroup() to save heartache later
-```
-
-So instead of filtering for a specific country, we've grouped by country, and then done the same operations. It's hard to see; let's look at a bunch at the tail:
+By using `group_by()` we can set our grouping variable to `continent` and create a new column called `cont_pop` that will add up all country populations by their associated continents.
 
 ```{r, eval=FALSE}
 gapminder %>%
-  group_by(country) %>%
-  mutate(gdp     = pop * gdpPercap,
-         max_gdp = max(gdp)) %>%
-  ungroup() %>% 
-  tail(30)
+  filter(year == 2002) %>%
+  group_by(continent) %>% 
+  mutate(cont_pop = sum(pop))
 ```
 
-OK, this is great. But what if this what we needed, a max_gdp value for each country. We don't need that kind of repeated value for each of the max_gdp values. Here's the next function: 
+OK, this is great. But what if we don't care about the other columns and we only want each continent and their population in 2002? Here's the next function: 
 
 ### `summarize()` with `group_by()`
 
@@ -487,33 +445,54 @@ Here we go:
 
 ```{r, eval=FALSE}
 gapminder %>%
-  group_by(country) %>%
-  mutate(gdp = pop * gdpPercap) %>%
-  summarize(max_gdp = max(gdp)) %>%
+  group_by(continent) %>%
+  summarize(cont_pop = sum(pop)) %>%
   ungroup()
 ```
 
-How cool is that! `summarize()` will actually only keep the columns that are grouped_by or summarized. So if we wanted to keep other columns, we'd have to do have a few more steps (we'll get into it tomorrow). 
+How cool is that! `summarize()` will actually only keep the columns that are grouped_by or summarized. So if we wanted to keep other columns, we'd have to do have a few more steps (we'll get into it tomorrow). `ungroup()` removes the grouping and it's good to get in the habit of using it after a `group_by()`.
+
+We can use more than one grouping variable. Let's get total populations by **continent** and **year**.
+
+```{r}
+gapminder %>%
+  group_by(continent, year) %>%
+  summarize(cont_pop = sum(pop))
+```
+
 
 ## `arrange()` orders columns
 
-This is ordered alphabetically, which is cool. But let's say we wanted to order it in ascending order for `max_gdp`. The dplyr function is `arrange()`. 
+This is ordered alphabetically, which is cool. But let's say we wanted to order it in ascending order for `year`. The dplyr function is `arrange()`. 
 
 ```{r, eval=FALSE}
 gapminder %>%
-  group_by(country) %>%
-  mutate(gdp = pop * gdpPercap) %>%
-  summarize(max_gdp = max(gdp)) %>%
-  ungroup() %>%
-  arrange(max_gdp)
+  group_by(continent, year) %>%
+  summarize(cont_pop = sum(pop)) %>%
+  arrange(year)
 ```
 
 ### Your turn
 
-1. arrange your data frame in descending order (opposite of what we've done). Expect that this is possible: `?arrange`
-1. save your data frame as a variable
-1. find the maximum life expectancy for countries in Asia. What is the earliest year you encounter? The latest? Hint: you can use or `base::max` and `dplyr::arrange()`...
-1. Knit your RMarkdown file, and sync it to GitHub (pull, stage, commit, push)
+> What is the maximum GDP per continent across all years?
+
+#### Answer
+
+```{r}
+gapminder %>%
+  mutate(gdp = pop * gdpPercap) %>%
+  group_by(continent) %>%
+  mutate(max_gdp = max(gdp)) %>%
+  filter(gdp == max_gdp)
+```
+
+### Your turn
+
+> 1. arrange your data frame in descending order (opposite of what we've done). Expect that this is possible: `?arrange`
+> 1. save your data frame as a variable
+> 1. find the maximum life expectancy for countries in Asia. What is the earliest year you encounter? The latest? Hint: you can use or `base::max` and `dplyr::arrange()`...
+> 
+> 1. Knit your RMarkdown file, and sync it to GitHub (pull, stage, commit, push)
 
 #### Answer (no peeking!)
 ```{r, eval=FALSE}
@@ -586,7 +565,7 @@ Get your RMarkdown file cleaned up and sync it for the last time today!
 
 ## Joining datasets 
 
-We've learned a ton in this session and we may not get to this right now. If we don't have time, we'll start here before getting into the next chapter: `tidyr`).
+We've learned a ton in this session and we may not get to this right now. If we don't have time, we'll start here before getting into the next chapter: `tidyr`.
 
 Most of the time you will have data coming from different places or in different files, and you want to put them together so you can analyze them. Datasets you'll be joining can be called relational data, because it has some kind of relationship between them that you'll be acting upon. In the tidyverse, combining data that has a relationship is called "joining". 
 
