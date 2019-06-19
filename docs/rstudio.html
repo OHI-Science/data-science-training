@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 R &amp; RStudio, RMarkdown | Introduction to Open Data Science</title>
   <meta name="description" content="This is official open data science training for the Ocean Health Index." />
-  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 R &amp; RStudio, RMarkdown | Introduction to Open Data Science" />
   <meta property="og:type" content="book" />
@@ -50,67 +50,41 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
 <link rel="stylesheet" href="lib/css/bootstrap.min.css" type="text/css" />
@@ -402,7 +376,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="r-at-the-console-rstudio-goodies" class="section level2">
 <h2><span class="header-section-number">3.3</span> R at the console, RStudio goodies</h2>
 <p>Launch RStudio/R.</p>
-<p><img src="img/RStudio_IDE.png" /></p>
+<div class="figure">
+<img src="img/RStudio_IDE.png" />
+
+</div>
 <p>Notice the default panes:</p>
 <ul>
 <li>Console (entire left)</li>
@@ -412,34 +389,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>FYI: you can change the default location of the panes, among many other things: <a href="https://support.rstudio.com/hc/en-us/articles/200549016-Customizing-RStudio">Customizing RStudio</a>.</p>
 <p>An important first question: <strong>where are we?</strong></p>
 <p>If you’ve have opened RStudio for the first time, you’ll be in your Home directory. This is noted by the <code>~/</code> at the top of the console. You can see too that the Files pane in the lower right shows what is in the Home directory where you are. You can navigate around within that Files pane and explore, but note that you won’t change where you are: even as you click through you’ll still be Home: <code>~/</code>.</p>
-<p><img src="img/RStudio_IDE_homedir.png" /></p>
+<div class="figure">
+<img src="img/RStudio_IDE_homedir.png" />
+
+</div>
 <p>OK let’s go into the Console, where we interact with the live R process.</p>
 <p>Make an assignment and then inspect the object you created by typing its name on its own.</p>
-<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">3</span> <span class="op">*</span><span class="st"> </span><span class="dv">4</span>
-x</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">3</span> <span class="op">*</span><span class="st"> </span><span class="dv">4</span>
+x</code></pre></div>
 <pre><code>## [1] 12</code></pre>
 <p>In my head I hear, e.g., “x gets 12”.</p>
 <p>All R statements where you create objects – “assignments” – have this form: <code>objectName &lt;- value</code>.</p>
 <p>I’ll write it in the console with a hashtag <code>#</code>, which is the way R comments so it won’t be evaluated.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## objectName &lt;- value</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## objectName &lt;- value
 
-<span class="co">## This is also how you write notes in your code to explain what you are doing.</span></code></pre>
+## This is also how you write notes in your code to explain what you are doing.</code></pre></div>
 <p>Object names cannot start with a digit and cannot contain certain other characters such as a comma or a space. You will be wise to adopt a <a href="http://en.wikipedia.org/wiki/Snake_case">convention for demarcating words</a> in names.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># i_use_snake_case</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># i_use_snake_case</span>
 <span class="co"># other.people.use.periods</span>
-<span class="co"># evenOthersUseCamelCase</span></code></pre>
+<span class="co"># evenOthersUseCamelCase</span></code></pre></div>
 <p>Make an assignment</p>
-<pre class="sourceCode r"><code class="sourceCode r">this_is_a_really_long_name &lt;-<span class="st"> </span><span class="fl">2.5</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">this_is_a_really_long_name &lt;-<span class="st"> </span><span class="fl">2.5</span></code></pre></div>
 <p>To inspect this variable, instead of typing it, we can press the up arrow key and call your command history, with the most recent commands first. Let’s do that, and then delete the assignment:</p>
-<pre class="sourceCode r"><code class="sourceCode r">this_is_a_really_long_name</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">this_is_a_really_long_name</code></pre></div>
 <pre><code>## [1] 2.5</code></pre>
 <p>Another way to inspect this variable is to begin typing <code>this_</code>…and RStudio will automagically have suggested completions for you that you can select by hitting the tab key, then press return.</p>
 <p>One more:</p>
-<pre class="sourceCode r"><code class="sourceCode r">science_rocks &lt;-<span class="st"> &quot;yes it does!&quot;</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">science_rocks &lt;-<span class="st"> &quot;yes it does!&quot;</span></code></pre></div>
 <p>You can see that we can assign an object to be a word, not a number. In R, this is called a “string”, and R knows it’s a word and not a number because it has quotes <code>&quot; &quot;</code>. You can work with strings in your data in R pretty easily, thanks to the <a href="http://stringr.tidyverse.org/"><code>stringr</code></a> and <a href="https://github.com/juliasilge/tidytext#tidytext-text-mining-using-dplyr-ggplot2-and-other-tidy-tools"><code>tidytext</code></a> packages. We won’t talk about strings very much specifically, but know that R can handle text, and it can work with text and numbers together (this is a huge benefit of using R).</p>
 <p>Let’s try to inspect:</p>
-<pre class="sourceCode r"><code class="sourceCode r">sciencerocks
-<span class="co"># Error: object &#39;sciencerocks&#39; not found</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sciencerocks
+<span class="co"># Error: object &#39;sciencerocks&#39; not found</span></code></pre></div>
 <div id="error-messages-are-your-friends" class="section level3">
 <h3><span class="header-section-number">3.3.1</span> Error messages are your friends</h3>
 <p>Implicit contract with the computer / scripting language: Computer will do tedious computation for you. In return, you will be completely precise in your instructions. Typos matter. Case matters. Pay attention to how you type.</p>
@@ -458,56 +438,49 @@ x</code></pre>
 <li><code>&lt;=</code> means ` is less than or equal to’</li>
 <li><code>&gt;=</code> means ` is greater than or equal to’</li>
 </ul>
-<pre class="sourceCode r"><code class="sourceCode r">x <span class="op">==</span><span class="st"> </span><span class="dv">2</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x <span class="op">==</span><span class="st"> </span><span class="dv">2</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">x <span class="op">&lt;=</span><span class="st"> </span><span class="dv">30</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x <span class="op">&lt;=</span><span class="st"> </span><span class="dv">30</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">x <span class="op">!=</span><span class="st"> </span><span class="dv">5</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x <span class="op">!=</span><span class="st"> </span><span class="dv">5</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <blockquote>
-<p>Shortcuts
-You will make lots of assignments and the operator <code>&lt;-</code> is a pain to type. Don’t be lazy and use <code>=</code>, although it would work, because it will just sow confusion later. Instead, utilize <strong>RStudio’s keyboard shortcut: Alt + - (the minus sign)</strong>.
-Notice that RStudio automagically surrounds <code>&lt;-</code> with spaces, which demonstrates a useful code formatting practice. Code is miserable to read on a good day. Give your eyes a break and use spaces.
-RStudio offers many handy <a href="https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts">keyboard shortcuts</a>. Also, Alt+Shift+K brings up a keyboard shortcut reference card.</p>
+<p>Shortcuts You will make lots of assignments and the operator <code>&lt;-</code> is a pain to type. Don’t be lazy and use <code>=</code>, although it would work, because it will just sow confusion later. Instead, utilize <strong>RStudio’s keyboard shortcut: Alt + - (the minus sign)</strong>. Notice that RStudio automagically surrounds <code>&lt;-</code> with spaces, which demonstrates a useful code formatting practice. Code is miserable to read on a good day. Give your eyes a break and use spaces. RStudio offers many handy <a href="https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts">keyboard shortcuts</a>. Also, Alt+Shift+K brings up a keyboard shortcut reference card.</p>
 </blockquote>
 <blockquote>
 <p>My most common shortcuts include command-Z (undo), and combinations of arrow keys in combination with shift/option/command (moving quickly up, down, sideways, with or without highlighting.</p>
 </blockquote>
 <p>When assigning a value to an object, R does not print anything. You can force R to print the value by using parentheses or by typing the object name:</p>
-<pre class="sourceCode r"><code class="sourceCode r">weight_kg &lt;-<span class="st"> </span><span class="dv">55</span>    <span class="co"># doesn&#39;t print anything</span>
-(weight_kg &lt;-<span class="st"> </span><span class="dv">55</span>)  <span class="co"># but putting parenthesis around the call prints the value of `weight_kg`</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weight_kg &lt;-<span class="st"> </span><span class="dv">55</span>    <span class="co"># doesn&#39;t print anything</span>
+(weight_kg &lt;-<span class="st"> </span><span class="dv">55</span>)  <span class="co"># but putting parenthesis around the call prints the value of `weight_kg`</span></code></pre></div>
 <pre><code>## [1] 55</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">weight_kg          <span class="co"># and so does typing the name of the object</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weight_kg          <span class="co"># and so does typing the name of the object</span></code></pre></div>
 <pre><code>## [1] 55</code></pre>
-<p>Now that R has <code>weight_kg</code> in memory, we can do arithmetic with it. For
-instance, we may want to convert this weight into pounds (weight in pounds is 2.2 times the weight in kg):</p>
-<pre class="sourceCode r"><code class="sourceCode r">weight_kg <span class="op">*</span><span class="st"> </span><span class="fl">2.2</span></code></pre>
+<p>Now that R has <code>weight_kg</code> in memory, we can do arithmetic with it. For instance, we may want to convert this weight into pounds (weight in pounds is 2.2 times the weight in kg):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weight_kg <span class="op">*</span><span class="st"> </span><span class="fl">2.2</span></code></pre></div>
 <pre><code>## [1] 121</code></pre>
 <p>We can also change a variable’s value by assigning it a new one:</p>
-<pre class="sourceCode r"><code class="sourceCode r">weight_kg &lt;-<span class="st"> </span><span class="fl">57.5</span>
-weight_kg <span class="op">*</span><span class="st"> </span><span class="fl">2.2</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weight_kg &lt;-<span class="st"> </span><span class="fl">57.5</span>
+weight_kg <span class="op">*</span><span class="st"> </span><span class="fl">2.2</span></code></pre></div>
 <pre><code>## [1] 126.5</code></pre>
 <p>And when we multiply it by 2.2, the outcome is based on the value currently assigned to the variable.</p>
 <p>OK, let’s store the animal’s weight in pounds in a new variable, <code>weight_lb</code>:</p>
-<pre class="sourceCode r"><code class="sourceCode r">weight_lb &lt;-<span class="st"> </span>weight_kg <span class="op">*</span><span class="st"> </span><span class="fl">2.2</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weight_lb &lt;-<span class="st"> </span>weight_kg <span class="op">*</span><span class="st"> </span><span class="fl">2.2</span></code></pre></div>
 <p>and then change <code>weight_kg</code> to 100.</p>
-<pre class="sourceCode r"><code class="sourceCode r">weight_kg &lt;-<span class="st"> </span><span class="dv">100</span></code></pre>
-<p>What do you think is the current content of the object <code>weight_lb</code>? 126.5 or 220? Why?
-It’s 125.6. Why? Because assigning a value to one variable does not change the values of
-other variables — if you want <code>weight_kg</code> updated to reflect the new value for <code>weight_lb</code>, you will have to re-execute that code. This is why we re-comment working in scripts and documents rather than the Console, and will introduce those concepts shortly and work there for the rest of the day.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weight_kg &lt;-<span class="st"> </span><span class="dv">100</span></code></pre></div>
+<p>What do you think is the current content of the object <code>weight_lb</code>? 126.5 or 220? Why? It’s 125.6. Why? Because assigning a value to one variable does not change the values of other variables — if you want <code>weight_kg</code> updated to reflect the new value for <code>weight_lb</code>, you will have to re-execute that code. This is why we re-comment working in scripts and documents rather than the Console, and will introduce those concepts shortly and work there for the rest of the day.</p>
 <p>We can create a vector of multiple values using <code>c()</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">c</span>(weight_lb, weight_kg)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">c</span>(weight_lb, weight_kg)</code></pre></div>
 <pre><code>## [1] 126.5 100.0</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Jamie&quot;</span>, <span class="st">&quot;Melanie&quot;</span>, <span class="st">&quot;Julie&quot;</span>)
-names</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Jamie&quot;</span>, <span class="st">&quot;Melanie&quot;</span>, <span class="st">&quot;Julie&quot;</span>)
+names</code></pre></div>
 <pre><code>## [1] &quot;Jamie&quot;   &quot;Melanie&quot; &quot;Julie&quot;</code></pre>
 </div>
 </div>
 <div id="your-turn" class="section level2">
 <h2><span class="header-section-number">3.4</span> Your Turn</h2>
 <blockquote>
-<p><strong>Exercise</strong>
-1. Create a vector that contains the different weights of four fish (you pick the object name!):<br />
+<p><strong>Exercise</strong> 1. Create a vector that contains the different weights of four fish (you pick the object name!):<br />
 - one fish: 12 kg<br />
 - two fish: 34 kg<br />
 - red fish: 20 kg<br />
@@ -515,10 +488,10 @@ names</code></pre>
 2. Convert the vector of kilos to pounds (hint: 1 kg = 2.2 pounds)<br />
 3. Calculate the total weight</p>
 </blockquote>
-<pre class="sourceCode r"><code class="sourceCode r">fish_weights &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">34</span>, <span class="dv">20</span>, <span class="fl">6.6</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fish_weights &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">34</span>, <span class="dv">20</span>, <span class="fl">6.6</span>)
 fish_weights_lb &lt;-<span class="st"> </span>fish_weights <span class="op">*</span><span class="st"> </span><span class="fl">2.2</span>
 
-<span class="kw">sum</span>(fish_weights_lb) <span class="co">#we haven&#39;t gone over functions like `sum()` yet but this is covered in the next section</span></code></pre>
+<span class="kw">sum</span>(fish_weights_lb) <span class="co">#we haven&#39;t gone over functions like `sum()` yet but this is covered in the next section</span></code></pre></div>
 <pre><code>## [1] 159.72</code></pre>
 </div>
 <div id="r-functions-help-pages" class="section level2">
@@ -527,11 +500,11 @@ fish_weights_lb &lt;-<span class="st"> </span>fish_weights <span class="op">*</s
 <p>Let’s try using <code>seq()</code> which makes regular sequences of numbers and, while we’re at it, demo more helpful features of RStudio.</p>
 <p>Type <code>se</code> and hit TAB. A pop up shows you possible completions. Specify <code>seq()</code> by typing more to disambiguate or using the up/down arrows to select. Notice the floating tool-tip-type help that pops up, reminding you of a function’s arguments. If you want even more help, press F1 as directed to get the full documentation in the help tab of the lower right pane.</p>
 <p>Type the arguments <code>1, 10</code> and hit return.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>)</code></pre></div>
 <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
 <p>We could probably infer that the <code>seq()</code> function makes a sequence, but let’s learn for sure. Type (and you can autocomplete) and let’s explore the help page:</p>
-<pre class="sourceCode r"><code class="sourceCode r">?seq 
-<span class="kw">help</span>(seq) <span class="co"># same as ?seq</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?seq 
+<span class="kw">help</span>(seq) <span class="co"># same as ?seq</span></code></pre></div>
 <p>The help page tells the name of the package in the top left, and broken down into sections:</p>
 <ul>
 <li>Description: An extended description of what the function does.</li>
@@ -542,12 +515,11 @@ fish_weights_lb &lt;-<span class="st"> </span>fish_weights <span class="op">*</s
 <li>See Also: Any related functions you might find useful.</li>
 <li>Examples: Some examples for how to use the function.</li>
 </ul>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">10</span>) <span class="co"># same as seq(1, 10); R assumes by position</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">10</span>) <span class="co"># same as seq(1, 10); R assumes by position</span></code></pre></div>
 <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">10</span>, <span class="dt">by =</span> <span class="dv">2</span>)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">10</span>, <span class="dt">by =</span> <span class="dv">2</span>)</code></pre></div>
 <pre><code>## [1] 1 3 5 7 9</code></pre>
-<p>The above also demonstrates something about how R resolves function arguments. You can always specify in <code>name = value</code> form. But if you do not, R attempts to resolve by position. So above, it is assumed that we want a sequence <code>from = 1</code> that goes <code>to = 10</code>. Since we didn’t specify step size, the default value of <code>by</code> in the function definition is used, which ends up being 1 in this case. For functions I call often, I might use this resolve by position for the first
-argument or maybe the first two. After that, I always use <code>name = value</code>.</p>
+<p>The above also demonstrates something about how R resolves function arguments. You can always specify in <code>name = value</code> form. But if you do not, R attempts to resolve by position. So above, it is assumed that we want a sequence <code>from = 1</code> that goes <code>to = 10</code>. Since we didn’t specify step size, the default value of <code>by</code> in the function definition is used, which ends up being 1 in this case. For functions I call often, I might use this resolve by position for the first argument or maybe the first two. After that, I always use <code>name = value</code>.</p>
 <p>The examples from the help pages can be copy-pasted into the console for you to understand what’s going on. Remember we were talking about expecting there to be a function for something you want to do? Let’s try it.</p>
 <div id="your-turn-1" class="section level3">
 <h3><span class="header-section-number">3.5.1</span> Your turn</h3>
@@ -555,10 +527,10 @@ argument or maybe the first two. After that, I always use <code>name = value</co
 <p>Exercise: Talk to your neighbor(s) and look up the help file for a function that you know or expect to exist. Here are some ideas: <code>?getwd()</code>, <code>?plot()</code>, <code>min()</code>, <code>max()</code>, <code>?mean()</code>, <code>?log()</code>).</p>
 </blockquote>
 <p>And there’s also help for when you only sort of remember the function name: double-question mark:</p>
-<pre class="sourceCode r"><code class="sourceCode r">??install </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">??install </code></pre></div>
 <p>Not all functions have (or require) arguments:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">date</span>()</code></pre>
-<pre><code>## [1] &quot;Wed Jun 19 06:53:48 2019&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">date</span>()</code></pre></div>
+<pre><code>## [1] &quot;Wed Jun 19 08:44:44 2019&quot;</code></pre>
 </div>
 </div>
 <div id="packages" class="section level2">
@@ -571,30 +543,34 @@ argument or maybe the first two. After that, I always use <code>name = value</co
 <p><strong>What’s the difference between a package and a library?</strong><br />
 Sometimes there is a confusion between a package and a library, and you can find people calling “libraries” to packages.</p>
 <p>Please don’t get confused: <code>library()</code> is the command used to load a package, and it refers to the place where the package is contained, usually a folder on your computer, while a package is the collection of functions bundled conveniently.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(praise)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(praise)</code></pre></div>
+<pre><code>## Error in library(praise): there is no package called &#39;praise&#39;</code></pre>
 <p>Now that we’ve loaded the <code>praise</code> package, we can use the single function in the package, <code>praise()</code>, which returns a randomized praise to make you feel better.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">praise</span>()</code></pre>
-<pre><code>## [1] &quot;You are priceless!&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">praise</span>()</code></pre></div>
+<pre><code>## Error in praise(): could not find function &quot;praise&quot;</code></pre>
 </div>
 <div id="clearing-the-environment" class="section level2">
 <h2><span class="header-section-number">3.7</span> Clearing the environment</h2>
 <p>Now look at the objects in your environment (workspace) – in the upper right pane. The workspace is where user-defined objects accumulate.</p>
-<p><img src="img/RStudio_IDE_env.png" /></p>
+<div class="figure">
+<img src="img/RStudio_IDE_env.png" />
+
+</div>
 <p>You can also get a listing of these objects with a few different R commands:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">objects</span>()</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">objects</span>()</code></pre></div>
 <pre><code>## [1] &quot;fish_weights&quot;               &quot;fish_weights_lb&quot;           
 ## [3] &quot;names&quot;                      &quot;science_rocks&quot;             
 ## [5] &quot;this_is_a_really_long_name&quot; &quot;weight_kg&quot;                 
 ## [7] &quot;weight_lb&quot;                  &quot;x&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ls</span>()</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ls</span>()</code></pre></div>
 <pre><code>## [1] &quot;fish_weights&quot;               &quot;fish_weights_lb&quot;           
 ## [3] &quot;names&quot;                      &quot;science_rocks&quot;             
 ## [5] &quot;this_is_a_really_long_name&quot; &quot;weight_kg&quot;                 
 ## [7] &quot;weight_lb&quot;                  &quot;x&quot;</code></pre>
 <p>If you want to remove the object named <code>weight_kg</code>, you can do this:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(weight_kg)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(weight_kg)</code></pre></div>
 <p>To remove everything:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>())</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>())</code></pre></div>
 <p>or click the broom in RStudio’s Environment pane.</p>
 <p>For reproducibility, it is critical that you delete your objects and restart your R session frequently. You don’t want your whole analysis to only work in whatever way you’ve been working right now — you need it to work next week, after you upgrade your operating system, etc. Restarting your R session will help you identify and account for anything you need for your analysis.</p>
 <p>We will keep coming back to this theme but let’s restart our R session together: Go to the top menus: Session &gt; Restart R.</p>
@@ -618,11 +594,17 @@ Sometimes there is a confusion between a package and a library, and you can find
 <ul>
 <li>There are white and grey sections. R code is in grey sections, and other text is in white.</li>
 </ul>
-<p><img src="img/rmarkdown.png" /></p>
+<div class="figure">
+<img src="img/rmarkdown.png" />
+
+</div>
 <p><br></p>
 <p>Let’s go ahead and “Knit HTML” by clicking the blue yarn at the top of the RMarkdown file.</p>
 <p><br></p>
-<p><img src="img/rmarkdown_side_by_side.png" /></p>
+<div class="figure">
+<img src="img/rmarkdown_side_by_side.png" />
+
+</div>
 <p>What do you notice between the two? So much of learning to code is looking for patterns.</p>
 <p>Notice how the grey <strong>R code chunks</strong> are surrounded by 3 backticks and <code>{r LABEL}</code>. These are evaluated and return the output text in the case of <code>summary(cars)</code> and the output plot in the case of <code>plot(pressure)</code>.</p>
 <p>Notice how the code <code>plot(pressure)</code> is not shown in the HTML output because of the R code chunk option <code>echo=FALSE</code>.</p>
@@ -635,9 +617,7 @@ Sometimes there is a confusion between a package and a library, and you can find
 <li><strong>headers</strong> get rendered at multiple levels: <code>#</code>, <code>##</code></li>
 <li><strong>bold</strong>: <code>**word**</code></li>
 </ul>
-<p>There are some good <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet">cheatsheets</a> to get you started, and here is one built into RStudio: Go to Help &gt; Markdown Quick Reference
-<br />
-<br /></p>
+<p>There are some good <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet">cheatsheets</a> to get you started, and here is one built into RStudio: Go to Help &gt; Markdown Quick Reference <br /> <br /></p>
 <p><strong>Important</strong>: note that the hashtag <code>#</code> is used differently in Markdown and in R:</p>
 <ul>
 <li>in R, a hashtag indicates a comment that will not be evaluated. You can use as many as you want: <code>#</code> is equivalent to <code>######</code>. It’s a matter of style. I use two <code>##</code> to indicate a comment so that it’s clearer what is a comment versus what I don’t want to run at the moment.</li>
@@ -649,8 +629,7 @@ Sometimes there is a confusion between a package and a library, and you can find
 <h3><span class="header-section-number">3.8.1</span> Your Turn</h3>
 <blockquote>
 <ol style="list-style-type: decimal">
-<li>In Markdown write some italic text, make a numbered list, and add a few subheaders.
-Use the Markdown Quick Reference (in the menu bar: Help &gt; Markdown Quick Reference).</li>
+<li>In Markdown write some italic text, make a numbered list, and add a few subheaders. Use the Markdown Quick Reference (in the menu bar: Help &gt; Markdown Quick Reference).</li>
 <li>Reknit your html file.</li>
 </ol>
 </blockquote>
@@ -661,9 +640,7 @@ Use the Markdown Quick Reference (in the menu bar: Help &gt; Markdown Quick Refe
 <p>Create a new chunk in your RMarkdown first in one of these ways:</p>
 <ul>
 <li>click “Insert &gt; R” at the top of the editor pane</li>
-<li>type by hand
-```{r}
-```</li>
+<li>type by hand ```{r} ```</li>
 <li>if you haven’t deleted a chunk that came with the new file, edit that one</li>
 </ul>
 <p>Now, let’s write some R code.</p>
@@ -698,8 +675,8 @@ Use the Markdown Quick Reference (in the menu bar: Help &gt; Markdown Quick Refe
 <div id="i-entered-a-command-and-nothings-happening" class="section level3">
 <h3><span class="header-section-number">3.10.1</span> I entered a command and nothing’s happening</h3>
 <p>It may be because you didn’t complete a command: is there a little <code>+</code> in your console? R is saying that it is waiting for you to finish. In the example below, I need to close that parenthesis.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span>x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>
-<span class="op">+</span><span class="st"> </span></code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span>x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>
+<span class="op">+</span><span class="st"> </span></code></pre></div>
 </div>
 <div id="how-do-i-update-rstudio" class="section level3">
 <h3><span class="header-section-number">3.10.2</span> How do I update RStudio?</h3>

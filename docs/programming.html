@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 8 Programming in R | Introduction to Open Data Science</title>
   <meta name="description" content="This is official open data science training for the Ocean Health Index." />
-  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 8 Programming in R | Introduction to Open Data Science" />
   <meta property="og:type" content="book" />
@@ -50,67 +50,41 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
 <link rel="stylesheet" href="lib/css/bootstrap.min.css" type="text/css" />
@@ -391,6 +365,7 @@ get file extensions https://stat.ethz.ch/R-manual/R-devel/library/tools/html/fil
 </div>
 <div id="analysis-plan" class="section level2">
 <h2><span class="header-section-number">8.2</span> Analysis plan</h2>
+<pre><code>## Error in library(gapminder): there is no package called &#39;gapminder&#39;</code></pre>
 <p>OK, here is the plan for our analysis. We want to plot the gdpPercap for each country in the gapminder data frame. So that’s 142 separate plots! We will automate this, labeling each one with its name and saving it in a folder called figures. We will learn a bunch of things as we go.</p>
 </div>
 <div id="create-an-r-script" class="section level2">
@@ -402,11 +377,11 @@ get file extensions https://stat.ethz.ch/R-manual/R-devel/library/tools/html/fil
 ## analysis with gapminder data
 ## J Lowndes lowndes@nceas.ucsb.edu</code></pre>
 <p>We’ll be working with the gapminder data again so let’s read it in here:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## load libraries</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## load libraries
 <span class="kw">library</span>(tidyverse)
 
-<span class="co">## read in gapminder data</span>
-gapminder &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder.csv&#39;</span>)</code></pre>
+## read in gapminder data
+gapminder &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder.csv&#39;</span>)</code></pre></div>
 <p>Remember, like in R Markdown, hitting return does not execute this command. To execute it, we need to get what we typed in the script down into the console. Here is how we can do that:</p>
 <ol style="list-style-type: decimal">
 <li>copy-paste this line into the console.</li>
@@ -432,60 +407,63 @@ gapminder &lt;-<span class="st"> </span>readr<span class="op">::</span><span cla
 <!---TODO
 For the figures, we want it to label the currency, which we have in another data file (=join). And, we'll want to add Westeros to the dataframe (=rbind) and create that figure too. 
 --->
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## filter the country to plot</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## filter the country to plot
 gap_to_plot &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">filter</span>(country <span class="op">==</span><span class="st"> &quot;Afghanistan&quot;</span>)
 
-<span class="co">## plot</span>
+## plot
 my_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> gap_to_plot, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> gdpPercap)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Afghanistan&quot;</span>)</code></pre>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Afghanistan&quot;</span>)</code></pre></div>
 <p>Let’s actually give this a better title than just the country name. Let’s use the <code>base::paste()</code> function from to paste two strings together so that the title is more descriptive. Use <code>?paste</code> to see what the “sep” variable does.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## filter the country to plot</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## filter the country to plot
 gap_to_plot &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">filter</span>(country <span class="op">==</span><span class="st"> &quot;Afghanistan&quot;</span>)
 
-<span class="co">## plot</span>
+## plot
 my_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> gap_to_plot, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> gdpPercap)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
-<span class="st">  </span><span class="co">## add title and save</span>
-<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="kw">paste</span>(<span class="st">&quot;Afghanistan&quot;</span>, <span class="st">&quot;GDP per capita&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>))</code></pre>
+<span class="st">  </span>## add title and save
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="kw">paste</span>(<span class="st">&quot;Afghanistan&quot;</span>, <span class="st">&quot;GDP per capita&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>))</code></pre></div>
 <p>And as a last step, let’s save this figure.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## filter the country to plot</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## filter the country to plot
 gap_to_plot &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">filter</span>(country <span class="op">==</span><span class="st"> &quot;Afghanistan&quot;</span>)
 
-<span class="co">## plot</span>
+## plot
 my_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> gap_to_plot, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> gdpPercap)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
-<span class="st">  </span><span class="co">## add title and save</span>
+<span class="st">  </span>## add title and save
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="kw">paste</span>(<span class="st">&quot;Afghanistan&quot;</span>, <span class="st">&quot;GDP per capita&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>))
 
-<span class="kw">ggsave</span>(<span class="dt">filename =</span> <span class="st">&quot;Afghanistan_gdpPercap.png&quot;</span>, <span class="dt">plot =</span> my_plot)</code></pre>
+<span class="kw">ggsave</span>(<span class="dt">filename =</span> <span class="st">&quot;Afghanistan_gdpPercap.png&quot;</span>, <span class="dt">plot =</span> my_plot)</code></pre></div>
 <p>OK. So we can check our repo in the file pane (bottom right of RStudio) and see the generated figure:</p>
-<p><img src="img/Afghanistan_gdpPercap.png" /></p>
+<div class="figure">
+<img src="img/Afghanistan_gdpPercap.png" />
+
+</div>
 <div id="thinking-ahead-cleaning-up-our-code" class="section level3">
 <h3><span class="header-section-number">8.4.1</span> Thinking ahead: cleaning up our code</h3>
 <p>Now, in our code above, we’ve had to write out “Afghanistan” several times. This makes it not only typo-prone as we type it each time, but if we wanted to plot another country, we’d have to write that in 3 places too. It is not setting us up for an easy time in our future, and thinking ahead in programming is something to keep in mind.</p>
 <p>Instead of having “Afghanistan” written 3 times, let’s instead create an object that we will assign to “Afghanistan”. We won’t name our object “country” because that’s a column header with gapminder, and will just confuse us. Let’s make it distinctive: let’s write cntry (country without vowels):</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## create country variable</span>
-cntry &lt;-<span class="st"> &quot;Afghanistan&quot;</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## create country variable
+cntry &lt;-<span class="st"> &quot;Afghanistan&quot;</span></code></pre></div>
 <p>Now, we can replace each <code>&quot;Afghanistan&quot;</code> with our variable <code>cntry</code>. We will have to introduce a <code>paste</code> statement here too, and we want to separate by nothing (<code>&quot;&quot;</code>). Note: there are many ways to create the filename, and we are doing it this way for a specific reason right now.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## create country variable</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## create country variable
 cntry &lt;-<span class="st"> &quot;Afghanistan&quot;</span>
 
-<span class="co">## filter the country to plot</span>
+## filter the country to plot
 gap_to_plot &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">filter</span>(country <span class="op">==</span><span class="st"> </span>cntry)
 
-<span class="co">## plot</span>
+## plot
 my_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> gap_to_plot, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> gdpPercap)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
-<span class="st">  </span><span class="co">## add title and save</span>
+<span class="st">  </span>## add title and save
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="kw">paste</span>(cntry, <span class="st">&quot;GDP per capita&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>))
 
-<span class="co">## note: there are many ways to create filenames with paste() or file.path(); we are doing this way for a reason.</span>
-<span class="kw">ggsave</span>(<span class="dt">filename =</span> <span class="kw">paste</span>(cntry, <span class="st">&quot;_gdpPercap.png&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>), <span class="dt">plot =</span> my_plot)</code></pre>
+## note: there are many ways to create filenames with paste() or file.path(); we are doing this way for a reason.
+<span class="kw">ggsave</span>(<span class="dt">filename =</span> <span class="kw">paste</span>(cntry, <span class="st">&quot;_gdpPercap.png&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>), <span class="dt">plot =</span> my_plot)</code></pre></div>
 <p>Let’s run this. Great! it saved our figure (I can tell this because the timestamp in the Files pane has updated!)</p>
 </div>
 <div id="for-loop-basic-structure" class="section level3">
@@ -494,76 +472,79 @@ my_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class
 <p>Better with a for loop. This will let us cycle through and do what we want to each thing in turn. If you want to iterate over a set of values, and perform the same operation on each, a <code>for</code> loop will do the job.</p>
 <p><strong>Sit back and watch me for a few minutes while we develop the for loop.</strong> Then we’ll give you time to do this on your computers as well.</p>
 <p>The basic structure of a <code>for</code> loop is:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span>( each item <span class="cf">in</span> set of items ){
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span>( each item <span class="cf">in</span> set of items ){
   do a thing
-}</code></pre>
+}</code></pre></div>
 <p>Note the <code>( )</code> and the <code>{ }</code>. We talk about iterating through each item in the for loop, which makes each item an iterator.</p>
 <p>So looking back at our Afghanistan code: all of this is pretty much the “do a thing” part. And we can see that there are only a few places that are specific to Afghanistan. If we could make those places not specific to Afghanistan, we would be set.</p>
-<p><img src="img/for_loop_logic.png" /></p>
+<div class="figure">
+<img src="img/for_loop_logic.png" />
+
+</div>
 <p>Let’s paste from what we had before, and modify it. I’m also going to use RStudio’s indentation help to indent the lines within the for loop by highlighting the code in this chunk and going to Code &gt; Reindent Lines (shortcut: command I)</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## create country variable</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## create country variable
 cntry &lt;-<span class="st"> &quot;Afghanistan&quot;</span>
 
 <span class="cf">for</span> (each cntry <span class="cf">in</span> a list of countries ) {
   
-  <span class="co">## filter the country to plot</span>
+  ## filter the country to plot
   gap_to_plot &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">filter</span>(country <span class="op">==</span><span class="st"> </span>cntry)
   
-  <span class="co">## plot</span>
+  ## plot
   my_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> gap_to_plot, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> gdpPercap)) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
-<span class="st">    </span><span class="co">## add title and save</span>
+<span class="st">    </span>## add title and save
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="kw">paste</span>(cntry, <span class="st">&quot;GDP per capita&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>))
   
   <span class="kw">ggsave</span>(<span class="dt">filename =</span> <span class="kw">paste</span>(cntry, <span class="st">&quot;_gdpPercap.png&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>), <span class="dt">plot =</span> my_plot)
   
-}</code></pre>
+}</code></pre></div>
 </div>
 <div id="executable-for-loop" class="section level3">
 <h3><span class="header-section-number">8.4.3</span> Executable for loop!</h3>
 <p>OK. So let’s start with the beginning of the for loop. We want a list of countries that we will iterate through. We can do that by adding this code before the for loop.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## create a list of countries</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## create a list of countries
 country_list &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Albania&quot;</span>, <span class="st">&quot;Fiji&quot;</span>, <span class="st">&quot;Spain&quot;</span>)
 
 <span class="cf">for</span> ( cntry <span class="cf">in</span> country_list ) {
   
-  <span class="co">## filter the country to plot</span>
+  ## filter the country to plot
   gap_to_plot &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">filter</span>(country <span class="op">==</span><span class="st"> </span>cntry)
   
-  <span class="co">## plot</span>
+  ## plot
   my_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> gap_to_plot, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> gdpPercap)) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
-<span class="st">    </span><span class="co">## add title and save</span>
+<span class="st">    </span>## add title and save
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="kw">paste</span>(cntry, <span class="st">&quot;GDP per capita&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>))
   
   <span class="kw">ggsave</span>(<span class="dt">filename =</span> <span class="kw">paste</span>(cntry, <span class="st">&quot;_gdpPercap.png&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>), <span class="dt">plot =</span> my_plot)
 
-}</code></pre>
+}</code></pre></div>
 <p>At this point, we do have a functioning for loop. For each item in the <code>country_list</code>, the for loop will iterate over the code within the <code>{ }</code>, changing <code>cntry</code> each time as it goes through the list. And we can see it works because we can see them appear in the files pane at the bottom right of RStudio!</p>
 <p>Great! And it doesn’t matter if we just use these three countries or all the countries–let’s try it.</p>
 <p>But first let’s create a figure directory and make sure it saves there since it’s going to get out of hand quickly. We could do this from the Finder/Windows Explorer, or from the “Files” pane in RStudio by clicking “New Folder” (green plus button). But we are going to do it in R. A folder is called a directory:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dir.create</span>(<span class="st">&quot;figures&quot;</span>) 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dir.create</span>(<span class="st">&quot;figures&quot;</span>) 
 
-<span class="co">## create a list of countries</span>
+## create a list of countries
 country_list &lt;-<span class="st"> </span><span class="kw">unique</span>(gapminder<span class="op">$</span>country) <span class="co"># ?unique() returns the unique values</span>
 
 <span class="cf">for</span>( cntry <span class="cf">in</span> country_list ){
   
-  <span class="co">## filter the country to plot</span>
+  ## filter the country to plot
   gap_to_plot &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">filter</span>(country <span class="op">==</span><span class="st"> </span>cntry)
   
-  <span class="co">## plot</span>
+  ## plot
   my_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> gap_to_plot, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> gdpPercap)) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
-<span class="st">    </span><span class="co">## add title and save</span>
+<span class="st">    </span>## add title and save
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="kw">paste</span>(cntry, <span class="st">&quot;GDP per capita&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>))
   
-  <span class="co">## add the figures/ folder</span>
+  ## add the figures/ folder
   <span class="kw">ggsave</span>(<span class="dt">filename =</span> <span class="kw">paste</span>(<span class="st">&quot;figures/&quot;</span>, cntry, <span class="st">&quot;_gdpPercap.png&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)), plot =<span class="st"> </span>my_plot<span class="er">)</span>
-} </code></pre>
+} </code></pre></div>
 <p>So that took a little longer than just the 3, but still super fast. For loops are sometimes just the thing you need to iterate over many things in your analyses.</p>
 </div>
 <div id="clean-up-our-repo" class="section level3">
@@ -586,10 +567,10 @@ country_list &lt;-<span class="st"> </span><span class="kw">unique</span>(gapmin
 <div id="answer-3" class="section level4">
 <h4><span class="header-section-number">8.4.5.1</span> Answer</h4>
 <p>No peeking!</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dir.create</span>(<span class="st">&quot;figures&quot;</span>) 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dir.create</span>(<span class="st">&quot;figures&quot;</span>) 
 <span class="kw">dir.create</span>(<span class="st">&quot;figures/Europe&quot;</span>) 
 
-<span class="co">## create a list of countries. Calculations go here, not in the for loop</span>
+## create a list of countries. Calculations go here, not in the for loop
 gap_europe &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">filter</span>(continent <span class="op">==</span><span class="st"> &quot;Europe&quot;</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">gdpPercap_cummean =</span> dplyr<span class="op">::</span><span class="kw">cummean</span>(gdpPercap))
@@ -598,34 +579,33 @@ country_list &lt;-<span class="st"> </span><span class="kw">unique</span>(gap_eu
 
 <span class="cf">for</span>( cntry <span class="cf">in</span> country_list ){ <span class="co"># (cntry = country_list[1])</span>
   
-  <span class="co">## filter the country to plot</span>
+  ## filter the country to plot
   gap_to_plot &lt;-<span class="st"> </span>gap_europe <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">filter</span>(country <span class="op">==</span><span class="st"> </span>cntry)
   
-  <span class="co">## add a print message to see what&#39;s plotting</span>
+  ## add a print message to see what&#39;s plotting
   <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Plotting&quot;</span>, cntry))
   
-  <span class="co">## plot</span>
+  ## plot
   my_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> gap_to_plot, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> gdpPercap_cummean)) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
-<span class="st">    </span><span class="co">## add title and save</span>
+<span class="st">    </span>## add title and save
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="kw">paste</span>(cntry, <span class="st">&quot;GDP per capita&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>))
   
   <span class="kw">ggsave</span>(<span class="dt">filename =</span> <span class="kw">paste</span>(<span class="st">&quot;figures/Europe/&quot;</span>, cntry, <span class="st">&quot;_gdpPercap_cummean.png&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)), 
   plot =<span class="st"> </span>my_plot<span class="er">)</span>
-} </code></pre>
+} </code></pre></div>
 <p>Notice how we put the calculation for <code>cummean()</code> outside the for loop. It could have gone inside, but it’s an operation that could be done just one time before hand (outside the loop) rather than multiple times as you go (inside the for loop).</p>
 </div>
 </div>
 </div>
 <div id="conditional-statements-with-if-and-else" class="section level2">
 <h2><span class="header-section-number">8.5</span> Conditional statements with <code>if</code> and <code>else</code></h2>
-<p>Often when we’re coding we want to control the flow of our actions. This can be done
-by setting actions to occur only if a condition or a set of conditions are met.</p>
+<p>Often when we’re coding we want to control the flow of our actions. This can be done by setting actions to occur only if a condition or a set of conditions are met.</p>
 <p>In R and other languages, these are called “if statements”.</p>
 <div id="if-statement-basic-structure" class="section level3">
 <h3><span class="header-section-number">8.5.1</span> if statement basic structure</h3>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># if</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># if</span>
 <span class="cf">if</span> (condition is true) {
   do something
 }
@@ -635,16 +615,16 @@ by setting actions to occur only if a condition or a set of conditions are met.<
   do something
 } <span class="cf">else</span> {  <span class="co"># that is, if the condition is false,</span>
   do something different
-}</code></pre>
+}</code></pre></div>
 <p>Let’s bring this concept into our for loop for Europe that we’ve just done. What if we want to add the label “Estimated” to countries that were estimated? Here’s what we’d do.</p>
 <p>First, import csv file with information on whether data was estimated or reported, and join to gapminder dataset:</p>
-<pre class="sourceCode r"><code class="sourceCode r">est &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/countries_estimated.csv&#39;</span>)
-gapminder_est &lt;-<span class="st"> </span><span class="kw">left_join</span>(gapminder, est)</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dir.create</span>(<span class="st">&quot;figures&quot;</span>) 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">est &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/countries_estimated.csv&#39;</span>)
+gapminder_est &lt;-<span class="st"> </span><span class="kw">left_join</span>(gapminder, est)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dir.create</span>(<span class="st">&quot;figures&quot;</span>) 
 <span class="kw">dir.create</span>(<span class="st">&quot;figures/Europe&quot;</span>) 
 
-<span class="co">## create a list of countries</span>
-gap_europe &lt;-<span class="st"> </span>gapminder_est <span class="op">%&gt;%</span><span class="st"> </span><span class="co">## use instead of gapminder</span>
+## create a list of countries
+gap_europe &lt;-<span class="st"> </span>gapminder_est <span class="op">%&gt;%</span><span class="st"> </span>## use instead of gapminder
 <span class="st">  </span><span class="kw">filter</span>(continent <span class="op">==</span><span class="st"> &quot;Europe&quot;</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">gdpPercap_cummean =</span> dplyr<span class="op">::</span><span class="kw">cummean</span>(gdpPercap))
 
@@ -652,23 +632,23 @@ country_list &lt;-<span class="st"> </span><span class="kw">unique</span>(gap_eu
 
 <span class="cf">for</span>( cntry <span class="cf">in</span> country_list ){ <span class="co"># (cntry = country_list[1])</span>
   
-  <span class="co">## filter the country to plot</span>
+  ## filter the country to plot
   gap_to_plot &lt;-<span class="st"> </span>gap_europe <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">filter</span>(country <span class="op">==</span><span class="st"> </span>cntry)
   
-  <span class="co">## add a print message </span>
+  ## add a print message 
   <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Plotting&quot;</span>, cntry))
   
-  <span class="co">## plot</span>
+  ## plot
   my_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> gap_to_plot, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> gdpPercap_cummean)) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
-<span class="st">    </span><span class="co">## add title and save</span>
+<span class="st">    </span>## add title and save
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="kw">paste</span>(cntry, <span class="st">&quot;GDP per capita&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>))
   
-  <span class="co">## if estimated, add that as a subtitle. </span>
+  ## if estimated, add that as a subtitle. 
   <span class="cf">if</span> (gap_to_plot<span class="op">$</span>estimated <span class="op">==</span><span class="st"> &quot;yes&quot;</span>) {
     
-    <span class="co">## add a print statement just to check</span>
+    ## add a print statement just to check
     <span class="kw">print</span>(<span class="kw">paste</span>(cntry, <span class="st">&quot;data are estimated&quot;</span>))
     
     my_plot &lt;-<span class="st"> </span>my_plot <span class="op">+</span>
@@ -681,17 +661,17 @@ country_list &lt;-<span class="st"> </span><span class="kw">unique</span>(gap_eu
   <span class="kw">ggsave</span>(<span class="dt">filename =</span> <span class="kw">paste</span>(<span class="st">&quot;figures/Europe/&quot;</span>, cntry, <span class="st">&quot;_gdpPercap_cummean.png&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>), 
          <span class="dt">plot =</span> my_plot)
   
-} </code></pre>
+} </code></pre></div>
 <p>This worked, but we got a warning message with the if statement. This is because if we look at <code>gap_to_plot$estimated</code>, it is many “yes”s or “no”s, and the if statement works just on the first one. We know that if any are yes, all are yes, but you can imagine that this could lead to problems down the line if you <em>didn’t</em> know that. So let’s be explicit:</p>
 </div>
 <div id="executable-if-statement" class="section level3">
 <h3><span class="header-section-number">8.5.2</span> Executable if statement</h3>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dir.create</span>(<span class="st">&quot;figures&quot;</span>) 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dir.create</span>(<span class="st">&quot;figures&quot;</span>) 
 <span class="kw">dir.create</span>(<span class="st">&quot;figures/Europe&quot;</span>) 
 
 
-<span class="co">## create a list of countries</span>
-gap_europe &lt;-<span class="st"> </span>gapminder_est <span class="op">%&gt;%</span><span class="st"> </span><span class="co">## use instead of gapminder</span>
+## create a list of countries
+gap_europe &lt;-<span class="st"> </span>gapminder_est <span class="op">%&gt;%</span><span class="st"> </span>## use instead of gapminder
 <span class="st">  </span><span class="kw">filter</span>(continent <span class="op">==</span><span class="st"> &quot;Europe&quot;</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">gdpPercap_cummean =</span> dplyr<span class="op">::</span><span class="kw">cummean</span>(gdpPercap))
 
@@ -699,20 +679,20 @@ country_list &lt;-<span class="st"> </span><span class="kw">unique</span>(gap_eu
 
 <span class="cf">for</span>( cntry <span class="cf">in</span> country_list ){ <span class="co"># (cntry = country_list[1])</span>
   
-  <span class="co">## filter the country to plot</span>
+  ## filter the country to plot
   gap_to_plot &lt;-<span class="st"> </span>gap_europe <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">filter</span>(country <span class="op">==</span><span class="st"> </span>cntry)
   
-  <span class="co">## add a print message </span>
+  ## add a print message 
   <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Plotting&quot;</span>, cntry))
   
-  <span class="co">## plot</span>
+  ## plot
   my_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> gap_to_plot, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> gdpPercap_cummean)) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
-<span class="st">    </span><span class="co">## add title and save</span>
+<span class="st">    </span>## add title and save
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="kw">paste</span>(cntry, <span class="st">&quot;GDP per capita&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>))
   
-  <span class="co">## if estimated, add that as a subtitle. </span>
+  ## if estimated, add that as a subtitle. 
   <span class="cf">if</span> (<span class="kw">any</span>(gap_to_plot<span class="op">$</span>estimated <span class="op">==</span><span class="st"> &quot;yes&quot;</span>)) { <span class="co"># any() will return a single TRUE or FALSE</span>
     
     <span class="kw">print</span>(<span class="kw">paste</span>(cntry, <span class="st">&quot;data are estimated&quot;</span>))
@@ -723,16 +703,16 @@ country_list &lt;-<span class="st"> </span><span class="kw">unique</span>(gap_eu
   <span class="kw">ggsave</span>(<span class="dt">filename =</span> <span class="kw">paste</span>(<span class="st">&quot;figures/Europe/&quot;</span>, cntry, <span class="st">&quot;_gdpPercap_cummean.png&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>), 
          <span class="dt">plot =</span> my_plot)
   
-} </code></pre>
+} </code></pre></div>
 <p>OK so this is working as we expect! Note that we do not need an <code>else</code> statement above, because we only want to do something (add a subtitle) if one condition is met. But what if we want to add a different subtitle based on another condition, say where the data are reported, to be extra explicit about it?</p>
 </div>
 <div id="executable-ifelse-statement" class="section level3">
 <h3><span class="header-section-number">8.5.3</span> Executable if/else statement</h3>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dir.create</span>(<span class="st">&quot;figures&quot;</span>) 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dir.create</span>(<span class="st">&quot;figures&quot;</span>) 
 <span class="kw">dir.create</span>(<span class="st">&quot;figures/Europe&quot;</span>) 
 
-<span class="co">## create a list of countries</span>
-gap_europe &lt;-<span class="st"> </span>gapminder_est <span class="op">%&gt;%</span><span class="st"> </span><span class="co">## use instead of gapminder</span>
+## create a list of countries
+gap_europe &lt;-<span class="st"> </span>gapminder_est <span class="op">%&gt;%</span><span class="st"> </span>## use instead of gapminder
 <span class="st">  </span><span class="kw">filter</span>(continent <span class="op">==</span><span class="st"> &quot;Europe&quot;</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">gdpPercap_cummean =</span> dplyr<span class="op">::</span><span class="kw">cummean</span>(gdpPercap))
 
@@ -740,20 +720,20 @@ country_list &lt;-<span class="st"> </span><span class="kw">unique</span>(gap_eu
 
 <span class="cf">for</span>( cntry <span class="cf">in</span> country_list ){ <span class="co"># (cntry = country_list[1])</span>
   
-  <span class="co">## filter the country to plot</span>
+  ## filter the country to plot
   gap_to_plot &lt;-<span class="st"> </span>gap_europe <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">filter</span>(country <span class="op">==</span><span class="st"> </span>cntry)
   
-  <span class="co">## add a print message </span>
+  ## add a print message 
   <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Plotting&quot;</span>, cntry))
   
-  <span class="co">## plot</span>
+  ## plot
   my_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> gap_to_plot, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> gdpPercap_cummean)) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
-<span class="st">    </span><span class="co">## add title and save</span>
+<span class="st">    </span>## add title and save
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="kw">paste</span>(cntry, <span class="st">&quot;GDP per capita&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>))
   
-  <span class="co">## if estimated, add that as a subtitle. </span>
+  ## if estimated, add that as a subtitle. 
   <span class="cf">if</span> (<span class="kw">any</span>(gap_to_plot<span class="op">$</span>estimated <span class="op">==</span><span class="st"> &quot;yes&quot;</span>)) { <span class="co"># any() will return a single TRUE or FALSE</span>
     
     <span class="kw">print</span>(<span class="kw">paste</span>(cntry, <span class="st">&quot;data are estimated&quot;</span>))
@@ -771,9 +751,9 @@ country_list &lt;-<span class="st"> </span><span class="kw">unique</span>(gap_eu
   <span class="kw">ggsave</span>(<span class="dt">filename =</span> <span class="kw">paste</span>(<span class="st">&quot;figures/Europe/&quot;</span>, cntry, <span class="st">&quot;_gdpPercap_cummean.png&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>), 
          <span class="dt">plot =</span> my_plot)
   
-} </code></pre>
+} </code></pre></div>
 <p>Note that this works because we know there are only two conditions, <code>Estimated == yes</code> and <code>Estimated == no</code>. In the first <code>if</code> statement we asked for estimated data, and the <code>else</code> condition gives us everything else (which we know is reported). We can be explicit about setting these conditions in the <code>else</code> clause by instead using an <code>else if</code> statement. Below is how you would construct this in your for loop, similar to above:</p>
-<pre class="sourceCode r"><code class="sourceCode r">  <span class="cf">if</span> (<span class="kw">any</span>(gap_to_plot<span class="op">$</span>estimated <span class="op">==</span><span class="st"> &quot;yes&quot;</span>)) { <span class="co"># any() will return a single TRUE or FALSE</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  <span class="cf">if</span> (<span class="kw">any</span>(gap_to_plot<span class="op">$</span>estimated <span class="op">==</span><span class="st"> &quot;yes&quot;</span>)) { <span class="co"># any() will return a single TRUE or FALSE</span>
     
     <span class="kw">print</span>(<span class="kw">paste</span>(cntry, <span class="st">&quot;data are estimated&quot;</span>))
     
@@ -786,7 +766,7 @@ country_list &lt;-<span class="st"> </span><span class="kw">unique</span>(gap_eu
     
     <span class="kw">print</span>(<span class="kw">paste</span>(cntry, <span class="st">&quot;data are reported&quot;</span>))
     
-  }</code></pre>
+  }</code></pre></div>
 <p>This construction is necessary if you have more than two conditions to test for.</p>
 </div>
 </div>
@@ -815,8 +795,7 @@ country_list &lt;-<span class="st"> </span><span class="kw">unique</span>(gap_eu
 <h3><span class="header-section-number">8.6.3</span> Getting help</h3>
 <p>You’ll soon have questions that are outside the scope of this workshop, how do you find answers?</p>
 <ul>
-<li>end with a ton of resources:
-<a href="https://peerj.com/collections/50-practicaldatascistats/" class="uri">https://peerj.com/collections/50-practicaldatascistats/</a></li>
+<li>end with a ton of resources: <a href="https://peerj.com/collections/50-practicaldatascistats/" class="uri">https://peerj.com/collections/50-practicaldatascistats/</a></li>
 </ul>
 </div>
 </div>

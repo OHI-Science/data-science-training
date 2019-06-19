@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 GitHub | Introduction to Open Data Science</title>
   <meta name="description" content="This is official open data science training for the Ocean Health Index." />
-  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 GitHub | Introduction to Open Data Science" />
   <meta property="og:type" content="book" />
@@ -50,67 +50,41 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
 <link rel="stylesheet" href="lib/css/bootstrap.min.css" type="text/css" />
@@ -380,16 +354,7 @@ Philosophy: gh repo and Rproject
 <div id="why-should-scientists-use-github" class="section level2">
 <h2><span class="header-section-number">4.3</span> Why should scientists use GitHub?</h2>
 <ol style="list-style-type: decimal">
-<li>Ends (or, nearly ends) the horror of keeping track of versions.
-Basically, we get away from this:
-<br />
-<br />
-<img src="img/MessySaves.png" />
-<br />
-<br />
-When you open your repository, you only see the most recent version. But, it easy to compare versions, and you can easily revert to previous versions.
-<br />
-<br /></li>
+<li>Ends (or, nearly ends) the horror of keeping track of versions. Basically, we get away from this: <br /> <br /> <img src="img/MessySaves.png" /> <br /> <br /> When you open your repository, you only see the most recent version. But, it easy to compare versions, and you can easily revert to previous versions. <br /> <br /></li>
 <li>Provides peace of mind because you make changes to your work…and know that you can easily access earlier versions.</li>
 <li>Improves collaborative efforts. Different researchers can work on the same files at the same time!</li>
 <li>It is easy to share and distribute files through the Github website.</li>
@@ -420,13 +385,9 @@ When you open your repository, you only see the most recent version. But, it eas
 <li><strong>Remote Github</strong>: Github files located on the <a href="https://github.com" class="uri">https://github.com</a> website.</li>
 <li><strong>Clone</strong>: Process of making a local copy of a remote Github repository. This only needs to be done once (unless you mess up your local copy).</li>
 <li><strong>Pull</strong>: Copy changes on the remote Github repository to your local Github repository. This is useful if multiple people are making changes to a repository.</li>
-<li><strong>Push</strong>: Save local changes to remote Github
-<br />
-<br /></li>
+<li><strong>Push</strong>: Save local changes to remote Github <br /> <br /></li>
 </ul>
-<p><img src="img/push_pull_clone.png" />
-<br />
-<br /></p>
+<p><img src="img/push_pull_clone.png" /> <br /> <br /></p>
 <p>After we set up git on your computers, we’ll explore the full GitHub process:</p>
 <ol style="list-style-type: decimal">
 <li>create a repository on GitHub.com</li>
@@ -448,10 +409,10 @@ When you open your repository, you only see the most recent version. But, it eas
 <li><p>Create a <strong>Github</strong> account at <a href="http://github.com" class="uri">http://github.com</a>, if you don’t already have one. For a username, I recommend all lower-case letters, short as you can. I recommend using your <em>.edu email</em>, since you can request free private repositories via <a href="https://education.github.com/">GitHub Education</a> discount.</p></li>
 <li><p>You will use the <code>usethis</code> package to configure <strong>git</strong> with global commands, which means it will apply ‘globally’ to all files on your computer, rather than to a specific folder.</p></li>
 </ol>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;usethis&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;usethis&quot;</span>)
 <span class="kw">library</span>(usethis)
 
-<span class="kw">use_git_config</span>(<span class="dt">user.name =</span> <span class="st">&quot;Melsteroni&quot;</span>, <span class="dt">user.email =</span> <span class="st">&quot;Melsteroni@example.org&quot;</span>)</code></pre>
+<span class="kw">use_git_config</span>(<span class="dt">user.name =</span> <span class="st">&quot;Melsteroni&quot;</span>, <span class="dt">user.email =</span> <span class="st">&quot;Melsteroni@example.org&quot;</span>)</code></pre></div>
 <p><br></p>
 <p><em>BACKUP PLAN</em> If <code>usethis</code> fails, the following is the classic approach to configuring <strong>git</strong>. Open the Git Bash program (Windows) or the Terminal (Mac) and type the following:</p>
 <pre><code>    # display your version of git
@@ -468,19 +429,16 @@ When you open your repository, you only see the most recent version. But, it eas
 <ol start="4" style="list-style-type: decimal">
 <li>Make sure Git and RStudio are tallking: Click on “Project (None)” on the top right –&gt; “New Project” –&gt; “Version Control” –&gt; Git</li>
 </ol>
-<p><img src="img/check_git_rstudio.png" />
-<br></p>
+<p><img src="img/check_git_rstudio.png" /> <br></p>
 <p>Do any ominous messages pop up?</p>
 <div id="troubleshooting-1" class="section level4">
 <h4><span class="header-section-number">4.5.2.1</span> Troubleshooting</h4>
 <p>If you have problems setting up git, please see the <a href="http://happygitwithr.com/troubleshooting.html">Troubleshooting section</a> in Jenny Bryan’s amazing <a href="http://happygitwithr.com">HappyGitWithR</a>.</p>
-<p><strong>New(ish) Error on a Mac</strong>
-We’ve also seen the following errors from RStudio:</p>
+<p><strong>New(ish) Error on a Mac</strong> We’ve also seen the following errors from RStudio:</p>
 <pre><code>error key does not contain a section --global terminal</code></pre>
 <p>and</p>
 <pre><code>fatal: not in a git directory</code></pre>
-<p>To solve this, go to the Terminal and type:
-<code>which git</code></p>
+<p>To solve this, go to the Terminal and type: <code>which git</code></p>
 <p><img src="img/git_whichgit.png" width="250px"></p>
 <p>Look at the filepath that is returned. Does it say anything to do with Apple?</p>
 <p>-&gt; If yes, then the <a href="https://git-scm.com/downloads">Git you downloaded</a> isn’t installed, please redownload if necessary, and follow instructions to install.</p>
@@ -502,28 +460,14 @@ We’ve also seen the following errors from RStudio:</p>
 </div>
 <div id="create-a-repository-on-github.com" class="section level3">
 <h3><span class="header-section-number">4.5.3</span> Create a repository on Github.com</h3>
-<p>First, go to your account on github.com and click “New repository”.
-<br />
-<br />
-<img src="img/create_repository.png" />
-<br />
-<br /></p>
+<p>First, go to your account on github.com and click “New repository”. <br /> <br /> <img src="img/create_repository.png" /> <br /> <br /></p>
 <p>Choose a name. Call it whatever you want (the shorter the better), or follow me for convenience. I will call mine <code>quickstart</code>.</p>
-<p>Also, add a description, make it public, create a README file, and create your repo!
-<br />
-<br />
-<img src="img/create_repository_2.png" />
-<br />
-<br /></p>
+<p>Also, add a description, make it public, create a README file, and create your repo! <br /> <br /> <img src="img/create_repository_2.png" /> <br /> <br /></p>
 <p>The <em>Add gitignore</em> option adds a document where you can identify files or file-types you want Github to ignore. These files will stay in on the local Github folder (the one on your computer), but will not be uploaded onto the web version of Github.</p>
 <p>The <em>Add a license</em> option adds a license that describes how other people can use your Github files (e.g., open source, but no one can profit from them, etc.). We won’t worry about this today.</p>
 <p>Check out our new repository!</p>
-<p>Notice how the README.md file we created is automatically displayed at the bottom. The .md means that it is Markdown (remember how .Rmd was RMarkdown?) so the formatting we learned in the last lesson apply here.
-<br />
-<br /></p>
-<p><img src="img/New_repository.png" />
-<br />
-<br /></p>
+<p>Notice how the README.md file we created is automatically displayed at the bottom. The .md means that it is Markdown (remember how .Rmd was RMarkdown?) so the formatting we learned in the last lesson apply here. <br /> <br /></p>
+<p><img src="img/New_repository.png" /> <br /> <br /></p>
 <p><strong>From here, you will work locally (on your computer).</strong></p>
 </div>
 <div id="clone-your-repository-using-rstudio" class="section level3">
@@ -538,42 +482,33 @@ We’ve also seen the following errors from RStudio:</p>
 </ul>
 <p>This will let us take advantage of something that is really key about GitHub.com: cloned repositories are saved as folders that you can navigate on your computer. The greatness of this will be evident soon.</p>
 <p>So really. Make sure that you have an all-lowercase folder called <code>github</code> in your home directory!!</p>
-<p><strong>Step 1</strong>: Copy the web address of the repository you want to clone.
-<br /></p>
-<p><img src="img/clone_step1.png" /></p>
-<p><br />
-<br /></p>
+<p><strong>Step 1</strong>: Copy the web address of the repository you want to clone. <br /></p>
+<div class="figure">
+<img src="img/clone_step1.png" />
+
+</div>
+<p><br /> <br /></p>
 <p><strong>Step 2</strong>: from RStudio, go to New Project (also in the File menu).</p>
-<p><img src="img/new_project_1.png" />
-<br />
-<br /></p>
+<p><img src="img/new_project_1.png" /> <br /> <br /></p>
 <p><strong>Step 3</strong>: Select Version Control</p>
-<p><br />
-<br /></p>
-<p><img src="img/new_project_2.png" />
-<br />
-<br /></p>
+<p><br /> <br /></p>
+<p><img src="img/new_project_2.png" /> <br /> <br /></p>
 <p><strong>Step 4</strong>: Select Git</p>
-<p><br />
-<br /></p>
-<p><img src="img/new_project_3.png" />
-<br />
-<br /></p>
+<p><br /> <br /></p>
+<p><img src="img/new_project_3.png" /> <br /> <br /></p>
 <p><strong>Step 5</strong>: Paste it in the Repository URL field, and type <strong>tab</strong> to autofill the Project Directory name. Make sure you keep the Project Directory Name <strong>THE SAME</strong> as the repository name from the URL.</p>
 <p>Save it in your github folder (click on Browse) to do this.</p>
-<p><br />
-<br /></p>
-<p><img src="img/new_project_4.png" /></p>
-<p><br />
-<br /></p>
+<p><br /> <br /></p>
+<div class="figure">
+<img src="img/new_project_4.png" />
+
+</div>
+<p><br /> <br /></p>
 </div>
 <div id="inspect-results" class="section level3">
 <h3><span class="header-section-number">4.5.5</span> Inspect results</h3>
-<p>If everything went well, the repository will be added to the list located here:
-<img src="img/select_project.png" /></p>
-<p><br />
-<br />
-when we cloned this from RStudio, it created an RStudio project, which you can tell because:</p>
+<p>If everything went well, the repository will be added to the list located here: <img src="img/select_project.png" /></p>
+<p><br /> <br /> when we cloned this from RStudio, it created an RStudio project, which you can tell because:</p>
 <pre><code>- our working directory is set to `~/github/Quickstart`  
 - there&#39;s an `.RProj` file in the &quot;Files&quot; tab 
 - the project is named in the top right hand corner
@@ -581,12 +516,8 @@ when we cloned this from RStudio, it created an RStudio project, which you can t
 <p><br></p>
 <p>When you first clone a repo through RStudio, RStudio will add an <code>.Rproj</code> file to your repo folder. If you didn’t add a <code>.gitignore</code> file when you originally created the repo on GitHub.com, RStudio will also add this for you. These will show up with little yellow <code>?</code> icons in your git tab. This is GitHub’s way of saying: “ooohh…..something changed in the repository”. In this case, when you click the box to stage them, they will turn into <code>A</code>s because they have been added to the repo.</p>
 <p><br></p>
-<p>And the repository will be saved to the Github folder on your computer:
-<br />
-<br /></p>
-<p><img src="img/cloned_repository.png" />
-<br />
-<br /></p>
+<p>And the repository will be saved to the Github folder on your computer: <br /> <br /></p>
+<p><img src="img/cloned_repository.png" /> <br /> <br /></p>
 <p>Ta da!!!! The folder doesn’t contain much of interest, but we are going to change that.</p>
 </div>
 <div id="add-files-to-our-local-repo" class="section level3">
@@ -605,7 +536,10 @@ when we cloned this from RStudio, it created an RStudio project, which you can t
 <li>etc.</li>
 </ul>
 <p>We can use the Git tab of RStudio to monitor changes to files in the local repository. When files change, RStudio uses the following codes to describe how the files have been modified:</p>
-<p><img src="img/modified.png" /></p>
+<div class="figure">
+<img src="img/modified.png" />
+
+</div>
 <p>We will demonstrate this by copying a file into the repository folder on my computer. This file will be added to the Git tab beside a green box with an “A”!</p>
 <p>From this, you can see how the repository is being tracked, even when changes aren’t made through RStudio.</p>
 <p>We can also make changes through RStudio!</p>
@@ -614,54 +548,37 @@ when we cloned this from RStudio, it created an RStudio project, which you can t
 <h3><span class="header-section-number">4.5.7</span> Committing your changes and syncing with GitHub.com</h3>
 <p>Eventually you will want to commit the files you have created in your local repository and then send them to GitHub.com</p>
 <p>I tend to do this every time I finish a task (basically when I start getting nervous that I will lose my work). Once something is committed, it is very difficult to lose it.</p>
-<p>Committing saves the current saved version of your files to the official Git History. The commit includes all the staged files as well as a corresponding commit message (which you will write) and a unique identifier called a SHA ID. When you are ready to commit your changes, follow these steps:
-<br />
-<br /></p>
-<p><img src="img/commit_overview.png" />
-<br />
-<br /></p>
+<p>Committing saves the current saved version of your files to the official Git History. The commit includes all the staged files as well as a corresponding commit message (which you will write) and a unique identifier called a SHA ID. When you are ready to commit your changes, follow these steps: <br /> <br /></p>
+<p><img src="img/commit_overview.png" /> <br /> <br /></p>
 <p>We walk through this process below:</p>
 <div id="pull" class="section level4">
 <h4><span class="header-section-number">4.5.7.1</span> Pull</h4>
-<p>From the Git tab, “Pull” the repository. This makes sure your local repository is synced with the remote repository. This is very important if other people are making changes to the repository or if you are working from multiple computers.
-<br />
-<br /></p>
-<p><img src="img/pull.png" />
-<br />
-<br /></p>
+<p>From the Git tab, “Pull” the repository. This makes sure your local repository is synced with the remote repository. This is very important if other people are making changes to the repository or if you are working from multiple computers. <br /> <br /></p>
+<p><img src="img/pull.png" /> <br /> <br /></p>
 </div>
 <div id="stage" class="section level4">
 <h4><span class="header-section-number">4.5.7.2</span> Stage</h4>
-<p>Stage the files you want to commit. In RStudio, this involves checking the “Staged” boxes:
-<br /></p>
-<p><img src="img/staged.png" />
-<br />
-<br /></p>
+<p>Stage the files you want to commit. In RStudio, this involves checking the “Staged” boxes: <br /></p>
+<p><img src="img/staged.png" /> <br /> <br /></p>
 </div>
 <div id="commit" class="section level4">
 <h4><span class="header-section-number">4.5.7.3</span> Commit</h4>
 <p>Add a commit message that describes the updates you made to these files. The message will be for your reference, so make it something you will find useful.</p>
 <p><br /></p>
-<p><img src="img/commit.png" />
-<br />
-<br /></p>
+<p><img src="img/commit.png" /> <br /> <br /></p>
 </div>
 <div id="push" class="section level4">
 <h4><span class="header-section-number">4.5.7.4</span> Push</h4>
 <p>You will “Push” to save your local changes to Github.com.</p>
 <p><br /></p>
-<p><img src="img/push.png" />
-<br /></p>
+<p><img src="img/push.png" /> <br /></p>
 </div>
 </div>
 </div>
 <div id="explore-remote-github" class="section level2">
 <h2><span class="header-section-number">4.6</span> Explore remote Github</h2>
-<p>The files you added should be on github.com:
-<br /></p>
-<p><img src="img/Github_remote.png" />
-<br />
-<br /></p>
+<p>The files you added should be on github.com: <br /></p>
+<p><img src="img/Github_remote.png" /> <br /> <br /></p>
 <hr />
 <p><strong>Your turn!</strong></p>
 <p>This time let’s edit an existing file instead of adding something new. Open your README file by clicking on it in the Files pane (lower right corner). Write a few lines of text, save, and see what happens in your Git Tab. Sync it to your remote repository (Github.com).</p>
@@ -688,23 +605,11 @@ We&#39;re learning ggplot2 It&#39;s going to be amazing.
 </div>
 <div id="going-back-in-time" class="section level2">
 <h2><span class="header-section-number">4.7</span> Going back in time</h2>
-<p>One thing that I love about about Github is that it is easy to see how files have changed over time. Usually I compare commits through github.com:
-<br />
-<br /></p>
-<p><img src="img/commit_history.png" />
-<br />
-<br />
-<br />
-<br /></p>
-<p><img src="img/commit_compare_2.png" />
-<br />
-<br /></p>
-<p>You can click on the commits to see how the files changed from the previous commit:
-<br />
-<br /></p>
-<p><img src="img/commit_compare_3.png" />
-<br />
-<br /></p>
+<p>One thing that I love about about Github is that it is easy to see how files have changed over time. Usually I compare commits through github.com: <br /> <br /></p>
+<p><img src="img/commit_history.png" /> <br /> <br /> <br /> <br /></p>
+<p><img src="img/commit_compare_2.png" /> <br /> <br /></p>
+<p>You can click on the commits to see how the files changed from the previous commit: <br /> <br /></p>
+<p><img src="img/commit_compare_3.png" /> <br /> <br /></p>
 </div>
 <div id="happy-git-with-r" class="section level2">
 <h2><span class="header-section-number">4.8</span> Happy Git with R</h2>

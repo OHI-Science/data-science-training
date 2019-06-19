@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 5 Visualizing: ggplot2 | Introduction to Open Data Science</title>
   <meta name="description" content="This is official open data science training for the Ocean Health Index." />
-  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 5 Visualizing: ggplot2 | Introduction to Open Data Science" />
   <meta property="og:type" content="book" />
@@ -50,67 +50,41 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
 <link rel="stylesheet" href="lib/css/bootstrap.min.css" type="text/css" />
@@ -374,7 +348,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Winston Chang’s book converted me from someone who was slightly confused by ggplot2 to a superuser….so I can’t recommend it enough! And, the <a href="http://www.cookbook-r.com/Graphs/#graphs-with-ggplot2">associated website</a> is great too.</li>
 </ul>
 <p><br></p>
-<p><img src="img/ChangBook.png" /></p>
+<div class="figure">
+<img src="img/ChangBook.png" />
+
+</div>
 <p><br></p>
 <ul>
 <li>Hadley Wickham’s <a href="http://r4ds.had.co.nz/data-visualisation.html">R for Data Science book</a>, which is inspiration for much of this tutorial.</li>
@@ -393,15 +370,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">5.4</span> Install tidyverse: <code>tidyverse</code></h2>
 <p>We will use the <code>ggplot2</code> package, which is bundled with a composite-package called <code>tidyverse</code>. Check out <a href="https://www.tidyverse.org">tidyverse.org/</a> for more information.</p>
 <p>We will download and install <code>tidyverse</code>:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## from CRAN:</span>
-<span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>) <span class="co">## do this once only to install the package on your computer.</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## from CRAN:
+<span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>) ## do this once only to install the package on your computer.</code></pre></div>
 <p>You will see some messages describing which packages were installed with <code>tidyverse</code>. Messages about name conflicts are also returned. This is not a problem its just an alert that two functions from dplyr will replace functions in the built-in stats package with the same name.</p>
 </div>
 <div id="create-an-rmarkdown-file-to-work-from" class="section level2">
 <h2><span class="header-section-number">5.5</span> Create an RMarkdown file to work from</h2>
 <hr />
-<p><strong>To do:</strong>
-<strong>Create a new R Markdown file</strong></p>
+<p><strong>To do:</strong> <strong>Create a new R Markdown file</strong></p>
 <p>We will create the RMarkdown file you will be working from. You can write notes to yourself in Markdown and have a record of all your R code.</p>
 <p>Go to File &gt; New File &gt; R Markdown … (or click the green plus in the top left corner).</p>
 <p>Next, replace all the automatic text with the following:</p>
@@ -422,20 +398,20 @@ We&#39;re learning ggplot2 It&#39;s going to be amazing.
 <div id="load-the-tidverse" class="section level2">
 <h2><span class="header-section-number">5.6</span> Load the tidverse</h2>
 <p>We have downloaded the tidyverse package but it is not yet loaded in the R workspace. We will use the <code>library()</code> function to load tidyverse. This will be the first code chunk in your RMarkdown:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse) <span class="co">## do this every time you restart R and need it </span></code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse) ## do this every time you restart R and need it </code></pre></div>
 </div>
 <div id="load-and-explore-data" class="section level2">
 <h2><span class="header-section-number">5.7</span> Load and explore data</h2>
 <p>We will load the dataset we will be using for this tutorial into our workspace directly from GitHub.com (I always find this GitHub functionality so cool!).</p>
-<pre class="sourceCode r"><code class="sourceCode r">ohi_data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/OHI_global_data.csv&quot;</span>)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ohi_data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/OHI_global_data.csv&quot;</span>)</code></pre></div>
 <p>These data are from the global <a href="http://ohi-science.org/ohi-global/">Ocean Health Index</a> which assesses the condition of marine resources for 220 countries or territories.</p>
 <p>The dataset includes:</p>
-<table>
+<table style="width:85%;">
 <colgroup>
-<col width="3%" />
-<col width="43%" />
-<col width="3%" />
-<col width="49%" />
+<col width="4%" />
+<col width="36%" />
+<col width="4%" />
+<col width="40%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -504,7 +480,7 @@ We&#39;re learning ggplot2 It&#39;s going to be amazing.
 </table>
 <p><br></p>
 <p>Let’s explore these data, shall we:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(ohi_data)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(ohi_data)</code></pre></div>
 <pre><code>## # A tibble: 6 x 9
 ##   country OHI_score OHI_trend coastal_pop log_coastal_pop cumulative_huma…
 ##   &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;           &lt;dbl&gt;            &lt;dbl&gt;
@@ -516,7 +492,7 @@ We&#39;re learning ggplot2 It&#39;s going to be amazing.
 ## 6 Jarvis…      83.9     -0.25           0               0             1.85
 ## # … with 3 more variables: HDI &lt;dbl&gt;, georegion_one &lt;chr&gt;,
 ## #   georegion_two &lt;chr&gt;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(ohi_data)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(ohi_data)</code></pre></div>
 <pre><code>##    country            OHI_score       OHI_trend        coastal_pop       
 ##  Length:221         Min.   :41.83   Min.   :-3.9900   Min.   :        0  
 ##  Class :character   1st Qu.:61.62   1st Qu.:-0.5600   1st Qu.:   106224  
@@ -541,7 +517,7 @@ We&#39;re learning ggplot2 It&#39;s going to be amazing.
 ##                                       
 ##                                       
 ## </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(ohi_data<span class="op">$</span>georegion_one)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(ohi_data<span class="op">$</span>georegion_one)</code></pre></div>
 <pre><code>## 
 ##                          Africa                        Americas 
 ##                              46                               3 
@@ -551,7 +527,7 @@ We&#39;re learning ggplot2 It&#39;s going to be amazing.
 ##                              48                              34 
 ##                Southern Islands 
 ##                               7</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(ohi_data<span class="op">$</span>georegion_two)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(ohi_data<span class="op">$</span>georegion_two)</code></pre></div>
 <pre><code>## 
 ## Australia and New Zealand                 Caribbean 
 ##                         6                        28 
@@ -585,39 +561,35 @@ We&#39;re learning ggplot2 It&#39;s going to be amazing.
 <p>ggplot2 requires the data to be in a dataframe format. The first step is to use the <code>ggplot()</code> function to identify the dataframe with the data you want to plot.</p>
 <p>At this point, we will also assign the x and y axis variables within the aes function (this stands for aesthetics, and we will discuss this concept after we have a plot to work with).</p>
 <p>[NOTE: This step was confusing for me for a long time because it doesn’t actually make the plot!]</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> OHI_score, <span class="dt">y =</span> HDI))</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> OHI_score, <span class="dt">y =</span> HDI))</code></pre></div>
 </div>
 <div id="step-2-identify-the-style-of-plot-you-want-to-create-i.e.-the-geom" class="section level3">
 <h3><span class="header-section-number">5.8.2</span> Step 2: Identify the style of plot you want to create (i.e., the geom)</h3>
-<p>Next, we will actually create the plot by adding a geom function using the <code>+</code> operator.
-A <strong>geom</strong> is the geometrical object that a plot uses to represent data. For example, bar charts use bar geoms, line charts use line geoms, boxplots use boxplot geoms, and so on.</p>
+<p>Next, we will actually create the plot by adding a geom function using the <code>+</code> operator. A <strong>geom</strong> is the geometrical object that a plot uses to represent data. For example, bar charts use bar geoms, line charts use line geoms, boxplots use boxplot geoms, and so on.</p>
 <p>You can use different geoms to plot the same data. To change the type of plot, change the geom function that you add to <code>ggplot()</code>.</p>
 <p><code>ggplot2</code> provides over 30 geoms, which are described in the official ggplot2 <a href="https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf">cheatsheet</a>. To learn more about any single geom, use help: <code>?geom_smooth</code>. Extension packages provide even more geoms (see <a href="https://www.ggplot2-exts.org" class="uri">https://www.ggplot2-exts.org</a> for a sampling).</p>
 <p>We will start by creating a scatterplot of ohi scores within UN georegions by adding the <code>geom_point</code> function.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> georegion_one, <span class="dt">y =</span>OHI_score)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> georegion_one, <span class="dt">y =</span>OHI_score)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
 <p><img src="data-science-training_files/figure-html/first-ggplot-1.png" width="672" /></p>
 <p>Yay! A plot!</p>
 <p>Next we will replace geom_point() with geom_jitter() to create a style of plot with the same data. geom_jitter is similar to geom_point, but it adds random variation to values along the x-axis to separate points:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> georegion_one, <span class="dt">y =</span>OHI_score)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width=</span><span class="fl">0.2</span>) <span class="co"># the width argument describes how much scatter to add</span></code></pre>
-<p><img src="data-science-training_files/figure-html/second-ggplot-1.png" width="672" />
-<br></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> georegion_one, <span class="dt">y =</span>OHI_score)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width=</span><span class="fl">0.2</span>) <span class="co"># the width argument describes how much scatter to add</span></code></pre></div>
+<p><img src="data-science-training_files/figure-html/second-ggplot-1.png" width="672" /> <br></p>
 <p>Now we will explore other geoms.</p>
 <p>The following bar plot uses geom_bar to describe the number of countries in each UN category:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> georegion_one)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_bar</span>() </code></pre>
-<p><img src="data-science-training_files/figure-html/barplot2-1.png" width="672" />
-<br></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> georegion_one)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_bar</span>() </code></pre></div>
+<p><img src="data-science-training_files/figure-html/barplot2-1.png" width="672" /> <br></p>
 <p>A histogram using geom_histogram:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> HDI)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_histogram</span>() </code></pre>
-<p><img src="data-science-training_files/figure-html/histogram-1.png" width="672" />
-<br></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> HDI)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_histogram</span>() </code></pre></div>
+<p><img src="data-science-training_files/figure-html/histogram-1.png" width="672" /> <br></p>
 <p>Multiple geoms can be layered on the same plot. Geom layers can be added using either the same or different dataframes. To demonstrate this we will use a secondary dataset with the mean OHI score for each UN georegion. We will create a bar plot of the means for each region and then overlay the point data.</p>
-<pre class="sourceCode r"><code class="sourceCode r">ohi_summary &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/OHI_scores_georegion_summary.csv&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ohi_summary &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/OHI_scores_georegion_summary.csv&quot;</span>)
 
-ohi_summary</code></pre>
+ohi_summary</code></pre></div>
 <pre><code>## # A tibble: 7 x 2
 ##   georegions                      OHI_score_average
 ##   &lt;chr&gt;                                       &lt;dbl&gt;
@@ -628,32 +600,29 @@ ohi_summary</code></pre>
 ## 5 Latin America and the Caribbean              67.0
 ## 6 Oceania                                      75.0
 ## 7 Southern Islands                             80.1</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_summary, <span class="kw">aes</span>(<span class="dt">x =</span> georegions, <span class="dt">y =</span> OHI_score_average)) <span class="op">+</span><span class="st"> </span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_summary, <span class="kw">aes</span>(<span class="dt">x =</span> georegions, <span class="dt">y =</span> OHI_score_average)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">data=</span>ohi_data, <span class="kw">aes</span>(<span class="dt">x=</span>georegion_one, <span class="dt">y=</span>OHI_score))</code></pre>
-<p><img src="data-science-training_files/figure-html/third-ggplot-1.png" width="672" />
-<br></p>
+<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">data=</span>ohi_data, <span class="kw">aes</span>(<span class="dt">x=</span>georegion_one, <span class="dt">y=</span>OHI_score))</code></pre></div>
+<p><img src="data-science-training_files/figure-html/third-ggplot-1.png" width="672" /> <br></p>
 <p>In the above example, the global mappings are designated by: <code>ggplot(data = ohi_summary, aes(x = georegions, y = OHI_score_average))</code>. These are then overwritten by the local mappings designated in the geom_jitter layer. The global designations will apply to subsequent layers, unless otherwise changed. This makes it possible to display different aesthetics and data in different layers.</p>
-<p><br>
-<br></p>
+<p><br> <br></p>
 <hr />
 <blockquote>
-<p><strong>STOP: let’s Commit, Pull and Push to GitHub</strong>
-<strong>And discuss the following</strong></p>
+<p><strong>STOP: let’s Commit, Pull and Push to GitHub</strong> <strong>And discuss the following</strong></p>
 </blockquote>
 <ol style="list-style-type: decimal">
 <li>In the code below, why isn’t the data showing up?</li>
 </ol>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">y =</span> OHI_score, <span class="dt">x =</span> HDI, <span class="dt">color=</span>georegion_one))</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">y =</span> OHI_score, <span class="dt">x =</span> HDI, <span class="dt">color=</span>georegion_one))</code></pre></div>
 <p><br></p>
 <ol start="2" style="list-style-type: decimal">
 <li>Are these two approaches the same?</li>
 </ol>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">y=</span>OHI_score, <span class="dt">x =</span> HDI, <span class="dt">color=</span>georegion_one)) <span class="op">+</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">y=</span>OHI_score, <span class="dt">x =</span> HDI, <span class="dt">color=</span>georegion_one)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>()
   
 <span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y =</span> OHI_score, <span class="dt">x =</span> HDI, <span class="dt">color=</span>georegion_one))  </code></pre>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y =</span> OHI_score, <span class="dt">x =</span> HDI, <span class="dt">color=</span>georegion_one))  </code></pre></div>
 <p><br></p>
 <p><strong>Answers</strong></p>
 <ol style="list-style-type: decimal">
@@ -661,8 +630,7 @@ ohi_summary</code></pre>
 <li>These two approaches result in the same plot here, but there could be downstream effects as more layers are added.</li>
 </ol>
 <hr />
-<p><br>
-<br></p>
+<p><br> <br></p>
 <p><strong>More about the aes function</strong></p>
 <p>The arguments within <code>aes()</code> link variables in the dataframe to some aspect of plot appearance. As we have discussed, x and y describe the axes, but other arguments can be added to describe a z variable (e.g. size or color or shape of points). Here are some examples of aes arguments:</p>
 <ul>
@@ -676,34 +644,32 @@ ohi_summary</code></pre>
 </ul>
 <p>This is very powerful! Let’s explore.</p>
 <p>Changing the point size:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> OHI_score, <span class="dt">y =</span> HDI, <span class="dt">size =</span> coastal_pop)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> OHI_score, <span class="dt">y =</span> HDI, <span class="dt">size =</span> coastal_pop)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
 <p><img src="data-science-training_files/figure-html/aes-size-1.png" width="672" /></p>
 <p><br></p>
 <p>Changing the color: continuous variable</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> OHI_score, <span class="dt">y =</span> HDI, <span class="dt">color =</span> coastal_pop)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> OHI_score, <span class="dt">y =</span> HDI, <span class="dt">color =</span> coastal_pop)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
 <p><img src="data-science-training_files/figure-html/aes-color-1.png" width="672" /></p>
 <p><br></p>
 <p>Changing the color: discrete variable</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> OHI_score, <span class="dt">y =</span> HDI, <span class="dt">color =</span> georegion_one)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
-<p><img src="data-science-training_files/figure-html/aes-color_discrete-1.png" width="672" />
-<br></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> OHI_score, <span class="dt">y =</span> HDI, <span class="dt">color =</span> georegion_one)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
+<p><img src="data-science-training_files/figure-html/aes-color_discrete-1.png" width="672" /> <br></p>
 <p>Changing shape of points</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> OHI_score, <span class="dt">y =</span> HDI, <span class="dt">shape =</span> georegion_one)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
-<p><img src="data-science-training_files/figure-html/aes_shape-1.png" width="672" />
-<br></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> OHI_score, <span class="dt">y =</span> HDI, <span class="dt">shape =</span> georegion_one)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
+<p><img src="data-science-training_files/figure-html/aes_shape-1.png" width="672" /> <br></p>
 <p>Adding labels</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#This doesn&#39;t add the labels like it seems like it should:</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#This doesn&#39;t add the labels like it seems like it should:</span>
 <span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> OHI_score, <span class="dt">y =</span> HDI, <span class="dt">label=</span>country)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> OHI_score, <span class="dt">y =</span> HDI)) </code></pre>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> OHI_score, <span class="dt">y =</span> HDI)) </code></pre></div>
 <p><img src="data-science-training_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># To do this we have to add a geom_text function</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># To do this we have to add a geom_text function</span>
 <span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> OHI_score, <span class="dt">y =</span> HDI, <span class="dt">label=</span>country)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> OHI_score, <span class="dt">y =</span> HDI)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_text</span>()</code></pre>
+<span class="st">  </span><span class="kw">geom_text</span>()</code></pre></div>
 <p><img src="data-science-training_files/figure-html/unnamed-chunk-32-2.png" width="672" /></p>
 </div>
 <div id="step-3-customize-your-plot" class="section level3">
@@ -712,34 +678,33 @@ ohi_summary</code></pre>
 <div id="themes" class="section level4">
 <h4><span class="header-section-number">5.8.3.1</span> Themes</h4>
 <p>I do not like the default ggplot2 figures because I find them too busy. A quick way to improve plot appearance is to use themes. Many themes are built into the <code>ggplot2</code> package. For example, <code>theme_bw()</code> removes the gray background. Once you start typing <code>theme_</code> a list of options will pop up.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> OHI_score, <span class="dt">y =</span> HDI)) <span class="op">+</span><span class="st"> </span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> OHI_score, <span class="dt">y =</span> HDI)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">theme_bw</span>()</code></pre>
+<span class="st">  </span><span class="kw">theme_bw</span>()</code></pre></div>
 <p><img src="data-science-training_files/figure-html/themes-1.png" width="672" /></p>
 <p><br></p>
 <p>The <a href="https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/">ggthemes</a> package provides many additional themes (including a Tufte theme..which is very clean and data oriented). The <a href="https://www.ggplot2-exts.org"><strong><code>ggplot2</code></strong> extensions website</a> provides a list of packages that extend the capabilities of <strong><code>ggplot2</code></strong>, including additional themes.</p>
 <p>I often create my own themes to make figures that work well in publications or presentations. This also gives my figures a consistent look (without having to remember from figure to figure the size of labels, etc.). I have found that storing my themes on Github works well. Here is an example of a theme I created named “scatterTheme”:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&#39;https://raw.githubusercontent.com/OHI-Science/ohiprep/master/src/R/scatterTheme.txt&#39;</span>)       
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&#39;https://raw.githubusercontent.com/OHI-Science/ohiprep/master/src/R/scatterTheme.txt&#39;</span>)       
 
 <span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> OHI_score, <span class="dt">y =</span> HDI)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span>scatterTheme</code></pre>
+<span class="st">  </span>scatterTheme</code></pre></div>
 <p><img src="data-science-training_files/figure-html/my%20theme-1.png" width="672" /></p>
 </div>
 <div id="labels-axis-plot-legend" class="section level4">
 <h4><span class="header-section-number">5.8.3.2</span> Labels: axis, plot, legend</h4>
 <p>One of the first things you will often want to do is alter labels for: titles, axes, figure legends, etc. These modifications involve manipulating the theme function and can quickly get complicated, and I typically have to Google the specifics or refer to a <a href="https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf">cheatsheet</a>, despite using ggplot2 for years and years and years.</p>
 <p>But, some key changes are easy to make using the labs function:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">y =</span> OHI_score, <span class="dt">x =</span> HDI, <span class="dt">color=</span>georegion_one)) <span class="op">+</span><span class="st"> </span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">y =</span> OHI_score, <span class="dt">x =</span> HDI, <span class="dt">color=</span>georegion_one)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">&quot;OHI score, 2017&quot;</span>,
        <span class="dt">x =</span> <span class="st">&quot;Human Development Index&quot;</span>,
        <span class="dt">title =</span> <span class="st">&quot;Countries with high human development have more sustainable oceans&quot;</span>,
       <span class="dt">color =</span> <span class="st">&quot;Georegion&quot;</span>) <span class="op">+</span><span class="st">  </span><span class="co"># if color doesn&#39;t work, use &quot;fill&quot;</span>
-<span class="st">     </span><span class="kw">theme_bw</span>()</code></pre>
+<span class="st">     </span><span class="kw">theme_bw</span>()</code></pre></div>
 <p><img src="data-science-training_files/figure-html/labels-1.png" width="672" /></p>
-<p><br>
-<br></p>
+<p><br> <br></p>
 <hr />
 <blockquote>
 <p><strong>We interrupt this section on customizing your plot for an exercise (5 min)</strong></p>
@@ -751,7 +716,7 @@ ohi_summary</code></pre>
 </ol>
 <p><br></p>
 <p><strong>Answers (no peeking)</strong></p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 1. This one is tricky because the color aesthetic only does the outline of the bars.</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 1. This one is tricky because the color aesthetic only does the outline of the bars.</span>
 <span class="co"># If you got that far, you were halfway there.  </span>
 <span class="co"># You will need to use the fill argument to color shapes </span>
 
@@ -777,7 +742,7 @@ my_plot <span class="op">+</span><span class="st">    </span><span class="co"># 
         <span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">size =</span> <span class="dv">14</span>),
         <span class="dt">axis.text.y =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">14</span>),
         <span class="dt">axis.title =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">16</span>)
-        )</code></pre>
+        )</code></pre></div>
 <p><strong>STOP: commit, pull and push to github</strong></p>
 <p><strong>We will now continue with customizing your plot…..</strong></p>
 <hr />
@@ -796,91 +761,95 @@ my_plot <span class="op">+</span><span class="st">    </span><span class="co"># 
 <li><em>size</em> size of shape</li>
 </ul>
 <p>Here are the R shapes with their reference numbers:</p>
-<p><img src="img/shapes.png" /></p>
+<div class="figure">
+<img src="img/shapes.png" />
+
+</div>
 <p><br></p>
 <p>Here are the R line types with their reference numbers:</p>
-<p><img src="img/lines.png" /></p>
+<div class="figure">
+<img src="img/lines.png" />
+
+</div>
 <p><br></p>
 <p>With this information, we can improve the appearance of one of our previous figures:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_summary, <span class="kw">aes</span>(<span class="dt">x =</span> georegions, <span class="dt">y =</span> OHI_score_average)) <span class="op">+</span><span class="st"> </span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_summary, <span class="kw">aes</span>(<span class="dt">x =</span> georegions, <span class="dt">y =</span> OHI_score_average)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;lightgray&quot;</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">data=</span>ohi_data, <span class="kw">aes</span>(<span class="dt">x=</span>georegion_one, <span class="dt">y=</span>OHI_score), <span class="dt">color=</span><span class="st">&quot;red&quot;</span>, <span class="dt">size=</span><span class="dv">3</span>, <span class="dt">alpha=</span><span class="fl">0.3</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">theme_bw</span>()</code></pre>
+<span class="st">  </span><span class="kw">theme_bw</span>()</code></pre></div>
 <p><img src="data-science-training_files/figure-html/fig_improve-1.png" width="672" /></p>
 </div>
 <div id="color" class="section level4">
 <h4><span class="header-section-number">5.8.3.4</span> Color</h4>
 <p>One of the more challenging aspects of creating a good plot is selecting colors. We are here to help!</p>
-<p><strong>Hint 1</strong>
-Unless you are doing something very simple (e.g. 1-3 colors), I recommend using established color palettes. There are many color palette packages (here is a good resource: <a href="https://github.com/EmilHvitfeldt/r-color-palettes" class="uri">https://github.com/EmilHvitfeldt/r-color-palettes</a>), but one of the best known is <a href="http://colorbrewer2.org/#type=sequential&amp;scheme=BuGn&amp;n=3">RColorBrewer</a>.</p>
+<p><strong>Hint 1</strong> Unless you are doing something very simple (e.g. 1-3 colors), I recommend using established color palettes. There are many color palette packages (here is a good resource: <a href="https://github.com/EmilHvitfeldt/r-color-palettes" class="uri">https://github.com/EmilHvitfeldt/r-color-palettes</a>), but one of the best known is <a href="http://colorbrewer2.org/#type=sequential&amp;scheme=BuGn&amp;n=3">RColorBrewer</a>.</p>
 <p>Here we will explore using the RColorBrewer palettes.</p>
 <p>Install the RColorBrewer and colorspace packages (only needs to be done once). Both RColorBrewer and colorspace have nice palettes and colorspace has additional functions for dealing with color.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;RColorBrewer&quot;</span>)
-<span class="kw">install.packages</span>(<span class="st">&quot;colorspace&quot;</span>)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;RColorBrewer&quot;</span>)
+<span class="kw">install.packages</span>(<span class="st">&quot;colorspace&quot;</span>)</code></pre></div>
 <p>Load packages into working space:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;RColorBrewer&quot;</span>)
-<span class="kw">library</span>(<span class="st">&quot;colorspace&quot;</span>)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;RColorBrewer&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;colorspace&quot;</span>)</code></pre></div>
 <p>To see the available palettes in RColorBrewer:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">display.brewer.all</span>()</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">display.brewer.all</span>()</code></pre></div>
 <p><img src="data-science-training_files/figure-html/colorbrewer2-1.png" width="672" /></p>
 <p>To select a palette:</p>
-<pre class="sourceCode r"><code class="sourceCode r">my_palette &lt;-<span class="st"> </span><span class="kw">brewer.pal</span>(<span class="dt">n=</span><span class="dv">9</span>, <span class="st">&quot;YlOrRd&quot;</span>)</code></pre>
-<p><strong>Hint 2</strong>
-R uses hexidecimal to represent colors. Hexadecimal is a base-16 number system used to describe color. Red, green, and blue are each represented by two characters (#rrggbb). Each character has 16 possible symbols: 0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_palette &lt;-<span class="st"> </span><span class="kw">brewer.pal</span>(<span class="dt">n=</span><span class="dv">9</span>, <span class="st">&quot;YlOrRd&quot;</span>)</code></pre></div>
+<p><strong>Hint 2</strong> R uses hexidecimal to represent colors. Hexadecimal is a base-16 number system used to describe color. Red, green, and blue are each represented by two characters (#rrggbb). Each character has 16 possible symbols: 0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F</p>
 <p>“00” can be interpreted as 0.0 and “FF” as 1.0, i.e., red= #FF0000 , black=#000000, white = #FFFFFF</p>
 <p>Two additional characters (with the same scale) can be added to the end to describe transparency (#rrggbbaa)</p>
 <p>A color palette is actually just a simple vector of hexidecimal values:</p>
-<pre class="sourceCode r"><code class="sourceCode r">my_palette</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_palette</code></pre></div>
 <pre><code>## [1] &quot;#FFFFCC&quot; &quot;#FFEDA0&quot; &quot;#FED976&quot; &quot;#FEB24C&quot; &quot;#FD8D3C&quot; &quot;#FC4E2A&quot; &quot;#E31A1C&quot;
 ## [8] &quot;#BD0026&quot; &quot;#800026&quot;</code></pre>
-<p>I always use hexidecimal format for colors in R because it is the most direct approach.
-<br></p>
-<p><strong>Hint 3</strong>
-The function you will want to use to specify color in ggplot2 depends on whether the color is mapped to a discrete/categorical data variable, or a continuous variable. There are a LOT of options in ggplot2, but these are the approaches I have settled on because they are the most flexible:</p>
-<p><img src="img/color_R_ggplot_functions.png" /></p>
+<p>I always use hexidecimal format for colors in R because it is the most direct approach. <br></p>
+<p><strong>Hint 3</strong> The function you will want to use to specify color in ggplot2 depends on whether the color is mapped to a discrete/categorical data variable, or a continuous variable. There are a LOT of options in ggplot2, but these are the approaches I have settled on because they are the most flexible:</p>
+<div class="figure">
+<img src="img/color_R_ggplot_functions.png" />
+
+</div>
 <p><br></p>
 <p>In the following case we map color to a continuous variable, so we will use the scale_color_gradientn function with the palette we selected above:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> OHI_score, <span class="dt">y =</span> OHI_trend, <span class="dt">color =</span> HDI)) <span class="op">+</span><span class="st"> </span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> OHI_score, <span class="dt">y =</span> OHI_trend, <span class="dt">color =</span> HDI)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size =</span><span class="dv">3</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_colour_gradientn</span>(<span class="dt">colors =</span> my_palette)</code></pre>
+<span class="st">  </span><span class="kw">scale_colour_gradientn</span>(<span class="dt">colors =</span> my_palette)</code></pre></div>
 <p><img src="data-science-training_files/figure-html/palette_cont-1.png" width="672" /></p>
 <p><br></p>
 <p>This function takes a vector of colors and interpolates between the colors to get a gradient.</p>
 <p>If we are mapping color to a discrete variable, we will use the scale_color_manual function:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># lets use a discrete color scale</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># lets use a discrete color scale</span>
 my_palette &lt;-<span class="st"> </span><span class="kw">brewer.pal</span>(<span class="dt">n=</span><span class="dv">12</span>, <span class="st">&quot;Set3&quot;</span>)
 
 <span class="kw">ggplot</span>(<span class="dt">data =</span> ohi_data, <span class="kw">aes</span>(<span class="dt">x =</span> OHI_score, <span class="dt">y =</span> HDI, <span class="dt">color =</span> georegion_one)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">3</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_color_manual</span>(<span class="dt">values =</span> my_palette)</code></pre>
+<span class="st">  </span><span class="kw">scale_color_manual</span>(<span class="dt">values =</span> my_palette)</code></pre></div>
 <p><img src="data-science-training_files/figure-html/palette_discrete-1.png" width="672" /></p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Note the first 7 of the 12 colors are used in the plot</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Note the first 7 of the 12 colors are used in the plot</span></code></pre></div>
 <p>The scale_color_manual function also has a lot of great arguments that allow you to control which colors are associated with each factor level, the names used in the legend, and other controls.</p>
-<p><strong>Hint 4</strong>
-If the “color” functions aren’t working, try the “fill” version of the function.</p>
+<p><strong>Hint 4</strong> If the “color” functions aren’t working, try the “fill” version of the function.</p>
 <p><br></p>
 <hr />
 <blockquote>
 <p><strong>Challenge</strong></p>
 </blockquote>
 <p>With all of this information in hand, please take a few minutes to create a plot using the fake dataset we will create below (or one of the other datasets we have worked with).</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># making a fake dataframe</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># making a fake dataframe</span>
 fake_data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">animal =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;cat&quot;</span>, <span class="st">&quot;dog&quot;</span>, <span class="st">&quot;hamster&quot;</span>), <span class="dt">each=</span><span class="dv">10</span>),
                         <span class="dt">year =</span> <span class="dv">2011</span><span class="op">:</span><span class="dv">2020</span>,
                         <span class="dt">values =</span> <span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dt">n=</span><span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">1</span>) <span class="op">*</span><span class="st"> </span><span class="kw">seq</span>(<span class="fl">0.1</span>, <span class="fl">0.5</span>, <span class="dt">length.out=</span><span class="dv">10</span>),
                                    <span class="kw">rnorm</span>(<span class="dt">n=</span><span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">1</span>) <span class="op">*</span><span class="st"> </span><span class="kw">seq</span>(<span class="fl">0.1</span>, <span class="fl">0.5</span>, <span class="dt">length.out=</span><span class="dv">10</span>),
                                    <span class="kw">rnorm</span>(<span class="dt">n=</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">1</span>) <span class="op">*</span><span class="st"> </span><span class="kw">seq</span>(<span class="fl">0.1</span>, <span class="fl">0.5</span>, <span class="dt">length.out=</span><span class="dv">10</span>)))
 
-<span class="co">## Add your code to create a plot:</span></code></pre>
+## Add your code to create a plot:</code></pre></div>
 <p><strong>Answers (no peeking!)</strong></p>
 <p>Here is one approach, but there is a lot more to do to make this really nice!</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggthemes)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggthemes)
 
 <span class="kw">ggplot</span>(<span class="dt">data =</span> fake_data, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">as.factor</span>(year), <span class="dt">y =</span> values, <span class="dt">group=</span>animal, <span class="dt">color=</span>animal)) <span class="op">+</span><span class="st"> </span>
 <span class="st">      </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">3</span>) <span class="op">+</span>
 <span class="st">      </span><span class="kw">geom_line</span>(<span class="dt">size=</span><span class="dv">2</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">      </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;year&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span>
-<span class="st">      </span><span class="kw">theme_tufte</span>()</code></pre>
+<span class="st">      </span><span class="kw">theme_tufte</span>()</code></pre></div>
 <hr />
 <p><br></p>
 </div>
@@ -889,50 +858,44 @@ fake_data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span
 <div id="saving-plots" class="section level2">
 <h2><span class="header-section-number">5.9</span> Saving plots</h2>
 <p>After creating your plot, use the <code>ggsave()</code> function to save your plot. This function allows you easily change the dimension, resolution, and format of your plot:</p>
-<pre class="sourceCode r"><code class="sourceCode r">my_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> fake_data, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">as.factor</span>(year), <span class="dt">y =</span> values, <span class="dt">group=</span>animal, <span class="dt">color=</span>animal)) <span class="op">+</span><span class="st"> </span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> fake_data, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">as.factor</span>(year), <span class="dt">y =</span> values, <span class="dt">group=</span>animal, <span class="dt">color=</span>animal)) <span class="op">+</span><span class="st"> </span>
 <span class="st">      </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">3</span>) <span class="op">+</span>
 <span class="st">      </span><span class="kw">geom_line</span>(<span class="dt">size=</span><span class="dv">2</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">      </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;year&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span>
 <span class="st">      </span><span class="kw">theme_tufte</span>()
 
-<span class="kw">ggsave</span>(<span class="st">&quot;name_of_file.png&quot;</span>, my_plot, <span class="dt">width =</span> <span class="dv">15</span>, <span class="dt">height =</span> <span class="dv">10</span>, <span class="dt">dpi=</span><span class="dv">300</span>)</code></pre>
-<p><br>
-Note: The parameters <code>width</code> and <code>height</code> also determine the font size in the saved plot.</p>
+<span class="kw">ggsave</span>(<span class="st">&quot;name_of_file.png&quot;</span>, my_plot, <span class="dt">width =</span> <span class="dv">15</span>, <span class="dt">height =</span> <span class="dv">10</span>, <span class="dt">dpi=</span><span class="dv">300</span>)</code></pre></div>
+<p><br> Note: The parameters <code>width</code> and <code>height</code> also determine the font size in the saved plot.</p>
 </div>
 <div id="arranging-plots" class="section level2">
 <h2><span class="header-section-number">5.10</span> Arranging plots</h2>
 <p>I am a huge fan of cowplots for making multiplot figures. Here is a nice <a href="https://cran.r-project.org/web/packages/cowplot/vignettes/introduction.html">introduction</a>.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;cowplot&quot;</span>)</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(cowplot)
-
-score_vs_trend &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data=</span>ohi_data, <span class="kw">aes</span>(<span class="dt">x=</span>OHI_score, <span class="dt">y=</span>OHI_trend)) <span class="op">+</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;cowplot&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(cowplot)</code></pre></div>
+<pre><code>## Error in library(cowplot): there is no package called &#39;cowplot&#39;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">score_vs_trend &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data=</span>ohi_data, <span class="kw">aes</span>(<span class="dt">x=</span>OHI_score, <span class="dt">y=</span>OHI_trend)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size=</span><span class="dv">3</span>, <span class="dt">alpha=</span><span class="fl">0.4</span>)
 
-score_vs_trend  <span class="co"># notice that the default theme has been changed....I really like this theme!</span></code></pre>
+score_vs_trend  <span class="co"># notice that the default theme has been changed....I really like this theme!</span></code></pre></div>
 <p><img src="data-science-training_files/figure-html/cowplot-1.png" width="672" /></p>
-<pre class="sourceCode r"><code class="sourceCode r">score_vs_HDI &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data=</span>ohi_data, <span class="kw">aes</span>(<span class="dt">x=</span>OHI_score, <span class="dt">y=</span>HDI)) <span class="op">+</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">score_vs_HDI &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data=</span>ohi_data, <span class="kw">aes</span>(<span class="dt">x=</span>OHI_score, <span class="dt">y=</span>HDI)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size=</span><span class="dv">3</span>, <span class="dt">alpha=</span><span class="fl">0.4</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_smooth</span>()
 
-<span class="kw">plot_grid</span>(score_vs_trend, score_vs_HDI, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>))</code></pre>
-<p><img src="data-science-training_files/figure-html/cowplot-2.png" width="672" /></p>
+<span class="kw">plot_grid</span>(score_vs_trend, score_vs_HDI, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>))</code></pre></div>
+<pre><code>## Error in plot_grid(score_vs_trend, score_vs_HDI, labels = c(&quot;A&quot;, &quot;B&quot;)): could not find function &quot;plot_grid&quot;</code></pre>
 </div>
 <div id="interactive-plots" class="section level2">
 <h2><span class="header-section-number">5.11</span> Interactive plots</h2>
 <p>So as you can see, <code>ggplot2</code> is a fantastic package for visualizing data. But there are some additional packages that let you make plots interactive. <code>plotly</code>, <code>gganimate</code>. I use plotly all the time to check my data!</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;plotly&quot;</span>)</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(plotly)
-
-score_vs_HDI &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data=</span>ohi_data, <span class="kw">aes</span>(<span class="dt">x=</span>OHI_score, <span class="dt">y=</span>HDI, <span class="dt">text=</span><span class="kw">paste0</span>(<span class="st">&quot;Country: &quot;</span>, country))) <span class="op">+</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;plotly&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(plotly)</code></pre></div>
+<pre><code>## Error in library(plotly): there is no package called &#39;plotly&#39;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">score_vs_HDI &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data=</span>ohi_data, <span class="kw">aes</span>(<span class="dt">x=</span>OHI_score, <span class="dt">y=</span>HDI, <span class="dt">text=</span><span class="kw">paste0</span>(<span class="st">&quot;Country: &quot;</span>, country))) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size=</span><span class="dv">3</span>, <span class="dt">alpha=</span><span class="fl">0.4</span>)
 
-<span class="kw">ggplotly</span>(score_vs_HDI)</code></pre>
-<pre><code>## Error: .onLoad failed in loadNamespace() for &#39;Cairo&#39;, details:
-##   call: dyn.load(file, DLLpath = DLLpath, ...)
-##   error: unable to load shared object &#39;/Library/Frameworks/R.framework/Versions/3.5/Resources/library/Cairo/libs/Cairo.so&#39;:
-##   dlopen(/Library/Frameworks/R.framework/Versions/3.5/Resources/library/Cairo/libs/Cairo.so, 6): Library not loaded: /opt/X11/lib/libfreetype.6.dylib
-##   Referenced from: /Library/Frameworks/R.framework/Versions/3.5/Resources/library/Cairo/libs/Cairo.so
-##   Reason: image not found</code></pre>
+<span class="kw">ggplotly</span>(score_vs_HDI)</code></pre></div>
+<pre><code>## Error in ggplotly(score_vs_HDI): could not find function &quot;ggplotly&quot;</code></pre>
 </div>
 <div id="save-and-push-to-github" class="section level2">
 <h2><span class="header-section-number">5.12</span> Save and push to GitHub</h2>
