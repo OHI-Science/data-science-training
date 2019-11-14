@@ -450,7 +450,7 @@ The Ocean Health Index dataset we were working with this morning was an example 
 </div>
 <div id="explore-the-gapminder-data.frame" class="section level2">
 <h2><span class="header-section-number">6.3</span> Explore the gapminder data.frame</h2>
-<p>Yesterday we explored the national parks data.frame visually. Today, we’ll explore a dataset by the numbers.</p>
+<p>In the ggplot2 chapter, we explored the Ocean Health Index data visually. Today, we’ll explore a different dataset by the numbers.</p>
 <p>We will work with some of the data from the <a href="http://www.gapminder.org">Gapminder project</a>.</p>
 <p>The data are on GitHub. Navigate there by going to:</p>
 <p>github.com &gt; ohi-science &gt; data-science-training &gt; data &gt; gapminder.csv</p>
@@ -656,7 +656,7 @@ drop the variables continent and lifeExp.”</p>
 </div>
 <div id="group_by-operates-on-groups" class="section level2">
 <h2><span class="header-section-number">6.11</span> <code>group_by()</code> operates on groups</h2>
-<p>What if we wanted to know the total population on each Continent in 2002? Answering this question requires a <strong>grouping variable</strong>.</p>
+<p>What if we wanted to know the total population on each continent in 2002? Answering this question requires a <strong>grouping variable</strong>.</p>
 <p>Visually, we are doing this (thanks RStudio for your <a href="http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">cheatsheet</a>):</p>
 <p><img src="img/rstudio-cheatsheet-group_by.png" /></p>
 <p>By using <code>group_by()</code> we can set our grouping variable to <code>continent</code> and create a new column called <code>cont_pop</code> that will add up all country populations by their associated continents.</p>
@@ -680,7 +680,6 @@ Here we go:</p>
 <pre class="sourceCode r"><code class="sourceCode r">gapminder <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">group_by</span>(continent, year) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">summarize</span>(<span class="dt">cont_pop =</span> <span class="kw">sum</span>(pop))</code></pre>
-<pre><code>## Error in eval(lhs, parent, parent): object &#39;gapminder&#39; not found</code></pre>
 </div>
 </div>
 <div id="arrange-orders-columns" class="section level2">
