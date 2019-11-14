@@ -29,7 +29,7 @@ Here are some additional resources for data visualization in R:
 - [Graphs with ggplot2 - Cookbook for R](http://www.cookbook-r.com/Graphs/#graphs-with-ggplot2)  
 - [ggplot2 Essentials - STHDA](http://www.sthda.com/english/wiki/ggplot2-essentials)  
 - ["Why I use ggplot2" - David Robinson Blog Post](http://varianceexplained.org/r/why-I-use-ggplot2/)
-
+- Melanie Frazier's [GitHub Lesson at University of Queensland](https://github.com/OHI-Science/data-science-training/blob/master/ggplot2_mel.Rmd)
 
 ## Install our first package: `tidyverse`
 

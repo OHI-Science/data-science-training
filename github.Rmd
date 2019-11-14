@@ -34,7 +34,7 @@ These materials borrow from:
 
 - Jenny Bryan's lectures from STAT545 at UBC: [The Shell](http://stat545.com/git09_shell.html)
 - Jenny Bryan's [Happy git with R](http://happygitwithr.com) tutorial
-- Melanie Frazier's [GitHub Quickstart](https://rawgit.com/nazrug/Quickstart/master/GithubQuickstart.html)
+- Melanie Frazier's [GitHub Quickstart](https://rawgit.com/nazrug/Quickstart/master/GithubQuickstart.html), [GitHub Lesson at University of Queensland](https://github.com/OHI-Science/data-science-training/blob/master/github_mel.Rmd)
 - Ben Best's [Software Carpentry at UCSB](http://remi-daigle.github.io/2016-04-15-UCSB/git/)
 
 Today, we'll only introduce the features and terminology that scientists need to learn to begin managing their projects.
@@ -96,7 +96,7 @@ We're going to switch gears from R for a moment and set up Git and GitHub, which
 
 1. You will use the `usethis` package to configure **git** with global commands, which means it will apply 'globally' to all files on your computer, rather than to a specific folder. 
 
-```{r use this}
+```{r use this, eval=FALSE}
 
 install.packages("usethis")
 library(usethis)

@@ -356,7 +356,7 @@ File -> New File -> RMarkdown... -> Document of output format HTML, OK.
 
 `r img(src='img/rstudio_new-rmd-doc-html.png', width=300)`
 
-You can give it a Title like "My Project". Then click OK. 
+You can give it a Title like "My Analysis". Then click OK. 
 
 OK, first off: by opening a file, we are seeing the 4th pane of the RStudio console, which is essentially a text editor. This lets us organize our files within RStudio instead of having a bunch of different windows open.
 
