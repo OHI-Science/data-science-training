@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 5 Visualizing: ggplot2 | Introduction to Open Data Science</title>
   <meta name="description" content="This is official open data science training for the Ocean Health Index." />
-  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 5 Visualizing: ggplot2 | Introduction to Open Data Science" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,15 @@
 <meta name="author" content="The Ocean Health Index Team" />
 
 
-<meta name="date" content="2019-11-14" />
+<meta name="date" content="2019-12-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="github.html">
-<link rel="next" href="dplyr.html">
+<link rel="prev" href="github.html"/>
+<link rel="next" href="dplyr.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -40,6 +40,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -55,7 +58,6 @@ a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
 a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
@@ -412,9 +414,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>So far we’ve been using packages that are already included in <em>base R</em>. These can be considered <em>out-of-the-box</em> packages and include things such as <code>sum</code> and <code>mean</code>. You can also download and install packages created by the vast and growing R user community. The most traditional place to download packages is from <a href="https://cran.r-project.org/">CRAN, the Comprehensive R Archive Network</a>. This is where you went to download R originally, and will go again to look for updates. You can also install packages directly from GitHub, which we’ll do tomorrow.</p>
 <p>You don’t need to go to CRAN’s website to install packages, we can do it from within R with the command <code>install.packages(&quot;package-name-in-quotes&quot;)</code>.</p>
 <p>We are going to be using the package <code>ggplot2</code>, which is actually bundled into a huge package called <code>tidyverse</code>. We will install <code>tidyverse</code> now, and use a few functions from the packages within. Also, check out <a href="https://www.tidyverse.org">tidyverse.org/</a>.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## from CRAN:</span>
-<span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>) <span class="co">## do this once only to install the package on your computer.</span></code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse) <span class="co">## do this every time you restart R and need it </span></code></pre>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1"><span class="co">## from CRAN:</span></a>
+<a class="sourceLine" id="cb59-2" data-line-number="2"><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>) <span class="co">## do this once only to install the package on your computer.</span></a></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1"><span class="kw">library</span>(tidyverse) <span class="co">## do this every time you restart R and need it </span></a></code></pre></div>
 <p>When you do this, it will tell you which packages are inside of <code>tidyverse</code> that have also been installed. Note that there are a few name conflicts; it is alerting you that we’ll be using two functions from dplyr instead of the built-in stats package.</p>
 <p>What’s the difference between <code>install.packages()</code> and <code>library()</code>? Why do you need both? Here’s an analogy:</p>
 <ul>
@@ -426,20 +428,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="load-data" class="section level2">
 <h2><span class="header-section-number">5.3</span> Load data</h2>
 <p>Copy and paste the code chunk below and read it in to your RStudio to load the five datasets we will use in this section.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#National Parks in California</span>
-ca &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/ca.csv&quot;</span>) 
-
-<span class="co">#Acadia National Park</span>
-acadia &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/acadia.csv&quot;</span>)
-
-<span class="co">#Southeast US National Parks</span>
-se &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/se.csv&quot;</span>)
-
-<span class="co">#2016 Visitation for all Pacific West National Parks</span>
-visit_<span class="dv">16</span> &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/visit_16.csv&quot;</span>)
-
-<span class="co">#All Nationally designated sites in Massachusetts</span>
-mass &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/mass.csv&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1"><span class="co">#National Parks in California</span></a>
+<a class="sourceLine" id="cb61-2" data-line-number="2">ca &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/ca.csv&quot;</span>) </a>
+<a class="sourceLine" id="cb61-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb61-4" data-line-number="4"><span class="co">#Acadia National Park</span></a>
+<a class="sourceLine" id="cb61-5" data-line-number="5">acadia &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/acadia.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb61-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb61-7" data-line-number="7"><span class="co">#Southeast US National Parks</span></a>
+<a class="sourceLine" id="cb61-8" data-line-number="8">se &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/se.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb61-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb61-10" data-line-number="10"><span class="co">#2016 Visitation for all Pacific West National Parks</span></a>
+<a class="sourceLine" id="cb61-11" data-line-number="11">visit_<span class="dv">16</span> &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/visit_16.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb61-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb61-13" data-line-number="13"><span class="co">#All Nationally designated sites in Massachusetts</span></a>
+<a class="sourceLine" id="cb61-14" data-line-number="14">mass &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/mass.csv&quot;</span>)</a></code></pre></div>
 </div>
 <div id="plotting-with-ggplot2" class="section level2">
 <h2><span class="header-section-number">5.4</span> Plotting with <strong><code>ggplot2</code></strong></h2>
@@ -453,16 +455,16 @@ mass &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class=
 <div id="data" class="section level2">
 <h2><span class="header-section-number">5.5</span> Data</h2>
 <p>We are going to use a National Park visitation dataset (from the National Park Service at <a href="https://irma.nps.gov/Stats/SSRSReports" class="uri">https://irma.nps.gov/Stats/SSRSReports</a>). Read in the data using <code>read_csv</code> and take a look at the first few rows using <code>head()</code> or <code>View()</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(ca)</code></pre>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1"><span class="kw">head</span>(ca)</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 7
-##   region state code  park_name                   type        visitors  year
-##   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;                       &lt;chr&gt;          &lt;dbl&gt; &lt;dbl&gt;
-## 1 PW     CA    CHIS  Channel Islands National P… National P…     1200  1963
-## 2 PW     CA    CHIS  Channel Islands National P… National P…     1500  1964
-## 3 PW     CA    CHIS  Channel Islands National P… National P…     1600  1965
-## 4 PW     CA    CHIS  Channel Islands National P… National P…      300  1966
-## 5 PW     CA    CHIS  Channel Islands National P… National P…    15700  1967
-## 6 PW     CA    CHIS  Channel Islands National P… National P…    31000  1968</code></pre>
+##   region state code  park_name                     type          visitors  year
+##   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;                         &lt;chr&gt;            &lt;dbl&gt; &lt;dbl&gt;
+## 1 PW     CA    CHIS  Channel Islands National Park National Park     1200  1963
+## 2 PW     CA    CHIS  Channel Islands National Park National Park     1500  1964
+## 3 PW     CA    CHIS  Channel Islands National Park National Park     1600  1965
+## 4 PW     CA    CHIS  Channel Islands National Park National Park      300  1966
+## 5 PW     CA    CHIS  Channel Islands National Park National Park    15700  1967
+## 6 PW     CA    CHIS  Channel Islands National Park National Park    31000  1968</code></pre>
 <p>This dataframe is already in a <em>long</em> format where all rows are an observation and all columns are variables. Among the variables in <code>ca</code> are:</p>
 <ol style="list-style-type: decimal">
 <li><p><code>region</code>, US region where park is located.</p></li>
@@ -472,7 +474,7 @@ mass &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class=
 <ul>
 <li>use the <code>ggplot()</code> function and bind the plot to a specific data frame using the <code>data</code> argument</li>
 </ul>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ca)</code></pre>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> ca)</a></code></pre></div>
 <ul>
 <li>add <code>geoms</code> – graphical representation of the data in the plot (points,
 lines, bars). <strong><code>ggplot2</code></strong> offers many different geoms; we will use some
@@ -483,8 +485,8 @@ common ones today, including:
 </ul>
 <p>To add a geom to the plot use <code>+</code> operator. Because we have two continuous variables,<br />
 let’s use <code>geom_point()</code> first and then assign x and y aesthetics (<code>aes</code>):</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ca) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors))</code></pre>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> ca) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb65-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors))</a></code></pre></div>
 <p><img src="data-science-training_files/figure-html/first-ggplot-1.png" width="672" /></p>
 <p>Notes:</p>
 <ul>
@@ -504,25 +506,25 @@ a layer. If, instead, the <code>+</code> sign is added in the line before the ot
 <div id="building-your-plots-iteratively" class="section level2">
 <h2><span class="header-section-number">5.6</span> Building your plots iteratively</h2>
 <p>Building plots with ggplot is typically an iterative process. We start by defining the dataset we’ll use, lay the axes, and choose a geom:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ca) <span class="op">+</span>
-<span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors))</code></pre>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> ca) <span class="op">+</span></a>
+<a class="sourceLine" id="cb66-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors))</a></code></pre></div>
 <p><img src="data-science-training_files/figure-html/create-ggplot-object-1.png" width="672" /></p>
 <p>This isn’t necessarily a useful way to look at the data. We can distinguish each park by added the <code>color</code> argument to the <code>aes</code>:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ca) <span class="op">+</span>
-<span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors, <span class="dt">color =</span> park_name))</code></pre>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> ca) <span class="op">+</span></a>
+<a class="sourceLine" id="cb67-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors, <span class="dt">color =</span> park_name))</a></code></pre></div>
 <p><img src="data-science-training_files/figure-html/color-by-species-1.png" width="672" /></p>
 </div>
 <div id="customizing-plots" class="section level2">
 <h2><span class="header-section-number">5.7</span> Customizing plots</h2>
 <p>Take a look at the <a href="https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf"><strong><code>ggplot2</code></strong> cheat sheet</a>, and think of ways you could improve the plot.</p>
 <p>Now, let’s capitalize the x and y axis labels and add a main title to the figure. I also like to remove that standard gray background using a different <code>theme</code>. Many themes come built into the <code>ggplot2</code> package. My preference is <code>theme_bw()</code> but once you start typing <code>theme_</code> a list of options will pop up. The last thing I’m going to do is remove the legend title.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ca) <span class="op">+</span>
-<span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors, <span class="dt">color =</span> park_name)) <span class="op">+</span>
-<span class="st">    </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>,
-       <span class="dt">y =</span> <span class="st">&quot;Visitation&quot;</span>,
-       <span class="dt">title =</span> <span class="st">&quot;California National Park Visitation&quot;</span>) <span class="op">+</span>
-<span class="st">    </span><span class="kw">theme_bw</span>() <span class="op">+</span>
-<span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</code></pre>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> ca) <span class="op">+</span></a>
+<a class="sourceLine" id="cb68-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors, <span class="dt">color =</span> park_name)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb68-3" data-line-number="3"><span class="st">    </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>,</a>
+<a class="sourceLine" id="cb68-4" data-line-number="4">       <span class="dt">y =</span> <span class="st">&quot;Visitation&quot;</span>,</a>
+<a class="sourceLine" id="cb68-5" data-line-number="5">       <span class="dt">title =</span> <span class="st">&quot;California National Park Visitation&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb68-6" data-line-number="6"><span class="st">    </span><span class="kw">theme_bw</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb68-7" data-line-number="7"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a></code></pre></div>
 <p><img src="data-science-training_files/figure-html/customize-1.png" width="672" /></p>
 </div>
 <div id="ggplot2-themes" class="section level2">
@@ -540,23 +542,23 @@ a layer. If, instead, the <code>+</code> sign is added in the line before the ot
 <li>In the code below, why isn’t the data showing up?</li>
 </ol>
 </blockquote>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> se, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors))</code></pre>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> se, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors))</a></code></pre></div>
 <blockquote>
 <h5 id="answers-no-peeking"><span class="header-section-number">5.8</span> Answers (no peeking)</h5>
 </blockquote>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 1.</span>
-<span class="kw">ggplot</span>(<span class="dt">data =</span> se) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors, <span class="dt">color =</span> park_name))</code></pre>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1"><span class="co"># 1.</span></a>
+<a class="sourceLine" id="cb70-2" data-line-number="2"><span class="kw">ggplot</span>(<span class="dt">data =</span> se) <span class="op">+</span></a>
+<a class="sourceLine" id="cb70-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors, <span class="dt">color =</span> park_name))</a></code></pre></div>
 <p><img src="data-science-training_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 2. &amp; 3.</span>
-<span class="kw">ggplot</span>(<span class="dt">data =</span> se) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors, <span class="dt">color =</span> state)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>,
-       <span class="dt">y =</span> <span class="st">&quot;Visitation&quot;</span>,
-       <span class="dt">title =</span> <span class="st">&quot;Southeast States National Park Visitation&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">theme_light</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.title =</span> <span class="kw">element_blank</span>(),
-        <span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">size =</span> <span class="dv">14</span>))</code></pre>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1"><span class="co"># 2. &amp; 3.</span></a>
+<a class="sourceLine" id="cb71-2" data-line-number="2"><span class="kw">ggplot</span>(<span class="dt">data =</span> se) <span class="op">+</span></a>
+<a class="sourceLine" id="cb71-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors, <span class="dt">color =</span> state)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb71-4" data-line-number="4"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>,</a>
+<a class="sourceLine" id="cb71-5" data-line-number="5">       <span class="dt">y =</span> <span class="st">&quot;Visitation&quot;</span>,</a>
+<a class="sourceLine" id="cb71-6" data-line-number="6">       <span class="dt">title =</span> <span class="st">&quot;Southeast States National Park Visitation&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb71-7" data-line-number="7"><span class="st">  </span><span class="kw">theme_light</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb71-8" data-line-number="8"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.title =</span> <span class="kw">element_blank</span>(),</a>
+<a class="sourceLine" id="cb71-9" data-line-number="9">        <span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">size =</span> <span class="dv">14</span>))</a></code></pre></div>
 <p><img src="data-science-training_files/figure-html/unnamed-chunk-32-2.png" width="672" /></p>
 <blockquote>
 <ol start="4" style="list-style-type: decimal">
@@ -570,56 +572,56 @@ a layer. If, instead, the <code>+</code> sign is added in the line before the ot
 <div id="faceting" class="section level2">
 <h2><span class="header-section-number">5.9</span> Faceting</h2>
 <p>ggplot has a special technique called <em>faceting</em> that allows the user to split one plot into multiple plots based on data in the dataset. We will use it to make a plot of park visitation by state:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> se) <span class="op">+</span>
-<span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors)) <span class="op">+</span>
-<span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>state)</code></pre>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> se) <span class="op">+</span></a>
+<a class="sourceLine" id="cb72-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb72-3" data-line-number="3"><span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>state)</a></code></pre></div>
 <p><img src="data-science-training_files/figure-html/first-facet-1.png" width="672" /></p>
 <p>We can now make the faceted plot by splitting further by park using <code>park_name</code> (within a single plot):</p>
-<pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">ggplot</span>(<span class="dt">data =</span> se) <span class="op">+</span>
-<span class="st">     </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors, <span class="dt">color =</span> park_name)) <span class="op">+</span>
-<span class="st">     </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>state, <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1"> <span class="kw">ggplot</span>(<span class="dt">data =</span> se) <span class="op">+</span></a>
+<a class="sourceLine" id="cb73-2" data-line-number="2"><span class="st">     </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors, <span class="dt">color =</span> park_name)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb73-3" data-line-number="3"><span class="st">     </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>state, <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>)</a></code></pre></div>
 <p><img src="data-science-training_files/figure-html/facet-by-state-and-park-1.png" width="672" /></p>
 </div>
 <div id="geometric-objects-geoms" class="section level2">
 <h2><span class="header-section-number">5.10</span> Geometric objects (geoms)</h2>
 <p>A <strong>geom</strong> is the geometrical object that a plot uses to represent data. People often describe plots by the type of geom that the plot uses. For example, bar charts use bar geoms, line charts use line geoms, boxplots use boxplot geoms, and so on. Scatterplots break the trend; they use the point geom. You can use different geoms to plot the same data. To change the geom in your plot, change the geom function that you add to <code>ggplot()</code>. Let’s look at a few ways of viewing the distribution of annual visitation (<code>visitors</code>) for each park (<code>park_name</code>).</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> se) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="kw">aes</span>(<span class="dt">x =</span> park_name, <span class="dt">y =</span> visitors, <span class="dt">color =</span> park_name), 
-              <span class="dt">width =</span> <span class="fl">0.1</span>, 
-              <span class="dt">alpha =</span> <span class="fl">0.4</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">coord_flip</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>) </code></pre>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> se) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb74-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_jitter</span>(<span class="kw">aes</span>(<span class="dt">x =</span> park_name, <span class="dt">y =</span> visitors, <span class="dt">color =</span> park_name), </a>
+<a class="sourceLine" id="cb74-3" data-line-number="3">              <span class="dt">width =</span> <span class="fl">0.1</span>, </a>
+<a class="sourceLine" id="cb74-4" data-line-number="4">              <span class="dt">alpha =</span> <span class="fl">0.4</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb74-5" data-line-number="5"><span class="st">  </span><span class="kw">coord_flip</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb74-6" data-line-number="6"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>) </a></code></pre></div>
 <p><img src="data-science-training_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(se, <span class="kw">aes</span>(<span class="dt">x =</span> park_name, <span class="dt">y =</span> visitors)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>))</code></pre>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" data-line-number="1"><span class="kw">ggplot</span>(se, <span class="kw">aes</span>(<span class="dt">x =</span> park_name, <span class="dt">y =</span> visitors)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb75-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb75-3" data-line-number="3"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>))</a></code></pre></div>
 <p><img src="data-science-training_files/figure-html/unnamed-chunk-33-2.png" width="672" /></p>
 <p>None of these are great for visualizing data over time. We can use <code>geom_line()</code> in the same way we used <code>geom_point</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(se, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors, <span class="dt">color =</span> park_name)) <span class="op">+</span>
-<span class="st">   </span><span class="kw">geom_line</span>()</code></pre>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1"><span class="kw">ggplot</span>(se, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors, <span class="dt">color =</span> park_name)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb76-2" data-line-number="2"><span class="st">   </span><span class="kw">geom_line</span>()</a></code></pre></div>
 <p><img src="data-science-training_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
 <p><code>ggplot2</code> provides over 30 geoms, and extension packages provide even more (see <a href="https://www.ggplot2-exts.org" class="uri">https://www.ggplot2-exts.org</a> for a sampling). The best way to get a comprehensive overview is the <a href="http://rstudio.com/cheatsheets">ggplot2 cheatsheet</a>. To learn more about any single geom, use help: <code>?geom_smooth</code>.</p>
 <p>To display multiple geoms in the same plot, add multiple geom functions to <code>ggplot()</code>:</p>
 <p><code>geom_smooth</code> allows you to view a smoothed mean of data. Here we look at the smooth mean of visitation over time to Acadia National Park:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> acadia) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Acadia National Park Visitation&quot;</span>,
-       <span class="dt">y =</span> <span class="st">&quot;Visitation&quot;</span>,
-       <span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">theme_bw</span>()</code></pre>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> acadia) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb77-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb77-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb77-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb77-5" data-line-number="5"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Acadia National Park Visitation&quot;</span>,</a>
+<a class="sourceLine" id="cb77-6" data-line-number="6">       <span class="dt">y =</span> <span class="st">&quot;Visitation&quot;</span>,</a>
+<a class="sourceLine" id="cb77-7" data-line-number="7">       <span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb77-8" data-line-number="8"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
 <p><img src="data-science-training_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
 <p>Notice that this plot contains three geoms in the same graph! Each geom is using the set of mappings in the first line. ggplot2 will treat these mappings as global mappings that apply to each geom in the graph.</p>
 <p>If you place mappings in a geom function, ggplot2 will treat them as local mappings for the layer. It will use these mappings to extend or overwrite the global mappings <em>for that layer only</em>. This makes it possible to display different aesthetics in different layers.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> acadia, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Acadia National Park Visitation&quot;</span>,
-       <span class="dt">y =</span> <span class="st">&quot;Visitation&quot;</span>,
-       <span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">theme_bw</span>()</code></pre>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> acadia, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb78-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb78-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb78-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb78-5" data-line-number="5"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Acadia National Park Visitation&quot;</span>,</a>
+<a class="sourceLine" id="cb78-6" data-line-number="6">       <span class="dt">y =</span> <span class="st">&quot;Visitation&quot;</span>,</a>
+<a class="sourceLine" id="cb78-7" data-line-number="7">       <span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb78-8" data-line-number="8"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
 <p><img src="data-science-training_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
 <blockquote>
 <h3 id="challenge"><span class="header-section-number">5.10</span> Challenge</h3>
@@ -641,8 +643,8 @@ a layer. If, instead, the <code>+</code> sign is added in the line before the ot
 <div id="bar-charts" class="section level2">
 <h2><span class="header-section-number">5.11</span> Bar charts</h2>
 <p>Next, let’s take a look at a bar chart. Bar charts seem simple, but they are interesting because they reveal something subtle about plots. Consider a basic bar chart, as drawn with <code>geom_bar()</code>. The following chart displays the total number of parks in each state within the Pacific West region.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> visit_<span class="dv">16</span>, <span class="kw">aes</span>(<span class="dt">x =</span> state)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_bar</span>()</code></pre>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> visit_<span class="dv">16</span>, <span class="kw">aes</span>(<span class="dt">x =</span> state)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb79-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>()</a></code></pre></div>
 <p><img src="data-science-training_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
 <p>On the x-axis, the chart displays <code>state</code>, a variable from <code>visit_16</code>. On the y-axis, it displays count, but count is not a variable in <code>visit_16</code>! Where does count come from? Many graphs, like scatterplots, plot the raw values of your dataset. Other graphs, like bar charts, calculate new values to plot:</p>
 <ul>
@@ -659,16 +661,16 @@ specially formatted box.</p></li>
 <div id="position-adjustments" class="section level3">
 <h3><span class="header-section-number">5.11.1</span> Position adjustments</h3>
 <p>There’s one more piece of magic associated with bar charts. You can colour a bar chart using either the <code>color</code> aesthetic, or, more usefully, <code>fill</code>:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> visit_<span class="dv">16</span>, <span class="kw">aes</span>(<span class="dt">x =</span> state, <span class="dt">y =</span> visitors, <span class="dt">fill =</span> park_name)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> visit_<span class="dv">16</span>, <span class="kw">aes</span>(<span class="dt">x =</span> state, <span class="dt">y =</span> visitors, <span class="dt">fill =</span> park_name)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb80-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)</a></code></pre></div>
 <p><img src="data-science-training_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
 <p>The stacking is performed automatically by the <strong>position adjustment</strong> specified by the <code>position</code> argument. If you don’t want a stacked bar chart, you can use <code>&quot;dodge&quot;</code>.</p>
 <ul>
 <li><code>position = &quot;dodge&quot;</code> places overlapping objects directly <em>beside</em> one
 another. This makes it easier to compare individual values.</li>
 </ul>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> visit_<span class="dv">16</span>, <span class="kw">aes</span>(<span class="dt">x =</span> state, <span class="dt">y =</span> visitors, <span class="dt">fill =</span> park_name)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> visit_<span class="dv">16</span>, <span class="kw">aes</span>(<span class="dt">x =</span> state, <span class="dt">y =</span> visitors, <span class="dt">fill =</span> park_name)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb81-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>)</a></code></pre></div>
 <p><img src="data-science-training_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
 </div>
 <div id="challenge-1" class="section level3">
@@ -692,12 +694,12 @@ inspiration. Remember to use the help documentation (e.g. <code>?geom_bar</code>
 </blockquote>
 <div id="answers-no-peeking-1" class="section level5">
 <h5><span class="header-section-number">5.11.2.0.1</span> Answers (no peeking!)</h5>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#how many of each types of parks are in Massachusetts?</span>
-<span class="kw">ggplot</span>(<span class="dt">data =</span> mass) <span class="op">+</span><span class="st"> </span>
-<span class="st">      </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> type, <span class="dt">fill =</span> park_name)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;&quot;</span>,
-       <span class="dt">y =</span> <span class="st">&quot;&quot;</span>)<span class="op">+</span>
-<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">size =</span> <span class="dv">7</span>))</code></pre>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" data-line-number="1"><span class="co">#how many of each types of parks are in Massachusetts?</span></a>
+<a class="sourceLine" id="cb82-2" data-line-number="2"><span class="kw">ggplot</span>(<span class="dt">data =</span> mass) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb82-3" data-line-number="3"><span class="st">      </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> type, <span class="dt">fill =</span> park_name)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb82-4" data-line-number="4"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;&quot;</span>,</a>
+<a class="sourceLine" id="cb82-5" data-line-number="5">       <span class="dt">y =</span> <span class="st">&quot;&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb82-6" data-line-number="6"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">size =</span> <span class="dv">7</span>))</a></code></pre></div>
 <p><img src="data-science-training_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
 </div>
 </div>
@@ -706,44 +708,34 @@ inspiration. Remember to use the help documentation (e.g. <code>?geom_bar</code>
 <h2><span class="header-section-number">5.12</span> Arranging and exporting plots</h2>
 <p>After creating your plot, you can save it to a file in your favorite format. The Export tab in the <strong>Plot</strong> pane in RStudio will save your plots at low resolution, which will not be accepted by many journals and will not scale well for posters.</p>
 <p>Instead, use the <code>ggsave()</code> function, which allows you easily change the dimension and resolution of your plot by adjusting the appropriate arguments (<code>width</code>, <code>height</code> and <code>dpi</code>):</p>
-<pre class="sourceCode r"><code class="sourceCode r">my_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> mass) <span class="op">+</span><span class="st"> </span>
-<span class="st">      </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> type, <span class="dt">fill =</span> park_name)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;&quot;</span>,
-       <span class="dt">y =</span> <span class="st">&quot;&quot;</span>)<span class="op">+</span>
-<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">size =</span> <span class="dv">7</span>))
-
-<span class="kw">ggsave</span>(<span class="st">&quot;name_of_file.png&quot;</span>, my_plot, <span class="dt">width =</span> <span class="dv">15</span>, <span class="dt">height =</span> <span class="dv">10</span>)</code></pre>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" data-line-number="1">my_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> mass) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb83-2" data-line-number="2"><span class="st">      </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> type, <span class="dt">fill =</span> park_name)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb83-3" data-line-number="3"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;&quot;</span>,</a>
+<a class="sourceLine" id="cb83-4" data-line-number="4">       <span class="dt">y =</span> <span class="st">&quot;&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb83-5" data-line-number="5"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">size =</span> <span class="dv">7</span>))</a>
+<a class="sourceLine" id="cb83-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb83-7" data-line-number="7"><span class="kw">ggsave</span>(<span class="st">&quot;name_of_file.png&quot;</span>, my_plot, <span class="dt">width =</span> <span class="dv">15</span>, <span class="dt">height =</span> <span class="dv">10</span>)</a></code></pre></div>
 <p>Note: The parameters <code>width</code> and <code>height</code> also determine the font size in the saved plot.</p>
 </div>
 <div id="bonus" class="section level2">
 <h2><span class="header-section-number">5.13</span> Bonus</h2>
 <p>So as you can see, <code>ggplot2</code> is a fantastic package for visualizing data. But there are some additional packages that let you make plots interactive. <code>plotly</code>, <code>gganimate</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#install.packages(&quot;plotly&quot;)</span>
-<span class="kw">library</span>(plotly)
-
-<span class="kw">ggplotly</span>(my_plot)</code></pre>
-<pre><code>## Error: .onLoad failed in loadNamespace() for &#39;Cairo&#39;, details:
-##   call: dyn.load(file, DLLpath = DLLpath, ...)
-##   error: unable to load shared object &#39;/Library/Frameworks/R.framework/Versions/3.5/Resources/library/Cairo/libs/Cairo.so&#39;:
-##   dlopen(/Library/Frameworks/R.framework/Versions/3.5/Resources/library/Cairo/libs/Cairo.so, 6): Library not loaded: /opt/X11/lib/libfreetype.6.dylib
-##   Referenced from: /Library/Frameworks/R.framework/Versions/3.5/Resources/library/Cairo/libs/Cairo.so
-##   Reason: image not found</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">acad_vis &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> acadia, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Acadia National Park Visitation&quot;</span>,
-       <span class="dt">y =</span> <span class="st">&quot;Visitation&quot;</span>,
-       <span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">theme_bw</span>()
-
-<span class="kw">ggplotly</span>(acad_vis)</code></pre>
-<pre><code>## Error: .onLoad failed in loadNamespace() for &#39;Cairo&#39;, details:
-##   call: dyn.load(file, DLLpath = DLLpath, ...)
-##   error: unable to load shared object &#39;/Library/Frameworks/R.framework/Versions/3.5/Resources/library/Cairo/libs/Cairo.so&#39;:
-##   dlopen(/Library/Frameworks/R.framework/Versions/3.5/Resources/library/Cairo/libs/Cairo.so, 6): Library not loaded: /opt/X11/lib/libfreetype.6.dylib
-##   Referenced from: /Library/Frameworks/R.framework/Versions/3.5/Resources/library/Cairo/libs/Cairo.so
-##   Reason: image not found</code></pre>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" data-line-number="1"><span class="co">#install.packages(&quot;plotly&quot;)</span></a>
+<a class="sourceLine" id="cb84-2" data-line-number="2"><span class="kw">library</span>(plotly)</a></code></pre></div>
+<pre><code>## Error in library(plotly): there is no package called &#39;plotly&#39;</code></pre>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" data-line-number="1"><span class="kw">ggplotly</span>(my_plot)</a></code></pre></div>
+<pre><code>## Error in ggplotly(my_plot): could not find function &quot;ggplotly&quot;</code></pre>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" data-line-number="1">acad_vis &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> acadia, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> visitors)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb88-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb88-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb88-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb88-5" data-line-number="5"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Acadia National Park Visitation&quot;</span>,</a>
+<a class="sourceLine" id="cb88-6" data-line-number="6">       <span class="dt">y =</span> <span class="st">&quot;Visitation&quot;</span>,</a>
+<a class="sourceLine" id="cb88-7" data-line-number="7">       <span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb88-8" data-line-number="8"><span class="st">  </span><span class="kw">theme_bw</span>()</a>
+<a class="sourceLine" id="cb88-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb88-10" data-line-number="10"><span class="kw">ggplotly</span>(acad_vis)</a></code></pre></div>
+<pre><code>## Error in ggplotly(acad_vis): could not find function &quot;ggplotly&quot;</code></pre>
 </div>
 <div id="save-and-push-to-github" class="section level2">
 <h2><span class="header-section-number">5.14</span> Save and push to GitHub</h2>
@@ -764,11 +756,13 @@ inspiration. Remember to use the help documentation (e.g. <code>?geom_bar</code>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -776,12 +770,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -793,6 +786,10 @@ gitbook.start({
 "text": "Edit"
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },

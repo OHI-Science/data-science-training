@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 7 Data Wrangling: tidyr | Introduction to Open Data Science</title>
   <meta name="description" content="This is official open data science training for the Ocean Health Index." />
-  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 7 Data Wrangling: tidyr | Introduction to Open Data Science" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,15 @@
 <meta name="author" content="The Ocean Health Index Team" />
 
 
-<meta name="date" content="2019-11-14" />
+<meta name="date" content="2019-12-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="dplyr.html">
-<link rel="next" href="programming.html">
+<link rel="prev" href="dplyr.html"/>
+<link rel="next" href="programming.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -40,6 +40,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -55,7 +58,6 @@ a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
 a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
@@ -406,7 +408,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Let’s take a look at some examples.</p>
 <p>Data are often entered in a <em>wide</em> format where each row is often a site/subject/patient and you have multiple observation variables containing the same type of data.</p>
 <p>An example of data in a <em>wide</em> format is the <code>AirPassengers</code> dataset which provides information on monthly airline passenger numbers from 1949-1960. You’ll notice that each row is a single year and the columns are each month Jan - Dec.</p>
-<pre class="sourceCode r"><code class="sourceCode r">AirPassengers</code></pre>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" data-line-number="1">AirPassengers</a></code></pre></div>
 <pre><code>##      Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
 ## 1949 112 118 132 129 121 135 148 148 136 119 104 118
 ## 1950 115 126 141 135 125 149 170 170 158 133 114 140
@@ -464,7 +466,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="load-tidyverse-which-has-tidyr-inside" class="section level3">
 <h3><span class="header-section-number">7.3.2</span> load <code>tidyverse</code> (which has <code>tidyr</code> inside)</h3>
 <p>First load <code>tidyr</code> in an R chunk. You already have installed the tidyverse, so you should be able to just load it like this (using the comment so you can run <code>install.packages(&quot;tidyverse&quot;)</code> easily if need be):</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse) <span class="co"># install.packages(&quot;tidyverse&quot;)</span></code></pre>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" data-line-number="1"><span class="kw">library</span>(tidyverse) <span class="co"># install.packages(&quot;tidyverse&quot;)</span></a></code></pre></div>
 </div>
 </div>
 <div id="gather-data-from-wide-to-long-format" class="section level2">
@@ -472,14 +474,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <img src="img/rstudio-cheatsheet-reshaping-data-gather.png" width="500"/>
 <p><br></p>
 <p>Read in the data from GitHub. Remember, you need to click on the ‘Raw’ button first so you can read it directly. Let’s also read in the gapminder data from yesterday so that we can use it to compare later on.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## wide format</span>
-gap_wide &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder_wide.csv&#39;</span>)
-
-<span class="co">## yesterday&#39;s format</span>
-gapminder &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder.csv&#39;</span>)</code></pre>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" data-line-number="1"><span class="co">## wide format</span></a>
+<a class="sourceLine" id="cb129-2" data-line-number="2">gap_wide &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder_wide.csv&#39;</span>)</a>
+<a class="sourceLine" id="cb129-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb129-4" data-line-number="4"><span class="co">## yesterday&#39;s format</span></a>
+<a class="sourceLine" id="cb129-5" data-line-number="5">gapminder &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder.csv&#39;</span>)</a></code></pre></div>
 <p>Let’s have a look:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(gap_wide)
-<span class="kw">str</span>(gap_wide)</code></pre>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" data-line-number="1"><span class="kw">head</span>(gap_wide)</a>
+<a class="sourceLine" id="cb130-2" data-line-number="2"><span class="kw">str</span>(gap_wide)</a></code></pre></div>
 <p>While wide format is nice for data entry, it’s not nice for calculations. Some of the columns are a mix of variable (e.g. “gdpPercap”) and data (“1952”). What if you were asked for the mean population after 1990 in Algeria? Possible, but ugly. But we know it doesn’t need to be so ugly. Let’s tidy it back to the format we’ve been using.</p>
 <blockquote>
 <p>Question: let’s talk this through together. If we’re trying to turn the <code>gap_wide</code> format into <code>gapminder</code> format, what structure does it have that we like? And what do we want to change?</p>
@@ -492,21 +494,21 @@ gapminder &lt;-<span class="st"> </span>readr<span class="op">::</span><span cla
 </ul>
 <p>Let’s get it to long format. We’ll have to do this in 2 steps. The first step is to take all of those column names (e.g. <code>lifeExp_1970</code>) and make them a variable in a new column, and transfer the values into another column. Let’s learn by doing:</p>
 <p>Let’s have a look at <code>gather()</code>’s help:</p>
-<pre class="sourceCode r"><code class="sourceCode r">?gather</code></pre>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb131-1" data-line-number="1">?gather</a></code></pre></div>
 <blockquote>
 <p>Question: What is our <strong>key-value pair</strong>?</p>
 </blockquote>
 <p>We need to name two new variables in the key-value pair, one for the key, one for the value. It can be hard to wrap your mind around this, so let’s give it a try. Let’s name them <code>obstype_year</code> and <code>obs_values</code>.</p>
 <p>Here’s the start of what we’ll do:</p>
-<pre class="sourceCode r"><code class="sourceCode r">gap_long &lt;-<span class="st"> </span>gap_wide <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">gather</span>(<span class="dt">key   =</span> obstype_year,
-         <span class="dt">value =</span> obs_values)</code></pre>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" data-line-number="1">gap_long &lt;-<span class="st"> </span>gap_wide <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb132-2" data-line-number="2"><span class="st">  </span><span class="kw">gather</span>(<span class="dt">key   =</span> obstype_year,</a>
+<a class="sourceLine" id="cb132-3" data-line-number="3">         <span class="dt">value =</span> obs_values)</a></code></pre></div>
 <p>Although we were already planning to inspect our work, let’s definitely do it now:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(gap_long)</code></pre>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" data-line-number="1"><span class="kw">str</span>(gap_long)</a></code></pre></div>
 <pre><code>## Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    5396 obs. of  2 variables:
 ##  $ obstype_year: chr  &quot;continent&quot; &quot;continent&quot; &quot;continent&quot; &quot;continent&quot; ...
 ##  $ obs_values  : chr  &quot;Africa&quot; &quot;Africa&quot; &quot;Africa&quot; &quot;Africa&quot; ...</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(gap_long)</code></pre>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" data-line-number="1"><span class="kw">head</span>(gap_long)</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 2
 ##   obstype_year obs_values
 ##   &lt;chr&gt;        &lt;chr&gt;     
@@ -516,7 +518,7 @@ gapminder &lt;-<span class="st"> </span>readr<span class="op">::</span><span cla
 ## 4 continent    Africa    
 ## 5 continent    Africa    
 ## 6 continent    Africa</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tail</span>(gap_long)</code></pre>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" data-line-number="1"><span class="kw">tail</span>(gap_long)</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 2
 ##   obstype_year obs_values
 ##   &lt;chr&gt;        &lt;chr&gt;     
@@ -529,46 +531,46 @@ gapminder &lt;-<span class="st"> </span>readr<span class="op">::</span><span cla
 <p>We have reshaped our dataframe but this new format isn’t really what we wanted.</p>
 <p>What went wrong? Notice that it didn’t know that we wanted to keep <code>continent</code> and <code>country</code> untouched; we need to give it more information about which columns we want reshaped. We can do this in several ways.</p>
 <p>One way is to identify the columns is by name. Listing them explicitly can be a good approach if there are just a few. But in our case we have 30 columns. I’m not going to list them out here since there is way too much potential for error if I tried to list <code>gdpPercap_1952</code>, <code>gdpPercap_1957</code>, <code>gdpPercap_1962</code> and so on. But we could use some of <code>dplyr</code>’s awesome helper functions — because we expect that there is a better way to do this!</p>
-<pre class="sourceCode r"><code class="sourceCode r">gap_long &lt;-<span class="st"> </span>gap_wide <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">gather</span>(<span class="dt">key   =</span> obstype_year,
-         <span class="dt">value =</span> obs_values,
-         dplyr<span class="op">::</span><span class="kw">starts_with</span>(<span class="st">&#39;pop&#39;</span>),
-         dplyr<span class="op">::</span><span class="kw">starts_with</span>(<span class="st">&#39;lifeExp&#39;</span>),
-         dplyr<span class="op">::</span><span class="kw">starts_with</span>(<span class="st">&#39;gdpPercap&#39;</span>))  <span class="co">#here i&#39;m listing all the columns to use in gather</span>
-
-<span class="kw">str</span>(gap_long)
-<span class="kw">head</span>(gap_long)
-<span class="kw">tail</span>(gap_long)</code></pre>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" data-line-number="1">gap_long &lt;-<span class="st"> </span>gap_wide <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb139-2" data-line-number="2"><span class="st">  </span><span class="kw">gather</span>(<span class="dt">key   =</span> obstype_year,</a>
+<a class="sourceLine" id="cb139-3" data-line-number="3">         <span class="dt">value =</span> obs_values,</a>
+<a class="sourceLine" id="cb139-4" data-line-number="4">         dplyr<span class="op">::</span><span class="kw">starts_with</span>(<span class="st">&#39;pop&#39;</span>),</a>
+<a class="sourceLine" id="cb139-5" data-line-number="5">         dplyr<span class="op">::</span><span class="kw">starts_with</span>(<span class="st">&#39;lifeExp&#39;</span>),</a>
+<a class="sourceLine" id="cb139-6" data-line-number="6">         dplyr<span class="op">::</span><span class="kw">starts_with</span>(<span class="st">&#39;gdpPercap&#39;</span>))  <span class="co">#here i&#39;m listing all the columns to use in gather</span></a>
+<a class="sourceLine" id="cb139-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb139-8" data-line-number="8"><span class="kw">str</span>(gap_long)</a>
+<a class="sourceLine" id="cb139-9" data-line-number="9"><span class="kw">head</span>(gap_long)</a>
+<a class="sourceLine" id="cb139-10" data-line-number="10"><span class="kw">tail</span>(gap_long)</a></code></pre></div>
 <p>Success! And there is another way that is nice to use if your columns don’t follow such a structured pattern: you can exclude the columns you <em>don’t</em> want.</p>
-<pre class="sourceCode r"><code class="sourceCode r">gap_long &lt;-<span class="st"> </span>gap_wide <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">gather</span>(<span class="dt">key   =</span> obstype_year,
-         <span class="dt">value =</span> obs_values,
-         <span class="op">-</span>continent, <span class="op">-</span>country)
-
-<span class="kw">str</span>(gap_long)
-<span class="kw">head</span>(gap_long)
-<span class="kw">tail</span>(gap_long)</code></pre>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" data-line-number="1">gap_long &lt;-<span class="st"> </span>gap_wide <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb140-2" data-line-number="2"><span class="st">  </span><span class="kw">gather</span>(<span class="dt">key   =</span> obstype_year,</a>
+<a class="sourceLine" id="cb140-3" data-line-number="3">         <span class="dt">value =</span> obs_values,</a>
+<a class="sourceLine" id="cb140-4" data-line-number="4">         <span class="op">-</span>continent, <span class="op">-</span>country)</a>
+<a class="sourceLine" id="cb140-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb140-6" data-line-number="6"><span class="kw">str</span>(gap_long)</a>
+<a class="sourceLine" id="cb140-7" data-line-number="7"><span class="kw">head</span>(gap_long)</a>
+<a class="sourceLine" id="cb140-8" data-line-number="8"><span class="kw">tail</span>(gap_long)</a></code></pre></div>
 <p>To recap:</p>
 <p>Inside <code>gather()</code> we first name the new column for the new ID variable (<code>obstype_year</code>), the name for the new amalgamated observation variable (<code>obs_value</code>), then the names of the old observation variable. We could have typed out all the observation variables, but as in the <code>select()</code> function (see <code>dplyr</code> lesson), we can use the <code>starts_with()</code> argument to select all variables that starts with the desired character string. Gather also allows the alternative syntax of using the <code>-</code> symbol to identify which variables are not to be gathered (i.e. ID variables).</p>
 <p>OK, but we’re not done yet. <code>obstype_year</code> actually contains two pieces of information, the observation type (<code>pop</code>,<code>lifeExp</code>, or <code>gdpPercap</code>) and the <code>year</code>. We can use the <code>separate()</code> function to split the character strings into multiple variables.</p>
 <p><code>?separate</code> –&gt; the main arguments are <code>separate(data, col, into, sep ...)</code>. So we need to specify which column we want separated, name the new columns that we want to create, and specify what we want it to separate by. Since the <code>obstype_year</code> variable has observation types and years separated by a <code>_</code>, we’ll use that.</p>
-<pre class="sourceCode r"><code class="sourceCode r">gap_long &lt;-<span class="st"> </span>gap_wide <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">gather</span>(<span class="dt">key   =</span> obstype_year,
-         <span class="dt">value =</span> obs_values,
-         <span class="op">-</span>continent, <span class="op">-</span>country) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">separate</span>(obstype_year,
-           <span class="dt">into =</span> <span class="kw">c</span>(<span class="st">&#39;obs_type&#39;</span>,<span class="st">&#39;year&#39;</span>),
-           <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>,
-           <span class="dt">convert =</span> <span class="ot">TRUE</span>) <span class="co">#this ensures that the year column is an integer rather than a character</span></code></pre>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" data-line-number="1">gap_long &lt;-<span class="st"> </span>gap_wide <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb141-2" data-line-number="2"><span class="st">  </span><span class="kw">gather</span>(<span class="dt">key   =</span> obstype_year,</a>
+<a class="sourceLine" id="cb141-3" data-line-number="3">         <span class="dt">value =</span> obs_values,</a>
+<a class="sourceLine" id="cb141-4" data-line-number="4">         <span class="op">-</span>continent, <span class="op">-</span>country) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb141-5" data-line-number="5"><span class="st">  </span><span class="kw">separate</span>(obstype_year,</a>
+<a class="sourceLine" id="cb141-6" data-line-number="6">           <span class="dt">into =</span> <span class="kw">c</span>(<span class="st">&#39;obs_type&#39;</span>,<span class="st">&#39;year&#39;</span>),</a>
+<a class="sourceLine" id="cb141-7" data-line-number="7">           <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>,</a>
+<a class="sourceLine" id="cb141-8" data-line-number="8">           <span class="dt">convert =</span> <span class="ot">TRUE</span>) <span class="co">#this ensures that the year column is an integer rather than a character</span></a></code></pre></div>
 <p>No warning messages…still we inspect:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(gap_long)</code></pre>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" data-line-number="1"><span class="kw">str</span>(gap_long)</a></code></pre></div>
 <pre><code>## Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    5112 obs. of  5 variables:
 ##  $ continent : chr  &quot;Africa&quot; &quot;Africa&quot; &quot;Africa&quot; &quot;Africa&quot; ...
 ##  $ country   : chr  &quot;Algeria&quot; &quot;Angola&quot; &quot;Benin&quot; &quot;Botswana&quot; ...
 ##  $ obs_type  : chr  &quot;gdpPercap&quot; &quot;gdpPercap&quot; &quot;gdpPercap&quot; &quot;gdpPercap&quot; ...
 ##  $ year      : int  1952 1952 1952 1952 1952 1952 1952 1952 1952 1952 ...
 ##  $ obs_values: num  2449 3521 1063 851 543 ...</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(gap_long)</code></pre>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" data-line-number="1"><span class="kw">head</span>(gap_long)</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
 ##   continent country      obs_type   year obs_values
 ##   &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;     &lt;int&gt;      &lt;dbl&gt;
@@ -578,7 +580,7 @@ gapminder &lt;-<span class="st"> </span>readr<span class="op">::</span><span cla
 ## 4 Africa    Botswana     gdpPercap  1952       851.
 ## 5 Africa    Burkina Faso gdpPercap  1952       543.
 ## 6 Africa    Burundi      gdpPercap  1952       339.</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tail</span>(gap_long)</code></pre>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" data-line-number="1"><span class="kw">tail</span>(gap_long)</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
 ##   continent country        obs_type  year obs_values
 ##   &lt;chr&gt;     &lt;chr&gt;          &lt;chr&gt;    &lt;int&gt;      &lt;dbl&gt;
@@ -593,19 +595,19 @@ gapminder &lt;-<span class="st"> </span>readr<span class="op">::</span><span cla
 <div id="plot-long-format-data" class="section level2">
 <h2><span class="header-section-number">7.5</span> Plot long format data</h2>
 <p>The long format is the preferred format for plotting with <code>ggplot2</code>. Let’s look at an example by plotting just Canada’s life expectancy.</p>
-<pre class="sourceCode r"><code class="sourceCode r">canada_df &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">filter</span>(obs_type <span class="op">==</span><span class="st"> &quot;lifeExp&quot;</span>,
-         country <span class="op">==</span><span class="st"> &quot;Canada&quot;</span>)
-
-<span class="kw">ggplot</span>(canada_df, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> obs_values)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_line</span>()</code></pre>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" data-line-number="1">canada_df &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb148-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(obs_type <span class="op">==</span><span class="st"> &quot;lifeExp&quot;</span>,</a>
+<a class="sourceLine" id="cb148-3" data-line-number="3">         country <span class="op">==</span><span class="st"> &quot;Canada&quot;</span>)</a>
+<a class="sourceLine" id="cb148-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb148-5" data-line-number="5"><span class="kw">ggplot</span>(canada_df, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> obs_values)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb148-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_line</span>()</a></code></pre></div>
 <p>We can also look at all countries in the Americas:</p>
-<pre class="sourceCode r"><code class="sourceCode r">life_df &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">filter</span>(obs_type <span class="op">==</span><span class="st"> &quot;lifeExp&quot;</span>,
-         continent <span class="op">==</span><span class="st"> &quot;Americas&quot;</span>)
-
-<span class="kw">ggplot</span>(life_df, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> obs_values, <span class="dt">color =</span> country)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_line</span>()</code></pre>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" data-line-number="1">life_df &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb149-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(obs_type <span class="op">==</span><span class="st"> &quot;lifeExp&quot;</span>,</a>
+<a class="sourceLine" id="cb149-3" data-line-number="3">         continent <span class="op">==</span><span class="st"> &quot;Americas&quot;</span>)</a>
+<a class="sourceLine" id="cb149-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb149-5" data-line-number="5"><span class="kw">ggplot</span>(life_df, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> obs_values, <span class="dt">color =</span> country)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb149-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_line</span>()</a></code></pre></div>
 <blockquote>
 <h3 id="exercise"><span class="header-section-number">7.5</span> Exercise</h3>
 <ol style="list-style-type: decimal">
@@ -613,42 +615,42 @@ gapminder &lt;-<span class="st"> </span>readr<span class="op">::</span><span cla
 </ol>
 <p><strong>STOP: Knit the R Markdown file and sync to Github (pull, stage, commit, push)</strong></p>
 </blockquote>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># solution (no peeking!)</span>
-continents &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">filter</span>(obs_type <span class="op">==</span><span class="st"> &quot;lifeExp&quot;</span>, 
-         year <span class="op">&gt;</span><span class="st"> </span><span class="dv">1980</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">group_by</span>(continent, year) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean_le =</span> <span class="kw">mean</span>(obs_values)) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">ungroup</span>()
-
-<span class="kw">ggplot</span>(<span class="dt">data =</span> continents, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> mean_le, <span class="dt">color =</span> continent)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Mean life expectancy&quot;</span>,
-       <span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>,
-       <span class="dt">y =</span> <span class="st">&quot;Age (years)&quot;</span>) 
-
-<span class="co">## Additional customization</span>
-<span class="kw">ggplot</span>(<span class="dt">data =</span> continents, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> mean_le, <span class="dt">color =</span> continent)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Mean life expectancy&quot;</span>,
-       <span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>,
-       <span class="dt">y =</span> <span class="st">&quot;Age (years)&quot;</span>,
-       <span class="dt">color =</span> <span class="st">&quot;Continent&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">theme_classic</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Blues&quot;</span>)  </code></pre>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" data-line-number="1"><span class="co"># solution (no peeking!)</span></a>
+<a class="sourceLine" id="cb150-2" data-line-number="2">continents &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb150-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(obs_type <span class="op">==</span><span class="st"> &quot;lifeExp&quot;</span>, </a>
+<a class="sourceLine" id="cb150-4" data-line-number="4">         year <span class="op">&gt;</span><span class="st"> </span><span class="dv">1980</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb150-5" data-line-number="5"><span class="st">  </span><span class="kw">group_by</span>(continent, year) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb150-6" data-line-number="6"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean_le =</span> <span class="kw">mean</span>(obs_values)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb150-7" data-line-number="7"><span class="st">  </span><span class="kw">ungroup</span>()</a>
+<a class="sourceLine" id="cb150-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb150-9" data-line-number="9"><span class="kw">ggplot</span>(<span class="dt">data =</span> continents, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> mean_le, <span class="dt">color =</span> continent)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb150-10" data-line-number="10"><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb150-11" data-line-number="11"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Mean life expectancy&quot;</span>,</a>
+<a class="sourceLine" id="cb150-12" data-line-number="12">       <span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>,</a>
+<a class="sourceLine" id="cb150-13" data-line-number="13">       <span class="dt">y =</span> <span class="st">&quot;Age (years)&quot;</span>) </a>
+<a class="sourceLine" id="cb150-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb150-15" data-line-number="15"><span class="co">## Additional customization</span></a>
+<a class="sourceLine" id="cb150-16" data-line-number="16"><span class="kw">ggplot</span>(<span class="dt">data =</span> continents, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> mean_le, <span class="dt">color =</span> continent)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb150-17" data-line-number="17"><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb150-18" data-line-number="18"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Mean life expectancy&quot;</span>,</a>
+<a class="sourceLine" id="cb150-19" data-line-number="19">       <span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>,</a>
+<a class="sourceLine" id="cb150-20" data-line-number="20">       <span class="dt">y =</span> <span class="st">&quot;Age (years)&quot;</span>,</a>
+<a class="sourceLine" id="cb150-21" data-line-number="21">       <span class="dt">color =</span> <span class="st">&quot;Continent&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb150-22" data-line-number="22"><span class="st">  </span><span class="kw">theme_classic</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb150-23" data-line-number="23"><span class="st">  </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Blues&quot;</span>)  </a></code></pre></div>
 </div>
 <div id="spread" class="section level2">
 <h2><span class="header-section-number">7.6</span> <code>spread()</code></h2>
 <p>The function <code>spread()</code> is used to transform data from long to wide format</p>
 <p>Alright! Now just to double-check our work, let’s use the opposite of <code>gather()</code> to spread our observation variables back to the original format with the aptly named <code>spread()</code>. You pass <code>spread()</code> the key and value pair, which is now <code>obs_type</code> and <code>obs_values</code>.</p>
 <p><img src="img/rstudio-cheatsheet-reshaping-data-spread.png" /></p>
-<pre class="sourceCode r"><code class="sourceCode r">gap_normal &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">spread</span>(obs_type, obs_values)</code></pre>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" data-line-number="1">gap_normal &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb151-2" data-line-number="2"><span class="st">  </span><span class="kw">spread</span>(obs_type, obs_values)</a></code></pre></div>
 <p>No warning messages is good…but still let’s check:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(gap_normal)
-<span class="kw">dim</span>(gapminder)
-<span class="kw">names</span>(gap_normal)
-<span class="kw">names</span>(gapminder)</code></pre>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" data-line-number="1"><span class="kw">dim</span>(gap_normal)</a>
+<a class="sourceLine" id="cb152-2" data-line-number="2"><span class="kw">dim</span>(gapminder)</a>
+<a class="sourceLine" id="cb152-3" data-line-number="3"><span class="kw">names</span>(gap_normal)</a>
+<a class="sourceLine" id="cb152-4" data-line-number="4"><span class="kw">names</span>(gapminder)</a></code></pre></div>
 <p>Now we’ve got a dataframe <code>gap_normal</code> with the same dimensions as the original <code>gapminder</code>.</p>
 <blockquote>
 <h3 id="exercise-1"><span class="header-section-number">7.6</span> Exercise</h3>
@@ -659,14 +661,14 @@ continents &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span>
 </blockquote>
 <div id="answer-no-peeking-1" class="section level3">
 <h3><span class="header-section-number">7.6.1</span> Answer (no peeking)</h3>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(gap_long) <span class="co"># remember the columns</span>
-
-gap_wide_new &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="co"># first unite obs_type and year into a new column called var_names. Separate by _</span>
-<span class="st">  </span><span class="kw">unite</span>(<span class="dt">col =</span> var_names, obs_type, year, <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="co"># then spread var_names out by key-value pair.</span>
-<span class="st">  </span><span class="kw">spread</span>(<span class="dt">key =</span> var_names, <span class="dt">value =</span> obs_values)
-<span class="kw">str</span>(gap_wide_new)</code></pre>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" data-line-number="1"><span class="kw">head</span>(gap_long) <span class="co"># remember the columns</span></a>
+<a class="sourceLine" id="cb153-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb153-3" data-line-number="3">gap_wide_new &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb153-4" data-line-number="4"><span class="st">  </span><span class="co"># first unite obs_type and year into a new column called var_names. Separate by _</span></a>
+<a class="sourceLine" id="cb153-5" data-line-number="5"><span class="st">  </span><span class="kw">unite</span>(<span class="dt">col =</span> var_names, obs_type, year, <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb153-6" data-line-number="6"><span class="st">  </span><span class="co"># then spread var_names out by key-value pair.</span></a>
+<a class="sourceLine" id="cb153-7" data-line-number="7"><span class="st">  </span><span class="kw">spread</span>(<span class="dt">key =</span> var_names, <span class="dt">value =</span> obs_values)</a>
+<a class="sourceLine" id="cb153-8" data-line-number="8"><span class="kw">str</span>(gap_wide_new)</a></code></pre></div>
 </div>
 </div>
 <div id="clean-up-and-save-your-.rmd" class="section level2">
@@ -674,80 +676,80 @@ gap_wide_new &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</spa
 <p>Spend some time cleaning up and saving <code>gapminder-wrangle.Rmd</code>
 Restart R. In RStudio, use <em>Session &gt; Restart R</em>. Otherwise, quit R with <code>q()</code> and re-launch it.</p>
 <p>This morning’s .Rmd could look something like this:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## load tidyr (in tidyverse)</span>
-<span class="kw">library</span>(tidyverse) <span class="co"># install.packages(&quot;tidyverse&quot;)</span>
-
-<span class="co">## load wide data</span>
-gap_wide &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder_wide.csv&#39;</span>)
-
-<span class="kw">head</span>(gap_wide)
-<span class="kw">str</span>(gap_wide)
-
-<span class="co">## practice tidyr::gather() wide to long</span>
-gap_long &lt;-<span class="st"> </span>gap_wide <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">gather</span>(<span class="dt">key   =</span> obstype_year,
-         <span class="dt">value =</span> obs_values,
-         <span class="op">-</span>continent, <span class="op">-</span>country) 
-<span class="co"># or </span>
-gap_long &lt;-<span class="st"> </span>gap_wide <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">gather</span>(<span class="dt">key   =</span> obstype_year,
-         <span class="dt">value =</span> obs_values,
-         dplyr<span class="op">::</span><span class="kw">starts_with</span>(<span class="st">&#39;pop&#39;</span>),
-         dplyr<span class="op">::</span><span class="kw">starts_with</span>(<span class="st">&#39;lifeExp&#39;</span>),
-         dplyr<span class="op">::</span><span class="kw">starts_with</span>(<span class="st">&#39;gdpPercap&#39;</span>))
-
-<span class="co">## gather() and separate() to create our original gapminder</span>
-gap_long &lt;-<span class="st"> </span>gap_wide <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">gather</span>(<span class="dt">key   =</span> obstype_year,
-         <span class="dt">value =</span> obs_values,
-         <span class="op">-</span>continent, <span class="op">-</span>country) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">separate</span>(obstype_year,
-           <span class="dt">into =</span> <span class="kw">c</span>(<span class="st">&#39;obs_type&#39;</span>,<span class="st">&#39;year&#39;</span>),
-           <span class="dt">sep=</span><span class="st">&quot;_&quot;</span>)
-
-<span class="co">## practice: can still do calculations in long format</span>
-gap_long <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">group_by</span>(continent, obs_type) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">means =</span> <span class="kw">mean</span>(obs_values))
-
-<span class="co">## spread() from normal to wide</span>
-gap_normal &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">spread</span>(obs_type, obs_values) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">select</span>(country, continent, year, lifeExp, pop, gdpPercap)
-
-<span class="co">## check that all.equal()</span>
-<span class="kw">all.equal</span>(gap_normal,gapminder)
-
-<span class="co">## unite() and spread(): convert gap_long to gap_wide</span>
-<span class="kw">head</span>(gap_long) <span class="co"># remember the columns</span>
-
-gap_wide_new &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="co"># first unite obs_type and year into a new column called var_names. Separate by _</span>
-<span class="st">  </span><span class="kw">unite</span>(<span class="dt">col =</span> var_names, obs_type, year, <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="co"># then spread var_names out by key-value pair.</span>
-<span class="st">  </span><span class="kw">spread</span>(<span class="dt">key =</span> var_names, <span class="dt">value =</span> obs_values)
-<span class="kw">str</span>(gap_wide_new)</code></pre>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" data-line-number="1"><span class="co">## load tidyr (in tidyverse)</span></a>
+<a class="sourceLine" id="cb154-2" data-line-number="2"><span class="kw">library</span>(tidyverse) <span class="co"># install.packages(&quot;tidyverse&quot;)</span></a>
+<a class="sourceLine" id="cb154-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb154-4" data-line-number="4"><span class="co">## load wide data</span></a>
+<a class="sourceLine" id="cb154-5" data-line-number="5">gap_wide &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder_wide.csv&#39;</span>)</a>
+<a class="sourceLine" id="cb154-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb154-7" data-line-number="7"><span class="kw">head</span>(gap_wide)</a>
+<a class="sourceLine" id="cb154-8" data-line-number="8"><span class="kw">str</span>(gap_wide)</a>
+<a class="sourceLine" id="cb154-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb154-10" data-line-number="10"><span class="co">## practice tidyr::gather() wide to long</span></a>
+<a class="sourceLine" id="cb154-11" data-line-number="11">gap_long &lt;-<span class="st"> </span>gap_wide <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb154-12" data-line-number="12"><span class="st">  </span><span class="kw">gather</span>(<span class="dt">key   =</span> obstype_year,</a>
+<a class="sourceLine" id="cb154-13" data-line-number="13">         <span class="dt">value =</span> obs_values,</a>
+<a class="sourceLine" id="cb154-14" data-line-number="14">         <span class="op">-</span>continent, <span class="op">-</span>country) </a>
+<a class="sourceLine" id="cb154-15" data-line-number="15"><span class="co"># or </span></a>
+<a class="sourceLine" id="cb154-16" data-line-number="16">gap_long &lt;-<span class="st"> </span>gap_wide <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb154-17" data-line-number="17"><span class="st">  </span><span class="kw">gather</span>(<span class="dt">key   =</span> obstype_year,</a>
+<a class="sourceLine" id="cb154-18" data-line-number="18">         <span class="dt">value =</span> obs_values,</a>
+<a class="sourceLine" id="cb154-19" data-line-number="19">         dplyr<span class="op">::</span><span class="kw">starts_with</span>(<span class="st">&#39;pop&#39;</span>),</a>
+<a class="sourceLine" id="cb154-20" data-line-number="20">         dplyr<span class="op">::</span><span class="kw">starts_with</span>(<span class="st">&#39;lifeExp&#39;</span>),</a>
+<a class="sourceLine" id="cb154-21" data-line-number="21">         dplyr<span class="op">::</span><span class="kw">starts_with</span>(<span class="st">&#39;gdpPercap&#39;</span>))</a>
+<a class="sourceLine" id="cb154-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb154-23" data-line-number="23"><span class="co">## gather() and separate() to create our original gapminder</span></a>
+<a class="sourceLine" id="cb154-24" data-line-number="24">gap_long &lt;-<span class="st"> </span>gap_wide <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb154-25" data-line-number="25"><span class="st">  </span><span class="kw">gather</span>(<span class="dt">key   =</span> obstype_year,</a>
+<a class="sourceLine" id="cb154-26" data-line-number="26">         <span class="dt">value =</span> obs_values,</a>
+<a class="sourceLine" id="cb154-27" data-line-number="27">         <span class="op">-</span>continent, <span class="op">-</span>country) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb154-28" data-line-number="28"><span class="st">  </span><span class="kw">separate</span>(obstype_year,</a>
+<a class="sourceLine" id="cb154-29" data-line-number="29">           <span class="dt">into =</span> <span class="kw">c</span>(<span class="st">&#39;obs_type&#39;</span>,<span class="st">&#39;year&#39;</span>),</a>
+<a class="sourceLine" id="cb154-30" data-line-number="30">           <span class="dt">sep=</span><span class="st">&quot;_&quot;</span>)</a>
+<a class="sourceLine" id="cb154-31" data-line-number="31"></a>
+<a class="sourceLine" id="cb154-32" data-line-number="32"><span class="co">## practice: can still do calculations in long format</span></a>
+<a class="sourceLine" id="cb154-33" data-line-number="33">gap_long <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb154-34" data-line-number="34"><span class="st">  </span><span class="kw">group_by</span>(continent, obs_type) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb154-35" data-line-number="35"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">means =</span> <span class="kw">mean</span>(obs_values))</a>
+<a class="sourceLine" id="cb154-36" data-line-number="36"></a>
+<a class="sourceLine" id="cb154-37" data-line-number="37"><span class="co">## spread() from normal to wide</span></a>
+<a class="sourceLine" id="cb154-38" data-line-number="38">gap_normal &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb154-39" data-line-number="39"><span class="st">  </span><span class="kw">spread</span>(obs_type, obs_values) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb154-40" data-line-number="40"><span class="st">  </span><span class="kw">select</span>(country, continent, year, lifeExp, pop, gdpPercap)</a>
+<a class="sourceLine" id="cb154-41" data-line-number="41"></a>
+<a class="sourceLine" id="cb154-42" data-line-number="42"><span class="co">## check that all.equal()</span></a>
+<a class="sourceLine" id="cb154-43" data-line-number="43"><span class="kw">all.equal</span>(gap_normal,gapminder)</a>
+<a class="sourceLine" id="cb154-44" data-line-number="44"></a>
+<a class="sourceLine" id="cb154-45" data-line-number="45"><span class="co">## unite() and spread(): convert gap_long to gap_wide</span></a>
+<a class="sourceLine" id="cb154-46" data-line-number="46"><span class="kw">head</span>(gap_long) <span class="co"># remember the columns</span></a>
+<a class="sourceLine" id="cb154-47" data-line-number="47"></a>
+<a class="sourceLine" id="cb154-48" data-line-number="48">gap_wide_new &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb154-49" data-line-number="49"><span class="st">  </span><span class="co"># first unite obs_type and year into a new column called var_names. Separate by _</span></a>
+<a class="sourceLine" id="cb154-50" data-line-number="50"><span class="st">  </span><span class="kw">unite</span>(<span class="dt">col =</span> var_names, obs_type, year, <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb154-51" data-line-number="51"><span class="st">  </span><span class="co"># then spread var_names out by key-value pair.</span></a>
+<a class="sourceLine" id="cb154-52" data-line-number="52"><span class="st">  </span><span class="kw">spread</span>(<span class="dt">key =</span> var_names, <span class="dt">value =</span> obs_values)</a>
+<a class="sourceLine" id="cb154-53" data-line-number="53"><span class="kw">str</span>(gap_wide_new)</a></code></pre></div>
 <div id="complete" class="section level3">
 <h3><span class="header-section-number">7.7.1</span> <code>complete()</code></h3>
 <p>One of the coolest functions in <code>tidyr</code> is the function <code>complete()</code>. Jarrett Byrnes has written up a <a href="http://www.imachordata.com/you-complete-me/">great blog piece</a> showcasing the utility of this function so I’m going to use that example here.</p>
 <p>We’ll start with an example dataframe where the data recorder enters the Abundance of two species of kelp, <em>Saccharina</em> and <em>Agarum</em> in the years 1999, 2000 and 2004.</p>
-<pre class="sourceCode r"><code class="sourceCode r">kelpdf &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
-  <span class="dt">Year =</span> <span class="kw">c</span>(<span class="dv">1999</span>, <span class="dv">2000</span>, <span class="dv">2004</span>, <span class="dv">1999</span>, <span class="dv">2004</span>),
-  <span class="dt">Taxon =</span> <span class="kw">c</span>(<span class="st">&quot;Saccharina&quot;</span>, <span class="st">&quot;Saccharina&quot;</span>, <span class="st">&quot;Saccharina&quot;</span>, <span class="st">&quot;Agarum&quot;</span>, <span class="st">&quot;Agarum&quot;</span>),
-  <span class="dt">Abundance =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">8</span>)
-)
-
-kelpdf</code></pre>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" data-line-number="1">kelpdf &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb155-2" data-line-number="2">  <span class="dt">Year =</span> <span class="kw">c</span>(<span class="dv">1999</span>, <span class="dv">2000</span>, <span class="dv">2004</span>, <span class="dv">1999</span>, <span class="dv">2004</span>),</a>
+<a class="sourceLine" id="cb155-3" data-line-number="3">  <span class="dt">Taxon =</span> <span class="kw">c</span>(<span class="st">&quot;Saccharina&quot;</span>, <span class="st">&quot;Saccharina&quot;</span>, <span class="st">&quot;Saccharina&quot;</span>, <span class="st">&quot;Agarum&quot;</span>, <span class="st">&quot;Agarum&quot;</span>),</a>
+<a class="sourceLine" id="cb155-4" data-line-number="4">  <span class="dt">Abundance =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">8</span>)</a>
+<a class="sourceLine" id="cb155-5" data-line-number="5">)</a>
+<a class="sourceLine" id="cb155-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb155-7" data-line-number="7">kelpdf</a></code></pre></div>
 <p>Jarrett points out that <em>Agarum</em> is not listed for the year 2000. Does this mean it wasn’t observed (Abundance = 0) or that it wasn’t recorded (Abundance = NA)? Only the person who recorded the data knows, but let’s assume that the this means the Abundance was 0 for that year.</p>
 <p>We can use the <code>complete()</code> function to make our dataset more complete.</p>
-<pre class="sourceCode r"><code class="sourceCode r">kelpdf <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">complete</span>(Year, Taxon)</code></pre>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb156-1" data-line-number="1">kelpdf <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb156-2" data-line-number="2"><span class="st">  </span><span class="kw">complete</span>(Year, Taxon)</a></code></pre></div>
 <p>This gives us an NA for <em>Agarum</em> in 2000, but we want it to be a 0 instead. We can use the <code>fill</code> argument to assign the fill value.</p>
-<pre class="sourceCode r"><code class="sourceCode r">kelpdf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">complete</span>(Year, Taxon, <span class="dt">fill =</span> <span class="kw">list</span>(<span class="dt">Abundance =</span> <span class="dv">0</span>))</code></pre>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb157-1" data-line-number="1">kelpdf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">complete</span>(Year, Taxon, <span class="dt">fill =</span> <span class="kw">list</span>(<span class="dt">Abundance =</span> <span class="dv">0</span>))</a></code></pre></div>
 <p>Now we have what we want. Let’s assume that all years between 1999 and 2004 that aren’t listed should actually be assigned a value of 0. We can use the <code>full_seq()</code> function from <code>tidyr</code> to fill out our dataset with all years 1999-2004 and assign Abundance values of 0 to those years &amp; species for which there was no observation.</p>
-<pre class="sourceCode r"><code class="sourceCode r">kelpdf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">complete</span>(<span class="dt">Year =</span> <span class="kw">full_seq</span>(Year, <span class="dt">period =</span> <span class="dv">1</span>),
-                   Taxon,
-                   <span class="dt">fill =</span> <span class="kw">list</span>(<span class="dt">Abundance =</span> <span class="dv">0</span>))</code></pre>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb158-1" data-line-number="1">kelpdf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">complete</span>(<span class="dt">Year =</span> <span class="kw">full_seq</span>(Year, <span class="dt">period =</span> <span class="dv">1</span>),</a>
+<a class="sourceLine" id="cb158-2" data-line-number="2">                   Taxon,</a>
+<a class="sourceLine" id="cb158-3" data-line-number="3">                   <span class="dt">fill =</span> <span class="kw">list</span>(<span class="dt">Abundance =</span> <span class="dv">0</span>))</a></code></pre></div>
 <hr />
 </div>
 </div>
@@ -774,11 +776,13 @@ kelpdf</code></pre>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -786,12 +790,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -803,6 +806,10 @@ gitbook.start({
 "text": "Edit"
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },
