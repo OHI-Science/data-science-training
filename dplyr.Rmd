@@ -1,3 +1,9 @@
+---
+title: "dplyr Tutorial"
+author: "Ryan Stevens"
+date: "9/30/2020"
+output: pdf_document
+---
 # Data Wrangling: `dplyr` {#dplyr} 
 
 ```{r wrangling1, include=FALSE}
@@ -5,44 +11,31 @@ knitr::opts_chunk$set(echo = TRUE)
 library(htmltools)
 ```
 
-> Data scientists, according to interviews and expert estimates, spend from 50 percent to 80 percent of their time mired in the mundane labor of collecting and preparing data, before it can be explored for useful information. - [NYTimes (2014)](http://www.nytimes.com/2014/08/18/technology/for-big-data-scientists-hurdle-to-insights-is-janitor-work.html)
-
-
 ## Objectives & Resources
 
 What are some common things you like to do with your data? Maybe remove rows or columns, do calculations and maybe add new columns? This is called **data wrangling**. It's not data management or data manipulation: you **keep the raw data raw** and do these things programatically in R with the tidyverse.
 
-We are going to introduce you to data wrangling in R first with the tidyverse. The tidyverse is a suite of packages that match a philosophy of data science developed by Hadley Wickham and the RStudio team. I find it to be a more straight-forward way to learn R. We will also show you by comparison what code will look like in "Base R", which means, in R without any additional packages (like the "tidyverse" package)  installed. I like David Robinson's blog post on the topic of [teaching the tidyverse first](http://varianceexplained.org/r/teach-hard-way).
-
-For some things, base-R is more straight forward, and we'll show you that too. Whenever we use a function that is from the tidyverse, we will prefix it so you'll know for sure. 
-
 ### Objectives
 
 - discuss tidy data
-- read data from online into R
-- explore `gapminder` data with base-R functions
-- wrangle `gapminder` data with `dplyr` tidyverse functions
-- practice RStudio-GitHub workflow
 
 ### Resources 
 
-Today's materials are again borrowing from some excellent sources, including:
-
-- Jenny Bryan's lectures from STAT545 at UBC: [Introduction to dplyr](http://stat545.com/block009_dplyr-intro.html)
+Today's materials are borrowing from some excellent sources, including:
+  
+  - Jenny Bryan's lectures from STAT545 at UBC: [Introduction to dplyr](http://stat545.com/block009_dplyr-intro.html)
 - Hadley Wickham and Garrett Grolemund's [R for Data Science](http://r4ds.had.co.nz/)
-- Software Carpentry's R for reproducible scientific analysis materials: [Dataframe manipulation with dplyr](http://swcarpentry.github.io/r-novice-gapminder/13-dplyr.html)
+- Software Carpentry's R for reproducible scientific analysis materials: [Dataframe manipulation with dplyr](http://swcarpentry.github.io/r-novice-nyc/13-dplyr.html)
 - First developed for [Software Carpentry at UCSB](http://remi-daigle.github.io/2016-04-15-UCSB/dplyr/)
 - [RStudio's data wrangling cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf) 
 - [RStudio's data wrangling webinar](https://www.rstudio.com/resources/webinars/data-wrangling-with-r-and-rstudio/) 
 
 ### Data and packages
 
-**Gapminder data**
+**New York City Census data**
 
-We'll be using [Gapminder data](http://www.gapminder.org/world), which represents the health and wealth of nations. It was pioneered by [Hans Rosling](https://www.ted.com/speakers/hans_rosling), who is famous for describing the prosperity of nations over time through famines, wars and other historic events with this beautiful data visualization in his [2006 TED Talk: The best stats you've ever seen](https://www.ted.com/talks/hans_rosling_shows_the_best_stats_you_ve_ever_seen): 
-
-[Gapminder Motion Chart<br\>![](https://github.com/remi-daigle/2016-04-15-UCSB/raw/gh-pages/viz/img/gapminder-world_motion-chart.png)](http://www.gapminder.org/world)
-
+We'll be using New York City Census data provided by Prof. Roeper.  
+   
 We'll use the package `dplyr`, which is bundled within the `tidyverse` package. Please install the `tidyverse` ahead of time: 
 
 ```{r, eval=FALSE}
@@ -53,132 +46,77 @@ install.packages("tidyverse")
 ## Tidy Data
 
 Let's start off discussing Tidy Data. 
-
-Hadley Wickham, RStudio's Chief Scientist, and his team have been building R packages for data wrangling and visualization based on the idea of **tidy data**. 
+   
+   Hadley Wickham, RStudio's Chief Scientist, and his team have been building R packages for data wrangling and visualization based on the idea of **tidy data**. 
 
 Tidy data has a simple convention: put variables in the columns and observations in the rows.
 
-![](img/tidy_data.png)
-</br>
-</br>
-The Ocean Health Index dataset we were working with this morning was an example of tidy data. When data are tidy, you are set up to work with it for your analyses, plots, etc. 
-</br>
-</br>
-![](img/tidy_img_np.png) 
-
-Right now we are going to use `dplyr` to wrangle this tidy-ish data set (the transform part of the cycle), and then come back to tidying messy data using `tidyr` once we've had some fun wrangling. These are both part of the `tidyverse` package that we've already installed:
-
-![](img/r4ds_data-science.png)
-
-<br>
-
-Conceptually, making data tidy first is really critical. Instead of building your analyses around whatever (likely weird) format your data are in, take deliberate steps to make your data tidy. When your data are tidy, you can use a growing assortment of powerful analytical and visualization tools instead of inventing home-grown ways to accommodate your data. This will save you time since you aren't reinventing the wheel, and will make your work more clear and understandable to your collaborators (most importantly, Future You). 
-
-And actually, Hadley Wickham and RStudio have created a ton of packages that help you at every step of the way here. This is from one of Hadley's recent presentations: 
-
-![](img/tidyverse_wickham_pres.jpg)
-
-### Setup
-
-We'll do this in a new RMarkdown file. 
-
-**Here's what to do:**
-
-1. Clear your workspace (Session > Restart R)
-1. New File > R Markdown...
-1. Save as `gapminder-wrangle.Rmd`
-1. Delete the irrelevant text and write a little note to yourself about how we'll be wrangling gapminder data using dplyr. You can edit the title too if you need to.
+Right now we are going to use `dplyr` to wrangle this tidy-ish data set (the transform part of the cycle), and then come back to tidying messy data using `tidyr` once we've had some fun wrangling. These are both part of the `tidyverse` package that we've already.
 
 ### load `tidyverse` (which has `dplyr` inside)
-
-In your R Markdown file, let's make sure we've got our libraries loaded. Write the following: 
 
 ```{r, eval=FALSE}
 library(tidyverse)     ## install.packages("tidyverse")
 ```
 
 This is becoming standard practice for how to load a library in a file, and if you get an error that the library doesn't exist, you can install the package easily by running the code within the comment (highlight `install.packages("tidyverse")` and run it).
+   
+## Explore the New York City Census dataset
 
-## Explore the gapminder data.frame
-
-In the ggplot2 chapter, we explored the Ocean Health Index data visually. Today, we'll explore a different dataset by the numbers. 
-
-We will work with some of the data from the [Gapminder project](http://www.gapminder.org). 
-
-The data are on GitHub. Navigate there by going to: 
-
-github.com > ohi-science > data-science-training > data > gapminder.csv
-
-or by copy-pasting url for data-view: `https://github.com/OHI-Science/data-science-training/blob/master/data/gapminder.csv`
-
-This is data-view mode: so we can have a quick look at the data. It's a .csv file, which you've probably encountered before, but GitHub has formatted it nicely so it's easy to look at. You can see that for every country and year, there are several columns with data in them. 
-
-![](img/gapminder_gh.png)
-
+   
 ### read data with `readr::read_csv()`
+   
+We need to read the data into R. The data file is called "New_York_City_Census.csv".
+This data is in a specific type of format called a 'Comma Seperated Values' file,
+hence why the file has the extension '.csv'. To read in a '.csv' file, we need
+to tell R where it is located on our local machine (our computer).
 
-We can read this data into R directly from GitHub, without downloading it. But we can't read this data in view-mode. We have to click on the **Raw button** on the top-right of the data. This displays it as the raw csv file, without formatting. 
-
-![](img/gapminder_gh_raw.png)
-
-Copy the url for raw data: 
-
-https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder.csv
-
-Now, let's go back to RStudio. In our R Markdown, let's read this csv file and name the variable "gapminder". We will use the `read_csv()` function from the `readr` package (part of the tidyverse, so it's already installed!). 
+We will use the `read_csv()` function from the `readr` package (part of the tidyverse, so it's already installed!). 
 
 ```{r, eval=FALSE}
-## read gapminder csv. Note the readr:: prefix identifies which package it's in
-gapminder <- readr::read_csv('https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder.csv') 
-```
-
-Note: `read_csv` works with local filepaths as well, you could use one from your computer.
-
-Let's inspect: 
-```{r, eval=FALSE}
-## explore the gapminder dataset
-gapminder # this is super long! Let's inspect in different ways
+## read nyc census. Note the readr:: prefix identifies which package it's in
+nyc <- readr::read_csv('/Users/ryanstevens/ryan Dropbox/Ryan Stevens/fall2020/statistics/data/New_York_City_Census.csv') 
 ```
 
 Let's use `head` and `tail`: 
 ```{r head, eval=FALSE}
-head(gapminder) # shows first 6
-tail(gapminder) # shows last 6
+head(nyc) # shows first 6
+tail(nyc) # shows last 6
 
-head(gapminder, 10) # shows first X that you indicate
-tail(gapminder, 12) # guess what this does!
+head(nyc, 10) # shows first X that you indicate
+tail(nyc, 12) # guess what this does!
 ```
 
 `str()` will provide a sensible description of almost anything: when in doubt, inspect using `str()` on some of the recently created objects to get some ideas about what to do next.
 ```{r str, eval=FALSE}
-str(gapminder) # ?str - displays the structure of an object
+str(nyc) # ?str - displays the structure of an object
 ```
 
-`gapminder` is a `data.frame`. We aren't going to get into the other types of data receptacles today ('arrays', 'matrices'), because working with data.frames is what you should primarily use. Why?
-
-- data.frames package related variables neatly together, great for analysis
+`nyc` is a `data.frame`. We aren't going to get into the other types of data receptacles today ('arrays', 'matrices'), because working with data.frames is what you should primarily use. Why?
+  
+  - data.frames package related variables neatly together, great for analysis
 - most functions, including the latest and greatest packages actually __require__ that your data be in a data.frame
 - data.frames can hold variables of different flavors such as
-    - character data (country or continent names; "Characters (chr)") 
-    - quantitative data (years, population; "Integers (int)" or "Numeric (num)")
-    - categorical information (male vs. female)
-  
-We can also see the `gapminder` variable in RStudio's Environment pane (top right)
+- character data (country or continent names; "Characters (chr)") 
+- quantitative data (years, population; "Integers (int)" or "Numeric (num)")
+- categorical information (male vs. female)
+
+We can also see the `nyc` variable in RStudio's Environment pane (top right)
 
 More ways to learn basic info on a data.frame. 
 ```{r names, eval=FALSE}
-names(gapminder)
-dim(gapminder)    # ?dim dimension
-ncol(gapminder)   # ?ncol number of columns
-nrow(gapminder)   # ?nrow number of rows
+names(nyc)
+dim(nyc)    # ?dim dimension
+ncol(nyc)   # ?ncol number of columns
+nrow(nyc)   # ?nrow number of rows
 ```
 
 A statistical overview can be obtained with `summary()`, or with `skimr::skim()`
 ```{r summary, eval=FALSE}
-summary(gapminder)
+summary(nyc)
 
 library(skimr) # install.packages('skimr')
-skim(gapminder)
+skim(nyc)
 ```
 
 ### Look at the variables inside a data.frame
@@ -186,10 +124,10 @@ skim(gapminder)
 To specify a single variable from a data.frame, use the dollar sign `$`. The `$` operator is a way to extract of replace parts of an object — check out the help menu for `$`. It's a common operator you'll see in R. 
 
 ```{r $, eval=FALSE}
-gapminder$lifeExp # very long! hard to make sense of...
-head(gapminder$lifeExp) # can do the same tests we tried before
-str(gapminder$lifeExp) # it is a single numeric vector
-summary(gapminder$lifeExp) # same information, formatted slightly differently
+nyc$Income # very long! hard to make sense of...
+head(nyc$Income) # can do the same tests we tried before
+str(nyc$Income) # it is a single numeric vector
+summary(nyc$Income) # same information, formatted slightly differently
 ```
 
 
@@ -198,29 +136,29 @@ summary(gapminder$lifeExp) # same information, formatted slightly differently
 OK, so let's start wrangling with dplyr.
 
 There are five `dplyr` functions that you will use to do the vast majority of data manipulations:
+  
+  - **`filter()`**: pick observations by their values
 
-- **`filter()`**: pick observations by their values
+`r htmltools::img(src='img/rstudio-cheatsheet-filter.png', width=300)` 
 
-  `r htmltools::img(src='img/rstudio-cheatsheet-filter.png', width=300)` 
-    
 - **`select()`**: pick variables by their names
 
-  `r htmltools::img(src='img/rstudio-cheatsheet-select.png', width=300)`
-    
+`r htmltools::img(src='img/rstudio-cheatsheet-select.png', width=300)`
+
 - **`mutate()`**: create new variables with functions of existing variables 
 
-  `r htmltools::img(src='img/rstudio-cheatsheet-mutate.png', width=300)`
-    
+`r htmltools::img(src='img/rstudio-cheatsheet-mutate.png', width=300)`
+
 - **`summarise()`**: collapse many values down to a single summary 
 
-  `r htmltools::img(src='img/rstudio-cheatsheet-summarise.png', width=300)`
-  
+`r htmltools::img(src='img/rstudio-cheatsheet-summarise.png', width=300)`
+
 - **`arrange()`**: reorder the rows
 
 These can all be used in conjunction with `group_by()` which changes the scope of each function from operating on the entire dataset to operating on it group-by-group. These six functions provide the verbs for a language of data manipulation.
 
 All verbs work similarly:
-
+  
 1. The first argument is a data frame.
 2. The subsequent arguments describe what to do with the data frame. You can refer to columns in the data frame directly without using `$`.
 3. The result is a new data frame.
@@ -235,89 +173,67 @@ You will want to isolate bits of your data; maybe you want to only look at a sin
 `filter()` is a function in `dplyr` that takes logical expressions and returns the rows for which all are `TRUE`. 
 
 Visually, we are doing this (thanks RStudio for your [cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)): 
-
-![](img/rstudio-cheatsheet-filter.png)
+  
+  ![](img/rstudio-cheatsheet-filter.png)
 Remember your logical expressions? We’ll use `<` and `==` here.
 
 ```{r, eval=FALSE}
-filter(gapminder, lifeExp < 29)
+filter(nyc, Income < 20000)
 ```
 
-You can say this out loud: "Filter the gapminder data for life expectancy less than 29". Notice that when we do this, all the columns are returned, but only the rows that have the life expectancy less than 29. We've subsetted by row.
+You can say this out loud: "Filter the nyc data for income less than 20000". Notice that when we do this, all the columns are returned, but only the rows that have the life expectancy less than 29. We've subsetted by row.
 
-Let's try another: "Filter the gapminder data for the country Mexico".
+Let's try another: "Filter the nyc data for the borough Bronx".
 
 ```{r, eval=FALSE}
-filter(gapminder, country == "Mexico")
+filter(nyc, Borough == "Bronx")
 ```
 
-How about if we want two country names? We can't use the `==` operator here, because it can only operate on one thing at a time. We will use the `%in%` operator: 
+How about if we want two borough names? We can't use the `==` operator here, because it can only operate on one thing at a time. We will use the `%in%` operator: 
 
 ```{r, eval=FALSE}
-filter(gapminder, country %in% c("Mexico", "Peru"))
+filter(nyc, Borough %in% c("Bronx", "Manhattan"))
 ```
 
-How about if we want Mexico in 2002? You can pass filter different criteria:
+How about if we want Bronx residents with greater than 40000 dollars income? You can pass filter different criteria:
 
 ```{r, eval=FALSE}
-filter(gapminder, country == "Mexico", year == 2002)
+filter(nyc, Borough == "Bronx", Income >= 40000)
 ```
 
 
-## Your turn 
 
-> What was the average life expectency in Brazil between 1987 and 2007?   
-> Hint: do this in 2 steps by assigning a variable and then using the `mean()` function.
->
-> Then, sync to Github.com (pull, stage, commit, push).
-
-### Answer 
-
-This is one way to do it based on what we have learned so far:
-
-```{r, eval=FALSE}
-x <- filter(gapminder, country == "Brazil", year > 1986)  
-mean(x$lifeExp)  
-```
-
-<!---Don't use this one for now because gets off track for %>%
-2. Choose a country. How much has the population changed since the earliest record? Hint: create variables for the earliest and most recent years, and subtract from each other.  
-x1 <- filter(gapminder, country == "Sweden", year == 1952)
-x2 <- filter(gapminder, country == "Sweden", year == 2007)
-x2$pop - x1$pop
-##  1906415
---->
-
+  
 ## `select()` subsets data column-wise (variables)
-
+  
 We use `select()` to subset the data on variables or columns. 
 
 Visually, we are doing this (thanks RStudio for your [cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)): 
+  
+  ![](img/rstudio-cheatsheet-select.png)
 
-![](img/rstudio-cheatsheet-select.png)
-
-We can select multiple columns with a comma, after we specify the data frame (gapminder). 
+We can select multiple columns with a comma, after we specify the data frame (nyc). 
 
 ```{r, eval=FALSE}
-select(gapminder, year, country, lifeExp) 
+select(nyc, Borough, Sex) 
 ```
 
 We can also use - to deselect columns
 
 ```{r, eval=FALSE}
-select(gapminder, -continent, -lifeExp) # you can use - to deselect columns
+select(nyc, -Borough, -Sex) # you can use - to deselect columns
 ```
 
 ## Use `select()` and `filter()` together
 
-Let's filter for Cambodia and remove the continent and lifeExp columns. We'll save this as a variable. Actually, as two temporary variables, which means that for the second one we need to operate on `gap_cambodia`, not `gapminder`. 
+Let's filter for Manhattan and remove the Sex column. We'll save this as a variable. Actually, as two temporary variables, which means that for the second one we need to operate on `gap_cambodia`, not `nyc`. 
 
 ```{r, eval=FALSE}
-gap_cambodia  <- filter(gapminder, country == "Cambodia")
-gap_cambodia2 <- select(gap_cambodia, -continent, -lifeExp) 
+nyc_manhattan  <- filter(nyc, Borough == "Manhattan")
+nyc_manhattan2 <- select(nyc_manhattan, -Sex) 
 ```
 
-We also could have called them both `gap_cambodia` and overwritten the first assignment. Either way, naming them and keeping track of them gets super cumbersome, which means more time to understand what's going on and opportunities for confusion or error.
+We also could have called them both `nyc_manhattan` and overwritten the first assignment. Either way, naming them and keeping track of them gets super cumbersome, which means more time to understand what's going on and opportunities for confusion or error.
 
 Good thing there is an awesome alternative.
 
@@ -329,58 +245,53 @@ Here's what it looks like: `%>%`. The RStudio keyboard shortcut: Ctrl + Shift + 
 
 Let's demo then I'll explain:
 ```{r, eval=FALSE}
-gapminder %>% head()
+nyc %>% head()
 ```
 
-This is equivalent to `head(gapminder)`. This pipe operator takes the thing on the left-hand-side and __pipes__ it into the function call on the right-hand-side. It literally drops it in as the first argument.
+This is equivalent to `head(nyc)`. This pipe operator takes the thing on the left-hand-side and __pipes__ it into the function call on the right-hand-side. It literally drops it in as the first argument.
 
-Never fear, you can still specify other arguments to this function! To see the first 3 rows of Gapminder, we could say `head(gapminder, 3)` or this:
+Never fear, you can still specify other arguments to this function! To see the first 3 rows of nyc, we could say `head(nyc, 3)` or this:
 ```{r, eval=FALSE}
-gapminder %>% head(3)
+nyc %>% head(3)
 ```
 
 **I've advised you to think "gets" whenever you see the assignment operator, `<-`. Similarly, you should think "and then" whenever you see the pipe operator, `%>%`.**
-
-One of the most awesome things about this is that you START with the data before you say what you're doing to DO to it. So above: "take the gapminder data, and then give me the first three entries".
+  
+  One of the most awesome things about this is that you START with the data before you say what you're doing to DO to it. So above: "take the nyc data, and then give me the first three entries".
 
 This means that instead of this:
 
 ```{r, eval=FALSE}
 
 ## instead of this...
-gap_cambodia  <- filter(gapminder, country == "Cambodia")
-gap_cambodia2 <- select(gap_cambodia, -continent, -lifeExp) 
+nyc_manhattan  <- filter(nyc, Borough == "Manhattan")
+nyc_manhattan2 <- select(nyc_manhattan, -Sex) 
 
 ## ...we can do this
-gap_cambodia  <- gapminder %>% filter(country == "Cambodia")
-gap_cambodia2 <- gap_cambodia %>% select(-continent, -lifeExp) 
+nyc_manhattan  <- nyc %>% filter(Borough == "Manhattan")
+nyc_manhattan2 <- nyc %>% select(-Sex) 
 ```
 
-So you can see that we'll start with gapminder in the first example line, and then gap_cambodia in the second. This makes it a bit easier to see what data we are starting with and what we are doing to it.
+So you can see that we'll start with nyc in the first example line, and then nyc_manhattan in the second. This makes it a bit easier to see what data we are starting with and what we are doing to it.
 
 ...But, we still have those temporary variables so we're not truly that better off. But get ready to be majorly impressed:  
 
-<!---
-Fun break: check out [this gif about %>% from Twitter](https://twitter.com/backerman150/status/926479565869993984).
---->
 
 ### Revel in the convenience
 
 We can use the pipe to chain those two operations together:
 
 ```{r, eval=FALSE}
-gap_cambodia  <- gapminder %>% 
-  filter(country == "Cambodia") %>%
-  select(-continent, -lifeExp) 
+nyc_manhattan  <- nyc %>% 
+                  filter(Borough == "Manhattan") %>% 
+                  select(-Sex) 
 ```
+  
+  By using multiple lines I can actually read this like a story and there aren't temporary variables that get super confusing. In my head: 
 
-What's happening here? In the second line, we were able to delete `gap_cambodia2 <- gap_cambodia`, and put the pipe operator above. This is possible since we wanted to operate on the `gap_cambodia` data anyways. And we weren't truly excited about having a second variable named `gap_cambodia2` anyways, so we can get rid of it. This is huge, because most of your data wrangling will have many more than 2 steps, and we don't want a `gap_cambodia14`!
-
-By using multiple lines I can actually read this like a story and there aren't temporary variables that get super confusing. In my head: 
-
->"start with the `gapminder` data, and then  
-filter for Cambodia, and then  
-drop the variables continent and lifeExp."
+>"start with the `nyc` data, and then  
+filter for Manhattan, and then  
+drop the variable Sex."
 
 Being able to read a story out of code like this is really game-changing. We'll continue using this syntax as we learn the other dplyr verbs. 
 
@@ -388,268 +299,164 @@ Being able to read a story out of code like this is really game-changing. We'll 
 
 Alright, let's keep going. 
 
-Let's say we needed to add an index column so we know which order these data came in. Let's not make a new variable, let's add a column to our gapminder data frame. How do we do that? With the `mutate()` function. 
+Let's say we needed to add an index column so we know which order these data came in. Let's not make a new variable, let's add a column to our nyc data frame. How do we do that? With the `mutate()` function. 
 
 Visually, we are doing this (thanks RStudio for your [cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)): 
+  
+  ![](img/rstudio-cheatsheet-mutate.png)
 
-![](img/rstudio-cheatsheet-mutate.png)
-
-Imagine we want to know each country's annual GDP. We can multiply `pop` by `gdpPercap` to create a new column named `gdp`.
+Imagine we want to know if a resident is a Woman and lives in the Bronx
 
 ```{r, eval=FALSE}
-gapminder %>%
-  mutate(gdp = pop * gdpPercap)
-```
-
-### Your turn 
-
-> Calculate the population in thousands for all Asian countries in the year 2007 and add it as a new column.
->
-> Then, sync to Github.com (pull, stage, commit, push).
-
-#### Answer 
-```{r, eval=FALSE}
-gapminder %>%
-  filter(continent == "Asia",
-         year == 2007) %>%
-  mutate(pop_thousands = pop/1000) %>%
-  select(country, year, pop_thousands) #this cleans up the dataframe but isn't necessary
+nyc %>%
+  mutate(bronx_woman = Borough=='Bronx' & Sex=='Female')
 ```
 
 ## `group_by()` operates on groups
 
-What if we wanted to know the total population on each continent in 2002? Answering this question requires a **grouping variable**.
+What if we wanted to know the average income of each boroughs resident? Answering this question requires a **grouping variable**.
 
 Visually, we are doing this (thanks RStudio for your [cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)): 
- 
-![](img/rstudio-cheatsheet-group_by.png)
+  
+  ![](img/rstudio-cheatsheet-group_by.png)
 
-By using `group_by()` we can set our grouping variable to `continent` and create a new column called `cont_pop` that will add up all country populations by their associated continents.
+By using `group_by()` we can set our grouping variable to `Borough` and create a new column called `mean_income` that will find the arithmetic mean (average) for
+each borough
 
 ```{r, eval=FALSE}
-gapminder %>%
-  filter(year == 2002) %>%
-  group_by(continent) %>% 
-  mutate(cont_pop = sum(pop))
+nyc %>%
+  group_by(Borough) %>% 
+  mutate(mean_income = mean(Income))
 ```
 
-OK, this is great. But what if we don't care about the other columns and we only want each continent and their population in 2002? Here's the next function: 
-
+OK, this is great. But what if we don't care about the other columns and we only want `mean_income` and `Borough` columns? Here's the next function: 
+  
 ### `summarize()` with `group_by()`
-
+  
 We want to operate on a group, but actually collapse or distill the output from that group. The `summarize()` function will do that for us.
 
 Visually, we are doing this (thanks RStudio for your [cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)): 
- 
-![](img/rstudio-cheatsheet-summarise.png)
+  
+  ![](img/rstudio-cheatsheet-summarise.png)
 Here we go:
-
+  
 ```{r, eval=FALSE}
-gapminder %>%
-  group_by(continent) %>%
-  summarize(cont_pop = sum(pop)) %>%
+nyc %>%
+  group_by(Borough) %>% 
+  summarize(mean_income = mean(Income))
   ungroup()
 ```
 
 How cool is that! `summarize()` will actually only keep the columns that are grouped_by or summarized. So if we wanted to keep other columns, we'd have to do have a few more steps (we'll get into it tomorrow). `ungroup()` removes the grouping and it's good to get in the habit of using it after a `group_by()`.
 
-We can use more than one grouping variable. Let's get total populations by **continent** and **year**.
+### Calculating percentages by group
 
-```{r, eval = F}
-gapminder %>%
-  group_by(continent, year) %>%
-  summarize(cont_pop = sum(pop))
-```
+Oftentimes, we want to calculate percentages of totals by group. For example,
+we may want to calculate the percentage of people that travel to work that 
+take a bicycle. We can break this down into a few steps:
 
+1. Retrieve from the data only people that travel to work 
+2. Count the number of people that take each mode of transportation
+3. Divide (2) by the total number of people that travel to work
 
-## `arrange()` orders columns
-
-This is ordered alphabetically, which is cool. But let's say we wanted to order it in ascending order for `year`. The dplyr function is `arrange()`. 
-
-```{r, eval=FALSE}
-gapminder %>%
-  group_by(continent, year) %>%
-  summarize(cont_pop = sum(pop)) %>%
-  arrange(year)
-```
-
-### Your turn
-
-> What is the maximum GDP per continent across all years?
-
-#### Answer
-
-```{r}
-gapminder %>%
-  mutate(gdp = pop * gdpPercap) %>%
-  group_by(continent) %>%
-  mutate(max_gdp = max(gdp)) %>%
-  filter(gdp == max_gdp)
-```
-
-### Your turn
-
-> 1. arrange your data frame in descending order (opposite of what we've done). Expect that this is possible: `?arrange`
-> 1. save your data frame as a variable
-> 1. find the maximum life expectancy for countries in Asia. What is the earliest year you encounter? The latest? Hint: you can use or `base::max` and `dplyr::arrange()`...
-> 
-> 1. Knit your RMarkdown file, and sync it to GitHub (pull, stage, commit, push)
-
-#### Answer (no peeking!)
-```{r, eval=FALSE}
-asia_life_exp <- gapminder %>%
-  filter(continent == 'Asia') %>%
-  group_by(country) %>%
-  filter(lifeExp == max(lifeExp)) %>%
-  arrange(year) 
-```
-
-
-## All together now
-
-We have done a pretty incredible amount of work in a few lines. Our whole analysis is this. Imagine the possibilities from here. It's very readable: you see the data as the first thing, it's not nested. Then, you can read the verbs. This is the whole thing, with explicit package calls from `readr::` and `dplyr::`: 
+Let's put all of these steps together in one command:
 
 ```{r, eval=FALSE}
-## gapminder-wrangle.R
-## J. Lowndes lowndes@nceas.ucsb.edu
-
-
-## load libraries
-library(tidyverse) ## install.packages('tidyverse')
-
-## read in data
-gapminder <- readr::read_csv('https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder.csv') 
-
-## summarize
-gap_max_life_exp <- gapminder %>% 
-  dplyr::select(-continent, -lifeExp) %>% # or select(country, year, pop, gdpPercap)
-  dplyr::group_by(country) %>%
-  dplyr::mutate(gdp = pop * gdpPercap) %>%
-  dplyr::summarize(max_gdp = max(gdp)) %>%
-  dplyr::ungroup() 
+nyc %>%
+  filter(Transportation_to_Work != 'Not working' & Transportation_to_Work!='Worked from Home') %>% 
+  group_by(Transportation_to_Work) %>%
+  tally() %>%
+  ungroup() %>%
+  mutate(perc_by_transport_mode=n/sum(n)) %>%
+  filter(Transportation_to_Work=='Bicycle')
 ```
 
-I actually am borrowing this "All together now" from Tony Fischetti's blog post [How dplyr replaced my most common R idioms](http://www.statsblogs.com/2014/02/10/how-dplyr-replaced-my-most-common-r-idioms/)). With that as inspiration, this is how what we have done would look like in Base R.
+We can easily modify the above command to look at transportation by sub-groups.
+Assume we want to know how different age groups travel to work. Let's first
+bin people into age group bins. This is because we have few people who are 
+exactly 25 years old, but we have many people that are between 20 and 29. 
 
-### Compare to base R
-
-Let's compare with some base R code to accomplish the same things. Base R requires subsetting with the `[rows, columns]` notation. This notation is something you'll see a lot in base R. the brackets `[ ]` allow you to extract parts of an object. Within the brackets, the comma separates rows from columns. 
-
-If we don't write anything after the comma, that means "all columns". And if we don't write anything before the comma, that means "all rows". 
-
-Also, the `$` operator is how you access specific columns of your dataframe. You can also add new columns like we will do with `mex$gdp` below. 
-
-Instead of calculating the max for each country like we did with `dplyr` above, here we will calculate the max for one country, Mexico. Tomorrow we will learn how to do it for all the countries, like we did with `dplyr::group_by()`.
-
-```{r, eval = FALSE}
-## gapminder-wrangle.R --- baseR
-## J. Lowndes lowndes@nceas.ucsb.edu
-
-
-gapminder <- read.csv('https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder.csv', stringsAsFactors = FALSE) 
-x1  <- gapminder[ , c('country', 'year', 'pop', 'gdpPercap') ]# subset columns
-mex <- x1[x1$country == "Mexico", ] # subset rows
-mex$gdp <- mex$pop * mex$gdpPercap # add new columns
-mex$max_gdp <- max(mex$gdp)
+```{r, eval=FALSE}
+nyc = nyc %>% 
+      mutate(age_bin = case_when(Age %in% 18:29 ~ '18-29',
+                                 Age %in% 30:50 ~ '30-50',
+                                 Age %in% 51:65 ~ '51-65',
+                                 Age %in% 66:95 ~ '66-95'))
 ```
 
-Note too that the chain operator `%>%` that we used with the `tidyverse` lets us get away from the temporary variable x1. 
+Now we can easily modify our command above to get the percentage of each of 
+these groups that commute to work. 
 
-<!---https://twitter.com/bencapistrant/status/932646247101534209--->
+```{r, eval=FALSE}
+nyc %>%
+  filter(Transportation_to_Work != 'Not working' & Transportation_to_Work!='Worked from Home') %>% 
+  group_by(Transportation_to_Work,age_bin) %>%
+  tally() %>%
+  ungroup() %>%
+  group_by(age_bin) %>%
+  mutate(perc_by_transport_mode=n/sum(n)) %>%
+  filter(Transportation_to_Work=='Bicycle')
+```
 
-### Your Turn 
+### A Brief Interlude on Graphing
 
-Get your RMarkdown file cleaned up and sync it for the last time today!
+Let's say we want to graph our results from above. The package we will be using
+is __ggplot__. This provides a lot of useful functionality, but we will only
+be interested in very basic plotting exercises.
 
-#### Answers 
-...
-
-## Joining datasets 
-
-We've learned a ton in this session and we may not get to this right now. If we don't have time, we'll start here before getting into the next chapter: `tidyr`.
-
-Most of the time you will have data coming from different places or in different files, and you want to put them together so you can analyze them. Datasets you'll be joining can be called relational data, because it has some kind of relationship between them that you'll be acting upon. In the tidyverse, combining data that has a relationship is called "joining". 
-
-From the [RStudio cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf) (note: this is an earlier version of the cheatsheet but I like the graphics):
-
-![](img/rstudio-cheatsheet-combine.png)
-
-<br>
-Let's have a look at this and pretend that the x1 column is a study site and x2 is the variables we've recorded (like species count) and x3 is data from an instrument (like temperature data). Notice how you may not have exactly the same observations in the two datasets: in the x1 column, observations A and B appear in both datasets, but notice how the table on the left has observation C, and the table on the right has observation D. 
-
-If you wanted to combine these two tables, how would you do it? There are some decisions you'd have to make about what was important to you. The cheatsheet visualizes it for us:
-
-![](img/rstudio-cheatsheet-combine-options1.png)
-
-We will only talk about this briefly here, but you can refer to this more as you have your own datasets that you want to join. This describes the figure above::
-
-- `left_join` keeps everything from the left table and matches as much as it can from the right table. In R, the first thing that you type will be the left table (because it's on the left)
-- `right_join` keeps everything from the right table and matches as much as it can from the left table
-- `inner_join` only keeps the observations that are similar between the two tables
-- `full_join` keeps all observations from both tables. 
-
-<!---
-These are all "mutating joins" because they add another column to what had been there previously. There are also "filtering joins" that do not add another column: 
-
-- `semi_join` keeps only the observations that are in both tables
-- `anti_join` keeps only the observations that are NOT in both tables.
---->
-
-Let's play with [these](https://github.com/OHI-Science/data-science-training/blob/master/data/co2.csv) CO2 emissions data to illustrate:
+First, let's say we want to make a line chart of the percentage of people 
+that commute to work on a bicycle by age bin? What is our x-axis? `age_bin`!
+What is our y-axis? `perc_by_transport_mode`. Let's see how we would plot this:
 
 ```{r, eval=FALSE}
 
-## read in the data. (same URL as yesterday, with co2.csv instead of gapminder.csv)
-co2 <- read_csv("https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/co2.csv")
+# Calculate percentage to work by age
+perc_bike_by_age=nyc %>%
+  filter(Transportation_to_Work != 'Not working' & Transportation_to_Work!='Worked from Home') %>% 
+  group_by(Transportation_to_Work,age_bin) %>%
+  tally() %>%
+  ungroup() %>%
+  group_by(age_bin) %>%
+  mutate(perc_by_transport_mode=n/sum(n)) %>%
+  filter(Transportation_to_Work=='Bicycle')
 
-## explore
-co2 %>% head()
-co2 %>% dim() # 12
+# Plot data as a line
+ggplot(perc_bike_by_age,aes(x=age_bin,y=perc_by_transport_mode,group=1)) + 
+  geom_line()
 
-## create new variable that is only 2007 data
-gap_2007 <- gapminder %>%
-  filter(year == 2007) 
-gap_2007 %>% dim() # 142  
+# Plot data as a dashed line
+ggplot(perc_bike_by_age,aes(x=age_bin,y=perc_by_transport_mode,group=1)) + geom_line(linetype = "dashed")
 
-## left_join gap_2007 to co2
-lj <- left_join(gap_2007, co2, by = "country")
-
-## explore
-lj %>% dim() #142
-lj %>% summary() # lots of NAs in the co2_2017 columm
-lj %>% View() 
-
-## right_join gap_2007 and co2
-rj <- right_join(gap_2007, co2, by = "country")
-
-## explore
-rj %>% dim() # 12
-rj %>% summary()
-rj %>% View() 
+# Plot data as points
+ggplot(perc_bike_by_age,aes(x=age_bin,y=perc_by_transport_mode,group=1)) + geom_point()
 ```
 
-That's all we're going to talk about today with joining, but there are more ways to think about and join your data. Check out the [Relational Data Chapter](http://r4ds.had.co.nz/relational-data.html) in [R for Data Science](http://r4ds.had.co.nz).
+We see from this that we can plot our data using many different types of lines.
 
-## Key Points
+Let's say we now want to do our plotting by groups. The easiest way to do this
+is to use a grouping variable inside the aesthetics argument `aes`. Let's see
+how to do this for the differences in Men versus Women. 
 
-- Data manipulation functions in `dplyr` allow you to `filter()` by rows and `select()` by columns, create new columns with `mutate()`, and `group_by()` unique column values to apply `summarize()` for new columns that define aggregate values across groupings.
-- The "then" operator `%>%` allows you to chain successive operations without needing to define intermediary variables for creating the most parsimonious, easily read analysis.
-
-## Troubleshooting. 
-
-### Error: unexpected SPECIAL in "  %>%"
-If you get this error, it is probably because you have a line that starts with a pipe. The pipe should be at the end of the previous line, not the start of the current line. 
-
-Yes: 
 ```{r, eval=FALSE}
-gap_cambodia  <- gapminder %>% filter(country == "Cambodia") %>%
-  select(-continent, -lifeExp)
-```
 
-No:
-```{r, eval=FALSE}
-gap_cambodia  <- gapminder %>% filter(country == "Cambodia") 
-  %>% select(-continent, -lifeExp)
-# Error: unexpected SPECIAL in "  %>%"
-```
+# Calculate percentage to work by age
+perc_bike_by_ageAndSex=nyc %>%
+  filter(Transportation_to_Work != 'Not working' & Transportation_to_Work!='Worked from Home') %>% 
+  group_by(Transportation_to_Work,age_bin,Sex) %>%
+  tally() %>%
+  ungroup() %>%
+  group_by(age_bin,Sex) %>%
+  mutate(perc_by_transport_mode=n/sum(n)) %>%
+  filter(Transportation_to_Work=='Bicycle')
 
+# Plot data as a line
+ggplot(perc_bike_by_ageAndSex,aes(x=age_bin,y=perc_by_transport_mode,group=Sex,
+                                  color=Sex)) + 
+  geom_line()
+
+# Plot data as two plots
+ggplot(perc_bike_by_ageAndSex,aes(x=age_bin,y=perc_by_transport_mode,group=1)) + 
+  facet_grid(.~Sex) +
+  geom_line()
+
+```
